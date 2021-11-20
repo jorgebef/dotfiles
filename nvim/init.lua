@@ -1,0 +1,169 @@
+-- ===================== THEMES ======================
+vim.o.termguicolors = true
+-- vim.g.sonokai_disable_italic_comment=1
+vim.g.sonokai_style='default'
+-- vim.g.sonokai_enable_italic=1
+-- vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme sonokai]]
+
+-- ===================== BASIC SETTINGS ======================
+vim.o.backup = false
+vim.o.writebackup = false
+-- " Give more space for displaying messages.
+vim.o.cmdheight = 2
+vim.o.showcmd = true
+vim.o.wildmenu = true
+vim.o.mouse = ''
+vim.o.showmatch = true
+vim.o.expandtab = true
+vim.o.hidden = true
+vim.o.hlsearch = true
+vim.o.incsearch = true
+vim.o.ignorecase = true
+vim.o.number = true
+vim.o.ruler = true
+vim.o.showmode = false
+vim.o.signcolumn = "yes:1" -- Always show signcolumn, max width 1
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.shiftround = true
+vim.o.sessionoptions = 'buffers,curdir,folds,help,resize,tabpages,winsize,winpos'
+vim.o.smartcase = true
+vim.o.tabstop = 4
+vim.o.timeout = false
+vim.o.timeoutlen = 10
+vim.o.undofile = true; vim.bo.undofile = true -- persistent undo is a neat feature
+vim.o.updatetime = 300
+vim.g.mapleader = ' '
+-- " Don't pass messages to |ins-completion-menu|.
+vim.g.shortmess = vim.o.shortmess .. 'c'
+
+-- REMAPS
+-- ================================================================
+local nsn_opts = { noremap = true, silent = true, nowait = true }
+local ns_opts = { noremap = true, silent = true }
+-- ================================================================
+
+vim.api.nvim_set_keymap('n', 'ñ', ';', { nowait = true})
+vim.api.nvim_set_keymap('n', 'Ñ', ':', { nowait = true })
+vim.api.nvim_set_keymap('n', "'", '`', ns_opts)
+
+-- " =========================== FUNCTIONAL REMAPS =============================
+vim.api.nvim_set_keymap('n', '<leader>w', ':silent write<cr>', nsn_opts)
+
+vim.api.nvim_set_keymap('n', '<leader>3', [["syiw<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
+vim.api.nvim_set_keymap('v', '<leader>3', [["sy<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
+
+vim.api.nvim_set_keymap('n', "'", '`', ns_opts)
+
+vim.api.nvim_set_keymap('n', '<', '<gv', ns_opts)
+vim.api.nvim_set_keymap('n', '>', '>gv', ns_opts)
+vim.api.nvim_set_keymap('n', '<leader>o', 'o<esc>0"_D<esc>', ns_opts)
+vim.api.nvim_set_keymap('n', '<leader>O', 'O<esc>0"_D<esc>',  ns_opts)
+
+vim.api.nvim_set_keymap('n', '<esc>', ':noh<cr>:echo""<esc>', nsn_opts)
+
+-- vim.api.nvim_set_keymap('n', '<leader>S', ':mksession!<cr>', { noremap = true, silent = false })
+-- don't need this with vim-obsession
+
+-- " Scroll 4 lines with <C-e>, improved scrolling
+vim.api.nvim_set_keymap('n', '<C-e>', '4<C-e>', nsn_opts)
+vim.api.nvim_set_keymap('n', '<C-y>', '4<C-y>', nsn_opts)
+vim.api.nvim_set_keymap('c', '<C-e>', '4<C-e>', nsn_opts)
+vim.api.nvim_set_keymap('c', '<C-y>', '4<C-y>', nsn_opts)
+vim.api.nvim_set_keymap('v', '<C-e>', '4<C-e>', nsn_opts)
+vim.api.nvim_set_keymap('v', '<C-y>', '4<C-y>', nsn_opts)
+
+vim.api.nvim_set_keymap('n', '<leader>j', '<C-w>j', nsn_opts)
+vim.api.nvim_set_keymap('n', '<leader>k', '<C-w>k', nsn_opts)
+vim.api.nvim_set_keymap('n', '<leader>l', '<C-w>l', nsn_opts)
+vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h', nsn_opts)
+
+vim.api.nvim_set_keymap('n', '<leader>J', '<C-w>J', nsn_opts)
+vim.api.nvim_set_keymap('n', '<leader>K', '<C-w>K', nsn_opts)
+vim.api.nvim_set_keymap('n', '<leader>L', '<C-w>L', nsn_opts)
+vim.api.nvim_set_keymap('n', '<leader>H', '<C-w>H', nsn_opts)
+
+vim.api.nvim_set_keymap('n', '<leader>=', '<C-w>=', nsn_opts)
+vim.api.nvim_set_keymap('n', '<leader>+', '<C-w>10>', nsn_opts)
+vim.api.nvim_set_keymap('n', '<leader>-', '<C-w>10<', nsn_opts)
+
+-- vim.api.nvim_set_keymap('n', '<leader>n', ':bnext<CR>', nsn_opts)
+-- vim.api.nvim_set_keymap('n', '<leader>p', ':bprevious<CR>', nsn_opts)
+
+
+-- " ====================== AUTOCMD ========================
+
+vim.api.nvim_exec(
+  [[
+    augroup CursorLine
+      autocmd!
+      au VimEnter,WinEnter,BufWinEnter * setlocal cursorline | :echo""
+      au WinLeave * setlocal nocursorline
+    augroup END
+
+    augroup highlight_yank
+        autocmd!
+        au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
+    augroup END
+
+
+  ]],
+  false
+)
+
+-- " ====================== / AUTOCMD ========================
+
+-- ======================= Highlight groups ======================================
+vim.api.nvim_exec(
+    [[
+        function! MyHighlights() abort
+            hi Pmenu guibg=#33353f
+            hi NormalFloat guibg=#33353f
+            hi FloatBorder guifg=#7f8490 guibg=#33353f
+
+            hi IndentBlanklineContextChar guifg=#e2e2e3 gui=nocombine
+            hi IndentBlanklineChar guifg=#414550 gui=nocombine
+
+            " hi LspDiagnosticsVirtualTextError guifg=#fc5d7c
+            hi LspDiagnosticsSignError guifg=#fc5d7c
+            hi LspDiagnosticsFloatingError guifg=#fc5d7c guibg=NONE
+
+            " hi LspDiagnosticsVirtualTextWarning guifg=#f39660
+            hi LspDiagnosticsSignWarning guifg=#f39660
+            hi LspDiagnosticsFloatingWarning guifg=#f39660 guibg=NONE
+
+            " hi LspDiagnosticsVirtualTextInformation guifg=#e7c664
+            hi LspDiagnosticsSignInformation guifg=#e7c664
+            hi LspDiagnosticsFloatingInformation guifg=#e7c664 guibg=NONE
+
+            " hi LspDiagnosticsVirtualTextHint guifg=#76cce0
+            hi LspDiagnosticsSignHint guifg=#76cce0
+            hi LspDiagnosticsFloatingHint guifg=#76cce0 guibg=NONE
+
+        endfunction
+
+        augroup MyColors
+            autocmd!
+            autocmd ColorScheme * call MyHighlights()
+        augroup END
+    ]],
+    false
+)
+
+-- ======================== REQUIRE EXTRA FILES ===================
+require('packer-plugins')
+require('lsp-config')
+require('completion-config')
+require('indentline-config')
+require('nvim-tree-config')
+require('lualine-config')
+-- require('lua-ls')
+-- require('lspsaga-config')
+require('bufferline-config')
+require('startify-config')
+require('treesitter-config')
+require('telescope-config')
+-- require('sonokai')
+--require('fzf-config')
+-- require('lua-ls.lua') -- luajit not yet available for M1 mac
