@@ -40,56 +40,62 @@ vim.g.shortmess = vim.o.shortmess .. 'c'
 
 -- REMAPS
 -- ================================================================
+local remap = vim.api.nvim_set_keymap
 local nsn_opts = { noremap = true, silent = true, nowait = true }
 local ns_opts = { noremap = true, silent = true }
+local n_opts = { noremap = true }
 -- ================================================================
 
-vim.api.nvim_set_keymap('n', 'ñ', ';', { nowait = true})
-vim.api.nvim_set_keymap('n', 'Ñ', ':', { nowait = true })
-vim.api.nvim_set_keymap('n', "'", '`', ns_opts)
+remap('n', 'ñ', ';', { nowait = true})
+remap('n', 'Ñ', ':', { nowait = true })
+remap('n', "'", '`', ns_opts)
 
 -- " =========================== FUNCTIONAL REMAPS =============================
-vim.api.nvim_set_keymap('n', '<leader>w', ':silent write<cr>', nsn_opts)
+remap('n', '<leader>w', ':silent write<cr>', nsn_opts)
 
-vim.api.nvim_set_keymap('n', '<leader>3', [["syiw<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
-vim.api.nvim_set_keymap('v', '<leader>3', [["sy<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
+remap('n', '<leader>3', [["syiw<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
+remap('v', '<leader>3', [["sy<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
 
-vim.api.nvim_set_keymap('n', "'", '`', ns_opts)
+-- SEARCH AND REPLACE
+remap('n', '<leader>sr', ':%s/<C-r><C-w>//gc<Left><Left><Left>', n_opts)
+remap('v', '<leader>sr', '"hy:%s/<C-r>h//gc<Left><Left><Left>', n_opts)
 
-vim.api.nvim_set_keymap('n', '<', '<gv', ns_opts)
-vim.api.nvim_set_keymap('n', '>', '>gv', ns_opts)
-vim.api.nvim_set_keymap('n', '<leader>o', 'o<esc>0"_D<esc>', ns_opts)
-vim.api.nvim_set_keymap('n', '<leader>O', 'O<esc>0"_D<esc>',  ns_opts)
+remap('n', "'", '`', ns_opts)
 
-vim.api.nvim_set_keymap('n', '<esc>', ':noh<cr>:echo""<esc>', nsn_opts)
+remap('n', '<', '<gv', ns_opts)
+remap('n', '>', '>gv', ns_opts)
+remap('n', '<leader>o', 'o<esc>0"_D<esc>', ns_opts)
+remap('n', '<leader>O', 'O<esc>0"_D<esc>',  ns_opts)
 
--- vim.api.nvim_set_keymap('n', '<leader>S', ':mksession!<cr>', { noremap = true, silent = false })
+remap('n', '<esc>', ':noh<cr>:echo""<esc>', nsn_opts)
+
+-- nvim_remap('n', '<leader>S', ':mksession!<cr>', { noremap = true, silent = false })
 -- don't need this with vim-obsession
 
 -- " Scroll 4 lines with <C-e>, improved scrolling
-vim.api.nvim_set_keymap('n', '<C-e>', '4<C-e>', nsn_opts)
-vim.api.nvim_set_keymap('n', '<C-y>', '4<C-y>', nsn_opts)
-vim.api.nvim_set_keymap('c', '<C-e>', '4<C-e>', nsn_opts)
-vim.api.nvim_set_keymap('c', '<C-y>', '4<C-y>', nsn_opts)
-vim.api.nvim_set_keymap('v', '<C-e>', '4<C-e>', nsn_opts)
-vim.api.nvim_set_keymap('v', '<C-y>', '4<C-y>', nsn_opts)
+remap('n', '<C-e>', '4<C-e>', nsn_opts)
+remap('n', '<C-y>', '4<C-y>', nsn_opts)
+remap('c', '<C-e>', '4<C-e>', nsn_opts)
+remap('c', '<C-y>', '4<C-y>', nsn_opts)
+remap('v', '<C-e>', '4<C-e>', nsn_opts)
+remap('v', '<C-y>', '4<C-y>', nsn_opts)
 
-vim.api.nvim_set_keymap('n', '<leader>j', '<C-w>j', nsn_opts)
-vim.api.nvim_set_keymap('n', '<leader>k', '<C-w>k', nsn_opts)
-vim.api.nvim_set_keymap('n', '<leader>l', '<C-w>l', nsn_opts)
-vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h', nsn_opts)
+remap('n', '<leader>j', '<C-w>j', nsn_opts)
+remap('n', '<leader>k', '<C-w>k', nsn_opts)
+remap('n', '<leader>l', '<C-w>l', nsn_opts)
+remap('n', '<leader>h', '<C-w>h', nsn_opts)
 
-vim.api.nvim_set_keymap('n', '<leader>J', '<C-w>J', nsn_opts)
-vim.api.nvim_set_keymap('n', '<leader>K', '<C-w>K', nsn_opts)
-vim.api.nvim_set_keymap('n', '<leader>L', '<C-w>L', nsn_opts)
-vim.api.nvim_set_keymap('n', '<leader>H', '<C-w>H', nsn_opts)
+remap('n', '<leader>J', '<C-w>J', nsn_opts)
+remap('n', '<leader>K', '<C-w>K', nsn_opts)
+remap('n', '<leader>L', '<C-w>L', nsn_opts)
+remap('n', '<leader>H', '<C-w>H', nsn_opts)
 
-vim.api.nvim_set_keymap('n', '<leader>=', '<C-w>=', nsn_opts)
-vim.api.nvim_set_keymap('n', '<leader>+', '<C-w>10>', nsn_opts)
-vim.api.nvim_set_keymap('n', '<leader>-', '<C-w>10<', nsn_opts)
+remap('n', '<leader>=', '<C-w>=', nsn_opts)
+remap('n', '<leader>+', '<C-w>10>', nsn_opts)
+remap('n', '<leader>-', '<C-w>10<', nsn_opts)
 
--- vim.api.nvim_set_keymap('n', '<leader>n', ':bnext<CR>', nsn_opts)
--- vim.api.nvim_set_keymap('n', '<leader>p', ':bprevious<CR>', nsn_opts)
+-- nvim_remap('n', '<leader>n', ':bnext<CR>', nsn_opts)
+-- nvim_remap('n', '<leader>p', ':bprevious<CR>', nsn_opts)
 
 
 -- " ====================== AUTOCMD ========================
@@ -156,6 +162,7 @@ require('packer-plugins')
 require('lsp-config')
 require('completion-config')
 require('indentline-config')
+require('kommentary-config')
 require('nvim-tree-config')
 require('lualine-config')
 -- require('lua-ls')

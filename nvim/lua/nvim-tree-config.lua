@@ -52,5 +52,6 @@ require'nvim-tree'.setup {
 -- ============================== REMAPS =================================
 -- =======================================================================
 
+local remap = vim.api.nvim_set_keymap
 local nsn_opts = { noremap = true, silent = true, nowait = true }
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<cr>', nsn_opts)
+remap('n', '<leader>e', ':NvimTreeToggle<cr>', nsn_opts)

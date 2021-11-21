@@ -36,7 +36,8 @@ packer.startup(function()
     -- ==== Vim modifying surround to text ====
     use 'tpope/vim-surround'
     -- ==== Commenting and uncommenting lines ====
-    use 'tpope/vim-commentary'
+    -- use 'tpope/vim-commentary'
+    use 'b3nj5m1n/kommentary'
     -- ==== Closing < tags ====
     use 'alvan/vim-closetag'
     -- ==== Auto Pairing parenthesis, brackets, etc... ====
@@ -57,11 +58,19 @@ packer.startup(function()
     }
     use 'neovim/nvim-lspconfig'
 
+    -- TOO BAD IT DOESN't HAVE HIGHLIGHT FOR DOCUMENTATION IN COMPLETION MENU
+    -- use {'ms-jpq/coq_nvim',
+    --     branch = 'coq',
+    --     requires = {
+    --         {'ms-jpq/coq.artifacts', branch = 'artifacts'},
+    --         {'ms-jpq/coq.thirdparty', branch = '3p'}
+    --     },
+    -- }
+
     use {
         'hrsh7th/nvim-cmp',
         requires = {
             {'hrsh7th/cmp-nvim-lsp'},
-            {'hrsh7th/cmp-buffer'},
             {'hrsh7th/cmp-buffer'},
             {'hrsh7th/cmp-path'},
             {'hrsh7th/cmp-cmdline'},

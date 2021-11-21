@@ -27,7 +27,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       --     severity_limit = 'Warning',
       -- },
     virtual_text = false,
-    underline = true,
+    underline = false, -- THIS MAKES IT LAGGY IF THERE ARE MANY ERRORS
     signs = true,
   }
 )

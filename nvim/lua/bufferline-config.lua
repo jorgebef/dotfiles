@@ -20,8 +20,9 @@ require('bufferline').setup {
 -- ============================== REMAPS =================================
 -- =======================================================================
 
+local remap = vim.api.nvim_set_keymap
 local nsn_opts = { noremap = true, silent = true, nowait = true }
-vim.api.nvim_set_keymap('n', '<leader>n', ':BufferLineCycleNext<CR>', nsn_opts)
-vim.api.nvim_set_keymap('n', '<leader>p', ':BufferLineCyclePrev<CR>', nsn_opts)
-vim.api.nvim_set_keymap('n', '<leader>bn', ':BufferLineMoveNext<CR>', nsn_opts)
-vim.api.nvim_set_keymap('n', '<leader>bp', ':BufferLineMovePrev<CR>', nsn_opts)
+remap('n', '<leader>n', ':BufferLineCycleNext<CR>', nsn_opts)
+remap('n', '<leader>p', ':BufferLineCyclePrev<CR>', nsn_opts)
+remap('n', '<leader>bn', ':BufferLineMoveNext<CR>', nsn_opts)
+remap('n', '<leader>bp', ':BufferLineMovePrev<CR>', nsn_opts)
