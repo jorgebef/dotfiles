@@ -41,8 +41,7 @@ require('lualine').setup{
     -- lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_x = {'filetype'},
 --    lualine_y = {'progress'},
-    -- lualine_y = {'%{ObsessionStatus("","no")}'},
-    lualine_y = {'%{ObsessionStatus(" "," ")}'},
+    -- lualine_y = {'%{ObsessionStatus(" "," ")}'},
     lualine_z = {'location'},
   },
   inactive_sections = {
@@ -50,7 +49,7 @@ require('lualine').setup{
     lualine_b = {},
     lualine_c = {'filename'},
     lualine_x = {'filetype'},
-    lualine_y = {'%{ObsessionStatus(" "," ")}'},
+    -- lualine_y = {'%{ObsessionStatus(" "," ")}'},
     lualine_z = {'location'},
   },
   tabline = {

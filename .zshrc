@@ -82,7 +82,7 @@ filepath() {
             icon="  "
             ;;
         /Users/jorgebefan/Documents/Github* )
-            icon="  "
+            icon="  "
             ;;
         /Users/jorgebefan/Downloads* )
             icon="  "
@@ -91,7 +91,7 @@ filepath() {
             icon="  "
             ;;
         * )
-            icon="ﱮ  "
+            icon="  "
             ;;
     esac
     split_path=(${(@s|/|)PWD})
@@ -107,7 +107,7 @@ filepath() {
         fi
         pwd_folder=$(basename "${pwd_filtered}")
     fi
-    echo " %F{#6bb5c9}%B${icon}%b${pwd_rest}%f%F{blue}%B${pwd_folder}%b%f "
+    echo " %F{#82BCD7}%B${icon}%b${pwd_rest}%f%F{blue}%B${pwd_folder}%b%f "
 }
 
 # Format the vcs_info_msg_0_ variable
@@ -140,14 +140,14 @@ _newline=$'\n'
 _lineup=$'\e[1A'
 _linedown=$'\e[1B'
 
-PROMPT='%K{#414550}${os_icon}${separator}$(filepath)%k'
+PROMPT='%K{#3B3E47}${os_icon}${separator}$(filepath)%k'
 # PROMPT+='$(middle_space)'
 # PROMPT+='%K{#414550}%F{blue}$(elapsed)%F{green}$(branch)%F{#e2e2e3}$(cur_time)%k%f'
 PROMPT+='${_newline}'
 # blue prompt if successful previous command, red if unsuccessful
 PROMPT+='%(?:%F{blue} %f:%F{red} %f)'
 
-RPROMPT='%{${_lineup}%}%K{#414550}$(elapsed)$(branch)$(cur_time)%k%{${_linedown}%}'
+RPROMPT='%{${_lineup}%}%K{#3B3E47}$(elapsed)$(branch)$(cur_time)%k%{${_linedown}%}'
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -180,20 +180,8 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -218,7 +206,9 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
+    vi-mode
     zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh

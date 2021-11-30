@@ -29,6 +29,8 @@ require("indent_blankline").setup {
     },
     filetype_exclude = {
         "startify",
+        "dashboard",
+        "help",
     },
     -- space_char_blankline = " ",
     show_current_context = true,

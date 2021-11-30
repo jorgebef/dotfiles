@@ -15,7 +15,8 @@ local signs = {
     Information = " "
 }
 for type, icon in pairs(signs) do
-    local hl = "LspDiagnosticsSign" .. type
+    -- local hl = "LspDiagnosticsSign" .. type
+    local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
 end
 
@@ -27,8 +28,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       --     severity_limit = 'Warning',
       -- },
     virtual_text = false,
-    underline = false, -- THIS MAKES IT LAGGY IF THERE ARE MANY ERRORS
+    underline = true,
+    -- underline = {
+    --     -- THIS MAKES IT LAGGY IF THERE ARE MANY ERRORS
+    --     severity_limit = 'Warning',
+    -- },
     signs = true,
+    float = {
+        source = "always",
+        focusable = false,
+    },
+    severity_sort = true,
   }
 )
 
@@ -120,17 +130,18 @@ local ns_opts = { noremap = true, silent = true }
 map('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', ns_opts)
 map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', ns_opts)
 map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', ns_opts)
-map('n', '<leader>E', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', ns_opts)
-map('n', 'ge', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', ns_opts)
--- map('n', 'gw', '<cmd>lua vim.lsp.diagnostic.goto_next({,,true,Error})<CR>', ns_opts)
-map('n', 'gE', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', ns_opts)
-map('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', ns_opts)
+-- map('n', '<leader>E', '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', ns_opts)
+map('n', '<leader>E', '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor"})<CR>', ns_opts)
+map('n', 'ge', '<cmd>lua vim.diagnostic.goto_next({float=true})<CR>', ns_opts)
+-- map('n', 'gw', '<cmd>lua vim.diagnostic.goto_next({,,true,Error})<CR>', ns_opts)
+map('n', 'gE', '<cmd>lua vim.diagnostic.goto_prev({float=true})<CR>', ns_opts)
+map('n', '<leader>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', ns_opts)
 map('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', ns_opts)
 
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', ns_opts)
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', ns_opts)
-map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', ns_opts)
+map('n', 'K', '<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>', ns_opts)
 map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', ns_opts)
 map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', ns_opts)
 -- map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', ns_opts)
@@ -138,4 +149,4 @@ map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', ns_opts)
 -- map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', ns_opts)
 
 -- *************** THIS IS READY FOR NVIM 0.6 ********************************
--- vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.open_float(0, {scope="cursor"})]]
+vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(0, {scope="cursor", focusable=false, close_events = {"CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave"}})]]

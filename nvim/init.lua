@@ -1,10 +1,10 @@
 -- ===================== THEMES ======================
 vim.o.termguicolors = true
 -- vim.g.sonokai_disable_italic_comment=1
-vim.g.sonokai_style='default'
+-- vim.g.sonokai_style='default'
+vim.g.sonokai_style='belf'
 -- vim.g.sonokai_enable_italic=1
--- vim.cmd [[colorscheme onedark]]
-vim.cmd [[colorscheme sonokai]]
+-- vim.cmd [[colorscheme onedarker]]
 
 -- ===================== BASIC SETTINGS ======================
 vim.o.backup = false
@@ -27,14 +27,16 @@ vim.o.signcolumn = "yes:1" -- Always show signcolumn, max width 1
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.shiftround = true
-vim.o.sessionoptions = 'buffers,curdir,folds,help,resize,tabpages,winsize,winpos'
+vim.o.sessionoptions = 'globals,buffers,curdir,folds,help,resize,tabpages,winsize,winpos'
 vim.o.smartcase = true
 vim.o.tabstop = 4
 vim.o.timeout = false
 vim.o.timeoutlen = 10
 vim.o.undofile = true; vim.bo.undofile = true -- persistent undo is a neat feature
-vim.o.updatetime = 300
+vim.o.updatetime = 600
 vim.g.mapleader = ' '
+vim.o.wrapscan = true
+vim.o.scrolloff = 4
 -- " Don't pass messages to |ins-completion-menu|.
 vim.g.shortmess = vim.o.shortmess .. 'c'
 
@@ -57,8 +59,8 @@ remap('n', '<leader>3', [["syiw<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
 remap('v', '<leader>3', [["sy<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
 
 -- SEARCH AND REPLACE
-remap('n', '<leader>sr', ':%s/<C-r><C-w>//gc<Left><Left><Left>', n_opts)
-remap('v', '<leader>sr', '"hy:%s/<C-r>h//gc<Left><Left><Left>', n_opts)
+remap('n', '<leader>sr', ':.,$s/<C-r><C-w>//gc<Left><Left><Left>', n_opts)
+remap('v', '<leader>sr', '"hy:.,$s/<C-r>h//gc<Left><Left><Left>', n_opts)
 
 remap('n', "'", '`', ns_opts)
 
@@ -104,13 +106,13 @@ vim.api.nvim_exec(
   [[
     augroup CursorLine
       autocmd!
-      au VimEnter,WinEnter,BufWinEnter * setlocal cursorline | :echo""
+      au VimEnter,WinEnter,BufRead,BufWinEnter * setlocal cursorline | :echo""
       au WinLeave * setlocal nocursorline
     augroup END
 
     augroup highlight_yank
         autocmd!
-        au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
+        au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=250 }
     augroup END
 
 
@@ -121,44 +123,53 @@ vim.api.nvim_exec(
 -- " ====================== / AUTOCMD ========================
 
 -- ======================= Highlight groups ======================================
-vim.api.nvim_exec(
-    [[
-        function! MyHighlights() abort
-            hi Pmenu guibg=#33353f
-            hi NormalFloat guibg=#33353f
-            hi FloatBorder guifg=#7f8490 guibg=#33353f
+vim.api.nvim_exec([[
+    function! MyHighlights() abort
 
-            hi IndentBlanklineContextChar guifg=#e2e2e3 gui=nocombine
-            hi IndentBlanklineChar guifg=#414550 gui=nocombine
+        let l:pal = sonokai#get_palette('belf')
 
-            " hi LspDiagnosticsVirtualTextError guifg=#fc5d7c
-            hi LspDiagnosticsSignError guifg=#fc5d7c
-            hi LspDiagnosticsFloatingError guifg=#fc5d7c guibg=NONE
 
-            " hi LspDiagnosticsVirtualTextWarning guifg=#f39660
-            hi LspDiagnosticsSignWarning guifg=#f39660
-            hi LspDiagnosticsFloatingWarning guifg=#f39660 guibg=NONE
+        call sonokai#highlight('Pmenu', l:pal.fg, l:pal.bg1)
+        call sonokai#highlight('NormalFloat', l:pal.fg, l:pal.bg1)
+        call sonokai#highlight('FloatBorder', l:pal.grey, l:pal.bg1)
+        call sonokai#highlight('IndentBlanklineContextChar', l:pal.fg, l:pal.none)
+        call sonokai#highlight('IndentBlanklineChar', l:pal.bg4, l:pal.none)
+        call sonokai#highlight('DiagnosticSignError', l:pal.red, l:pal.none)
+        call sonokai#highlight('DiagnosticSignWarning', l:pal.orange, l:pal.none)
+        call sonokai#highlight('DiagnosticSignInformation', l:pal.yellow, l:pal.none)
+        call sonokai#highlight('DiagnosticSignHint', l:pal.blue, l:pal.none)
 
-            " hi LspDiagnosticsVirtualTextInformation guifg=#e7c664
-            hi LspDiagnosticsSignInformation guifg=#e7c664
-            hi LspDiagnosticsFloatingInformation guifg=#e7c664 guibg=NONE
+        hi! link DiagnosticVirtualTextError DiagnosticSignError
+        hi! link DiagnosticFloatingError DiagnosticSignError
 
-            " hi LspDiagnosticsVirtualTextHint guifg=#76cce0
-            hi LspDiagnosticsSignHint guifg=#76cce0
-            hi LspDiagnosticsFloatingHint guifg=#76cce0 guibg=NONE
+        hi! link DiagnosticVirtualTextWarning DiagnosticSignWarning
+        hi! link DiagnosticFloatingWarning DiagnosticSignWarning
 
-        endfunction
+        hi! link DiagnosticVirtualTextInformation DiagnosticSignInformation
+        hi! link DiagnosticFloatingInformation DiagnosticSignInformation
 
-        augroup MyColors
-            autocmd!
-            autocmd ColorScheme * call MyHighlights()
-        augroup END
-    ]],
-    false
-)
+        hi! link DiagnosticVirtualTextHint DiagnosticSignHint
+        hi! link DiagnosticFloatingHint DiagnosticSignHint
+
+    endfunction
+
+    augroup JSON_allow_comments
+        autocmd!
+        autocmd BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc
+        autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
+    augroup END
+
+    augroup MyColors
+        autocmd!
+        autocmd ColorScheme sonokai call MyHighlights()
+    augroup END
+
+]],false)
+
+vim.cmd [[colorscheme sonokai]]
 
 -- ======================== REQUIRE EXTRA FILES ===================
-require('packer-plugins')
+require('packer-config')
 require('lsp-config')
 require('completion-config')
 require('indentline-config')
@@ -171,6 +182,10 @@ require('bufferline-config')
 require('startify-config')
 require('treesitter-config')
 require('telescope-config')
+require('gitsigns-config')
+require('dashboard-config')
+require('diffview-config')
+require('neoformat-config')
 -- require('sonokai')
 --require('fzf-config')
 -- require('lua-ls.lua') -- luajit not yet available for M1 mac
