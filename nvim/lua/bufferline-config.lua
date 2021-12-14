@@ -1,62 +1,75 @@
 require('bufferline').setup {
-    options = {
-        max_name_length = 18,
-        max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-        tab_size = 18,
-        diagnostics_update_in_insert = false,
-        -- NOTE: this will be called a lot so don't do any heavy processing here
-        show_buffer_icons = true, -- disable filetype icons for buffers
-        show_buffer_close_icons = false,
-        show_close_icon = false,
-        show_tab_indicators = false,
-        separator_style = 'thin',
-        -- separator_style = { '', '' },
-        persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-        offsets = {{filetype ='NvimTree'}},
-        always_show_bufferline = true
+  options = {
+    max_name_length = 18,
+    max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+    tab_size = 18,
+    -- indicator_icon = '▎',
+    -- indicator_icon = '█',
+    -- indicator_icon = '  ',
+    indicator_icon = '',
+    modified_icon = '●',
+    diagnostics_update_in_insert = false,
+    -- NOTE: this will be called a lot so don't do any heavy processing here
+    show_buffer_icons = true, -- disable filetype icons for buffers
+    show_buffer_close_icons = false,
+    show_close_icon = false,
+    show_tab_indicators = false,
+    separator_style = 'thin',
+    -- separator_style = 'slant',
+    -- separator_style = { '', '' },
+    persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+    offsets = {{filetype = 'NvimTree'}},
+    always_show_bufferline = true
+  },
+  highlights = {
+    -- fill = {
+    --   guibg = '#222327',
+    -- },
+    indicator_selected = {
+      guifg = '#E28C8C',
+      -- guibg = '#222327'
     },
-    highlights = {
-        fill = {
-            guibg = '#222327',
-        },
-        background = {
-            guifg = '#565A64',
-            guibg = '#222327'
-        },
-        buffer_visible = {
-            guifg = '#808490',
-            guibg = {
-                attribute = "bg",
-                highlight = "Background"
-            },
-        },
-        buffer_selected = {
-            guifg = '#e2e2e3',
-            guibg = {
-                attribute = "bg",
-                highlight = "Background"
-            },
-            gui = "bold"
-        },
-        modified = {
-            guifg = {
-                attribute = "fg",
-                highlight = "LspDiagnosticsSignError"
-            }
-        },
-        modified_visible = {
-            guifg = {
-                attribute = "fg",
-                highlight = "LspDiagnosticsSignError"
-            }
-        },
-        modified_selected = {
-            guifg = {
-                attribute = "fg",
-                highlight = "LspDiagnosticsSignError"
-            }
-        },
+    -- background = {
+    --   guifg = '#565A64',
+    --   guibg = '#222327'
+    -- },
+    -- separator_selected = {
+    --   guifg = '#ffffff',
+    --   guibg = '#000000',
+    -- },
+    -- separator_visible = {
+    --   guifg = '#999',
+    --   guibg = '#000',
+    -- },
+    -- separator = {
+    --   guifg = '#333',
+    --   guibg = '#000',
+    -- },
+    -- buffer_visible = {
+    --   -- guifg = '#808490',
+    --   guibg = {
+    --     attribute = "bg",
+    --     highlight = "Background"
+    --   },
+    -- },
+    -- buffer_selected = {
+    --   guifg = '#e2e2e3',
+    --   guibg = {
+    --     attribute = "bg",
+    --     highlight = "Background"
+    --   },
+    --   gui = "bold"
+    -- },
+    modified = {
+      guifg = '#E28C8C'
     },
+    modified_visible = {
+      guifg = '#E28C8C'
+    },
+    modified_selected = {
+      guifg = '#E28C8C'
+    },
+  },
 }
 
 -- =======================================================================

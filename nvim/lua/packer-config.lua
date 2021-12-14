@@ -27,119 +27,142 @@ local use = packer.use
 packer.reset()
 
 packer.startup(function()
-    -- == Package manager written in lua
-    -- =============================================
-    use 'wbthomason/packer.nvim'
+  -- == Package manager written in lua
+  -- =============================================
+  use 'wbthomason/packer.nvim'
 
-    -- == Dashboard on startup and session management
-    -- =============================================
-    use 'glepnir/dashboard-nvim'
+  -- == Dashboard on startup and session management
+  -- =============================================
+  use 'glepnir/dashboard-nvim'
 
-    -- == Treesitter
-    -- =============================================
-    use { 'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-        requires= {
-            -- == Text objects
-            'nvim-treesitter/nvim-treesitter-textobjects',
-            -- == Closing < tags
-            'windwp/nvim-ts-autotag'
-        }
+  -- == Treesitter
+  -- =============================================
+  use { 'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    requires= {
+      -- == Text objects
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      -- == Closing < tags
+      'windwp/nvim-ts-autotag',
+      -- == context-aware commenting
+      'JoosepAlviste/nvim-ts-context-commentstring'
+
     }
+  }
 
-    -- == File explorer written in lua
-    -- =============================================
-    use 'kyazdani42/nvim-tree.lua'
+  use 'nvim-treesitter/playground'
 
-    -- == Vim modifying surround to text
-    -- =============================================
-    use 'tpope/vim-surround'
+  -- == File explorer written in lua
+  -- =============================================
+  use 'kyazdani42/nvim-tree.lua'
 
-    -- == Formatter
-    -- =============================================
-    use 'sbdchd/neoformat'
+  -- == Vim modifying surround to text
+  -- =============================================
+  use 'tpope/vim-surround'
 
-    -- == Commenting and uncommenting lines
-    -- =============================================
-    use 'b3nj5m1n/kommentary'
+  -- == Formatter
+  -- =============================================
+  use 'sbdchd/neoformat'
 
-    -- == Auto Pairing parenthesis, brackets, etc...
-    -- =============================================
-    use 'jiangmiao/auto-pairs'
+  -- == Commenting and uncommenting lines
+  -- =============================================
+  use 'numToStr/Comment.nvim'
+  -- use 'b3nj5m1n/kommentary'
 
-    -- == GIT
-    -- =============================================
-    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  -- == Colorizer
+  -- =============================================
+  -- use 'norcalli/nvim-colorizer.lua'
+  -- require('colorizer').setup()
 
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = {
-            {'nvim-lua/plenary.nvim'},
-        },
+  -- == Auto Pairing parenthesis, brackets, etc...
+  -- =============================================
+  use 'jiangmiao/auto-pairs'
+
+  -- == GIT
+  -- =============================================
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+    },
+  }
+
+  -- == Indent blank lines
+  -- =============================================
+  use 'lukas-reineke/indent-blankline.nvim'
+
+  -- == Fuzzy Finder
+  -- =============================================
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    },
+  }
+
+  -- == LSP configuration
+  -- =============================================
+  use 'neovim/nvim-lspconfig'
+
+  -- -- TOO BAD IT DOESN't HAVE HIGHLIGHT FOR DOCUMENTATION IN COMPLETION MENU
+  -- use {'ms-jpq/coq_nvim',
+  --     branch = 'coq',
+  --     requires = {
+  --         {'ms-jpq/coq.artifacts', branch = 'artifacts'},
+  --         {'ms-jpq/coq.thirdparty', branch = '3p'}
+  --     },
+  -- }
+
+  -- == Autocompletion
+  -- =============================================
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-path'},
+      {'hrsh7th/cmp-cmdline'},
+      {'SirVer/ultisnips'},
+      {'onsails/lspkind-nvim'},
     }
+  }
 
-    -- == Indent blank lines
-    -- =============================================
-    use 'lukas-reineke/indent-blankline.nvim'
+  -- == Allow comments in JSON
+  -- (check JSON_allow_comments in init.lua)
+  -- =============================================
+  use 'neoclide/jsonc.vim'
 
-    -- == Fuzzy Finder
-    -- =============================================
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {
-            {'nvim-lua/plenary.nvim'},
-            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-        },
-    }
+  -- == Killing buffers easily
+  -- =============================================
+  -- use 'qpkorr/vim-bufkill'
+  use {'ojroques/nvim-bufdel'}
 
-    -- == LSP configuration
-    -- =============================================
-    use 'neovim/nvim-lspconfig'
+  -- == My own branch of Sonokai theme
+  -- Original is 'sainnhe/sonokai'
+  -- =============================================
+  use 'jorgebef/sonokai'
 
-    -- -- TOO BAD IT DOESN't HAVE HIGHLIGHT FOR DOCUMENTATION IN COMPLETION MENU
-    -- use {'ms-jpq/coq_nvim',
-    --     branch = 'coq',
-    --     requires = {
-    --         {'ms-jpq/coq.artifacts', branch = 'artifacts'},
-    --         {'ms-jpq/coq.thirdparty', branch = '3p'}
-    --     },
-    -- }
+  -- == Catppuccin theme
+  -- =============================================
+  use({
+    "catppuccin/nvim",
+    as = "catppuccin"
+  })
 
-    -- == Autocompletion
-    -- =============================================
-    use {
-        'hrsh7th/nvim-cmp',
-        requires = {
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'hrsh7th/cmp-buffer'},
-            {'hrsh7th/cmp-path'},
-            {'hrsh7th/cmp-cmdline'},
-            {'SirVer/ultisnips'},
-            {'onsails/lspkind-nvim'},
-        }
-    }
+  -- == Useful status line and buffer line
+  -- =============================================
+  use 'nvim-lualine/lualine.nvim'
+  use 'akinsho/bufferline.nvim'
+--   use {
+--   'romgrk/barbar.nvim',
+--   requires = {'kyazdani42/nvim-web-devicons'}
+-- }
 
-    -- == Allow comments in JSON
-    -- (check JSON_allow_comments in init.lua)
-    -- =============================================
-    use 'neoclide/jsonc.vim'
 
-    -- == Killing buffers easily
-    -- =============================================
-    use 'qpkorr/vim-bufkill'
-
-    -- == My own branch of Sonokai theme
-    -- Original is 'sainnhe/sonokai'
-    -- =============================================
-    use 'jorgebef/sonokai'
-
-    -- == Useful status line and buffer line
-    -- =============================================
-    use 'nvim-lualine/lualine.nvim'
-    use 'akinsho/bufferline.nvim'
-
-    -- == KEEP DEVICONS LAST FOR CORRECT LOADING
-    -- =============================================
-    use 'kyazdani42/nvim-web-devicons'
+  -- == KEEP DEVICONS LAST FOR CORRECT LOADING
+  -- =============================================
+  use 'kyazdani42/nvim-web-devicons'
 
 end)

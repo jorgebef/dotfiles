@@ -76,6 +76,7 @@ local servers = {
     'tsserver',
     'vimls',
     'jsonls',
+    'cssls',
 }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
