@@ -2,38 +2,27 @@
 
 function! MyHighlights() abort
 
-" let l:pal = sonokai#get_palette('belf')
-" calling the funcs
-" call sonokai#highlight('Pmenu', l:pal.fg, l:pal.bg1)
-" call sonokai#highlight('NormalFloat', l:pal.fg, l:pal.bg1)
-" call sonokai#highlight('FloatBorder', l:pal.grey, l:pal.bg1)
-" call sonokai#highlight('IndentBlanklineContextChar', l:pal.fg, l:pal.none)
-" call sonokai#highlight('IndentBlanklineChar', l:pal.bg4, l:pal.none)
-" call sonokai#highlight('DiagnosticSignError', l:pal.red, l:pal.none)
-" call sonokai#highlight('DiagnosticSignWarning', l:pal.orange, l:pal.none)
-" call sonokai#highlight('DiagnosticSignInformation', l:pal.yellow, l:pal.none)
-" call sonokai#highlight('DiagnosticSignHint', l:pal.blue, l:pal.none)
-" --------- linking
+" Colors ----------
+let catppuccin0 = "#B1E3AD" " Teal
+let catppuccin2 = "#F2CECF" " Flamingo
+let catppuccin3 = "#C6AAE8" " Purple
+let catppuccin4 = "#E5B4E2" " Pink
+let catppuccin5 = "#E38C8F" " Red
+let catppuccin6 = "#F9C096" " Orange
+let catppuccin7 = "#BEE4ED" " Green
+let catppuccin8 = "#EBDDAA" " Yellow
+let catppuccin9 = "#A4B9EF"
+" Dark colors ----------
+let catppuccin13 = "#15121C"
+let catppuccin14 = "#1B1923"
+let catppuccin1 = "#1E1E28" " Black 1
+let catppuccin16 = "#332E41" " Black 4
+let catppuccin12 = "#575268" " Black 5
+let catppuccin11 = "#6E6C7E"
+let catppuccin17 = "#988BA2"
+let catppuccin15 = "#C3BAC6" " Light Gray
+let catppuccin10 = "#DADAE8" " White
 
-  let palette = {
-        \ 'flamingo':'#ECBFBD',
-        \ 'magenta':'#C6AAE8',
-        \ 'pink':'#F0AFE1',
-        \ 'red':'#E28C8C',
-        \ 'peach':'#F7C196',
-        \ 'yellow':'#EADDA0',
-        \ 'green':'#B3E1A3',
-        \ 'blue':'#A4B9EF',
-        \ 'black1':'#15121C',
-        \ 'black2':'#1B1923',
-        \ 'black3':'#1E1E28',
-        \ 'black4':'#2D293B',
-        \ 'black5':'#3e4058',
-        \ 'gray':'#6E6C7C',
-        \ 'lightgray':'#9E9EA9',
-        \ 'white':'#D7DAE0',
-        \ 'teal':'#9DDDCB',
-        \ }
 
 function! Hi(group, fg, bg, ...) "{{{
   execute 'highlight! ' a:group
@@ -46,25 +35,36 @@ function! Hi(group, fg, bg, ...) "{{{
 endfunction "}}}
 
 " hi! Pmenu guibg=#2D293B
-call Hi('Pmenu', 'NONE', palette.black4)
-call Hi('PmenuSel', palette.magenta, 'NONE')
-call Hi('CmpItemAbbrMatch', palette.magenta, 'NONE')
-call Hi('CmpItemAbbrMatchFuzzy', palette.magenta, 'NONE')
-call Hi('CmpItemAbbr', palette.lightgray, 'NONE')
-call Hi('DiagnosticSignError', palette.red, 'NONE')
-call Hi('FloatBorder', palette.magenta, palette.black4)
-call Hi('NormalFloat', 'NONE', palette.black4)
-" call Hi('CursorLineNr', palette.white, 'NONE')
-call Hi('IndentBlanklineContextChar', palette.white, 'NONE')
-call Hi('Search', palette.black1, palette.pink)
-call Hi('IncSearch', palette.black1, palette.pink)
-call Hi('Visual', 'NONE', palette.black5)
+call Hi('Pmenu', 'NONE', catppuccin16)
+call Hi('PmenuSel', catppuccin3, 'NONE')
+call Hi('FloatBorder', catppuccin3, catppuccin16)
+call Hi('NormalFloat', 'NONE', catppuccin16)
+call Hi('CmpItemAbbrMatch', catppuccin3, 'NONE')
+call Hi('CmpItemAbbrMatchFuzzy', catppuccin3, 'NONE')
+call Hi('CmpItemAbbr', catppuccin10, 'NONE')
+call Hi('DiagnosticSignError', catppuccin5, 'NONE')
+" call Hi('IndentBlanklineContextChar', catppuccin10, 'NONE')
+" call Hi('IndentBlanklineChar', catppuccin16, 'NONE')
+call Hi('Search', catppuccin1, catppuccin4)
+call Hi('IncSearch', catppuccin1, catppuccin4)
+" call Hi('Visual', 'NONE', catppuccin12)
+" call Hi('GitSignsAdd', catppuccin0, 'NONE')
 " +++++++++++++++++++++++++++++++++++++++++++++
 " ++++++++++ BETTER HIGHLIGHTS ++++++++++++++++
 " +++++++++++++++++++++++++++++++++++++++++++++
-" call Hi('TSTagAttribute', palette.magenta, 'NONE')
-" call Hi('TSNumber', palette.yellow, 'NONE')
-" call Hi('TSMethod', palette.teal, 'NONE')
+" call Hi('cssTSProperty', catppuccin2, 'NONE')
+" call Hi('TSTag', catppuccin6, 'NONE')
+" call Hi('TSTagAttribute', catppuccin3, 'NONE')
+" call Hi('TSTagDelimiter', catppuccin5, 'NONE')
+" call Hi('TSFloat', catppuccin6, 'NONE')
+" call Hi('TSNumber', color_palette.yellow, 'NONE')
+" call Hi('TSVariable', catppuccin2, 'NONE')
+" call Hi('TSKeyword', catppuccin4, 'NONE')
+" call Hi('TSKeywordFunction', catppuccin4, 'NONE')
+" call Hi('TSConditional', catppuccin4, 'NONE')
+" call Hi('TSRepeat', catppuccin4, 'NONE')
+" call Hi('TSType', catppuccin2, 'NONE')
+" call Hi('TSMethod', color_palette.teal, 'NONE')
 " +++++++++++++++++++++++++++++++++++++++++++++
 " +++++++++++++++++++++++++++++++++++++++++++++
 hi! link DiagnosticVirtualTextError DiagnosticSignError

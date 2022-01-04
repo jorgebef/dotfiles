@@ -15,8 +15,10 @@ vim.o.hidden = true
 vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.ignorecase = true
+vim.g.lazyredraw = true
 vim.o.number = true
 vim.o.ruler = true
+vim.o.relativenumber = true
 vim.o.showmode = false
 vim.o.signcolumn = "yes:1" -- Always show signcolumn, max width 1
 vim.o.softtabstop = 2
@@ -27,6 +29,7 @@ vim.o.smartcase = true
 vim.o.tabstop = 2
 vim.o.timeout = false
 vim.o.timeoutlen = 10
+vim.g.ttyfast = true
 vim.o.undofile = true; vim.bo.undofile = true -- persistent undo is a neat feature
 vim.o.updatetime = 600
 vim.g.mapleader = ' '
@@ -92,6 +95,8 @@ remap('n', '<leader>=', '<C-w>=', nsn_opts)
 remap('n', '<leader>+', '<C-w>10>', nsn_opts)
 remap('n', '<leader>-', '<C-w>10<', nsn_opts)
 
+remap('n', '<leader>V', ':vs<CR>', nsn_opts)
+
 -- nvim_remap('n', '<leader>n', ':bnext<CR>', nsn_opts)
 -- nvim_remap('n', '<leader>p', ':bprevious<CR>', nsn_opts)
 
@@ -110,6 +115,8 @@ vim.api.nvim_exec([[
   au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=250 }
   augroup END
 
+  autocmd FileType json syntax match Comment +\/\/.\+$+
+
   ]], false)
 
 -- " ====================== / AUTOCMD ========================
@@ -122,13 +129,9 @@ vim.g.sonokai_style='belf'
 -- vim.g.sonokai_enable_italic=1
 -- vim.cmd [[colorscheme onedarker]]
 
-vim.cmd('source ~/.config/nvim/vimscript/highlights.vim')
-
--- vim.cmd [[colorscheme sonokai]]
-vim.cmd [[colorscheme catppuccin]]
-
 -- ======================== REQUIRE EXTRA FILES ===================
 require('packer-config')
+require('catppuccin-config')
 require('lsp-config')
 require('completion-config')
 require('indentline-config')
@@ -138,7 +141,6 @@ require('lualine-config')
 -- require('lua-ls')
 require('bufferline-config')
 require('bufdel-config')
-require('catppuccin-config')
 require('startify-config')
 require('treesitter-config')
 require('telescope-config')
@@ -146,6 +148,14 @@ require('gitsigns-config')
 require('dashboard-config')
 require('diffview-config')
 require('neoformat-config')
+require('toggleterm-config')
 -- require('sonokai')
 --require('fzf-config')
 -- require('lua-ls.lua') -- luajit not yet available for M1 mac
+
+
+vim.cmd('source ~/.config/nvim/vimscript/highlights.vim')
+-- vim.cmd('source ~/.config/nvim/vimscript/coc-config.vim')
+
+-- vim.cmd [[colorscheme sonokai]]
+vim.cmd [[colorscheme catppuccin]]

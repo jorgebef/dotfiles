@@ -37,5 +37,6 @@ remap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', 
 remap('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', nsn_opts)
 remap('n', '<leader>fG', '<cmd>lua require("telescope.builtin").git_files()<cr>', nsn_opts)
 remap('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', nsn_opts)
-remap('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>', nsn_opts)
+remap('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', nsn_opts)
+-- remap('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>', nsn_opts)
 -- map('n', '<leader>fg', ':Telescope live_grep<cr>', nsn_opts)

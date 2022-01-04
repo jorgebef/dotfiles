@@ -39,7 +39,7 @@ packer.startup(function()
   -- =============================================
   use { 'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    requires= {
+    requires = {
       -- == Text objects
       'nvim-treesitter/nvim-treesitter-textobjects',
       -- == Closing < tags
@@ -55,6 +55,10 @@ packer.startup(function()
   -- == File explorer written in lua
   -- =============================================
   use 'kyazdani42/nvim-tree.lua'
+  -- use { 'ms-jpq/chadtree', 
+  --   branch = 'chad',
+  --   run = 'python3 -m chadtree deps'
+  -- }
 
   -- == Vim modifying surround to text
   -- =============================================
@@ -73,6 +77,8 @@ packer.startup(function()
   -- =============================================
   -- use 'norcalli/nvim-colorizer.lua'
   -- require('colorizer').setup()
+
+  use {"akinsho/toggleterm.nvim"}
 
   -- == Auto Pairing parenthesis, brackets, etc...
   -- =============================================
@@ -101,10 +107,17 @@ packer.startup(function()
       {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     },
   }
+-- ============================================
+
+  -- == COC nvim ==
+-- ============================================
+  -- use ({ 'neoclide/coc.nvim',
+  --   branch = 'release',
+  -- })
 
   -- == LSP configuration
-  -- =============================================
   use 'neovim/nvim-lspconfig'
+  -- use 'neovim/nvim-lspconfig'
 
   -- -- TOO BAD IT DOESN't HAVE HIGHLIGHT FOR DOCUMENTATION IN COMPLETION MENU
   -- use {'ms-jpq/coq_nvim',
@@ -116,7 +129,6 @@ packer.startup(function()
   -- }
 
   -- == Autocompletion
-  -- =============================================
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -128,6 +140,7 @@ packer.startup(function()
       {'onsails/lspkind-nvim'},
     }
   }
+  -- }
 
   -- == Allow comments in JSON
   -- (check JSON_allow_comments in init.lua)
@@ -142,12 +155,15 @@ packer.startup(function()
   -- == My own branch of Sonokai theme
   -- Original is 'sainnhe/sonokai'
   -- =============================================
-  use 'jorgebef/sonokai'
+  -- use 'jorgebef/sonokai'
 
   -- == Catppuccin theme
   -- =============================================
   use({
-    "catppuccin/nvim",
+    -- "catppuccin/nvim",
+    "jorgebef/nvim",
+    branch = "dev",
+    -- branch = "experiments",
     as = "catppuccin"
   })
 

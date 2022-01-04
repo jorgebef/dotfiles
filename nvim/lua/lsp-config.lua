@@ -29,6 +29,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       -- },
     virtual_text = false,
     underline = true,
+    -- bold = true,
     -- underline = {
     --     -- THIS MAKES IT LAGGY IF THERE ARE MANY ERRORS
     --     severity_limit = 'Warning',
@@ -87,6 +88,15 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.cssls.setup {
+  capabilities = capabilities,
+}
+
 --   =====================================================
 --              STILL NEED TO INSTALL LuaJIT
 --              LUAJIT IS UNSTABLE ON M1
@@ -141,7 +151,8 @@ map('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', ns_opts)
 
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', ns_opts)
-map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', ns_opts)
+-- Telescope does go to definition better than nvim-lsp
+-- map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', ns_opts)
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>', ns_opts)
 map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', ns_opts)
 map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', ns_opts)

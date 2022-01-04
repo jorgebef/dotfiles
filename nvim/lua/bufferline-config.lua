@@ -7,7 +7,7 @@ require('bufferline').setup {
     -- indicator_icon = '█',
     -- indicator_icon = '  ',
     indicator_icon = '',
-    modified_icon = '●',
+    modified_icon = '',
     diagnostics_update_in_insert = false,
     -- NOTE: this will be called a lot so don't do any heavy processing here
     show_buffer_icons = true, -- disable filetype icons for buffers
@@ -16,7 +16,7 @@ require('bufferline').setup {
     show_tab_indicators = false,
     separator_style = 'thin',
     -- separator_style = 'slant',
-    -- separator_style = { '', '' },
+    -- separator_style = { ' ', ' ' },
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     offsets = {{filetype = 'NvimTree'}},
     always_show_bufferline = true
@@ -26,12 +26,12 @@ require('bufferline').setup {
     --   guibg = '#222327',
     -- },
     indicator_selected = {
-      guifg = '#E28C8C',
+      guifg = '#E38C8F',
       -- guibg = '#222327'
     },
     -- background = {
-    --   guifg = '#565A64',
-    --   guibg = '#222327'
+    --   guifg = '#575268',
+    --   guibg = '#15121C'
     -- },
     -- separator_selected = {
     --   guifg = '#ffffff',
@@ -46,11 +46,11 @@ require('bufferline').setup {
     --   guibg = '#000',
     -- },
     -- buffer_visible = {
-    --   -- guifg = '#808490',
-    --   guibg = {
-    --     attribute = "bg",
-    --     highlight = "Background"
-    --   },
+      -- guifg = '#DFDEF1',
+      -- guibg = {
+      --   attribute = "bg",
+      --   highlight = "Background"
+      -- },
     -- },
     -- buffer_selected = {
     --   guifg = '#e2e2e3',
@@ -61,13 +61,13 @@ require('bufferline').setup {
     --   gui = "bold"
     -- },
     modified = {
-      guifg = '#E28C8C'
+      guifg = '#E38C8F'
     },
     modified_visible = {
-      guifg = '#E28C8C'
+      guifg = '#E38C8F'
     },
     modified_selected = {
-      guifg = '#E28C8C'
+      guifg = '#E38C8F'
     },
   },
 }

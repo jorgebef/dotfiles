@@ -1,4 +1,4 @@
-local catppuccin = require("catppuccin")
+local catppuccin = require('catppuccin')
 
 -- configure it
 catppuccin.setup(
@@ -23,16 +23,16 @@ catppuccin.setup(
           information = "italic",
         },
         underlines = {
-          errors = "underline",
-          hints = "underline",
-          warnings = "underline",
-          information = "underline",
+          -- errors = "underline",
+          -- hints = "underline",
+          -- warnings = "underline",
+          -- information = "underline",
         },
       },
       lsp_trouble = false,
       lsp_saga = false,
       gitgutter = false,
-      gitsigns = false,
+      gitsigns = true,
       telescope = false,
       nvimtree = {
         enabled = true,
@@ -40,7 +40,7 @@ catppuccin.setup(
       },
       which_key = false,
       indent_blankline = {
-        enabled = false,
+        enabled = true,
         colored_indent_levels = false,
       },
       dashboard = true,
@@ -48,7 +48,7 @@ catppuccin.setup(
       vim_sneak = false,
       fern = false,
       barbar = false,
-      bufferline = false,
+      bufferline = true,
       markdown = false,
       lightspeed = false,
       ts_rainbow = false,
