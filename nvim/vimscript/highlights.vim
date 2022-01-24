@@ -3,26 +3,28 @@
 function! MyHighlights() abort
 
 " Colors ----------
-let catppuccin0 = "#B1E3AD" " Teal
-let catppuccin2 = "#F2CECF" " Flamingo
-let catppuccin3 = "#C6AAE8" " Purple
-let catppuccin4 = "#E5B4E2" " Pink
-let catppuccin5 = "#E38C8F" " Red
-let catppuccin6 = "#F9C096" " Orange
-let catppuccin7 = "#BEE4ED" " Green
-let catppuccin8 = "#EBDDAA" " Yellow
-let catppuccin9 = "#A4B9EF"
-" Dark colors ----------
-let catppuccin13 = "#15121C"
-let catppuccin14 = "#1B1923"
-let catppuccin1 = "#1E1E28" " Black 1
-let catppuccin16 = "#332E41" " Black 4
-let catppuccin12 = "#575268" " Black 5
-let catppuccin11 = "#6E6C7E"
-let catppuccin17 = "#988BA2"
-let catppuccin15 = "#C3BAC6" " Light Gray
-let catppuccin10 = "#DADAE8" " White
-
+let	rosewater = "#F5E0DC"
+let	flamingo = "#F2CDCD"
+let	mauve = "#DDB6F2"
+let	pink = "#F5C2E7"
+let	red = "#F28FAD"
+let	maroon = "#E8A2AF"
+let	peach = "#F8BD96"
+let	yellow = "#FAE3B0"
+let	green = "#ABE9B3"
+let	blue = "#96CDFB"
+let	sky = "#89DCEB"
+let	teal = "#B5E8E0"
+let	lavender = "#C9CBFF"
+let	white = "#D9E0EE"
+let	gray2 = "#C3BAC6"
+let	gray1 = "#988BA2"
+let	gray0 = "#6E6C7E"
+let	black4 = "#575268"
+let	black3 = "#302D41"
+let	black2 = "#1E1D2F"
+let	black1 = "#1A1823"
+let	black0 = "#131020"
 
 function! Hi(group, fg, bg, ...) "{{{
   execute 'highlight! ' a:group
@@ -35,37 +37,20 @@ function! Hi(group, fg, bg, ...) "{{{
 endfunction "}}}
 
 " hi! Pmenu guibg=#2D293B
-call Hi('Pmenu', 'NONE', catppuccin16)
-call Hi('PmenuSel', catppuccin3, 'NONE')
-call Hi('FloatBorder', catppuccin3, catppuccin16)
-call Hi('NormalFloat', 'NONE', catppuccin16)
-call Hi('CmpItemAbbrMatch', catppuccin3, 'NONE')
-call Hi('CmpItemAbbrMatchFuzzy', catppuccin3, 'NONE')
-call Hi('CmpItemAbbr', catppuccin10, 'NONE')
-call Hi('DiagnosticSignError', catppuccin5, 'NONE')
-" call Hi('IndentBlanklineContextChar', catppuccin10, 'NONE')
-" call Hi('IndentBlanklineChar', catppuccin16, 'NONE')
-call Hi('Search', catppuccin1, catppuccin4)
-call Hi('IncSearch', catppuccin1, catppuccin4)
-" call Hi('Visual', 'NONE', catppuccin12)
-" call Hi('GitSignsAdd', catppuccin0, 'NONE')
+call Hi('Pmenu', 'NONE', black3)
+call Hi('PmenuSel', mauve, 'NONE')
+call Hi('FloatBorder', mauve, black3)
+call Hi('NormalFloat', 'NONE', black3)
+call Hi('CmpItemAbbrMatch', mauve, 'NONE')
+call Hi('CmpItemAbbrMatchFuzzy', mauve, 'NONE')
+call Hi('CmpItemAbbr', white, 'NONE')
+call Hi('DiagnosticSignError', red, 'NONE')
+" call Hi('IndentBlanklineContextChar', white, 'NONE')
+" call Hi('IndentBlanklineChar', black3, 'NONE')
+call Hi('Search', black2, pink)
+call Hi('IncSearch', black2, pink)
 " +++++++++++++++++++++++++++++++++++++++++++++
 " ++++++++++ BETTER HIGHLIGHTS ++++++++++++++++
-" +++++++++++++++++++++++++++++++++++++++++++++
-" call Hi('cssTSProperty', catppuccin2, 'NONE')
-" call Hi('TSTag', catppuccin6, 'NONE')
-" call Hi('TSTagAttribute', catppuccin3, 'NONE')
-" call Hi('TSTagDelimiter', catppuccin5, 'NONE')
-" call Hi('TSFloat', catppuccin6, 'NONE')
-" call Hi('TSNumber', color_palette.yellow, 'NONE')
-" call Hi('TSVariable', catppuccin2, 'NONE')
-" call Hi('TSKeyword', catppuccin4, 'NONE')
-" call Hi('TSKeywordFunction', catppuccin4, 'NONE')
-" call Hi('TSConditional', catppuccin4, 'NONE')
-" call Hi('TSRepeat', catppuccin4, 'NONE')
-" call Hi('TSType', catppuccin2, 'NONE')
-" call Hi('TSMethod', color_palette.teal, 'NONE')
-" +++++++++++++++++++++++++++++++++++++++++++++
 " +++++++++++++++++++++++++++++++++++++++++++++
 hi! link DiagnosticVirtualTextError DiagnosticSignError
 hi! link DiagnosticFloatingError DiagnosticSignError

@@ -38,6 +38,9 @@ vim.o.scrolloff = 3
 vim.g.inccommand = 'nosplit'
 -- " Don't pass messages to |ins-completion-menu|.
 vim.g.shortmess = vim.o.shortmess .. 'c'
+-- ONCE lua filetype is merged into the stable release, I can uncomment the below lines
+-- vim.g.do_filetype_lua=1
+vim.g.did_load_filetypes=0
 
 -- REMAPS
 -- ================================================================
@@ -53,6 +56,9 @@ remap('n', "'", '`', ns_opts)
 
 -- " =========================== FUNCTIONAL REMAPS =============================
 remap('n', '<leader>w', ':silent write<cr>', nsn_opts)
+remap('n', '<leader>q', ':q<cr>', nsn_opts)
+
+remap('v', 'p', '"_dP', nsn_opts)
 
 remap('n', '<leader>3', [["syiw<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
 remap('v', '<leader>3', [["sy<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
@@ -63,8 +69,9 @@ remap('v', '<leader>sr', '"hy:.,$s/<C-r>h//gc<Left><Left><Left>', n_opts)
 
 remap('n', "'", '`', ns_opts)
 
-remap('n', '<', '<gv', ns_opts)
-remap('n', '>', '>gv', ns_opts)
+-- indenting and staying in indent mode
+remap('v', '<', '<gv', ns_opts)
+remap('v', '>', '>gv', ns_opts)
 remap('n', '<leader>o', 'o<esc>0"_D<esc>', ns_opts)
 remap('n', '<leader>O', 'O<esc>0"_D<esc>',  ns_opts)
 
@@ -73,7 +80,7 @@ remap('n', '<esc>', ':noh<cr>:echo""<esc>', nsn_opts)
 -- nvim_remap('n', '<leader>S', ':mksession!<cr>', { noremap = true, silent = false })
 -- don't need this with vim-obsession
 
--- " Scroll 4 lines with <C-e>, improved scrolling
+-- improved scrolling
 remap('n', '<C-e>', '4<C-e>', nsn_opts)
 remap('n', '<C-y>', '4<C-y>', nsn_opts)
 remap('c', '<C-e>', '4<C-e>', nsn_opts)
@@ -81,25 +88,23 @@ remap('c', '<C-y>', '4<C-y>', nsn_opts)
 remap('v', '<C-e>', '4<C-e>', nsn_opts)
 remap('v', '<C-y>', '4<C-y>', nsn_opts)
 
-remap('n', '<leader>j', '<C-w>j', nsn_opts)
-remap('n', '<leader>k', '<C-w>k', nsn_opts)
-remap('n', '<leader>l', '<C-w>l', nsn_opts)
-remap('n', '<leader>h', '<C-w>h', nsn_opts)
+-- improved split navigation
+remap('n', '<C-j>', '<C-w>j', nsn_opts)
+remap('n', '<C-k>', '<C-w>k', nsn_opts)
+remap('n', '<C-l>', '<C-w>l', nsn_opts)
+remap('n', '<C-h>', '<C-w>h', nsn_opts)
 
-remap('n', '<leader>J', '<C-w>J', nsn_opts)
-remap('n', '<leader>K', '<C-w>K', nsn_opts)
-remap('n', '<leader>L', '<C-w>L', nsn_opts)
-remap('n', '<leader>H', '<C-w>H', nsn_opts)
+-- improved split manipulation
+remap('n', '<C-S-j>', '<C-w>J', nsn_opts)
+remap('n', '<C-S-k>', '<C-w>K', nsn_opts)
+remap('n', '<C-S-l>', '<C-w>L', nsn_opts)
+remap('n', '<C-S-h>', '<C-w>H', nsn_opts)
 
 remap('n', '<leader>=', '<C-w>=', nsn_opts)
-remap('n', '<leader>+', '<C-w>10>', nsn_opts)
-remap('n', '<leader>-', '<C-w>10<', nsn_opts)
+remap('n', '<leader>+', '<C-w>8>', nsn_opts)
+remap('n', '<leader>-', '<C-w>8<', nsn_opts)
 
 remap('n', '<leader>V', ':vs<CR>', nsn_opts)
-
--- nvim_remap('n', '<leader>n', ':bnext<CR>', nsn_opts)
--- nvim_remap('n', '<leader>p', ':bprevious<CR>', nsn_opts)
-
 
 -- " ====================== AUTOCMD ========================
 
@@ -121,19 +126,12 @@ vim.api.nvim_exec([[
 
 -- " ====================== / AUTOCMD ========================
 
--- ======================= Highlight groups ======================================
-
--- vim.g.sonokai_disable_italic_comment=1
--- vim.g.sonokai_style='default'
-vim.g.sonokai_style='belf'
--- vim.g.sonokai_enable_italic=1
--- vim.cmd [[colorscheme onedarker]]
-
 -- ======================== REQUIRE EXTRA FILES ===================
 require('packer-config')
 require('catppuccin-config')
 require('lsp-config')
-require('completion-config')
+require('nvim-cmp-config')
+require('luasnip-config')
 require('indentline-config')
 require('comment-config')
 require('nvim-tree-config')
@@ -143,16 +141,17 @@ require('bufferline-config')
 require('bufdel-config')
 require('startify-config')
 require('treesitter-config')
-require('telescope-config')
+-- require('telescope-config')
+require('fzf-config')
 require('gitsigns-config')
 require('dashboard-config')
-require('diffview-config')
+-- require('diffview-config')
 require('neoformat-config')
-require('toggleterm-config')
+require('lightspeed-config')
+-- require('toggleterm-config')
 -- require('sonokai')
 --require('fzf-config')
 -- require('lua-ls.lua') -- luajit not yet available for M1 mac
-
 
 vim.cmd('source ~/.config/nvim/vimscript/highlights.vim')
 -- vim.cmd('source ~/.config/nvim/vimscript/coc-config.vim')

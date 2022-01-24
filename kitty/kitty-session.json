@@ -1,0 +1,363 @@
+[
+  {
+    "id": 1,
+    "is_focused": true,
+    "platform_window_id": 360,
+    "tabs": [
+      {
+        "active_window_history": [
+          1
+        ],
+        "enabled_layouts": [
+          "tall:bias=60;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 1,
+        "is_focused": false,
+        "layout": "tall",
+        "layout_opts": {
+          "bias": [
+            0.6,
+            0.4
+          ],
+          "full_size": 1,
+          "mirrored": false
+        },
+        "layout_state": {
+          "biased_map": {},
+          "main_bias": [
+            0.6,
+            0.4
+          ],
+          "num_full_size_windows": 1
+        },
+        "title": "dotfiles",
+        "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
+                "pid": 1271
+              }
+            ],
+            "id": 1,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 1271,
+            "title": "\u2026/Documents/Github/dotfiles"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          6,
+          5,
+          2
+        ],
+        "enabled_layouts": [
+          "tall:bias=60;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 2,
+        "is_focused": true,
+        "layout": "stack",
+        "layout_opts": {},
+        "layout_state": {},
+        "title": "kanjistudy / client",
+        "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/17.4.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/typingsInstaller.js",
+                  "--globalTypingsCacheLocation",
+                  "/Users/jorgebefan/Library/Caches/typescript/4.5",
+                  "--typesMapLocation",
+                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/typesMap.json"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 30345
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/17.4.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/tsserver.js",
+                  "--cancellationPipeName",
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/4df4f1db1b5a92574ff1f1cc711ad0dd/tscancellation*"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 30335
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/typescript-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 30332
+              },
+              {
+                "cmdline": [
+                  "nvim"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 30326
+              }
+            ],
+            "id": 2,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 1272,
+            "title": "nvim"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 3104
+              }
+            ],
+            "id": 5,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 3104,
+            "title": "\u2026/Github/KanjiStudyApp/client"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/17.4.0/bin/node",
+                  "--max-old-space-size=2048",
+                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/fork-ts-checker-webpack-plugin/lib/typescript-reporter/reporter/TypeScriptReporterRpcService.js"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 30943
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/17.4.0/bin/node",
+                  "--max-old-space-size=2048",
+                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/fork-ts-checker-webpack-plugin/lib/typescript-reporter/reporter/TypeScriptReporterRpcService.js"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 30942
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/17.4.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/react-scripts/scripts/start.js"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 30935
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/.bin/react-scripts",
+                  "start"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 30934
+              },
+              {
+                "cmdline": [
+                  "npm start",
+                  "",
+                  ""
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 30933
+              }
+            ],
+            "id": 6,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 3686,
+            "title": "npm start"
+          },
+          {
+            "cmdline": [
+              "sh",
+              "/Users/jorgebefan/.config/kitty/savesess.sh"
+            ],
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "kitty",
+                  "@",
+                  "ls"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 35325
+              },
+              {
+                "cmdline": [
+                  "sh",
+                  "/Users/jorgebefan/.config/kitty/savesess.sh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 35324
+              }
+            ],
+            "id": 8,
+            "is_focused": true,
+            "is_self": true,
+            "lines": 90,
+            "pid": 35324,
+            "title": "savesess.sh"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          3
+        ],
+        "enabled_layouts": [
+          "tall:bias=60;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 3,
+        "is_focused": false,
+        "layout": "tall",
+        "layout_opts": {
+          "bias": [
+            0.6,
+            0.4
+          ],
+          "full_size": 1,
+          "mirrored": false
+        },
+        "layout_state": {
+          "biased_map": {},
+          "main_bias": [
+            0.6,
+            0.4
+          ],
+          "num_full_size_windows": 1
+        },
+        "title": "catppuccin",
+        "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/catppuccin",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/catppuccin",
+                "pid": 1273
+              }
+            ],
+            "id": 3,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 1273,
+            "title": "\u2026/Documents/Github/catppuccin"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          4
+        ],
+        "enabled_layouts": [
+          "tall:bias=60;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 4,
+        "is_focused": false,
+        "layout": "tall",
+        "layout_opts": {
+          "bias": [
+            0.6,
+            0.4
+          ],
+          "full_size": 1,
+          "mirrored": false
+        },
+        "layout_state": {
+          "biased_map": {},
+          "main_bias": [
+            0.6,
+            0.4
+          ],
+          "num_full_size_windows": 1
+        },
+        "title": "~/Downloads/sqlmap-master",
+        "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Downloads/sqlmap-master",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Downloads/sqlmap-master",
+                "pid": 1274
+              }
+            ],
+            "id": 4,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 1274,
+            "title": "~/Downloads/sqlmap-master"
+          }
+        ]
+      }
+    ],
+    "wm_class": "kitty",
+    "wm_name": "kitty"
+  }
+]

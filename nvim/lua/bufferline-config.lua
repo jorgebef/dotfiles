@@ -5,7 +5,7 @@ require('bufferline').setup {
     tab_size = 18,
     -- indicator_icon = '▎',
     -- indicator_icon = '█',
-    -- indicator_icon = '  ',
+    -- indicator_icon = '',
     indicator_icon = '',
     modified_icon = '',
     diagnostics_update_in_insert = false,
@@ -26,7 +26,7 @@ require('bufferline').setup {
     --   guibg = '#222327',
     -- },
     indicator_selected = {
-      guifg = '#E38C8F',
+      guifg = '#F28FAD',
       -- guibg = '#222327'
     },
     -- background = {
@@ -61,13 +61,13 @@ require('bufferline').setup {
     --   gui = "bold"
     -- },
     modified = {
-      guifg = '#E38C8F'
+      guifg = '#F28FAD'
     },
     modified_visible = {
-      guifg = '#E38C8F'
+      guifg = '#F28FAD'
     },
     modified_selected = {
-      guifg = '#E38C8F'
+      guifg = '#F28FAD'
     },
   },
 }
@@ -78,7 +78,7 @@ require('bufferline').setup {
 
 local remap = vim.api.nvim_set_keymap
 local nsn_opts = { noremap = true, silent = true, nowait = true }
-remap('n', '<leader>n', ':BufferLineCycleNext<CR>', nsn_opts)
-remap('n', '<leader>p', ':BufferLineCyclePrev<CR>', nsn_opts)
-remap('n', '<leader>N', ':BufferLineMoveNext<CR>', nsn_opts)
-remap('n', '<leader>P', ':BufferLineMovePrev<CR>', nsn_opts)
+remap('n', '<C-n>', ':BufferLineCycleNext<CR>', nsn_opts)
+remap('n', '<C-p>', ':BufferLineCyclePrev<CR>', nsn_opts)
+remap('n', '<C-S-n>', ':BufferLineMoveNext<CR>', nsn_opts)
+remap('n', '<C-S-p>', ':BufferLineMovePrev<CR>', nsn_opts)
