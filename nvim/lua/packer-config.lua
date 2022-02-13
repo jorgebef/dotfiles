@@ -101,11 +101,17 @@ packer.startup(function()
   -- == Fuzzy Finder
   -- =============================================
   use {
-    'ibhagwan/fzf-lua',
-  requires = {
-      'kyazdani42/nvim-web-devicons'
-    }
-}
+  'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+--   use {
+--     'ibhagwan/fzf-lua',
+--   requires = {
+--       'kyazdani42/nvim-web-devicons'
+--     }
+-- }
 -- ============================================
 
   -- == LSP configuration

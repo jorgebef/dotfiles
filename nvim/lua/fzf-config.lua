@@ -281,7 +281,9 @@ require'fzf-lua'.setup {
     -- otherwise auto-detect prioritizes `rg` over `grep`
     -- default options are controlled by 'rg|grep_opts'
     -- cmd            = "rg --vimgrep",
-    rg_opts           = "--column --line-number --no-heading --color=always --smart-case --max-columns=512",
+    -- WARNING ----------------------------------------------------------------------------------------
+    -- TAKE AWAY THE package-lock.json file form RG as it is too long and impacts the performance heavily
+    rg_opts           = "--column --line-number --no-heading --color=always --smart-case --max-columns=512 -g !package-lock.json",
     grep_opts         = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp",
     -- 'live_grep_glob' options:
     glob_flag         = "--iglob",  -- for case sensitive globs use '--glob'
@@ -407,5 +409,5 @@ local remap = vim.api.nvim_set_keymap
 local nsn_opts = { noremap = true, silent = true, nowait = true }
 remap('n', '<leader>ff', "<cmd>lua require('fzf-lua').files()<CR>", nsn_opts)
 remap('n', '<leader>fg', "<cmd>lua require('fzf-lua').live_grep()<CR>", nsn_opts)
-remap('n', 'gd', "<cmd>lua require('fzf-lua').lsp_definitions()<CR>", nsn_opts)
+-- remap('n', 'gd', "<cmd>lua require('fzf-lua').lsp_definitions()<CR>", nsn_opts)
 remap('n', '<leader>fz', "<cmd>lua require('fzf-lua').builtin()<CR>", nsn_opts)
