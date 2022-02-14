@@ -148,7 +148,7 @@ map('n', 'ge', '<cmd>lua vim.diagnostic.goto_next({float=true})<CR>', ns_opts)
 -- map('n', 'gw', '<cmd>lua vim.diagnostic.goto_next({,,true,Error})<CR>', ns_opts)
 map('n', 'gE', '<cmd>lua vim.diagnostic.goto_prev({float=true})<CR>', ns_opts)
 map('n', '<leader>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', ns_opts)
-map('n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', ns_opts)
+-- map('n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', ns_opts)
 
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', ns_opts)
