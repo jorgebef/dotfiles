@@ -1,5 +1,5 @@
 #####################
-# session_load.py
+# session_save.py
 #####################
 
 import os
@@ -17,13 +17,19 @@ with open(sess_dump_path) as f:
     sess_full_path = os.path.join(dir, sess_file_path)
     s = open(sess_full_path,'w')
     for i in sessData:
-        for t in i['tabs']:
-            s.write('new_tab '+t['title'])
+        for tab in i['tabs']:
+            s.write('new_tab '+tab['title'])
             s.write('\n')
-            s.write('cd '+t['windows'][0]['cwd'])
+            s.write('cd '+tab['windows'][0]['cwd'])
             s.write('\n')
             s.write('launch zsh')
             s.write('\n')
+            # -------------- NOT YET WORKING --------------
+            # for window in tab['windows']:
+            #     s.write('cd '+tab['windows'][0]['cwd'])
+            #     s.write('\n')
+            #     s.write('launch zsh')
+            #     s.write('\n')
     s.close()
 # close the file
 f.close()

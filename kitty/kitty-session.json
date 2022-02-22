@@ -2,37 +2,56 @@
   {
     "id": 1,
     "is_focused": true,
-    "platform_window_id": 258,
+    "platform_window_id": 4019,
     "tabs": [
       {
         "active_window_history": [
+          2,
           1
         ],
         "enabled_layouts": [
-          "tall:bias=60;full_size=1;mirrored=false",
+          "fat:bias=55;full_size=1;mirrored=false",
           "stack"
         ],
         "id": 1,
         "is_focused": false,
-        "layout": "tall",
-        "layout_opts": {
-          "bias": [
-            0.6,
-            0.4
-          ],
-          "full_size": 1,
-          "mirrored": false
-        },
-        "layout_state": {
-          "biased_map": {},
-          "main_bias": [
-            0.6,
-            0.4
-          ],
-          "num_full_size_windows": 1
-        },
+        "layout": "stack",
+        "layout_opts": {},
+        "layout_state": {},
         "title": "dotfiles",
         "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/pyright-langserver",
+                  "--stdio"
+                ],
+                "cwd": "/opt/homebrew/lib/node_modules/pyright/dist",
+                "pid": 42909
+              },
+              {
+                "cmdline": [
+                  "nvim"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
+                "pid": 42906
+              }
+            ],
+            "id": 1,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 42528,
+            "title": "nvim"
+          },
           {
             "cmdline": [
               "-zsh"
@@ -46,26 +65,27 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 1228
+                "pid": 42529
               }
             ],
-            "id": 1,
+            "id": 2,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 1228,
+            "pid": 42529,
             "title": "\u2026/Documents/Github/dotfiles"
           }
         ]
       },
       {
         "active_window_history": [
-          6,
           5,
-          2
+          6,
+          7,
+          4
         ],
         "enabled_layouts": [
-          "tall:bias=60;full_size=1;mirrored=false",
+          "fat:bias=55;full_size=1;mirrored=false",
           "stack"
         ],
         "id": 2,
@@ -85,49 +105,18 @@
             "foreground_processes": [
               {
                 "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.4.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/typingsInstaller.js",
-                  "--globalTypingsCacheLocation",
-                  "/Users/jorgebefan/Library/Caches/typescript/4.5",
-                  "--typesMapLocation",
-                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/typesMap.json"
+                  "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 4933
-              },
-              {
-                "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.4.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/tsserver.js",
-                  "--cancellationPipeName",
-                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/53dc468844586d11c2f7dc9dda42d9b3/tscancellation*"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 4924
-              },
-              {
-                "cmdline": [
-                  "node",
-                  "/opt/homebrew/bin/typescript-language-server",
-                  "--stdio"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 4917
-              },
-              {
-                "cmdline": [
-                  "nvim"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 4911
+                "pid": 42543
               }
             ],
-            "id": 2,
+            "id": 4,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 1229,
-            "title": "nvim"
+            "pid": 42543,
+            "title": "\u2026/Github/KanjiStudyApp/client"
           },
           {
             "cmdline": [
@@ -142,14 +131,14 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 14192
+                "pid": 42556
               }
             ],
             "id": 5,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 14192,
+            "pid": 42556,
             "title": "\u2026/Github/KanjiStudyApp/client"
           },
           {
@@ -162,55 +151,41 @@
             "foreground_processes": [
               {
                 "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.4.0/bin/node",
-                  "--max-old-space-size=2048",
-                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/fork-ts-checker-webpack-plugin/lib/typescript-reporter/reporter/TypeScriptReporterRpcService.js"
+                  "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 15769
-              },
-              {
-                "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.4.0/bin/node",
-                  "--max-old-space-size=2048",
-                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/fork-ts-checker-webpack-plugin/lib/typescript-reporter/reporter/TypeScriptReporterRpcService.js"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 15768
-              },
-              {
-                "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.4.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/react-scripts/scripts/start.js"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 15761
-              },
-              {
-                "cmdline": [
-                  "node",
-                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/.bin/react-scripts",
-                  "start"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 15760
-              },
-              {
-                "cmdline": [
-                  "npm start",
-                  "",
-                  ""
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 15759
+                "pid": 42574
               }
             ],
             "id": 6,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 14688,
-            "title": "npm start"
+            "pid": 42574,
+            "title": "\u2026/Github/KanjiStudyApp/client"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 42587
+              }
+            ],
+            "id": 7,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 42587,
+            "title": "\u2026/Github/KanjiStudyApp/client"
           },
           {
             "cmdline": [
@@ -228,7 +203,7 @@
                   "ls"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 29093
+                "pid": 42976
               },
               {
                 "cmdline": [
@@ -236,33 +211,33 @@
                   "/Users/jorgebefan/.config/kitty/savesess.sh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 29092
+                "pid": 42975
               }
             ],
-            "id": 8,
+            "id": 9,
             "is_focused": true,
             "is_self": true,
             "lines": 90,
-            "pid": 29092,
+            "pid": 42975,
             "title": "savesess.sh"
           }
         ]
       },
       {
         "active_window_history": [
-          3
+          8
         ],
         "enabled_layouts": [
-          "tall:bias=60;full_size=1;mirrored=false",
+          "fat:bias=55;full_size=1;mirrored=false",
           "stack"
         ],
         "id": 3,
         "is_focused": false,
-        "layout": "tall",
+        "layout": "fat",
         "layout_opts": {
           "bias": [
-            0.6,
-            0.4
+            0.55,
+            0.44999999999999996
           ],
           "full_size": 1,
           "mirrored": false
@@ -270,8 +245,8 @@
         "layout_state": {
           "biased_map": {},
           "main_bias": [
-            0.6,
-            0.4
+            0.55,
+            0.44999999999999996
           ],
           "num_full_size_windows": 1
         },
@@ -290,14 +265,14 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/catppuccin",
-                "pid": 1230
+                "pid": 42598
               }
             ],
-            "id": 3,
+            "id": 8,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 1230,
+            "pid": 42598,
             "title": "\u2026/Documents/Github/catppuccin"
           }
         ]
