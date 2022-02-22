@@ -81,4 +81,5 @@ remap("n", "<leader>fS", '<cmd>lua require("telescope.builtin").lsp_dynamic_work
 remap("n", "gd", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', nsn_opts)
 remap("n", "gr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', nsn_opts)
 remap("n", "<leader>tgs", '<cmd>lua require("telescope.builtin").git_status()<CR>', nsn_opts)
+remap("n", "<leader>tr", '<cmd>lua require("telescope.builtin").resume()<CR>', nsn_opts)
 -- map('n', '<leader>fg', ':Telescope live_grep<cr>', nsn_opts)
