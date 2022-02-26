@@ -2,12 +2,12 @@
   {
     "id": 1,
     "is_focused": true,
-    "platform_window_id": 4019,
+    "platform_window_id": 145,
     "tabs": [
       {
         "active_window_history": [
-          2,
-          1
+          1,
+          7
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
@@ -35,21 +35,30 @@
                   "--stdio"
                 ],
                 "cwd": "/opt/homebrew/lib/node_modules/pyright/dist",
-                "pid": 42909
+                "pid": 42932
+              },
+              {
+                "cmdline": [
+                  "/Users/jorgebefan/.config/nvim/lua-language-server/bin/macOS/lua-language-server",
+                  "-E",
+                  "/Users/jorgebefan/.config/nvim/lua-language-server/main.lua"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
+                "pid": 11991
               },
               {
                 "cmdline": [
                   "nvim"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 42906
+                "pid": 11988
               }
             ],
             "id": 1,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 42528,
+            "pid": 4212,
             "title": "nvim"
           },
           {
@@ -65,127 +74,146 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 42529
-              }
-            ],
-            "id": 2,
-            "is_focused": false,
-            "is_self": false,
-            "lines": 90,
-            "pid": 42529,
-            "title": "\u2026/Documents/Github/dotfiles"
-          }
-        ]
-      },
-      {
-        "active_window_history": [
-          5,
-          6,
-          7,
-          4
-        ],
-        "enabled_layouts": [
-          "fat:bias=55;full_size=1;mirrored=false",
-          "stack"
-        ],
-        "id": 2,
-        "is_focused": true,
-        "layout": "stack",
-        "layout_opts": {},
-        "layout_state": {},
-        "title": "kanjistudy / client",
-        "windows": [
-          {
-            "cmdline": [
-              "-zsh"
-            ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "-zsh"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 42543
-              }
-            ],
-            "id": 4,
-            "is_focused": false,
-            "is_self": false,
-            "lines": 90,
-            "pid": 42543,
-            "title": "\u2026/Github/KanjiStudyApp/client"
-          },
-          {
-            "cmdline": [
-              "-zsh"
-            ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "-zsh"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 42556
-              }
-            ],
-            "id": 5,
-            "is_focused": false,
-            "is_self": false,
-            "lines": 90,
-            "pid": 42556,
-            "title": "\u2026/Github/KanjiStudyApp/client"
-          },
-          {
-            "cmdline": [
-              "-zsh"
-            ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "-zsh"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 42574
-              }
-            ],
-            "id": 6,
-            "is_focused": false,
-            "is_self": false,
-            "lines": 90,
-            "pid": 42574,
-            "title": "\u2026/Github/KanjiStudyApp/client"
-          },
-          {
-            "cmdline": [
-              "-zsh"
-            ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "-zsh"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 42587
+                "pid": 23441
               }
             ],
             "id": 7,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 42587,
-            "title": "\u2026/Github/KanjiStudyApp/client"
+            "pid": 23441,
+            "title": "\u2026/Documents/Github/dotfiles"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          13,
+          11,
+          8
+        ],
+        "enabled_layouts": [
+          "fat:bias=55;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 5,
+        "is_focused": true,
+        "layout": "stack",
+        "layout_opts": {},
+        "layout_state": {},
+        "title": "Reservalia-App",
+        "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/reservalia-app/node_modules/typescript/lib/typingsInstaller.js",
+                  "--globalTypingsCacheLocation",
+                  "/Users/jorgebefan/Library/Caches/typescript/4.5",
+                  "--typesMapLocation",
+                  "/Users/jorgebefan/Documents/Github/reservalia-app/node_modules/typescript/lib/typesMap.json"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+                "pid": 43075
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/reservalia-app/node_modules/typescript/lib/tsserver.js",
+                  "--cancellationPipeName",
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/46920366373597dd81b174bd0bda822f/tscancellation*"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+                "pid": 43067
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/typescript-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+                "pid": 43064
+              },
+              {
+                "cmdline": [
+                  "nvim"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+                "pid": 43061
+              }
+            ],
+            "id": 8,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 31439,
+            "title": "nvim"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+                "pid": 32125
+              }
+            ],
+            "id": 11,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 32125,
+            "title": "\u2026/Documents/Github/reservalia-app"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "node",
+                  "/Users/jorgebefan/Documents/Github/reservalia-app/node_modules/.bin/next",
+                  "dev"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+                "pid": 40668
+              },
+              {
+                "cmdline": [
+                  "npm run dev",
+                  "",
+                  "",
+                  ""
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+                "pid": 40667
+              }
+            ],
+            "id": 13,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 40626,
+            "title": "npm run dev"
           },
           {
             "cmdline": [
@@ -193,7 +221,7 @@
               "/Users/jorgebefan/.config/kitty/savesess.sh"
             ],
             "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+            "cwd": "/Users/jorgebefan",
             "env": {},
             "foreground_processes": [
               {
@@ -202,36 +230,164 @@
                   "@",
                   "ls"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 42976
+                "cwd": "/Users/jorgebefan",
+                "pid": 43103
               },
               {
                 "cmdline": [
                   "sh",
                   "/Users/jorgebefan/.config/kitty/savesess.sh"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 42975
+                "cwd": "/Users/jorgebefan",
+                "pid": 43102
               }
             ],
-            "id": 9,
+            "id": 14,
             "is_focused": true,
             "is_self": true,
             "lines": 90,
-            "pid": 42975,
+            "pid": 43102,
             "title": "savesess.sh"
           }
         ]
       },
       {
         "active_window_history": [
-          8
+          6,
+          2,
+          5
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
           "stack"
         ],
-        "id": 3,
+        "id": 2,
+        "is_focused": false,
+        "layout": "stack",
+        "layout_opts": {},
+        "layout_state": {},
+        "title": "booking-panel / Client",
+        "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client/node_modules/typescript/lib/typingsInstaller.js",
+                  "--globalTypingsCacheLocation",
+                  "/Users/jorgebefan/Library/Caches/typescript/4.5",
+                  "--typesMapLocation",
+                  "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client/node_modules/typescript/lib/typesMap.json"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
+                "pid": 40414
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client/node_modules/typescript/lib/tsserver.js",
+                  "--cancellationPipeName",
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/dbeb45cb6f9ca7002c44a04919c519f7/tscancellation*"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
+                "pid": 40407
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/vscode-json-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
+                "pid": 40403
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/typescript-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
+                "pid": 40400
+              },
+              {
+                "cmdline": [
+                  "nvim"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
+                "pid": 40397
+              }
+            ],
+            "id": 2,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 4213,
+            "title": "nvim"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
+                "pid": 14927
+              }
+            ],
+            "id": 5,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 14927,
+            "title": "\u2026/Github/Booking-Panel/booking-panel-client"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
+                "pid": 15321
+              }
+            ],
+            "id": 6,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 15321,
+            "title": "\u2026/Github/Booking-Panel/booking-panel-client"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          4
+        ],
+        "enabled_layouts": [
+          "fat:bias=55;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 4,
         "is_focused": false,
         "layout": "fat",
         "layout_opts": {
@@ -250,30 +406,70 @@
           ],
           "num_full_size_windows": 1
         },
-        "title": "catppuccin",
+        "title": "kanjistudy / client",
         "windows": [
           {
             "cmdline": [
               "-zsh"
             ],
             "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/catppuccin",
+            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
             "env": {},
             "foreground_processes": [
               {
                 "cmdline": [
-                  "-zsh"
+                  "node",
+                  "/opt/homebrew/bin/vscode-json-language-server",
+                  "--stdio"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/catppuccin",
-                "pid": 42598
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 39767
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/typingsInstaller.js",
+                  "--globalTypingsCacheLocation",
+                  "/Users/jorgebefan/Library/Caches/typescript/4.5",
+                  "--typesMapLocation",
+                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/typesMap.json"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 15196
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/tsserver.js",
+                  "--cancellationPipeName",
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/eb2e9c67170cd80cd550476bfa75b7b4/tscancellation*"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 15189
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/typescript-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 15185
+              },
+              {
+                "cmdline": [
+                  "nvim"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 15182
               }
             ],
-            "id": 8,
+            "id": 4,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 42598,
-            "title": "\u2026/Documents/Github/catppuccin"
+            "pid": 4215,
+            "title": "nvim"
           }
         ]
       }

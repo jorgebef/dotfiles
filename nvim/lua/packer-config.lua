@@ -75,7 +75,6 @@ packer.startup(function()
 	-- == Colorizer
 	-- =============================================
 	use("norcalli/nvim-colorizer.lua")
-	require("colorizer").setup()
 
 	-- == Auto Pairing parenthesis, brackets, etc...
 	-- =============================================
