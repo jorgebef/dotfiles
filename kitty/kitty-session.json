@@ -2,12 +2,12 @@
   {
     "id": 1,
     "is_focused": true,
-    "platform_window_id": 145,
+    "platform_window_id": 170,
     "tabs": [
       {
         "active_window_history": [
           1,
-          7
+          6
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
@@ -30,36 +30,18 @@
             "foreground_processes": [
               {
                 "cmdline": [
-                  "node",
-                  "/opt/homebrew/bin/pyright-langserver",
-                  "--stdio"
-                ],
-                "cwd": "/opt/homebrew/lib/node_modules/pyright/dist",
-                "pid": 42932
-              },
-              {
-                "cmdline": [
-                  "/Users/jorgebefan/.config/nvim/lua-language-server/bin/macOS/lua-language-server",
-                  "-E",
-                  "/Users/jorgebefan/.config/nvim/lua-language-server/main.lua"
+                  "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 11991
-              },
-              {
-                "cmdline": [
-                  "nvim"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 11988
+                "pid": 1437
               }
             ],
             "id": 1,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 4212,
-            "title": "nvim"
+            "pid": 1437,
+            "title": "\u2026/Documents/Github/dotfiles"
           },
           {
             "cmdline": [
@@ -74,64 +56,64 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 23441
+                "pid": 39184
               }
             ],
-            "id": 7,
+            "id": 6,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 23441,
+            "pid": 39184,
             "title": "\u2026/Documents/Github/dotfiles"
           }
         ]
       },
       {
         "active_window_history": [
-          13,
-          11,
-          8
+          5,
+          4,
+          2
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
           "stack"
         ],
-        "id": 5,
+        "id": 2,
         "is_focused": true,
         "layout": "stack",
         "layout_opts": {},
         "layout_state": {},
-        "title": "Reservalia-App",
+        "title": "Teamwork-Manager App",
         "windows": [
           {
             "cmdline": [
               "-zsh"
             ],
             "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+            "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
             "env": {},
             "foreground_processes": [
               {
                 "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/reservalia-app/node_modules/typescript/lib/typingsInstaller.js",
+                  "/opt/homebrew/Cellar/node/17.7.1/bin/node",
+                  "/Users/jorgebefan/Documents/Github/teamwork-manager-app/node_modules/typescript/lib/typingsInstaller.js",
                   "--globalTypingsCacheLocation",
                   "/Users/jorgebefan/Library/Caches/typescript/4.5",
                   "--typesMapLocation",
-                  "/Users/jorgebefan/Documents/Github/reservalia-app/node_modules/typescript/lib/typesMap.json"
+                  "/Users/jorgebefan/Documents/Github/teamwork-manager-app/node_modules/typescript/lib/typesMap.json"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
-                "pid": 43075
+                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
+                "pid": 50943
               },
               {
                 "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/reservalia-app/node_modules/typescript/lib/tsserver.js",
+                  "/opt/homebrew/Cellar/node/17.7.1/bin/node",
+                  "/Users/jorgebefan/Documents/Github/teamwork-manager-app/node_modules/typescript/lib/tsserver.js",
                   "--cancellationPipeName",
-                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/46920366373597dd81b174bd0bda822f/tscancellation*"
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/dfbbf3b9dbd9238c26cb6eeff1824f14/tscancellation*"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
-                "pid": 43067
+                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
+                "pid": 50935
               },
               {
                 "cmdline": [
@@ -139,22 +121,22 @@
                   "/opt/homebrew/bin/typescript-language-server",
                   "--stdio"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
-                "pid": 43064
+                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
+                "pid": 50929
               },
               {
                 "cmdline": [
                   "nvim"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
-                "pid": 43061
+                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
+                "pid": 50920
               }
             ],
-            "id": 8,
+            "id": 2,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 31439,
+            "pid": 1438,
             "title": "nvim"
           },
           {
@@ -162,40 +144,40 @@
               "-zsh"
             ],
             "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+            "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
             "env": {},
             "foreground_processes": [
               {
                 "cmdline": [
                   "-zsh"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
-                "pid": 32125
+                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
+                "pid": 6110
               }
             ],
-            "id": 11,
+            "id": 4,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 32125,
-            "title": "\u2026/Documents/Github/reservalia-app"
+            "pid": 6110,
+            "title": "\u2026/Documents/Github/teamwork-manager-app"
           },
           {
             "cmdline": [
               "-zsh"
             ],
             "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
+            "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
             "env": {},
             "foreground_processes": [
               {
                 "cmdline": [
                   "node",
-                  "/Users/jorgebefan/Documents/Github/reservalia-app/node_modules/.bin/next",
+                  "/Users/jorgebefan/Documents/Github/teamwork-manager-app/node_modules/.bin/next",
                   "dev"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
-                "pid": 40668
+                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
+                "pid": 93642
               },
               {
                 "cmdline": [
@@ -204,15 +186,15 @@
                   "",
                   ""
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/reservalia-app",
-                "pid": 40667
+                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
+                "pid": 93630
               }
             ],
-            "id": 13,
+            "id": 5,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 40626,
+            "pid": 6150,
             "title": "npm run dev"
           },
           {
@@ -221,7 +203,7 @@
               "/Users/jorgebefan/.config/kitty/savesess.sh"
             ],
             "columns": 319,
-            "cwd": "/Users/jorgebefan",
+            "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
             "env": {},
             "foreground_processes": [
               {
@@ -230,164 +212,36 @@
                   "@",
                   "ls"
                 ],
-                "cwd": "/Users/jorgebefan",
-                "pid": 43103
+                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
+                "pid": 94391
               },
               {
                 "cmdline": [
                   "sh",
                   "/Users/jorgebefan/.config/kitty/savesess.sh"
                 ],
-                "cwd": "/Users/jorgebefan",
-                "pid": 43102
+                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
+                "pid": 94390
               }
             ],
-            "id": 14,
+            "id": 11,
             "is_focused": true,
             "is_self": true,
             "lines": 90,
-            "pid": 43102,
+            "pid": 94390,
             "title": "savesess.sh"
           }
         ]
       },
       {
         "active_window_history": [
-          6,
-          2,
-          5
+          3
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
           "stack"
         ],
-        "id": 2,
-        "is_focused": false,
-        "layout": "stack",
-        "layout_opts": {},
-        "layout_state": {},
-        "title": "booking-panel / Client",
-        "windows": [
-          {
-            "cmdline": [
-              "-zsh"
-            ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client/node_modules/typescript/lib/typingsInstaller.js",
-                  "--globalTypingsCacheLocation",
-                  "/Users/jorgebefan/Library/Caches/typescript/4.5",
-                  "--typesMapLocation",
-                  "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client/node_modules/typescript/lib/typesMap.json"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
-                "pid": 40414
-              },
-              {
-                "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client/node_modules/typescript/lib/tsserver.js",
-                  "--cancellationPipeName",
-                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/dbeb45cb6f9ca7002c44a04919c519f7/tscancellation*"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
-                "pid": 40407
-              },
-              {
-                "cmdline": [
-                  "node",
-                  "/opt/homebrew/bin/vscode-json-language-server",
-                  "--stdio"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
-                "pid": 40403
-              },
-              {
-                "cmdline": [
-                  "node",
-                  "/opt/homebrew/bin/typescript-language-server",
-                  "--stdio"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
-                "pid": 40400
-              },
-              {
-                "cmdline": [
-                  "nvim"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
-                "pid": 40397
-              }
-            ],
-            "id": 2,
-            "is_focused": false,
-            "is_self": false,
-            "lines": 90,
-            "pid": 4213,
-            "title": "nvim"
-          },
-          {
-            "cmdline": [
-              "-zsh"
-            ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "-zsh"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
-                "pid": 14927
-              }
-            ],
-            "id": 5,
-            "is_focused": false,
-            "is_self": false,
-            "lines": 90,
-            "pid": 14927,
-            "title": "\u2026/Github/Booking-Panel/booking-panel-client"
-          },
-          {
-            "cmdline": [
-              "-zsh"
-            ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "-zsh"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/Booking-Panel/booking-panel-client",
-                "pid": 15321
-              }
-            ],
-            "id": 6,
-            "is_focused": false,
-            "is_self": false,
-            "lines": 90,
-            "pid": 15321,
-            "title": "\u2026/Github/Booking-Panel/booking-panel-client"
-          }
-        ]
-      },
-      {
-        "active_window_history": [
-          4
-        ],
-        "enabled_layouts": [
-          "fat:bias=55;full_size=1;mirrored=false",
-          "stack"
-        ],
-        "id": 4,
+        "id": 3,
         "is_focused": false,
         "layout": "fat",
         "layout_opts": {
@@ -418,16 +272,7 @@
             "foreground_processes": [
               {
                 "cmdline": [
-                  "node",
-                  "/opt/homebrew/bin/vscode-json-language-server",
-                  "--stdio"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 39767
-              },
-              {
-                "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
+                  "/opt/homebrew/Cellar/node/17.7.1/bin/node",
                   "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/typingsInstaller.js",
                   "--globalTypingsCacheLocation",
                   "/Users/jorgebefan/Library/Caches/typescript/4.5",
@@ -435,17 +280,26 @@
                   "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/typesMap.json"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 15196
+                "pid": 38717
               },
               {
                 "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.6.0/bin/node",
+                  "/opt/homebrew/Cellar/node/17.7.1/bin/node",
                   "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client/node_modules/typescript/lib/tsserver.js",
                   "--cancellationPipeName",
-                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/eb2e9c67170cd80cd550476bfa75b7b4/tscancellation*"
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/18971764afd84c1d298af4d0238a138a/tscancellation*"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 15189
+                "pid": 38709
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/vscode-json-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 38702
               },
               {
                 "cmdline": [
@@ -454,21 +308,21 @@
                   "--stdio"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 15185
+                "pid": 38696
               },
               {
                 "cmdline": [
                   "nvim"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 15182
+                "pid": 38687
               }
             ],
-            "id": 4,
+            "id": 3,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 4215,
+            "pid": 1439,
             "title": "nvim"
           }
         ]

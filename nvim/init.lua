@@ -78,6 +78,7 @@ remap("n", "<leader>O", 'O<esc>0"_D<esc>', ns_opts)
 
 remap("n", "<esc>", ':noh<cr>:echo""<esc>', nsn_opts)
 
+-- remap("n", "<leader>bd", ":b#|bd#<cr>", n_opts)
 -- nvim_remap('n', '<leader>S', ':mksession!<cr>', { noremap = true, silent = false })
 -- don't need this with vim-obsession
 
@@ -145,12 +146,13 @@ require("bufferline-config")
 require("bufdel-config")
 -- require("startify-config")
 require("treesitter-config")
+require("null-ls-config")
 require("telescope-config")
 -- require('fzf-config')
 require("gitsigns-config")
 require("dashboard-config")
 -- require('diffview-config')
-require("neoformat-config")
+-- require("neoformat-config")
 require("lightspeed-config")
 require("colorizer-config")
 -- require('toggleterm-config')

@@ -70,7 +70,15 @@ packer.startup(function()
 
 	-- == Formatter
 	-- =============================================
-	use("sbdchd/neoformat")
+	-- use("sbdchd/neoformat")
+
+  -- == NULL LS
+  -- ==============================================
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+})
+  use "jose-elias-alvarez/nvim-lsp-ts-utils"
 
 	-- == Colorizer
 	-- =============================================
@@ -104,7 +112,7 @@ packer.startup(function()
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use({ "nvim-telescope/telescope-project.nvim" })
+	-- use({ "nvim-telescope/telescope-project.nvim" })
 
 	--   use {
 	--     'ibhagwan/fzf-lua',

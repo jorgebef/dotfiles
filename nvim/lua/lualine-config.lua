@@ -12,6 +12,7 @@ require("lualine").setup({
 		-- section_separators = { left = '', right = ''},
 		disabled_filetypes = {},
 		always_divide_middle = false,
+    globalstatus = false
 	},
 	sections = {
 		lualine_a = {
@@ -30,6 +31,12 @@ require("lualine").setup({
 			},
 			{
 				"diff",
+				colored = true,
+				diff_color = {
+					added = { fg="#ABE9B3", bg = nil }, -- Changes diagnostic's info color
+					modified = { fg="#FAE3B0", bg = nil }, -- changes diagnostic's warn color
+					removed = { fg="#F28FAD",bg=nil }, -- changes diagnostic's error color
+				},
 				separator = { right = "" },
 				left_padding = 1,
 			},
@@ -43,12 +50,12 @@ require("lualine").setup({
 				-- displays diagnostics from defined severity
 				sections = { "error", "warn", "info", "hint" },
 				-- all colors are in format #rrggbb
-				-- diagnostics_color = {
-				--   error = {fg='#fc5d7c',bg=nil}, -- changes diagnostic's error color
-				--   warn = {fg='#d2bb6d',bg=nil},  -- changes diagnostic's warn color
-				--   info = {fg='#97d1ef',bg=nil},  -- Changes diagnostic's info color
-				--   hint = {fg='#76cce0',bg=nil},  -- Changes diagnostic's hint color
-				-- },
+				diagnostics_color = {
+					error = { fg="#F28FAD",bg=nil }, -- changes diagnostic's error color
+					warn = { fg="#FAE3B0", bg = nil }, -- changes diagnostic's warn color
+					info = { fg="#96CDFB", bg = nil }, -- Changes diagnostic's info color
+					hint = { fg="#F5E0DC", bg = nil }, -- Changes diagnostic's hint color
+				},
 				-- symbols = {error = 'E', warn = 'W', info = 'I', hint = 'H'}
 				symbols = { error = " ", warn = " ", info = " " },
 				colored = true, -- displays diagnostics status in color if set to true

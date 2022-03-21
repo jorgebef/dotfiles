@@ -75,7 +75,7 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = {
     'pyright',
-    'tsserver',
+    -- 'tsserver',
     'vimls',
     'jsonls',
     'cssls',
@@ -89,6 +89,26 @@ for _, lsp in ipairs(servers) do
     },
   }
 end
+
+-- local buf_map = function(bufnr, mode, lhs, rhs, opts)
+--     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
+--         silent = true,
+--     })
+-- end
+
+-- nvim_lsp.tsserver.setup({
+--     on_attach = function(client, bufnr)
+--         client.resolved_capabilities.document_formatting = false
+--         client.resolved_capabilities.document_range_formatting = false
+--         local ts_utils = require("nvim-lsp-ts-utils")
+--         ts_utils.setup({})
+--         ts_utils.setup_client(client)
+--         -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+--         -- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+--         -- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+--         on_attach(client, bufnr)
+--     end,
+-- })
 
 --Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -144,11 +164,13 @@ map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', ns_opts)
 map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', ns_opts)
 -- map('n', '<leader>E', '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', ns_opts)
 map('n', '<leader>E', '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor"})<CR>', ns_opts)
-map('n', 'ge', '<cmd>lua vim.diagnostic.goto_next({float=true})<CR>', ns_opts)
--- map('n', 'gw', '<cmd>lua vim.diagnostic.goto_next({,,true,Error})<CR>', ns_opts)
+map('n', 'ge', '<cmd>lua vim.diagnostic.goto_next({severity="ERROR",float=true})<CR>', ns_opts)
+map('n', 'gw', '<cmd>lua vim.diagnostic.goto_next({severity="HINT",float=true})<CR>', ns_opts)
 map('n', 'gE', '<cmd>lua vim.diagnostic.goto_prev({float=true})<CR>', ns_opts)
+map('n', 'gW', '<cmd>lua vim.diagnostic.goto_prev({severity="HINT",float=true})<CR>', ns_opts)
 map('n', '<leader>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', ns_opts)
--- map('n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', ns_opts)
+-- Formatting is done better by Neoformat plugin
+map('n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', ns_opts)
 
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', ns_opts)
@@ -157,6 +179,7 @@ map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', ns_opts)
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>', ns_opts)
 map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', ns_opts)
 map('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', ns_opts)
+
 -- map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', ns_opts)
 -- map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', ns_opts)
 -- map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', ns_opts)
