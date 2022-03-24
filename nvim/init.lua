@@ -164,4 +164,6 @@ vim.cmd("source ~/.config/nvim/vimscript/highlights.vim")
 -- vim.cmd('source ~/.config/nvim/vimscript/coc-config.vim')
 
 -- vim.cmd [[colorscheme sonokai]]
+vim.g.catppuccin_flavour = "storm"
+-- vim.g.catppuccin_flavour = "dusk"
 vim.cmd([[colorscheme catppuccin]])

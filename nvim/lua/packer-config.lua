@@ -156,7 +156,8 @@ packer.startup(function()
 	use({
 		"catppuccin/nvim",
 		-- "jorgebef/nvim",
-		branch = "main",
+		-- branch = "main",
+		branch = "dev",
 		-- branch = "experiments",
 		as = "catppuccin",
 	})
