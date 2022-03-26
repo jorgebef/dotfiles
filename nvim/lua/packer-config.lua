@@ -114,14 +114,6 @@ packer.startup(function()
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	-- use({ "nvim-telescope/telescope-project.nvim" })
 
-	--   use {
-	--     'ibhagwan/fzf-lua',
-	--   requires = {
-	--       'kyazdani42/nvim-web-devicons'
-	--     }
-	-- }
-	-- ============================================
-
 	-- == LSP configuration
 	-- =============================================
 	use("neovim/nvim-lspconfig")

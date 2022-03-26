@@ -1,13 +1,113 @@
-source $HOME/.zsh/antigen.zsh
+# Using OhMyZSH instead of Antigen
 
-# bundles to use
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-# antigen bundle zsh-users/zsh-history-substring-search
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Tell Antigen that you're done.
-antigen apply
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="robbyrussell"
+
+bindkey -v
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  macos
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
 export EDITOR="nvim"
@@ -27,23 +127,29 @@ autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 
 # ++++++++ COLORS ++++++++
-flamingo='#ECBFBD'
-magenta='#C6AAE8'
-pink='#F0AFE1'
-red='#E28C8C'
-peach='#F7C196'
-yellow='#EADDA0'
-green='#B3E1A3'
-blue='#A4B9EF'
-black1='#15121C'
-black2='#1B1923'
-black3='#1E1E28'
-black4='#2D293B'
-black5='#3e4058'
-gray='#6E6C7C'
-lightgray='#9E9EA9'
-white='#D7DAE0'
-teal='#9DDDCB'
+rosewater='#F5DFDA'
+flamingo='#F2CBCB'
+mauve='#C6A4F8'
+pink='#F5BFE7'
+red='#F586A2'
+maroon='#EB9DA4'
+peach='#FCB081'
+yellow='#F8DEA9'
+green='#A9E4A3'
+blue='#8CB3FA'
+sky='#89DCFD'
+teal='#88DFD2'
+lavender='#C7CBFD'
+white='#D2DAF1'
+gray2='#B9C0DB'
+gray1='#6F7599'
+gray0='#5E6487'
+black4='#3E435E'
+black3='#2B3045'
+black2='#24273A'
+black1='#1F2233'
+black0='#1A1B26'
+
 
 function preexec() {
   cmd_start=$(($(print -P %D{%s%6.}) / 1000))
@@ -79,23 +185,23 @@ precmd_git() {
 precmd_functions+=(precmd_git)
 
 
-os_icon='%F{$white}%B   %b%f'
-separator='%F{$lightgray}● %f'
+os_icon='%F{$gray2}%B   %b%f'
+separator='%F{gray2}● %f'
 
 elapsed() {
     if [ $cmd_time ]; then
-        echo " %F{$lightgray}$cmd_time 羽 $separator%f";
+        echo " %F{$gray2}$cmd_time 羽 $separator%f";
     fi
 }
 
 branch() {
     if [ $vcs_info_msg_0_ ]; then
-        echo " %F{$green}$vcs_info_msg_0_ $separator%f";
+        echo " %F{$green}%B$vcs_info_msg_0_%b $separator%f";
     fi
 }
 
 cur_time() {
-    echo " %F{$lightgray}%T  %f "
+    echo " %F{$gray2}%T  %f "
 }
 
 filepath() {
@@ -129,43 +235,43 @@ filepath() {
         fi
         pwd_folder=$(basename "${pwd_filtered}")
     fi
-    echo " %F{$blue}${icon} %F{$lightgray}${pwd_rest}%f%F{$blue}%B${pwd_folder}%b%f "
+    echo " %F{$sky}${icon} %F{$white}${pwd_rest}%f%F{$sky}%B${pwd_folder}%b%f "
 }
 
 # Format the vcs_info_msg_0_ variable
 zstyle ':vcs_info:git:*' formats " %b"
 
-
 _newline=$'\n'
 _lineup=$'\e[1A'
 _linedown=$'\e[1B'
 
-end_left='%F{$black5}%f'
-end_right='%F{$black5}%f'
+end_left='%F{$gray0}%f'
+end_right='%F{$gray0}%f'
 
 # PROMPT='$end_left%K{$black5}$os_icon$separator$(filepath)%k$end_right'
-PROMPT='$end_left%K{$black5}$(filepath)%k$end_right'
+PROMPT='${_newline}'
+PROMPT+='$end_left%K{$gray0}$(filepath)%k$end_right'
 # PROMPT+='$(middle_space)'
 # PROMPT+='%K{#414550}%F{blue}$(elapsed)%F{green}$(branch)%F{#e2e2e3}$(cur_time)%k%f'
 PROMPT+='${_newline}'
 # blue prompt if successful previous command, red if unsuccessful
-PROMPT+='%(?:%F{$blue} %f:%F{$red} %f)'
+PROMPT+='%(?:%F{$sky} %f:%F{$red} %f)'
 
-RPROMPT='%{$_lineup%}$end_left%K{$black5}$(elapsed)$(branch)$(cur_time)%k$end_right%{$_linedown%}'
+RPROMPT='%{$_lineup%}$end_left%K{$gray0}$(elapsed)$(branch)$(cur_time)%k$end_right%{$_linedown%}'
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#7f8490"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=${gray0}"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export CLICOLOR=1
+# export CLICOLOR=1
 # export LSCOLORS="ln=1;31:"
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
+# export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
-alias la="ls -laG"
+# alias la="ls -laG"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
