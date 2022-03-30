@@ -61,6 +61,9 @@ remap("n", "<leader>q", ":q<cr>", nsn_opts)
 
 remap("v", "p", '"_dP', nsn_opts)
 
+remap("n", "<leader>y", '"+y', nsn_opts)
+remap("v", "<leader>y", '"+y', nsn_opts)
+
 remap("n", "<leader>3", [["syiw<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
 remap("v", "<leader>3", [["sy<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
 

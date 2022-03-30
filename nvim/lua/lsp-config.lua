@@ -1,157 +1,216 @@
-local nvim_lsp = require 'lspconfig'
+local nvim_lsp = require("lspconfig")
 
 -- require'lspconfig'.tsserver.setup{}
 
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+	local function buf_set_keymap(...)
+		vim.api.nvim_buf_set_keymap(bufnr, ...)
+	end
+	local function buf_set_option(...)
+		vim.api.nvim_buf_set_option(bufnr, ...)
+	end
+	-- Enable completion triggered by <c-x><c-o>
+	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
 local signs = {
-    Error = " ",
-    Warning = " ",
-    Hint = " ",
-    Information = " "
+	Error = " ",
+	Warning = " ",
+	Hint = " ",
+	Information = " ",
 }
 for type, icon in pairs(signs) do
-    -- local hl = "LspDiagnosticsSign" .. type
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+	-- local hl = "LspDiagnosticsSign" .. type
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-      -- virtual_text = {
-      --     spacing = 1,
-      --     severity_limit = 'Warning',
-      -- },
-    virtual_text = false,
-    underline = true,
-    -- bold = true,
-    -- underline = {
-    --     -- THIS MAKES IT LAGGY IF THERE ARE MANY ERRORS
-    --     severity_limit = 'Warning',
-    -- },
-    signs = true,
-    float = {
-        source = "always",
-        focusable = false,
-    },
-    severity_sort = true,
-  }
-)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	-- virtual_text = {
+	--     spacing = 1,
+	--     severity_limit = 'Warning',
+	-- },
+	virtual_text = false,
+	underline = true,
+	-- bold = true,
+	-- underline = {
+	--     -- THIS MAKES IT LAGGY IF THERE ARE MANY ERRORS
+	--     severity_limit = 'Warning',
+	-- },
+	signs = true,
+	float = {
+		source = "always",
+		focusable = false,
+	},
+	severity_sort = true,
+})
 
 local border = {
-      {"╭", "FloatBorder"},
-      {"─", "FloatBorder"},
-      {"╮", "FloatBorder"},
-      {"│", "FloatBorder"},
-      {"╯", "FloatBorder"},
-      {"─", "FloatBorder"},
-      {"╰", "FloatBorder"},
-      {"│", "FloatBorder"},
+	{ "╭", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "╮", "FloatBorder" },
+	{ "│", "FloatBorder" },
+	{ "╯", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "╰", "FloatBorder" },
+	{ "│", "FloatBorder" },
 }
 -- LSP settings (for overriding per client)
-local handlers =  {
-  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
-  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
+local handlers = {
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
 }
 -- Do not forget to use the on_attach function
 -- require 'lspconfig'.myserver.setup { handlers=handlers }
 -- To instead override globally
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or border
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+	opts = opts or {}
+	opts.border = opts.border or border
+	return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
-
 
 -- ================== Connect all servers ==========================
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-    'pyright',
-    -- 'tsserver',
-    'vimls',
-    'jsonls',
-    'cssls',
+	"pyright",
+	-- 'tsserver',
+	"vimls",
+	"jsonls",
+	"cssls",
+	-- 'intelephense'
 }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-      handlers = handlers,
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    },
-  }
+	nvim_lsp[lsp].setup({
+		handlers = handlers,
+		on_attach = on_attach,
+		flags = {
+			debounce_text_changes = 150,
+		},
+	})
 end
-
--- local buf_map = function(bufnr, mode, lhs, rhs, opts)
---     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
---         silent = true,
---     })
--- end
-
--- nvim_lsp.tsserver.setup({
---     on_attach = function(client, bufnr)
---         client.resolved_capabilities.document_formatting = false
---         client.resolved_capabilities.document_range_formatting = false
---         local ts_utils = require("nvim-lsp-ts-utils")
---         ts_utils.setup({})
---         ts_utils.setup_client(client)
---         -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
---         -- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
---         -- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
---         on_attach(client, bufnr)
---     end,
--- })
 
 --Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require'lspconfig'.cssls.setup {
-  capabilities = capabilities,
-}
+nvim_lsp.cssls.setup({
+	capabilities = capabilities,
+})
+
+nvim_lsp.intelephense.setup({
+	settings = {
+		intelephense = {
+			stubs = {
+				"bcmath",
+				"bz2",
+				"calendar",
+				"Core",
+				"curl",
+				"date",
+				"dba",
+				"dom",
+				"enchant",
+				"fileinfo",
+				"filter",
+				"ftp",
+				"gd",
+				"gettext",
+				"hash",
+				"iconv",
+				"imap",
+				"intl",
+				"json",
+				"ldap",
+				"libxml",
+				"mbstring",
+				"mcrypt",
+				"mysql",
+				"mysqli",
+				"password",
+				"pcntl",
+				"pcre",
+				"PDO",
+				"pdo_mysql",
+				"Phar",
+				"readline",
+				"recode",
+				"Reflection",
+				"regex",
+				"session",
+				"SimpleXML",
+				"soap",
+				"sockets",
+				"sodium",
+				"SPL",
+				"standard",
+				"superglobals",
+				"sysvsem",
+				"sysvshm",
+				"tokenizer",
+				"xml",
+				"xdebug",
+				"xmlreader",
+				"xmlwriter",
+				"yaml",
+				"zip",
+				"zlib",
+				"wordpress",
+				"woocommerce",
+				"acf-pro",
+				"wordpress-globals",
+				"wp-cli",
+				"genesis",
+				"polylang",
+			},
+			files = {
+				maxSize = 5000000,
+			},
+		},
+	},
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
 
 --   =====================================================
 --              STILL NEED TO INSTALL LuaJIT
 --              LUAJIT IS UNSTABLE ON M1
 --   ======================================================
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
-USER = vim.fn.expand('$USER')
+USER = vim.fn.expand("$USER")
 local sumneko_root_path = ""
 local sumneko_binary = ""
 sumneko_root_path = "/Users/jorgebefan/.config/nvim/lua-language-server"
 sumneko_binary = "/Users/jorgebefan/.config/nvim/lua-language-server/bin/macOS/lua-language-server"
-require'lspconfig'.sumneko_lua.setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your lua path
-                path = vim.split(package.path, ';')
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {
-                    'nvim',
-                    'vim',
-                }
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
-            }
-        }
-    }
-}
+
+nvim_lsp.sumneko_lua.setup({
+	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+				-- Setup your lua path
+				path = vim.split(package.path, ";"),
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = {
+					"nvim",
+					"vim",
+				},
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = {
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+				},
+			},
+		},
+	},
+})
 
 -- =======================================================================
 -- ============================== REMAPS =================================
@@ -159,30 +218,32 @@ require'lspconfig'.sumneko_lua.setup {
 
 local map = vim.api.nvim_set_keymap
 local ns_opts = { noremap = true, silent = true }
-map('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', ns_opts)
-map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', ns_opts)
-map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', ns_opts)
+map("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", ns_opts)
+map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
+map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", ns_opts)
 -- map('n', '<leader>E', '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', ns_opts)
-map('n', '<leader>E', '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor"})<CR>', ns_opts)
-map('n', 'ge', '<cmd>lua vim.diagnostic.goto_next({severity="ERROR",float=true})<CR>', ns_opts)
-map('n', 'gw', '<cmd>lua vim.diagnostic.goto_next({severity="HINT",float=true})<CR>', ns_opts)
-map('n', 'gE', '<cmd>lua vim.diagnostic.goto_prev({float=true})<CR>', ns_opts)
-map('n', 'gW', '<cmd>lua vim.diagnostic.goto_prev({severity="HINT",float=true})<CR>', ns_opts)
-map('n', '<leader>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', ns_opts)
+map("n", "<leader>E", '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor"})<CR>', ns_opts)
+map("n", "ge", '<cmd>lua vim.diagnostic.goto_next({severity="ERROR",float=true})<CR>', ns_opts)
+map("n", "gw", '<cmd>lua vim.diagnostic.goto_next({severity="HINT",float=true})<CR>', ns_opts)
+map("n", "gE", '<cmd>lua vim.diagnostic.goto_prev({severity="ERROR",float=true})<CR>', ns_opts)
+map("n", "gW", '<cmd>lua vim.diagnostic.goto_prev({severity="HINT",float=true})<CR>', ns_opts)
+map("n", "<leader>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", ns_opts)
 -- Formatting is done better by Neoformat plugin
-map('n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', ns_opts)
+map("n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", ns_opts)
 
 -- See `:help vim.lsp.*` for documentation on any of the below functions
-map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', ns_opts)
+map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", ns_opts)
 -- Telescope does go to definition better than nvim-lsp
 -- map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', ns_opts)
-map('n', 'K', '<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>', ns_opts)
-map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', ns_opts)
-map('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', ns_opts)
+map("n", "K", "<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>", ns_opts)
+map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", ns_opts)
+map("n", "<leader>k", "<cmd>lua vim.lsp.buf.signature_help()<CR>", ns_opts)
 
 -- map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', ns_opts)
 -- map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', ns_opts)
 -- map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', ns_opts)
 
 -- *************** THIS IS READY FOR NVIM 0.6 ********************************
-vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(0, {scope="cursor", focusable=false, close_events = {"CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave"}})]]
+vim.cmd(
+	[[autocmd CursorHold * lua vim.diagnostic.open_float(0, {scope="cursor", focusable=false, close_events = {"CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave"}})]]
+)

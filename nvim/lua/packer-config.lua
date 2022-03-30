@@ -46,14 +46,14 @@ packer.startup(function()
 		run = ":TSUpdate",
 		requires = {
 			-- == Text objects
-			-- 'nvim-treesitter/nvim-treesitter-textobjects',
+			"nvim-treesitter/nvim-treesitter-textobjects",
 			-- == Closing < tags
 			"windwp/nvim-ts-autotag",
 			-- == context-aware commenting
 			"JoosepAlviste/nvim-ts-context-commentstring",
+			"nvim-treesitter/playground",
 		},
 	})
-	use("nvim-treesitter/playground")
 
 	-- == Commenting and uncommenting lines
 	-- =============================================
@@ -72,13 +72,13 @@ packer.startup(function()
 	-- =============================================
 	-- use("sbdchd/neoformat")
 
-  -- == NULL LS
-  -- ==============================================
-  use({
-    "jose-elias-alvarez/null-ls.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-})
-  use "jose-elias-alvarez/nvim-lsp-ts-utils"
+	-- == NULL LS
+	-- ==============================================
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 
 	-- == Colorizer
 	-- =============================================
@@ -117,6 +117,7 @@ packer.startup(function()
 	-- == LSP configuration
 	-- =============================================
 	use("neovim/nvim-lspconfig")
+	-- use("williamboman/nvim-lsp-installer")
 	-- == Autocompletion
 	use({
 		"hrsh7th/nvim-cmp",

@@ -1,40 +1,40 @@
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	-- ignore_install = { "javascript" }, -- List of parsers to ignore installing
-	-- textobjects = {
-	--     move = {
-	--         enable = true,
-	--         set_jumps = true,
-	--         goto_next_start = {
-	--             ["]m"] = "@function.outer",
-	--             ["[["] = "@parameter.inner",
-	--         },
-	--         goto_previous_start = {
-	--             ["[M"] = "@function.outer",
-	--             ["]]"] = "@parameter.inner",
-	--         },
-	--         goto_next_end = {
-	--             ["]M"] = "@function.outer",
-	--             ["]["] = "@class.outer",
-	--         },
-	--         goto_previous_end = {
-	--             ["[M"] = "@function.outer",
-	--             ["[]"] = "@class.outer",
-	--         },
-	--     },
-	--     select = {
-	--         enable = true,
-	--         lookahead = true,
-	--         keymaps = {
-	--             ["af"] = "@function.outer",
-	--             ["if"] = "@function.inner",
-	--             ["ac"] = "@class.outer",
-	--             ["ic"] = "@class.inner",
-	--             ["iq"] = "@parameter.inner",
-	--             ["aq"] = "@parameter.outer",
-	--         },
-	--     },
-	-- },
+	textobjects = {
+	    move = {
+	        enable = true,
+	        set_jumps = true,
+	        goto_next_start = {
+	            ["]m"] = "@function.outer",
+	            ["[["] = "@parameter.inner",
+	        },
+	        goto_previous_start = {
+	            ["[M"] = "@function.outer",
+	            ["]]"] = "@parameter.inner",
+	        },
+	        goto_next_end = {
+	            ["]M"] = "@function.outer",
+	            ["]["] = "@class.outer",
+	        },
+	        goto_previous_end = {
+	            ["[M"] = "@function.outer",
+	            ["[]"] = "@class.outer",
+	        },
+	    },
+	    select = {
+	        enable = true,
+	        lookahead = true,
+	        keymaps = {
+	            ["af"] = "@function.outer",
+	            ["if"] = "@function.inner",
+	            ["ac"] = "@class.outer",
+	            ["ic"] = "@class.inner",
+	            ["iq"] = "@parameter.inner",
+	            ["aq"] = "@parameter.outer",
+	        },
+	    },
+	},
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		-- disable = { "c", "rust" },  -- list of language that will be disabled
