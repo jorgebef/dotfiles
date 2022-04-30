@@ -248,15 +248,10 @@ _linedown=$'\e[1B'
 end_left='%F{$gray0}%f'
 end_right='%F{$gray0}%f'
 
-# PROMPT='$end_left%K{$black5}$os_icon$separator$(filepath)%k$end_right'
 PROMPT='${_newline}'
 PROMPT+='$end_left%K{$gray0}$(filepath)%k$end_right'
-# PROMPT+='$(middle_space)'
-# PROMPT+='%K{#414550}%F{blue}$(elapsed)%F{green}$(branch)%F{#e2e2e3}$(cur_time)%k%f'
 PROMPT+='${_newline}'
-# blue prompt if successful previous command, red if unsuccessful
 PROMPT+='%(?:%F{$sky} %f:%F{$red} %f)'
-
 RPROMPT='%{$_lineup%}$end_left%K{$gray0}$(elapsed)$(branch)$(cur_time)%k$end_right%{$_linedown%}'
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

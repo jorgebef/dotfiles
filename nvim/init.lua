@@ -39,13 +39,18 @@ vim.o.scrolloff = 3
 vim.g.inccommand = "nosplit"
 -- " Don't pass messages to |ins-completion-menu|.
 vim.g.shortmess = vim.o.shortmess .. "c"
--- ONCE lua filetype is merged into the stable release, I can uncomment the below lines
--- vim.g.do_filetype_lua=1
-vim.g.did_load_filetypes = 0
+
+-- ===================== NEOVIDE SETTINGS =============================
+-- vim.g.neovide_cursor_animation_length=0
+-- vim.cmd([[set guifont=JetBrainsMono\ Nerd\ Font:h13]])
+
+vim.api.nvim_command("filetype plugin on")
+vim.api.nvim_command("filetype indent plugin on")
+vim.api.nvim_command("syntax on")
 
 -- REMAPS
 -- ================================================================
-local remap = vim.api.nvim_set_keymap
+local remap = vim.keymap.set
 local nsn_opts = { noremap = true, silent = true, nowait = true }
 local ns_opts = { noremap = true, silent = true }
 local n_opts = { noremap = true }
@@ -113,24 +118,26 @@ remap("n", "<leader>V", ":vs<CR>", nsn_opts)
 
 -- " ====================== AUTOCMD ========================
 
-vim.api.nvim_exec(
-	[[
-  augroup CursorLine
-  autocmd!
-  au VimEnter,WinEnter,BufRead,BufWinEnter * setlocal cursorline | :echo""
-  au WinLeave * setlocal nocursorline
-  augroup END
+-- vim.api.nvim_exec(
+-- 	[[
+--   autocmd FileType json syntax match Comment +\/\/.\+$+
+--   ]],
+-- 	false
+-- )
 
-  augroup highlight_yank
-  autocmd!
-  au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=250 }
-  augroup END
+vim.api.nvim_create_augroup("highlight_yank", { clear = true })
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+	pattern = "*",
+	command = 'lua vim.highlight.on_yank { higroup="IncSearch", timeout=250 }',
+	group = "highlight_yank",
+})
 
-  autocmd FileType json syntax match Comment +\/\/.\+$+
-
-  ]],
-	false
+vim.api.nvim_create_augroup("CursorLine", { clear = true })
+vim.api.nvim_create_autocmd(
+	{ "VimEnter", "WinEnter", "BufRead", "BufWinEnter" },
+	{ pattern = "*", command = 'setlocal cursorline | :echo""', group = "CursorLine" }
 )
+vim.api.nvim_create_autocmd({ "WinLeave" }, { pattern = "*", command = "setlocal nocursorline", group = "CursorLine" })
 
 -- " ====================== / AUTOCMD ========================
 
@@ -151,7 +158,6 @@ require("bufdel-config")
 require("treesitter-config")
 require("null-ls-config")
 require("telescope-config")
--- require('fzf-config')
 require("gitsigns-config")
 require("dashboard-config")
 -- require('diffview-config')
@@ -167,6 +173,7 @@ vim.cmd("source ~/.config/nvim/vimscript/highlights.vim")
 -- vim.cmd('source ~/.config/nvim/vimscript/coc-config.vim')
 
 -- vim.cmd [[colorscheme sonokai]]
-vim.g.catppuccin_flavour = "storm"
+vim.g.catppuccin_flavour = "macchiato"
+-- vim.g.catppuccin_flavour = "frappe"
 -- vim.g.catppuccin_flavour = "dusk"
 vim.cmd([[colorscheme catppuccin]])

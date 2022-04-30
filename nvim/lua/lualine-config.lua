@@ -1,29 +1,29 @@
-local cp = {
-	rosewater = "#F5DFDA", -- Rosewater
-	flamingo = "#F2CBCB", -- Flamingo			-- done
-	mauve = "#C6A4F8", -- Mauve					-- done
-	pink = "#F5BFE7", -- Pink					-- done
-	red = "#F586A2", -- Red						-- done
-	maroon = "#EB9DA4", -- Maroon				-- done
-	peach = "#FCB081", -- Peach					-- done
-	yellow = "#F8DEA9", -- Yellow				-- done
-	green = "#A9E4A3", -- Green					-- done
-	blue = "#8CB3FA", -- Blue					-- done
-	sky = "#89DCFD", -- Sky						-- done
-	teal = "#88DFD2", -- Teal					-- done
-	lavender = "#C7CBFD", -- Lavender			-- done
-	white = "#D2DAF1", -- White					-- done
-	gray2 = "#B9C0DB", -- Gray2
-	gray1 = "#6F7599", -- Gray1
-	gray0 = "#5E6487", -- Gray0
-	black4 = "#3E435E", -- Black4
-	black3 = "#2B3045", -- Black3
-	black2 = "#24273A", -- Black2				-- done
-	black1 = "#1F2233", -- Black1
-	black0 = "#1A1B26", -- Black0
-}
-
-
+-- local cp = {
+-- 	rosewater = "#F5DFDA",
+-- 	flamingo = "#F2CBCB",
+-- 	pink = "#F5BFE7",
+-- 	mauve = "#C59FF6",
+-- 	red = "#F67E98",
+-- 	maroon = "#F1949B",
+-- 	peach = "#FEA571",
+-- 	yellow = "#F1D8A4",
+-- 	green = "#A1DF8E",
+-- 	teal = "#85E0D1",
+-- 	sky = "#89DCFD",
+-- 	blue = "#83ABF9",
+-- 	sapphire = "#34C3DC",
+-- 	lavender = "#B8C1FE",
+-- 	white = "#C5CFF5",
+-- 	gray2 = "#AEB7DA",
+-- 	gray1 = "#979FC0",
+-- 	gray0 = "#8087A5",
+-- 	black5 = "#696F8A",
+-- 	black4 = "#52576F",
+-- 	black3 = "#3B3F55",
+-- 	black2 = "#24273A",
+-- 	black1 = "#1F2232",
+-- 	black0 = "#181926",
+-- }
 
 require("lualine").setup({
 	options = {
@@ -39,7 +39,7 @@ require("lualine").setup({
 		-- section_separators = { left = '', right = ''},
 		disabled_filetypes = {},
 		always_divide_middle = false,
-    globalstatus = true
+		globalstatus = true,
 	},
 	sections = {
 		lualine_a = {
@@ -59,11 +59,11 @@ require("lualine").setup({
 			{
 				"diff",
 				colored = true,
-				diff_color = {
-					added = { fg=cp.green, bg = nil }, -- Changes diagnostic's info color
-					modified = { fg=cp.yellow, bg = nil }, -- changes diagnostic's warn color
-					removed = { fg=cp.red,bg=nil }, -- changes diagnostic's error color
-				},
+				-- diff_color = {
+				-- 	added = { fg = cp.green, bg = nil }, -- Changes diagnostic's info color
+				-- 	modified = { fg = cp.yellow, bg = nil }, -- changes diagnostic's warn color
+				-- 	removed = { fg = cp.red, bg = nil }, -- changes diagnostic's error color
+				-- },
 				separator = { right = "" },
 				left_padding = 1,
 			},
@@ -77,12 +77,12 @@ require("lualine").setup({
 				-- displays diagnostics from defined severity
 				sections = { "error", "warn", "info", "hint" },
 				-- all colors are in format #rrggbb
-				diagnostics_color = {
-					error = { fg=cp.red,bg=nil }, -- changes diagnostic's error color
-					warn = { fg=cp.yellow, bg = nil }, -- changes diagnostic's warn color
-					info = { fg=cp.blue, bg = nil }, -- Changes diagnostic's info color
-					hint = { fg=cp.rosewater, bg = nil }, -- Changes diagnostic's hint color
-				},
+				-- diagnostics_color = {
+				-- 	error = { fg = cp.red, bg = nil }, -- changes diagnostic's error color
+				-- 	warn = { fg = cp.yellow, bg = nil }, -- changes diagnostic's warn color
+				-- 	info = { fg = cp.blue, bg = nil }, -- Changes diagnostic's info color
+				-- 	hint = { fg = cp.saphire , bg = nil }, -- Changes diagnostic's hint color
+				-- },
 				-- symbols = {error = 'E', warn = 'W', info = 'I', hint = 'H'}
 				symbols = { error = " ", warn = " ", info = " " },
 				colored = true, -- displays diagnostics status in color if set to true

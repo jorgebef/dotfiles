@@ -22,52 +22,17 @@ require("bufferline").setup({
 		always_show_bufferline = true,
 	},
 	highlights = {
-		-- fill = {
-		--   guibg = '#222327',
-		-- },
 		indicator_selected = {
-			guifg = "#F28FAD",
-			-- guibg = '#222327'
+			guifg = "#F5BFE7",
 		},
-		-- background = {
-		--   guifg = '#575268',
-		--   guibg = '#15121C'
-		-- },
-		-- separator_selected = {
-		--   guifg = '#ffffff',
-		--   guibg = '#000000',
-		-- },
-		-- separator_visible = {
-		--   guifg = '#999',
-		--   guibg = '#000',
-		-- },
-		-- separator = {
-		--   guifg = '#333',
-		--   guibg = '#000',
-		-- },
-		-- buffer_visible = {
-		-- guifg = '#DFDEF1',
-		-- guibg = {
-		--   attribute = "bg",
-		--   highlight = "Background"
-		-- },
-		-- },
-		-- buffer_selected = {
-		--   guifg = '#e2e2e3',
-		--   guibg = {
-		--     attribute = "bg",
-		--     highlight = "Background"
-		--   },
-		--   gui = "bold"
-		-- },
 		modified = {
-			guifg = "#F28FAD",
+			guifg = "#F67E98",
 		},
 		modified_visible = {
-			guifg = "#F28FAD",
+			guifg = "#F67E98",
 		},
 		modified_selected = {
-			guifg = "#F28FAD",
+			guifg = "#F67E98",
 		},
 	},
 })

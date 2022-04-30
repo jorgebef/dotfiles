@@ -75,11 +75,12 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = {
 	"pyright",
-	'tsserver',
+	"tsserver",
 	"vimls",
 	"jsonls",
 	"cssls",
-  -- "rust_analyzer"
+	"tailwindcss",
+	-- "rust_analyzer"
 	-- 'intelephense'
 }
 for _, lsp in ipairs(servers) do
@@ -92,15 +93,30 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
-nvim_lsp.rls.setup {
-  settings = {
-    rust = {
-      unstable_features = false,
-      build_on_save = false,
-      all_features = true,
-    },
-  },
-}
+nvim_lsp.rls.setup({
+	settings = {
+		rust = {
+			unstable_features = false,
+			build_on_save = false,
+			all_features = true,
+		},
+	},
+})
+
+local util = require("lspconfig/util")
+nvim_lsp.gopls.setup({
+	cmd = { "gopls", "serve" },
+	filetypes = { "go", "gomod" },
+	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
+})
 
 --Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()

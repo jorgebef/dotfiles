@@ -28,14 +28,35 @@ require("telescope").setup({
 		find_files = {
 			hidden = true,
 			no_ignore = true,
+			find_command = {
+				"fd",
+        "--color=never",
+				"--type",
+				"f",
+				"--hidden",
+				"--follow",
+				"--no-ignore",
+				"--exclude",
+				"node_modules",
+				"--exclude",
+				".git",
+				"--exclude",
+				"out",
+				"--exclude",
+				".next",
+			},
 		},
 	},
 	defaults = {
 		prompt_prefix = "   ",
 		-- buffer_previewer_maker = new_maker,
+    -- ====================================================
+    -- IT IS VERY SLOW TO RELY ON FILE IGNORE PATTERNS
+    -- ====================================================
 		file_ignore_patterns = {
 			"node_modules/",
 			".git/",
+			-- ".next/",
 			-- 'DS_'
 		},
 		vimgrep_arguments = {
@@ -72,8 +93,8 @@ require("telescope").load_extension("fzf")
 local remap = vim.api.nvim_set_keymap
 local nsn_opts = { noremap = true, silent = true, nowait = true }
 remap("n", "<leader>fb", '<cmd>lua require("telescope.builtin").buffers()<cr>', nsn_opts)
-remap("n", "<leader>fF", '<cmd>lua require("telescope.builtin").find_files()<cr>', nsn_opts)
-remap("n", "<leader>ff", '<cmd>lua require("telescope-functions").project_files()<cr>', nsn_opts)
+remap("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files()<cr>', nsn_opts)
+remap("n", "<leader>fF", '<cmd>lua require("telescope-functions").project_files()<cr>', nsn_opts)
 remap("n", "<leader>fG", '<cmd>lua require("telescope.builtin").git_files()<cr>', nsn_opts)
 remap("n", "<leader>fg", '<cmd>lua require("telescope.builtin").live_grep()<cr>', nsn_opts)
 remap("n", "<leader>fs", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', nsn_opts)

@@ -2,7 +2,7 @@
 -- defaults, or call `setup` at all, if you do not want to change anything.
 
 require("lightspeed").setup({
-	ignore_case = false,
+	ignore_case = true,
 	exit_after_idle_msecs = { unlabeled = 2000, labeled = nil },
 
 	--- s/x ---

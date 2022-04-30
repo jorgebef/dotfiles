@@ -33,7 +33,7 @@ packer.startup(function()
 
 	-- == Filetype detection in lua
 	-- =============================================
-	use("nathom/filetype.nvim")
+	-- use("nathom/filetype.nvim")
 
 	-- == Dashboard on startup and session management
 	-- =============================================
@@ -112,7 +112,6 @@ packer.startup(function()
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	-- use({ "nvim-telescope/telescope-project.nvim" })
 
 	-- == LSP configuration
 	-- =============================================

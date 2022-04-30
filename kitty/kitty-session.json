@@ -2,10 +2,11 @@
   {
     "id": 1,
     "is_focused": true,
-    "platform_window_id": 135,
+    "platform_window_id": 67305,
     "tabs": [
       {
         "active_window_history": [
+          9,
           1
         ],
         "enabled_layouts": [
@@ -13,51 +14,28 @@
           "stack"
         ],
         "id": 1,
-        "is_focused": false,
-        "layout": "fat",
-        "layout_opts": {
-          "bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "full_size": 1,
-          "mirrored": false
-        },
-        "layout_state": {
-          "biased_map": {},
-          "main_bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "num_full_size_windows": 1
-        },
+        "is_focused": true,
+        "layout": "stack",
+        "layout_opts": {},
+        "layout_state": {},
         "title": "dotfiles",
         "windows": [
           {
             "cmdline": [
               "-zsh"
             ],
-            "columns": 319,
+            "columns": 212,
             "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
             "env": {},
             "foreground_processes": [
               {
                 "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.8.0/bin/node",
+                  "/opt/homebrew/Cellar/node/18.0.0/bin/node",
                   "/opt/homebrew/lib/node_modules/vim-language-server/out/scan.js",
                   "--node-ipc"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 28290
-              },
-              {
-                "cmdline": [
-                  "node",
-                  "/opt/homebrew/bin/vim-language-server",
-                  "--stdio"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 28251
+                "pid": 84091
               },
               {
                 "cmdline": [
@@ -66,28 +44,37 @@
                   "/Users/jorgebefan/.config/nvim/lua-language-server/main.lua"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 28245
+                "pid": 84060
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/vim-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
+                "pid": 84054
               },
               {
                 "cmdline": [
                   "nvim"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 28236
+                "pid": 84049
               }
             ],
             "id": 1,
             "is_focused": false,
             "is_self": false,
-            "lines": 49,
-            "pid": 996,
+            "lines": 90,
+            "pid": 51843,
             "title": "nvim"
           },
           {
             "cmdline": [
               "-zsh"
             ],
-            "columns": 319,
+            "columns": 212,
             "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
             "env": {},
             "foreground_processes": [
@@ -96,158 +83,23 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 28303
-              }
-            ],
-            "id": 13,
-            "is_focused": false,
-            "is_self": false,
-            "lines": 41,
-            "pid": 28303,
-            "title": "\u2026/Documents/Github/dotfiles"
-          }
-        ]
-      },
-      {
-        "active_window_history": [
-          9,
-          2
-        ],
-        "enabled_layouts": [
-          "fat:bias=55;full_size=1;mirrored=false",
-          "stack"
-        ],
-        "id": 2,
-        "is_focused": true,
-        "layout": "stack",
-        "layout_opts": {},
-        "layout_state": {},
-        "title": "front-test-zara",
-        "windows": [
-          {
-            "cmdline": [
-              "-zsh"
-            ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.8.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/front-test-zara/node_modules/typescript/lib/typingsInstaller.js",
-                  "--globalTypingsCacheLocation",
-                  "/Users/jorgebefan/Library/Caches/typescript/4.6",
-                  "--typesMapLocation",
-                  "/Users/jorgebefan/Documents/Github/front-test-zara/node_modules/typescript/lib/typesMap.json"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara/node_modules/react-router-dom",
-                "pid": 56688
-              },
-              {
-                "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.8.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/front-test-zara/node_modules/typescript/lib/tsserver.js",
-                  "--cancellationPipeName",
-                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/b0e6464f4d70564c58742bb4bd0555b9/tscancellation*"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara/node_modules/react-router-dom",
-                "pid": 56687
-              },
-              {
-                "cmdline": [
-                  "node",
-                  "/opt/homebrew/bin/typescript-language-server",
-                  "--stdio"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara/node_modules/react-router-dom",
-                "pid": 56672
-              },
-              {
-                "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.8.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/front-test-zara/node_modules/typescript/lib/typingsInstaller.js",
-                  "--globalTypingsCacheLocation",
-                  "/Users/jorgebefan/Library/Caches/typescript/4.6",
-                  "--typesMapLocation",
-                  "/Users/jorgebefan/Documents/Github/front-test-zara/node_modules/typescript/lib/typesMap.json"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara",
-                "pid": 25118
-              },
-              {
-                "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.8.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/front-test-zara/node_modules/typescript/lib/tsserver.js",
-                  "--cancellationPipeName",
-                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/eaa51e7995d0f6a1920e2156d6f55867/tscancellation*"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara",
-                "pid": 25117
-              },
-              {
-                "cmdline": [
-                  "node",
-                  "/opt/homebrew/bin/vscode-json-language-server",
-                  "--stdio"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara",
-                "pid": 25116
-              },
-              {
-                "cmdline": [
-                  "node",
-                  "/opt/homebrew/bin/typescript-language-server",
-                  "--stdio"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara",
-                "pid": 25115
-              },
-              {
-                "cmdline": [
-                  "nvim"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara",
-                "pid": 25044
-              }
-            ],
-            "id": 2,
-            "is_focused": false,
-            "is_self": false,
-            "lines": 90,
-            "pid": 997,
-            "title": "nvim"
-          },
-          {
-            "cmdline": [
-              "-zsh"
-            ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "-zsh"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara",
-                "pid": 1519
+                "pid": 55156
               }
             ],
             "id": 9,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 1519,
-            "title": "\u2026/Documents/Github/front-test-zara"
+            "pid": 55156,
+            "title": "\u2026/Documents/Github/dotfiles"
           },
           {
             "cmdline": [
               "sh",
               "/Users/jorgebefan/.config/kitty/savesess.sh"
             ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara",
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
             "env": {},
             "foreground_processes": [
               {
@@ -256,24 +108,173 @@
                   "@",
                   "ls"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara",
-                "pid": 72177
+                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
+                "pid": 84133
               },
               {
                 "cmdline": [
                   "sh",
                   "/Users/jorgebefan/.config/kitty/savesess.sh"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/front-test-zara",
-                "pid": 72176
+                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
+                "pid": 84132
               }
             ],
-            "id": 15,
+            "id": 12,
             "is_focused": true,
             "is_self": true,
             "lines": 90,
-            "pid": 72176,
+            "pid": 84132,
             "title": "savesess.sh"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          8,
+          2,
+          7
+        ],
+        "enabled_layouts": [
+          "fat:bias=55;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 2,
+        "is_focused": false,
+        "layout": "stack",
+        "layout_opts": {},
+        "layout_state": {},
+        "title": "CNG Lawyers",
+        "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/vscode-css-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 83345
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/18.0.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/cng_lawyers/node_modules/typescript/lib/typingsInstaller.js",
+                  "--globalTypingsCacheLocation",
+                  "/Users/jorgebefan/Library/Caches/typescript/4.6",
+                  "--typesMapLocation",
+                  "/Users/jorgebefan/Documents/Github/cng_lawyers/node_modules/typescript/lib/typesMap.json"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 81310
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/18.0.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/cng_lawyers/node_modules/typescript/lib/tsserver.js",
+                  "--cancellationPipeName",
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/b68bfaf2a3f70a55ef0463e63482622a/tscancellation*"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 81274
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/tailwindcss-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 81273
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/typescript-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 81272
+              },
+              {
+                "cmdline": [
+                  "nvim"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 81263
+              }
+            ],
+            "id": 2,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 51844,
+            "title": "nvim"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 52224
+              }
+            ],
+            "id": 7,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 52224,
+            "title": "\u2026/Documents/Github/cng_lawyers"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "node",
+                  "/Users/jorgebefan/Documents/Github/cng_lawyers/node_modules/.bin/next",
+                  "dev"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 83476
+              },
+              {
+                "cmdline": [
+                  "npm run dev",
+                  "",
+                  "",
+                  ""
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 83464
+              }
+            ],
+            "id": 8,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 52272,
+            "title": "npm run dev"
           }
         ]
       },
@@ -304,61 +305,30 @@
           ],
           "num_full_size_windows": 1
         },
-        "title": "Teamwork-Manager App",
+        "title": "Portfolio",
         "windows": [
           {
             "cmdline": [
               "-zsh"
             ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/portfolio",
             "env": {},
             "foreground_processes": [
               {
                 "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.8.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/teamwork-manager-app/node_modules/typescript/lib/typingsInstaller.js",
-                  "--globalTypingsCacheLocation",
-                  "/Users/jorgebefan/Library/Caches/typescript/4.5",
-                  "--typesMapLocation",
-                  "/Users/jorgebefan/Documents/Github/teamwork-manager-app/node_modules/typescript/lib/typesMap.json"
+                  "-zsh"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
-                "pid": 35725
-              },
-              {
-                "cmdline": [
-                  "/opt/homebrew/Cellar/node/17.8.0/bin/node",
-                  "/Users/jorgebefan/Documents/Github/teamwork-manager-app/node_modules/typescript/lib/tsserver.js",
-                  "--cancellationPipeName",
-                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/6afc2b3cb7a0edfee6e59e1a4d4db055/tscancellation*"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
-                "pid": 35724
-              },
-              {
-                "cmdline": [
-                  "node",
-                  "/opt/homebrew/bin/typescript-language-server",
-                  "--stdio"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
-                "pid": 35666
-              },
-              {
-                "cmdline": [
-                  "nvim"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
-                "pid": 35657
+                "cwd": "/Users/jorgebefan/Documents/Github/portfolio",
+                "pid": 51846
               }
             ],
             "id": 3,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 998,
-            "title": "nvim"
+            "pid": 51846,
+            "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/portfolio"
           }
         ]
       },
@@ -389,30 +359,30 @@
           ],
           "num_full_size_windows": 1
         },
-        "title": "KanjiStudy-App",
+        "title": "Teamwork-Manager App",
         "windows": [
           {
             "cmdline": [
               "-zsh"
             ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
             "env": {},
             "foreground_processes": [
               {
                 "cmdline": [
                   "-zsh"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
-                "pid": 999
+                "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
+                "pid": 51854
               }
             ],
             "id": 4,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 999,
-            "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/KanjiStudyApp/client"
+            "pid": 51854,
+            "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/teamwork-manager-app"
           }
         ]
       },
@@ -443,36 +413,37 @@
           ],
           "num_full_size_windows": 1
         },
-        "title": "RussianWarCrimes",
+        "title": "KanjiStudy-App",
         "windows": [
           {
             "cmdline": [
               "-zsh"
             ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/RussianWarCrimes",
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
             "env": {},
             "foreground_processes": [
               {
                 "cmdline": [
                   "-zsh"
                 ],
-                "cwd": "/Users/jorgebefan/Documents/Github/RussianWarCrimes",
-                "pid": 1000
+                "cwd": "/Users/jorgebefan/Documents/Github/KanjiStudyApp/client",
+                "pid": 51863
               }
             ],
             "id": 5,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 1000,
-            "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/RussianWarCrimes"
+            "pid": 51863,
+            "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/KanjiStudyApp/client"
           }
         ]
       },
       {
         "active_window_history": [
-          6
+          6,
+          11
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
@@ -480,84 +451,16 @@
         ],
         "id": 6,
         "is_focused": false,
-        "layout": "fat",
-        "layout_opts": {
-          "bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "full_size": 1,
-          "mirrored": false
-        },
-        "layout_state": {
-          "biased_map": {},
-          "main_bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "num_full_size_windows": 1
-        },
-        "title": "Rust projects",
-        "windows": [
-          {
-            "cmdline": [
-              "-zsh"
-            ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/learning_rust",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "-zsh"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/learning_rust",
-                "pid": 1009
-              }
-            ],
-            "id": 6,
-            "is_focused": false,
-            "is_self": false,
-            "lines": 90,
-            "pid": 1009,
-            "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/learning_rust"
-          }
-        ]
-      },
-      {
-        "active_window_history": [
-          7
-        ],
-        "enabled_layouts": [
-          "fat:bias=55;full_size=1;mirrored=false",
-          "stack"
-        ],
-        "id": 7,
-        "is_focused": false,
-        "layout": "fat",
-        "layout_opts": {
-          "bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "full_size": 1,
-          "mirrored": false
-        },
-        "layout_state": {
-          "biased_map": {},
-          "main_bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "num_full_size_windows": 1
-        },
+        "layout": "stack",
+        "layout_opts": {},
+        "layout_state": {},
         "title": "Catppuccin",
         "windows": [
           {
             "cmdline": [
               "-zsh"
             ],
-            "columns": 319,
+            "columns": 212,
             "cwd": "/Users/jorgebefan/Documents/Github/catppuccin/nvim",
             "env": {},
             "foreground_processes": [
@@ -566,14 +469,37 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/catppuccin/nvim",
-                "pid": 1011
+                "pid": 51874
               }
             ],
-            "id": 7,
+            "id": 6,
             "is_focused": false,
             "is_self": false,
             "lines": 90,
-            "pid": 1011,
+            "pid": 51874,
+            "title": "\u2026/Github/catppuccin/nvim"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 212,
+            "cwd": "/Users/jorgebefan/Documents/Github/catppuccin/nvim",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/catppuccin/nvim",
+                "pid": 58134
+              }
+            ],
+            "id": 11,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 90,
+            "pid": 58134,
             "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/catppuccin/nvim"
           }
         ]
