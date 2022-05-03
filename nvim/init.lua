@@ -14,7 +14,7 @@ vim.opt.lazyredraw = true
 -- vim.opt.softtabstop = 2
 -- vim.opt.shiftwidth = 2
 -- vim.o.shiftround = true
--- vim.o.sessionoptions = "globals,buffers,curdir,folds,help,resize,tabpages,winsize,winpos"
+vim.o.sessionoptions = "globals,buffers,curdir,folds,help,resize,tabpages,winsize,winpos"
 -- vim.o.smartcase = true
 -- vim.o.tabstop = 2
 -- vim.o.timeout = false
@@ -27,7 +27,7 @@ vim.g.mapleader = " "
 -- vim.o.wrapscan = true
 vim.g.inccommand = "nosplit"
 -- " Don't pass messages to |ins-completion-menu|.
-vim.g.shortmess = vim.o.shortmess .. "c"
+-- vim.g.shortmess = vim.o.shortmess .. "c"
 
 vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
 vim.opt.colorcolumn = "99999" -- fixes indentline for now
@@ -50,7 +50,7 @@ vim.opt.splitbelow = true -- force all horizontal splits to go below current win
 vim.opt.splitright = true -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false -- creates a swapfile
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 250 -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.timeoutlen = 450 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.title = true -- set the title of window to the value of the titlestring
 -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
 -- vim.opt.undodir = join_paths(get_cache_dir(), "undo") -- set an undo directory
@@ -65,13 +65,17 @@ vim.opt.number = true -- set numbered lines
 vim.opt.relativenumber = false -- set relative numbered lines
 vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shift the text each time
-vim.opt.wrap = false -- display lines as one long line
+-- vim.opt.wrap = false -- display lines as one long line
 vim.opt.spell = false
 vim.opt.spelllang = "en"
 -- vim.opt.spellfile = join_paths(get_config_dir(), "spell", "en.utf-8.add")
 -- vim.opt.shadafile = join_paths(get_cache_dir(), "lvim.shada")
 vim.opt.scrolloff = 5 -- minimal number of screen lines to keep above and below the cursor.
-vim.opt.sidescrolloff = 8 -- minimal number of screen lines to keep left and right of the cursor.
+-- vim.opt.sidescrolloff = 8 -- minimal number of screen lines to keep left and right of the cursor.
+
+vim.opt.shortmess:append("c") -- don't show redundant messages from ins-completion-menu
+vim.opt.shortmess:append("I") -- don't show the default intro message
+vim.opt.whichwrap:append("<,>,[,],h,l")
 
 -- ===================== NEOVIDE SETTINGS =============================
 -- vim.g.neovide_cursor_animation_length=0
