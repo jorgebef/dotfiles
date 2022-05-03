@@ -60,7 +60,7 @@ call Hi('javascriptTSProperty',yellow,'NONE')
 
 call Hi('typescriptTSProperty',yellow,'NONE')
 call Hi('tsxTSTagDelimiter',maroon,'NONE')
-call Hi('tsxTSProperty',yellow,'NONE')
+" call Hi('tsxTSProperty',yellow,'NONE')
 
 " call Hi('IndentBlanklineChar',black3,'NONE')
 

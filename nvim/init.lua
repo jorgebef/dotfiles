@@ -1,44 +1,77 @@
 -- ===================== THEMES ======================
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 
 -- ===================== BASIC SETTINGS ======================
-vim.o.backup = false
-vim.o.writebackup = false
+vim.opt.backup = false
 -- " Give more space for displaying messages.
-vim.o.cmdheight = 2
-vim.o.showcmd = true
-vim.o.wildmenu = true
-vim.o.mouse = ""
-vim.o.showmatch = true
-vim.o.expandtab = true
-vim.o.hidden = true
-vim.o.hlsearch = true
-vim.o.incsearch = true
-vim.o.ignorecase = true
-vim.g.lazyredraw = true
-vim.o.number = true
-vim.o.ruler = true
-vim.o.relativenumber = true
-vim.o.showmode = false
-vim.o.signcolumn = "yes:1" -- Always show signcolumn, max width 1
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
-vim.o.shiftround = true
-vim.o.sessionoptions = "globals,buffers,curdir,folds,help,resize,tabpages,winsize,winpos"
-vim.o.smartcase = true
-vim.o.tabstop = 2
-vim.o.timeout = false
-vim.o.timeoutlen = 10
+vim.opt.showcmd = true
+-- vim.o.wildmenu = true
+vim.opt.showmatch = true
+vim.opt.incsearch = true
+vim.opt.lazyredraw = true
+-- vim.o.ruler = true
+-- vim.o.signcolumn = "yes:1" -- Always show signcolumn, max width 1
+-- vim.opt.softtabstop = 2
+-- vim.opt.shiftwidth = 2
+-- vim.o.shiftround = true
+-- vim.o.sessionoptions = "globals,buffers,curdir,folds,help,resize,tabpages,winsize,winpos"
+-- vim.o.smartcase = true
+-- vim.o.tabstop = 2
+-- vim.o.timeout = false
+-- vim.o.timeoutlen = 10
 vim.g.ttyfast = true
-vim.o.undofile = true
+-- vim.o.undofile = true
 vim.bo.undofile = true -- persistent undo is a neat feature
-vim.o.updatetime = 600
+-- vim.o.updatetime = 800
 vim.g.mapleader = " "
-vim.o.wrapscan = true
-vim.o.scrolloff = 3
+-- vim.o.wrapscan = true
 vim.g.inccommand = "nosplit"
 -- " Don't pass messages to |ins-completion-menu|.
 vim.g.shortmess = vim.o.shortmess .. "c"
+
+vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
+vim.opt.colorcolumn = "99999" -- fixes indentline for now
+vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
+vim.opt.fileencoding = "utf-8" -- the encoding written to a file
+vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
+vim.opt.foldexpr = "" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
+vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
+vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
+vim.opt.hlsearch = true -- highlight all matches on previous search pattern
+vim.opt.ignorecase = true -- ignore case in search patterns
+vim.opt.mouse = "" --  don't allow the mouse to be used in neovim
+vim.opt.pumheight = 10 -- pop up menu height
+vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
+vim.opt.showtabline = 2 -- always show tabs
+vim.opt.smartcase = true -- smart case
+vim.opt.smartindent = true -- make indenting smarter again
+vim.opt.splitbelow = true -- force all horizontal splits to go below current window
+vim.opt.splitright = true -- force all vertical splits to go to the right of current window
+vim.opt.swapfile = false -- creates a swapfile
+vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
+vim.opt.timeoutlen = 250 -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.title = true -- set the title of window to the value of the titlestring
+-- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
+-- vim.opt.undodir = join_paths(get_cache_dir(), "undo") -- set an undo directory
+vim.opt.undofile = true -- enable persistent undo
+vim.opt.updatetime = 300 -- faster completion
+vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
+vim.opt.expandtab = true -- convert tabs to spaces
+vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
+vim.opt.tabstop = 2 -- insert 2 spaces for a tab
+vim.opt.cursorline = true -- highlight the current line
+vim.opt.number = true -- set numbered lines
+vim.opt.relativenumber = false -- set relative numbered lines
+vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
+vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shift the text each time
+vim.opt.wrap = false -- display lines as one long line
+vim.opt.spell = false
+vim.opt.spelllang = "en"
+-- vim.opt.spellfile = join_paths(get_config_dir(), "spell", "en.utf-8.add")
+-- vim.opt.shadafile = join_paths(get_cache_dir(), "lvim.shada")
+vim.opt.scrolloff = 5 -- minimal number of screen lines to keep above and below the cursor.
+vim.opt.sidescrolloff = 8 -- minimal number of screen lines to keep left and right of the cursor.
 
 -- ===================== NEOVIDE SETTINGS =============================
 -- vim.g.neovide_cursor_animation_length=0
@@ -151,23 +184,15 @@ require("indentline-config")
 require("comment-config")
 require("nvim-tree-config")
 require("lualine-config")
--- require('lua-ls')
 require("bufferline-config")
 require("bufdel-config")
--- require("startify-config")
 require("treesitter-config")
 require("null-ls-config")
 require("telescope-config")
 require("gitsigns-config")
 require("dashboard-config")
--- require('diffview-config')
--- require("neoformat-config")
 require("lightspeed-config")
 require("colorizer-config")
--- require('toggleterm-config')
--- require('sonokai')
---require('fzf-config')
--- require('lua-ls.lua') -- luajit not yet available for M1 mac
 
 vim.cmd("source ~/.config/nvim/vimscript/highlights.vim")
 -- vim.cmd('source ~/.config/nvim/vimscript/coc-config.vim')
