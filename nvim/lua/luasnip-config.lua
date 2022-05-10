@@ -46,6 +46,8 @@ _G.s_tab_complete = function()
 end
 
 require("luasnip.loaders.from_vscode").lazy_load() -- You can pass { paths = "./my-snippets/"} too
+-- Load custom typescript
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets/typescript" } })
 
 -- vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 -- vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
