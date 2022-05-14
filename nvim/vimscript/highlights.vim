@@ -62,6 +62,9 @@ call Hi('typescriptTSProperty',yellow,'NONE')
 call Hi('tsxTSTagDelimiter',maroon,'NONE')
 " call Hi('tsxTSProperty',yellow,'NONE')
 
+" call Hi('jsoncComment',black3,'NONE')
+" call Hi('jsoncLineComment',black3,'NONE')
+
 " call Hi('IndentBlanklineChar',black3,'NONE')
 
 " +++++++++++++++++++++++++++++++++++++++++++++
@@ -73,12 +76,14 @@ call Hi('BufferLineBufferVisible',white,'inactive_bg')
 call Hi('BufferLineBackground',gray0,'inactive_bg')
 
 endfunction
-" Allowing JSON comments
-augroup JSON_allow_comments
-  autocmd!
-  autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
-  autocmd BufNewFile,BufRead jsconfig.json setlocal filetype=jsonc
-augroup END
+
+" " Allowing JSON comments
+" augroup JSON_allow_comments
+"   autocmd!
+"   autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
+"   autocmd BufNewFile,BufRead jsconfig.json setlocal filetype=jsonc
+" augroup END
+
 " running the function at the end
 augroup MyColors
   autocmd!
