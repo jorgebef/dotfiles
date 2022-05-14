@@ -133,11 +133,6 @@ packer.startup(function()
 		},
 	})
 
-	-- == Allow comments in JSON
-	-- (check JSON_allow_comments in init.lua)
-	-- =============================================
-	use("neoclide/jsonc.vim")
-
 	-- == Killing buffers easily
 	-- =============================================
 	-- use 'qpkorr/vim-bufkill'
@@ -150,7 +145,6 @@ packer.startup(function()
 		-- "jorgebef/nvim",
 		-- branch = "main",
 		branch = "dev",
-		-- branch = "experiments",
 		as = "catppuccin",
 	})
 
