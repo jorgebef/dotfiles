@@ -50,7 +50,7 @@ vim.opt.splitbelow = true -- force all horizontal splits to go below current win
 vim.opt.splitright = true -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false -- creates a swapfile
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 450 -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.timeoutlen = 950 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.title = true -- set the title of window to the value of the titlestring
 -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
 -- vim.opt.undodir = join_paths(get_cache_dir(), "undo") -- set an undo directory
@@ -153,30 +153,6 @@ remap("n", "<leader>-", "<C-w>8<", nsn_opts)
 
 remap("n", "<leader>V", ":vs<CR>", nsn_opts)
 
--- " ====================== AUTOCMD ========================
-
--- vim.api.nvim_exec(
--- 	[[
---   autocmd FileType json syntax match Comment +\/\/.\+$+
---   ]],
--- 	false
--- )
-
-vim.api.nvim_create_augroup("highlight_yank", { clear = true })
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-	pattern = "*",
-	command = 'lua vim.highlight.on_yank { higroup="IncSearch", timeout=250 }',
-	group = "highlight_yank",
-})
-
-vim.api.nvim_create_augroup("CursorLine", { clear = true })
-vim.api.nvim_create_autocmd(
-	{ "VimEnter", "WinEnter", "BufRead", "BufWinEnter" },
-	{ pattern = "*", command = 'setlocal cursorline | :echo""', group = "CursorLine" }
-)
-vim.api.nvim_create_autocmd({ "WinLeave" }, { pattern = "*", command = "setlocal nocursorline", group = "CursorLine" })
-
--- " ====================== / AUTOCMD ========================
 
 -- ======================== REQUIRE EXTRA FILES ===================
 require("packer-config")
@@ -198,11 +174,45 @@ require("dashboard-config")
 require("lightspeed-config")
 require("colorizer-config")
 
-vim.cmd("source ~/.config/nvim/vimscript/highlights.vim")
+
+-- " ====================== AUTOCMD ========================
+
+-- vim.api.nvim_exec(
+-- 	[[
+--   autocmd FileType jsonc syntax match Comment +\/\/.\+$+
+--   ]],
+-- 	false
+-- )
+
+vim.api.nvim_create_augroup("jsoncComments", { clear = true })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*config.json",
+	command = "setlocal filetype=jsonc",
+	group = "jsoncComments",
+})
+
+vim.api.nvim_create_augroup("highlight_yank", { clear = true })
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+	pattern = "*",
+	command = 'lua vim.highlight.on_yank { higroup="IncSearch", timeout=250 }',
+	group = "highlight_yank",
+})
+
+vim.api.nvim_create_augroup("CursorLine", { clear = true })
+vim.api.nvim_create_autocmd(
+	{ "VimEnter", "WinEnter", "BufRead", "BufWinEnter" },
+	{ pattern = "*", command = 'setlocal cursorline | :echo""', group = "CursorLine" }
+)
+vim.api.nvim_create_autocmd({ "WinLeave" }, { pattern = "*", command = "setlocal nocursorline", group = "CursorLine" })
+
+-- " ====================== / AUTOCMD ========================
+
+
+vim.api.nvim_exec([[ source ~/.config/nvim/vimscript/highlights.vim ]], false)
 -- vim.cmd('source ~/.config/nvim/vimscript/coc-config.vim')
 
 -- vim.cmd [[colorscheme sonokai]]
 vim.g.catppuccin_flavour = "macchiato"
 -- vim.g.catppuccin_flavour = "frappe"
 -- vim.g.catppuccin_flavour = "dusk"
-vim.cmd([[colorscheme catppuccin]])
+vim.api.nvim_exec([[colorscheme catppuccin]], false)
