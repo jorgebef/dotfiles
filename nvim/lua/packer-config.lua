@@ -31,10 +31,6 @@ packer.startup(function()
 	-- =============================================
 	use("wbthomason/packer.nvim")
 
-	-- == Filetype detection in lua
-	-- =============================================
-	-- use("nathom/filetype.nvim")
-
 	-- == Dashboard on startup and session management
 	-- =============================================
 	use("glepnir/dashboard-nvim")
@@ -67,10 +63,6 @@ packer.startup(function()
 	-- == Vim modifying surround to text
 	-- =============================================
 	use("tpope/vim-surround")
-
-	-- == Formatter
-	-- =============================================
-	-- use("sbdchd/neoformat")
 
 	-- == NULL LS
 	-- ==============================================
@@ -116,7 +108,7 @@ packer.startup(function()
 	-- == LSP configuration
 	-- =============================================
 	use("neovim/nvim-lspconfig")
-	-- use("williamboman/nvim-lsp-installer")
+
 	-- == Autocompletion
 	use({
 		"hrsh7th/nvim-cmp",
@@ -135,7 +127,6 @@ packer.startup(function()
 
 	-- == Killing buffers easily
 	-- =============================================
-	-- use 'qpkorr/vim-bufkill'
 	use({ "ojroques/nvim-bufdel" })
 
 	-- == Catppuccin theme
@@ -156,6 +147,10 @@ packer.startup(function()
 	-- == LIGHTSPEED ==
 	-- =============================================
 	use("ggandor/lightspeed.nvim")
+
+	-- == WHICK-KEY ==
+	-- =============================================
+	use("folke/which-key.nvim")
 
 	-- == KEEP DEVICONS LAST FOR CORRECT LOADING
 	-- =============================================

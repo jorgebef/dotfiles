@@ -1,7 +1,5 @@
 local nvim_lsp = require("lspconfig")
 
--- require'lspconfig'.tsserver.setup{}
-
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -76,9 +74,11 @@ end
 local servers = {
 	"pyright",
 	"tsserver",
+	"eslint",
 	"vimls",
 	"jsonls",
 	"cssls",
+  "cssmodules_ls",
 	"tailwindcss",
 	-- "rust_analyzer"
 	-- 'intelephense'
@@ -92,6 +92,26 @@ for _, lsp in ipairs(servers) do
 		},
 	})
 end
+
+local buf_map = function(bufnr, mode, lhs, rhs, opts)
+	vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
+		silent = true,
+	})
+end
+nvim_lsp.tsserver.setup({
+  on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+    local ts_utils = require("nvim-lsp-ts-utils")
+    ts_utils.setup({})
+    ts_utils.setup_client(client)
+    -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+    buf_map(bufnr, "n", "<leader>rF", ":TSLspRenameFile<CR>")
+    buf_map(bufnr, "n", "<leader>iA", ":TSLspImportAll<CR>")
+    on_attach(client, bufnr)
+  end,
+})
+
 
 nvim_lsp.rls.setup({
 	settings = {

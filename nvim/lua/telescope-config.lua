@@ -30,7 +30,7 @@ require("telescope").setup({
 			no_ignore = true,
 			find_command = {
 				"fd",
-        "--color=never",
+				"--color=never",
 				"--type",
 				"f",
 				"--hidden",
@@ -50,9 +50,9 @@ require("telescope").setup({
 	defaults = {
 		prompt_prefix = "   ",
 		-- buffer_previewer_maker = new_maker,
-    -- ====================================================
-    -- IT IS VERY SLOW TO RELY ON FILE IGNORE PATTERNS
-    -- ====================================================
+		-- ====================================================
+		-- IT IS VERY SLOW TO RELY ON FILE IGNORE PATTERNS
+		-- ====================================================
 		file_ignore_patterns = {
 			"node_modules/",
 			".git/",
@@ -79,6 +79,7 @@ require("telescope").setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
+		project = {},
 	},
 })
 -- To get fzf loaded and working with telescope, you need to call
