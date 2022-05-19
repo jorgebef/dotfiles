@@ -79,9 +79,9 @@ packer.startup(function()
 	-- == Auto Pairing parenthesis, brackets, etc...
 	-- =============================================
 	use("windwp/nvim-autopairs")
-	require("nvim-autopairs").setup({
-		enable_check_bracket_line = false,
-	})
+	-- require("nvim-autopairs").setup({
+	-- 	enable_check_bracket_line = false,
+	-- })
 
 	-- == git signs and staging ==
 	-- =============================================
@@ -107,6 +107,7 @@ packer.startup(function()
 
 	-- == LSP configuration
 	-- =============================================
+	use("williamboman/nvim-lsp-installer")
 	use("neovim/nvim-lspconfig")
 
 	-- == Autocompletion
@@ -128,6 +129,10 @@ packer.startup(function()
 	-- == Killing buffers easily
 	-- =============================================
 	use({ "ojroques/nvim-bufdel" })
+
+	-- == Killing buffers easily
+	-- =============================================
+	use({ "rcarriga/nvim-notify" })
 
 	-- == Catppuccin theme
 	-- =============================================

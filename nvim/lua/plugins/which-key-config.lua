@@ -81,7 +81,14 @@ wk.register({
 		f = { "Find File" }, -- create a binding with label
 		g = { "Live Grep" }, -- create a binding with label
 	},
-  F = {
-    name = "Format Code LSP"
-  }
+	F = {
+		name = "Format Code LSP",
+	},
+	["'"] = {
+		":WhichKey '<cr>",
+		"Marks",
+	},
+	q = {
+		name = "Quit!!",
+	},
 }, { prefix = "<leader>" })

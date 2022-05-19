@@ -6,7 +6,8 @@ require("bufferline").setup({
 		-- indicator_icon = '▎',
 		-- indicator_icon = '█',
 		-- indicator_icon = '',
-		indicator_icon = "",
+		-- indicator_icon = "",
+		indicator_icon = "█ ",
 		modified_icon = "",
 		diagnostics_update_in_insert = false,
 		-- NOTE: this will be called a lot so don't do any heavy processing here

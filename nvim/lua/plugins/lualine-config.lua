@@ -45,7 +45,9 @@ require("lualine").setup({
 		lualine_a = {
 			{
 				"mode",
-				separator = { left = "", right = "" },
+				-- separator = { left = "", right = "" },
+				-- separator = { left = "█", right = "█" },
+				separator = { left = "█", right = "" },
 				left_padding = 1,
 				right_padding = 1,
 			},
@@ -53,7 +55,9 @@ require("lualine").setup({
 		lualine_b = {
 			{
 				"branch",
-				separator = { right = "" },
+				-- separator = { right = "" },
+				-- separator = { left = "█", right = "█" },
+				separator = { left = "", right = "" },
 				left_padding = 2,
 			},
 			{
@@ -64,7 +68,9 @@ require("lualine").setup({
 				-- 	modified = { fg = cp.yellow, bg = nil }, -- changes diagnostic's warn color
 				-- 	removed = { fg = cp.red, bg = nil }, -- changes diagnostic's error color
 				-- },
-				separator = { right = "" },
+				-- separator = { right = "" },
+				-- separator = { left = "█", right = "█" },
+				separator = { left = "", right = "" },
 				left_padding = 1,
 			},
 			{
@@ -88,7 +94,9 @@ require("lualine").setup({
 				colored = true, -- displays diagnostics status in color if set to true
 				update_in_insert = false, -- Update diagnostics in insert mode
 				always_visible = false, -- Show diagnostics always
-				separator = { right = "" },
+				-- separator = { right = "" },
+				-- separator = { left = "█", right = "█" },
+				separator = { left = "", right = "" },
 				left_padding = 1,
 			},
 		},
@@ -103,7 +111,9 @@ require("lualine").setup({
 		lualine_y = {
 			{
 				"progress",
-				separator = { left = "" },
+				-- separator = { left = "" },
+				-- separator = { left = "█", right = "█" },
+				separator = { left = "", right = "" },
 				right_padding = 1,
 			},
 		},
@@ -111,7 +121,9 @@ require("lualine").setup({
 		lualine_z = {
 			{
 				"location",
-				separator = { left = "", right = "" },
+				-- separator = { left = "", right = "" },
+				-- separator = { left = "█", right = "█" },
+				separator = { left = "", right = "█" },
 				left_padding = 1,
 			},
 		},

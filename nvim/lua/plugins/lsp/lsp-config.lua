@@ -23,25 +23,25 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	-- virtual_text = {
-	--     spacing = 1,
-	--     severity_limit = 'Warning',
-	-- },
-	virtual_text = false,
-	underline = true,
-	-- bold = true,
-	-- underline = {
-	--     -- THIS MAKES IT LAGGY IF THERE ARE MANY ERRORS
-	--     severity_limit = 'Warning',
-	-- },
-	signs = true,
-	float = {
-		source = "always",
-		focusable = false,
-	},
-	severity_sort = true,
-})
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+-- 	-- virtual_text = {
+-- 	--     spacing = 1,
+-- 	--     severity_limit = 'Warning',
+-- 	-- },
+-- 	virtual_text = false,
+-- 	underline = true,
+-- 	-- bold = true,
+-- 	-- underline = {
+-- 	--     -- THIS MAKES IT LAGGY IF THERE ARE MANY ERRORS
+-- 	--     severity_limit = 'Warning',
+-- 	-- },
+-- 	signs = true,
+-- 	float = {
+-- 		source = "always",
+-- 		focusable = false,
+-- 	},
+-- 	severity_sort = true,
+-- })
 
 local border = {
 	{ "╭", "FloatBorder" },
@@ -57,7 +57,32 @@ local border = {
 local handlers = {
 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
 	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+	["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		-- virtual_text = {
+		--     spacing = 1,
+		--     severity_limit = 'Warning',
+		-- },
+		virtual_text = false,
+		underline = true,
+		-- bold = true,
+		-- underline = {
+		--     -- THIS MAKES IT LAGGY IF THERE ARE MANY ERRORS
+		--     severity_limit = 'Warning',
+		-- },
+		signs = true,
+		float = {
+			source = "always",
+			focusable = false,
+		},
+		severity_sort = true,
+	}),
 }
+-- ================================================
+--Enable (broadcasting) snippet capability for completion
+-- ================================================
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 -- Do not forget to use the on_attach function
 -- require 'lspconfig'.myserver.setup { handlers=handlers }
 -- To instead override globally
@@ -73,15 +98,12 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = {
 	"pyright",
-	"tsserver",
-	"eslint",
+	-- "tsserver",
+	-- "eslint",
 	"vimls",
-	"jsonls",
-	"cssls",
-  "cssmodules_ls",
-	"tailwindcss",
-	-- "rust_analyzer"
-	-- 'intelephense'
+	-- "jsonls",
+	-- "cssls",
+	-- "cssmodules_ls",
 }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
@@ -93,26 +115,36 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
+-- ================================================
+-- REMAP FUNCTION
+-- ================================================
 local buf_map = function(bufnr, mode, lhs, rhs, opts)
 	vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
 		silent = true,
 	})
 end
+
+-- ================================================
+-- TSSERVER
+-- ================================================
 nvim_lsp.tsserver.setup({
-  on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-    local ts_utils = require("nvim-lsp-ts-utils")
-    ts_utils.setup({})
-    ts_utils.setup_client(client)
-    -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-    buf_map(bufnr, "n", "<leader>rF", ":TSLspRenameFile<CR>")
-    buf_map(bufnr, "n", "<leader>iA", ":TSLspImportAll<CR>")
-    on_attach(client, bufnr)
-  end,
+	handlers = handlers,
+	on_attach = function(client, bufnr)
+		client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_range_formatting = false
+		local ts_utils = require("nvim-lsp-ts-utils")
+		ts_utils.setup({})
+		ts_utils.setup_client(client)
+		-- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+		buf_map(bufnr, "n", "<leader>rF", ":TSLspRenameFile<CR>")
+		buf_map(bufnr, "n", "<leader>iA", ":TSLspImportAll<CR>")
+		on_attach(client, bufnr)
+	end,
 })
 
-
+-- ================================================
+-- RUST LANGUAGE SERVER
+-- ================================================
 nvim_lsp.rls.setup({
 	settings = {
 		rust = {
@@ -123,6 +155,9 @@ nvim_lsp.rls.setup({
 	},
 })
 
+-- ================================================
+-- GO LANGUAGE SERVER
+-- ================================================
 local util = require("lspconfig/util")
 nvim_lsp.gopls.setup({
 	cmd = { "gopls", "serve" },
@@ -138,86 +173,23 @@ nvim_lsp.gopls.setup({
 	},
 })
 
---Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-nvim_lsp.cssls.setup({
-	capabilities = capabilities,
+-- ================================================
+-- JSON LANGUAGE SERVER
+-- ================================================
+nvim_lsp.jsonls.setup({
+	on_attach = on_attach,
+	init_options = {
+		provideFormatter = false,
+	},
 })
 
-nvim_lsp.intelephense.setup({
-	settings = {
-		intelephense = {
-			stubs = {
-				"bcmath",
-				"bz2",
-				"calendar",
-				"Core",
-				"curl",
-				"date",
-				"dba",
-				"dom",
-				"enchant",
-				"fileinfo",
-				"filter",
-				"ftp",
-				"gd",
-				"gettext",
-				"hash",
-				"iconv",
-				"imap",
-				"intl",
-				"json",
-				"ldap",
-				"libxml",
-				"mbstring",
-				"mcrypt",
-				"mysql",
-				"mysqli",
-				"password",
-				"pcntl",
-				"pcre",
-				"PDO",
-				"pdo_mysql",
-				"Phar",
-				"readline",
-				"recode",
-				"Reflection",
-				"regex",
-				"session",
-				"SimpleXML",
-				"soap",
-				"sockets",
-				"sodium",
-				"SPL",
-				"standard",
-				"superglobals",
-				"sysvsem",
-				"sysvshm",
-				"tokenizer",
-				"xml",
-				"xdebug",
-				"xmlreader",
-				"xmlwriter",
-				"yaml",
-				"zip",
-				"zlib",
-				"wordpress",
-				"woocommerce",
-				"acf-pro",
-				"wordpress-globals",
-				"wp-cli",
-				"genesis",
-				"polylang",
-			},
-			files = {
-				maxSize = 5000000,
-			},
-		},
-	},
-	capabilities = capabilities,
-	on_attach = on_attach,
+-- ================================================
+-- CSS LANGUAGE SERVER
+-- ================================================
+nvim_lsp.cssls.setup({
+	-- capabilities = capabilities,
+	capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 })
 
 --   =====================================================
@@ -225,6 +197,9 @@ nvim_lsp.intelephense.setup({
 --              LUAJIT IS UNSTABLE ON M1
 --   ======================================================
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
+-- ================================================
+-- LUA LANGUAGE SERVER
+-- ================================================
 USER = vim.fn.expand("$USER")
 local sumneko_root_path = ""
 local sumneko_binary = ""
@@ -274,8 +249,8 @@ map("n", "ge", '<cmd>lua vim.diagnostic.goto_next({severity="ERROR",float=true})
 map("n", "gw", '<cmd>lua vim.diagnostic.goto_next({severity="HINT",float=true})<CR>', ns_opts)
 map("n", "gE", '<cmd>lua vim.diagnostic.goto_prev({severity="ERROR",float=true})<CR>', ns_opts)
 map("n", "gW", '<cmd>lua vim.diagnostic.goto_prev({severity="HINT",float=true})<CR>', ns_opts)
-map("n", "<leader>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", ns_opts)
--- Formatting is done better by Neoformat plugin
+-- map("n", "<leader>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", ns_opts)
+-- Formatting is handled by null-ls
 map("n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", ns_opts)
 
 -- See `:help vim.lsp.*` for documentation on any of the below functions
