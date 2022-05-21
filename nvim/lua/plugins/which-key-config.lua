@@ -76,19 +76,58 @@ wk.setup({
 -- and hide <leader>1
 
 wk.register({
+	["+"] = "   Enlarge buffer",
+	["-"] = "   Reduce buffer",
+	["="] = " 﩯 Balance splits",
+	["3"] = "   highlight word",
+	b = {
+		name = " 裡 Buffer",
+		d = "   Delete",
+	},
+	c = {
+		name = "   Config",
+		R = " 勒 Reload",
+	},
+	C = {
+		name = "   Colorizer",
+	},
+	e = " פּ  File Explorer",
 	f = {
-		name = "Telescope", -- optional group name
-		f = { "Find File" }, -- create a binding with label
+		name = "   Telescope", -- optional group name
+		b = { "Find Buffers" }, -- create a binding with label
+		f = { "   Find File" }, -- create a binding with label
+		F = { "Find project files" }, -- create a binding with label
 		g = { "Live Grep" }, -- create a binding with label
+		G = { "Find git files" }, -- create a binding with label
+		r = { "Resume" }, -- create a binding with label
+		s = { "Find LSP document symbols" }, -- create a binding with label
+		S = { "Find LSP project symbols" }, -- create a binding with label
 	},
-	F = {
-		name = "Format Code LSP",
+	g = {
+		name = "   GitSigns", -- optional group name
+		b = { "   Blame" }, -- create a binding with label
+		n = { "   Next" }, -- create a binding with label
+		p = { "   Previous" }, -- create a binding with label
+		P = { " 繁  Preview" }, -- create a binding with label
 	},
-	["'"] = {
-		":WhichKey '<cr>",
-		"Marks",
+	l = {
+		name = " 力 LSP",
+		a = { "Code Action" },
+		d = { "Go to definition" },
+		N = { "Jump to next ERROR" },
+		n = { "Jump to next Diagnostic" },
+		P = { "Jump to previous ERROR" },
+		p = { "Jump to previous Diagnostic" },
+		r = { "Go to reference" },
+		R = { "Rename Variable" },
+		D = { "Go to Type Definition" },
+		f = { "Format" },
 	},
-	q = {
-		name = "Quit!!",
-	},
-}, { prefix = "<leader>" })
+	o = "   Add one line below",
+	O = "   Add one line above",
+	q = "   Quit!!",
+	S = " ﯒  Search and replace",
+	V = " 溺 Vertical split!!",
+	w = "   Write",
+	y = "   Copy to clipboard",
+}, { prefix = "<leader>" }, {})

@@ -101,6 +101,7 @@ local servers = {
 	-- "tsserver",
 	-- "eslint",
 	"vimls",
+	-- "jdtls",
 	-- "jsonls",
 	-- "cssls",
 	-- "cssmodules_ls",
@@ -142,6 +143,11 @@ nvim_lsp.tsserver.setup({
 	end,
 })
 
+-- -- ================================================
+-- -- JAVA LANGUAGE SERVER
+-- -- ================================================
+require("lspconfig").jdtls.setup({ cmd = { "jdtls" } })
+
 -- ================================================
 -- RUST LANGUAGE SERVER
 -- ================================================
@@ -172,7 +178,6 @@ nvim_lsp.gopls.setup({
 		},
 	},
 })
-
 
 -- ================================================
 -- JSON LANGUAGE SERVER
@@ -207,6 +212,7 @@ sumneko_root_path = "/Users/jorgebefan/.config/nvim/lua-language-server"
 sumneko_binary = "/Users/jorgebefan/.config/nvim/lua-language-server/bin/macOS/lua-language-server"
 
 nvim_lsp.sumneko_lua.setup({
+	handlers = handlers,
 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {
 		Lua = {
@@ -240,26 +246,28 @@ nvim_lsp.sumneko_lua.setup({
 
 local map = vim.api.nvim_set_keymap
 local ns_opts = { noremap = true, silent = true }
-map("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", ns_opts)
-map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
-map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", ns_opts)
+map("n", "<leader>lD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", ns_opts)
+map("n", "<leader>lR", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
+map("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", ns_opts)
 -- map('n', '<leader>E', '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', ns_opts)
-map("n", "<leader>E", '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor"})<CR>', ns_opts)
-map("n", "ge", '<cmd>lua vim.diagnostic.goto_next({severity="ERROR",float=true})<CR>', ns_opts)
-map("n", "gw", '<cmd>lua vim.diagnostic.goto_next({severity="HINT",float=true})<CR>', ns_opts)
-map("n", "gE", '<cmd>lua vim.diagnostic.goto_prev({severity="ERROR",float=true})<CR>', ns_opts)
-map("n", "gW", '<cmd>lua vim.diagnostic.goto_prev({severity="HINT",float=true})<CR>', ns_opts)
+-- map("n", "<leader>E", '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor"})<CR>', ns_opts)
+map("n", "<leader>ln", '<cmd>lua vim.diagnostic.goto_next({severity="HINT",float=true})<CR>', ns_opts)
+map("n", "<leader>lN", '<cmd>lua vim.diagnostic.goto_next({severity="ERROR",float=true})<CR>', ns_opts)
+map("n", "<leader>lp", '<cmd>lua vim.diagnostic.goto_prev({severity="HINT",float=true})<CR>', ns_opts)
+map("n", "<leader>lP", '<cmd>lua vim.diagnostic.goto_prev({severity="ERROR",float=true})<CR>', ns_opts)
 -- map("n", "<leader>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", ns_opts)
 -- Formatting is handled by null-ls
-map("n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", ns_opts)
+map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", ns_opts)
 
 -- See `:help vim.lsp.*` for documentation on any of the below functions
-map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", ns_opts)
+-- map("n", "<leader>ld", "<cmd>lua vim.lsp.buf.declaration()<CR>", ns_opts)
 -- Telescope does go to definition better than nvim-lsp
--- map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', ns_opts)
+-- map('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', ns_opts)
+map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)
+map("n", "<leader>lr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
 map("n", "K", "<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>", ns_opts)
-map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", ns_opts)
-map("n", "<leader>k", "<cmd>lua vim.lsp.buf.signature_help()<CR>", ns_opts)
+map("n", "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>", ns_opts)
+map("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", ns_opts)
 
 -- map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', ns_opts)
 -- map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', ns_opts)

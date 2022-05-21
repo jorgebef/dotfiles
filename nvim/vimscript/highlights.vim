@@ -75,11 +75,13 @@ call Hi('BufferLineIndicatorSelected',pink,'NONE')
 call Hi('BufferLineBufferVisible',white,'inactive_bg')
 call Hi('BufferLineBackground',gray0,'inactive_bg')
 
-call Hi('TelescopePromptPrefix',mauve,'NONE')
-" call Hi('TelescopeSelection',mauve,black2)
+call Hi('TelescopePreviewTitle',mauve,'NONE')
+call Hi('TelescopeResultsTitle',mauve,'NONE')
+call Hi('TelescopePromptTitle',mauve,'NONE')
+call Hi('TelescopePromptPrefix',sapphire,'NONE')
 call Hi('TelescopeMatching',mauve,'NONE')
-call Hi('TelescopeSelectionCaret',mauve,black2)
-" call Hi('TelescopeBorder',sky,'NONE')
+call Hi('TelescopeSelectionCaret',red,black2)
+call Hi('TelescopeBorder',black5,'NONE')
 
 endfunction
 

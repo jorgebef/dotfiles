@@ -7,7 +7,6 @@ local n_opts = { noremap = true }
 
 remap("n", "ñ", ";", { nowait = true })
 remap("n", "Ñ", ":", { nowait = true })
-remap("n", "'", "`", ns_opts)
 
 -- " =========================== FUNCTIONAL REMAPS =============================
 remap("n", "<leader>w", ":silent write<cr>", nsn_opts)
@@ -22,10 +21,11 @@ remap("n", "<leader>3", [["syiw<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
 remap("v", "<leader>3", [["sy<Esc>:let @/ = @s | set hls<CR>]], ns_opts)
 
 -- SEARCH AND REPLACE
-remap("n", "<leader>sr", ":.,$s/<C-r><C-w>//gc<Left><Left><Left>", n_opts)
-remap("v", "<leader>sr", '"hy:.,$s/<C-r>h//gc<Left><Left><Left>', n_opts)
+remap("n", "<leader>S", ":.,$s/<C-r><C-w>//gc<Left><Left><Left>", n_opts)
+remap("v", "<leader>S", '"hy:.,$s/<C-r>h//gc<Left><Left><Left>', n_opts)
 
-remap("n", "'", "`", ns_opts)
+-- remap("n", "'", "`", ns_opts)
+-- remap("n", "'", ":WhichKey '", ns_opts)
 
 -- indenting and staying in indent mode
 remap("v", "<", "<gv", ns_opts)

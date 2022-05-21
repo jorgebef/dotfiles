@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 vim.api.nvim_create_augroup("CursorLine", { clear = true })
 vim.api.nvim_create_autocmd(
 	{ "VimEnter", "WinEnter", "BufRead", "BufWinEnter" },
-	{ pattern = "*", command = 'setlocal cursorline | :echo""', group = "CursorLine" }
+	{ pattern = "*[^{T}]", command = 'setlocal cursorline | :echo""', group = "CursorLine" }
 )
 vim.api.nvim_create_autocmd({ "WinLeave" }, { pattern = "*", command = "setlocal nocursorline", group = "CursorLine" })
 

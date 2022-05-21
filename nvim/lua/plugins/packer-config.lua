@@ -107,7 +107,6 @@ packer.startup(function()
 
 	-- == LSP configuration
 	-- =============================================
-	use("williamboman/nvim-lsp-installer")
 	use("neovim/nvim-lspconfig")
 
 	-- == Autocompletion

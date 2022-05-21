@@ -1,6 +1,6 @@
 require("bufdel").setup({
 	next = "alternate", -- or 'alternate'
-	quit = true,
+	quit = false,
 })
 
 local remap = vim.api.nvim_set_keymap
