@@ -50,6 +50,7 @@ require("telescope").setup({
 	defaults = {
 		-- prompt_prefix = "   ",
 		prompt_prefix = "   ",
+		selection_caret = " ",
 		-- buffer_previewer_maker = new_maker,
 		-- ====================================================
 		-- IT IS VERY SLOW TO RELY ON FILE IGNORE PATTERNS
@@ -105,6 +106,6 @@ remap("n", "<leader>fS", '<cmd>lua require("telescope.builtin").lsp_dynamic_work
 -- =================================================================
 -- remap("n", "gd", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', nsn_opts)
 -- remap("n", "gr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', nsn_opts)
-remap("n", "<leader>fgs", '<cmd>lua require("telescope.builtin").git_status()<CR>', nsn_opts)
+-- remap("n", "<leader>fgs", '<cmd>lua require("telescope.builtin").git_status()<CR>', nsn_opts)
 remap("n", "<leader>fr", '<cmd>lua require("telescope.builtin").resume()<CR>', nsn_opts)
 -- map('n', '<leader>fg', ':Telescope live_grep<cr>', nsn_opts)
