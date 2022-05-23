@@ -31,6 +31,7 @@ require("indent_blankline").setup({
 		"startify",
 		"dashboard",
 		"help",
+    "NvimTree"
 	},
 	-- space_char_blankline = " ",
 	show_current_context = true,

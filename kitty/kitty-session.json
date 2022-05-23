@@ -2,11 +2,12 @@
   {
     "id": 1,
     "is_focused": true,
-    "platform_window_id": 24168,
+    "platform_window_id": 59570,
     "tabs": [
       {
         "active_window_history": [
-          1
+          1,
+          13
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
@@ -14,23 +15,9 @@
         ],
         "id": 1,
         "is_focused": false,
-        "layout": "fat",
-        "layout_opts": {
-          "bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "full_size": 1,
-          "mirrored": false
-        },
-        "layout_state": {
-          "biased_map": {},
-          "main_bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "num_full_size_windows": 1
-        },
+        "layout": "stack",
+        "layout_opts": {},
+        "layout_state": {},
         "title": "Real Estate CMS - Frontend",
         "windows": [
           {
@@ -46,14 +33,37 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/real_estate_cms/frontend",
-                "pid": 16513
+                "pid": 30940
               }
             ],
             "id": 1,
             "is_focused": false,
             "is_self": false,
-            "lines": 90,
-            "pid": 16513,
+            "lines": 89,
+            "pid": 30940,
+            "title": "\u2026/Github/real_estate_cms/frontend"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/real_estate_cms/frontend",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/real_estate_cms/frontend",
+                "pid": 31708
+              }
+            ],
+            "id": 13,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 89,
+            "pid": 31708,
             "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/real_estate_cms/frontend"
           }
         ]
@@ -61,7 +71,7 @@
       {
         "active_window_history": [
           2,
-          8
+          14
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
@@ -92,17 +102,17 @@
                   "/Users/jorgebefan/Documents/Github/cng_lawyers/node_modules/typescript/lib/typesMap.json"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
-                "pid": 34888
+                "pid": 35429
               },
               {
                 "cmdline": [
                   "/opt/homebrew/Cellar/node/18.2.0/bin/node",
                   "/Users/jorgebefan/Documents/Github/cng_lawyers/node_modules/typescript/lib/tsserver.js",
                   "--cancellationPipeName",
-                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/9c89995604992ee4bfa5b93e2adc84d8/tscancellation*"
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/52715ce294555ca1a153e41fed6b31f4/tscancellation*"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
-                "pid": 34863
+                "pid": 35410
               },
               {
                 "cmdline": [
@@ -111,21 +121,21 @@
                   "--stdio"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
-                "pid": 34851
+                "pid": 35409
               },
               {
                 "cmdline": [
                   "nvim"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
-                "pid": 34842
+                "pid": 35399
               }
             ],
             "id": 2,
             "is_focused": false,
             "is_self": false,
-            "lines": 90,
-            "pid": 16514,
+            "lines": 89,
+            "pid": 30941,
             "title": "index.tsx (~/Documents/Github/cng_lawyers/pages) - NVIM"
           },
           {
@@ -141,14 +151,14 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
-                "pid": 17066
+                "pid": 31830
               }
             ],
-            "id": 8,
+            "id": 14,
             "is_focused": false,
             "is_self": false,
-            "lines": 90,
-            "pid": 17066,
+            "lines": 89,
+            "pid": 31830,
             "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/cng_lawyers"
           }
         ]
@@ -162,7 +172,7 @@
           "stack"
         ],
         "id": 3,
-        "is_focused": true,
+        "is_focused": false,
         "layout": "fat",
         "layout_opts": {
           "bias": [
@@ -192,52 +202,18 @@
             "foreground_processes": [
               {
                 "cmdline": [
-                  "nvim"
+                  "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/java-spring-boot/demo",
-                "pid": 35047
+                "pid": 30943
               }
             ],
             "id": 3,
             "is_focused": false,
             "is_self": false,
-            "lines": 48,
-            "pid": 16516,
-            "title": "DemoApplication.java (~/Documents/Github/java-spring-boot/demo/src/main/java/com/example/demo) - NVIM"
-          },
-          {
-            "cmdline": [
-              "sh",
-              "/Users/jorgebefan/.config/kitty/savesess.sh"
-            ],
-            "columns": 319,
-            "cwd": "/Users/jorgebefan/Documents/Github/java-spring-boot",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "kitty",
-                  "@",
-                  "ls"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/java-spring-boot",
-                "pid": 35157
-              },
-              {
-                "cmdline": [
-                  "sh",
-                  "/Users/jorgebefan/.config/kitty/savesess.sh"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/java-spring-boot",
-                "pid": 35156
-              }
-            ],
-            "id": 10,
-            "is_focused": true,
-            "is_self": true,
-            "lines": 41,
-            "pid": 35156,
-            "title": "savesess.sh"
+            "lines": 89,
+            "pid": 30943,
+            "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/java-spring-boot/demo"
           }
         ]
       },
@@ -250,6 +226,60 @@
           "stack"
         ],
         "id": 4,
+        "is_focused": false,
+        "layout": "fat",
+        "layout_opts": {
+          "bias": [
+            0.55,
+            0.44999999999999996
+          ],
+          "full_size": 1,
+          "mirrored": false
+        },
+        "layout_state": {
+          "biased_map": {},
+          "main_bias": [
+            0.55,
+            0.44999999999999996
+          ],
+          "num_full_size_windows": 1
+        },
+        "title": "Java Study",
+        "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/study-java",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/study-java",
+                "pid": 30953
+              }
+            ],
+            "id": 4,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 89,
+            "pid": 30953,
+            "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/study-java"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          5
+        ],
+        "enabled_layouts": [
+          "fat:bias=55;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 5,
         "is_focused": false,
         "layout": "fat",
         "layout_opts": {
@@ -283,27 +313,27 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/stradivarius",
-                "pid": 16522
+                "pid": 30962
               }
             ],
-            "id": 4,
+            "id": 5,
             "is_focused": false,
             "is_self": false,
-            "lines": 90,
-            "pid": 16522,
+            "lines": 89,
+            "pid": 30962,
             "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/stradivarius"
           }
         ]
       },
       {
         "active_window_history": [
-          5
+          6
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
           "stack"
         ],
-        "id": 5,
+        "id": 6,
         "is_focused": false,
         "layout": "fat",
         "layout_opts": {
@@ -337,27 +367,27 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/teamwork-manager-app",
-                "pid": 16533
+                "pid": 30971
               }
             ],
-            "id": 5,
+            "id": 6,
             "is_focused": false,
             "is_self": false,
-            "lines": 90,
-            "pid": 16533,
+            "lines": 89,
+            "pid": 30971,
             "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/teamwork-manager-app"
           }
         ]
       },
       {
         "active_window_history": [
-          6
+          7
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
           "stack"
         ],
-        "id": 6,
+        "id": 7,
         "is_focused": false,
         "layout": "fat",
         "layout_opts": {
@@ -391,28 +421,234 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/real_estate_cms/backend",
-                "pid": 16547
+                "pid": 30983
               }
             ],
-            "id": 6,
+            "id": 7,
             "is_focused": false,
             "is_self": false,
-            "lines": 90,
-            "pid": 16547,
+            "lines": 89,
+            "pid": 30983,
             "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/real_estate_cms/backend"
           }
         ]
       },
       {
         "active_window_history": [
-          7,
-          9
+          12,
+          11,
+          8
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
           "stack"
         ],
-        "id": 7,
+        "id": 8,
+        "is_focused": true,
+        "layout": "stack",
+        "layout_opts": {},
+        "layout_state": {},
+        "title": "react-from-scratch",
+        "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/18.2.0/bin/node",
+                  "/opt/homebrew/lib/node_modules/typescript/lib/typingsInstaller.js",
+                  "--globalTypingsCacheLocation",
+                  "/Users/jorgebefan/Library/Caches/typescript/4.6",
+                  "--typesMapLocation",
+                  "/opt/homebrew/lib/node_modules/typescript/lib/typesMap.json"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 47343
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/18.2.0/bin/node",
+                  "/opt/homebrew/lib/node_modules/typescript/lib/tsserver.js",
+                  "--cancellationPipeName",
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/8c434573aa3994a562687dca1b8c3f56/tscancellation*"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 47342
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/typescript-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 47332
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/18.2.0/bin/node",
+                  "/opt/homebrew/lib/node_modules/typescript/lib/typingsInstaller.js",
+                  "--globalTypingsCacheLocation",
+                  "/Users/jorgebefan/Library/Caches/typescript/4.6",
+                  "--typesMapLocation",
+                  "/opt/homebrew/lib/node_modules/typescript/lib/typesMap.json"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 46952
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/18.2.0/bin/node",
+                  "/opt/homebrew/lib/node_modules/typescript/lib/tsserver.js",
+                  "--cancellationPipeName",
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/278d9341a253781af8900b8567cf28ce/tscancellation*"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 46939
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/vscode-json-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 46931
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/typescript-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 46919
+              },
+              {
+                "cmdline": [
+                  "nvim"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 46909
+              }
+            ],
+            "id": 8,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 89,
+            "pid": 31003,
+            "title": "webpack.config.js (~/Documents/Github/react-from-scratch) - NVIM"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "webpack",
+                  "",
+                  "",
+                  ""
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 46537
+              },
+              {
+                "cmdline": [
+                  "npm run dev",
+                  "",
+                  "",
+                  ""
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 46525
+              }
+            ],
+            "id": 11,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 89,
+            "pid": 31541,
+            "title": "npm run dev"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 31592
+              }
+            ],
+            "id": 12,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 89,
+            "pid": 31592,
+            "title": "\u2026/Documents/Github/react-from-scratch"
+          },
+          {
+            "cmdline": [
+              "sh",
+              "/Users/jorgebefan/.config/kitty/savesess.sh"
+            ],
+            "columns": 319,
+            "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "kitty",
+                  "@",
+                  "ls"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 47672
+              },
+              {
+                "cmdline": [
+                  "sh",
+                  "/Users/jorgebefan/.config/kitty/savesess.sh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/react-from-scratch",
+                "pid": 47671
+              }
+            ],
+            "id": 16,
+            "is_focused": true,
+            "is_self": true,
+            "lines": 89,
+            "pid": 47671,
+            "title": "savesess.sh"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          9,
+          10
+        ],
+        "enabled_layouts": [
+          "fat:bias=55;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 9,
         "is_focused": false,
         "layout": "stack",
         "layout_opts": {},
@@ -429,30 +665,12 @@
             "foreground_processes": [
               {
                 "cmdline": [
-                  "/Users/jorgebefan/.config/nvim/lua-language-server/bin/macOS/lua-language-server",
-                  "-E",
-                  "/Users/jorgebefan/.config/nvim/lua-language-server/main.lua"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 35072
-              },
-              {
-                "cmdline": [
-                  "/Users/jorgebefan/.config/nvim/lua-language-server/bin/macOS/lua-language-server",
-                  "-E",
-                  "/Users/jorgebefan/.config/nvim/lua-language-server/main.lua"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 34925
-              },
-              {
-                "cmdline": [
                   "/opt/homebrew/Cellar/node/18.2.0/bin/node",
                   "/opt/homebrew/lib/node_modules/vim-language-server/out/scan.js",
                   "--node-ipc"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 34572
+                "pid": 35172
               },
               {
                 "cmdline": [
@@ -461,7 +679,7 @@
                   "--stdio"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 34522
+                "pid": 35154
               },
               {
                 "cmdline": [
@@ -470,22 +688,31 @@
                   "/Users/jorgebefan/.config/nvim/lua-language-server/main.lua"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 34516
+                "pid": 32410
+              },
+              {
+                "cmdline": [
+                  "/Users/jorgebefan/.config/nvim/lua-language-server/bin/macOS/lua-language-server",
+                  "-E",
+                  "/Users/jorgebefan/.config/nvim/lua-language-server/main.lua"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
+                "pid": 31369
               },
               {
                 "cmdline": [
                   "nvim"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 34507
+                "pid": 31359
               }
             ],
-            "id": 7,
+            "id": 9,
             "is_focused": false,
             "is_self": false,
-            "lines": 90,
-            "pid": 16558,
-            "title": "bufferline-config.lua (~/Documents/Github/dotfiles/nvim/lua/plugins) - NVIM"
+            "lines": 89,
+            "pid": 31022,
+            "title": "kitty.conf (~/Documents/Github/dotfiles/kitty) - NVIM"
           },
           {
             "cmdline": [
@@ -500,14 +727,14 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 17452
+                "pid": 31447
               }
             ],
-            "id": 9,
+            "id": 10,
             "is_focused": false,
             "is_self": false,
-            "lines": 90,
-            "pid": 17452,
+            "lines": 89,
+            "pid": 31447,
             "title": "\u2026/Documents/Github/dotfiles"
           }
         ]

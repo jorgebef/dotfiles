@@ -41,6 +41,10 @@ require("telescope").setup({
 				"--exclude",
 				".git",
 				"--exclude",
+				"dist",
+				"--exclude",
+				"build",
+				"--exclude",
 				"out",
 				"--exclude",
 				".next",
@@ -58,7 +62,7 @@ require("telescope").setup({
 		file_ignore_patterns = {
 			"node_modules/",
 			".git/",
-			-- ".next/",
+			".next/",
 			-- 'DS_'
 		},
 		vimgrep_arguments = {

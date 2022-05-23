@@ -71,7 +71,10 @@ call Hi('tsxTSTagDelimiter',maroon,'NONE')
 " ++++++++++ BETTER HIGHLIGHTS ++++++++++++++++
 " +++++++++++++++++++++++++++++++++++++++++++++
 
-call Hi('BufferLineIndicatorSelected',pink,'NONE')
+call Hi('BufferLineIndicatorSelected',mauve,'NONE')
+call Hi('BufferLineModified',red,'NONE')
+call Hi('BufferLineModifiedVisible',red,'NONE')
+call Hi('BufferLineModifiedSelected',red,'NONE')
 call Hi('BufferLineBufferVisible',white,'inactive_bg')
 call Hi('BufferLineBackground',gray0,'inactive_bg')
 

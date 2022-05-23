@@ -1,22 +1,26 @@
 -- ======================== REQUIRE EXTRA FILES ===================
 require("options")
-require("keybindings")
+require("keymaps")
 require("plugins")
 -- " ====================== AUTOCMD ========================
 
--- vim.api.nvim_exec(
--- 	[[
---   autocmd FileType jsonc syntax match Comment +\/\/.\+$+
---   ]],
--- 	false
--- )
 
+-- ==============================================
+-- ========= TURN ALL JSON INTO JSONC ===========
+-- ==============================================
 vim.api.nvim_create_augroup("jsoncComments", { clear = true })
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "*config.json",
-	command = "setlocal filetype=jsonc",
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = "json",
+	command = "set filetype=jsonc",
 	group = "jsoncComments",
 })
+
+-- vim.api.nvim_create_augroup("jsoncComments", { clear = true })
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+-- 	pattern = "*config.json",
+-- 	command = "set filetype=jsonc",
+-- 	group = "jsoncComments",
+-- })
 
 vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {

@@ -183,6 +183,8 @@ nvim_lsp.gopls.setup({
 -- JSON LANGUAGE SERVER
 -- ================================================
 nvim_lsp.jsonls.setup({
+	cmd = { "vscode-json-language-server", "--stdio" },
+	filetypes = { "json", "jsonc" },
 	on_attach = on_attach,
 	init_options = {
 		provideFormatter = false,
@@ -247,14 +249,13 @@ nvim_lsp.sumneko_lua.setup({
 local map = vim.api.nvim_set_keymap
 local ns_opts = { noremap = true, silent = true }
 map("n", "<leader>lD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", ns_opts)
-map("n", "<leader>lR", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
 map("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", ns_opts)
 -- map('n', '<leader>E', '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', ns_opts)
 -- map("n", "<leader>E", '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor"})<CR>', ns_opts)
-map("n", "<leader>ln", '<cmd>lua vim.diagnostic.goto_next({severity="HINT",float=true})<CR>', ns_opts)
-map("n", "<leader>lN", '<cmd>lua vim.diagnostic.goto_next({severity="ERROR",float=true})<CR>', ns_opts)
-map("n", "<leader>lp", '<cmd>lua vim.diagnostic.goto_prev({severity="HINT",float=true})<CR>', ns_opts)
-map("n", "<leader>lP", '<cmd>lua vim.diagnostic.goto_prev({severity="ERROR",float=true})<CR>', ns_opts)
+map("n", "<leader>lw", '<cmd>lua vim.diagnostic.goto_next({severity={"HINT","WARN"},float=true})<CR>', ns_opts)
+map("n", "<leader>le", '<cmd>lua vim.diagnostic.goto_next({severity="ERROR",float=true})<CR>', ns_opts)
+map("n", "<leader>lW", '<cmd>lua vim.diagnostic.goto_prev({severity={"HINT","WARN"},float=true})<CR>', ns_opts)
+map("n", "<leader>lE", '<cmd>lua vim.diagnostic.goto_prev({severity="ERROR",float=true})<CR>', ns_opts)
 -- map("n", "<leader>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", ns_opts)
 -- Formatting is handled by null-ls
 map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", ns_opts)
@@ -264,7 +265,8 @@ map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", ns_opts)
 -- Telescope does go to definition better than nvim-lsp
 -- map('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', ns_opts)
 map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)
-map("n", "<leader>lr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
+map("n", "<leader>lR", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
+map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
 map("n", "K", "<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>", ns_opts)
 map("n", "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>", ns_opts)
 map("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", ns_opts)

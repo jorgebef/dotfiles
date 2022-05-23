@@ -7,8 +7,9 @@ require("bufferline").setup({
 		-- indicator_icon = '█',
 		-- indicator_icon = '',
 		-- indicator_icon = "",
-		indicator_icon = "█ ",
-		modified_icon = "",
+		indicator_icon = "█",
+		-- modified_icon = "",
+		modified_icon = " ",
 		diagnostics_update_in_insert = false,
 		-- NOTE: this will be called a lot so don't do any heavy processing here
 		show_buffer_icons = true, -- disable filetype icons for buffers
@@ -21,20 +22,6 @@ require("bufferline").setup({
 		persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
 		offsets = { { filetype = "NvimTree" } },
 		always_show_bufferline = true,
-	},
-	highlights = {
-		indicator_selected = {
-			guifg = "#F5BFE7",
-		},
-		modified = {
-			guifg = "#F67E98",
-		},
-		modified_visible = {
-			guifg = "#F67E98",
-		},
-		modified_selected = {
-			guifg = "#F67E98",
-		},
 	},
 })
 
