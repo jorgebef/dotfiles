@@ -17,6 +17,7 @@ require("plugins.which-key-config")
 
 require("plugins.lsp.lsp-config")
 require("plugins.lsp.nvim-cmp-config")
+require("plugins.nvim-gps-config")
 
 require("plugins.treesitter.treesitter-config")
 

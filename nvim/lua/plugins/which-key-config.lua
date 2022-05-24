@@ -122,7 +122,7 @@ wk.register({
 	o = "   Add one line below",
 	O = "   Add one line above",
 	q = "   Quit!!",
-	S = " ﯒  Search and replace",
+	S = "   Search and replace",
 	V = " 溺 Vertical split!!",
 	w = "   Write",
 	y = "   Copy to clipboard",

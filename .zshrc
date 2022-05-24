@@ -218,10 +218,11 @@ filepath() {
             icon="  "
             ;;
         /Users/jorgebefan/Documents* )
-            icon="  "
+            # icon="  "
+            icon="  "
             ;;
         * )
-            icon="  "
+            icon="  "
             ;;
     esac
     split_path=(${(@s|/|)PWD})
@@ -241,7 +242,7 @@ filepath() {
 }
 
 # Format the vcs_info_msg_0_ variable
-zstyle ':vcs_info:git:*' formats " %b"
+zstyle ':vcs_info:git:*' formats " %b"
 
 _newline=$'\n'
 _lineup=$'\e[1A'

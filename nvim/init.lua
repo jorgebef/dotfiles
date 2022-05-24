@@ -1,6 +1,7 @@
 -- ======================== REQUIRE EXTRA FILES ===================
 require("options")
 require("keymaps")
+-- require("winbar")
 require("plugins")
 -- " ====================== AUTOCMD ========================
 
@@ -35,6 +36,12 @@ vim.api.nvim_create_autocmd(
 	{ pattern = "*[^{T}]", command = 'setlocal cursorline | :echo""', group = "CursorLine" }
 )
 vim.api.nvim_create_autocmd({ "WinLeave" }, { pattern = "*", command = "setlocal nocursorline", group = "CursorLine" })
+
+-- vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
+--   callback = function()
+--     require("winbar").get_winbar()
+--   end,
+-- })
 
 -- " ====================== / AUTOCMD ========================
 

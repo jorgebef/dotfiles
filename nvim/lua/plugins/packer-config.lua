@@ -108,6 +108,11 @@ packer.startup(function()
 	-- == LSP configuration
 	-- =============================================
 	use("neovim/nvim-lspconfig")
+	-- Lua
+	use({
+		"SmiteshP/nvim-gps",
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
 
 	-- == Autocompletion
 	use({

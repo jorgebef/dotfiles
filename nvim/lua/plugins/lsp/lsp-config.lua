@@ -131,8 +131,8 @@ end
 nvim_lsp.tsserver.setup({
 	handlers = handlers,
 	on_attach = function(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
-		client.resolved_capabilities.document_range_formatting = false
+		client.server_capabilities.document_formatting = false
+		client.server_capabilities.document_range_formatting = false
 		local ts_utils = require("nvim-lsp-ts-utils")
 		ts_utils.setup({})
 		ts_utils.setup_client(client)
@@ -265,6 +265,7 @@ map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", ns_opts)
 -- Telescope does go to definition better than nvim-lsp
 -- map('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', ns_opts)
 map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)
+-- map('n', '<leader>ld', '<cmd>lua vim.lsp.buf.implementation()<CR>', ns_opts)
 map("n", "<leader>lR", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
 map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
 map("n", "K", "<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>", ns_opts)
