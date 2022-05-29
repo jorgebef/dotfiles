@@ -129,28 +129,35 @@ autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 
 # ++++++++ COLORS ++++++++
-rosewater='#F5DFDA'
-flamingo='#F2CBCB'
-mauve='#C6A4F8'
-pink='#F5BFE7'
-red='#F586A2'
-maroon='#EB9DA4'
-peach='#FCB081'
-yellow='#F8DEA9'
-green='#A9E4A3'
-blue='#8CB3FA'
-sky='#89DCFD'
-teal='#88DFD2'
-lavender='#C7CBFD'
-white='#D2DAF1'
-gray2='#B9C0DB'
-gray1='#6F7599'
-gray0='#5E6487'
-black4='#3E435E'
-black3='#2B3045'
-black2='#24273A'
-black1='#1F2233'
-black0='#1A1B26'
+
+rosewater="#F4DBD6"
+flamingo="#F0C6C6"
+pink="#F5BDE6"
+mauve="#C6A0F6"
+red="#ED8796"
+maroon="#EE99A0"
+peach="#F5A97F"
+yellow="#EED49F"
+green="#A6DA95"
+teal="#8BD5CA"
+sky="#91D7E3"
+sapphire="#7DC4E4"
+blue="#8AADF4"
+lavender="#B7BDF8"
+text="#CAD3F5"
+subtext1="#B8C0E0"
+subtext0="#A5ADCB"
+overlay2="#939AB7"
+overlay1="#8087A2"
+overlay0="#6E738D"
+surface2="#5B6078"
+surface1="#494D64"
+surface0="#363A4F"
+base="#24273A"
+mantle="#1E2030"
+crust="#181926"
+
+# ++++++++ COLORS ++++++++
 
 
 function preexec() {
@@ -187,12 +194,12 @@ precmd_git() {
 precmd_functions+=(precmd_git)
 
 
-os_icon='%F{$gray2}%B   %b%f'
-separator='%F{gray2}● %f'
+os_icon='%F{$subtext1}%B   %b%f'
+separator='%F{$subtext1}● %f'
 
 elapsed() {
     if [ $cmd_time ]; then
-        echo " %F{$gray2}$cmd_time 羽 $separator%f";
+        echo " %F{$subtext1}$cmd_time 羽 $separator%f";
     fi
 }
 
@@ -203,7 +210,7 @@ branch() {
 }
 
 cur_time() {
-    echo " %F{$gray2}%T  %f "
+    echo " %F{$subtext1}%T  %f "
 }
 
 filepath() {
@@ -238,7 +245,7 @@ filepath() {
         fi
         pwd_folder=$(basename "${pwd_filtered}")
     fi
-    echo " %F{$sky}${icon} %F{$white}${pwd_rest}%f%F{$sky}%B${pwd_folder}%b%f "
+    echo " %F{$sapphire}${icon} %F{$text}${pwd_rest}%f%F{$sapphire}%B${pwd_folder}%b%f "
 }
 
 # Format the vcs_info_msg_0_ variable
@@ -248,20 +255,20 @@ _newline=$'\n'
 _lineup=$'\e[1A'
 _linedown=$'\e[1B'
 
-end_left='%F{$gray0}%f'
-end_right='%F{$gray0}%f'
+end_left='%F{$surface1}%f'
+end_right='%F{$surface1}%f'
 
 PROMPT='${_newline}'
-PROMPT+='$end_left%K{$gray0}$(filepath)%k$end_right'
+PROMPT+='$end_left%K{$surface1}$(filepath)%k$end_right'
 PROMPT+='${_newline}'
-PROMPT+='%(?:%F{$sky} %f:%F{$red} %f)'
-RPROMPT='%{$_lineup%}$end_left%K{$gray0}$(elapsed)$(branch)$(cur_time)%k$end_right%{$_linedown%}'
+PROMPT+='%(?:%F{$sapphire} %f:%F{$red} %f)'
+RPROMPT='%{$_lineup%}$end_left%K{$surface1}$(elapsed)$(branch)$(cur_time)%k$end_right%{$_linedown%}'
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=${gray0}"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=${surface1}"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
