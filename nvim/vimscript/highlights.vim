@@ -4,32 +4,32 @@ function! MyHighlights() abort
 
 " Colors --------------------------
 
-let	rosewater = "#F5DFDA"
-let	flamingo = "#F2CBCB"
-let	pink = "#F5BFE7"
-let	mauve = "#C59FF6"
-let	red = "#F67E98"
-let	maroon = "#F1949B"
-let	peach = "#FEA571"
-let	yellow = "#F1D8A4"
-let	green = "#A1DF8E"
-let	teal = "#85E0D1"
-let	sky = "#89DCFD"
-let	blue = "#83ABF9"
-let	sapphire = "#34C3DC"
-let	lavender = "#B8C1FE"
-let	white = "#C5CFF5"
-let	gray2 = "#AEB7DA"
-let	gray1 = "#979FC0"
-let	gray0 = "#8087A5"
-let	black5 = "#696F8A"
-let	black4 = "#52576F"
-let	black3 = "#3B3F55"
-let	black2 = "#24273A"
-let	black1 = "#1F2232"
-let	black0 = "#181926"
-
-
+let rosewater = "#F4DBD6"
+let flamingo = "#F0C6C6"
+let pink = "#F5BDE6"
+let mauve = "#C6A0F6"
+let red = "#ED8796"
+let maroon = "#EE99A0"
+let peach = "#F5A97F"
+let yellow = "#EED49F"
+let green = "#A6DA95"
+let teal = "#8BD5CA"
+let sky = "#91D7E3"
+let sapphire = "#7DC4E4"
+let blue = "#8AADF4"
+let lavender = "#B7BDF8"
+let text = "#CAD3F5"
+let subtext1 = "#B8C0E0"
+let subtext0 = "#A5ADCB"
+let overlay2 = "#939AB7"
+let overlay1 = "#8087A2"
+let overlay0 = "#6E738D"
+let surface2 = "#5B6078"
+let surface1 = "#494D64"
+let surface0 = "#363A4F"
+let base = "#24273A"
+let mantle = "#1E2030"
+let crust = "#181926"
 
 function! Hi(group, fg, bg,  ...) "{{{
   execute 'highlight! ' a:group
@@ -41,16 +41,16 @@ function! Hi(group, fg, bg,  ...) "{{{
         \ 'guibg=' . a:bg
 endfunction "}}}
 
-call Hi('Pmenu', 'NONE', black2)
-call Hi('PmenuSel', mauve, black3)
-call Hi('FloatBorder', mauve, black2)
+call Hi('Pmenu', 'NONE', surface0)
+call Hi('PmenuSel', mauve, surface1)
+call Hi('FloatBorder', mauve, surface0)
 call Hi('CmpItemAbbrMatch', mauve, 'NONE')
 call Hi('CmpItemAbbrMatchFuzzy', mauve, 'NONE')
 
-" call Hi('Normal',white, black2)
-" call Hi('NormalNC',white, black2)
-" call Hi('NormalSB',white, black2)
-call Hi('NormalFloat', 'NONE', black2)
+" call Hi('Normal',text, surface0)
+" call Hi('NormalNC',text, surface0)
+" call Hi('NormalSB',text, surface0)
+call Hi('NormalFloat', 'NONE', surface0)
 
 call Hi('javascriptTSConstructor',lavender,'NONE')
 call Hi('javascriptTSTagDelimiter',maroon,'NONE')
@@ -62,10 +62,10 @@ call Hi('typescriptTSProperty',yellow,'NONE')
 call Hi('tsxTSTagDelimiter',maroon,'NONE')
 " call Hi('tsxTSProperty',yellow,'NONE')
 
-" call Hi('jsoncComment',black3,'NONE')
-" call Hi('jsoncLineComment',black3,'NONE')
+" call Hi('jsoncComment',surface1,'NONE')
+" call Hi('jsoncLineComment',surface1,'NONE')
 
-" call Hi('IndentBlanklineChar',black3,'NONE')
+" call Hi('IndentBlanklineChar',surface1,'NONE')
 
 " +++++++++++++++++++++++++++++++++++++++++++++
 " ++++++++++ BETTER HIGHLIGHTS ++++++++++++++++
@@ -75,16 +75,16 @@ call Hi('BufferLineIndicatorSelected',mauve,'NONE')
 call Hi('BufferLineModified',red,'NONE')
 call Hi('BufferLineModifiedVisible',red,'NONE')
 call Hi('BufferLineModifiedSelected',red,'NONE')
-call Hi('BufferLineBufferVisible',white,'inactive_bg')
-call Hi('BufferLineBackground',gray0,'inactive_bg')
+call Hi('BufferLineBufferVisible',text,'inactive_bg')
+call Hi('BufferLineBackground',overlay1,'inactive_bg')
 
 call Hi('TelescopePreviewTitle',mauve,'NONE')
 call Hi('TelescopeResultsTitle',mauve,'NONE')
 call Hi('TelescopePromptTitle',mauve,'NONE')
 call Hi('TelescopePromptPrefix',sapphire,'NONE')
 call Hi('TelescopeMatching',mauve,'NONE')
-call Hi('TelescopeSelectionCaret',red,black2)
-call Hi('TelescopeBorder',black5,'NONE')
+call Hi('TelescopeSelectionCaret',red,surface0)
+call Hi('TelescopeBorder',overlay0,'NONE')
 
 endfunction
 
