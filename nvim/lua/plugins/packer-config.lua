@@ -104,6 +104,7 @@ packer.startup(function()
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use("natecraddock/telescope-zf-native.nvim")
 
 	-- == LSP configuration
 	-- =============================================
@@ -143,8 +144,8 @@ packer.startup(function()
 	use({
 		"catppuccin/nvim",
 		-- "jorgebef/nvim",
-		-- branch = "main",
-		branch = "dev",
+		branch = "main",
+		-- branch = "dev",
 		as = "catppuccin",
 	})
 
