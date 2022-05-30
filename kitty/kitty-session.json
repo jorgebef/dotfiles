@@ -2,11 +2,13 @@
   {
     "id": 1,
     "is_focused": true,
-    "platform_window_id": 116433,
+    "platform_window_id": 116461,
     "tabs": [
       {
         "active_window_history": [
-          1
+          15,
+          1,
+          14
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
@@ -14,25 +16,74 @@
         ],
         "id": 1,
         "is_focused": false,
-        "layout": "fat",
-        "layout_opts": {
-          "bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "full_size": 1,
-          "mirrored": false
-        },
-        "layout_state": {
-          "biased_map": {},
-          "main_bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "num_full_size_windows": 1
-        },
+        "layout": "stack",
+        "layout_opts": {},
+        "layout_state": {},
         "title": "jbef.es - Portfolio",
         "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 320,
+            "cwd": "/Users/jorgebefan/Documents/Github/jbef",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/18.2.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/jbef/node_modules/typescript/lib/typingsInstaller.js",
+                  "--globalTypingsCacheLocation",
+                  "/Users/jorgebefan/Library/Caches/typescript/4.7",
+                  "--typesMapLocation",
+                  "/Users/jorgebefan/Documents/Github/jbef/node_modules/typescript/lib/typesMap.json"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/jbef",
+                "pid": 18753
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/18.2.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/jbef/node_modules/typescript/lib/tsserver.js",
+                  "--cancellationPipeName",
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/2ffe079080fd1beff9d382018d0c7983/tscancellation*"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/jbef",
+                "pid": 18728
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/typescript-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/jbef",
+                "pid": 18720
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/vscode-json-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/jbef",
+                "pid": 18714
+              },
+              {
+                "cmdline": [
+                  "nvim"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/jbef",
+                "pid": 18704
+              }
+            ],
+            "id": 1,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 89,
+            "pid": 12932,
+            "title": "theme.ts (~/Documents/Github/jbef/styles) - NVIM"
+          },
           {
             "cmdline": [
               "-zsh"
@@ -46,20 +97,44 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/jbef",
-                "pid": 11921
+                "pid": 17060
               }
             ],
-            "id": 1,
+            "id": 14,
             "is_focused": false,
             "is_self": false,
             "lines": 89,
-            "pid": 11921,
-            "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/jbef"
+            "pid": 17060,
+            "title": "\u2026/Documents/Github/jbef"
+          },
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 320,
+            "cwd": "/Users/jorgebefan/Documents/Github/jbef",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-zsh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/jbef",
+                "pid": 17102
+              }
+            ],
+            "id": 15,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 89,
+            "pid": 17102,
+            "title": "\u2026/Documents/Github/jbef"
           }
         ]
       },
       {
         "active_window_history": [
+          16,
           2
         ],
         "enabled_layouts": [
@@ -67,26 +142,66 @@
           "stack"
         ],
         "id": 2,
-        "is_focused": false,
-        "layout": "fat",
-        "layout_opts": {
-          "bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "full_size": 1,
-          "mirrored": false
-        },
-        "layout_state": {
-          "biased_map": {},
-          "main_bias": [
-            0.55,
-            0.44999999999999996
-          ],
-          "num_full_size_windows": 1
-        },
+        "is_focused": true,
+        "layout": "stack",
+        "layout_opts": {},
+        "layout_state": {},
         "title": "CNG Lawyers",
         "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 320,
+            "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/18.2.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/cng_lawyers/node_modules/typescript/lib/typingsInstaller.js",
+                  "--globalTypingsCacheLocation",
+                  "/Users/jorgebefan/Library/Caches/typescript/4.6",
+                  "--typesMapLocation",
+                  "/Users/jorgebefan/Documents/Github/cng_lawyers/node_modules/typescript/lib/typesMap.json"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 17536
+              },
+              {
+                "cmdline": [
+                  "/opt/homebrew/Cellar/node/18.2.0/bin/node",
+                  "/Users/jorgebefan/Documents/Github/cng_lawyers/node_modules/typescript/lib/tsserver.js",
+                  "--cancellationPipeName",
+                  "/private/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/b63f1df0415b4dce244bfbcf34e14891/tscancellation*"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 17528
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/typescript-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 17521
+              },
+              {
+                "cmdline": [
+                  "nvim"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 17506
+              }
+            ],
+            "id": 2,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 89,
+            "pid": 12933,
+            "title": "_app.tsx (~/Documents/Github/cng_lawyers/pages) - NVIM"
+          },
           {
             "cmdline": [
               "-zsh"
@@ -100,15 +215,49 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
-                "pid": 11922
+                "pid": 19676
               }
             ],
-            "id": 2,
+            "id": 16,
             "is_focused": false,
             "is_self": false,
             "lines": 89,
-            "pid": 11922,
+            "pid": 19676,
             "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/cng_lawyers"
+          },
+          {
+            "cmdline": [
+              "sh",
+              "/Users/jorgebefan/.config/kitty/savesess.sh"
+            ],
+            "columns": 320,
+            "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "kitty",
+                  "@",
+                  "ls"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 19725
+              },
+              {
+                "cmdline": [
+                  "sh",
+                  "/Users/jorgebefan/.config/kitty/savesess.sh"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/cng_lawyers",
+                "pid": 19724
+              }
+            ],
+            "id": 17,
+            "is_focused": true,
+            "is_self": true,
+            "lines": 89,
+            "pid": 19724,
+            "title": "savesess.sh"
           }
         ]
       },
@@ -154,14 +303,14 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/NextProperty-email-templates",
-                "pid": 11923
+                "pid": 12935
               }
             ],
             "id": 3,
             "is_focused": false,
             "is_self": false,
             "lines": 89,
-            "pid": 11923,
+            "pid": 12935,
             "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/NextProperty-email-templates"
           }
         ]
@@ -208,29 +357,92 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/real_estate_cms/backend",
-                "pid": 11930
+                "pid": 12940
               }
             ],
             "id": 4,
             "is_focused": false,
             "is_self": false,
             "lines": 89,
-            "pid": 11930,
+            "pid": 12940,
             "title": "jorgebefan@Jorges-MacBook-Pro:~/Documents/Github/real_estate_cms/backend"
           }
         ]
       },
       {
         "active_window_history": [
-          6,
-          5
+          11
+        ],
+        "enabled_layouts": [
+          "fat:bias=55;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 7,
+        "is_focused": false,
+        "layout": "fat",
+        "layout_opts": {
+          "bias": [
+            0.55,
+            0.44999999999999996
+          ],
+          "full_size": 1,
+          "mirrored": false
+        },
+        "layout_state": {
+          "biased_map": {},
+          "main_bias": [
+            0.55,
+            0.44999999999999996
+          ],
+          "num_full_size_windows": 1
+        },
+        "title": "Catppuccin - Alfred",
+        "windows": [
+          {
+            "cmdline": [
+              "-zsh"
+            ],
+            "columns": 320,
+            "cwd": "/Users/jorgebefan/Documents/Github/catppuccin/alfred",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "/Users/jorgebefan/.config/nvim/lua-language-server/bin/macOS/lua-language-server",
+                  "-E",
+                  "/Users/jorgebefan/.config/nvim/lua-language-server/main.lua"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/catppuccin/nvim",
+                "pid": 15394
+              },
+              {
+                "cmdline": [
+                  "nvim"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/catppuccin/alfred",
+                "pid": 15363
+              }
+            ],
+            "id": 11,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 89,
+            "pid": 15098,
+            "title": "catppuccin.alfredappearance (~/Documents/Github/catppuccin/alfred) - NVIM"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          5,
+          9
         ],
         "enabled_layouts": [
           "fat:bias=55;full_size=1;mirrored=false",
           "stack"
         ],
         "id": 5,
-        "is_focused": true,
+        "is_focused": false,
         "layout": "stack",
         "layout_opts": {},
         "layout_state": {},
@@ -246,26 +458,44 @@
             "foreground_processes": [
               {
                 "cmdline": [
+                  "/opt/homebrew/Cellar/node/18.2.0/bin/node",
+                  "/opt/homebrew/lib/node_modules/vim-language-server/out/scan.js",
+                  "--node-ipc"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
+                "pid": 13737
+              },
+              {
+                "cmdline": [
+                  "node",
+                  "/opt/homebrew/bin/vim-language-server",
+                  "--stdio"
+                ],
+                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
+                "pid": 13719
+              },
+              {
+                "cmdline": [
                   "/Users/jorgebefan/.config/nvim/lua-language-server/bin/macOS/lua-language-server",
                   "-E",
                   "/Users/jorgebefan/.config/nvim/lua-language-server/main.lua"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 12172
+                "pid": 13185
               },
               {
                 "cmdline": [
                   "nvim"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 12157
+                "pid": 13170
               }
             ],
             "id": 5,
             "is_focused": false,
             "is_self": false,
             "lines": 89,
-            "pid": 11936,
+            "pid": 12949,
             "title": "kitty.conf (~/Documents/Github/dotfiles/kitty) - NVIM"
           },
           {
@@ -281,49 +511,15 @@
                   "-zsh"
                 ],
                 "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 12221
+                "pid": 13895
               }
             ],
-            "id": 6,
+            "id": 9,
             "is_focused": false,
             "is_self": false,
             "lines": 89,
-            "pid": 12221,
+            "pid": 13895,
             "title": "\u2026/Documents/Github/dotfiles"
-          },
-          {
-            "cmdline": [
-              "sh",
-              "/Users/jorgebefan/.config/kitty/savesess.sh"
-            ],
-            "columns": 320,
-            "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-            "env": {},
-            "foreground_processes": [
-              {
-                "cmdline": [
-                  "kitty",
-                  "@",
-                  "ls"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 12376
-              },
-              {
-                "cmdline": [
-                  "sh",
-                  "/Users/jorgebefan/.config/kitty/savesess.sh"
-                ],
-                "cwd": "/Users/jorgebefan/Documents/Github/dotfiles",
-                "pid": 12375
-              }
-            ],
-            "id": 7,
-            "is_focused": true,
-            "is_self": true,
-            "lines": 89,
-            "pid": 12375,
-            "title": "savesess.sh"
           }
         ]
       }

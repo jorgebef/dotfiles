@@ -131,8 +131,11 @@ end
 nvim_lsp.tsserver.setup({
 	handlers = handlers,
 	on_attach = function(client, bufnr)
-		client.server_capabilities.document_formatting = false
-		client.server_capabilities.document_range_formatting = false
+		client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_range_formatting = false
+		-- THIS IS READY FOR nvim 0.8
+		-- client.server_capabilities.document_formatting = false
+		-- client.server_capabilities.document_range_formatting = false
 		local ts_utils = require("nvim-lsp-ts-utils")
 		ts_utils.setup({})
 		ts_utils.setup_client(client)
@@ -189,6 +192,25 @@ nvim_lsp.jsonls.setup({
 	init_options = {
 		provideFormatter = false,
 	},
+})
+
+-- ================================================
+-- HTML LANGUAGE SERVER
+-- ================================================
+nvim_lsp.html.setup({
+  capabilities=capabilities,
+	cmd = { "vscode-html-language-server", "--stdio" },
+	filetypes = { "html" },
+	on_attach = on_attach,
+	init_options = {
+		configurationSection = { "html", "css", "javascript" },
+		embeddedLanguages = {
+			css = true,
+			javascript = true,
+		},
+		provideFormatter = false,
+	},
+	single_file_support = true,
 })
 
 -- ================================================
