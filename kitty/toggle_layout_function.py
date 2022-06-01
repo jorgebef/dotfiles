@@ -5,6 +5,7 @@
 ### IMPORTANT!!!!
 ### set the following settings in kitty.conf:
 # allow_remote_control yes
+# enabled_layouts Fat:bias=55;full_size=1;mirrored=false, Stack
 # map kitty_mod+Space kitten toggle_layout_function.py
 
 def main(args):
