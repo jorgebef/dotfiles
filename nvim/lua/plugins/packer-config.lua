@@ -35,6 +35,10 @@ packer.startup(function()
 	-- =============================================
 	use("glepnir/dashboard-nvim")
 
+	-- == Session management
+	-- =============================================
+	use({ "rmagatti/auto-session" })
+
 	-- == Treesitter
 	-- =============================================
 	use({

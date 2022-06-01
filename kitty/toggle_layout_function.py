@@ -1,6 +1,11 @@
 #####################
-# toggleLayout_function.py
+# toggle_layout_function.py
 #####################
+
+### IMPORTANT!!!!
+### set the following settings in kitty.conf:
+# allow_remote_control yes
+# map kitty_mod+Space kitten toggle_layout_function.py
 
 def main(args):
     pass

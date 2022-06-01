@@ -29,7 +29,7 @@ vim.g.inccommand = "nosplit"
 -- " Don't pass messages to |ins-completion-menu|.
 -- vim.g.shortmess = vim.o.shortmess .. "c"
 
-vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
+vim.opt.cmdheight = 1
 vim.opt.colorcolumn = "99999" -- fixes indentline for now
 vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
@@ -84,4 +84,3 @@ vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.api.nvim_command("filetype plugin on")
 vim.api.nvim_command("filetype indent plugin on")
 vim.api.nvim_command("syntax on")
-

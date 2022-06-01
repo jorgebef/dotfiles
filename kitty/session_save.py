@@ -2,12 +2,18 @@
 # session_save.py
 #####################
 
+### IMPORTANT!!!!
+### set the following settings in kitty.conf:
+# startup_session ~/.config/kitty/session/session.conf
+# allow_remote_control yes
+# map kitty_mod+s launch ~/.config/kitty/savesess.sh
+
 import os
 import json
 
 dir = os.path.dirname(__file__)
 
-json_path = 'kitty-session.json'
+json_path = 'session/kitty-session.json'
 sess_dump_path = os.path.join(dir, json_path)
 
 def createSession(output, sessionData):
@@ -33,7 +39,7 @@ def createSession(output, sessionData):
 
 with open(sess_dump_path) as f:
     sessData = json.load(f)
-    sess_file_path = 'session.conf'
+    sess_file_path = 'session/session.conf'
     sess_full_path = os.path.join(dir, sess_file_path)
     s = open(sess_full_path,'w')
     createSession(s,sessData)

@@ -255,14 +255,15 @@ _newline=$'\n'
 _lineup=$'\e[1A'
 _linedown=$'\e[1B'
 
-end_left='%F{$surface1}%f'
-end_right='%F{$surface1}%f'
+square_icon='%F{$surface1}█%f'
+angle_left='%F{$surface1}%f'
+angle_right='%F{$surface1}%f'
 
 PROMPT='${_newline}'
-PROMPT+='$end_left%K{$surface1}$(filepath)%k$end_right'
+PROMPT+='$square_icon%K{$surface1}$(filepath)%k$angle_right'
 PROMPT+='${_newline}'
 PROMPT+='%(?:%F{$sapphire} %f:%F{$red} %f)'
-RPROMPT='%{$_lineup%}$end_left%K{$surface1}$(elapsed)$(branch)$(cur_time)%k$end_right%{$_linedown%}'
+RPROMPT='%{$_lineup%}$angle_left%K{$surface1}$(elapsed)$(branch)$(cur_time)%k$square_icon%{$_linedown%}'
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
