@@ -15,6 +15,7 @@ require("plugins.auto-session-config")
 require("plugins.lightspeed-config")
 require("plugins.colorizer-config")
 require("plugins.which-key-config")
+require("plugins.nvim-web-devicons-config")
 
 require("plugins.lsp.lsp-config")
 require("plugins.lsp.nvim-cmp-config")

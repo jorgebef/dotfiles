@@ -58,7 +58,6 @@ packer.startup(function()
 	-- == Commenting and uncommenting lines
 	-- =============================================
 	use("numToStr/Comment.nvim")
-	-- use 'b3nj5m1n/kommentary'
 
 	-- == File explorer written in lua
 	-- =============================================
