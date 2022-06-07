@@ -48,6 +48,8 @@ require("telescope").setup({
 				"out",
 				"--exclude",
 				".next",
+				"--exclude",
+				".netlify",
 			},
 		},
 	},

@@ -1,4 +1,5 @@
 local nvim_lsp = require("lspconfig")
+local util = require("lspconfig/util")
 
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
@@ -151,6 +152,16 @@ nvim_lsp.tsserver.setup({
 -- -- ================================================
 require("lspconfig").jdtls.setup({ cmd = { "jdtls" } })
 
+-- -- ================================================
+-- -- DOCKER LANGUAGE SERVER
+-- -- ================================================
+require("lspconfig").dockerls.setup({
+	cmd = { "docker-langserver", "--stdio" },
+	filetypes = { "dockerfile" },
+	root_dir = util.root_pattern("Dockerfile"),
+	single_file_support = true,
+})
+
 -- ================================================
 -- RUST LANGUAGE SERVER
 -- ================================================
@@ -167,7 +178,6 @@ nvim_lsp.rls.setup({
 -- ================================================
 -- GO LANGUAGE SERVER
 -- ================================================
-local util = require("lspconfig/util")
 nvim_lsp.gopls.setup({
 	cmd = { "gopls", "serve" },
 	filetypes = { "go", "gomod" },
@@ -192,13 +202,51 @@ nvim_lsp.jsonls.setup({
 	init_options = {
 		provideFormatter = false,
 	},
+	settings = {
+		json = {
+			schemas = {
+				{
+					fileMatch = { "package.json" },
+					url = "https://json.schemastore.org/package.json",
+				},
+				{
+					fileMatch = { "tsconfig*.json" },
+					url = "https://json.schemastore.org/tsconfig.json",
+				},
+				{
+					fileMatch = { ".prettierrc", ".prettierrc.json", "prettier.config.json" },
+					url = "https://json.schemastore.org/prettierrc.json",
+				},
+				{
+					fileMatch = { ".eslintrc", ".eslintrc.json" },
+					url = "https://json.schemastore.org/eslintrc.json",
+				},
+				{
+					fileMatch = { ".babelrc", ".babelrc.json", "babel.config.json" },
+					url = "https://json.schemastore.org/babelrc.json",
+				},
+				{
+					fileMatch = { "lerna.json" },
+					url = "https://json.schemastore.org/lerna.json",
+				},
+				{
+					fileMatch = { "now.json", "vercel.json" },
+					url = "https://json.schemastore.org/now.json",
+				},
+				{
+					fileMatch = { "ecosystem.json" },
+					url = "https://json.schemastore.org/pm2-ecosystem.json",
+				},
+			},
+		},
+	},
 })
 
 -- ================================================
 -- HTML LANGUAGE SERVER
 -- ================================================
 nvim_lsp.html.setup({
-  capabilities=capabilities,
+	capabilities = capabilities,
 	cmd = { "vscode-html-language-server", "--stdio" },
 	filetypes = { "html" },
 	on_attach = on_attach,
