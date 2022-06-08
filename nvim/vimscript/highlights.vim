@@ -86,6 +86,10 @@ call Hi('TelescopeMatching',mauve,'NONE')
 call Hi('TelescopeSelectionCaret',red,surface0)
 call Hi('TelescopeBorder',overlay0,'NONE')
 
+call Hi('BufferLineDuplicateSelected',mauve,'NONE')
+call Hi('BufferLineDuplicateVisible',mauve,'NONE')
+call Hi('BufferLineDuplicate',subtext0,'NONE')
+
 endfunction
 
 " " Allowing JSON comments

@@ -13,7 +13,7 @@ require("bufferline").setup({
 		modified_icon = " ",
 		diagnostics_update_in_insert = false,
 		-- NOTE: this will be called a lot so don't do any heavy processing here
-		show_buffer_icons = true, -- disable filetype icons for buffers
+		show_buffer_icons = true,
 		show_buffer_close_icons = false,
 		show_close_icon = false,
 		show_tab_indicators = false,
