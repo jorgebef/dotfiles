@@ -218,15 +218,17 @@ filepath() {
         /Users/jorgebefan )
             icon="  "
             ;;
-        /Users/jorgebefan/Documents/Github* )
-            icon="  "
+        /Users/jorgebefan/Dropbox/JORGE/git* )
+            icon="  "
             ;;
         /Users/jorgebefan/Downloads* )
             icon="  "
             ;;
         /Users/jorgebefan/Documents* )
-            # icon="  "
             icon="  "
+            ;;
+        /Users/jorgebefan/Dropbox* )
+            icon="  "
             ;;
         * )
             icon="  "
@@ -279,5 +281,11 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=${surface1}"
 # export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 # alias la="ls -laG"
+
+# =================================================================
+# Custom scripts to make Dropbox ignore the files that are passed to the command
+# =================================================================
+alias dropbignore="zsh ~/.custom-scripts/dropbignore.sh"
+alias dropbunignore="zsh ~/.custom-scripts/dropbunignore.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
