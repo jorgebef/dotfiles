@@ -52,15 +52,10 @@ call Hi('CmpItemAbbrMatchFuzzy', mauve, 'NONE')
 " call Hi('NormalSB',text, surface0)
 call Hi('NormalFloat', 'NONE', surface0)
 
-call Hi('javascriptTSConstructor',lavender,'NONE')
 call Hi('javascriptTSTagDelimiter',maroon,'NONE')
-call Hi('javascriptTSTagAttribute',mauve,'NONE')
-call Hi('cssTSProperty',yellow,'NONE')
-call Hi('javascriptTSProperty',yellow,'NONE')
-
-call Hi('typescriptTSProperty',yellow,'NONE')
+call Hi('jsxTSTagDelimiter',maroon,'NONE')
 call Hi('tsxTSTagDelimiter',maroon,'NONE')
-" call Hi('tsxTSProperty',yellow,'NONE')
+
 
 " call Hi('jsoncComment',surface1,'NONE')
 " call Hi('jsoncLineComment',surface1,'NONE')
@@ -86,9 +81,9 @@ call Hi('TelescopeMatching',mauve,'NONE')
 call Hi('TelescopeSelectionCaret',red,surface0)
 call Hi('TelescopeBorder',overlay0,'NONE')
 
-call Hi('BufferLineDuplicateSelected',mauve,'NONE')
-call Hi('BufferLineDuplicateVisible',mauve,'NONE')
-call Hi('BufferLineDuplicate',subtext0,'NONE')
+call Hi('BufferLineDuplicateSelected',text,base)
+call Hi('BufferLineDuplicateVisible',text,base)
+call Hi('BufferLineDuplicate',overlay2,base)
 
 endfunction
 

@@ -194,32 +194,83 @@ precmd_git() {
 precmd_functions+=(precmd_git)
 
 
-os_icon='%F{$subtext1}%B   %b%f'
-separator='%F{$subtext1}● %f'
+separator_left=''
+separator_right=''
+
+_newline=$'\n'
+_lineup=$'\e[1A'
+_linedown=$'\e[1B'
+
+left_start=''
+right_start=''
+
+branchName(){
+  part=${vcs_info_msg_0_#*\[}
+  branchName=${part%]*}
+  echo "$branchName"
+}
 
 elapsed() {
-    if [ $cmd_time ]; then
-        echo " %F{$subtext1}$cmd_time 羽 $separator%f";
+  if [ $cmd_time ]; then
+      echo "%F{$surface1}$separator_left%f%K{$surface1}%F{$subtext0} $cmd_time 羽%f%k";
+  fi
+}
+elapsed_separator() {
+  if [ $cmd_time ]; then
+    if [ $vcs_info_msg_0_ ]; then
+      if [[ "$(branchName)" == "dev" ]]; then
+        echo "%F{$flamingo}%K{$surface1}$separator_left%k%f";
+      else
+        echo "%F{$green}%K{$surface1}$separator_left%k%f";
+      fi
     fi
+  else
+    if [ $vcs_info_msg_0_ ]; then
+      if [[ "$(branchName)" == "dev" ]]; then
+        echo "%F{$flamingo}%K{$base}$separator_left%k%f";
+      else
+        echo "%F{$green}%K{$base}$separator_left%k%f";
+      fi
+    fi
+  fi
 }
 
 branch() {
-    if [ $vcs_info_msg_0_ ]; then
-        echo " %F{$green}%B$vcs_info_msg_0_%b $separator%f";
+  if [ $vcs_info_msg_0_ ]; then
+    if [[ "$(branchName)" == "dev" ]]; then
+      echo "%K{$flamingo}%F{$base} %B $(branchName)%b %f%k";
+    else
+      echo "%K{$green}%F{$base} %B$(branchName)%b %f%k";
     fi
+  fi
+}
+branch_separator() {
+  if [ $vcs_info_msg_0_ ]; then
+    if [[ "$(branchName)" == "dev" ]]; then
+      echo "%F{$surface2}%K{$flamingo}$separator_left%k%f";
+    else
+      echo "%F{$surface2}%K{$green}$separator_left%k%f";
+    fi
+  else
+    if [ $cmd_time ]; then
+      echo "%F{$surface2}%K{$surface1}$separator_left%k%f";
+    else
+      echo "%F{$surface2}%K{$base}$separator_left%k%f";
+    fi
+  fi
 }
 
 cur_time() {
-    echo " %F{$subtext1}%T  %f "
+    echo "%B%K{$surface2} %F{$text}%T  %f%b%K{$base}%F{$surface2}$right_start%f%k"
 }
 
-filepath() {
+icon() {
     case $PWD in
         /Users/jorgebefan )
-            icon="  "
+            icon=" "
             ;;
         /Users/jorgebefan/Dropbox/JORGE/git* )
-            icon="  "
+            icon=" "
             ;;
         /Users/jorgebefan/Downloads* )
             icon="  "
@@ -231,9 +282,13 @@ filepath() {
             icon="  "
             ;;
         * )
-            icon="  "
+            icon=" "
             ;;
     esac
+    echo "%F{$mauve}$left_start%f%K{$mauve}%F{$base} $icon %f%k"
+  }
+
+filepath() {
     split_path=(${(@s|/|)PWD})
     pwd_filtered="${PWD//\/Users\/jorgebefan/~}"
     if [[ "${pwd_filtered}" == "~" ]]; then
@@ -247,31 +302,23 @@ filepath() {
         fi
         pwd_folder=$(basename "${pwd_filtered}")
     fi
-    echo " %F{$sapphire}${icon} %F{$text}${pwd_rest}%f%F{$sapphire}%B${pwd_folder}%b%f "
+    echo "%F{$overlay2}%K{$surface1} ${pwd_rest}%f%F{$text}%B${pwd_folder} %b%f%k"
 }
 
 # Format the vcs_info_msg_0_ variable
-zstyle ':vcs_info:git:*' formats " %b"
-
-_newline=$'\n'
-_lineup=$'\e[1A'
-_linedown=$'\e[1B'
-
-square_icon='%F{$surface1}█%f'
-angle_left='%F{$surface1}%f'
-angle_right='%F{$surface1}%f'
+# zstyle ':vcs_info:git:*' formats " %b"
 
 PROMPT='${_newline}'
-PROMPT+='$square_icon%K{$surface1}$(filepath)%k$angle_right'
+PROMPT+='$(icon)%F{$mauve}%K{$surface1}${separator_right}%k%f$(filepath)%F{$surface1}$separator_right%f'
 PROMPT+='${_newline}'
-PROMPT+='%(?:%F{$sapphire} %f:%F{$red} %f)'
-RPROMPT='%{$_lineup%}$angle_left%K{$surface1}$(elapsed)$(branch)$(cur_time)%k$square_icon%{$_linedown%}'
+PROMPT+='%(?:%F{$green} %f:%F{$red} %f)'
+RPROMPT='%{$_lineup%}$(elapsed)$(elapsed_separator)$(branch)$(branch_separator)$(cur_time)%k%{$_linedown%}'
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=${surface1}"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=${surface2}"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"

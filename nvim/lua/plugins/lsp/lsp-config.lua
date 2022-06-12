@@ -141,8 +141,8 @@ nvim_lsp.tsserver.setup({
 		ts_utils.setup({})
 		ts_utils.setup_client(client)
 		-- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-		buf_map(bufnr, "n", "<leader>rF", ":TSLspRenameFile<CR>")
-		buf_map(bufnr, "n", "<leader>iA", ":TSLspImportAll<CR>")
+		buf_map(bufnr, "n", "<leader>lrf", ":TSLspRenameFile<CR>")
+		buf_map(bufnr, "n", "<leader>lia", ":TSLspImportAll<CR>")
 		on_attach(client, bufnr)
 	end,
 })
@@ -320,33 +320,21 @@ local map = vim.api.nvim_set_keymap
 local ns_opts = { noremap = true, silent = true }
 map("n", "<leader>lD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", ns_opts)
 map("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", ns_opts)
--- map('n', '<leader>E', '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', ns_opts)
--- map("n", "<leader>E", '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor"})<CR>', ns_opts)
 map("n", "<leader>lw", '<cmd>lua vim.diagnostic.goto_next({severity={"HINT","WARN"},float=true})<CR>', ns_opts)
 map("n", "<leader>le", '<cmd>lua vim.diagnostic.goto_next({severity="ERROR",float=true})<CR>', ns_opts)
 map("n", "<leader>lW", '<cmd>lua vim.diagnostic.goto_prev({severity={"HINT","WARN"},float=true})<CR>', ns_opts)
 map("n", "<leader>lE", '<cmd>lua vim.diagnostic.goto_prev({severity="ERROR",float=true})<CR>', ns_opts)
--- map("n", "<leader>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", ns_opts)
 -- Formatting is handled by null-ls
 map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", ns_opts)
-
--- See `:help vim.lsp.*` for documentation on any of the below functions
--- map("n", "<leader>ld", "<cmd>lua vim.lsp.buf.declaration()<CR>", ns_opts)
 -- Telescope does go to definition better than nvim-lsp
 -- map('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', ns_opts)
 map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)
--- map('n', '<leader>ld', '<cmd>lua vim.lsp.buf.implementation()<CR>', ns_opts)
-map("n", "<leader>lR", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
-map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
+map("n", "<leader>lrr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
+map("n", "<leader>lrn", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
 map("n", "K", "<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>", ns_opts)
-map("n", "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>", ns_opts)
+map("n", "<leader>lii", "<cmd>lua vim.lsp.buf.implementation()<CR>", ns_opts)
 map("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", ns_opts)
 
--- map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', ns_opts)
--- map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', ns_opts)
--- map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', ns_opts)
-
--- *************** THIS IS READY FOR NVIM 0.6 ********************************
 vim.cmd(
 	[[autocmd CursorHold * lua vim.diagnostic.open_float(0, {scope="cursor", focusable=false, close_events = {"CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave"}})]]
 )

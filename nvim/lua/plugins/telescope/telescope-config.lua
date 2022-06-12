@@ -88,30 +88,30 @@ require("telescope").setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
-		-- ["zf-native"] = {
-		-- 	-- options for sorting file-like items
-		-- 	file = {
-		-- 		-- override default telescope file sorter
-		-- 		enable = true,
-		--
-		-- 		-- highlight matching text in results
-		-- 		highlight_results = true,
-		--
-		-- 		-- enable zf filename match priority
-		-- 		match_filename = true,
-		-- 	},
-		-- 	-- options for sorting all other items
-		-- 	generic = {
-		-- 		-- override default telescope generic item sorter
-		-- 		enable = true,
-		--
-		-- 		-- highlight matching text in results
-		-- 		highlight_results = true,
-		--
-		-- 		-- disable zf filename match priority
-		-- 		match_filename = false,
-		-- 	},
-		-- },
+		["zf-native"] = {
+			-- options for sorting file-like items
+			file = {
+				-- override default telescope file sorter
+				enable = true,
+
+				-- highlight matching text in results
+				highlight_results = true,
+
+				-- enable zf filename match priority
+				match_filename = true,
+			},
+			-- options for sorting all other items
+			generic = {
+				-- override default telescope generic item sorter
+				enable = true,
+
+				-- highlight matching text in results
+				highlight_results = true,
+
+				-- disable zf filename match priority
+				match_filename = false,
+			},
+		},
 
 		project = {},
 	},
@@ -121,7 +121,7 @@ require("telescope").setup({
 require("telescope").load_extension("fzf")
 
 -- Load zf extension, which favors filename over rest of the path
--- require("telescope").load_extension("zf-native")
+require("telescope").load_extension("zf-native")
 
 -- =======================================================================
 -- ============================== REMAPS =================================
