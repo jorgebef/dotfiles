@@ -328,6 +328,7 @@ map("n", "<leader>lE", '<cmd>lua vim.diagnostic.goto_prev({severity="ERROR",floa
 map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", ns_opts)
 -- Telescope does go to definition better than nvim-lsp
 -- map('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', ns_opts)
+-- IT DOESNT ALWAYS WORK FOR SOME REASON
 map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)
 map("n", "<leader>lrr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
 map("n", "<leader>lrn", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)

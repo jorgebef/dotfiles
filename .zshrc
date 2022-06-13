@@ -240,7 +240,7 @@ branch() {
     if [[ "$(branchName)" == "dev" ]]; then
       echo "%K{$flamingo}%F{$base} %B $(branchName)%b %f%k";
     else
-      echo "%K{$green}%F{$base} %B$(branchName)%b %f%k";
+      echo "%K{$green}%F{$base} %B $(branchName)%b %f%k";
     fi
   fi
 }
