@@ -29,7 +29,12 @@ vim.g.inccommand = "nosplit"
 -- " Don't pass messages to |ins-completion-menu|.
 -- vim.g.shortmess = vim.o.shortmess .. "c"
 
-vim.opt.cmdheight = 1
+-- ==================================
+-- NEOVIM 0.8
+-- vim.opt.cmdheight = 0
+-- vim.opt.winbar = "%{%v:lua.require('utils.winbar').output()%}"
+vim.opt.winbar = " "
+-- ==================================
 vim.opt.colorcolumn = "99999" -- fixes indentline for now
 vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files

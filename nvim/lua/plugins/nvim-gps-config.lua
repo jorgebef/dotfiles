@@ -9,8 +9,8 @@ require("nvim-gps").setup({
 		["class-name"] = " ", -- Classes and class-like objects
 		["function-name"] = " ", -- Functions
 		["method-name"] = " ", -- Methods (functions inside class-like objects)
-		["container-name"] = "⛶ ", -- Containers (example: lua tables)
-		["tag-name"] = "炙",         -- Tags (example: html tags)
+		["container-name"] = require("icons").type.Object, -- Containers (example: lua tables)
+		["tag-name"] = "炙", -- Tags (example: html tags)
 	},
 
 	-- Add custom configuration per language or
@@ -103,7 +103,8 @@ require("nvim-gps").setup({
 		--}
 	},
 
-	separator = " > ",
+	-- separator = " > ",
+	separator = "  ",
 
 	-- limit for amount of context shown
 	-- 0 means no limit

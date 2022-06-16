@@ -1,3 +1,5 @@
+local icons = require("icons")
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -13,7 +15,10 @@ require("lualine").setup({
 		lualine_a = {
 			{
 				"mode",
-				separator = { left = "", right = "" },
+				separator = {
+					left = icons.ui.SeparatorLStart,
+					right = icons.ui.SeparatorLEnd,
+				},
 				-- separator = { left = "█", right = "" },
 				left_padding = 1,
 				right_padding = 1,
@@ -24,7 +29,10 @@ require("lualine").setup({
 				"branch",
 				-- separator = { right = "" },
 				-- separator = { left = "", right = "" },
-				separator = { right = "" },
+				separator = {
+					-- right = ""
+					right = icons.ui.SeparatorLEnd,
+				},
 				left_padding = 2,
 			},
 			{
@@ -38,7 +46,10 @@ require("lualine").setup({
 				-- separator = { right = "" },
 				-- separator = { left = "█", right = "█" },
 				-- separator = { left = "", right = "" },
-				separator = { right = "" },
+				separator = {
+					-- right = ""
+					right = icons.ui.SeparatorLEnd,
+				},
 				left_padding = 1,
 			},
 			{
@@ -50,13 +61,22 @@ require("lualine").setup({
 				sources = { "nvim_diagnostic", "coc" },
 				-- displays diagnostics from defined severity
 				sections = { "error", "warn", "info", "hint" },
-				symbols = { error = " ", warn = " ", info = " " },
+				-- symbols = { error = " ", warn = " ", info = " " },
+				symbols = {
+					error = icons.diagnostics.Error,
+					warning = icons.diagnostics.Warning,
+					info = icons.diagnostics.Information,
+					hint = icons.diagnostics.Hint,
+				},
 				colored = true, -- displays diagnostics status in color if set to true
 				update_in_insert = false, -- Update diagnostics in insert mode
 				always_visible = false, -- Show diagnostics always
 				-- separator = { right = "" },
 				-- separator = { left = "", right = "" },
-				separator = { right = "" },
+				separator = {
+					-- right = ""
+					right = icons.ui.SeparatorLEnd,
+				},
 				left_padding = 1,
 			},
 		},
@@ -71,8 +91,12 @@ require("lualine").setup({
 		lualine_y = {
 			{
 				"progress",
+				"require'lsp-status'.status()",
 				-- separator = { left = "" },
-				separator = { left = "" },
+				-- separator = { left = "" },
+				separator = {
+					left = icons.ui.SeparatorRStart,
+				},
 				-- separator = { left = "", right = "" },
 				right_padding = 1,
 			},
@@ -81,7 +105,11 @@ require("lualine").setup({
 		lualine_z = {
 			{
 				"location",
-				separator = { left = "", right = "" },
+				-- separator = { left = "", right = "" },
+				separator = {
+					left = icons.ui.SeparatorRStart,
+					right = icons.ui.SeparatorREnd,
+				},
 				-- separator = { left = "", right = "█" },
 				left_padding = 1,
 			},

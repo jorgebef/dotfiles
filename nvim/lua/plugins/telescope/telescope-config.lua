@@ -55,9 +55,11 @@ require("telescope").setup({
 	},
 	defaults = {
 		-- prompt_prefix = "   ",
-		prompt_prefix = "   ",
+		-- prompt_prefix = "   ",
+		prompt_prefix = require('icons').ui.Telescope,
 		-- selection_caret = " ",
-		selection_caret = " ",
+		-- selection_caret = " ",
+		selection_caret = require('icons').ui.Arrow,
 		-- buffer_previewer_maker = new_maker,
 		-- ====================================================
 		-- IT IS VERY SLOW TO RELY ON FILE IGNORE PATTERNS

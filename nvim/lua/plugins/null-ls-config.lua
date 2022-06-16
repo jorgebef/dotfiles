@@ -1,15 +1,15 @@
-local lspconfig = require("lspconfig")
+-- local lspconfig = require("lspconfig")
 local null_ls = require("null-ls")
 
-local buf_map = function(bufnr, mode, lhs, rhs, opts)
-	vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
-		silent = true,
-	})
-end
+-- local buf_map = function(bufnr, mode, lhs, rhs, opts)
+-- 	vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
+-- 		silent = true,
+-- 	})
+-- end
 
 local on_attach = function(client, bufnr)
 	-- vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
-	-- vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
+	vim.cmd("command! LspFormat lua vim.lsp.buf.format({async=true})")
 	-- vim.cmd("command! LspCodeAction lua vim.lsp.buf.code_action()")
 	-- vim.cmd("command! LspHover lua vim.lsp.buf.hover()")
 	-- vim.cmd("command! LspRename lua vim.lsp.buf.rename()")
@@ -20,7 +20,6 @@ local on_attach = function(client, bufnr)
 	-- vim.cmd("command! LspDiagNext lua vim.diagnostic.goto_next()")
 	-- vim.cmd("command! LspDiagLine lua vim.diagnostic.open_float()")
 	-- vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
-
 	-- buf_map(bufnr, "n", "gd", ":LspDef<CR>")
 	-- buf_map(bufnr, "n", "gr", ":LspRename<CR>")
 	-- buf_map(bufnr, "n", "gy", ":LspTypeDef<CR>")
@@ -34,20 +33,6 @@ local on_attach = function(client, bufnr)
 	--     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 	-- end
 end
-
--- lspconfig.tsserver.setup({
--- 	on_attach = function(client, bufnr)
--- 		client.resolved_capabilities.document_formatting = false
--- 		client.resolved_capabilities.document_range_formatting = false
--- 		local ts_utils = require("nvim-lsp-ts-utils")
--- 		ts_utils.setup({})
--- 		ts_utils.setup_client(client)
--- 		-- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
--- 		buf_map(bufnr, "n", "<leader>rF", ":TSLspRenameFile<CR>")
--- 		buf_map(bufnr, "n", "<leader>iA", ":TSLspImportAll<CR>")
--- 		on_attach(client, bufnr)
--- 	end,
--- })
 
 null_ls.setup({
 	sources = {

@@ -37,7 +37,7 @@ packer.startup(function()
 
 	-- == Session management
 	-- =============================================
-	use({ "rmagatti/auto-session" })
+	use({ "Shatur/neovim-session-manager" })
 
 	-- == Treesitter
 	-- =============================================
@@ -156,6 +156,10 @@ packer.startup(function()
 	-- =============================================
 	use("nvim-lualine/lualine.nvim")
 	use("akinsho/bufferline.nvim")
+	use({
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
+	})
 
 	-- == LIGHTSPEED ==
 	-- =============================================

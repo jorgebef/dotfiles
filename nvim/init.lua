@@ -5,7 +5,6 @@ require("keymaps")
 require("plugins")
 -- " ====================== AUTOCMD ========================
 
-
 -- ==============================================
 -- ========= TURN ALL JSON INTO JSONC ===========
 -- ==============================================
@@ -37,19 +36,35 @@ vim.api.nvim_create_autocmd(
 )
 vim.api.nvim_create_autocmd({ "WinLeave" }, { pattern = "*", command = "setlocal nocursorline", group = "CursorLine" })
 
--- vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
---   callback = function()
---     require("winbar").get_winbar()
---   end,
--- })
+vim.api.nvim_create_autocmd({
+	"CursorMoved",
+	"BufWinEnter",
+	"BufFilePost",
+	"InsertEnter",
+	"BufWritePost",
+}, {
+	callback = function()
+		require("winbar").get_winbar(false)
+	end,
+})
+
+vim.api.nvim_create_autocmd({
+	"BufLeave",
+}, {
+	callback = function()
+		require("winbar").get_winbar(true)
+	end,
+})
 
 -- " ====================== / AUTOCMD ========================
 
-vim.api.nvim_exec([[ source ~/.config/nvim/vimscript/highlights.vim ]], false)
--- vim.cmd('source ~/.config/nvim/vimscript/coc-config.vim')
-
--- vim.cmd [[colorscheme sonokai]]
+-- ========================================================
+-- set colorscheme
 vim.g.catppuccin_flavour = "macchiato"
--- vim.g.catppuccin_flavour = "frappe"
--- vim.g.catppuccin_flavour = "dusk"
 vim.api.nvim_exec([[colorscheme catppuccin]], false)
+-- ========================================================
+
+-- ========================================================
+-- set custom highlights
+require("highlights")
+-- ========================================================
