@@ -219,7 +219,7 @@ elapsed_separator() {
   if [ $cmd_time ]; then
     if [ $vcs_info_msg_0_ ]; then
       if [[ "$(branchName)" == "dev" ]]; then
-        echo "%F{$flamingo}%K{$surface1}$separator_left%k%f";
+        echo "%F{$yellow}%K{$surface1}$separator_left%k%f";
       else
         echo "%F{$green}%K{$surface1}$separator_left%k%f";
       fi
@@ -227,7 +227,7 @@ elapsed_separator() {
   else
     if [ $vcs_info_msg_0_ ]; then
       if [[ "$(branchName)" == "dev" ]]; then
-        echo "%F{$flamingo}%K{$base}$separator_left%k%f";
+        echo "%F{$yellow}%K{$base}$separator_left%k%f";
       else
         echo "%F{$green}%K{$base}$separator_left%k%f";
       fi
@@ -238,7 +238,7 @@ elapsed_separator() {
 branch() {
   if [ $vcs_info_msg_0_ ]; then
     if [[ "$(branchName)" == "dev" ]]; then
-      echo "%K{$flamingo}%F{$base} %B $(branchName)%b %f%k";
+      echo "%K{$yellow}%F{$base} %B $(branchName)%b %f%k";
     else
       echo "%K{$green}%F{$base} %B $(branchName)%b %f%k";
     fi
@@ -247,7 +247,7 @@ branch() {
 branch_separator() {
   if [ $vcs_info_msg_0_ ]; then
     if [[ "$(branchName)" == "dev" ]]; then
-      echo "%F{$surface2}%K{$flamingo}$separator_left%k%f";
+      echo "%F{$surface2}%K{$yellow}$separator_left%k%f";
     else
       echo "%F{$surface2}%K{$green}$separator_left%k%f";
     fi
@@ -285,7 +285,7 @@ icon() {
             icon=" "
             ;;
     esac
-    echo "%F{$mauve}$left_start%f%K{$mauve}%F{$base} $icon %f%k"
+    echo "%F{$pink}$left_start%f%K{$pink}%F{$base} $icon %f%k"
   }
 
 filepath() {
@@ -309,7 +309,7 @@ filepath() {
 # zstyle ':vcs_info:git:*' formats " %b"
 
 PROMPT='${_newline}'
-PROMPT+='$(icon)%F{$mauve}%K{$surface1}${separator_right}%k%f$(filepath)%F{$surface1}$separator_right%f'
+PROMPT+='$(icon)%F{$pink}%K{$surface1}${separator_right}%k%f$(filepath)%F{$surface1}$separator_right%f'
 PROMPT+='${_newline}'
 PROMPT+='%(?:%F{$green} %f:%F{$red} %f)'
 RPROMPT='%{$_lineup%}$(elapsed)$(elapsed_separator)$(branch)$(branch_separator)$(cur_time)%k%{$_linedown%}'

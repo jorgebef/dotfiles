@@ -1,5 +1,7 @@
 local previewers = require("telescope.previewers")
 local Job = require("plenary.job")
+local icons = require("icons")
+
 local new_maker = function(filepath, bufnr, opts)
 	filepath = vim.fn.expand(filepath)
 	Job
@@ -56,10 +58,10 @@ require("telescope").setup({
 	defaults = {
 		-- prompt_prefix = "   ",
 		-- prompt_prefix = "   ",
-		prompt_prefix = require('icons').ui.Telescope,
+		prompt_prefix = icons.ui.Telescope .. " " .. icons.misc.Carat,
 		-- selection_caret = " ",
 		-- selection_caret = " ",
-		selection_caret = require('icons').ui.Arrow,
+		selection_caret = icons.ui.Arrow,
 		-- buffer_previewer_maker = new_maker,
 		-- ====================================================
 		-- IT IS VERY SLOW TO RELY ON FILE IGNORE PATTERNS

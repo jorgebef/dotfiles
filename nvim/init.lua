@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd({
 	"BufWritePost",
 }, {
 	callback = function()
-		require("winbar").get_winbar(false)
+		require("utils.winbar").get_winbar(false)
 	end,
 })
 
@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd({
 	"BufLeave",
 }, {
 	callback = function()
-		require("winbar").get_winbar(true)
+		require("utils.winbar").get_winbar(true)
 	end,
 })
 

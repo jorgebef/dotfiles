@@ -76,7 +76,7 @@ M.ui = {
 	Comment = " ",
 	Bug = " ",
 	Code = " ",
-	Telescope = " ",
+	Telescope = " ",
 	Gear = " ",
 	Package = " ",
 	List = " ",
@@ -109,6 +109,9 @@ M.misc = {
 	Squirrel = "",
 	Tag = "",
 	Watch = "",
+  Ghost1 = " ",
+  Ghost2 = " ",
+  Carat = " "
 }
 
 return M
