@@ -39,6 +39,10 @@ remap("n", "<esc>", ':noh<cr>:echo""<esc>', nsn_opts)
 -- nvim_remap('n', '<leader>S', ':mksession!<cr>', { noremap = true, silent = false })
 -- don't need this with vim-obsession
 
+-- buffer navigation
+remap("n", "<C-n>", ":bn<cr>", nsn_opts)
+remap("n", "<C-p>", ":bp<cr>", nsn_opts)
+
 -- improved scrolling
 remap("n", "<C-e>", "4<C-e>", nsn_opts)
 remap("n", "<C-y>", "4<C-y>", nsn_opts)

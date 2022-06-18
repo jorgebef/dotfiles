@@ -157,6 +157,7 @@ local servers = {
 	{
 		"tsserver",
 		handlers = handlers,
+		-- root_dir = util.root_pattern(".git"),
 		on_attach = function(client, bufnr)
 			-- client.server_capabilities.document_formatting = false
 			-- client.server_capabilities.document_range_formatting = false
@@ -167,6 +168,18 @@ local servers = {
 			-- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
 			buf_map(bufnr, "n", "<leader>lrf", ":TSLspRenameFile<CR>")
 			buf_map(bufnr, "n", "<leader>lia", ":TSLspImportAll<CR>")
+
+			-- =================================================
+			-- CHECK THIS
+			local bufopts = { noremap = true, silent = true, buffer = bufnr }
+			vim.keymap.set("n", "<space>lwr", vim.lsp.buf.remove_workspace_folder, bufopts)
+			vim.keymap.set("n", "<space>lwl", function()
+				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+			end, bufopts)
+			-- OVERRIDE WITH CUSTOM FUNCTION
+			-- ONLY FOR TSSERVER
+			-- vim.keymap.set("n", "<space>ld", '<cmd> lua require("utils.lsp_handlers").goto_definition()<CR>', bufopts)
+			-- =================================================
 		end,
 	},
 	{ "jdtls" },
@@ -276,7 +289,11 @@ map("n", "<leader>lE", '<cmd>lua vim.diagnostic.goto_prev({severity="ERROR",floa
 map("n", "<leader>lf", ":LspFormat<CR>", ns_opts)
 -- ============================================================
 -- Telescope does go to definition better than nvim-lsp
-map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)
+-- map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)
+-- CUSTOM GO TO DEFINITION
+-- map("n", "<leader>ld", '<cmd> lua require("utils.lsp_handlers").goto_definition()<CR>', ns_opts)
+map("n", "<leader>ld", "<cmd> lua vim.lsp.buf.definition()<CR>", ns_opts)
+-- map("n", "<leader>ld", ":LspDef<CR>", ns_opts)
 -- ============================================================
 map("n", "<leader>lrr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
 map("n", "<leader>lrn", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)

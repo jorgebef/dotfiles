@@ -6,7 +6,9 @@ require("plugins.comment-config")
 require("plugins.session-manager-config")
 require("plugins.nvim-tree-config")
 require("plugins.lualine-config")
+
 -- require("plugins.bufferline-config")
+
 require("plugins.bufdel-config")
 require("plugins.gitsigns-config")
 require("plugins.dashboard-config")
