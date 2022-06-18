@@ -81,6 +81,7 @@ require("telescope").setup({
 			"--column",
 			"--smart-case",
 			"--ignore-file",
+			-- "package-lock.json",
 			-- '.gitignore'
 		},
 	},
