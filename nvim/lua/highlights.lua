@@ -1,6 +1,8 @@
 local cp = require("catppuccin.core.palettes.macchiato")
 
--- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = cp.blue })
+-- ===============================================================================
+-- UI Elements
+-- ===============================================================================
 vim.api.nvim_set_hl(0, "Pmenu", { bg = cp.surface0 })
 vim.api.nvim_set_hl(0, "PmenuSel", { fg = cp.text, bg = cp.surface1, bold = true })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = cp.surface0 })
@@ -43,6 +45,11 @@ vim.api.nvim_set_hl(0, "WinbarInactiveGPS", { fg = cp.surface1, bg = cp.base })
 vim.api.nvim_set_hl(0, "WinBarInactiveModified", { fg = cp.red, bg = cp.surface0 })
 vim.api.nvim_set_hl(0, "WinBarActiveModified", { fg = cp.red, bg = cp.base })
 
+vim.api.nvim_set_hl(0, "WhichKeyFloat", { bg = cp.surface0 })
+
+-- ===============================================================================
+-- UI Elements
+-- ===============================================================================
 vim.api.nvim_set_hl(0, "tsxTSTagDelimiter", { fg = cp.maroon })
 vim.api.nvim_set_hl(0, "jsxTSTagDelimiter", { fg = cp.maroon })
 vim.api.nvim_set_hl(0, "javascriptTSTagDelimiter", { fg = cp.maroon })

@@ -54,7 +54,7 @@ catppuccin.setup({
 		vim_sneak = false,
 		fern = false,
 		barbar = false,
-		bufferline = true,
+		bufferline = false,
 		markdown = false,
 		lightspeed = true,
 		ts_rainbow = false,

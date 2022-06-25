@@ -327,6 +327,13 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=${surface2}"
 # export LSCOLORS="ln=1;31:"
 # export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
+DISABLE_AUTO_TITLE="true"
+
+precmd() {
+  # sets the tab title to current dir
+  echo -ne "\e]1;${PWD##*/}\a"
+}
+
 # alias la="ls -laG"
 
 # =================================================================

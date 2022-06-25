@@ -172,10 +172,10 @@ local servers = {
 			-- =================================================
 			-- CHECK THIS
 			local bufopts = { noremap = true, silent = true, buffer = bufnr }
-			vim.keymap.set("n", "<space>lwr", vim.lsp.buf.remove_workspace_folder, bufopts)
-			vim.keymap.set("n", "<space>lwl", function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			end, bufopts)
+			-- vim.keymap.set("n", "<space>lwr", vim.lsp.buf.remove_workspace_folder, bufopts)
+			-- vim.keymap.set("n", "<space>lwl", function()
+			-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+			-- end, bufopts)
 			-- OVERRIDE WITH CUSTOM FUNCTION
 			-- ONLY FOR TSSERVER
 			-- vim.keymap.set("n", "<space>ld", '<cmd> lua require("utils.lsp_handlers").goto_definition()<CR>', bufopts)
@@ -279,10 +279,10 @@ local map = vim.api.nvim_set_keymap
 local ns_opts = { noremap = true, silent = true }
 map("n", "<leader>lD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", ns_opts)
 map("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", ns_opts)
-map("n", "<leader>lw", '<cmd>lua vim.diagnostic.goto_next({severity={"HINT","WARN"},float=true})<CR>', ns_opts)
-map("n", "<leader>le", '<cmd>lua vim.diagnostic.goto_next({severity="ERROR",float=true})<CR>', ns_opts)
-map("n", "<leader>lW", '<cmd>lua vim.diagnostic.goto_prev({severity={"HINT","WARN"},float=true})<CR>', ns_opts)
-map("n", "<leader>lE", '<cmd>lua vim.diagnostic.goto_prev({severity="ERROR",float=true})<CR>', ns_opts)
+map("n", "<leader>lw", "<cmd>lua vim.diagnostic.goto_next({severity={max='WARN'},float=true})<CR>", ns_opts)
+map("n", "<leader>le", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',float=true})<CR>", ns_opts)
+map("n", "<leader>lW", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", ns_opts)
+map("n", "<leader>lE", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", ns_opts)
 -- map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", ns_opts)
 -- ============================================================
 -- USING NULL-LS
