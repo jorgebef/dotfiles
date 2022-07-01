@@ -1,0 +1,70 @@
+# the scripting-addition must be loaded manually if
+# you are running yabai on macOS Big Sur. Uncomment
+# the following line to have the injection performed
+# when the config is executed during startup.
+#
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+#Steps are as follows:
+# create a new file for writing - visudo uses the vim editor by default.
+# go read about this if you have no idea what is going on.
+# $ sudo visudo -f /private/etc/sudoers.d/yabai
+#
+# input the line below into the file you are editing.
+# replace <user> with your username (output of: whoami). 
+# change the path to the yabai binary if necessary  (output of: which yabai)
+# <user> ALL = (root) NOPASSWD: /usr/local/bin/yabai --load-sa
+
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# float system preferences. Most of these just diable Yabai form resizing them.
+yabai -m rule --add app="^Adobe Creative Cloud$" manage=off
+yabai -m rule --add app="^Docker Desktop$" manage=off
+yabai -m rule --add app="^Dropbox$" manage=off
+yabai -m rule --add app="^GoToMeeting$" manage=off
+yabai -m rule --add app="^ImageOptim$" manage=off
+yabai -m rule --add app="^Karabiner-Elements$" manage=off
+yabai -m rule --add app="^Karabiner-EventViewer$" manage=off
+yabai -m rule --add app="^Microsoft Remote Desktop$" manage=off
+yabai -m rule --add app="^Microsoft Teams$" manage=off
+yabai -m rule --add app="^Postman$" manage=off
+yabai -m rule --add app="^The Unarchiver$" manage=off
+yabai -m rule --add app="^zoom.us$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^Disk Utility$" manage=off
+yabai -m rule --add app="^Activity Monitor$" manage=off
+yabai -m rule --add app="^Path Finder$" manage=off
+yabai -m rule --add app="^TeamViewer$" manage=off
+yabai -m rule --add app="^Private Internet Access$" manage=off
+yabai -m rule --add app="^Discord$" manage=off
+yabai -m rule --add app="^Calendar$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+
+# float system preferences
+yabai -m rule --add app="^System Information$" manage=off
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add title='Preferences$' manage=off
+yabai -m rule --add title='^Archive Utility$' manage=off
+
+# float settings windows
+yabai -m rule --add title='Settings$' manage=off
+yabai -m rule --add title='Raycast Preferences$' manage=off
+
+# set mouse interaction modifier key (default: fn)
+yabai -m config mouse_modifier fn
+
+# # set modifier + left-click drag to move window (default: move)
+yabai -m config mouse_action1 move
+
+# # set modifier + right-click drag to resize window (default: resize)
+yabai -m config mouse_action2 resize
+
+# bsp or float (default: float)
+yabai -m config layout float
+#
+# Override default layout for space 2 only
+yabai -m config --space 2 layout bsp
+
+# set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
+# yabai -m config focus_follows_mouse autofocus

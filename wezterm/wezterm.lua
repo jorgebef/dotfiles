@@ -10,19 +10,21 @@ local function keybind(mods, key, action)
 	return { mods = mods, key = key, action = action }
 end
 
--- Equivalent to POSIX basename(3)
--- Given "/foo/bar" returns "bar"
--- Given "c:\\foo\\bar" returns "bar"
-function basename(s)
-	return string.gsub(s, "(.*[/\\])(.*)", "%2")
-end
+-- -- Equivalent to POSIX basename(3)
+-- -- Given "/foo/bar" returns "bar"
+-- -- Given "c:\\foo\\bar" returns "bar"
+-- function basename(s)
+-- 	return string.gsub(s, "(.*[/\\])(.*)", "%2")
+-- end
 
 return {
 	hide_tab_bar_if_only_one_tab = false,
 	colors = catppuccin,
 	window_background_opacity = 1.0,
 	font = wezterm.font("JetBrainsMono Nerd Font"),
+	-- font = wezterm.font("UbuntuMono Nerd Font"),
 	font_size = 13.0,
+	-- font_size = 15.0,
 
 	-- harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 	harfbuzz_features = { "zero", "kern", "liga", "clig" },
@@ -70,74 +72,90 @@ return {
 			key = "Enter",
 			mods = modifiers,
 			action = wezterm.action({
-				SplitHorizontal = {
+				SplitVertical = {
 					domain = "CurrentPaneDomain",
 				},
 			}),
 		},
 
-		keybind(
-			modifiers,
-			"Enter",
-			wezterm.action_callback(function(win, pane)
-				local exe = basename(pane:get_foreground_process_name())
-				if exe == "nvim" then
-					-- win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
-					win:perform_action(
-						wezterm.action({
-							SplitVertical = {
-								domain = "CurrentPaneDomain",
-							},
-						}),
-						pane
-					)
-					win:perform_action(
-						wezterm.action({
-							ActivatePaneDirection = "Down",
-						}),
-						pane
-					)
-				else
-					win:perform_action(
-						wezterm.action({
-							SplitHorizontal = {
-								domain = "CurrentPaneDomain",
-							},
-						}),
-						pane
-					)
-					win:perform_action(
-						wezterm.action({
-							ActivatePaneDirection = "Right",
-						}),
-						pane
-					)
-				end
-			end)
-		),
+		-- keybind(
+		-- 	modifiers,
+		-- 	"Enter",
+		-- 	wezterm.action_callback(function(win, pane)
+		-- 		local exe = basename(pane:get_foreground_process_name())
+		-- 		if exe == "nvim" then
+		-- 			-- win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
+		-- 			win:perform_action(
+		-- 				wezterm.action({
+		-- 					SplitVertical = {
+		-- 						domain = "CurrentPaneDomain",
+		-- 					},
+		-- 				}),
+		-- 				pane
+		-- 			)
+		-- 			win:perform_action(
+		-- 				wezterm.action({
+		-- 					ActivatePaneDirection = "Down",
+		-- 				}),
+		-- 				pane
+		-- 			)
+		-- 		else
+		-- 			win:perform_action(
+		-- 				wezterm.action({
+		-- 					SplitHorizontal = {
+		-- 						domain = "CurrentPaneDomain",
+		-- 					},
+		-- 				}),
+		-- 				pane
+		-- 			)
+		-- 			win:perform_action(
+		-- 				wezterm.action({
+		-- 					ActivatePaneDirection = "Right",
+		-- 				}),
+		-- 				pane
+		-- 			)
+		-- 		end
+		-- 	end)
+		-- ),
 
 		keybind(
 			modifiers,
 			"Space",
 			wezterm.action_callback(function(win, pane)
 				local exe = basename(pane:get_foreground_process_name())
-				if exe == "nvim" then
-					-- win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
-					win:perform_action(
-						wezterm.action({
-							ActivatePaneDirection = "Down",
-						}),
-						pane
-					)
-				else
-					win:perform_action(
-						wezterm.action({
-							ActivatePaneDirection = "Up",
-						}),
-						pane
-					)
-					win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
+				local tabs = win:tabs_with_info()
+				for _, tab in tabs do
+					if tab.is_active then
+						local panes = tab:panes_with_info()
+						for _, pane in panes do
+							if pane.is_active then
+								win:perform_action(
+									wezterm.action({
+										ActivatePaneDirection = "Down",
+									}),
+									pane
+								)
+							end
+						end
+					end
 				end
+				-- if exe == "nvim" then
+				-- 	-- win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
+				-- 	win:perform_action(
+				-- 		wezterm.action({
+				-- 			ActivatePaneDirection = "Down",
+				-- 		}),
+				-- 		pane
+				-- 	)
+				-- else
+				-- 	win:perform_action(
+				-- 		wezterm.action({
+				-- 			ActivatePaneDirection = "Up",
+				-- 		}),
+				-- 		pane
+				-- 	)
+				-- 	win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
+				-- end
 			end)
 		),
 		-- =================================================================

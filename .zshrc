@@ -210,59 +210,102 @@ branchName(){
   echo "$branchName"
 }
 
-elapsed() {
-  if [ $cmd_time ]; then
-      echo "%F{$surface1}$separator_left%f%K{$surface1}%F{$subtext0} $cmd_time 羽%f%k";
-  fi
-}
-elapsed_separator() {
-  if [ $cmd_time ]; then
-    if [ $vcs_info_msg_0_ ]; then
-      if [[ "$(branchName)" == "dev" ]]; then
-        echo "%F{$yellow}%K{$surface1}$separator_left%k%f";
-      else
-        echo "%F{$green}%K{$surface1}$separator_left%k%f";
-      fi
-    fi
-  else
-    if [ $vcs_info_msg_0_ ]; then
-      if [[ "$(branchName)" == "dev" ]]; then
-        echo "%F{$yellow}%K{$base}$separator_left%k%f";
-      else
-        echo "%F{$green}%K{$base}$separator_left%k%f";
-      fi
-    fi
-  fi
-}
+# elapsed() {
+#   if [ $cmd_time ]; then
+#       echo "%F{$surface1}$separator_left%f%K{$surface1}%F{$subtext0} $cmd_time 羽%f%k";
+#   fi
+# }
+# elapsed_separator() {
+#   if [ $cmd_time ]; then
+#     if [ $vcs_info_msg_0_ ]; then
+#       if [[ "$(branchName)" == "dev" ]]; then
+#         echo "%F{$yellow}%K{$surface1}$separator_left%k%f";
+#       else
+#         echo "%F{$green}%K{$surface1}$separator_left%k%f";
+#       fi
+#     fi
+#   else
+#     if [ $vcs_info_msg_0_ ]; then
+#       if [[ "$(branchName)" == "dev" ]]; then
+#         echo "%F{$yellow}%K{$base}$separator_left%k%f";
+#       else
+#         echo "%F{$green}%K{$base}$separator_left%k%f";
+#       fi
+#     fi
+#   fi
+# }
+#
+# branch() {
+#   if [ $vcs_info_msg_0_ ]; then
+#     if [[ "$(branchName)" == "dev" ]]; then
+#       echo "%K{$yellow}%F{$base} %B $(branchName)%b %f%k";
+#     else
+#       echo "%K{$green}%F{$base} %B $(branchName)%b %f%k";
+#     fi
+#   fi
+# }
+# branch_separator() {
+#   if [ $vcs_info_msg_0_ ]; then
+#     if [[ "$(branchName)" == "dev" ]]; then
+#       echo "%F{$surface2}%K{$yellow}$separator_left%k%f";
+#     else
+#       echo "%F{$surface2}%K{$green}$separator_left%k%f";
+#     fi
+#   else
+#     if [ $cmd_time ]; then
+#       echo "%F{$surface2}%K{$surface1}$separator_left%k%f";
+#     else
+#       echo "%F{$surface2}%K{$base}$separator_left%k%f";
+#     fi
+#   fi
+# }
+#
+# cur_time() {
+#     echo "%B%K{$surface2} %F{$text}%T  %f%b%K{$base}%F{$surface2}$right_start%f%k"
+# }
 
-branch() {
-  if [ $vcs_info_msg_0_ ]; then
-    if [[ "$(branchName)" == "dev" ]]; then
-      echo "%K{$yellow}%F{$base} %B $(branchName)%b %f%k";
-    else
-      echo "%K{$green}%F{$base} %B $(branchName)%b %f%k";
-    fi
-  fi
-}
-branch_separator() {
-  if [ $vcs_info_msg_0_ ]; then
-    if [[ "$(branchName)" == "dev" ]]; then
-      echo "%F{$surface2}%K{$yellow}$separator_left%k%f";
-    else
-      echo "%F{$surface2}%K{$green}$separator_left%k%f";
-    fi
-  else
-    if [ $cmd_time ]; then
-      echo "%F{$surface2}%K{$surface1}$separator_left%k%f";
-    else
-      echo "%F{$surface2}%K{$base}$separator_left%k%f";
-    fi
-  fi
-}
 
-cur_time() {
-    echo "%B%K{$surface2} %F{$text}%T  %f%b%K{$base}%F{$surface2}$right_start%f%k"
-}
+
+# icon() {
+#     case $PWD in
+#         /Users/jorgebefan )
+#             icon=" "
+#             ;;
+#         /Users/jorgebefan/Dropbox/JORGE/git* )
+#             icon=" "
+#             ;;
+#         /Users/jorgebefan/Downloads* )
+#             icon="  "
+#             ;;
+#         /Users/jorgebefan/Documents* )
+#             icon="  "
+#             ;;
+#         /Users/jorgebefan/Dropbox* )
+#             icon="  "
+#             ;;
+#         * )
+#             icon=" "
+#             ;;
+#     esac
+#     echo "%F{$pink}$left_start%f%K{$pink}%F{$base} $icon %f%k"
+#   }
+
+# filepath() {
+#     split_path=(${(@s|/|)PWD})
+#     pwd_filtered="${PWD//\/Users\/jorgebefan/~}"
+#     if [[ "${pwd_filtered}" == "~" ]]; then
+#         pwd_rest=""
+#         pwd_folder="~"
+#     else
+#         pwd_rest=$(dirname "${pwd_filtered}")
+#         # add an extra "/" only if the directory is not already just "/"
+#         if [[ "${pwd_rest}" != "/" ]]; then
+#             pwd_rest="${pwd_rest}/"
+#         fi
+#         pwd_folder=$(basename "${pwd_filtered}")
+#     fi
+#     echo "%F{$overlay2}%K{$surface1} ${pwd_rest}%f%F{$text}%B${pwd_folder} %b%f%k"
+# }
 
 icon() {
     case $PWD in
@@ -288,6 +331,27 @@ icon() {
     echo "%F{$pink}$left_start%f%K{$pink}%F{$base} $icon %f%k"
   }
 
+branch() {
+  if [ $vcs_info_msg_0_ ]; then
+    if [[ "$(branchName)" == "dev" ]]; then
+      echo "%K{$sapphire}%F{$base} %B $(branchName)%b %f%k";
+    else
+      echo "%K{$green}%F{$base} %B $(branchName)%b %f%k";
+    fi
+  fi
+}
+branch_separator() {
+  if [ $vcs_info_msg_0_ ]; then
+    if [[ "$(branchName)" == "dev" ]]; then
+      echo "%F{$sapphire}%K{$base}$separator_right%k%f";
+    else
+      echo "%F{$green}%K{$base}$separator_right%k%f";
+    fi
+  else
+    echo ""
+  fi
+}
+
 filepath() {
     split_path=(${(@s|/|)PWD})
     pwd_filtered="${PWD//\/Users\/jorgebefan/~}"
@@ -299,20 +363,38 @@ filepath() {
         # add an extra "/" only if the directory is not already just "/"
         if [[ "${pwd_rest}" != "/" ]]; then
             pwd_rest="${pwd_rest}/"
+            # pwd_rest="~/.../"
         fi
         pwd_folder=$(basename "${pwd_filtered}")
     fi
     echo "%F{$overlay2}%K{$surface1} ${pwd_rest}%f%F{$text}%B${pwd_folder} %b%f%k"
+    # echo "%F{$overlay2}%K%f %F{$text}%B${pwd_folder} %b%f%k"
+}
+filepath_separator() {
+  if [ $vcs_info_msg_0_ ]; then
+    if [[ "$(branchName)" == "dev" ]]; then
+      echo "%F{$surface1}%K{$sapphire}$separator_right%k%f";
+    else
+      echo "%F{$surface1}%K{$green}$separator_right%k%f";
+    fi
+  else
+    echo "%F{$surface1}%K{$base}$separator_right%k%f";
+  fi
 }
 
 # Format the vcs_info_msg_0_ variable
 # zstyle ':vcs_info:git:*' formats " %b"
 
+# PROMPT='${_newline}'
+# PROMPT+='$(icon)%F{$pink}%K{$surface1}${separator_right}%k%f$(filepath)%F{$surface1}$separator_right%f'
+# PROMPT+='${_newline}'
+# PROMPT+='%(?:%F{$green} %f:%F{$red} %f)'
+# RPROMPT='%{$_lineup%}$(elapsed)$(elapsed_separator)$(branch)$(branch_separator)$(cur_time)%k%{$_linedown%}'
+
 PROMPT='${_newline}'
-PROMPT+='$(icon)%F{$pink}%K{$surface1}${separator_right}%k%f$(filepath)%F{$surface1}$separator_right%f'
+PROMPT+='$(icon)%F{$pink}%K{$surface1}${separator_right}%k%f$(filepath)$(filepath_separator)$(branch)$(branch_separator)'
 PROMPT+='${_newline}'
 PROMPT+='%(?:%F{$green} %f:%F{$red} %f)'
-RPROMPT='%{$_lineup%}$(elapsed)$(elapsed_separator)$(branch)$(branch_separator)$(cur_time)%k%{$_linedown%}'
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
