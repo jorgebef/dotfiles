@@ -40,6 +40,7 @@ yabai -m rule --add app="^Private Internet Access$" manage=off
 yabai -m rule --add app="^Discord$" manage=off
 yabai -m rule --add app="^Calendar$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app='Spotify$' manage=off
 
 # float system preferences
 yabai -m rule --add app="^System Information$" manage=off

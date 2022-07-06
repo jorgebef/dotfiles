@@ -3,6 +3,7 @@ require("options")
 require("keymaps")
 -- require("winbar")
 require("plugins")
+-- require("utils.winbar_new")
 -- " ====================== AUTOCMD ========================
 
 -- ==============================================

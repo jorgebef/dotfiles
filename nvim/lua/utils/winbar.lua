@@ -7,6 +7,11 @@ if not status_gps_ok then
 	return
 end
 
+-- local provider = require("nvim-navic")
+-- if not provider.is_available() then
+-- 	return
+-- end
+
 local get_filename = function(leaving)
 	local filename = vim.fn.expand("%:t")
 	local extension = ""
@@ -89,7 +94,7 @@ local get_gps = function(leaving)
 		return ""
 	end
 
-	if not gps.is_available() then -- Returns boolean value indicating whether a output can be provided
+	if not gps.is_available() then -- Returns boolean value indicating whether a output is provided
 		return ""
 	end
 

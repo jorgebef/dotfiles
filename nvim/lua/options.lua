@@ -45,6 +45,7 @@ vim.g.inccommand = "nosplit"
 -- NEOVIM 0.8
 -- vim.opt.cmdheight = 0
 -- vim.opt.winbar = "%{%v:lua.require('utils.winbar').output()%}"
+-- vim.o.winbar = "%t | %{%v:lua.require'nvim-navic'.get_location()%}"
 vim.opt.winbar = " "
 -- ==================================
 vim.opt.colorcolumn = "99999" -- fixes indentline for now

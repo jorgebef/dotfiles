@@ -1,6 +1,7 @@
 local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 local icons = require("icons")
+local navic = require("nvim-navic")
 
 --   =====================================================
 --              STILL NEED TO INSTALL LuaJIT
@@ -111,6 +112,7 @@ local servers = {
 		filetypes = { "json", "jsonc" },
 		on_attach = function(client, bufnr)
 			client.server_capabilities.documentFormattingProvider = false
+			navic.attach(client, bufnr)
 		end,
 		-- init_options = {
 		-- 	provideFormatter = false,
@@ -159,6 +161,7 @@ local servers = {
 		handlers = handlers,
 		-- root_dir = util.root_pattern(".git"),
 		on_attach = function(client, bufnr)
+			navic.attach(client, bufnr)
 			-- client.server_capabilities.document_formatting = false
 			-- client.server_capabilities.document_range_formatting = false
 			client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
@@ -202,7 +205,9 @@ local servers = {
 		capabilities = capabilities,
 		cmd = { "vscode-html-language-server", "--stdio" },
 		filetypes = { "html" },
-		on_attach = on_attach,
+		on_attach = function(client, bufnr)
+			navic.attach(client, bufnr)
+		end,
 		init_options = {
 			configurationSection = { "html", "css", "javascript" },
 			embeddedLanguages = {
