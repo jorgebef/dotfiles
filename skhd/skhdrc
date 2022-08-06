@@ -15,17 +15,17 @@
 ctrl + alt + cmd - i : yabai -m display --focus next
 ctrl + alt + cmd - o : yabai -m display --focus prev
 
-# cycle forwards on the focused display
-ctrl + alt + cmd - l : \
-  min_id="$(yabai -m query --spaces --display | jq '.[0].index')"; \
-  id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | reverse | .[map(."has-focus") | index(true) - 1].index')"; \
-  if [ "${id}" -ne "${min_id}" ]; then yabai -m space --focus "${id}"; fi
+# # cycle forwards on the focused display
+# ctrl + alt + cmd - l : \
+#   min_id="$(yabai -m query --spaces --display | jq '.[0].index')"; \
+#   id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | reverse | .[map(."has-focus") | index(true) - 1].index')"; \
+#   if [ "${id}" -ne "${min_id}" ]; then yabai -m space --focus "${id}"; fi
 
-# cycle backwards on the focused display
-ctrl + alt + cmd - h : \
-  max_id="$(yabai -m query --spaces --display | jq '.[-1].index')"; \
-  id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | .[map(."has-focus") | index(true) - 1].index')"; \
-  if [ "${id}" -ne "${max_id}" ]; then yabai -m space --focus "${id}"; fi
+# # cycle backwards on the focused display
+# ctrl + alt + cmd - h : \
+#   max_id="$(yabai -m query --spaces --display | jq '.[-1].index')"; \
+#   id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | .[map(."has-focus") | index(true) - 1].index')"; \
+#   if [ "${id}" -ne "${max_id}" ]; then yabai -m space --focus "${id}"; fi
 
 # ctrl + alt + cmd - n : yabai -m window --focus next || yabai -m window --focus first
 # ctrl + alt + cmd - p : yabai -m window --focus prev || yabai -m window --focus last

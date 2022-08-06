@@ -1,8 +1,8 @@
 local wezterm = require("wezterm")
-local catppuccin = require("colors/catppuccin").setup({
-	sync = false,
-	flavour = "macchiato",
-})
+-- local catppuccin = require("colors/catppuccin").setup({
+-- 	sync = false,
+-- 	flavour = "macchiato",
+-- })
 
 local modifiers = "CTRL|ALT"
 
@@ -17,22 +17,139 @@ end
 -- 	return string.gsub(s, "(.*[/\\])(.*)", "%2")
 -- end
 
+-- -- make numbers superscript or subscript {{{
+-- ---@diagnostic disable-next-line: unused-local,unused-function
+-- local function style_number(number, style)
+-- 	local superscript = {
+-- 		"⁰",
+-- 		"¹",
+-- 		"²",
+-- 		"³",
+-- 		"⁴",
+-- 		"⁵",
+-- 		"⁶",
+-- 		"⁷",
+-- 		"⁸",
+-- 		"⁹",
+-- 	}
+-- 	local subscript = {
+-- 		"₀",
+-- 		"₁",
+-- 		"₂",
+-- 		"₃",
+-- 		"₄",
+-- 		"₅",
+-- 		"₆",
+-- 		"₇",
+-- 		"₈",
+-- 		"₉",
+-- 	}
+--
+-- 	local numbers = (style == "super") and superscript or subscript
+--
+-- 	local number_string = tostring(number)
+-- 	local result = ""
+-- 	for i = 1, #number_string do
+-- 		local char = number_string:sub(i, i)
+-- 		local nr = tonumber(char)
+-- 		if number then
+-- 			result = result .. numbers[nr + 1]
+-- 		else
+-- 			result = result .. char
+-- 		end
+-- 	end
+-- 	return result
+-- end
+-- -- }}}
+--
+-- -- custom tab bar {{{
+-- ---@diagnostic disable-next-line: unused-local
+-- wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+-- 	local RIGHT_DIVIDER = utf8.char(0xe0bc)
+--
+-- 	local active_tab_index = 0
+-- 	for _, t in ipairs(tabs) do
+-- 		if t.is_active == true then
+-- 			active_tab_index = t.tab_index
+-- 		end
+-- 	end
+--
+-- 	local active_bg = config.colors.tab_bar.active_tab.bg_color
+-- 	local active_fg = config.colors.tab_bar.active_tab.fg_color
+-- 	local inactive_bg = config.colors.tab_bar.inactive_tab.bg_color
+-- 	local inactive_fg = config.colors.tab_bar.inactive_tab.fg_color
+-- 	local new_tab_bg = config.colors.tab_bar.new_tab.bg_color
+--
+-- 	local s_bg, s_fg, e_bg, e_fg
+--
+-- 	-- the last tab
+-- 	if tab.tab_index == #tabs - 1 then
+-- 		if tab.is_active then
+-- 			s_bg = active_bg
+-- 			s_fg = active_fg
+-- 			e_bg = new_tab_bg
+-- 			e_fg = active_bg
+-- 		else
+-- 			s_bg = inactive_bg
+-- 			s_fg = inactive_fg
+-- 			e_bg = new_tab_bg
+-- 			e_fg = inactive_bg
+-- 		end
+-- 	elseif tab.tab_index == active_tab_index - 1 then
+-- 		s_bg = inactive_bg
+-- 		s_fg = inactive_fg
+-- 		e_bg = active_bg
+-- 		e_fg = inactive_bg
+-- 	elseif tab.is_active then
+-- 		s_bg = active_bg
+-- 		s_fg = active_fg
+-- 		e_bg = inactive_bg
+-- 		e_fg = active_bg
+-- 	else
+-- 		s_bg = inactive_bg
+-- 		s_fg = inactive_fg
+-- 		e_bg = inactive_bg
+-- 		e_fg = inactive_bg
+-- 	end
+-- 	return {
+-- 		{ Background = { Color = s_bg } },
+-- 		{ Foreground = { Color = s_fg } },
+-- 		{ Text = " " .. tab.tab_index + 1 .. ": " .. tab.active_pane.title .. " " },
+-- 		{ Background = { Color = e_bg } },
+-- 		{ Foreground = { Color = e_fg } },
+-- 		{ Text = RIGHT_DIVIDER },
+-- 	}
+-- end)
+-- -- }}}
+
 return {
 	hide_tab_bar_if_only_one_tab = false,
-	colors = catppuccin,
+	-- colors = catppuccin,
+	color_scheme = "Catppuccin Macchiato",
 	window_background_opacity = 1.0,
 	font = wezterm.font("JetBrainsMono Nerd Font"),
-	-- font = wezterm.font("UbuntuMono Nerd Font"),
+	-- font = wezterm.font("VictorMono Nerd Font"),
+	-- font_size = 16.0,
+	-- line_height = 0.95,
 	font_size = 13.0,
-  -- line_height = 0.95,
-	-- font_size = 15.0,
 
 	-- harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-	harfbuzz_features = { "zero", "kern", "liga", "clig" },
+
+	harfbuzz_features = {
+		"cv06=1",
+		"cv14=1",
+		"cv32=1",
+		"ss04=1",
+		"ss07=1",
+		"ss09=1",
+	},
+
+	-- harfbuzz_features = { "zero", "kern", "liga", "clig" },
 
 	-- Cursor style
-	automatically_reload_config = false,
+	automatically_reload_config = true,
 	check_for_updates = false,
+	use_fancy_tab_bar = false,
 	tab_bar_at_bottom = true,
 
 	window_decorations = "RESIZE",
@@ -64,7 +181,7 @@ return {
 		-- =================================================================
 
 		{
-			key = "z",
+			key = "Space",
 			mods = modifiers,
 			action = wezterm.action("TogglePaneZoomState"),
 		},
@@ -74,6 +191,15 @@ return {
 			mods = modifiers,
 			action = wezterm.action({
 				SplitVertical = {
+					domain = "CurrentPaneDomain",
+				},
+			}),
+		},
+		{
+			key = "ñ",
+			mods = modifiers,
+			action = wezterm.action({
+				SplitHorizontal = {
 					domain = "CurrentPaneDomain",
 				},
 			}),
@@ -119,46 +245,47 @@ return {
 		-- 	end)
 		-- ),
 
-		keybind(
-			modifiers,
-			"Space",
-			wezterm.action_callback(function(win, pane)
-				local exe = basename(pane:get_foreground_process_name())
-				local tabs = win:tabs_with_info()
-				for _, tab in tabs do
-					if tab.is_active then
-						local panes = tab:panes_with_info()
-						for _, pane in panes do
-							if pane.is_active then
-								win:perform_action(
-									wezterm.action({
-										ActivatePaneDirection = "Down",
-									}),
-									pane
-								)
-							end
-						end
-					end
-				end
-				-- if exe == "nvim" then
-				-- 	-- win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
-				-- 	win:perform_action(
-				-- 		wezterm.action({
-				-- 			ActivatePaneDirection = "Down",
-				-- 		}),
-				-- 		pane
-				-- 	)
-				-- else
-				-- 	win:perform_action(
-				-- 		wezterm.action({
-				-- 			ActivatePaneDirection = "Up",
-				-- 		}),
-				-- 		pane
-				-- 	)
-				-- 	win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
-				-- end
-			end)
-		),
+		-- keybind(
+		-- 	modifiers,
+		-- 	"Space",
+		-- 	wezterm.action_callback(function(win, pane)
+		-- 		local exe = basename(pane:get_foreground_process_name())
+		-- 		local tabs = win:tabs_with_info()
+		-- 		for _, tab in tabs do
+		-- 			if tab.is_active then
+		-- 				local panes = tab:panes_with_info()
+		-- 				for _, pane in panes do
+		-- 					if pane.is_active then
+		-- 						win:perform_action(
+		-- 							wezterm.action({
+		-- 								ActivatePaneDirection = "Down",
+		-- 							}),
+		-- 							pane
+		-- 						)
+		-- 					end
+		-- 				end
+		-- 			end
+		-- 		end
+		-- 		-- if exe == "nvim" then
+		-- 		-- 	-- win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
+		-- 		-- 	win:perform_action(
+		-- 		-- 		wezterm.action({
+		-- 		-- 			ActivatePaneDirection = "Down",
+		-- 		-- 		}),
+		-- 		-- 		pane
+		-- 		-- 	)
+		-- 		-- else
+		-- 		-- 	win:perform_action(
+		-- 		-- 		wezterm.action({
+		-- 		-- 			ActivatePaneDirection = "Up",
+		-- 		-- 		}),
+		-- 		-- 		pane
+		-- 		-- 	)
+		-- 		-- 	win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
+		-- 		-- end
+		-- 	end)
+		-- ),
+
 		-- =================================================================
 	},
 }

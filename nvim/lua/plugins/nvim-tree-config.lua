@@ -15,7 +15,7 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 	update_cwd = false,
 	reload_on_bufenter = false,
 	view = {
-		width = 32,
+		width = 36,
 		height = 30,
 		hide_root_folder = false,
 		side = "left",
@@ -34,14 +34,14 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 		indent_markers = {
 			enable = true,
 			icons = {
-				corner = "└ ",
-				edge = "│ ",
-				none = "  ",
+				corner = "└",
+				edge = "│",
+				none = " ",
 			},
 		},
 		icons = {
 			webdev_colors = true,
-			git_placement = "before",
+			git_placement = "after",
 		},
 	},
 	hijack_directories = {

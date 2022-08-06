@@ -44,12 +44,12 @@ remap("n", "<C-n>", ":bn<cr>", nsn_opts)
 remap("n", "<C-p>", ":bp<cr>", nsn_opts)
 
 -- improved scrolling
-remap("n", "<C-e>", "4<C-e>", nsn_opts)
-remap("n", "<C-y>", "4<C-y>", nsn_opts)
-remap("c", "<C-e>", "4<C-e>", nsn_opts)
-remap("c", "<C-y>", "4<C-y>", nsn_opts)
-remap("v", "<C-e>", "4<C-e>", nsn_opts)
-remap("v", "<C-y>", "4<C-y>", nsn_opts)
+remap("n", "<C-e>", "3<C-e>", nsn_opts)
+remap("n", "<C-y>", "3<C-y>", nsn_opts)
+remap("c", "<C-e>", "3<C-e>", nsn_opts)
+remap("c", "<C-y>", "3<C-y>", nsn_opts)
+remap("v", "<C-e>", "3<C-e>", nsn_opts)
+remap("v", "<C-y>", "3<C-y>", nsn_opts)
 
 -- improved split navigation
 remap("n", "<C-j>", "<C-w>j", nsn_opts)

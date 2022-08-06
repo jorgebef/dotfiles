@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 # Using OhMyZSH instead of Antigen
 
 # If you come from bash you might have to change your $PATH.
@@ -7,31 +9,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:$HOME/.local/bin
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-
-# bindkey -v
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
@@ -48,24 +27,11 @@ export PATH=$PATH:$HOME/.local/bin
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -84,28 +50,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -157,6 +101,8 @@ base="#24273A"
 mantle="#1E2030"
 crust="#181926"
 
+spec_surface="#40445a"
+
 # ++++++++ COLORS ++++++++
 
 
@@ -194,15 +140,23 @@ precmd_git() {
 precmd_functions+=(precmd_git)
 
 
-separator_left=''
-separator_right=''
+# separator_left=''
+separator_right=''
+separator_left='⏽'
+# separator_right='█'
+# separator_left=''
+# separator_right=''
 
 _newline=$'\n'
 _lineup=$'\e[1A'
 _linedown=$'\e[1B'
 
-left_start=''
-right_start=''
+# left_start='█'
+# right_start='█'
+left_start='█'
+right_start='█'
+# left_start=''
+# right_start=''
 
 branchName(){
   part=${vcs_info_msg_0_#*\[}
@@ -210,102 +164,32 @@ branchName(){
   echo "$branchName"
 }
 
-# elapsed() {
-#   if [ $cmd_time ]; then
-#       echo "%F{$surface1}$separator_left%f%K{$surface1}%F{$subtext0} $cmd_time 羽%f%k";
-#   fi
-# }
-# elapsed_separator() {
-#   if [ $cmd_time ]; then
-#     if [ $vcs_info_msg_0_ ]; then
-#       if [[ "$(branchName)" == "dev" ]]; then
-#         echo "%F{$yellow}%K{$surface1}$separator_left%k%f";
-#       else
-#         echo "%F{$green}%K{$surface1}$separator_left%k%f";
-#       fi
-#     fi
-#   else
-#     if [ $vcs_info_msg_0_ ]; then
-#       if [[ "$(branchName)" == "dev" ]]; then
-#         echo "%F{$yellow}%K{$base}$separator_left%k%f";
-#       else
-#         echo "%F{$green}%K{$base}$separator_left%k%f";
-#       fi
-#     fi
-#   fi
-# }
-#
-# branch() {
-#   if [ $vcs_info_msg_0_ ]; then
-#     if [[ "$(branchName)" == "dev" ]]; then
-#       echo "%K{$yellow}%F{$base} %B $(branchName)%b %f%k";
-#     else
-#       echo "%K{$green}%F{$base} %B $(branchName)%b %f%k";
-#     fi
-#   fi
-# }
-# branch_separator() {
-#   if [ $vcs_info_msg_0_ ]; then
-#     if [[ "$(branchName)" == "dev" ]]; then
-#       echo "%F{$surface2}%K{$yellow}$separator_left%k%f";
-#     else
-#       echo "%F{$surface2}%K{$green}$separator_left%k%f";
-#     fi
-#   else
-#     if [ $cmd_time ]; then
-#       echo "%F{$surface2}%K{$surface1}$separator_left%k%f";
-#     else
-#       echo "%F{$surface2}%K{$base}$separator_left%k%f";
-#     fi
-#   fi
-# }
-#
-# cur_time() {
-#     echo "%B%K{$surface2} %F{$text}%T  %f%b%K{$base}%F{$surface2}$right_start%f%k"
-# }
-
-
-
-# icon() {
-#     case $PWD in
-#         /Users/jorgebefan )
-#             icon=" "
-#             ;;
-#         /Users/jorgebefan/Dropbox/JORGE/git* )
-#             icon=" "
-#             ;;
-#         /Users/jorgebefan/Downloads* )
-#             icon="  "
-#             ;;
-#         /Users/jorgebefan/Documents* )
-#             icon="  "
-#             ;;
-#         /Users/jorgebefan/Dropbox* )
-#             icon="  "
-#             ;;
-#         * )
-#             icon=" "
-#             ;;
-#     esac
-#     echo "%F{$pink}$left_start%f%K{$pink}%F{$base} $icon %f%k"
-#   }
-
-# filepath() {
-#     split_path=(${(@s|/|)PWD})
-#     pwd_filtered="${PWD//\/Users\/jorgebefan/~}"
-#     if [[ "${pwd_filtered}" == "~" ]]; then
-#         pwd_rest=""
-#         pwd_folder="~"
-#     else
-#         pwd_rest=$(dirname "${pwd_filtered}")
-#         # add an extra "/" only if the directory is not already just "/"
-#         if [[ "${pwd_rest}" != "/" ]]; then
-#             pwd_rest="${pwd_rest}/"
-#         fi
-#         pwd_folder=$(basename "${pwd_filtered}")
-#     fi
-#     echo "%F{$overlay2}%K{$surface1} ${pwd_rest}%f%F{$text}%B${pwd_folder} %b%f%k"
-# }
+elapsed() {
+  if [ $cmd_time ]; then
+      echo "%F{$subtext0} ⌛$cmd_time%f";
+  fi
+}
+elapsed_separator() {
+  if [ $cmd_time ]; then
+    if [ $vcs_info_msg_0_ ]; then
+      echo "%F{{$surface1}$separator_left%f"
+    #   if [[ "$(branchName)" == "dev" ]]; then
+    #     echo "%F{$yellow}%K{$surface1}$separator_left%k%f";
+    #   else
+    #     echo "%F{$green}%K{$surface1}$separator_left%k%f";
+    #   fi
+    fi
+  else
+    echo ""
+    # if [ $vcs_info_msg_0_ ]; then
+    #   if [[ "$(branchName)" == "dev" ]]; then
+    #     echo "%F{$yellow}%K{$base}$separator_left%k%f";
+    #   else
+    #     echo "%F{$green}%K{$base}$separator_left%k%f";
+    #   fi
+    # fi
+  fi
+}
 
 icon() {
     case $PWD in
@@ -316,41 +200,48 @@ icon() {
             icon=" "
             ;;
         /Users/jorgebefan/Downloads* )
-            icon="  "
+            icon=" "
             ;;
         /Users/jorgebefan/Documents* )
-            icon="  "
+            icon=" "
             ;;
         /Users/jorgebefan/Dropbox* )
-            icon="  "
+            icon=" "
             ;;
         * )
             icon=" "
             ;;
     esac
-    echo "%F{$pink}$left_start%f%K{$pink}%F{$base} $icon %f%k"
+    echo "%F{$mauve}$left_start%f%K{$mauve}%F{$base}$icon%f%k"
   }
+
+icon_separator() {
+  echo "%F{$mauve}%K{$spec_surface}${separator_right}%k%f"
+}
 
 branch() {
   if [ $vcs_info_msg_0_ ]; then
     if [[ "$(branchName)" == "dev" ]]; then
       echo "%K{$sapphire}%F{$base} %B $(branchName)%b %f%k";
+      # echo "%F{$sapphire} %B $(branchName)%b %k";
     else
       echo "%K{$green}%F{$base} %B $(branchName)%b %f%k";
+      # echo "%F{$green} %B $(branchName)%b %k";
     fi
   fi
 }
-branch_separator() {
-  if [ $vcs_info_msg_0_ ]; then
-    if [[ "$(branchName)" == "dev" ]]; then
-      echo "%F{$sapphire}%K{$base}$separator_right%k%f";
-    else
-      echo "%F{$green}%K{$base}$separator_right%k%f";
-    fi
-  else
-    echo ""
-  fi
-}
+
+# branch_separator() {
+#   if [ $vcs_info_msg_0_ ]; then
+#     if [[ "$(branchName)" == "dev" ]]; then
+#       echo "%F{$sapphire}%K{$base}$separator_right%k%f";
+#     else
+#       echo "%F{$green}%K{$base}$separator_right%k%f";
+#     fi
+#   else
+#     echo ""
+#   fi
+# }
 
 filepath() {
     split_path=(${(@s|/|)PWD})
@@ -367,32 +258,35 @@ filepath() {
         fi
         pwd_folder=$(basename "${pwd_filtered}")
     fi
-    echo "%F{$overlay2}%K{$surface1} ${pwd_rest}%f%F{$text}%B${pwd_folder} %b%f%k"
-    # echo "%F{$overlay2}%K%f %F{$text}%B${pwd_folder} %b%f%k"
+    echo "%F{$overlay2}%K{$spec_surface} ${pwd_rest}%f%F{$text}%B${pwd_folder} %b%f%k"
+    # echo "%F{$overlay1}%K%f %F{$text}%B${pwd_folder} %b%f%k"
 }
-filepath_separator() {
-  if [ $vcs_info_msg_0_ ]; then
-    if [[ "$(branchName)" == "dev" ]]; then
-      echo "%F{$surface1}%K{$sapphire}$separator_right%k%f";
-    else
-      echo "%F{$surface1}%K{$green}$separator_right%k%f";
-    fi
-  else
-    echo "%F{$surface1}%K{$base}$separator_right%k%f";
-  fi
-}
+
+# filepath_separator() {
+#   if [ $vcs_info_msg_0_ ]; then
+#     if [[ "$(branchName)" == "dev" ]]; then
+#       echo "%F{$surface1}%K{$sapphire}$separator_right%k%f";
+#     else
+#       echo "%F{$surface1}%K{$green}$separator_right%k%f";
+#     fi
+#   else
+#     echo "%F{$surface1}%K{$base}$separator_right%k%f";
+#   fi
+# }
 
 # Format the vcs_info_msg_0_ variable
 # zstyle ':vcs_info:git:*' formats " %b"
 
 # PROMPT='${_newline}'
-# PROMPT+='$(icon)%F{$pink}%K{$surface1}${separator_right}%k%f$(filepath)%F{$surface1}$separator_right%f'
+# PROMPT+='$(icon)%F{$mauve}%K{$surface1}${separator_right}%k%f$(filepath)%F{$surface1}$separator_right%f'
 # PROMPT+='${_newline}'
 # PROMPT+='%(?:%F{$green} %f:%F{$red} %f)'
 # RPROMPT='%{$_lineup%}$(elapsed)$(elapsed_separator)$(branch)$(branch_separator)$(cur_time)%k%{$_linedown%}'
 
 PROMPT='${_newline}'
-PROMPT+='$(icon)%F{$pink}%K{$surface1}${separator_right}%k%f$(filepath)$(filepath_separator)$(branch)$(branch_separator)'
+# PROMPT+='$(icon)%F{$mauve}%K{$surface1}${separator_right}%k%f$(filepath)$(filepath_separator)$(branch)$(branch_separator)'
+PROMPT+='$(icon)$(icon_separator)$(filepath)$(branch)$(elapsed)'
+# PROMPT+='$(icon)%F{$mauve}%K{$surface1}${separator_right}%k%f$(filepath)$(branch)'
 PROMPT+='${_newline}'
 PROMPT+='%(?:%F{$green} %f:%F{$red} %f)'
 
@@ -425,3 +319,6 @@ alias dropbignore="zsh ~/.custom-scripts/dropbignore.sh"
 alias dropbunignore="zsh ~/.custom-scripts/dropbunignore.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"

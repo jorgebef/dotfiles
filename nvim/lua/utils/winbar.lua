@@ -19,7 +19,7 @@ local get_filename = function(leaving)
 	local file_icon_color = ""
 	local default_file_icon = ""
 	local default_file_icon_color = ""
-	local f = require("functions")
+	local f = require("util")
 
 	if not f.isempty(filename) then
 		extension = vim.fn.expand("%:e")
@@ -37,7 +37,8 @@ local get_filename = function(leaving)
 			{ default = default }
 		)
 
-		local cp = require("catppuccin.core.palettes.macchiato")
+		-- local cp = require("catppuccin.core.palettes.macchiato")
+		local cp = require("catppuccin.palettes").get_palette()
 		local active_hl_group = "ActiveFileIconColor" .. extension
 		local inactive_hl_group = "InactiveFileIconColor" .. extension
 		vim.api.nvim_set_hl(0, active_hl_group, {
@@ -88,7 +89,7 @@ local get_filename = function(leaving)
 end
 
 local get_gps = function(leaving)
-	local f = require("functions")
+	local f = require("util")
 	local status_ok, gps_location = pcall(gps.get_location, {})
 	if not status_ok then
 		return ""
@@ -145,7 +146,7 @@ M.get_winbar = function(leaving)
 	if excludes() then
 		return
 	end
-	local f = require("functions")
+	local f = require("util")
 	local value = get_filename(leaving)
 
 	local gps_added = false

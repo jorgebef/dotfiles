@@ -28,6 +28,10 @@ font:
     family: JetBrainsMono Nerd Font
     # family: SauceCodePro Nerd Font
     style: Regular
+    # style: Light
+  # bold:
+  #   family: SauceCodePro Nerd Font
+  #   style: Regular
   size: 13.0
   use_thin_strokes: true
 

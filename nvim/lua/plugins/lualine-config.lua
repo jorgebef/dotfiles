@@ -17,7 +17,7 @@ require("lualine").setup({
 				"mode",
 				separator = {
 					left = icons.ui.SeparatorLStart,
-					right = icons.ui.SeparatorLEnd,
+					right = icons.ui.SeparatorLEndAngle,
 				},
 				-- separator = { left = "█", right = "" },
 				left_padding = 1,
@@ -27,13 +27,11 @@ require("lualine").setup({
 		lualine_b = {
 			{
 				"branch",
-				-- separator = { right = "" },
-				-- separator = { left = "", right = "" },
 				separator = {
 					-- right = ""
-					right = icons.ui.SeparatorLEnd,
+					right = icons.ui.SeparatorLEndAngle,
 				},
-				left_padding = 2,
+				padding = { left = 2, right = 1 },
 			},
 			{
 				"diff",
@@ -43,14 +41,10 @@ require("lualine").setup({
 				-- 	modified = { fg = cp.yellow, bg = nil }, -- changes diagnostic's warn color
 				-- 	removed = { fg = cp.red, bg = nil }, -- changes diagnostic's error color
 				-- },
-				-- separator = { right = "" },
-				-- separator = { left = "█", right = "█" },
-				-- separator = { left = "", right = "" },
 				separator = {
-					-- right = ""
-					right = icons.ui.SeparatorLEnd,
+					right = icons.ui.SeparatorSquare,
 				},
-				left_padding = 1,
+				padding = 1,
 			},
 			{
 				"diagnostics",
@@ -71,13 +65,10 @@ require("lualine").setup({
 				colored = true, -- displays diagnostics status in color if set to true
 				update_in_insert = false, -- Update diagnostics in insert mode
 				always_visible = false, -- Show diagnostics always
-				-- separator = { right = "" },
-				-- separator = { left = "", right = "" },
-				separator = {
-					-- right = ""
-					right = icons.ui.SeparatorLEnd,
-				},
-				left_padding = 1,
+				-- separator = {
+				-- 	right = icons.ui.SeparatorSquare,
+				-- },
+				padding = { left = 1, right = 2 },
 			},
 		},
 		lualine_c = {
@@ -92,26 +83,21 @@ require("lualine").setup({
 			{
 				"progress",
 				"require'lsp-status'.status()",
-				-- separator = { left = "" },
-				-- separator = { left = "" },
-				separator = {
-					left = icons.ui.SeparatorRStart,
-				},
-				-- separator = { left = "", right = "" },
-				right_padding = 1,
+				-- separator = {
+				-- 	left = icons.ui.SeparatorSquare,
+				-- },
+				padding = { left = 1, right = 2 },
 			},
 		},
 		-- lualine_y = {'%{ObsessionStatus(" "," ")}'},
 		lualine_z = {
 			{
 				"location",
-				-- separator = { left = "", right = "" },
-				separator = {
-					left = icons.ui.SeparatorRStart,
-					right = icons.ui.SeparatorREnd,
-				},
-				-- separator = { left = "", right = "█" },
-				left_padding = 1,
+				-- separator = {
+				-- 	left = icons.ui.SeparatorRStartAngleAngle,
+				-- 	right = icons.ui.SeparatorSquare,
+				-- },
+				padding = 1,
 			},
 		},
 	},

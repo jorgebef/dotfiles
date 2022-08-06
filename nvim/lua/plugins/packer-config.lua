@@ -65,7 +65,7 @@ packer.startup(function()
 
 	-- == Vim modifying surround to text
 	-- =============================================
-	use("tpope/vim-surround")
+	use({ "kylechui/nvim-surround" })
 
 	-- == NULL LS
 	-- ==============================================
@@ -94,7 +94,6 @@ packer.startup(function()
 			{ "nvim-lua/plenary.nvim" },
 		},
 	})
-	-- use { 'tpope/vim-fugitive' }
 
 	-- == Indent blank lines
 	-- =============================================
@@ -146,16 +145,20 @@ packer.startup(function()
 	-- =============================================
 	use({
 		"catppuccin/nvim",
-		-- "jorgebef/nvim",
+		-- "jorgebef/catppuccin-nvim",
 		branch = "main",
 		-- branch = "dev",
 		as = "catppuccin",
+		run = ":CatppuccinCompile",
 	})
 
 	-- == Useful status line and buffer line
 	-- =============================================
 	use("nvim-lualine/lualine.nvim")
-	use("akinsho/bufferline.nvim")
+	use("feline-nvim/feline.nvim")
+
+	-- use("akinsho/bufferline.nvim")
+
 	use({
 		"SmiteshP/nvim-navic",
 		requires = "neovim/nvim-lspconfig",

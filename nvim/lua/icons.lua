@@ -90,10 +90,15 @@ M.ui = {
 	ChevronRight = " ",
 	Table = " ",
 	Calendar = " ",
-	SeparatorLStart = "",
-	SeparatorLEnd = "",
-	SeparatorRStart = "",
-	SeparatorREnd = "",
+	SeparatorSquare = "█",
+	SeparatorLStart = "█",
+	-- SeparatorLStart = "",
+	SeparatorLEndAngle = "",
+	-- SeparatorLEnd = "",
+	SeparatorRStartAngle = "",
+	-- SeparatorRStart = "",
+	SeparatorREnd = "█",
+	-- SeparatorREnd = "",
 }
 
 M.diagnostics = {
@@ -109,9 +114,9 @@ M.misc = {
 	Squirrel = "",
 	Tag = "",
 	Watch = "",
-  Ghost1 = " ",
-  Ghost2 = " ",
-  Carat = " "
+	Ghost1 = " ",
+	Ghost2 = " ",
+	Carat = " ",
 }
 
 return M

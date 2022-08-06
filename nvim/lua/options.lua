@@ -29,7 +29,6 @@ vim.g.inccommand = "nosplit"
 -- " Don't pass messages to |ins-completion-menu|.
 -- vim.g.shortmess = vim.o.shortmess .. "c"
 
-
 -- -- fold settings
 -- vim.wo.foldmethod = "expr"
 -- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
@@ -39,14 +38,16 @@ vim.g.inccommand = "nosplit"
 -- vim.wo.foldnestmax = 3
 -- vim.wo.foldminlines = 1
 
-
-
 -- ==================================
 -- NEOVIM 0.8
 -- vim.opt.cmdheight = 0
 -- vim.opt.winbar = "%{%v:lua.require('utils.winbar').output()%}"
 -- vim.o.winbar = "%t | %{%v:lua.require'nvim-navic'.get_location()%}"
-vim.opt.winbar = " "
+-- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
+vim.o.winbar = "%{%v:lua.require('utils.winbar_new').get_winbar()%}"
+-- vim.opt.winbar = " "
+
 -- ==================================
 vim.opt.colorcolumn = "99999" -- fixes indentline for now
 vim.opt.completeopt = { "menuone", "noselect" }

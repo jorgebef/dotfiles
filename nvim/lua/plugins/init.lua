@@ -18,10 +18,12 @@ require("plugins.which-key-config")
 
 require("plugins.lsp.lsp-config")
 require("plugins.lsp.nvim-cmp-config")
+require("plugins.lsp.nvim-navic-config")
 require("plugins.luasnip-config")
 require("plugins.null-ls-config")
 require("plugins.nvim-gps-config")
 require("plugins.autopairs-config")
+require("plugins.nvim-surround-config")
 
 require("plugins.treesitter.treesitter-config")
 
