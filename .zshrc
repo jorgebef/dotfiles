@@ -53,7 +53,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias lvim='/Users/jorgebefan/.local/bin/lvim'
 
 
 export EDITOR="nvim"
@@ -317,6 +316,7 @@ precmd() {
 # =================================================================
 alias dropbignore="zsh ~/.custom-scripts/dropbignore.sh"
 alias dropbunignore="zsh ~/.custom-scripts/dropbunignore.sh"
+alias envtovercel="sh ~/.custom-scripts/env-to-vercel.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

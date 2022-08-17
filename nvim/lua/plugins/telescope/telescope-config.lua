@@ -51,6 +51,8 @@ require("telescope").setup({
 				"--exclude",
 				".next",
 				"--exclude",
+				".vercel",
+				"--exclude",
 				".netlify",
 			},
 		},

@@ -67,7 +67,8 @@ remap("n", "<leader>=", "<C-w>=", nsn_opts)
 remap("n", "<leader>+", "<C-w>8>", nsn_opts)
 remap("n", "<leader>-", "<C-w>8<", nsn_opts)
 
-remap("n", "<leader>V", ":vs<CR>", nsn_opts)
+remap("n", "<leader>sv", ":vs<CR>", nsn_opts)
+remap("n", "<leader>sh", ":split<CR>", nsn_opts)
 
 function _G.reload_nvim_conf()
 	for name, _ in pairs(package.loaded) do

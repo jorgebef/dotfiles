@@ -1,8 +1,8 @@
 local wezterm = require("wezterm")
--- local catppuccin = require("colors/catppuccin").setup({
--- 	sync = false,
--- 	flavour = "macchiato",
--- })
+--[[ local catppuccin = require("colors/catppuccin").setup({ ]]
+--[[ 	sync = false, ]]
+--[[ 	flavour = "macchiato", ]]
+--[[ }) ]]
 
 local modifiers = "CTRL|ALT"
 
@@ -126,27 +126,36 @@ return {
 	hide_tab_bar_if_only_one_tab = false,
 	-- colors = catppuccin,
 	color_scheme = "Catppuccin Macchiato",
-	window_background_opacity = 1.0,
+	--[[ window_background_opacity = 1.0, ]]
+	-- Constrains the rate at which output from a child command is
+	-- processed and applied to the terminal model.
+	-- This acts as a brake in the case of a command spewing a
+	-- ton of output and allows for the UI to remain responsive
+	-- so that you can hit CTRL-C to interrupt it if desired.
+	-- The default value is 400,000 bytes/s.
+	--[[ ratelimit_output_bytes_per_second = 400000, ]]
 	font = wezterm.font("JetBrainsMono Nerd Font"),
-	-- font = wezterm.font("VictorMono Nerd Font"),
+	--[[ font = wezterm.font("RobotoMono Nerd Font"), ]]
 	-- font_size = 16.0,
-	-- line_height = 0.95,
+	--[[ line_height = 0.95, ]]
 	font_size = 13.0,
 
 	-- harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 
-	harfbuzz_features = {
-		"cv06=1",
-		"cv14=1",
-		"cv32=1",
-		"ss04=1",
-		"ss07=1",
-		"ss09=1",
-	},
+	--[[ harfbuzz_features = { ]]
+	--[[ 	"cv06=1", ]]
+	--[[ 	"cv14=1", ]]
+	--[[ 	"cv32=1", ]]
+	--[[ 	"ss04=1", ]]
+	--[[ 	"ss07=1", ]]
+	--[[ 	"ss09=1", ]]
+	--[[ }, ]]
 
 	-- harfbuzz_features = { "zero", "kern", "liga", "clig" },
 
 	-- Cursor style
+	cursor_blink_rate = 0,
+
 	automatically_reload_config = true,
 	check_for_updates = false,
 	use_fancy_tab_bar = false,
@@ -160,7 +169,7 @@ return {
 
 	-- Enable CSI u mode
 	-- https://wezfurlong.org/wezterm/config/lua/config/enable_csi_u_key_encoding.html
-	enable_csi_u_key_encoding = true,
+	--[[ enable_csi_u_key_encoding = true, ]]
 
 	-- disable_default_key_bindings = true,
 

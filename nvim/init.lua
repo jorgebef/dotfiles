@@ -16,6 +16,15 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	group = "jsoncComments",
 })
 
+--[[ local envGroup = vim.api.nvim_create_augroup("__env", { clear = true }) ]]
+--[[ vim.api.nvim_create_autocmd("BufEnter", { ]]
+--[[ 	pattern = ".env*", ]]
+--[[ 	group = envGroup, ]]
+--[[ 	callback = function(args) ]]
+--[[ 		vim.diagnostic.disable(args.buf) ]]
+--[[ 	end, ]]
+--[[ }) ]]
+
 -- vim.api.nvim_create_augroup("jsoncComments", { clear = true })
 -- vim.api.nvim_create_autocmd({ "BufEnter" }, {
 -- 	pattern = "*config.json",
