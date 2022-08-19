@@ -134,13 +134,15 @@ return {
 	-- so that you can hit CTRL-C to interrupt it if desired.
 	-- The default value is 400,000 bytes/s.
 	--[[ ratelimit_output_bytes_per_second = 400000, ]]
-	font = wezterm.font("JetBrainsMono Nerd Font"),
+	--[[ font = wezterm.font("JetBrainsMono Nerd Font"), ]]
+	--[[ font = wezterm.font("Hack Nerd Font"), ]]
+	font = wezterm.font("FiraCode Nerd Font"),
 	--[[ font = wezterm.font("RobotoMono Nerd Font"), ]]
 	-- font_size = 16.0,
 	--[[ line_height = 0.95, ]]
 	font_size = 13.0,
 
-	-- harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+	--[[ harfbuzz_features = { "calt=0", "clig=0", "liga=0" }, ]]
 
 	--[[ harfbuzz_features = { ]]
 	--[[ 	"cv06=1", ]]
