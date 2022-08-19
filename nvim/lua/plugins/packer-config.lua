@@ -107,6 +107,7 @@ packer.startup(function()
 	})
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use("natecraddock/telescope-zf-native.nvim")
+	use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 	-- == LSP configuration
 	-- =============================================
