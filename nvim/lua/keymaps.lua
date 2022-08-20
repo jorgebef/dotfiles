@@ -14,6 +14,8 @@ remap("n", "<leader>q", ":q<cr>", nsn_opts)
 
 remap("v", "p", '"_dP', nsn_opts)
 
+remap("n", "<leader>p", '"+p', nsn_opts)
+remap("v", "<leader>p", '"+p', nsn_opts)
 remap("n", "<leader>y", '"+y', nsn_opts)
 remap("v", "<leader>y", '"+y', nsn_opts)
 

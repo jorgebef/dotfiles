@@ -28,5 +28,6 @@ require("plugins.nvim-surround-config")
 require("plugins.treesitter.treesitter-config")
 
 require("plugins.telescope.telescope-config")
+require("plugins.telescope.telescope-file-browser")
 
 require("plugins.nvim-web-devicons")

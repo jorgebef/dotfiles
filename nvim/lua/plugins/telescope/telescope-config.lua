@@ -2,27 +2,6 @@ local previewers = require("telescope.previewers")
 local Job = require("plenary.job")
 local icons = require("icons")
 
-local new_maker = function(filepath, bufnr, opts)
-	filepath = vim.fn.expand(filepath)
-	Job
-		:new({
-			command = "file",
-			args = { "--mime-type", "-b", filepath },
-			on_exit = function(j)
-				local mime_type = vim.split(j:result()[1], "/")[1]
-				if mime_type == "text" then
-					previewers.buffer_previewer_maker(filepath, bufnr, opts)
-				else
-					-- maybe we want to write something to the buffer here
-					vim.schedule(function()
-						vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY" })
-					end)
-				end
-			end,
-		})
-		:sync()
-end
-
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
 require("telescope").setup({
@@ -58,13 +37,8 @@ require("telescope").setup({
 		},
 	},
 	defaults = {
-		-- prompt_prefix = "   ",
-		-- prompt_prefix = "   ",
 		prompt_prefix = icons.ui.Telescope .. " " .. icons.misc.Carat,
-		-- selection_caret = " ",
-		-- selection_caret = " ",
 		selection_caret = icons.ui.Arrow,
-		-- buffer_previewer_maker = new_maker,
 		-- ====================================================
 		-- IT IS VERY SLOW TO RELY ON FILE IGNORE PATTERNS
 		-- ====================================================
@@ -130,6 +104,10 @@ require("telescope").load_extension("fzf")
 -- Load zf extension, which favors filename over rest of the path
 require("telescope").load_extension("zf-native")
 
+-- To get telescope-file-browser loaded and working with telescope,
+-- you need to call load_extension, somewhere after setup function:
+require("telescope").load_extension("file_browser")
+
 -- =======================================================================
 -- ============================== REMAPS =================================
 -- =======================================================================
@@ -139,7 +117,7 @@ local nsn_opts = { noremap = true, silent = true, nowait = true }
 -- remap("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files({sort_lastused=true})<cr>', nsn_opts)
 remap("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files()<cr>', nsn_opts)
 remap("n", "<leader>fF", '<cmd>lua require("telescope-functions").project_files()<cr>', nsn_opts)
-remap("n", "<leader>fb", '<cmd>lua require("telescope.builtin").buffers()<cr>', nsn_opts)
+remap("n", "<leader>fb", '<cmd>Telescope file_browser<cr>', nsn_opts)
 remap("n", "<leader>fG", '<cmd>lua require("telescope.builtin").git_files()<cr>', nsn_opts)
 remap("n", "<leader>fg", '<cmd>lua require("telescope.builtin").live_grep()<cr>', nsn_opts)
 remap("n", "<leader>fs", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', nsn_opts)

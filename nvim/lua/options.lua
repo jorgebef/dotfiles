@@ -1,5 +1,11 @@
+-- ================== USE SYSTEM CLIPBOARD ==================
+-- local is_mac = vim.fn.has("macunix")
+-- if is_mac then
+-- 	vim.opt.clipboard:append({ "unnamedplus" })
+-- end
+
 -- ===================== THEMES ======================
-vim.opt.termguicolors = true
+vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 
 -- ===================== BASIC SETTINGS ======================
 vim.opt.backup = false
@@ -22,40 +28,19 @@ vim.o.sessionoptions = "globals,buffers,curdir,folds,help,resize,tabpages,winsiz
 vim.g.ttyfast = true
 -- vim.o.undofile = true
 vim.bo.undofile = true -- persistent undo is a neat feature
--- vim.o.updatetime = 800
 vim.g.mapleader = " "
--- vim.o.wrapscan = true
 vim.g.inccommand = "nosplit"
--- " Don't pass messages to |ins-completion-menu|.
--- vim.g.shortmess = vim.o.shortmess .. "c"
-
--- -- fold settings
--- vim.wo.foldmethod = "expr"
--- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
--- vim.wo.foldtext =
---     [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
--- vim.wo.fillchars = "fold:\\"
--- vim.wo.foldnestmax = 3
--- vim.wo.foldminlines = 1
-
--- ==================================
--- NEOVIM 0.8
--- vim.opt.cmdheight = 0
--- vim.opt.winbar = "%{%v:lua.require('utils.winbar').output()%}"
--- vim.o.winbar = "%t | %{%v:lua.require'nvim-navic'.get_location()%}"
--- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
 vim.o.winbar = "%{%v:lua.require('utils.winbar_new').get_winbar()%}"
--- vim.opt.winbar = " "
 
 -- ==================================
 vim.opt.colorcolumn = "99999" -- fixes indentline for now
-vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
 vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
 vim.opt.foldexpr = "" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
-vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
+-- vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
 vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 vim.opt.ignorecase = true -- ignore case in search patterns
@@ -69,7 +54,6 @@ vim.opt.smartindent = true -- make indenting smarter again
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
 vim.opt.splitright = true -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false -- creates a swapfile
-vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 vim.opt.timeoutlen = 450 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.title = true -- set the title of window to the value of the titlestring
 -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
@@ -87,7 +71,7 @@ vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shift the text each time
 -- vim.opt.wrap = false -- display lines as one long line
 vim.opt.spell = false
-vim.opt.spelllang = "en"
+-- vim.opt.spelllang = "en"
 -- vim.opt.spellfile = join_paths(get_config_dir(), "spell", "en.utf-8.add")
 -- vim.opt.shadafile = join_paths(get_cache_dir(), "lvim.shada")
 vim.opt.scrolloff = 5 -- minimal number of screen lines to keep above and below the cursor.
@@ -97,10 +81,6 @@ vim.opt.shortmess:append("c") -- don't show redundant messages from ins-completi
 vim.opt.shortmess:append("I") -- don't show the default intro message
 vim.opt.whichwrap:append("<,>,[,],h,l")
 
--- ===================== NEOVIDE SETTINGS =============================
--- vim.g.neovide_cursor_animation_length=0
--- vim.cmd([[set guifont=JetBrainsMono\ Nerd\ Font:h13]])
-
-vim.api.nvim_command("filetype plugin on")
-vim.api.nvim_command("filetype indent plugin on")
-vim.api.nvim_command("syntax on")
+-- vim.api.nvim_command("filetype plugin on")
+-- vim.api.nvim_command("filetype indent plugin on")
+-- vim.api.nvim_command("syntax on")

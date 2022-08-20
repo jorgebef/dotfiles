@@ -126,18 +126,18 @@ return {
 	hide_tab_bar_if_only_one_tab = false,
 	-- colors = catppuccin,
 	color_scheme = "Catppuccin Macchiato",
-	--[[ window_background_opacity = 1.0, ]]
+	window_background_opacity = 1.0,
 	-- Constrains the rate at which output from a child command is
 	-- processed and applied to the terminal model.
 	-- This acts as a brake in the case of a command spewing a
 	-- ton of output and allows for the UI to remain responsive
 	-- so that you can hit CTRL-C to interrupt it if desired.
 	-- The default value is 400,000 bytes/s.
-	--[[ ratelimit_output_bytes_per_second = 400000, ]]
-	--[[ font = wezterm.font("JetBrainsMono Nerd Font"), ]]
-	--[[ font = wezterm.font("Hack Nerd Font"), ]]
-	font = wezterm.font("FiraCode Nerd Font"),
-	--[[ font = wezterm.font("RobotoMono Nerd Font"), ]]
+	-- ratelimit_output_bytes_per_second = 400000,
+	-- font = wezterm.font("JetBrainsMono Nerd Font"),
+	-- font = wezterm.font("Hack Nerd Font"),
+	-- font = wezterm.font("FiraCode Nerd Font"),
+	font = wezterm.font("RobotoMono Nerd Font"),
 	-- font_size = 16.0,
 	--[[ line_height = 0.95, ]]
 	font_size = 13.0,
@@ -158,20 +158,23 @@ return {
 	-- Cursor style
 	cursor_blink_rate = 0,
 
+	-- max_fps = 240,
+	max_fps = 100,
+
 	automatically_reload_config = true,
 	check_for_updates = false,
 	use_fancy_tab_bar = false,
 	tab_bar_at_bottom = true,
 
-	window_decorations = "RESIZE",
+	-- window_decorations = "RESIZE",
 	initial_cols = 999,
 	initial_rows = 999,
 
-	unzoom_on_switch_pane = true,
+	-- unzoom_on_switch_pane = true,
 
 	-- Enable CSI u mode
 	-- https://wezfurlong.org/wezterm/config/lua/config/enable_csi_u_key_encoding.html
-	--[[ enable_csi_u_key_encoding = true, ]]
+	enable_csi_u_key_encoding = true,
 
 	-- disable_default_key_bindings = true,
 
