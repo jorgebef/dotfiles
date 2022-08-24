@@ -5,10 +5,6 @@ local navic = require("nvim-navic")
 local util = require("util")
 local icons = require("icons")
 
--- vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = cp.surface0 })
--- vim.api.nvim_set_hl(0, "WinBarFilename", { fg = cp.green, bg = cp.text })
--- vim.api.nvim_set_hl(0, "WinBarContext", { fg = cp.green, bg = cp.text })
-
 M.winbar_filetype_exclude = {
 	"help",
 	"startify",

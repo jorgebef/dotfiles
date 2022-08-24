@@ -87,6 +87,17 @@ local M = {}
 --   end
 -- end
 
+M.table_merge = function(first_table, second_table)
+	local result_table = {}
+	for k, v in pairs(first_table) do
+		result_table[k] = v
+	end
+	for k, v in pairs(second_table) do
+		result_table[k] = v
+	end
+	return result_table
+end
+
 local function td_validate(fn, ms)
 	vim.validate({
 		fn = { fn, "f" },
@@ -100,7 +111,7 @@ local function td_validate(fn, ms)
 	})
 end
 
-function M.debounce(fn, ms, first)
+M.debounce = function(fn, ms, first)
 	td_validate(fn, ms)
 	local timer = vim.loop.new_timer()
 	local wrapped_fn
@@ -128,8 +139,14 @@ function M.debounce(fn, ms, first)
 	return wrapped_fn, timer
 end
 
+local function isempty(s)
+	return s == nil or s == ""
+end
+
+M.isempty = isempty
+
 -- TODO not working currently
-function M.is_current()
+M.is_current = function()
 	local winid = vim.g.actual_curwin
 	if isempty(winid) then
 		return false
@@ -143,11 +160,7 @@ function M.is_current()
 	end
 end
 
-function M.isempty(s)
-	return s == nil or s == ""
-end
-
-function M.get_buf_option(opt)
+M.get_buf_option = function(opt)
 	local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
 	if not status_ok then
 		return nil

@@ -104,12 +104,6 @@ catppuccin.setup({
 		TelescopeBorder = { fg = cp.surface2 },
 		WinBar = { bg = cp.red },
 		WinBarNC = { bg = cp.base },
-		-- WinBarIndicatorSelected = { fg = cp.pink, bg = cp.surface0 },
-		-- WinbarActiveFileName = { fg = cp.text, bg = cp.surface0, bold = true, italic = true },
-		-- WinbarActiveGPS = { fg = cp.overlay2, bg = cp.surface0 },
-		-- WinbarInactiveFileName = { fg = cp.overlay2, bg = cp.base, bold = true },
-		-- WinbarInactiveGPS = { fg = cp.surface1, bg = cp.base },
-		-- WinBarInactiveModified = { fg = cp.red, bg = cp.surface0 },
 		WinBarModified = { fg = cp.red },
 		WhichKeyFloat = { bg = cp.surface0 },
 		-- ===============================================================================

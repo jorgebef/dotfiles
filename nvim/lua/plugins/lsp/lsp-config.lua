@@ -1,27 +1,9 @@
 local lspconfig = require("lspconfig")
-local util = require("lspconfig/util")
 local icons = require("icons")
 local navic = require("nvim-navic")
-
---   =====================================================
---              STILL NEED TO INSTALL LuaJIT
---              LUAJIT IS UNSTABLE ON M1
---   ======================================================
--- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
--- ================================================
--- LUA LANGUAGE SERVER
--- ================================================
-USER = vim.fn.expand("$USER")
-local sumneko_root_path = ""
-local sumneko_binary = ""
-sumneko_root_path = "/Users/jorgebefan/.config/nvim/lua-language-server"
-sumneko_binary = "/Users/jorgebefan/.config/nvim/lua-language-server/bin/macOS/lua-language-server"
+local util = require("util")
 
 local signs = {
-	-- Error = " ",
-	-- Warning = " ",
-	-- Hint = " ",
-	-- Information = " ",
 	Error = icons.diagnostics.Error,
 	Warning = icons.diagnostics.Warning,
 	Hint = icons.diagnostics.Hint,
@@ -44,52 +26,12 @@ local border = {
 	{ "│", "FloatBorder" },
 }
 
--- local tsHandlers = {
--- 	["textDocument/definition"] = function(_, result, params)
--- 		local util = require("vim.lsp.util")
--- 		if result == nil or vim.tbl_isempty(result) then
--- 			local _ = vim.lsp.log.info() and vim.lsp.log.info(params.method, "No location found")
--- 			return nil
--- 		end
---
--- 		if vim.tbl_islist(result) then
--- 			-- // this is opens a buffer to that result
--- 			-- // you could loop the result and choose what you want
--- 			util.jump_to_location(result[1])
---
--- 			if #result > 1 then
--- 				local isReactDTs = false
--- 				---@diagnostic disable-next-line: unused-local
--- 				for key, value in pairs(result) do
--- 					if string.match(value.uri, "react/index.d.ts") then
--- 						isReactDTs = true
--- 						break
--- 					end
--- 				end
--- 				if not isReactDTs then
--- 					-- // this sets the value for the quickfix list
--- 					util.set_qflist(util.locations_to_items(result))
--- 					-- // this opens the quickfix window
--- 					vim.api.nvim_command("copen")
--- 					vim.api.nvim_command("wincmd p")
--- 				end
--- 			end
--- 		else
--- 			util.jump_to_location(result)
--- 		end
--- 	end,
--- }
-
 -- LSP settings (for overriding per client)
 local handlers = {
 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
 	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
 	["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 		virtual_text = false,
-		-- virtual_text = {
-		--     spacing = 1,
-		--     severity_limit = 'Warning',
-		-- },
 		underline = true,
 		-- bold = true,
 		signs = true,
@@ -126,16 +68,6 @@ local buf_map = function(bufnr, mode, lhs, rhs, opts)
 end
 
 local servers = {
-	--[[ { ]]
-	--[[ 	"bashls", ]]
-	--[[ 	cmd = { "bash-language-server", "start" }, ]]
-	--[[ 	cmd_env = { ]]
-	--[[ 		GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)", ]]
-	--[[ 	}, ]]
-	--[[ 	filetypes = { "sh" }, ]]
-	--[[ 	root_dir = util.find_git_ancestor, ]]
-	--[[ 	single_file_support = true, ]]
-	--[[ }, ]]
 	{
 		"rls",
 		settings = {
@@ -150,7 +82,7 @@ local servers = {
 		"dockerls",
 		cmd = { "docker-langserver", "--stdio" },
 		filetypes = { "dockerfile" },
-		root_dir = util.root_pattern("Dockerfile"),
+		root_dir = lspconfig.util.root_pattern("Dockerfile"),
 		single_file_support = true,
 	},
 	{
@@ -205,11 +137,12 @@ local servers = {
 	},
 	{
 		"tsserver",
-		handlers = handlers,
+		flags = { allow_incremental_sync = true },
+		handlers = util.table_merge({
+			["textDocument/definition"] = require("utils.lsp_handlers").ts_definition_handler,
+		}, handlers),
 		-- root_dir = util.root_pattern(".git"),
 		on_attach = function(client, bufnr)
-			-- client.server_capabilities.document_formatting = false
-			-- client.server_capabilities.document_range_formatting = false
 			client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
 			local ts_utils = require("nvim-lsp-ts-utils")
 			ts_utils.setup({})
@@ -220,7 +153,7 @@ local servers = {
 
 			-- =================================================
 			-- CHECK THIS
-			local bufopts = { noremap = true, silent = true, buffer = bufnr }
+			-- local bufopts = { noremap = true, silent = true, buffer = bufnr }
 			-- vim.keymap.set("n", "<space>lwr", vim.lsp.buf.remove_workspace_folder, bufopts)
 			-- vim.keymap.set("n", "<space>lwl", function()
 			-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
@@ -237,7 +170,7 @@ local servers = {
 		"gopls",
 		cmd = { "gopls", "serve" },
 		filetypes = { "go", "gomod" },
-		root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+		root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
 		settings = {
 			gopls = {
 				analyses = {
@@ -272,6 +205,7 @@ local servers = {
 	},
 	{
 		"tailwindcss",
+		flags = { allow_incremental_sync = true },
 		capabilities = capabilities,
 		cmd = { "tailwindcss-language-server", "--stdio" },
 		filetypes = {
@@ -327,7 +261,7 @@ local servers = {
 				eruby = "erb",
 			},
 		},
-		root_dir = util.root_pattern(
+		root_dir = lspconfig.util.root_pattern(
 			"tailwind.config.js",
 			"tailwind.config.ts",
 			"postcss.config.js",
@@ -339,7 +273,7 @@ local servers = {
 		on_attach = function(client, bufnr)
 			-- This is ripped off from https://github.com/kabouzeid/dotfiles, it's for tailwind preview support
 			if client.server_capabilities.colorProvider then
-				require("plugins.lsp.colorizer").buf_attach(bufnr, { single_column = false, debounce = 500 })
+				require("plugins.lsp.colorizer").buf_attach(bufnr, { single_column = false, debounce = 200 })
 			end
 		end,
 		settings = {
@@ -355,34 +289,36 @@ local servers = {
 					recommendedVariantOrder = "warning",
 				},
 				validate = true,
+				experimental = {
+					classRegex = {
+						-- "clsx\\('([^)]*)'\\)",
+						{ "clsx\\(([^)]*)\\)", "'([^']*)'" },
+					},
+				},
 			},
 		},
 	},
 	{
 		"sumneko_lua",
 		handlers = handlers,
-		cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+		-- cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 		settings = {
 			Lua = {
 				runtime = {
 					-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 					version = "LuaJIT",
-					-- Setup your lua path
-					path = vim.split(package.path, ";"),
 				},
 				diagnostics = {
 					-- Get the language server to recognize the `vim` global
-					globals = {
-						"nvim",
-						"vim",
-					},
+					globals = { "vim" },
 				},
 				workspace = {
 					-- Make the server aware of Neovim runtime files
-					library = {
-						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-						[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-					},
+					library = vim.api.nvim_get_runtime_file("", true),
+				},
+				-- Do not send telemetry data containing a randomized but unique identifier
+				telemetry = {
+					enable = false,
 				},
 			},
 		},
@@ -396,19 +332,19 @@ local servers = {
 for _, server in pairs(servers) do
 	local config = lspconfig[server[1]]
 
-	if lspconfig.util.has_bins(config.document_config.default_config.cmd[1]) then
-		local opts = {}
-		-- Manually set handlers = handlers
-		opts["handlers"] = handlers
+	-- if lspconfig.util.has_bins(config.document_config.default_config.cmd[1]) then
+	local opts = {}
+	-- Manually set handlers = handlers
+	opts["handlers"] = handlers
 
-		for k, v in pairs(server) do
-			if type(k) ~= "number" then
-				opts[k] = v
-			end
+	for k, v in pairs(server) do
+		if type(k) ~= "number" then
+			opts[k] = v
 		end
-
-		config.setup(opts)
 	end
+
+	config.setup(opts)
+	-- end
 end
 
 -- =======================================================================

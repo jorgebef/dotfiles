@@ -1,10 +1,7 @@
 -- ======================== REQUIRE EXTRA FILES ===================
 require("options")
 require("keymaps")
--- local winbar = require("utils.winbar_new")
 require("plugins")
--- require("utils.winbar_new")
--- " ====================== AUTOCMD ========================
 
 -- ==============================================
 -- ========= TURN ALL JSON INTO JSONC ===========
@@ -45,29 +42,6 @@ vim.api.nvim_create_autocmd(
 	{ pattern = "*[^{T}]", command = 'setlocal cursorline | :echo""', group = "CursorLine" }
 )
 vim.api.nvim_create_autocmd({ "WinLeave" }, { pattern = "*", command = "setlocal nocursorline", group = "CursorLine" })
-
--- vim.api.nvim_create_autocmd({
--- 	"CursorMoved",
--- 	"BufWinEnter",
--- 	"BufEnter",
--- 	"BufLeave",
--- 	"CursorHold",
--- 	"BufFilePost",
--- 	"InsertEnter",
--- 	"BufWritePost",
--- }, {
--- 	callback = function()
--- 		winbar.get_winbar()
--- 	end,
--- })
-
--- vim.api.nvim_create_autocmd({
--- 	"BufLeave",
--- }, {
--- 	callback = function()
--- 		winbar.get_winbar(true)
--- 	end,
--- })
 
 -- " ====================== / AUTOCMD ========================
 

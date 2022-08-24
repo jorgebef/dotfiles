@@ -28,19 +28,13 @@ packer.reset()
 
 packer.startup(function()
 	-- == Package manager written in lua
-	-- =============================================
 	use("wbthomason/packer.nvim")
-
-	-- == Dashboard on startup and session management
 	-- =============================================
+
+	-- == Dashboard on startup
 	use("glepnir/dashboard-nvim")
-
-	-- == Session management
-	-- =============================================
 	use({ "Shatur/neovim-session-manager" })
-
 	-- == Treesitter
-	-- =============================================
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -54,19 +48,11 @@ packer.startup(function()
 			"nvim-treesitter/playground",
 		},
 	})
-
 	-- == Commenting and uncommenting lines
-	-- =============================================
 	use("numToStr/Comment.nvim")
-
 	-- == File explorer written in lua
-	-- =============================================
 	use("kyazdani42/nvim-tree.lua")
-
-	-- == Vim modifying surround to text
-	-- =============================================
 	use({ "kylechui/nvim-surround" })
-
 	-- == NULL LS
 	-- ==============================================
 	use({
@@ -74,49 +60,28 @@ packer.startup(function()
 		requires = { "nvim-lua/plenary.nvim" },
 	})
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
-
-	-- == Colorizer
-	-- =============================================
 	use("norcalli/nvim-colorizer.lua")
-
 	-- == Auto Pairing parenthesis, brackets, etc...
-	-- =============================================
 	use("windwp/nvim-autopairs")
-	-- require("nvim-autopairs").setup({
-	-- 	enable_check_bracket_line = false,
-	-- })
-
-	-- == git signs and staging ==
-	-- =============================================
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
 		},
 	})
-
-	-- == Indent blank lines
-	-- =============================================
 	use("lukas-reineke/indent-blankline.nvim")
 
 	-- == Fuzzy Finder
-	-- =============================================
 	use({
 		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope-file-browser.nvim" },
+			{ "natecraddock/telescope-zf-native.nvim" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+		},
 	})
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use("natecraddock/telescope-zf-native.nvim")
-	use({ "nvim-telescope/telescope-file-browser.nvim" })
-
-	-- == LSP configuration
-	-- =============================================
 	use("neovim/nvim-lspconfig")
-	-- Lua
-	use({
-		"SmiteshP/nvim-gps",
-		requires = "nvim-treesitter/nvim-treesitter",
-	})
 
 	-- == Autocompletion
 	use({
@@ -133,17 +98,9 @@ packer.startup(function()
 			{ "onsails/lspkind-nvim" },
 		},
 	})
-
-	-- == Killing buffers easily
-	-- =============================================
+	-- Easier buffer deletion
 	use({ "ojroques/nvim-bufdel" })
-
-	-- == Killing buffers easily
-	-- =============================================
 	use({ "rcarriga/nvim-notify" })
-
-	-- == Catppuccin theme
-	-- =============================================
 	use({
 		"catppuccin/nvim",
 		-- "jorgebef/catppuccin-nvim",
@@ -152,28 +109,14 @@ packer.startup(function()
 		as = "catppuccin",
 		run = ":CatppuccinCompile",
 	})
-
-	-- == Useful status line and buffer line
-	-- =============================================
 	use("nvim-lualine/lualine.nvim")
-	use("feline-nvim/feline.nvim")
-
-	-- use("akinsho/bufferline.nvim")
-
 	use({
 		"SmiteshP/nvim-navic",
 		requires = "neovim/nvim-lspconfig",
 	})
-
-	-- == LIGHTSPEED ==
-	-- =============================================
 	use("ggandor/lightspeed.nvim")
-
-	-- == WHICK-KEY ==
-	-- =============================================
 	use("folke/which-key.nvim")
 
 	-- == KEEP DEVICONS LAST FOR CORRECT LOADING
-	-- =============================================
 	use("kyazdani42/nvim-web-devicons")
 end)

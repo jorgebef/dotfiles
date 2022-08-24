@@ -105,6 +105,10 @@ wk.register({
 		n = { "   Next" }, -- create a binding with label
 		p = { "   Previous" }, -- create a binding with label
 		P = { " 繁  Preview" }, -- create a binding with label
+		r = { " 碑 reset hunk" },
+		R = { "   Reset buffer" },
+		s = { "   stage hunk" },
+		S = { "   Stage buffer" },
 	},
 	l = {
 		name = " 力 LSP",
@@ -126,4 +130,4 @@ wk.register({
 	V = " 溺 Vertical split!!",
 	w = "   Write",
 	y = "   Copy to clipboard",
-}, { prefix = "<leader>" }, {})
+}, { prefix = "<leader>" })

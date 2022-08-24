@@ -5,6 +5,11 @@ local nsn_opts = { noremap = true, silent = true, nowait = true }
 local ns_opts = { noremap = true, silent = true }
 local n_opts = { noremap = true }
 
+remap("n", "j", "gj", { nowait = true, silent = true })
+remap("v", "j", "gj", { nowait = true, silent = true })
+remap("n", "k", "gk", { nowait = true, silent = true })
+remap("v", "k", "gk", { nowait = true, silent = true })
+
 remap("n", "ñ", ";", { nowait = true })
 remap("n", "Ñ", ":", { nowait = true })
 

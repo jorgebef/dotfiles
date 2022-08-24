@@ -33,7 +33,8 @@ font:
     style: Light
   bold:
     # family: SauceCodePro Nerd Font
-    family: RobotoMono Nerd Font
+    # family: RobotoMono Nerd Font
+    family: FiraCode Nerd Font
     style: Regular
   size: 13.0
   # use_thin_strokes: true

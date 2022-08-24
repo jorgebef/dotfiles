@@ -7,8 +7,6 @@ require("plugins.session-manager-config")
 require("plugins.nvim-tree-config")
 require("plugins.lualine-config")
 
--- require("plugins.bufferline-config")
-
 require("plugins.bufdel-config")
 require("plugins.gitsigns-config")
 require("plugins.dashboard-config")
@@ -21,7 +19,6 @@ require("plugins.lsp.nvim-cmp-config")
 require("plugins.lsp.nvim-navic-config")
 require("plugins.luasnip-config")
 require("plugins.null-ls-config")
-require("plugins.nvim-gps-config")
 require("plugins.autopairs-config")
 require("plugins.nvim-surround-config")
 

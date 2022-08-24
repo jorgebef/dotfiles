@@ -134,10 +134,9 @@ return {
 	-- so that you can hit CTRL-C to interrupt it if desired.
 	-- The default value is 400,000 bytes/s.
 	-- ratelimit_output_bytes_per_second = 400000,
-	-- font = wezterm.font("JetBrainsMono Nerd Font"),
+	font = wezterm.font("JetBrainsMono Nerd Font"),
 	-- font = wezterm.font("Hack Nerd Font"),
 	-- font = wezterm.font("FiraCode Nerd Font"),
-	font = wezterm.font("RobotoMono Nerd Font"),
 	-- font_size = 16.0,
 	--[[ line_height = 0.95, ]]
 	font_size = 13.0,
@@ -158,17 +157,17 @@ return {
 	-- Cursor style
 	cursor_blink_rate = 0,
 
-	-- max_fps = 240,
-	max_fps = 100,
+	max_fps = 240,
+	-- max_fps = 120,
 
 	automatically_reload_config = true,
 	check_for_updates = false,
 	use_fancy_tab_bar = false,
 	tab_bar_at_bottom = true,
 
-	-- window_decorations = "RESIZE",
-	initial_cols = 999,
-	initial_rows = 999,
+	window_decorations = "RESIZE",
+	initial_cols = 250,
+	initial_rows = 80,
 
 	-- unzoom_on_switch_pane = true,
 

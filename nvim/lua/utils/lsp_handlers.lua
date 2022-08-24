@@ -18,8 +18,8 @@ M.goto_definition = function(opts)
 					local character = range.start.character
 					local file = value.uri or value.targetUri
 					-- skip node module
-					if file ~=nil and not string.match(file,'node_modules') then
-					-- if file ~= nil then
+					if file ~= nil and not string.match(file, "node_modules") then
+						-- if file ~= nil then
 						-- mark current cursor open to jumplist
 						vim.api.nvim_command([[execute "normal! m` "]])
 						-- my_open({ file, line + 1, character + 1 })
@@ -32,6 +32,40 @@ M.goto_definition = function(opts)
 	end
 	-- try to call default lsp function
 	vim.lsp.buf.definition()
+end
+
+M.ts_definition_handler = function(_, result, params)
+	local util = require("vim.lsp.util")
+	if result == nil or vim.tbl_isempty(result) then
+		local _ = vim.lsp.log.info() and vim.lsp.log.info(params.method, "No location found")
+		return nil
+	end
+
+	if vim.tbl_islist(result) then
+		-- // this is opens a buffer to that result
+		-- // you could loop the result and choose what you want
+		util.jump_to_location(result[1], "utf-8", true)
+
+		if #result > 1 then
+			local isReactDTs = false
+			---@diagnostic disable-next-line: unused-local
+			for key, value in pairs(result) do
+				if string.match(value.uri, "react/index.d.ts") then
+					isReactDTs = true
+					break
+				end
+			end
+			if not isReactDTs then
+				-- // this sets the value for the quickfix list
+				util.setqflist(util.locations_to_items(result, "utf-8"))
+				-- // this opens the quickfix window
+				vim.api.nvim_command("copen")
+				vim.api.nvim_command("wincmd p")
+			end
+		end
+	else
+		util.jump_to_location(result, "utf-8", true)
+	end
 end
 
 return M
