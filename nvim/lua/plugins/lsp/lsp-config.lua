@@ -138,10 +138,14 @@ local servers = {
 	{
 		"tsserver",
 		flags = { allow_incremental_sync = true },
+		cmd = { "typescript-language-server", "--stdio" },
+		init_options = {
+			hostInfo = "neovim",
+		},
 		handlers = util.table_merge({
-			["textDocument/definition"] = require("utils.lsp_handlers").ts_definition_handler,
+			-- ["textDocument/definition"] = require("utils.lsp_handlers").ts_definition_handler,
 		}, handlers),
-		-- root_dir = util.root_pattern(".git"),
+		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
 		on_attach = function(client, bufnr)
 			client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
 			local ts_utils = require("nvim-lsp-ts-utils")
@@ -163,6 +167,16 @@ local servers = {
 			-- vim.keymap.set("n", "<space>ld", '<cmd> lua require("utils.lsp_handlers").goto_definition()<CR>', bufopts)
 			-- =================================================
 			navic.attach(client, bufnr)
+		end,
+	},
+	{
+		"astro",
+		cmd = { "astro-ls", "--stdio" },
+		filetypes = { "astro" },
+		init_options = { configuration = {} },
+		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+		on_attach = function(client, bufnr)
+			-- navic.attach(client, bufnr)
 		end,
 	},
 	{ "jdtls" },
@@ -291,7 +305,7 @@ local servers = {
 				validate = true,
 				experimental = {
 					classRegex = {
-						-- "clsx\\('([^)]*)'\\)",
+						"clsx\\('([^)]*)'\\)",
 						{ "clsx\\(([^)]*)\\)", "'([^']*)'" },
 					},
 				},
@@ -359,10 +373,10 @@ map("n", "<leader>lw", "<cmd>lua vim.diagnostic.goto_next({severity={max='WARN'}
 map("n", "<leader>le", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',float=true})<CR>", ns_opts)
 map("n", "<leader>lW", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", ns_opts)
 map("n", "<leader>lE", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", ns_opts)
--- map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", ns_opts)
+map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", ns_opts)
 -- ============================================================
 -- USING NULL-LS
-map("n", "<leader>lf", ":LspFormat<CR>", ns_opts)
+-- map("n", "<leader>lf", ":LspFormat<CR>", ns_opts)
 -- ============================================================
 -- Telescope does go to definition better than nvim-lsp
 -- map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)
