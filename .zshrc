@@ -320,5 +320,15 @@ alias envtovercel="sh ~/.custom-scripts/env-to-vercel.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# ====================================================================
+# NVM autocompletes and loading script
+# The load is actually postponed until nvm is used thanks to using --no-use
+# ====================================================================
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh --no-use" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
+
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
