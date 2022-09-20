@@ -46,7 +46,8 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, { pattern = "*", command = "setlocal
 -- " ====================== / AUTOCMD ========================
 
 -- ========================================================
-vim.g.catppuccin_flavour = "macchiato"
+-- vim.g.catppuccin_flavour = "macchiato"
+vim.g.catppuccin_flavour = "mocha"
 vim.cmd([[colorscheme catppuccin]])
 
 require("highlights")

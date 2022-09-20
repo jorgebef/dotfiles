@@ -1,6 +1,6 @@
 local M = {}
 
-local cp = require("catppuccin.palettes").get_palette()
+-- local cp = require("catppuccin.palettes").get_palette()
 local navic = require("nvim-navic")
 local util = require("util")
 local icons = require("icons")

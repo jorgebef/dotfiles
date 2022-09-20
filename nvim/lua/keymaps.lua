@@ -1,6 +1,6 @@
 -- REMAPS
 -- ================================================================
-local remap = vim.keymap.set
+local remap = vim.api.nvim_set_keymap
 local nsn_opts = { noremap = true, silent = true, nowait = true }
 local ns_opts = { noremap = true, silent = true }
 local n_opts = { noremap = true }
@@ -16,6 +16,7 @@ remap("n", "Ñ", ":", { nowait = true })
 -- " =========================== FUNCTIONAL REMAPS =============================
 remap("n", "<leader>w", ":silent write<cr>", nsn_opts)
 remap("n", "<leader>q", ":q<cr>", nsn_opts)
+remap("n", "<leader>Q", ":qa<cr>", nsn_opts)
 
 remap("v", "p", '"_dP', nsn_opts)
 

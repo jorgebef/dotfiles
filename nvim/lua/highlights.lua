@@ -1,4 +1,6 @@
-local cp = require("catppuccin.palettes").get_palette()
+-- local cp = require("catppuccin.palettes").get_palette()
+-- local cp = require("catppuccin.palettes").get_palette("macchiato")
+local cp = require("catppuccin.palettes").get_palette("mocha")
 
 -- ===============================================================================
 -- UI Elements
@@ -36,7 +38,7 @@ vim.api.nvim_set_hl(0, "WinBarNC", { bg = winbarInactiveBg, fg = cp.surface1 })
 -- vim.api.nvim_set_hl(0, "WinBarIndicatorSelected", { fg = cp.pink, bg = winbarActiveBg })
 vim.api.nvim_set_hl(0, "WinBarModActive", { fg = cp.red, bg = winbarActiveBg })
 vim.api.nvim_set_hl(0, "WinBarModInactive", { fg = cp.red, bg = winbarInactiveBg })
-vim.api.nvim_set_hl(0, "WinBarFilenameActive", { fg = cp.surface0, bg = cp.mauve, bold = true })
+vim.api.nvim_set_hl(0, "WinBarFilenameActive", { fg = cp.surface0, bg = cp.pink, bold = true })
 vim.api.nvim_set_hl(0, "WinBarFilenameInactive", { fg = cp.overlay1, bg = winbarInactiveBg, bold = true })
 -- --
 -- vim.api.nvim_set_hl(0, "WhichKeyFloat", { bg = winbarActiveBg })
@@ -44,6 +46,13 @@ vim.api.nvim_set_hl(0, "WinBarFilenameInactive", { fg = cp.overlay1, bg = winbar
 -- ===============================================================================
 -- Language specific
 -- ===============================================================================
-vim.api.nvim_set_hl(0, "tsxTSTagDelimiter", { fg = cp.maroon })
-vim.api.nvim_set_hl(0, "jsxTSTagDelimiter", { fg = cp.maroon })
-vim.api.nvim_set_hl(0, "javascriptTSTagDelimiter", { fg = cp.maroon })
+-- vim.api.nvim_set_hl(0, "tsxTSTagDelimiter", { fg = cp.maroon }) -- <= version 0.8
+
+--[[ vim.api.nvim_set_hl(0, "@tag.delimiter.tsx", { fg = cp.maroon })
+vim.api.nvim_set_hl(0, "@constructor.tsx", { fg = cp.lavender })
+vim.api.nvim_set_hl(0, "@include.tsx", { fg = cp.mauve, italic = true })
+vim.api.nvim_set_hl(0, "@keyword.return.tsx", { fg = cp.mauve, bold = true }) ]]
+
+-- vim.api.nvim_set_hl(0, "@tag.attribute.tsx", { fg = cp.sky })
+-- vim.api.nvim_set_hl(0, "jsxTSTagDelimiter", { fg = cp.maroon })
+-- vim.api.nvim_set_hl(0, "javascriptTSTagDelimiter", { fg = cp.maroon })

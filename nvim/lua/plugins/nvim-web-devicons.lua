@@ -1,4 +1,6 @@
-require("nvim-web-devicons").set_icon({
+local devicons = require("nvim-web-devicons")
+
+devicons.set_icon({
 	["docker-compose.yml"] = {
 		icon = " ",
 		color = "#ED8796",
@@ -7,7 +9,7 @@ require("nvim-web-devicons").set_icon({
 	},
 })
 
-require("nvim-web-devicons").set_icon({
+devicons.set_icon({
 	[".dockerignore"] = {
 		icon = " ",
 		color = "#cccccc",
@@ -16,11 +18,20 @@ require("nvim-web-devicons").set_icon({
 	},
 })
 
-require("nvim-web-devicons").set_icon({
+devicons.set_icon({
 	["Dockerfile"] = {
 		icon = " ",
 		color = "#1db7ed",
 		cterm_color = "65",
 		name = "Dockerfile",
+	},
+})
+
+devicons.set_icon({
+	["astro"] = {
+		icon = "A",
+		color = "#FF5D02",
+		cterm_color = "65",
+		name = "astro",
 	},
 })

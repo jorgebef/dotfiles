@@ -1,5 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Using OhMyZSH instead of Antigen
 
 # If you come from bash you might have to change your $PATH.
@@ -75,32 +75,60 @@ autoload -Uz add-zsh-hook
 
 rosewater="#F4DBD6"
 flamingo="#F0C6C6"
-pink="#F5BDE6"
+pink="#f5c2e7"
 mauve="#C6A0F6"
 red="#ED8796"
 maroon="#EE99A0"
 peach="#F5A97F"
 yellow="#EED49F"
-green="#A6DA95"
+green="#a6e3a1"
 teal="#8BD5CA"
 sky="#91D7E3"
 sapphire="#7DC4E4"
 blue="#8AADF4"
 lavender="#B7BDF8"
-text="#CAD3F5"
-subtext1="#B8C0E0"
-subtext0="#A5ADCB"
-overlay2="#939AB7"
-overlay1="#8087A2"
-overlay0="#6E738D"
-surface2="#5B6078"
-surface1="#494D64"
-surface0="#363A4F"
-base="#24273A"
-mantle="#1E2030"
-crust="#181926"
+text="#cdd6f4"
+subtext1="#bac2de"
+subtext0="#a6adc8"
+overlay2="#9399b2"
+overlay1="#7f849c"
+overlay0="#6c7086"
+surface2="#585b70"
+surface1="#45475a"
+surface0="#313244"
+base="#1E1E2E"
+mantle="#181825"
+crust="#11111b"
+spec_surface="#3C3D53"
 
-spec_surface="#40445a"
+# rosewater="#F4DBD6"
+# flamingo="#F0C6C6"
+# pink="#F5BDE6"
+# mauve="#C6A0F6"
+# red="#ED8796"
+# maroon="#EE99A0"
+# peach="#F5A97F"
+# yellow="#EED49F"
+# green="#A6DA95"
+# teal="#8BD5CA"
+# sky="#91D7E3"
+# sapphire="#7DC4E4"
+# blue="#8AADF4"
+# lavender="#B7BDF8"
+# text="#CAD3F5"
+# subtext1="#B8C0E0"
+# subtext0="#A5ADCB"
+# overlay2="#939AB7"
+# overlay1="#8087A2"
+# overlay0="#6E738D"
+# surface2="#5B6078"
+# surface1="#494D64"
+# surface0="#363A4F"
+# base="#24273A"
+# mantle="#1E2030"
+# crust="#181926"
+
+# spec_surface="#40445a"
 
 # ++++++++ COLORS ++++++++
 
@@ -171,11 +199,11 @@ elapsed() {
 elapsed_separator() {
   if [ $cmd_time ]; then
     if [ $vcs_info_msg_0_ ]; then
-      echo "%F{{$surface1}$separator_left%f"
+      echo "%F{{$surface0}$separator_left%f"
     #   if [[ "$(branchName)" == "dev" ]]; then
-    #     echo "%F{$yellow}%K{$surface1}$separator_left%k%f";
+    #     echo "%F{$yellow}%K{$surface0}$separator_left%k%f";
     #   else
-    #     echo "%F{$green}%K{$surface1}$separator_left%k%f";
+    #     echo "%F{$green}%K{$surface0}$separator_left%k%f";
     #   fi
     fi
   else
@@ -195,27 +223,30 @@ icon() {
         /Users/jorgebefan )
             icon=" "
             ;;
-        /Users/jorgebefan/Dropbox/JORGE/git* )
-            icon=" "
-            ;;
-        /Users/jorgebefan/Downloads* )
+        ~/Downloads* )
             icon=" "
             ;;
-        /Users/jorgebefan/Documents* )
+        ~/Documents* )
             icon=" "
             ;;
-        /Users/jorgebefan/Dropbox* )
+        */Dropbox* )
             icon=" "
+            ;;
+        */Google\ Drive* )
+            icon=" "
+            ;;
+        ~/Dev* )
+            icon=" "
             ;;
         * )
             icon=" "
             ;;
     esac
-    echo "%F{$mauve}$left_start%f%K{$mauve}%F{$base}$icon%f%k"
+    echo "%F{$pink}$left_start%f%K{$pink}%F{$base}$icon%f%k"
   }
 
 icon_separator() {
-  echo "%F{$mauve}%K{$spec_surface}${separator_right}%k%f"
+  echo "%F{$pink}%K{$spec_surface}${separator_right}%k%f"
 }
 
 branch() {
@@ -253,23 +284,22 @@ filepath() {
         # add an extra "/" only if the directory is not already just "/"
         if [[ "${pwd_rest}" != "/" ]]; then
             pwd_rest="${pwd_rest}/"
-            # pwd_rest="~/.../"
+            # pwd_rest=".../"
         fi
         pwd_folder=$(basename "${pwd_filtered}")
     fi
     echo "%F{$overlay2}%K{$spec_surface} ${pwd_rest}%f%F{$text}%B${pwd_folder} %b%f%k"
-    # echo "%F{$overlay1}%K%f %F{$text}%B${pwd_folder} %b%f%k"
 }
 
 # filepath_separator() {
 #   if [ $vcs_info_msg_0_ ]; then
 #     if [[ "$(branchName)" == "dev" ]]; then
-#       echo "%F{$surface1}%K{$sapphire}$separator_right%k%f";
+#       echo "%F{$surface0}%K{$sapphire}$separator_right%k%f";
 #     else
-#       echo "%F{$surface1}%K{$green}$separator_right%k%f";
+#       echo "%F{$surface0}%K{$green}$separator_right%k%f";
 #     fi
 #   else
-#     echo "%F{$surface1}%K{$base}$separator_right%k%f";
+#     echo "%F{$surface0}%K{$base}$separator_right%k%f";
 #   fi
 # }
 
@@ -277,15 +307,15 @@ filepath() {
 # zstyle ':vcs_info:git:*' formats " %b"
 
 # PROMPT='${_newline}'
-# PROMPT+='$(icon)%F{$mauve}%K{$surface1}${separator_right}%k%f$(filepath)%F{$surface1}$separator_right%f'
+# PROMPT+='$(icon)%F{$pink}%K{$surface0}${separator_right}%k%f$(filepath)%F{$surface0}$separator_right%f'
 # PROMPT+='${_newline}'
 # PROMPT+='%(?:%F{$green} %f:%F{$red} %f)'
 # RPROMPT='%{$_lineup%}$(elapsed)$(elapsed_separator)$(branch)$(branch_separator)$(cur_time)%k%{$_linedown%}'
 
 PROMPT='${_newline}'
-# PROMPT+='$(icon)%F{$mauve}%K{$surface1}${separator_right}%k%f$(filepath)$(filepath_separator)$(branch)$(branch_separator)'
+# PROMPT+='$(icon)%F{$pink}%K{$surface0}${separator_right}%k%f$(filepath)$(filepath_separator)$(branch)$(branch_separator)'
 PROMPT+='$(icon)$(icon_separator)$(filepath)$(branch)$(elapsed)'
-# PROMPT+='$(icon)%F{$mauve}%K{$surface1}${separator_right}%k%f$(filepath)$(branch)'
+# PROMPT+='$(icon)%F{$pink}%K{$surface0}${separator_right}%k%f$(filepath)$(branch)'
 PROMPT+='${_newline}'
 PROMPT+='%(?:%F{$green} %f:%F{$red} %f)'
 
@@ -301,6 +331,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=${surface2}"
 # export CLICOLOR=1
 # export LSCOLORS="ln=1;31:"
 # export LSCOLORS="Gxfxcxdxbxegedabagacad"
+alias dev='cd ~/Developer'
 
 DISABLE_AUTO_TITLE="true"
 
@@ -320,15 +351,25 @@ alias envtovercel="sh ~/.custom-scripts/env-to-vercel.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# ====================================================================
-# NVM autocompletes and loading script
-# The load is actually postponed until nvm is used thanks to using --no-use
-# ====================================================================
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh --no-use" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# # ====================================================================
+# # NVM autocompletes and loading script lazy loading
+# # The load is postponed until node npm or nvm commands are run
+# # ====================================================================
+lazy_load_nvm() {
+  unset -f node
+  export NVM_DIR="$HOME/.nvm"
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+}
 
+node() {
+  lazy_load_nvm
+  node $@
+  npm $@
+  nvm $@
+}
 
+eval "$(starship init zsh)"
 
 # Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

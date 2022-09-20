@@ -31,10 +31,11 @@ vim.bo.undofile = true -- persistent undo is a neat feature
 vim.g.mapleader = " "
 vim.g.inccommand = "nosplit"
 
+-- WAITING FOR 0.8!!!!!!!!!!!!!
 vim.o.winbar = "%{%v:lua.require('utils.winbar_new').get_winbar()%}"
 
 -- ==================================
-vim.opt.colorcolumn = "99999" -- fixes indentline for now
+-- vim.opt.colorcolumn = "99999" -- fixes indentline for now
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
@@ -66,7 +67,11 @@ vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 2 -- insert 2 spaces for a tab
 vim.opt.cursorline = true -- highlight the current line
 vim.opt.number = true -- set numbered lines
-vim.opt.relativenumber = true -- set relative numbered lines
+-- ===================================================================================
+-- RELATIVENUMBER is at fault to decrease performance SEVERELY!!!!!!!!!!!!!!!!!!
+-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+-- vim.opt.relativenumber = true -- set relative numbered lines
+-- ===================================================================================
 vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shift the text each time
 -- vim.opt.wrap = false -- display lines as one long line
@@ -74,7 +79,7 @@ vim.opt.spell = false
 -- vim.opt.spelllang = "en"
 -- vim.opt.spellfile = join_paths(get_config_dir(), "spell", "en.utf-8.add")
 -- vim.opt.shadafile = join_paths(get_cache_dir(), "lvim.shada")
-vim.opt.scrolloff = 5 -- minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 2 -- minimal number of screen lines to keep above and below the cursor.
 -- vim.opt.sidescrolloff = 8 -- minimal number of screen lines to keep left and right of the cursor.
 
 vim.opt.shortmess:append("c") -- don't show redundant messages from ins-completion-menu

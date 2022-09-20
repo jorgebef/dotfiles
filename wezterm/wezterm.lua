@@ -125,7 +125,7 @@ end
 return {
 	hide_tab_bar_if_only_one_tab = false,
 	-- colors = catppuccin,
-	color_scheme = "Catppuccin Macchiato",
+	color_scheme = "Catppuccin Mocha",
 	window_background_opacity = 1.0,
 	-- Constrains the rate at which output from a child command is
 	-- processed and applied to the terminal model.
@@ -141,24 +141,14 @@ return {
 	--[[ line_height = 0.95, ]]
 	font_size = 13.0,
 
-	--[[ harfbuzz_features = { "calt=0", "clig=0", "liga=0" }, ]]
-
-	--[[ harfbuzz_features = { ]]
-	--[[ 	"cv06=1", ]]
-	--[[ 	"cv14=1", ]]
-	--[[ 	"cv32=1", ]]
-	--[[ 	"ss04=1", ]]
-	--[[ 	"ss07=1", ]]
-	--[[ 	"ss09=1", ]]
-	--[[ }, ]]
-
-	-- harfbuzz_features = { "zero", "kern", "liga", "clig" },
-
 	-- Cursor style
 	cursor_blink_rate = 0,
 
 	max_fps = 240,
+	-- max_fps = 180,
 	-- max_fps = 120,
+	-- max_fps = 100,
+	-- max_fps = 60,
 
 	automatically_reload_config = true,
 	check_for_updates = false,

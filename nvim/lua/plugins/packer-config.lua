@@ -43,6 +43,7 @@ packer.startup(function()
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			-- == Closing < tags
 			"windwp/nvim-ts-autotag",
+			-- "jorgebef/nvim-ts-autotag",
 			-- == context-aware commenting
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			"nvim-treesitter/playground",
@@ -60,7 +61,8 @@ packer.startup(function()
 		requires = { "nvim-lua/plenary.nvim" },
 	})
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
-	use("norcalli/nvim-colorizer.lua")
+	-- use("norcalli/nvim-colorizer.lua")
+	use("NvChad/nvim-colorizer.lua")
 	-- == Auto Pairing parenthesis, brackets, etc...
 	use("windwp/nvim-autopairs")
 	use({
@@ -82,6 +84,7 @@ packer.startup(function()
 		},
 	})
 	use("neovim/nvim-lspconfig")
+	use({ "mhartington/formatter.nvim" })
 
 	-- == Autocompletion
 	use({
@@ -101,6 +104,7 @@ packer.startup(function()
 	-- Easier buffer deletion
 	use({ "ojroques/nvim-bufdel" })
 	use({ "rcarriga/nvim-notify" })
+
 	use({
 		"catppuccin/nvim",
 		-- "jorgebef/catppuccin-nvim",
@@ -109,6 +113,9 @@ packer.startup(function()
 		as = "catppuccin",
 		run = ":CatppuccinCompile",
 	})
+
+	use("EdenEast/nightfox.nvim") -- Packer
+
 	use("nvim-lualine/lualine.nvim")
 	use({
 		"SmiteshP/nvim-navic",

@@ -286,9 +286,9 @@ local servers = {
 		),
 		on_attach = function(client, bufnr)
 			-- This is ripped off from https://github.com/kabouzeid/dotfiles, it's for tailwind preview support
-			if client.server_capabilities.colorProvider then
-				require("plugins.lsp.colorizer").buf_attach(bufnr, { single_column = false, debounce = 200 })
-			end
+			-- if client.server_capabilities.colorProvider then
+			-- 	require("plugins.lsp.colorizer").buf_attach(bufnr, { single_column = false, debounce = 200 })
+			-- end
 		end,
 		settings = {
 			tailwindCSS = {
@@ -373,7 +373,7 @@ map("n", "<leader>lw", "<cmd>lua vim.diagnostic.goto_next({severity={max='WARN'}
 map("n", "<leader>le", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',float=true})<CR>", ns_opts)
 map("n", "<leader>lW", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", ns_opts)
 map("n", "<leader>lE", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", ns_opts)
-map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", ns_opts)
+-- map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", ns_opts)
 -- ============================================================
 -- USING NULL-LS
 -- map("n", "<leader>lf", ":LspFormat<CR>", ns_opts)

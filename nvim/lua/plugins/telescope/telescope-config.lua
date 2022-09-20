@@ -46,6 +46,7 @@ require("telescope").setup({
 			"node_modules/",
 			".git/",
 			".next/",
+			-- "package-lock.json",
 			-- 'DS_'
 		},
 		vimgrep_arguments = {
@@ -117,7 +118,7 @@ local nsn_opts = { noremap = true, silent = true, nowait = true }
 -- remap("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files({sort_lastused=true})<cr>', nsn_opts)
 remap("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files()<cr>', nsn_opts)
 remap("n", "<leader>fF", '<cmd>lua require("telescope-functions").project_files()<cr>', nsn_opts)
-remap("n", "<leader>fb", '<cmd>Telescope file_browser<cr>', nsn_opts)
+remap("n", "<leader>fb", "<cmd>Telescope file_browser<cr>", nsn_opts)
 remap("n", "<leader>fG", '<cmd>lua require("telescope.builtin").git_files()<cr>', nsn_opts)
 remap("n", "<leader>fg", '<cmd>lua require("telescope.builtin").live_grep()<cr>', nsn_opts)
 remap("n", "<leader>fs", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', nsn_opts)

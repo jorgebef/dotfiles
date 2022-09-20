@@ -32,7 +32,7 @@ def createSession(output, sessionData):
                     window_count+=1
                 if tabs-window_count == 0:
                     break
-                output.write('launch zsh')
+                output.write('launch fish')
                 output.write('\n')
                 window_count+=1
 

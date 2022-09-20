@@ -17,7 +17,8 @@ require("lspkind").init({
 	-- 'codicons' for codicon preset (requires vscode-codicons font)
 	--
 	-- default: 'default'
-	preset = "codicons",
+	-- preset = "codicons",
+	preset = "default",
 
 	-- override preset symbols
 	--
@@ -129,14 +130,13 @@ cmp.setup({
 -- local cmp = require('cmp')
 -- cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
 
-
 -- -- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
 -- cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
 
--- Use buffer source for `/`.
--- cmp.setup.cmdline('/', {
---   sources = {
---     { name = 'buffer' },
---     { name = 'path' }
---   }
--- })
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline("/", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		-- { name = "buffer" },
+	},
+})

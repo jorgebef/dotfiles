@@ -1,5 +1,7 @@
 require("plugins.packer-config")
 
+require("plugins.treesitter.treesitter-config")
+
 require("plugins.catppuccin-config")
 require("plugins.indentline-config")
 require("plugins.comment-config")
@@ -13,16 +15,16 @@ require("plugins.dashboard-config")
 require("plugins.lightspeed-config")
 require("plugins.colorizer-config")
 require("plugins.which-key-config")
+require("plugins.formatter-config")
+require("plugins.notify-config")
 
+-- require("plugins.null-ls-config")
 require("plugins.lsp.lsp-config")
 require("plugins.lsp.nvim-cmp-config")
 require("plugins.lsp.nvim-navic-config")
 require("plugins.luasnip-config")
-require("plugins.null-ls-config")
 require("plugins.autopairs-config")
 require("plugins.nvim-surround-config")
-
-require("plugins.treesitter.treesitter-config")
 
 require("plugins.telescope.telescope-config")
 require("plugins.telescope.telescope-file-browser")

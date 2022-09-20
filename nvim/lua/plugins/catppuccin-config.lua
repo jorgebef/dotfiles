@@ -62,7 +62,7 @@ catppuccin.setup({
 			show_root = true,
 			transparent_panel = false,
 		},
-		which_key = false,
+		which_key = true,
 		indent_blankline = {
 			enabled = true,
 			colored_indent_levels = false,
@@ -72,19 +72,18 @@ catppuccin.setup({
 		vim_sneak = false,
 		fern = false,
 		barbar = false,
-		bufferline = true,
+		bufferline = false,
 		markdown = true,
 		lightspeed = false,
 		ts_rainbow = false,
 		hop = false,
 		notify = true,
-		telekasten = true,
+		telekasten = false,
 		symbols_outline = true,
 		mini = false,
 	},
 	color_overrides = {},
 	custom_highlights = {
-		-- ===============================================================================
 		-- UI elements
 		-- ===============================================================================
 		Pmenu = { bg = cp.surface0 },
@@ -110,6 +109,7 @@ catppuccin.setup({
 		-- Language specific
 		-- ===============================================================================
 		tsxTSTagDelimiter = { fg = cp.maroon },
+		["@tag.delimiter.tsx"] = { fg = cp.maroon },
 		jsxTSTagDelimiter = { fg = cp.maroon },
 		javascriptTSTagDelimiter = { fg = cp.maroon },
 	},

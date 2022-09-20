@@ -1,3 +1,8 @@
+local ft = require("Comment.ft")
+
+-- Set Astro filetype comments to match html
+ft({ "astro" }, ft.lang("html"))
+
 require("Comment").setup({
 	---Add a space b/w comment and the line
 	---@type boolean
