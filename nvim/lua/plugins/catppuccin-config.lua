@@ -1,4 +1,7 @@
 local catppuccin = require("catppuccin")
+
+-- IMPORTANT!!!!!!!!!
+vim.g.catppuccin_flavour = "mocha"
 local cp = require("catppuccin.palettes").get_palette()
 
 catppuccin.setup({
@@ -82,7 +85,8 @@ catppuccin.setup({
 		symbols_outline = true,
 		mini = false,
 	},
-	color_overrides = {},
+	-- color_overrides = {},
+	-- highlight_overrides = {},
 	custom_highlights = {
 		-- UI elements
 		-- ===============================================================================
@@ -100,11 +104,16 @@ catppuccin.setup({
 		TelescopePromptPrefix = { fg = cp.pink },
 		TelescopeMatching = { fg = cp.pink },
 		TelescopeSelectionCaret = { fg = cp.red, bg = cp.surface0 },
-		TelescopeBorder = { fg = cp.surface2 },
-		WinBar = { bg = cp.red },
-		WinBarNC = { bg = cp.base },
+		TelescopeBorder = { fg = cp.overlay1 },
+		WinBar = { bg = cp.surface0, fg = cp.text },
+		WinBarNC = { bg = cp.base, fg = cp.surface1 },
+		WinBarModActive = { fg = cp.red, bg = cp.surface0 },
+		WinBarModInactive = { fg = cp.red, bg = cp.base },
+		WinBarFilenameActive = { fg = cp.surface0, bg = cp.pink, bold = true },
+		WinBarFilenameInactive = { fg = cp.overlay1, bg = cp.base, bold = true },
 		WinBarModified = { fg = cp.red },
 		WhichKeyFloat = { bg = cp.surface0 },
+		WhichKeyBorder = { fg = cp.blue, bg = cp.surface0 },
 		-- ===============================================================================
 		-- Language specific
 		-- ===============================================================================

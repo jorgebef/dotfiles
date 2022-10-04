@@ -134,12 +134,14 @@ return {
 	-- so that you can hit CTRL-C to interrupt it if desired.
 	-- The default value is 400,000 bytes/s.
 	-- ratelimit_output_bytes_per_second = 400000,
-	font = wezterm.font("JetBrainsMono Nerd Font"),
+	-- font = wezterm.font("JetBrainsMono Nerd Font"),
+	font = wezterm.font("BlexMono Nerd Font"),
 	-- font = wezterm.font("Hack Nerd Font"),
 	-- font = wezterm.font("FiraCode Nerd Font"),
 	-- font_size = 16.0,
 	--[[ line_height = 0.95, ]]
-	font_size = 13.0,
+	-- font_size = 13.0,
+	font_size = 14.0,
 
 	-- Cursor style
 	cursor_blink_rate = 0,

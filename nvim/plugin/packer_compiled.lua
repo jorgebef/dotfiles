@@ -159,16 +159,6 @@ _G.packer_plugins = {
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/neovim-session-manager",
     url = "https://github.com/Shatur/neovim-session-manager"
   },
-  ["nightfox.nvim"] = {
-    loaded = true,
-    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
-    url = "https://github.com/EdenEast/nightfox.nvim"
-  },
-  ["null-ls.nvim"] = {
-    loaded = true,
-    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
-  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -203,11 +193,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/nvim-navic",
     url = "https://github.com/SmiteshP/nvim-navic"
-  },
-  ["nvim-notify"] = {
-    loaded = true,
-    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/nvim-notify",
-    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-surround"] = {
     loaded = true,

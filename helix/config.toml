@@ -1,0 +1,9 @@
+theme = "onedark"
+
+[editor]
+line-number = "relative"
+cursorline = true
+
+# At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
+[keys.normal]
+"Ñ" = "command_mode"

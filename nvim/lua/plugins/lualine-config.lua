@@ -1,5 +1,7 @@
 local icons = require("icons")
 
+local navic = require("nvim-navic")
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -7,9 +9,16 @@ require("lualine").setup({
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		-- section_separators = { left = '', right = ''},
-		disabled_filetypes = {},
+		disabled_filetypes = {
+			statusline = {},
+			winbar = {},
+		},
 		always_divide_middle = false,
 		globalstatus = true,
+		refresh = {
+			statusline = 1000,
+			winbar = 1000,
+		},
 	},
 	sections = {
 		lualine_a = {
@@ -109,13 +118,33 @@ require("lualine").setup({
 		-- lualine_y = {'%{ObsessionStatus(" "," ")}'},
 		lualine_z = {},
 	},
-	tabline = {
-		-- lualine_a = {'buffers'},
-		-- lualine_b = {'branch'},
-		-- lualine_c = {'filename'},
-		-- lualine_x = {},
-		-- lualine_y = {},
-		-- lualine_z = {'tabs'}
+	winbar = {
+		lualine_a = {
+			{
+				"filename",
+				color = "WinBarFilenameActive",
+				separator = {
+					left = icons.ui.SeparatorLStart,
+					right = icons.ui.SeparatorLEndAngle,
+				},
+				-- separator = { left = "█", right = "" },
+				left_padding = 1,
+				right_padding = 1,
+			},
+		},
+		lualine_b = { { navic.get_location, cond = navic.is_available, color = "WinBar" } },
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = {},
+	},
+	inactive_winbar = {
+		lualine_a = { { "filename", color = "WinBarFilenameInactive" } },
+		lualine_b = { { navic.get_location, cond = navic.is_available, color = "WinBarNC" } },
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = {},
 	},
 	extensions = {},
 })

@@ -2,6 +2,7 @@
 -- local util = require("formatter.util")
 
 local prettier = require("formatter.filetypes.typescriptreact").prettier
+local stylua = require("formatter.filetypes.lua").stylua
 
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 require("formatter").setup({
@@ -14,7 +15,7 @@ require("formatter").setup({
 		-- Formatter configurations for filetype go here
 		-- and will be executed in order
 		lua = {
-			require("formatter.filetypes.lua").stylua,
+			stylua,
 		},
 		json = {
 			prettier,

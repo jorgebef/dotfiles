@@ -28,13 +28,19 @@ packer.reset()
 
 packer.startup(function()
 	-- == Package manager written in lua
+	-- =======================
 	use("wbthomason/packer.nvim")
-	-- =============================================
 
 	-- == Dashboard on startup
+	-- =======================
 	use("glepnir/dashboard-nvim")
+
+	-- Session manager
+	-- =======================
 	use({ "Shatur/neovim-session-manager" })
+
 	-- == Treesitter
+	-- =======================
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -51,19 +57,18 @@ packer.startup(function()
 	})
 	-- == Commenting and uncommenting lines
 	use("numToStr/Comment.nvim")
+
 	-- == File explorer written in lua
+	-- =======================
 	use("kyazdani42/nvim-tree.lua")
 	use({ "kylechui/nvim-surround" })
-	-- == NULL LS
-	-- ==============================================
-	use({
-		"jose-elias-alvarez/null-ls.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
-	})
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+
 	-- use("norcalli/nvim-colorizer.lua")
+	-- =======================
 	use("NvChad/nvim-colorizer.lua")
+
 	-- == Auto Pairing parenthesis, brackets, etc...
+	-- =======================
 	use("windwp/nvim-autopairs")
 	use({
 		"lewis6991/gitsigns.nvim",
@@ -73,7 +78,8 @@ packer.startup(function()
 	})
 	use("lukas-reineke/indent-blankline.nvim")
 
-	-- == Fuzzy Finder
+	-- Fuzzy Finder
+	-- =======================
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
@@ -83,10 +89,18 @@ packer.startup(function()
 			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 		},
 	})
+
+	-- LSP
+	-- =======================
 	use("neovim/nvim-lspconfig")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+
+	-- Formatting
+	-- =======================
 	use({ "mhartington/formatter.nvim" })
 
-	-- == Autocompletion
+	-- Autocompletion
+	-- =======================
 	use({
 		"hrsh7th/nvim-cmp",
 		requires = {
@@ -102,8 +116,12 @@ packer.startup(function()
 		},
 	})
 	-- Easier buffer deletion
+	-- =======================
 	use({ "ojroques/nvim-bufdel" })
-	use({ "rcarriga/nvim-notify" })
+
+	-- Prettier notifications
+	-- =======================
+	-- use({ "rcarriga/nvim-notify" })
 
 	use({
 		"catppuccin/nvim",
@@ -113,8 +131,6 @@ packer.startup(function()
 		as = "catppuccin",
 		run = ":CatppuccinCompile",
 	})
-
-	use("EdenEast/nightfox.nvim") -- Packer
 
 	use("nvim-lualine/lualine.nvim")
 	use({

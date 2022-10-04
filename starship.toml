@@ -6,14 +6,55 @@ command_timeout = 10000
 # Inserts a blank line between shell prompts
 add_newline = true
 
-[cmd_duration]
-min_time = 4
-show_milliseconds = false
-disabled = false
-format = "🚀 $duration($style)"
-style = "bold italic #87A752"
+# format = "[ 🚀 ](bg:purple fg:black)$all"
+# format = "[  ](bg:purple fg:black)$all"
+# format = "[  ](bg:purple fg:black)$all"
+# format = "[  ](bold bg:purple fg:black)$all"
+format = "[ 猫](bold bg:purple fg:#313244)$all"
+# format = "[ 愛](bold bg:purple fg:black)$all"
+# format = "[ 秋](bold bg:purple fg:black)$all"
+# format = "[ 紅葉](bold bg:purple fg:black)$all"
+# format = "[ 💻 ](bg:purple fg:black)$all"
+# format = "[ 😽 ](bg:blue fg:#45475a)$all"
 
 [directory]
-# truncation_length = 2
+truncation_length = 8
 truncation_symbol = "…/"
-# truncate_to_repo = false
+home_symbol = "🏠"
+truncate_to_repo = false
+style = "bold bg:#313244 fg:white"
+# format = "[ $path ]($style)[](bold fg:black bg:purple)[ 🚀 ](fg:#313244 bg:black)[$read_only]($read_only_style)"
+# format = "[ $path ]($style)[](bold fg:black bg:purple)[$read_only]($read_only_style)"
+format = "[ $path ]($style)[](bold bg:#313244 fg:#1E1E2E)[$read_only]($read_only_style)"
+
+[directory.substitutions]
+"/Users/jorgebefan/" = "🏠"
+"🏠/Desktop" = "~/🖥️"
+"🏠/Developer" = "~/💻"
+"🏠/Documents" = "~/💼"
+"🏠/Downloads" = "~/⬇️ "
+"🏠/Pictures" = "~/🖼️"
+"🏠/Movies" = "~/🍿"
+"src/com/long/java/path" = "mypath"
+
+[git_branch]
+symbol = " "
+# symbol = "🌱 "
+# truncation_length = 4
+style = "bold fg:blue bg:#1E1E2E"
+format = "[  $symbol$branch(:$remote_branch) ]($style)"
+
+[git_status]
+style = "bold fg:red bg:#1E1E2E"
+format = '([\[$all_status$ahead_behind\] ]($style))'
+
+[nodejs]
+style = "bold fg:green bg:#1E1E2E"
+format = "[ $symbol($version) ]($style)"
+
+[cmd_duration]
+min_time = 1
+show_milliseconds = false
+disabled = false
+style = "italic bg:#1E1E2E"
+format = "[ 🕓 $duration ]($style)"

@@ -2,6 +2,7 @@
 require("options")
 require("keymaps")
 require("plugins")
+require("gui-options")
 
 -- ==============================================
 -- ========= TURN ALL JSON INTO JSONC ===========
@@ -46,9 +47,7 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, { pattern = "*", command = "setlocal
 -- " ====================== / AUTOCMD ========================
 
 -- ========================================================
--- vim.g.catppuccin_flavour = "macchiato"
-vim.g.catppuccin_flavour = "mocha"
 vim.cmd([[colorscheme catppuccin]])
 
-require("highlights")
+-- require("highlights")
 -- ========================================================

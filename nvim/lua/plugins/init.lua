@@ -16,7 +16,7 @@ require("plugins.lightspeed-config")
 require("plugins.colorizer-config")
 require("plugins.which-key-config")
 require("plugins.formatter-config")
-require("plugins.notify-config")
+-- require("plugins.notify-config")
 
 -- require("plugins.null-ls-config")
 require("plugins.lsp.lsp-config")

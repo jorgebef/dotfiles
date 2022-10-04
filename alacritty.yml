@@ -25,18 +25,22 @@ window:
 font:
   normal:
     # family: "SFMono Nerd Font"
-    family: JetBrainsMono Nerd Font
+    # family: JetBrainsMono Nerd Font
+    family: BlexMono Nerd Font
     # family: FiraCode Nerd Font
     # family: SauceCodePro Nerd Font
     # family: Hack Nerd Font
     # style: Regular
-    style: ExtraLight
+    style: Light
+    # style: ExtraLight
+    # style: Thin
   bold:
     # family: SauceCodePro Nerd Font
     # family: RobotoMono Nerd Font
-    family: JetBrainsMono Nerd Font
-    style: Regular
-  size: 13.0
+    family: BlexMono Nerd Font
+    style: Bold
+  # size: 13.0
+  size: 14.0
   # use_thin_strokes: true
 
 draw_bold_text_with_bright_colors: false
