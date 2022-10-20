@@ -48,8 +48,8 @@ remap("n", "<esc>", ':noh<cr>:echo""<esc>', nsn_opts)
 -- don't need this with vim-obsession
 
 -- buffer navigation
-remap("n", "<C-n>", ":bn<cr>", nsn_opts)
-remap("n", "<C-p>", ":bp<cr>", nsn_opts)
+remap("n", "<leader>n", ":bn<cr>", nsn_opts)
+remap("n", "<leader>p", ":bp<cr>", nsn_opts)
 
 -- improved scrolling
 remap("n", "<C-e>", "6<C-e>", nsn_opts)
@@ -79,8 +79,8 @@ remap("n", "<leader>-", "<C-w>8<", nsn_opts)
 
 -- remap("n", "<leader>s", "/", nsn_opts)
 
-remap("n", "<leader>Sv", ":vs<CR>", nsn_opts)
-remap("n", "<leader>Sh", ":split<CR>", nsn_opts)
+remap("n", "<leader>sv", ":vs<CR>", nsn_opts)
+remap("n", "<leader>sh", ":split<CR>", nsn_opts)
 
 function _G.reload_nvim_conf()
 	for name, _ in pairs(package.loaded) do

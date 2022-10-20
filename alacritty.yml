@@ -105,7 +105,7 @@ color_schemes:
       focused_match:
         foreground: "#eff1f5" # base
         background: "#40a02b" # green
-      bar:
+      footer_bar:
         foreground: "#eff1f5" # base
         background: "#6c6f85" # subtext0
 
@@ -180,7 +180,7 @@ color_schemes:
       focused_match:
         foreground: "#303446" # base
         background: "#a6d189" # green
-      bar:
+      footer_bar:
         foreground: "#303446" # base
         background: "#a5adce" # subtext0
 
@@ -255,7 +255,7 @@ color_schemes:
       focused_match:
         foreground: "#24273a" # base
         background: "#a6da95" # green
-      bar:
+      footer_bar:
         foreground: "#24273a" # base
         background: "#a5adcb" # subtext0
 
@@ -330,7 +330,7 @@ color_schemes:
       focused_match:
         foreground: "#1e1e2e" # base
         background: "#a6e3a1" # green
-      bar:
+      footer_bar:
         foreground: "#1e1e2e" # base
         background: "#a6adc8" # subtext0
 

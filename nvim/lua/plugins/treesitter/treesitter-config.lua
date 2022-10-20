@@ -98,6 +98,40 @@ require("nvim-treesitter.configs").setup({
 
 	---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
 	-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+	textobjects = {
+		move = {
+			enable = true,
+			set_jumps = true,
+			goto_next_start = {
+				["]m"] = "@function.outer",
+				["[["] = "@parameter.inner",
+			},
+			goto_previous_start = {
+				["[M"] = "@function.outer",
+				["]]"] = "@parameter.inner",
+			},
+			goto_next_end = {
+				["]M"] = "@function.outer",
+				["]["] = "@class.outer",
+			},
+			goto_previous_end = {
+				["[M"] = "@function.outer",
+				["[]"] = "@class.outer",
+			},
+		},
+		select = {
+			enable = true,
+			lookahead = true,
+			keymaps = {
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+				["iq"] = "@parameter.inner",
+				["aq"] = "@parameter.outer",
+			},
+		},
+	},
 
 	highlight = {
 		-- `false` will disable the whole extension

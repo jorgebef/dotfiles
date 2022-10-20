@@ -7,7 +7,7 @@ local wezterm = require("wezterm")
 local modifiers = "CTRL|ALT"
 
 local function keybind(mods, key, action)
-	return { mods = mods, key = key, action = action }
+  return { mods = mods, key = key, action = action }
 end
 
 -- -- Equivalent to POSIX basename(3)
@@ -123,174 +123,174 @@ end
 -- -- }}}
 
 return {
-	hide_tab_bar_if_only_one_tab = false,
-	-- colors = catppuccin,
-	color_scheme = "Catppuccin Mocha",
-	window_background_opacity = 1.0,
-	-- Constrains the rate at which output from a child command is
-	-- processed and applied to the terminal model.
-	-- This acts as a brake in the case of a command spewing a
-	-- ton of output and allows for the UI to remain responsive
-	-- so that you can hit CTRL-C to interrupt it if desired.
-	-- The default value is 400,000 bytes/s.
-	-- ratelimit_output_bytes_per_second = 400000,
-	-- font = wezterm.font("JetBrainsMono Nerd Font"),
-	font = wezterm.font("BlexMono Nerd Font"),
-	-- font = wezterm.font("Hack Nerd Font"),
-	-- font = wezterm.font("FiraCode Nerd Font"),
-	-- font_size = 16.0,
-	--[[ line_height = 0.95, ]]
-	-- font_size = 13.0,
-	font_size = 14.0,
+  hide_tab_bar_if_only_one_tab = false,
+  -- colors = catppuccin,
+  color_scheme = "Catppuccin Mocha",
+  window_background_opacity = 1.0,
+  -- Constrains the rate at which output from a child command is
+  -- processed and applied to the terminal model.
+  -- This acts as a brake in the case of a command spewing a
+  -- ton of output and allows for the UI to remain responsive
+  -- so that you can hit CTRL-C to interrupt it if desired.
+  -- The default value is 400,000 bytes/s.
+  -- ratelimit_output_bytes_per_second = 400000,
+  font = wezterm.font("JetBrainsMono Nerd Font"),
+  -- font = wezterm.font("BlexMono Nerd Font"),
+  -- font = wezterm.font("Hack Nerd Font"),
+  -- font = wezterm.font("FiraCode Nerd Font"),
+  -- font_size = 16.0,
+  --[[ line_height = 0.95, ]]
+  -- font_size = 13.0,
+  font_size = 15.0,
 
-	-- Cursor style
-	cursor_blink_rate = 0,
+  -- Cursor style
+  cursor_blink_rate = 0,
 
-	max_fps = 240,
-	-- max_fps = 180,
-	-- max_fps = 120,
-	-- max_fps = 100,
-	-- max_fps = 60,
+  -- max_fps = 240,
+  -- max_fps = 180,
+  max_fps = 120,
+  -- max_fps = 100,
+  -- max_fps = 60,
 
-	automatically_reload_config = true,
-	check_for_updates = false,
-	use_fancy_tab_bar = false,
-	tab_bar_at_bottom = true,
+  automatically_reload_config = true,
+  check_for_updates = false,
+  use_fancy_tab_bar = false,
+  tab_bar_at_bottom = true,
 
-	window_decorations = "RESIZE",
-	initial_cols = 250,
-	initial_rows = 80,
+  window_decorations = "RESIZE",
+  initial_cols = 350,
+  initial_rows = 80,
 
-	-- unzoom_on_switch_pane = true,
+  -- unzoom_on_switch_pane = true,
 
-	-- Enable CSI u mode
-	-- https://wezfurlong.org/wezterm/config/lua/config/enable_csi_u_key_encoding.html
-	enable_csi_u_key_encoding = true,
+  -- Enable CSI u mode
+  -- https://wezfurlong.org/wezterm/config/lua/config/enable_csi_u_key_encoding.html
+  enable_csi_u_key_encoding = false,
 
-	-- disable_default_key_bindings = true,
+  -- disable_default_key_bindings = true,
 
-	keys = {
-		{ key = "n", mods = modifiers, action = wezterm.action({ ActivateTabRelative = 1 }) },
-		{ key = "p", mods = modifiers, action = wezterm.action({ ActivateTabRelative = -1 }) },
-		-- {
-		-- 	key = "Space",
-		-- 	mods = modifiers,
-		-- 	action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }),
-		-- },
-		-- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
+  keys = {
+    { key = "n", mods = modifiers, action = wezterm.action({ ActivateTabRelative = 1 }) },
+    { key = "p", mods = modifiers, action = wezterm.action({ ActivateTabRelative = -1 }) },
+    -- {
+    -- 	key = "Space",
+    -- 	mods = modifiers,
+    -- 	action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }),
+    -- },
+    -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
 
-		{ key = "h", mods = modifiers, action = wezterm.action({ ActivatePaneDirection = "Left" }) },
-		{ key = "l", mods = modifiers, action = wezterm.action({ ActivatePaneDirection = "Right" }) },
-		{ key = "k", mods = modifiers, action = wezterm.action({ ActivatePaneDirection = "Up" }) },
-		{ key = "j", mods = modifiers, action = wezterm.action({ ActivatePaneDirection = "Down" }) },
-		-- =================================================================
+    { key = "h", mods = modifiers, action = wezterm.action({ ActivatePaneDirection = "Left" }) },
+    { key = "l", mods = modifiers, action = wezterm.action({ ActivatePaneDirection = "Right" }) },
+    { key = "k", mods = modifiers, action = wezterm.action({ ActivatePaneDirection = "Up" }) },
+    { key = "j", mods = modifiers, action = wezterm.action({ ActivatePaneDirection = "Down" }) },
+    -- =================================================================
 
-		{
-			key = "Space",
-			mods = modifiers,
-			action = wezterm.action("TogglePaneZoomState"),
-		},
+    {
+      key = "Space",
+      mods = modifiers,
+      action = wezterm.action("TogglePaneZoomState"),
+    },
 
-		{
-			key = "Enter",
-			mods = modifiers,
-			action = wezterm.action({
-				SplitVertical = {
-					domain = "CurrentPaneDomain",
-				},
-			}),
-		},
-		{
-			key = "ñ",
-			mods = modifiers,
-			action = wezterm.action({
-				SplitHorizontal = {
-					domain = "CurrentPaneDomain",
-				},
-			}),
-		},
+    {
+      key = "Enter",
+      mods = modifiers,
+      action = wezterm.action({
+        SplitVertical = {
+          domain = "CurrentPaneDomain",
+        },
+      }),
+    },
+    {
+      key = "ñ",
+      mods = modifiers,
+      action = wezterm.action({
+        SplitHorizontal = {
+          domain = "CurrentPaneDomain",
+        },
+      }),
+    },
 
-		-- keybind(
-		-- 	modifiers,
-		-- 	"Enter",
-		-- 	wezterm.action_callback(function(win, pane)
-		-- 		local exe = basename(pane:get_foreground_process_name())
-		-- 		if exe == "nvim" then
-		-- 			-- win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
-		-- 			win:perform_action(
-		-- 				wezterm.action({
-		-- 					SplitVertical = {
-		-- 						domain = "CurrentPaneDomain",
-		-- 					},
-		-- 				}),
-		-- 				pane
-		-- 			)
-		-- 			win:perform_action(
-		-- 				wezterm.action({
-		-- 					ActivatePaneDirection = "Down",
-		-- 				}),
-		-- 				pane
-		-- 			)
-		-- 		else
-		-- 			win:perform_action(
-		-- 				wezterm.action({
-		-- 					SplitHorizontal = {
-		-- 						domain = "CurrentPaneDomain",
-		-- 					},
-		-- 				}),
-		-- 				pane
-		-- 			)
-		-- 			win:perform_action(
-		-- 				wezterm.action({
-		-- 					ActivatePaneDirection = "Right",
-		-- 				}),
-		-- 				pane
-		-- 			)
-		-- 		end
-		-- 	end)
-		-- ),
+    -- keybind(
+    -- 	modifiers,
+    -- 	"Enter",
+    -- 	wezterm.action_callback(function(win, pane)
+    -- 		local exe = basename(pane:get_foreground_process_name())
+    -- 		if exe == "nvim" then
+    -- 			-- win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
+    -- 			win:perform_action(
+    -- 				wezterm.action({
+    -- 					SplitVertical = {
+    -- 						domain = "CurrentPaneDomain",
+    -- 					},
+    -- 				}),
+    -- 				pane
+    -- 			)
+    -- 			win:perform_action(
+    -- 				wezterm.action({
+    -- 					ActivatePaneDirection = "Down",
+    -- 				}),
+    -- 				pane
+    -- 			)
+    -- 		else
+    -- 			win:perform_action(
+    -- 				wezterm.action({
+    -- 					SplitHorizontal = {
+    -- 						domain = "CurrentPaneDomain",
+    -- 					},
+    -- 				}),
+    -- 				pane
+    -- 			)
+    -- 			win:perform_action(
+    -- 				wezterm.action({
+    -- 					ActivatePaneDirection = "Right",
+    -- 				}),
+    -- 				pane
+    -- 			)
+    -- 		end
+    -- 	end)
+    -- ),
 
-		-- keybind(
-		-- 	modifiers,
-		-- 	"Space",
-		-- 	wezterm.action_callback(function(win, pane)
-		-- 		local exe = basename(pane:get_foreground_process_name())
-		-- 		local tabs = win:tabs_with_info()
-		-- 		for _, tab in tabs do
-		-- 			if tab.is_active then
-		-- 				local panes = tab:panes_with_info()
-		-- 				for _, pane in panes do
-		-- 					if pane.is_active then
-		-- 						win:perform_action(
-		-- 							wezterm.action({
-		-- 								ActivatePaneDirection = "Down",
-		-- 							}),
-		-- 							pane
-		-- 						)
-		-- 					end
-		-- 				end
-		-- 			end
-		-- 		end
-		-- 		-- if exe == "nvim" then
-		-- 		-- 	-- win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
-		-- 		-- 	win:perform_action(
-		-- 		-- 		wezterm.action({
-		-- 		-- 			ActivatePaneDirection = "Down",
-		-- 		-- 		}),
-		-- 		-- 		pane
-		-- 		-- 	)
-		-- 		-- else
-		-- 		-- 	win:perform_action(
-		-- 		-- 		wezterm.action({
-		-- 		-- 			ActivatePaneDirection = "Up",
-		-- 		-- 		}),
-		-- 		-- 		pane
-		-- 		-- 	)
-		-- 		-- 	win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
-		-- 		-- end
-		-- 	end)
-		-- ),
+    -- keybind(
+    -- 	modifiers,
+    -- 	"Space",
+    -- 	wezterm.action_callback(function(win, pane)
+    -- 		local exe = basename(pane:get_foreground_process_name())
+    -- 		local tabs = win:tabs_with_info()
+    -- 		for _, tab in tabs do
+    -- 			if tab.is_active then
+    -- 				local panes = tab:panes_with_info()
+    -- 				for _, pane in panes do
+    -- 					if pane.is_active then
+    -- 						win:perform_action(
+    -- 							wezterm.action({
+    -- 								ActivatePaneDirection = "Down",
+    -- 							}),
+    -- 							pane
+    -- 						)
+    -- 					end
+    -- 				end
+    -- 			end
+    -- 		end
+    -- 		-- if exe == "nvim" then
+    -- 		-- 	-- win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
+    -- 		-- 	win:perform_action(
+    -- 		-- 		wezterm.action({
+    -- 		-- 			ActivatePaneDirection = "Down",
+    -- 		-- 		}),
+    -- 		-- 		pane
+    -- 		-- 	)
+    -- 		-- else
+    -- 		-- 	win:perform_action(
+    -- 		-- 		wezterm.action({
+    -- 		-- 			ActivatePaneDirection = "Up",
+    -- 		-- 		}),
+    -- 		-- 		pane
+    -- 		-- 	)
+    -- 		-- 	win:perform_action(wezterm.action("TogglePaneZoomState"), pane)
+    -- 		-- end
+    -- 	end)
+    -- ),
 
-		-- =================================================================
-	},
+    -- =================================================================
+  },
 }

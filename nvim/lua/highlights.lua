@@ -34,12 +34,12 @@ vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = cp.surface2 })
 -- local winbarActiveBg = cp.surface0
 -- local winbarInactiveBg = cp.base
 vim.api.nvim_set_hl(0, "WinBar", { bg = cp.surface0, fg = cp.text })
-vim.api.nvim_set_hl(0, "WinBarNC", { bg = cp.base, fg = cp.surface1 })
+vim.api.nvim_set_hl(0, "WinBarNC", { bg = cp.mantle, fg = cp.surface0 })
 -- vim.api.nvim_set_hl(0, "WinBarIndicatorSelected", { fg = cp.pink, bg = winbarActiveBg })
 vim.api.nvim_set_hl(0, "WinBarModActive", { fg = cp.red, bg = cp.surface0 })
 vim.api.nvim_set_hl(0, "WinBarModInactive", { fg = cp.red, bg = cp.base })
-vim.api.nvim_set_hl(0, "WinBarFilenameActive", { fg = cp.surface0, bg = cp.pink, bold = true })
-vim.api.nvim_set_hl(0, "WinBarFilenameInactive", { fg = cp.overlay1, bg = cp.base, bold = true })
+vim.api.nvim_set_hl(0, "WinBarFilenameActive", { fg = cp.base, bg = cp.pink, bold = true })
+vim.api.nvim_set_hl(0, "WinBarFilenameInactive", { fg = cp.surface2, bg = cp.crust, bold = true })
 -- --
 -- vim.api.nvim_set_hl(0, "WhichKeyFloat", { bg = cp.surface0 })
 
