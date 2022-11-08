@@ -113,21 +113,20 @@ require("telescope").load_extension("file_browser")
 -- ============================== REMAPS =================================
 -- =======================================================================
 
-local remap = vim.api.nvim_set_keymap
 local nsn_opts = { noremap = true, silent = true, nowait = true }
 -- remap("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files({sort_lastused=true})<cr>', nsn_opts)
-remap("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files()<cr>', nsn_opts)
-remap("n", "<leader>fF", '<cmd>lua require("telescope-functions").project_files()<cr>', nsn_opts)
-remap("n", "<leader>fb", "<cmd>Telescope file_browser<cr>", nsn_opts)
-remap("n", "<leader>fG", '<cmd>lua require("telescope.builtin").git_files()<cr>', nsn_opts)
-remap("n", "<leader>fg", '<cmd>lua require("telescope.builtin").live_grep()<cr>', nsn_opts)
-remap("n", "<leader>fs", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', nsn_opts)
-remap("n", "<leader>fS", '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<cr>', nsn_opts)
+vim.keymap.set("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files()<cr>', nsn_opts)
+vim.keymap.set("n", "<leader>fF", '<cmd>lua require("telescope-functions").project_files()<cr>', nsn_opts)
+vim.keymap.set("n", "<leader>fb", "<cmd>Telescope file_browser<cr>", nsn_opts)
+vim.keymap.set("n", "<leader>fG", '<cmd>lua require("telescope.builtin").git_files()<cr>', nsn_opts)
+vim.keymap.set("n", "<leader>fg", '<cmd>lua require("telescope.builtin").live_grep()<cr>', nsn_opts)
+vim.keymap.set("n", "<leader>fs", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', nsn_opts)
+vim.keymap.set("n", "<leader>fS", '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<cr>', nsn_opts)
 -- =================================================================
 -- SHORTCUTS FOR JUMP TO DEFINITION AND REFERENCE SET IN LSP CONFIG
 -- =================================================================
 -- remap("n", "gd", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', nsn_opts)
 -- remap("n", "gr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', nsn_opts)
 -- remap("n", "<leader>fgs", '<cmd>lua require("telescope.builtin").git_status()<CR>', nsn_opts)
-remap("n", "<leader>fr", '<cmd>lua require("telescope.builtin").resume()<CR>', nsn_opts)
+vim.keymap.set("n", "<leader>fr", '<cmd>lua require("telescope.builtin").resume()<CR>', nsn_opts)
 -- map('n', '<leader>fg', ':Telescope live_grep<cr>', nsn_opts)

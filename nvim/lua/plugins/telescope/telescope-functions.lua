@@ -15,4 +15,4 @@ return M
 -- :lua require"telescope-config".project_files()
 
 -- example keymap:
--- vim.api.nvim_set_keymap("n", "<Leader><Space>", "<CMD>lua require'telescope-config'.project_files()<CR>", {noremap = true, silent = true})
+-- vim.keymap.set("n", "<Leader><Space>", "<CMD>lua require'telescope-config'.project_files()<CR>", {noremap = true, silent = true})

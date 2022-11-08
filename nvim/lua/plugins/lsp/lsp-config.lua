@@ -50,6 +50,11 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+-- DEFAULT on_attach function
+local function default_on_attach(client, bufnr)
+  navic.attach(client, bufnr)
+end
+
 -- -- Do not forget to use the on_attach function
 -- -- require 'lspconfig'.myserver.setup { handlers=handlers }
 -- -- To instead override globally
@@ -92,8 +97,8 @@ local servers = {
     cmd = { "vscode-json-language-server", "--stdio" },
     filetypes = { "json", "jsonc" },
     on_attach = function(client, bufnr)
+      default_on_attach(client, bufnr)
       client.server_capabilities.documentFormattingProvider = false
-      navic.attach(client, bufnr)
     end,
     -- init_options = {
     -- 	provideFormatter = false,
@@ -150,6 +155,7 @@ local servers = {
     }, handlers),
     root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
     on_attach = function(client, bufnr)
+      default_on_attach(client, bufnr)
       client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
       local ts_utils = require("nvim-lsp-ts-utils")
       ts_utils.setup({})
@@ -179,7 +185,7 @@ local servers = {
     init_options = { configuration = {} },
     root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
     on_attach = function(client, bufnr)
-      -- navic.attach(client, bufnr)
+      default_on_attach(client, bufnr)
     end,
   },
   { "jdtls" },
@@ -203,7 +209,7 @@ local servers = {
     cmd = { "vscode-html-language-server", "--stdio" },
     filetypes = { "html" },
     on_attach = function(client, bufnr)
-      navic.attach(client, bufnr)
+      default_on_attach(client, bufnr)
     end,
     init_options = {
       configurationSection = { "html", "css", "javascript" },
@@ -287,6 +293,7 @@ local servers = {
       ".git"
     ),
     on_attach = function(client, bufnr)
+      -- default_on_attach(client, bufnr)
       -- This is ripped off from https://github.com/kabouzeid/dotfiles, it's for tailwind preview support
       -- if client.server_capabilities.colorProvider then
       -- 	require("plugins.lsp.colorizer").buf_attach(bufnr, { single_column = false, debounce = 200 })
@@ -317,6 +324,9 @@ local servers = {
   {
     "sumneko_lua",
     handlers = handlers,
+    on_attach = function(client, bufnr)
+      default_on_attach(client, bufnr)
+    end,
     -- cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
     settings = {
       Lua = {
@@ -367,32 +377,41 @@ end
 -- ============================== REMAPS =================================
 -- =======================================================================
 
-local map = vim.api.nvim_set_keymap
 local ns_opts = { noremap = true, silent = true }
-map("n", "<leader>lD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", ns_opts)
-map("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", ns_opts)
-map("n", "<leader>lw", "<cmd>lua vim.diagnostic.goto_next({severity={max='WARN'},float=true})<CR>", ns_opts)
-map("n", "<leader>le", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',float=true})<CR>", ns_opts)
-map("n", "<leader>lW", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", ns_opts)
-map("n", "<leader>lE", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", ns_opts)
+vim.keymap.set("n", "<leader>lD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", ns_opts)
+vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", ns_opts)
+
+-- vim.keymap.set("n", "<leader>lw", "<cmd>lua vim.diagnostic.goto_next({severity={max='WARN'},float=true})<CR>", ns_opts)
+-- vim.keymap.set("n", "<leader>le", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',float=true})<CR>", ns_opts)
+-- vim.keymap.set("n", "<leader>lW", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", ns_opts)
+-- vim.keymap.set("n", "<leader>lE", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", ns_opts)
+
+vim.keymap.set("n", "`w", "<cmd>lua vim.diagnostic.goto_next({severity={max='WARN'},float=true})<CR>", ns_opts)
+vim.keymap.set("n", "è", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',float=true})<CR>", ns_opts)
+vim.keymap.set("n", "+w", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", ns_opts)
+vim.keymap.set("n", "+e", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", ns_opts)
+
 -- map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", ns_opts)
 -- ============================================================
 -- USING NULL-LS
-map("n", "<leader>lf", ":LspFormat<CR>", ns_opts)
+vim.keymap.set("n", "<leader>lf", ":LspFormat<CR>", ns_opts)
 -- ============================================================
 -- Telescope does go to definition better than nvim-lsp
 -- map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)
 -- CUSTOM GO TO DEFINITION
 -- map("n", "<leader>ld", '<cmd> lua require("utils.lsp_handlers").goto_definition()<CR>', ns_opts)
-map("n", "<leader>ld", "<cmd> lua vim.lsp.buf.definition()<CR>", ns_opts)
+vim.keymap.set("n", "<leader>ld", "<cmd> lua vim.lsp.buf.definition()<CR>", ns_opts)
 -- map("n", "<leader>ld", ":LspDef<CR>", ns_opts)
 -- ============================================================
-map("n", "<leader>lrr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
-map("n", "<leader>lrn", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
-map("n", "K", "<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>", ns_opts)
-map("n", "<leader>lii", "<cmd>lua vim.lsp.buf.implementation()<CR>", ns_opts)
-map("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", ns_opts)
+vim.keymap.set("n", "<leader>lrr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
+vim.keymap.set("n", "<leader>lrn", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
+vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>", ns_opts)
+vim.keymap.set("n", "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>", ns_opts)
+vim.keymap.set("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", ns_opts)
 
-vim.cmd(
-  [[autocmd CursorHold * lua vim.diagnostic.open_float(0, {scope="cursor", focusable=false, close_events = {"CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave"}})]]
-)
+vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+vim.api.nvim_create_autocmd({ "CursorHold" }, {
+  pattern = "*",
+  command = 'lua vim.diagnostic.open_float(0, {scope="cursor", focusable=false, close_events = {"CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave"}})',
+  group = "lsp_diagnostics_hold",
+})

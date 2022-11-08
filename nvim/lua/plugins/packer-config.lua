@@ -95,6 +95,8 @@ packer.startup(function()
   use("neovim/nvim-lspconfig")
   use("jose-elias-alvarez/nvim-lsp-ts-utils")
   use("jose-elias-alvarez/null-ls.nvim")
+  -- use({ "glepnir/lspsaga.nvim", branch = "main" })
+  -- use({ "ray-x/lsp_signature.nvim" })
 
   -- Formatting
   -- =======================
@@ -134,16 +136,24 @@ packer.startup(function()
   })
 
   use("nvim-lualine/lualine.nvim")
+
+  -- using packer.nvim
+  -- use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "kyazdani42/nvim-web-devicons" })
+
   use({
     "SmiteshP/nvim-navic",
     requires = "neovim/nvim-lspconfig",
   })
 
   -- use("ggandor/lightspeed.nvim")
-  use("ggandor/leap.nvim")
+  -- use("ggandor/leap.nvim")
+  -- use("rlane/pounce.nvim")
+  use("phaazon/hop.nvim")
   -- use("justinmk/vim-sneak")
 
-  use("folke/which-key.nvim")
+  use("tpope/vim-repeat")
+
+  -- use("folke/which-key.nvim")
 
   -- == KEEP DEVICONS LAST FOR CORRECT LOADING
   use("kyazdani42/nvim-web-devicons")

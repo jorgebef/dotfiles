@@ -31,7 +31,7 @@ opt.conceallevel = 0 -- so that `` is visible in markdown files
 -- o.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
 -- o.foldexpr = "" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
 -- o.guifont = "monospace:h17" -- the font used in graphical neovim applications
-opt.hidden = true -- required to keep multiple buffers and open multiple buffers
+o.hidden = true -- required to keep multiple buffers and open multiple buffers
 opt.hlsearch = true -- highlight all matches on previous search pattern
 opt.showtabline = 0 -- never show tabs
 opt.swapfile = false -- creates a swapfile
@@ -72,7 +72,7 @@ opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = 2
 opt.termguicolors = true
-opt.timeoutlen = 550
+opt.timeoutlen = 950
 opt.undofile = true
 
 -- interval for writing swap file to disk, also used by gitsigns
