@@ -161,7 +161,7 @@ local servers = {
       ts_utils.setup({})
       ts_utils.setup_client(client)
       -- -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-      buf_map(bufnr, "n", "<leader>lf", ":TSLspRenameFile<CR>")
+      buf_map(bufnr, "n", "<leader>lR", ":TSLspRenameFile<CR>")
       buf_map(bufnr, "n", "<leader>li", ":TSLspImportAll<CR>")
 
       -- =================================================
