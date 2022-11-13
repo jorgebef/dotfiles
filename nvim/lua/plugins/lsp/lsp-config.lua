@@ -161,8 +161,8 @@ local servers = {
       ts_utils.setup({})
       ts_utils.setup_client(client)
       -- -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-      buf_map(bufnr, "n", "<leader>lrf", ":TSLspRenameFile<CR>")
-      buf_map(bufnr, "n", "<leader>lia", ":TSLspImportAll<CR>")
+      buf_map(bufnr, "n", "<leader>lf", ":TSLspRenameFile<CR>")
+      buf_map(bufnr, "n", "<leader>li", ":TSLspImportAll<CR>")
 
       -- =================================================
       -- CHECK THIS
@@ -379,17 +379,17 @@ end
 
 local ns_opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>lD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", ns_opts)
-vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", ns_opts)
+-- vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", ns_opts)
 
 -- vim.keymap.set("n", "<leader>lw", "<cmd>lua vim.diagnostic.goto_next({severity={max='WARN'},float=true})<CR>", ns_opts)
 -- vim.keymap.set("n", "<leader>le", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',float=true})<CR>", ns_opts)
 -- vim.keymap.set("n", "<leader>lW", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", ns_opts)
 -- vim.keymap.set("n", "<leader>lE", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", ns_opts)
 
-vim.keymap.set("n", "`w", "<cmd>lua vim.diagnostic.goto_next({severity={max='WARN'},float=true})<CR>", ns_opts)
-vim.keymap.set("n", "è", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',float=true})<CR>", ns_opts)
-vim.keymap.set("n", "+w", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", ns_opts)
-vim.keymap.set("n", "+e", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", ns_opts)
+vim.keymap.set("n", "]w", "<cmd>lua vim.diagnostic.goto_next({severity={max='WARN'},float=true})<CR>", ns_opts)
+vim.keymap.set("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',float=true})<CR>", ns_opts)
+vim.keymap.set("n", "[w", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", ns_opts)
+vim.keymap.set("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", ns_opts)
 
 -- map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", ns_opts)
 -- ============================================================
@@ -400,18 +400,19 @@ vim.keymap.set("n", "<leader>lf", ":LspFormat<CR>", ns_opts)
 -- map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)
 -- CUSTOM GO TO DEFINITION
 -- map("n", "<leader>ld", '<cmd> lua require("utils.lsp_handlers").goto_definition()<CR>', ns_opts)
-vim.keymap.set("n", "<leader>ld", "<cmd> lua vim.lsp.buf.definition()<CR>", ns_opts)
 -- map("n", "<leader>ld", ":LspDef<CR>", ns_opts)
 -- ============================================================
-vim.keymap.set("n", "<leader>lrr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
-vim.keymap.set("n", "<leader>lrn", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
-vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>", ns_opts)
-vim.keymap.set("n", "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>", ns_opts)
+-- vim.keymap.set("n", "<leader>ld", "<cmd> lua vim.lsp.buf.definition()<CR>", ns_opts)
+-- vim.keymap.set("n", "<leader>lh", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
+-- vim.keymap.set("n", "<leader>lrr", require("plugins/lsp/custom-functions").LspRename, ns_opts)
+-- vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
+-- vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>", ns_opts)
+vim.keymap.set("n", "<leader>lI", "<cmd>lua vim.lsp.buf.implementation()<CR>", ns_opts)
 vim.keymap.set("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", ns_opts)
 
-vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
-vim.api.nvim_create_autocmd({ "CursorHold" }, {
-  pattern = "*",
-  command = 'lua vim.diagnostic.open_float(0, {scope="cursor", focusable=false, close_events = {"CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave"}})',
-  group = "lsp_diagnostics_hold",
-})
+-- vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+-- vim.api.nvim_create_autocmd({ "CursorHold" }, {
+--   pattern = "*",
+--   command = 'lua vim.diagnostic.open_float(0, {scope="cursor", focusable=false, close_events = {"CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave"}})',
+--   group = "lsp_diagnostics_hold",
+-- })

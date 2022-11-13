@@ -61,6 +61,9 @@ packer.startup(function()
   -- == File explorer written in lua
   -- =======================
   use("kyazdani42/nvim-tree.lua")
+
+  -- == Surround tool
+  -- =======================
   use({ "kylechui/nvim-surround" })
 
   -- use("norcalli/nvim-colorizer.lua")
@@ -92,11 +95,16 @@ packer.startup(function()
 
   -- LSP
   -- =======================
-  use("neovim/nvim-lspconfig")
-  use("jose-elias-alvarez/nvim-lsp-ts-utils")
-  use("jose-elias-alvarez/null-ls.nvim")
-  -- use({ "glepnir/lspsaga.nvim", branch = "main" })
-  -- use({ "ray-x/lsp_signature.nvim" })
+  -- use("neovim/nvim-lspconfig")
+  use({
+    "neovim/nvim-lspconfig",
+    requires = {
+      { "jose-elias-alvarez/nvim-lsp-ts-utils" },
+      { "jose-elias-alvarez/null-ls.nvim" },
+      { "glepnir/lspsaga.nvim", branch = "main" },
+      { "SmiteshP/nvim-navic" },
+    },
+  })
 
   -- Formatting
   -- =======================
@@ -140,20 +148,13 @@ packer.startup(function()
   -- using packer.nvim
   -- use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "kyazdani42/nvim-web-devicons" })
 
-  use({
-    "SmiteshP/nvim-navic",
-    requires = "neovim/nvim-lspconfig",
-  })
-
-  -- use("ggandor/lightspeed.nvim")
-  -- use("ggandor/leap.nvim")
-  -- use("rlane/pounce.nvim")
-  use("phaazon/hop.nvim")
-  -- use("justinmk/vim-sneak")
+  -- == Easier navigation around
+  -- =======================
+  use("ggandor/leap.nvim")
 
   use("tpope/vim-repeat")
 
-  -- use("folke/which-key.nvim")
+  use("folke/which-key.nvim")
 
   -- == KEEP DEVICONS LAST FOR CORRECT LOADING
   use("kyazdani42/nvim-web-devicons")

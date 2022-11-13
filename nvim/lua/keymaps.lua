@@ -9,10 +9,9 @@ vim.keymap.set("v", "j", "gj", { nowait = true, silent = true })
 vim.keymap.set("n", "k", "gk", { nowait = true, silent = true })
 vim.keymap.set("v", "k", "gk", { nowait = true, silent = true })
 
-vim.keymap.set("n", "ñ", ";", { nowait = true })
-vim.keymap.set("n", "Ñ", ":", { nowait = true })
-
-vim.keymap.set("", "Ñ", ":", { nowait = true })
+-- vim.keymap.set("n", "ñ", ";", { nowait = true })
+-- vim.keymap.set("n", "Ñ", ":", { nowait = true })
+-- vim.keymap.set("", "-", "/", { nowait = true })
 
 -- " =========================== FUNCTIONAL REMAPS =============================
 vim.keymap.set("n", "<leader>w", ":silent write<cr>", nsn_opts)
