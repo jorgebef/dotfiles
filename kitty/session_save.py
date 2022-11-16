@@ -19,23 +19,14 @@ sess_dump_path = os.path.join(dir, json_path)
 def createSession(output, sessionData):
     for os_window in sessionData:
         for tab in os_window['tabs']:
-            output.write('new_tab '+tab['title'])
-            output.write('\n')
-            output.write('cd '+tab['windows'][0]['cwd'])
-            output.write('\n')
-            window_count = 0
+            output.write('new_tab '+tab['title']+'\n')
             for window in tab['windows']:
-                tabs = len(tab['windows'])
-                if window['is_focused']:
-                    output.write('focus')
-                    output.write('\n')
-                    window_count+=1
-                if tabs-window_count == 0:
-                    break
-                output.write('launch fish')
-                output.write('\n')
-                window_count+=1
-
+                if tab['is_active_tab'] and window['is_focused']:
+                    output.write('focus'+'\n')
+                else:
+                    output.write('cd '+tab['windows'][0]['cwd']+'\n')
+                    output.write('launch fish'+'\n')
+            
 
 with open(sess_dump_path) as f:
     sessData = json.load(f)
