@@ -19,8 +19,8 @@ ln -sf ~/Developer/dotfiles/kitty ~/.config/kitty
 SYMLINKS+=('Kitty')
 ln -sf ~/Developer/dotfiles/custom-scripts ~/.custom-scripts
 SYMLINKS+=('custom-scripts')
-ln -sf ~/Developer/dotfiles/.tmux.conf ~/.tmux.conf
-SYMLINKS+=('.tmux.conf')
+ln -sf ~/Developer/dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
+SYMLINKS+=('tmux')
 ln -sf ~/Developer/dotfiles/starship.toml ~/.config/starship.toml
 SYMLINKS+=('starship')
 ln -sf ~/Developer/dotfiles/fish ~/.config/fish
