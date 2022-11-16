@@ -62,6 +62,8 @@ packer.startup(function()
   -- =======================
   use("kyazdani42/nvim-tree.lua")
 
+  use("echasnovski/mini.nvim")
+
   -- == Surround tool
   -- =======================
   use({ "kylechui/nvim-surround" })

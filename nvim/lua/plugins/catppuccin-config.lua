@@ -147,6 +147,8 @@ catppuccin.setup({
     LSOutlinePreviewBorder = { fg = cp.blue, bg = cp.base },
     LspSagaRenameBorder = { fg = cp.blue, bg = cp.base },
 
+    MiniJump = { fg = nil, bg = cp.surface1, underline = true },
+
     LspSignatureActiveParameter = { fg = cp.pink, bold = true },
 
     WinBar = { fg = cp.text, bg = cp.base },

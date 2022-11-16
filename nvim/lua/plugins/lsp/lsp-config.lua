@@ -93,6 +93,21 @@ local servers = {
     single_file_support = true,
   },
   {
+    "pyright",
+    cmd = { "pyright-langserver", "--stdio" },
+    filetypes = { "python" },
+    settings = {
+      python = {
+        analysis = {
+          autoSearchPaths = true,
+          diagnosticMode = "workspace",
+          useLibraryCodeForTypes = true,
+        },
+      },
+    },
+    single_file_support = true,
+  },
+  {
     "jsonls",
     cmd = { "vscode-json-language-server", "--stdio" },
     filetypes = { "json", "jsonc" },
