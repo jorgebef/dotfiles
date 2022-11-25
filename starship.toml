@@ -31,7 +31,7 @@ format = "[ $path ]($style)(bold bg:#313244 fg:#1E1E2E)[$read_only]($read_only_s
 
 [directory.substitutions]
 "/Users/jorgebefan/" = "🏠"
-"🏠/Desktop" = "~/🖥️"
+"🏠/Desktop" = "~/🖥️ "
 "🏠/Developer" = "~/💻"
 "🏠/Documents" = "~/💼"
 "🏠/Downloads" = "~/⬇️ "

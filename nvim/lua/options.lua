@@ -39,7 +39,7 @@ vim.opt.title = true -- set the title of window to the value of the titlestring
 -- o.undodir = join_paths(get_cache_dir(), "undo") -- set an undo directory
 opt.expandtab = true -- convert tabs to spaces
 -- o.spell = false
-opt.scrolloff = 3 -- minimal number of screen lines to keep above and below the cursor.
+opt.scrolloff = 5 -- minimal number of screen lines to keep above and below the cursor.
 
 opt.laststatus = 3 -- global statusline
 opt.title = true

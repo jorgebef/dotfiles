@@ -1,162 +1,45 @@
 local wezterm = require("wezterm")
 
-local modifiers = "CTRL|ALT"
-
 local function keybind(mods, key, action)
   return { mods = mods, key = key, action = action }
 end
 
--- -- Equivalent to POSIX basename(3)
--- -- Given "/foo/bar" returns "bar"
--- -- Given "c:\\foo\\bar" returns "bar"
--- function basename(s)
--- 	return string.gsub(s, "(.*[/\\])(.*)", "%2")
--- end
-
--- -- make numbers superscript or subscript {{{
--- ---@diagnostic disable-next-line: unused-local,unused-function
--- local function style_number(number, style)
--- 	local superscript = {
--- 		"⁰",
--- 		"¹",
--- 		"²",
--- 		"³",
--- 		"⁴",
--- 		"⁵",
--- 		"⁶",
--- 		"⁷",
--- 		"⁸",
--- 		"⁹",
--- 	}
--- 	local subscript = {
--- 		"₀",
--- 		"₁",
--- 		"₂",
--- 		"₃",
--- 		"₄",
--- 		"₅",
--- 		"₆",
--- 		"₇",
--- 		"₈",
--- 		"₉",
--- 	}
---
--- 	local numbers = (style == "super") and superscript or subscript
---
--- 	local number_string = tostring(number)
--- 	local result = ""
--- 	for i = 1, #number_string do
--- 		local char = number_string:sub(i, i)
--- 		local nr = tonumber(char)
--- 		if number then
--- 			result = result .. numbers[nr + 1]
--- 		else
--- 			result = result .. char
--- 		end
--- 	end
--- 	return result
--- end
--- -- }}}
---
--- -- custom tab bar {{{
--- ---@diagnostic disable-next-line: unused-local
--- wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
--- 	local RIGHT_DIVIDER = utf8.char(0xe0bc)
---
--- 	local active_tab_index = 0
--- 	for _, t in ipairs(tabs) do
--- 		if t.is_active == true then
--- 			active_tab_index = t.tab_index
--- 		end
--- 	end
---
--- 	local active_bg = config.colors.tab_bar.active_tab.bg_color
--- 	local active_fg = config.colors.tab_bar.active_tab.fg_color
--- 	local inactive_bg = config.colors.tab_bar.inactive_tab.bg_color
--- 	local inactive_fg = config.colors.tab_bar.inactive_tab.fg_color
--- 	local new_tab_bg = config.colors.tab_bar.new_tab.bg_color
---
--- 	local s_bg, s_fg, e_bg, e_fg
---
--- 	-- the last tab
--- 	if tab.tab_index == #tabs - 1 then
--- 		if tab.is_active then
--- 			s_bg = active_bg
--- 			s_fg = active_fg
--- 			e_bg = new_tab_bg
--- 			e_fg = active_bg
--- 		else
--- 			s_bg = inactive_bg
--- 			s_fg = inactive_fg
--- 			e_bg = new_tab_bg
--- 			e_fg = inactive_bg
--- 		end
--- 	elseif tab.tab_index == active_tab_index - 1 then
--- 		s_bg = inactive_bg
--- 		s_fg = inactive_fg
--- 		e_bg = active_bg
--- 		e_fg = inactive_bg
--- 	elseif tab.is_active then
--- 		s_bg = active_bg
--- 		s_fg = active_fg
--- 		e_bg = inactive_bg
--- 		e_fg = active_bg
--- 	else
--- 		s_bg = inactive_bg
--- 		s_fg = inactive_fg
--- 		e_bg = inactive_bg
--- 		e_fg = inactive_bg
--- 	end
--- 	return {
--- 		{ Background = { Color = s_bg } },
--- 		{ Foreground = { Color = s_fg } },
--- 		{ Text = " " .. tab.tab_index + 1 .. ": " .. tab.active_pane.title .. " " },
--- 		{ Background = { Color = e_bg } },
--- 		{ Foreground = { Color = e_fg } },
--- 		{ Text = RIGHT_DIVIDER },
--- 	}
--- end)
--- -- }}}
-
 return {
-  -- hide_tab_bar_if_only_one_tab = false,
   hide_tab_bar_if_only_one_tab = true,
-  -- colors = catppuccin,
+  window_padding = {
+    left = 5,
+    right = 5,
+    top = 10,
+    bottom = 10,
+  },
   color_scheme = "Catppuccin Mocha",
   window_background_opacity = 1.0,
-  -- Constrains the rate at which output from a child command is
-  -- processed and applied to the terminal model.
-  -- This acts as a brake in the case of a command spewing a
-  -- ton of output and allows for the UI to remain responsive
-  -- so that you can hit CTRL-C to interrupt it if desired.
-  -- The default value is 400,000 bytes/s.
-  -- ratelimit_output_bytes_per_second = 400000,
   font = wezterm.font("JetBrainsMono Nerd Font"),
-  -- font = wezterm.font("BlexMono Nerd Font"),
-  -- font = wezterm.font("Hack Nerd Font"),
-  -- font = wezterm.font("FiraCode Nerd Font"),
-  -- font_size = 16.0,
-  --[[ line_height = 0.95, ]]
-  -- font_size = 13.0,
   font_size = 15.0,
 
   -- Cursor style
   cursor_blink_rate = 0,
 
+  -- https://wezfurlong.org/wezterm/config/keyboard-concepts.html?highlight=modifiers#keyboard-concepts:~:text=macOS%20Left%20and%20Right%20Option%20Key
+  send_composed_key_when_right_alt_is_pressed = true,
+
   -- max_fps = 240,
-  -- max_fps = 180,
+  max_fps = 180,
   -- max_fps = 120,
   -- max_fps = 100,
-  max_fps = 60,
+  -- max_fps = 60,
+  -- max_fps = 30,
 
-  -- automatically_reload_config = true,
-  automatically_reload_config = false,
+  automatically_reload_config = true,
+  -- automatically_reload_config = false,
   check_for_updates = false,
   use_fancy_tab_bar = false,
   tab_bar_at_bottom = true,
 
+  -- window_close_confirmation = "NeverPrompt",
+
   window_decorations = "RESIZE",
-  initial_cols = 250,
+  initial_cols = 300,
   initial_rows = 80,
 
   -- unzoom_on_switch_pane = true,
@@ -167,8 +50,16 @@ return {
 
   -- disable_default_key_bindings = true,
 
+  -- local modifiers = "CTRL|ALT"
+
   keys = {
-    -- { key = "n", mods = modifiers, action = wezterm.action({ ActivateTabRelative = 1 }) },
+    -- { key = "n", mods = "CMD", action = "SpawnWindow" },
+    -- {
+    --   key = "q",
+    --   mods = "CMD",
+    --   action = wezterm.action.CloseCurrentTab({ confirm = true }),
+    -- },
+    -- { key = "v", mods = "CMD", action = "PasteFrom='Clipboard'" },
     -- { key = "p", mods = modifiers, action = wezterm.action({ ActivateTabRelative = -1 }) },
     -- {
     -- 	key = "Space",
@@ -291,4 +182,5 @@ return {
 
     -- =================================================================
   },
+  term = "wezterm",
 }

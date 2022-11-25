@@ -132,8 +132,9 @@ catppuccin.setup({
 
     LeapLabelPrimary = { fg = nil, bg = cp.mauve, bold = true },
 
-    LspSagaFinderSelection = { fg = cp.blue, bg = cp.base },
+    LspSagaFinderSelection = { fg = cp.blue, bg = cp.surface0 },
     FinderSpinnerBorder = { fg = cp.blue, bg = cp.base },
+    FinderVirtText = { fg = cp.mauve },
     LspSagaLspFinderBorder = { fg = cp.blue, bg = cp.base },
     FinderPreviewSearch = { bg = cp.base },
     LspSagaHoverBorder = { fg = cp.blue, bg = cp.base },
@@ -151,12 +152,12 @@ catppuccin.setup({
 
     LspSignatureActiveParameter = { fg = cp.pink, bold = true },
 
-    WinBar = { fg = cp.text, bg = cp.base },
-    WinBarInactive = { fg = cp.surface2, bg = cp.base },
+    WinBar = { fg = cp.text, bg = cp.mantle },
+    WinBarInactive = { fg = cp.surface2, bg = cp.mantle },
     -- WinBarModActive = { fg = cp.red, bg = cp.base },
     -- WinBarModInactive = { fg = cp.red, bg = cp.base },
     WinBarFilenameActive = { fg = cp.base, bg = cp.pink, bold = true },
-    WinBarFilenameInactive = { fg = cp.subtext0, bg = cp.base, bold = true },
+    WinBarFilenameInactive = { fg = cp.subtext0, bg = cp.mantle, bold = true },
     -- WinBarModified = { fg = cp.red },
 
     WhichKeyFloat = { bg = cp.surface0 },

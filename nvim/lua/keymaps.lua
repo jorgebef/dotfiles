@@ -48,8 +48,8 @@ vim.keymap.set("n", "<esc>", ':noh<cr>:echo""<esc>', nsn_opts)
 -- don't need this with vim-obsession
 
 -- buffer navigation
-vim.keymap.set("n", "<leader>n", ":bn<cr>", nsn_opts)
-vim.keymap.set("n", "<leader>p", ":bp<cr>", nsn_opts)
+vim.keymap.set("n", "<leader>bn", ":bn<cr>", nsn_opts)
+vim.keymap.set("n", "<leader>bp", ":bp<cr>", nsn_opts)
 
 -- improved scrolling
 vim.keymap.set("n", "<C-e>", "6<C-e>", nsn_opts)
@@ -68,10 +68,10 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", nsn_opts)
 vim.keymap.set("n", "<C-h>", "<C-w>h", nsn_opts)
 
 -- improved split manipulation
-vim.keymap.set("n", "<C-S-j>", "<C-w>J", nsn_opts)
-vim.keymap.set("n", "<C-S-k>", "<C-w>K", nsn_opts)
-vim.keymap.set("n", "<C-S-l>", "<C-w>L", nsn_opts)
-vim.keymap.set("n", "<C-S-h>", "<C-w>H", nsn_opts)
+vim.keymap.set("n", "<leader>mj", "<C-w>J", nsn_opts)
+vim.keymap.set("n", "<leader>mk", "<C-w>K", nsn_opts)
+vim.keymap.set("n", "<leader>ml", "<C-w>L", nsn_opts)
+vim.keymap.set("n", "<leader>mh", "<C-w>H", nsn_opts)
 
 vim.keymap.set("n", "<leader>=", "<C-w>=", nsn_opts)
 vim.keymap.set("n", "<leader>+", "<C-w>8>", nsn_opts)

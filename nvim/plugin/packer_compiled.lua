@@ -74,11 +74,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["Comment.nvim"] = {
-    loaded = true,
-    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/Comment.nvim",
-    url = "https://github.com/numToStr/Comment.nvim"
-  },
   LuaSnip = {
     loaded = true,
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -118,11 +113,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
     url = "https://github.com/glepnir/dashboard-nvim"
-  },
-  ["formatter.nvim"] = {
-    loaded = true,
-    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/formatter.nvim",
-    url = "https://github.com/mhartington/formatter.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -178,11 +168,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
-  },
-  ["nvim-bufdel"] = {
-    loaded = true,
-    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/nvim-bufdel",
-    url = "https://github.com/ojroques/nvim-bufdel"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -269,15 +254,15 @@ _G.packer_plugins = {
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
-  ["telescope-zf-native.nvim"] = {
-    loaded = true,
-    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/telescope-zf-native.nvim",
-    url = "https://github.com/natecraddock/telescope-zf-native.nvim"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  undotree = {
+    loaded = true,
+    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
   },
   ["vim-repeat"] = {
     loaded = true,

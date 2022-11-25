@@ -12,6 +12,7 @@ require("plugins.lualine-config")
 
 -- require("plugins.bufdel-config")
 require("plugins.mini-config")
+require("plugins.undotree-config")
 require("plugins.gitsigns-config")
 require("plugins.dashboard-config")
 -- require("plugins.lightspeed-config")

@@ -10,7 +10,6 @@ leap.opts.equivalence_classes = { " \t\r\n" }
 leap.opts.substitute_chars = {}
 -- leap.opts.safe_labels = { 's', 'f', 'n', 'u', 't', . . . }
 -- leap.opts.labels = { 's', 'f', 'n', 'j', 'k', . . . }
-vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
 leap.opts.special_keys = {
   repeat_search = "<enter>",
   next_phase_one_target = "<enter>",
@@ -21,3 +20,9 @@ leap.opts.special_keys = {
   multi_accept = "<enter>",
   multi_revert = "<backspace>",
 }
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
+  end,
+})

@@ -49,14 +49,14 @@ packer.startup(function()
       "nvim-treesitter/nvim-treesitter-textobjects",
       -- == Closing < tags
       "windwp/nvim-ts-autotag",
-      -- "jorgebef/nvim-ts-autotag",
       -- == context-aware commenting
       "JoosepAlviste/nvim-ts-context-commentstring",
       "nvim-treesitter/playground",
     },
   })
+
   -- == Commenting and uncommenting lines
-  use("numToStr/Comment.nvim")
+  -- use("numToStr/Comment.nvim")
 
   -- == File explorer written in lua
   -- =======================
@@ -97,7 +97,6 @@ packer.startup(function()
 
   -- LSP
   -- =======================
-  -- use("neovim/nvim-lspconfig")
   use({
     "neovim/nvim-lspconfig",
     requires = {
@@ -110,7 +109,9 @@ packer.startup(function()
 
   -- Formatting
   -- =======================
-  use({ "mhartington/formatter.nvim" })
+  -- use({ "mhartington/formatter.nvim" })
+
+  use("mbbill/undotree")
 
   -- Autocompletion
   -- =======================
@@ -128,27 +129,15 @@ packer.startup(function()
       { "onsails/lspkind-nvim" },
     },
   })
-  -- Easier buffer deletion
-  -- =======================
-  use({ "ojroques/nvim-bufdel" })
-
-  -- Prettier notifications
-  -- =======================
-  -- use({ "rcarriga/nvim-notify" })
 
   use({
     "catppuccin/nvim",
-    -- "jorgebef/catppuccin-nvim",
     branch = "main",
-    -- branch = "dev",
     as = "catppuccin",
     run = ":CatppuccinCompile",
   })
 
   use("nvim-lualine/lualine.nvim")
-
-  -- using packer.nvim
-  -- use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "kyazdani42/nvim-web-devicons" })
 
   -- == Easier navigation around
   -- =======================

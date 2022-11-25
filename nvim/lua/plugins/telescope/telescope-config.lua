@@ -1,10 +1,12 @@
-local previewers = require("telescope.previewers")
-local Job = require("plenary.job")
+-- local previewers = require("telescope.previewers")
+-- local Job = require("plenary.job")
 local icons = require("icons")
+local telescope = require("telescope")
+-- local builtin = require("telescope.builtin")
 
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
-require("telescope").setup({
+telescope.setup({
   pickers = {
     find_files = {
       hidden = true,
@@ -39,16 +41,17 @@ require("telescope").setup({
   defaults = {
     prompt_prefix = icons.ui.Telescope .. " " .. icons.misc.Carat,
     selection_caret = icons.ui.Arrow,
-    -- ====================================================
-    -- IT IS VERY SLOW TO RELY ON FILE IGNORE PATTERNS
-    -- ====================================================
-    file_ignore_patterns = {
-      "node_modules/",
-      ".git/",
-      ".next/",
-      -- "package-lock.json",
-      -- 'DS_'
-    },
+    -- -- ====================================================
+    -- -- IT IS VERY SLOW TO RELY ON FILE IGNORE PATTERNS
+    -- -- ====================================================
+    -- file_ignore_patterns = {
+    --   "node_modules/",
+    --   ".git/",
+    --   ".next/",
+    --   "package-lock.json",
+    --   "DS_",
+    -- },
+
     vimgrep_arguments = {
       "rg",
       "--color=never",
@@ -85,7 +88,7 @@ require("telescope").setup({
       -- options for sorting all other items
       generic = {
         -- override default telescope generic item sorter
-        enable = true,
+        enable = false,
 
         -- highlight matching text in results
         highlight_results = true,
@@ -100,14 +103,14 @@ require("telescope").setup({
 })
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
-require("telescope").load_extension("fzf")
+telescope.load_extension("fzf")
 
 -- Load zf extension, which favors filename over rest of the path
-require("telescope").load_extension("zf-native")
+telescope.load_extension("zf-native")
 
 -- To get telescope-file-browser loaded and working with telescope,
 -- you need to call load_extension, somewhere after setup function:
-require("telescope").load_extension("file_browser")
+telescope.load_extension("file_browser")
 
 -- =======================================================================
 -- ============================== REMAPS =================================
@@ -122,6 +125,7 @@ vim.keymap.set("n", "<leader>fG", '<cmd>lua require("telescope.builtin").git_fil
 vim.keymap.set("n", "<leader>fg", '<cmd>lua require("telescope.builtin").live_grep()<cr>', nsn_opts)
 vim.keymap.set("n", "<leader>fs", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', nsn_opts)
 vim.keymap.set("n", "<leader>fS", '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<cr>', nsn_opts)
+
 -- =================================================================
 -- SHORTCUTS FOR JUMP TO DEFINITION AND REFERENCE SET IN LSP CONFIG
 -- =================================================================
