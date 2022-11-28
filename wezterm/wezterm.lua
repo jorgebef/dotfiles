@@ -4,6 +4,8 @@ local function keybind(mods, key, action)
   return { mods = mods, key = key, action = action }
 end
 
+local modifiers = "CTRL|ALT"
+
 return {
   hide_tab_bar_if_only_one_tab = true,
   window_padding = {
@@ -14,6 +16,7 @@ return {
   },
   color_scheme = "Catppuccin Mocha",
   window_background_opacity = 1.0,
+  -- font = wezterm.font("JetBrainsMono Nerd Font"),
   font = wezterm.font("JetBrainsMono Nerd Font"),
   font_size = 15.0,
 
@@ -48,17 +51,15 @@ return {
   -- https://wezfurlong.org/wezterm/config/lua/config/enable_csi_u_key_encoding.html
   -- enable_csi_u_key_encoding = false,
 
-  -- disable_default_key_bindings = true,
-
-  -- local modifiers = "CTRL|ALT"
+  disable_default_key_bindings = true,
 
   keys = {
     -- { key = "n", mods = "CMD", action = "SpawnWindow" },
-    -- {
-    --   key = "q",
-    --   mods = "CMD",
-    --   action = wezterm.action.CloseCurrentTab({ confirm = true }),
-    -- },
+    {
+      key = "q",
+      mods = "CMD",
+      action = wezterm.action.CloseCurrentTab({ confirm = true }),
+    },
     -- { key = "v", mods = "CMD", action = "PasteFrom='Clipboard'" },
     -- { key = "p", mods = modifiers, action = wezterm.action({ ActivateTabRelative = -1 }) },
     -- {
