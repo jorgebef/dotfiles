@@ -1,3 +1,5 @@
+#!/bin/sh
+
 #==============
 # Remove old dot flies
 #==============
@@ -27,6 +29,8 @@ ln -sf ~/Developer/dotfiles/fish ~/.config/fish
 SYMLINKS+=('Fish')
 ln -sf ~/Developer/dotfiles/.zshrc ~/.zshrc
 SYMLINKS+=('.zshrc')
+ln -sf ~/Developer/dotfiles/alacritty ~/.config/alacritty
+SYMLINKS+=('Alacritty')
 ln -sf ~/Developer/dotfiles/wezterm ~/.config/wezterm
 SYMLINKS+=('wezterm')
 ln -sf ~/Developer/dotfiles/Brewfile ~/Brewfile

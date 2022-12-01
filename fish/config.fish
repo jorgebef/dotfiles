@@ -1,9 +1,13 @@
 # set fish_greeting "🐟"
-set fish_greeting ""
+# set fish_greeting ""
+function fish_greeting
+    pokemon-colorscripts -r --no-title
+end
 
 fish_vi_key_bindings
 
 # Aliases
+# NO NEED TO SOURCE SINCE IT IT SOURCED BY DEFAULT
 # source $HOME/.config/fish/conf.d/abbr.fish
 
 # ~/.config/fish/config.fish

@@ -4,6 +4,7 @@ SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_cp:cp\x20\x2di
 SETUVAR _fish_abbr_dev:cd\x20\x7e/Developer
 SETUVAR _fish_abbr_h:history
+SETUVAR _fish_abbr_kekw:echo\x20\x27KEKW\x27
 SETUVAR _fish_abbr_mkdir:mkdir\x20\x2dp
 SETUVAR _fish_abbr_mv:mv\x20\x2di
 SETUVAR _fish_abbr_rm:rm\x20\x2di
