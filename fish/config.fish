@@ -1,7 +1,10 @@
 # set fish_greeting "🐟"
 # set fish_greeting ""
+
+fish_add_path /usr/local/bin/
+
 function fish_greeting
-    pokemon-colorscripts -r --no-title
+  pokemon-colorscripts -r --no-title
 end
 
 fish_vi_key_bindings

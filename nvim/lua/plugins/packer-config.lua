@@ -107,10 +107,6 @@ packer.startup(function()
     },
   })
 
-  -- Formatting
-  -- =======================
-  -- use({ "mhartington/formatter.nvim" })
-
   use("mbbill/undotree")
 
   -- Autocompletion
@@ -129,6 +125,8 @@ packer.startup(function()
       { "onsails/lspkind-nvim" },
     },
   })
+  -- use({'ms-jpq/coq_nvim', branch= 'coq'})
+  -- use({'ms-jpq/coq.artifacts', branch= 'artifacts'})
 
   use({
     "catppuccin/nvim",

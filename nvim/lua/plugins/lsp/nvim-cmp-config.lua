@@ -2,7 +2,7 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
-require("lspkind").init({
+lspkind.init({
   mode = "symbol_text",
   -- default symbol map
   -- can be either 'default' (requires nerd-fonts font) or
@@ -54,7 +54,7 @@ cmp.setup({
     -- }),
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
-      local kind = require("lspkind").cmp_format({
+      local kind = lspkind.cmp_format({
         mode = "symbol_text",
         with_text = true,
         maxwidth = 70,

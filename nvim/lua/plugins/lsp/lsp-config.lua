@@ -2,6 +2,7 @@ local lspconfig = require("lspconfig")
 local icons = require("icons")
 local navic = require("nvim-navic")
 local util = require("util")
+-- local coq = require('coq')
 
 local signs = {
   Error = icons.diagnostics.Error,
@@ -46,7 +47,7 @@ local handlers = {
 --Enable (broadcasting) snippet capability for completion
 -- ================================================
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -166,12 +167,13 @@ local servers = {
       hostInfo = "neovim",
     },
     handlers = util.table_merge({
+      -- update_in_insert = false,
       -- ["textDocument/definition"] = require("utils.lsp_handlers").ts_definition_handler,
     }, handlers),
     root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
     on_attach = function(client, bufnr)
       default_on_attach(client, bufnr)
-      client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+      -- client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
       local ts_utils = require("nvim-lsp-ts-utils")
       ts_utils.setup({})
       ts_utils.setup_client(client)
@@ -385,6 +387,8 @@ for _, server in pairs(servers) do
   end
 
   config.setup(opts)
+  -- config.setup(coq.lsp_ensure_capabilities(opts))
+  -- vim.cmd('COQnow -s')
   -- end
 end
 
@@ -406,10 +410,10 @@ vim.keymap.set("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',f
 vim.keymap.set("n", "[w", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", ns_opts)
 vim.keymap.set("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", ns_opts)
 
--- map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", ns_opts)
 -- ============================================================
 -- USING NULL-LS
-vim.keymap.set("n", "<leader>lf", ":LspFormat<CR>", ns_opts)
+-- vim.keymap.set("n", "<leader>lf", ":LspFormat<CR>", ns_opts)
+vim.keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", ns_opts)
 -- ============================================================
 -- Telescope does go to definition better than nvim-lsp
 -- map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)

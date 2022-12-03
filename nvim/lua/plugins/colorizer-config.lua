@@ -29,6 +29,7 @@ require("colorizer").setup({
     css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
     -- Available modes for `mode`: foreground, background,  virtualtext
     mode = "background", -- Set the display mode.
+    -- mode = 'virtualtext', -- Set the display mode.
     -- Available methods are false / true / "normal" / "lsp" / "both"
     -- True is same as normal
     tailwind = "both", -- Enable tailwind colors
@@ -40,4 +41,9 @@ require("colorizer").setup({
   buftypes = {},
 })
 
-vim.keymap.set("n", "<leader>Cr", ":ColorizerReloadAllBuffers<cr>", { noremap = true, silent = true, nowait = true })
+vim.keymap.set(
+  "n",
+  "<leader>cr",
+  ":ColorizerDetachFromBuffer<cr> | :ColorizerAttachToBuffer<cr>",
+  { noremap = true, silent = true, nowait = true }
+)
