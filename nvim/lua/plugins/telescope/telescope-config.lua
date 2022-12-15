@@ -41,6 +41,13 @@ telescope.setup({
   defaults = {
     prompt_prefix = icons.ui.Telescope .. " " .. icons.misc.Carat,
     selection_caret = icons.ui.Arrow,
+    -- layout_config = {
+    --   height = 0.9,
+    --   preview_cutoff = 120,
+    --   width = 0.8,
+    --   prompt_position = "top",
+    -- },
+    -- sorting_strategy = "ascending",
     -- -- ====================================================
     -- -- IT IS VERY SLOW TO RELY ON FILE IGNORE PATTERNS
     -- -- ====================================================
@@ -119,6 +126,7 @@ telescope.load_extension("file_browser")
 local nsn_opts = { noremap = true, silent = true, nowait = true }
 -- remap("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files({sort_lastused=true})<cr>', nsn_opts)
 vim.keymap.set("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files()<cr>', nsn_opts)
+vim.keymap.set("n", "<leader>fj", '<cmd>lua require("telescope.builtin").jumplist()<cr>', nsn_opts)
 vim.keymap.set("n", "<leader>fF", '<cmd>lua require("telescope-functions").project_files()<cr>', nsn_opts)
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope file_browser<cr>", nsn_opts)
 vim.keymap.set("n", "<leader>fG", '<cmd>lua require("telescope.builtin").git_files()<cr>', nsn_opts)

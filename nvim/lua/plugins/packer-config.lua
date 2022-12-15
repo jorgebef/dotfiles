@@ -31,6 +31,11 @@ packer.startup(function()
   -- =======================
   use("wbthomason/packer.nvim")
 
+  use("christoomey/vim-tmux-navigator")
+  vim.cmd([[ 
+  let  g:tmux_navigator_no_wrap = 1
+  ]])
+
   -- == Dashboard on startup
   -- =======================
   use("glepnir/dashboard-nvim")

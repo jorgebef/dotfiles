@@ -25,8 +25,6 @@ truncation_symbol = "…/"
 home_symbol = "🏠"
 truncate_to_repo = false
 style = "bold bg:#313244 fg:white"
-# format = "[ $path ]($style)[](bold fg:black bg:purple)[ 🚀 ](fg:#313244 bg:black)[$read_only]($read_only_style)"
-# format = "[ $path ]($style)[](bold bg:#313244 fg:#1E1E2E)[$read_only]($read_only_style)"
 format = "[ $path ]($style)(bold bg:#313244 fg:#1E1E2E)[$read_only]($read_only_style)"
 
 [directory.substitutions]
