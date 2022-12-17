@@ -1,8 +1,8 @@
-# Navigation
-#ctrl + alt + cmd - h : yabai -m window --focus west
-#ctrl + alt + cmd - j : yabai -m window --focus south
-#ctrl + alt + cmd - k : yabai -m window --focus north
-#ctrl + alt + cmd - l : yabai -m window --focus east
+# # Navigation
+# ctrl + alt + cmd - h : yabai -m window --focus west
+# ctrl + alt + cmd - j : yabai -m window --focus south
+# ctrl + alt + cmd - k : yabai -m window --focus north
+# ctrl + alt + cmd - l : yabai -m window --focus east
 
 # ctrl + alt + cmd - i : yabai -m window --focus prev
 # ctrl + alt + cmd - o : yabai -m window --focus next
@@ -16,7 +16,7 @@ ctrl + alt + cmd - i : yabai -m display --focus next
 ctrl + alt + cmd - o : yabai -m display --focus prev
 
 # float / unfloat window and center on screen
-ctrl + alt + cmd - u : yabai -m window --toggle float;\
+ctrl + alt - u : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 # # cycle forwards on the focused display
@@ -34,23 +34,23 @@ ctrl + alt + cmd - u : yabai -m window --toggle float;\
 # ctrl + alt + cmd - n : yabai -m window --focus next || yabai -m window --focus first
 # ctrl + alt + cmd - p : yabai -m window --focus prev || yabai -m window --focus last
 
-# send to display and follow focus
-ctrl + alt + cmd - left : \
-  cur_window="$(yabai -m query --windows --window | jq '.id')" && \
-  yabai -m window --display next && yabai -m window --focus ${cur_window}
+# # send to display and follow focus
+# ctrl + alt + cmd - left : \
+#   cur_window="$(yabai -m query --windows --window | jq '.id')" && \
+#   yabai -m window --display next && yabai -m window --focus ${cur_window}
 
-ctrl + alt + cmd - right : \
-  cur_window="$(yabai -m query --windows --window | jq '.id')" && \
-  yabai -m window --display prev && yabai -m window --focus ${cur_window}
+# ctrl + alt + cmd - right : \
+#   cur_window="$(yabai -m query --windows --window | jq '.id')" && \
+#   yabai -m window --display prev && yabai -m window --focus ${cur_window}
 
-# send to space and follow focus
-ctrl + alt + cmd + shift - h : \
-  cur_window="$(yabai -m query --windows --window | jq '.id')" && \
-  yabai -m window --space prev && yabai -m window --focus ${cur_window}
+# # send to space and follow focus
+# ctrl + alt + cmd + shift - h : \
+#   cur_window="$(yabai -m query --windows --window | jq '.id')" && \
+#   yabai -m window --space prev && yabai -m window --focus ${cur_window}
 
-ctrl + alt + cmd + shift - l : \
-  cur_window="$(yabai -m query --windows --window | jq '.id')" && \
-  yabai -m window --space next && yabai -m window --focus ${cur_window}
+# ctrl + alt + cmd + shift - l : \
+#   cur_window="$(yabai -m query --windows --window | jq '.id')" && \
+#   yabai -m window --space next && yabai -m window --focus ${cur_window}
 
 # alt - d : yabai -m window --toggle zoom-parent
 # ctrl + alt + cmd - return : yabai -m window --toggle zoom-fullscreen

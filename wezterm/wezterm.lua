@@ -49,7 +49,8 @@ return {
 
   -- Enable CSI u mode
   -- https://wezfurlong.org/wezterm/config/lua/config/enable_csi_u_key_encoding.html
-  -- enable_csi_u_key_encoding = false,
+  -- This enables using C-. and C-, as keybindings in TMUX for example
+  enable_csi_u_key_encoding = true,
 
   disable_default_key_bindings = true,
 
@@ -60,7 +61,7 @@ return {
       mods = "CMD",
       action = wezterm.action.CloseCurrentTab({ confirm = true }),
     },
-    -- { key = "v", mods = "CMD", action = "PasteFrom='Clipboard'" },
+    { key = "v", mods = "CMD", action = wezterm.action({ PasteFrom = "Clipboard" }) },
     -- { key = "p", mods = modifiers, action = wezterm.action({ ActivateTabRelative = -1 }) },
     -- {
     -- 	key = "Space",
@@ -90,15 +91,15 @@ return {
     --     },
     --   }),
     -- },
-    {
-      key = "ñ",
-      mods = modifiers,
-      action = wezterm.action({
-        SplitHorizontal = {
-          domain = "CurrentPaneDomain",
-        },
-      }),
-    },
+    -- {
+    --   key = "ñ",
+    --   mods = modifiers,
+    --   action = wezterm.action({
+    --     SplitHorizontal = {
+    --       domain = "CurrentPaneDomain",
+    --     },
+    --   }),
+    -- },
 
     -- keybind(
     -- 	modifiers,

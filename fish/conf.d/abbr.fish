@@ -6,3 +6,4 @@
 # abbr which "type -a"
 # abbr ls "exa -lag --header"
 abbr dev "cd ~/Developer"
+abbr dots "cd ~/Developer/dotfiles/"

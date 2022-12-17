@@ -46,8 +46,8 @@ font:
 
 draw_bold_text_with_bright_colors: false
 
-mouse:
-  hide_when_typing: false
+# mouse:
+#   hide_when_typing: false
 
 hints:
   enabled:
@@ -64,7 +64,19 @@ hints:
         key: U
         mods: Control|Shift
 
-# key_bindings:
+key_bindings:
+  # This enables using C-. or C-; or C-, as keybindings in TMUX for example
+  # https://github.com/ziontee113/yt-tutorials/tree/nvim_key_combos_in_alacritty_and_kitty
+  - { key: Period, mods: Control, chars: "\x1b[46;5u" }
+  - { key: Comma, mods: Control, chars: "\x1b[44;5u" }
+  # This tricks the terminal into thinking that I pressed Alt + z
+  - { key: Semicolon, mods: Control, chars: "\x1bz" }
+  - { key: Space, mods: Control, chars: "\x00" }
+
+  # - { key: Semicolon, mods: Control, chars: "\x1b[59;5u" }
+  # - { key: Comma, mods: Alt, chars: "\x1b," }
+  # - { key: Period, mods: Alt, chars: "\x1b." }
+  # - { key: Space, mods: Alt, chars: "\x1b " }
 #   - { key: Comma, mods: Command, chars: "\x02," }
 #   - { key: D, mods: Command, chars: "\x02K" }
 #   - { key: F, mods: Command, chars: "lfcd\n" }

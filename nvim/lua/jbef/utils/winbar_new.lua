@@ -2,8 +2,8 @@ local M = {}
 
 -- local cp = require("catppuccin.palettes").get_palette()
 local navic = require("nvim-navic")
-local util = require("util")
-local icons = require("icons")
+local util = require("jbef.util")
+local icons = require("jbef.icons")
 
 M.winbar_filetype_exclude = {
 	"help",

@@ -149,6 +149,16 @@ _G.packer_plugins = {
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   ["mini.nvim"] = {
     loaded = true,
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/mini.nvim",
@@ -254,6 +264,11 @@ _G.packer_plugins = {
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
+  ["telescope-zf-native.nvim"] = {
+    loaded = true,
+    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/telescope-zf-native.nvim",
+    url = "https://github.com/natecraddock/telescope-zf-native.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -268,6 +283,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/vim-repeat",
     url = "https://github.com/tpope/vim-repeat"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
   },
   ["which-key.nvim"] = {
     loaded = true,

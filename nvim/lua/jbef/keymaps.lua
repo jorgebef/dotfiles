@@ -9,10 +9,6 @@ vim.keymap.set("v", "j", "gj", { nowait = true, silent = true })
 vim.keymap.set("n", "k", "gk", { nowait = true, silent = true })
 vim.keymap.set("v", "k", "gk", { nowait = true, silent = true })
 
--- vim.keymap.set("n", "ñ", ";", { nowait = true })
--- vim.keymap.set("n", "Ñ", ":", { nowait = true })
--- vim.keymap.set("", "-", "/", { nowait = true })
-
 -- " =========================== FUNCTIONAL REMAPS =============================
 vim.keymap.set("n", "<leader>w", ":silent write<cr>", nsn_opts)
 vim.keymap.set("n", "<leader>q", ":q<cr>", nsn_opts)
@@ -42,10 +38,6 @@ vim.keymap.set("n", "<leader>o", 'o<esc>0"_D<esc>', ns_opts)
 vim.keymap.set("n", "<leader>O", 'O<esc>0"_D<esc>', ns_opts)
 
 vim.keymap.set("n", "<esc>", ':noh<cr>:echo""<esc>', nsn_opts)
-
--- remap("n", "<leader>bd", ":b#|bd#<cr>", n_opts)
--- nvim_remap('n', '<leader>S', ':mksession!<cr>', { noremap = true, silent = false })
--- don't need this with vim-obsession
 
 -- buffer navigation
 vim.keymap.set("n", "<leader>bn", ":bn<cr>", nsn_opts)
@@ -82,15 +74,16 @@ vim.keymap.set("n", "<leader>-", "<C-w>8<", nsn_opts)
 vim.keymap.set("n", "<leader>sv", ":vs<CR>", nsn_opts)
 vim.keymap.set("n", "<leader>sh", ":split<CR>", nsn_opts)
 
-function _G.reload_nvim_conf()
-  for name, _ in pairs(package.loaded) do
-    if name:match("^core") or name:match("^lsp") or name:match("^plugins") then
-      package.loaded[name] = nil
-    end
-  end
-
-  dofile(vim.env.MYVIMRC)
-  vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
+local function reload_nvim_conf()
+	for name, _ in pairs(package.loaded) do
+		if name:match("^core") or name:match("^lsp") or name:match("^plugins") then
+			package.loaded[name] = nil
+		end
+	end
+	dofile(vim.env.MYVIMRC)
+	vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
 end
 
-vim.keymap.set("n", "<leader>cR", "<cmd>lua reload_nvim_conf()<CR>", nsn_opts)
+vim.keymap.set("n", "<leader>cR", function()
+	reload_nvim_conf()
+end, nsn_opts)

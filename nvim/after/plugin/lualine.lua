@@ -1,4 +1,4 @@
-local icons = require("icons")
+local icons = require("jbef.icons")
 local cp = require("catppuccin.palettes").get_palette("mocha")
 
 local navic = require("nvim-navic")

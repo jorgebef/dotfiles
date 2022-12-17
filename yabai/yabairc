@@ -54,6 +54,9 @@ yabai -m rule --add app="Raycast" manage=off
 yabai -m rule --add app="^Music$" manage=off
 yabai -m rule --add app="^Transmission$" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
-yabai -m rule --add app="^Forticlient" manage=off
+yabai -m rule --add app="^FortiClient" manage=off
+yabai -m rule --add app="^Zoom" manage=off
+yabai -m rule --add app="^zoom" manage=off
+yabai -m rule --add app="^Finder$" manage=off
 
 echo "yabai configuration loaded.."
