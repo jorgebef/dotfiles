@@ -3,6 +3,7 @@ local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local icons = require("jbef.icons")
 local navic = require("nvim-navic")
+local cmp = require("cmp_nvim_lsp")
 -- local util = require("util")
 
 mason.setup()
@@ -98,16 +99,7 @@ local function on_attach(client, bufnr)
 	-- USING NULL-LS
 	-- vim.keymap.set("n", "<leader>lf", ":LspFormat<CR>", ns_opts)
 	vim.keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
-	-- ============================================================
-	-- Telescope does go to definition better than nvim-lsp
-	-- map("n", "<leader>ld", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', ns_opts)
-	-- CUSTOM GO TO DEFINITION
-	-- map("n", "<leader>ld", '<cmd> lua require("utils.lsp_handlers").goto_definition()<CR>', ns_opts)
-	-- map("n", "<leader>ld", ":LspDef<CR>", ns_opts)
-	-- ============================================================
 	-- vim.keymap.set("n", "<leader>ld", "<cmd> lua vim.lsp.buf.definition()<CR>", ns_opts)
-	-- vim.keymap.set("n", "<leader>lh", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', ns_opts)
-	-- vim.keymap.set("n", "<leader>lrr", require("plugins/lsp/custom-functions").LspRename, ns_opts)
 	-- vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
 	-- vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>", ns_opts)
 	vim.keymap.set("n", "<leader>lI", function()
@@ -131,7 +123,7 @@ local function on_attach(client, bufnr)
 	end
 end
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = cmp.default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- =======================================================================

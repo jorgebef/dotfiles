@@ -58,5 +58,6 @@ yabai -m rule --add app="^FortiClient" manage=off
 yabai -m rule --add app="^Zoom" manage=off
 yabai -m rule --add app="^zoom" manage=off
 yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^Font Book$" manage=off
 
 echo "yabai configuration loaded.."
