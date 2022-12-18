@@ -80,47 +80,97 @@ local function on_attach(client, bufnr)
 		navic.attach(client, bufnr)
 	end
 
-	local opts = { noremap = true, silent = true }
+	local remap_opts = { noremap = true, silent = true }
 
-	vim.keymap.set("n", "<leader>lD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	-- vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", ns_opts)
+	vim.keymap.set("n", "<leader>lD", function()
+		vim.lsp.buf.type_definition()
+	end, remap_opts)
 
-	-- vim.keymap.set("n", "<leader>lw", "<cmd>lua vim.diagnostic.goto_next({severity={max='WARN'},float=true})<CR>", ns_opts)
-	-- vim.keymap.set("n", "<leader>le", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',float=true})<CR>", ns_opts)
-	-- vim.keymap.set("n", "<leader>lW", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", ns_opts)
-	-- vim.keymap.set("n", "<leader>lE", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", ns_opts)
+	vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", remap_opts)
 
-	vim.keymap.set("n", "]w", "<cmd>lua vim.diagnostic.goto_next({severity={max='WARN'},float=true})<CR>", opts)
-	vim.keymap.set("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity='ERROR',float=true})<CR>", opts)
-	vim.keymap.set("n", "[w", "<cmd>lua vim.diagnostic.goto_prev({severity={max='WARN'},float=true})<CR>", opts)
-	vim.keymap.set("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity='ERROR',float=true})<CR>", opts)
+	-- Jump to diagnostics
+	vim.keymap.set("n", "]w", function()
+		vim.diagnostic.goto_next({ severity = { max = "WARN" }, float = true })
+	end, remap_opts)
+	vim.keymap.set("n", "]e", function()
+		vim.diagnostic.goto_next({ severity = "ERROR", float = true })
+	end, remap_opts)
+	vim.keymap.set("n", "[w", function()
+		vim.diagnostic.goto_prev({ severity = { max = "WARN" }, float = true })
+	end, remap_opts)
+	vim.keymap.set("n", "[e", function()
+		vim.diagnostic.goto_prev({ severity = "ERROR", float = true })
+	end, remap_opts)
 
 	-- ============================================================
 	-- USING NULL-LS
 	-- vim.keymap.set("n", "<leader>lf", ":LspFormat<CR>", ns_opts)
-	vim.keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
-	-- vim.keymap.set("n", "<leader>ld", "<cmd> lua vim.lsp.buf.definition()<CR>", ns_opts)
+
+	vim.keymap.set("n", "<leader>lf", function()
+		vim.lsp.buf.format({ async = true })
+	end, remap_opts)
+
+	vim.keymap.set("n", "<leader>ld", function()
+		vim.lsp.buf.definition()
+	end, remap_opts)
+
 	-- vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
-	-- vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover({focusable=false})<CR>", ns_opts)
+
+	vim.keymap.set("n", "K", function()
+		vim.lsp.buf.hover({ focusable = false })
+	end, remap_opts)
+
 	vim.keymap.set("n", "<leader>lI", function()
 		vim.lsp.buf.implementation()
-	end, opts)
+	end, remap_opts)
+
 	vim.keymap.set("i", "<C-k>", function()
 		vim.lsp.buf.signature_help()
-	end, opts)
+	end, remap_opts)
 
 	if client.name == "tsserver" then
 		local ts_utils = require("nvim-lsp-ts-utils")
 		ts_utils.setup({})
 		ts_utils.setup_client(client)
-		-- -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+		vim.keymap.set("n", "<leader>lo", function()
+			vim.cmd.TSLspOrganize()
+		end)
 		vim.keymap.set("n", "<leader>lR", function()
 			vim.cmd.TSLspRenameFile()
-		end, opts)
+		end, remap_opts)
 		vim.keymap.set("n", "<leader>li", function()
 			vim.cmd.TSLspImportAll()
-		end, opts)
+		end, remap_opts)
 	end
+
+	-- Function to check if a floating dialog exists and if not
+	-- then check for diagnostics under the cursor
+	function OpenDialogIfNoFloat()
+		for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+			if vim.api.nvim_win_get_config(winid).zindex then
+				return
+			end
+		end
+		vim.diagnostic.open_float(0, {
+			scope = "cursor",
+			focusable = false,
+			close_events = {
+				"CursorMoved",
+				"CursorMovedI",
+				"BufHidden",
+				"InsertCharPre",
+				"WinLeave",
+			},
+		})
+	end
+
+	-- Show diagnostics under the cursor when holding position
+	vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+	vim.api.nvim_create_autocmd({ "CursorHold" }, {
+		pattern = "*",
+		command = "lua OpenDialogIfNoFloat()",
+		group = "lsp_diagnostics_hold",
+	})
 end
 
 local capabilities = cmp.default_capabilities()

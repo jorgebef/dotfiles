@@ -1,8 +1,8 @@
-# # Navigation
-# ctrl + alt + cmd - h : yabai -m window --focus west
-# ctrl + alt + cmd - j : yabai -m window --focus south
-# ctrl + alt + cmd - k : yabai -m window --focus north
-# ctrl + alt + cmd - l : yabai -m window --focus east
+# Navigation
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
 
 # ctrl + alt + cmd - i : yabai -m window --focus prev
 # ctrl + alt + cmd - o : yabai -m window --focus next
@@ -16,7 +16,7 @@ ctrl + alt + cmd - i : yabai -m display --focus next
 ctrl + alt + cmd - o : yabai -m display --focus prev
 
 # float / unfloat window and center on screen
-ctrl + alt - u : yabai -m window --toggle float;\
+alt - u : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 # # cycle forwards on the focused display
