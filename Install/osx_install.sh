@@ -22,38 +22,38 @@ brew install zoxide
 #==============
 # Remove old dot flies
 #==============
-sudo rm -rf ~/.tmux.conf > /dev/null 2>&1
-sudo rm -rf ~/.zshrc > /dev/null 2>&1
-sudo rm -rf ~/.config/kitty > /dev/null 2>&1
-sudo rm -rf ~/.config/nvim > /dev/null 2>&1
-sudo rm -rf ~/Brewfile > /dev/null 2>&1
-sudo rm -rf ~/wezterm > /dev/null 2>&1
+sudo rm -rf $HOME/.tmux.conf > /dev/null 2>&1
+sudo rm -rf $HOME/.zshrc > /dev/null 2>&1
+sudo rm -rf $HOME/.config/kitty > /dev/null 2>&1
+sudo rm -rf $HOME/.config/nvim > /dev/null 2>&1
+sudo rm -rf $HOME/Brewfile > /dev/null 2>&1
+sudo rm -rf $HOME/wezterm > /dev/null 2>&1
 
 #==============
 # Create symlinks in the home folder
 # Allow overriding with files of matching names in the custom-configs dir
 #==============
 SYMLINKS=()
-ln -sf ~/Developer/dotfiles/nvim ~/.config/nvim
+ln -sf $HOME/Developer/dotfiles/nvim $HOME/.config/nvim
 SYMLINKS+=('nvim')
-ln -sf ~/Developer/dotfiles/kitty ~/.config/kitty
+ln -sf $HOME/Developer/dotfiles/kitty $HOME/.config/kitty
 SYMLINKS+=('Kitty')
-ln -sf ~/Developer/dotfiles/custom-scripts ~/.custom-scripts
+ln -sf $HOME/Developer/dotfiles/custom-scripts $HOME/.custom-scripts
 SYMLINKS+=('custom-scripts')
-mkdir ~/.config/tmux
-ln -sf ~/Developer/dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
+mkdir $HOME/.config/tmux
+ln -sf $HOME/Developer/dotfiles/tmux/tmux.conf $HOME/.config/tmux/tmux.conf
 SYMLINKS+=('tmux')
-ln -sf ~/Developer/dotfiles/starship.toml ~/.config/starship.toml
+ln -sf $HOME/Developer/dotfiles/starship.toml $HOME/.config/starship.toml
 SYMLINKS+=('starship')
-ln -sf ~/Developer/dotfiles/fish ~/.config/fish
+ln -sf $HOME/Developer/dotfiles/fish $HOME/.config/fish
 SYMLINKS+=('Fish')
-ln -sf ~/Developer/dotfiles/.zshrc ~/.zshrc
+ln -sf $HOME/Developer/dotfiles/.zshrc $HOME/.zshrc
 SYMLINKS+=('.zshrc')
-ln -sf ~/Developer/dotfiles/alacritty ~/.config/alacritty
+ln -sf $HOME/Developer/dotfiles/alacritty $HOME/.config/alacritty
 SYMLINKS+=('Alacritty')
-ln -sf ~/Developer/dotfiles/wezterm ~/.config/wezterm
+ln -sf $HOME/Developer/dotfiles/wezterm $HOME/.config/wezterm
 SYMLINKS+=('wezterm')
-ln -sf ~/Developer/dotfiles/Brewfile ~/Brewfile
+ln -sf $HOME/Developer/dotfiles/Brewfile $HOME/Brewfile
 SYMLINKS+=('Brewfile')
 
 echo ${SYMLINKS[@]}

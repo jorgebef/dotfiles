@@ -3,7 +3,7 @@ local M = {}
 -- local cp = require("catppuccin.palettes").get_palette()
 local navic = require("nvim-navic")
 local util = require("jbef.util")
-local icons = require("jbef.icons")
+local ui = require("jbef.ui")
 
 M.winbar_filetype_exclude = {
 	"help",
@@ -30,7 +30,7 @@ end
 
 local function get_modified()
 	if util.get_buf_option("mod") then
-		local mod = icons.ui.Circle
+		local mod = ui.common.Circle
 		local modHighlight
 		if vim.g.actual_curwin == tostring(vim.api.nvim_get_current_win()) then
 			modHighlight = "%#WinBarModActive#"

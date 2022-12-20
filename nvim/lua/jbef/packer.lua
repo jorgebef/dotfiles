@@ -132,6 +132,14 @@ packer.startup(function()
 
 	use("mbbill/undotree")
 
+	-- == Easier navigation around
+	-- =======================
+	use("ggandor/leap.nvim")
+
+	use("tpope/vim-repeat")
+
+	use("folke/which-key.nvim")
+
 	use({
 		"catppuccin/nvim",
 		branch = "main",
@@ -140,14 +148,6 @@ packer.startup(function()
 	})
 
 	use("nvim-lualine/lualine.nvim")
-
-	-- == Easier navigation around
-	-- =======================
-	use("ggandor/leap.nvim")
-
-	use("tpope/vim-repeat")
-
-	use("folke/which-key.nvim")
 
 	-- == KEEP DEVICONS LAST FOR CORRECT LOADING
 	use("kyazdani42/nvim-web-devicons")

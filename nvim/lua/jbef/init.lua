@@ -1,46 +1,28 @@
 -- ======================== REQUIRE EXTRA FILES ===================
 require("jbef.options")
 require("jbef.keymaps")
-require("jbef.packer")
+require("jbef.keymaps-leader")
 
--- ==============================================
--- ========= TURN ALL JSON INTO JSONC ===========
--- ==============================================
-vim.api.nvim_create_augroup("jsoncComments", { clear = true })
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = "json",
-	command = "set filetype=jsonc",
-	group = "jsoncComments",
-})
+-- prepare the package manager
+-- https://github.com/folke/lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"--single-branch",
+		"https://github.com/folke/lazy.nvim.git",
+		lazypath,
+	})
+else
+	vim.opt.runtimepath:prepend(lazypath)
+	require("jbef.plugins")
+end
 
---[[ local envGroup = vim.api.nvim_create_augroup("__env", { clear = true }) ]]
---[[ vim.api.nvim_create_autocmd("BufEnter", { ]]
---[[ 	pattern = ".env*", ]]
---[[ 	group = envGroup, ]]
---[[ 	callback = function(args) ]]
---[[ 		vim.diagnostic.disable(args.buf) ]]
---[[ 	end, ]]
---[[ }) ]]
+-- this uses packer package manager
+-- require("jbef.packer")
 
--- vim.api.nvim_create_augroup("jsoncComments", { clear = true })
--- vim.api.nvim_create_autocmd({ "BufEnter" }, {
--- 	pattern = "*config.json",
--- 	command = "set filetype=jsonc",
--- 	group = "jsoncComments",
--- })
+require("jbef.autocommands")
 
-vim.api.nvim_create_augroup("highlight_yank", { clear = true })
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-	pattern = "*",
-	command = 'lua vim.highlight.on_yank { higroup="IncSearch", timeout=250 }',
-	group = "highlight_yank",
-})
-
-vim.api.nvim_create_augroup("CursorLine", { clear = true })
-vim.api.nvim_create_autocmd(
-	{ "VimEnter", "WinEnter", "BufRead", "BufWinEnter" },
-	{ pattern = "*[^{T}]", command = 'setlocal cursorline | :echo""', group = "CursorLine" }
-)
-vim.api.nvim_create_autocmd({ "WinLeave" }, { pattern = "*", command = "setlocal nocursorline", group = "CursorLine" })
-
-vim.cmd([[colorscheme catppuccin]])
+vim.cmd.colorscheme("catppuccin")

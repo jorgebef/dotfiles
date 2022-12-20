@@ -53,7 +53,7 @@ alt - u : yabai -m window --toggle float;\
 #   yabai -m window --space next && yabai -m window --focus ${cur_window}
 
 # alt - d : yabai -m window --toggle zoom-parent
-# ctrl + alt + cmd - return : yabai -m window --toggle zoom-fullscreen
+alt - return : yabai -m window --toggle zoom-fullscreen
 
 # toggle window zoom 
 # ctrl + alt +cmd - f : \

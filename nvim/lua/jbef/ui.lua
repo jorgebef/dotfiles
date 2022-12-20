@@ -60,7 +60,7 @@ M.git = {
 	Repo = " ",
 }
 
-M.ui = {
+M.common = {
 	Arrow = " ",
 	Lock = " ",
 	Circle = " ",
@@ -117,6 +117,19 @@ M.misc = {
 	Ghost1 = " ",
 	Ghost2 = " ",
 	Carat = " ",
+}
+
+M.border = {
+	Single = {
+		{ "╭", "FloatBorder" },
+		{ "─", "FloatBorder" },
+		{ "╮", "FloatBorder" },
+		{ "│", "FloatBorder" },
+		{ "╯", "FloatBorder" },
+		{ "─", "FloatBorder" },
+		{ "╰", "FloatBorder" },
+		{ "│", "FloatBorder" },
+	},
 }
 
 return M

@@ -1,7 +1,7 @@
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
-local icons = require("jbef.icons")
+local ui = require("jbef.ui")
 local navic = require("nvim-navic")
 local cmp = require("cmp_nvim_lsp")
 -- local util = require("util")
@@ -22,10 +22,10 @@ mason_lspconfig.setup({
 })
 
 local signs = {
-	Error = icons.diagnostics.Error,
-	Warning = icons.diagnostics.Warning,
-	Hint = icons.diagnostics.Hint,
-	Information = icons.diagnostics.Information,
+	Error = ui.diagnostics.Error,
+	Warning = ui.diagnostics.Warning,
+	Hint = ui.diagnostics.Hint,
+	Information = ui.diagnostics.Information,
 }
 
 for type, icon in pairs(signs) do
@@ -34,16 +34,16 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-local border = {
-	{ "╭", "FloatBorder" },
-	{ "─", "FloatBorder" },
-	{ "╮", "FloatBorder" },
-	{ "│", "FloatBorder" },
-	{ "╯", "FloatBorder" },
-	{ "─", "FloatBorder" },
-	{ "╰", "FloatBorder" },
-	{ "│", "FloatBorder" },
-}
+-- local border = {
+-- 	{ "╭", "FloatBorder" },
+-- 	{ "─", "FloatBorder" },
+-- 	{ "╮", "FloatBorder" },
+-- 	{ "│", "FloatBorder" },
+-- 	{ "╯", "FloatBorder" },
+-- 	{ "─", "FloatBorder" },
+-- 	{ "╰", "FloatBorder" },
+-- 	{ "│", "FloatBorder" },
+-- }
 
 -- Do not forget to use the on_attach function
 -- require 'lspconfig'.myserver.setup { handlers=handlers }
@@ -51,7 +51,7 @@ local border = {
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 local function improved_floating_preview(contents, syntax, opts, ...)
 	opts = opts or {}
-	opts.border = opts.border or border
+	opts.border = opts.border or ui.border.Single
 	return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
@@ -59,8 +59,8 @@ vim.lsp.util.open_floating_preview = improved_floating_preview
 
 -- LSP settings (for overriding per client)
 local handlers = {
-	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = ui.border.Single }),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = ui.border.Single }),
 	["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 		virtual_text = false,
 		underline = true,

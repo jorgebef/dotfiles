@@ -1,4 +1,4 @@
-local icons = require("jbef.icons")
+local ui = require("jbef.ui")
 local cp = require("catppuccin.palettes").get_palette("mocha")
 
 local navic = require("nvim-navic")
@@ -45,7 +45,7 @@ require("lualine").setup({
         "branch",
         separator = {
           -- right = icons.ui.SeparatorLEndAngle,
-          right = icons.ui.SeparatorSquare,
+          right = ui.common.SeparatorSquare,
         },
         color = { fg = nil, bg = cp.surface0, gui = nil },
         padding = { left = 2, right = 1 },
@@ -59,7 +59,7 @@ require("lualine").setup({
         -- 	removed = { fg = cp.red, bg = nil }, -- changes diagnostic's error color
         -- },
         separator = {
-          right = icons.ui.SeparatorSquare,
+          right = ui.common.SeparatorSquare,
         },
         color = { fg = nil, bg = cp.surface0, gui = nil },
         padding = 1,
@@ -82,10 +82,10 @@ require("lualine").setup({
         sections = { "error", "warn", "info", "hint" },
         -- symbols = { error = " ", warn = " ", info = " " },
         symbols = {
-          error = icons.diagnostics.Error,
-          warning = icons.diagnostics.Warning,
-          info = icons.diagnostics.Information,
-          hint = icons.diagnostics.Hint,
+          error = ui.diagnostics.Error,
+          warning = ui.diagnostics.Warning,
+          info = ui.diagnostics.Information,
+          hint = ui.diagnostics.Hint,
         },
         colored = true, -- displays diagnostics status in color if set to true
         update_in_insert = false, -- Update diagnostics in insert mode
@@ -137,9 +137,9 @@ require("lualine").setup({
         "filename",
         color = "WinBarFilenameActive",
         separator = {
-          left = icons.ui.SeparatorLStart,
+          left = ui.common.SeparatorLStart,
           -- right = icons.ui.SeparatorLEndAngle,
-          right = icons.ui.SeparatorSquare,
+          right = ui.common.SeparatorSquare,
         },
         -- separator = { left = "█", right = "" },
         left_padding = 1,
