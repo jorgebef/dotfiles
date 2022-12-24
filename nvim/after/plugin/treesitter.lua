@@ -20,11 +20,11 @@ require("nvim-treesitter.configs").setup({
       set_jumps = true,
       goto_next_start = {
         ["]m"] = "@function.outer",
-        ["[["] = "@parameter.inner",
+        ["]]"] = "@parameter.inner",
       },
       goto_previous_start = {
         ["[M"] = "@function.outer",
-        ["]]"] = "@parameter.inner",
+        ["[["] = "@parameter.inner",
       },
       goto_next_end = {
         ["]M"] = "@function.outer",
@@ -57,7 +57,7 @@ require("nvim-treesitter.configs").setup({
     -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
     -- the name of the parser)
     -- list of language that will be disabled
-    disable = { "c", "rust" },
+    -- disable = { "c" },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -89,6 +89,13 @@ require("nvim-treesitter.configs").setup({
   autotag = {
     enable = true,
   },
+
+  -- matchup = {
+  --   enable = true, -- mandatory, false will disable the whole extension
+  --   disable = { "c", "ruby" }, -- optional, list of language that will be disabled
+  --   -- [options]
+  -- },
+
   context_commentstring = {
     enable = true,
     enable_autocmd = false,

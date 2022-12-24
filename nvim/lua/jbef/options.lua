@@ -88,3 +88,8 @@ g.python_recommended_style = 0
 g.tex_flavor = "latex"
 opt.pumheight = 15
 opt.linebreak = true
+
+vim.cmd([[ 
+runtime macros/matchit.vim
+filetype plugin on
+]])
