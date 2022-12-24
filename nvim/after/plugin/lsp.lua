@@ -15,6 +15,7 @@ local servers = {
 	"sumneko_lua",
 	"rust_analyzer",
 	"pyright",
+	"bashls",
 }
 
 mason_lspconfig.setup({
