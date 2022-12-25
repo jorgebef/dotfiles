@@ -9,6 +9,7 @@ local g = vim.g
 -- end
 
 -- ===================== BASIC SETTINGS ======================
+g.mapleader = " "
 opt.backup = false
 opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
 -- " Give more space for displaying messages.
@@ -20,9 +21,6 @@ opt.lazyredraw = true
 opt.sessionoptions = "globals,buffers,curdir,folds,help,resize,tabpages,winsize,winpos"
 -- vim.g.ttyfast = true
 g.inccommand = "nosplit"
-
--- WAITING FOR 0.8!!!!!!!!!!!!!
--- vim.o.winbar = "%{%v:lua.require('utils.winbar_new').get_winbar()%}"
 
 -- ==================================
 opt.completeopt = { "menu", "menuone", "noselect" }
@@ -82,14 +80,8 @@ opt.updatetime = 850
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>[]hl")
-g.mapleader = " "
 
 g.python_recommended_style = 0
 g.tex_flavor = "latex"
 opt.pumheight = 15
 opt.linebreak = true
-
-vim.cmd([[ 
-runtime macros/matchit.vim
-filetype plugin on
-]])

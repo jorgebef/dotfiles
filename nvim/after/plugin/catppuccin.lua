@@ -86,47 +86,17 @@ catppuccin.setup({
 		mini = false,
 		leap = true,
 	},
-	-- color_overrides = {},
-	-- highlight_overrides = {},
 	custom_highlights = {
 		-- UI elements
 		-- ===============================================================================
-		-- Pmenu = { bg = cp.surface0 },
 		Pmenu = { bg = cp.base },
 		PmenuSel = { fg = cp.text, bg = cp.surface1, bold = true },
-		-- NormalFloat = { bg = cp.surface0 },
 		NormalFloat = { bg = cp.base },
-		-- FloatBorder = { fg = cp.blue, bg = cp.surface0 },
 		FloatBorder = { fg = cp.blue, bg = cp.base },
 
 		CmpItemAbbrMatch = { fg = cp.pink },
 		CmpItemAbbrMatchFuzzy = { fg = cp.pink },
 		CmpItemMenu = { fg = cp.overlay0, bg = nil, italic = true },
-		-- CmpItemKindField = { fg = "#EED8DA", bg = "#B5585F" },
-		-- CmpItemKindProperty = { fg = "#EED8DA", bg = "#B5585F" },
-		-- CmpItemKindEvent = { fg = "#EED8DA", bg = "#B5585F" },
-		-- CmpItemKindText = { fg = "#C3E88D", bg = "#9FBD73" },
-		-- CmpItemKindEnum = { fg = "#C3E88D", bg = "#9FBD73" },
-		-- CmpItemKindKeyword = { fg = "#C3E88D", bg = "#9FBD73" },
-		-- CmpItemKindConstant = { fg = "#FFE082", bg = "#D4BB6C" },
-		-- CmpItemKindConstructor = { fg = "#FFE082", bg = "#D4BB6C" },
-		-- CmpItemKindReference = { fg = "#FFE082", bg = "#D4BB6C" },
-		-- CmpItemKindFunction = { fg = "#EADFF0", bg = "#A377BF" },
-		-- CmpItemKindStruct = { fg = "#EADFF0", bg = "#A377BF" },
-		-- CmpItemKindClass = { fg = "#EADFF0", bg = "#A377BF" },
-		-- CmpItemKindModule = { fg = "#EADFF0", bg = "#A377BF" },
-		-- CmpItemKindOperator = { fg = "#EADFF0", bg = "#A377BF" },
-		-- CmpItemKindVariable = { fg = "#C5CDD9", bg = "#7E8294" },
-		-- CmpItemKindFile = { fg = "#C5CDD9", bg = "#7E8294" },
-		-- CmpItemKindUnit = { fg = "#F5EBD9", bg = "#D4A959" },
-		-- CmpItemKindSnippet = { fg = "#F5EBD9", bg = "#D4A959" },
-		-- CmpItemKindFolder = { fg = "#F5EBD9", bg = "#D4A959" },
-		-- CmpItemKindMethod = { fg = "#DDE5F5", bg = "#6C8ED4" },
-		-- CmpItemKindValue = { fg = "#DDE5F5", bg = "#6C8ED4" },
-		-- CmpItemKindEnumMember = { fg = "#DDE5F5", bg = "#6C8ED4" },
-		-- CmpItemKindInterface = { fg = "#D8EEEB", bg = "#58B5A8" },
-		-- CmpItemKindColor = { fg = "#D8EEEB", bg = "#58B5A8" },
-		-- CmpItemKindTypeParameter = { fg = "#D8EEEB", bg = "#58B5A8" },
 
 		TelescopeNormal = { fg = cp.subtext0 },
 
@@ -154,14 +124,12 @@ catppuccin.setup({
 
 		WinBar = { fg = cp.text, bg = cp.mantle },
 		WinBarInactive = { fg = cp.surface2, bg = cp.mantle },
-		-- WinBarModActive = { fg = cp.red, bg = cp.base },
-		-- WinBarModInactive = { fg = cp.red, bg = cp.base },
 		WinBarFilenameActive = { fg = cp.base, bg = cp.pink, bold = true },
 		WinBarFilenameInactive = { fg = cp.subtext0, bg = cp.mantle, bold = true },
-		-- WinBarModified = { fg = cp.red },
 
 		WhichKeyFloat = { bg = cp.surface0 },
 		WhichKeyBorder = { fg = cp.blue, bg = cp.surface0 },
+
 		-- ===============================================================================
 		-- Language specific
 		-- ===============================================================================
@@ -171,5 +139,3 @@ catppuccin.setup({
 		javascriptTSTagDelimiter = { fg = cp.maroon },
 	},
 })
-
--- vim.cmd.colorscheme("catppuccin")

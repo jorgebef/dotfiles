@@ -215,7 +215,7 @@
                 },
                 {
                     "from": {
-                        "key_code": "right_alt"
+                        "key_code": "right_gui"
                     },
                     "to": [
                         {
