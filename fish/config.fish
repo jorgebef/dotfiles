@@ -1,6 +1,10 @@
 # set fish_greeting "🐟"
 # set fish_greeting ""
 
+set -gx EDITOR (which nvim)
+set -gx VISUAL $EDITOR
+set -gx SUDO_EDITOR $EDITOR
+
 fish_add_path /usr/local/bin/
 fish_add_path $HOME/Dropbox/JORGE/Webdev/bin/
 fish_add_path $HOME/.cargo/bin
