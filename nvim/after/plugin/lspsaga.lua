@@ -129,8 +129,7 @@ keymap("n", "<leader>lh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
 -- keymap({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<CR>", { silent = true })
 
 -- Rename
--- keymap("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
-keymap("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", { silent = true })
+-- keymap("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", { silent = true })
 
 -- -- Peek Definition
 -- -- you can edit the definition file in this flaotwindow

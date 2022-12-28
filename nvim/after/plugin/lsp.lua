@@ -4,6 +4,7 @@ local lspconfig = require("lspconfig")
 local ui = require("jbef.ui")
 local navic = require("nvim-navic")
 local cmp = require("cmp_nvim_lsp")
+local util = require("jbef.util")
 -- local util = require("util")
 
 mason.setup()
@@ -77,7 +78,8 @@ local handlers = {
 
 -- DEFAULT on_attach function
 local function on_attach(client, bufnr)
-	if client.name ~= "tailwindcss" then
+	if client.name == "tailwindcss" then
+	else
 		navic.attach(client, bufnr)
 	end
 
@@ -115,7 +117,9 @@ local function on_attach(client, bufnr)
 		vim.lsp.buf.definition()
 	end, remap_opts)
 
-	-- vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", ns_opts)
+	vim.keymap.set("n", "<leader>lr", function()
+		vim.lsp.buf.rename()
+	end, remap_opts)
 
 	vim.keymap.set("n", "K", function()
 		vim.lsp.buf.hover({ focusable = false })
@@ -177,15 +181,48 @@ end
 local capabilities = cmp.default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+local function extraConfig(server)
+	local opts = {
+		tailwindcss = {
+			settings = {
+				tailwindCSS = {
+					classAttributes = { "class", "className", "classList", "ngClass" },
+					lint = {
+						cssConflict = "warning",
+						invalidApply = "error",
+						invalidConfigPath = "error",
+						invalidScreen = "error",
+						invalidTailwindDirective = "error",
+						invalidVariant = "error",
+						recommendedVariantOrder = "warning",
+					},
+					validate = true,
+					experimental = {
+						classRegex = {
+							"clsx\\('([^)]*)'\\)",
+							{ "clsx\\(([^)]*)\\)", "'([^']*)'" },
+						},
+					},
+				},
+			},
+		},
+	}
+	return opts[server] or {}
+end
+
 -- =======================================================================
 -- Loop through all the above configurations, grab each lsp server
 -- and again loop through all the configs provided as an object
--- to pass them to the setup function
+-- to pass them to the setup function.
+-- Additionally, add to the server config any extra configuration
+-- from the extraConfig function and the object it contains
 -- =======================================================================
 for _, server in pairs(servers) do
-	lspconfig[server].setup({
+	local opts = util.table_merge({
 		on_attach = on_attach,
 		handlers = handlers,
 		capabilities = capabilities,
-	})
+	}, extraConfig(server))
+
+	lspconfig[server].setup(opts)
 end
