@@ -1,5 +1,9 @@
-# set fish_greeting "🐟"
-# set fish_greeting ""
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!
+# !!!!!!!!! WARNING !!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!
+# CHECK FILES INSIDE FOLDER conf.d/ since they are loaded first
+# AS PER DOCUMENTATION:
+# https://fishshell.com/docs/current/language.html#configuration:~:text=Configuration%20files%C2%B6
 
 set -gx EDITOR (which nvim)
 set -gx VISUAL $EDITOR
@@ -14,10 +18,6 @@ function fish_greeting
 end
 
 fish_vi_key_bindings
-
-# Aliases
-# NO NEED TO SOURCE SINCE IT IT SOURCED BY DEFAULT
-# source $HOME/.config/fish/conf.d/abbr.fish
 
 # ~/.config/fish/config.fish
 starship init fish | source
