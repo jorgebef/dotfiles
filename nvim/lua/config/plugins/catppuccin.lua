@@ -10,13 +10,11 @@ local M = {
 }
 
 function M.config()
-  local catppuccin = require("catppuccin")
-
   -- IMPORTANT!!!!!!!!!
   vim.g.catppuccin_flavour = "mocha"
   local cp = require("catppuccin.palettes").get_palette()
 
-  catppuccin.setup({
+  require("catppuccin").setup({
     dim_inactive = {
       enabled = false,
       shade = "dark",

@@ -1,9 +1,7 @@
-local M = {
-	"christoomey/vim-tmux-navigator",
-}
+local M = { "christoomey/vim-tmux-navigator" }
 
-vim.cmd([[ 
-  let  g:tmux_navigator_no_wrap = 1
-  ]])
+function M.config()
+	vim.cmd([[let g:tmux_navigator_no_wrap = 1]])
+end
 
 return M

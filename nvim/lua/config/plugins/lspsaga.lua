@@ -4,7 +4,7 @@ function M.config()
 
 local keymap = vim.keymap.set
 local saga = require("lspsaga")
-local lspsaga_diagnostic = require("lspsaga.diagnostic")
+-- local lspsaga_diagnostic = require("lspsaga.diagnostic")
 
 saga.init_lsp_saga({
 	-- Options with default value

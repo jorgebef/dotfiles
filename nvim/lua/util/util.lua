@@ -1,8 +1,11 @@
 local M = {}
 
-M.remove_augroup = function(name)
-	if vim.fn.exists("#" .. name) == 1 then
-		vim.cmd("au! " .. name)
+M.get_buf_option = function(opt)
+	local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
+	if not status_ok then
+		return nil
+	else
+		return buf_option
 	end
 end
 
@@ -12,27 +15,19 @@ M.get_word_length = function()
 	return #word
 end
 
-M.table_merge = function(first_table, second_table)
-	local result_table = {}
-	for k, v in pairs(first_table) do
-		result_table[k] = v
+M.has_value = function(tab, val)
+	for _, value in ipairs(tab) do
+		if value == val then
+			return true
+		end
 	end
-	for k, v in pairs(second_table) do
-		result_table[k] = v
-	end
-	return result_table
+	return false
 end
-
-local function isempty(s)
-	return s == nil or s == ""
-end
-
-M.isempty = isempty
 
 -- TODO not working currently
 M.is_current_win = function()
 	local winid = vim.g.actual_curwin
-	if isempty(winid) then
+	if M.isempty(winid) then
 		return false
 	else
 		if winid == tostring(vim.api.nvim_get_current_win()) then
@@ -44,13 +39,25 @@ M.is_current_win = function()
 	end
 end
 
-M.get_buf_option = function(opt)
-	local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
-	if not status_ok then
-		return nil
-	else
-		return buf_option
+M.isempty = function(s)
+	return s == nil or s == ""
+end
+
+M.remove_augroup = function(name)
+	if vim.fn.exists("#" .. name) == 1 then
+		vim.cmd("au! " .. name)
 	end
+end
+
+M.table_merge = function(first_table, second_table)
+	local result_table = {}
+	for k, v in pairs(first_table) do
+		result_table[k] = v
+	end
+	for k, v in pairs(second_table) do
+		result_table[k] = v
+	end
+	return result_table
 end
 
 return M

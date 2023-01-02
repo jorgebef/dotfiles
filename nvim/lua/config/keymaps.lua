@@ -50,8 +50,8 @@ vim.keymap.set("n", "<leader>3", [["syiw<Esc>:let @/ = @s | set hls<CR>]], opts)
 vim.keymap.set("v", "<leader>3", [["sy<Esc>:let @/ = @s | set hls<CR>]], opts)
 
 -- SEARCH AND REPLACE
-vim.keymap.set("n", "<leader>R", ":.,$s/<C-r><C-w>//gc<Left><Left><Left>", opts)
-vim.keymap.set("v", "<leader>R", '"hy:.,$s/<C-r>h//gc<Left><Left><Left>', opts)
+vim.keymap.set("n", "<leader>R", ":.,$s/<C-r><C-w>//gc<Left><Left><Left>", { noremap = true, nowait = true })
+vim.keymap.set("v", "<leader>R", '"hy:.,$s/<C-r>h//gc<Left><Left><Left>', { noremap = true, nowait = true })
 
 -- Make new line above or below without entering insert mode
 vim.keymap.set("n", "<leader>o", 'o<esc>0"_D<esc>', opts)

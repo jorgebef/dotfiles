@@ -36,6 +36,7 @@ lazy_plugin_manager.setup("config.plugins", {
     enabled = true,
     notify = true, -- get a notification when changes are found
   },
+  install = { colorscheme = { "catppuccin" } },
   ui = {
     -- a number <1 is a percentage., >1 is a fixed size
     size = { width = 0.8, height = 0.8 },
