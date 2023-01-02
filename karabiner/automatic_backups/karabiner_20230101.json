@@ -11,13 +11,13 @@
         "parameters": {
           "basic.simultaneous_threshold_milliseconds": 20,
           "basic.to_delayed_action_delay_milliseconds": 500,
-          "basic.to_if_alone_timeout_milliseconds": 30,
-          "basic.to_if_held_down_threshold_milliseconds": 100,
+          "basic.to_if_alone_timeout_milliseconds": 100,
+          "basic.to_if_held_down_threshold_milliseconds": 30,
           "mouse_motion_to_scroll.speed": 100
         },
         "rules": [
           {
-            "description": "conditionally reassigning caps lock to Escape on tap and Ctrl on hold",
+            "description": "make Ctrl+[ send Escape outside terminal",
             "manipulators": [
               {
                 "type": "basic",
@@ -247,16 +247,6 @@
       },
       "selected": true,
       "simple_modifications": [
-        {
-          "from": {
-            "key_code": "caps_lock"
-          },
-          "to": [
-            {
-              "key_code": "left_control"
-            }
-          ]
-        },
         {
           "from": {
             "key_code": "right_alt"
