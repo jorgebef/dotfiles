@@ -2,15 +2,9 @@
 # VERSION: 3.0
 SETUVAR --export PYENV_ROOT:/Users/jorgebefan/\x2epyenv
 SETUVAR __fish_initialized:3400
-SETUVAR _fish_abbr_cp:cp\x20\x2di
 SETUVAR _fish_abbr_dev:cd\x20\x7e/Developer
 SETUVAR _fish_abbr_dots:cd\x20\x7e/Developer/dotfiles/
 SETUVAR _fish_abbr_h:history
-SETUVAR _fish_abbr_kekw:echo\x20\x27KEKW\x27
-SETUVAR _fish_abbr_mkdir:mkdir\x20\x2dp
-SETUVAR _fish_abbr_mv:mv\x20\x2di
-SETUVAR _fish_abbr_rm:rm\x20\x2di
-SETUVAR _fish_abbr_vps:TERM\x3dscreen\x2d256color\x20ssh\x20root\x40212\x2e227\x2e32\x2e102
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:blue
