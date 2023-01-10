@@ -1,0 +1,524 @@
+[
+  {
+    "id": 1,
+    "is_active": true,
+    "is_focused": true,
+    "last_focused": true,
+    "platform_window_id": 12093,
+    "tabs": [
+      {
+        "active_window_history": [
+          2,
+          1
+        ],
+        "enabled_layouts": [
+          "fat:bias=55;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 1,
+        "is_active_tab": true,
+        "is_focused": true,
+        "layout": "fat",
+        "layout_opts": {
+          "bias": 55,
+          "full_size": 1,
+          "mirrored": false
+        },
+        "layout_state": {
+          "biased_map": {},
+          "main_bias": [
+            0.55,
+            0.44999999999999996
+          ],
+          "num_full_size_windows": 1
+        },
+        "title": "Guido-Audisio",
+        "windows": [
+          {
+            "cmdline": [
+              "-fish"
+            ],
+            "columns": 283,
+            "cwd": "/Users/jorgebefan/Developer/Guido-Audisio",
+            "env": {
+              "COLORTERM": "truecolor",
+              "COMMAND_MODE": "unix2003",
+              "HOME": "/Users/jorgebefan",
+              "KITTY_FISH_XDG_DATA_DIR": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "KITTY_INSTALLATION_DIR": "/Applications/kitty.app/Contents/Resources/kitty",
+              "KITTY_PID": "57468",
+              "KITTY_PUBLIC_KEY": "1:!?iMYP;e;rPDFa1U=LgYR@!GAeTs}>WYDwx1EW15",
+              "KITTY_SHELL_INTEGRATION": "enabled",
+              "KITTY_WINDOW_ID": "1",
+              "LANG": "en_US.UTF-8",
+              "LOGNAME": "jorgebefan",
+              "MANPATH": "/Applications/kitty.app/Contents/Resources/man:",
+              "PATH": "/Applications/kitty.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin",
+              "PWD": "/Users/jorgebefan/Developer/Guido-Audisio",
+              "SHELL": "/opt/homebrew/bin/fish",
+              "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.LvtHX1TKmw/Listeners",
+              "TERM": "xterm-kitty",
+              "TERMINFO": "/Applications/kitty.app/Contents/Resources/kitty/terminfo",
+              "TMPDIR": "/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/",
+              "USER": "jorgebefan",
+              "WINDOWID": "12093",
+              "XDG_DATA_DIRS": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "XPC_FLAGS": "0x0",
+              "XPC_SERVICE_NAME": "application.net.kovidgoyal.kitty.57952820.57952826",
+              "__CFBundleIdentifier": "net.kovidgoyal.kitty",
+              "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x0"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-fish"
+                ],
+                "cwd": "/Users/jorgebefan/Developer/Guido-Audisio",
+                "pid": 57477
+              }
+            ],
+            "id": 1,
+            "is_active_window": false,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 37,
+            "pid": 57477,
+            "title": "~/D/Guido-Audisio"
+          },
+          {
+            "cmdline": [
+              "-fish"
+            ],
+            "columns": 141,
+            "cwd": "/Users/jorgebefan/Developer/Guido-Audisio",
+            "env": {
+              "COLORTERM": "truecolor",
+              "COMMAND_MODE": "unix2003",
+              "HOME": "/Users/jorgebefan",
+              "KITTY_FISH_XDG_DATA_DIR": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "KITTY_INSTALLATION_DIR": "/Applications/kitty.app/Contents/Resources/kitty",
+              "KITTY_PID": "57468",
+              "KITTY_PUBLIC_KEY": "1:!?iMYP;e;rPDFa1U=LgYR@!GAeTs}>WYDwx1EW15",
+              "KITTY_SHELL_INTEGRATION": "enabled",
+              "KITTY_WINDOW_ID": "2",
+              "LANG": "en_US.UTF-8",
+              "LOGNAME": "jorgebefan",
+              "MANPATH": "/Applications/kitty.app/Contents/Resources/man:",
+              "PATH": "/Applications/kitty.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin",
+              "PWD": "/Users/jorgebefan/Developer/Guido-Audisio",
+              "SHELL": "/opt/homebrew/bin/fish",
+              "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.LvtHX1TKmw/Listeners",
+              "TERM": "xterm-kitty",
+              "TERMINFO": "/Applications/kitty.app/Contents/Resources/kitty/terminfo",
+              "TMPDIR": "/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/",
+              "USER": "jorgebefan",
+              "WINDOWID": "12093",
+              "XDG_DATA_DIRS": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "XPC_FLAGS": "0x0",
+              "XPC_SERVICE_NAME": "application.net.kovidgoyal.kitty.57952820.57952826",
+              "__CFBundleIdentifier": "net.kovidgoyal.kitty",
+              "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x0"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-fish"
+                ],
+                "cwd": "/Users/jorgebefan/Developer/Guido-Audisio",
+                "pid": 57478
+              }
+            ],
+            "id": 2,
+            "is_active_window": false,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 32,
+            "pid": 57478,
+            "title": "~/D/Guido-Audisio"
+          },
+          {
+            "cmdline": [
+              "sh",
+              "/Users/jorgebefan/.config/kitty/savesess.sh"
+            ],
+            "columns": 140,
+            "cwd": "/Users/jorgebefan/Developer/Guido-Audisio",
+            "env": {},
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "kitty",
+                  "@",
+                  "ls"
+                ],
+                "cwd": "/Users/jorgebefan/Developer/Guido-Audisio",
+                "pid": 57585
+              },
+              {
+                "cmdline": [
+                  "sh",
+                  "/Users/jorgebefan/.config/kitty/savesess.sh"
+                ],
+                "cwd": "/Users/jorgebefan/Developer/Guido-Audisio",
+                "pid": 57584
+              }
+            ],
+            "id": 9,
+            "is_active_window": true,
+            "is_focused": true,
+            "is_self": true,
+            "lines": 32,
+            "pid": 57584,
+            "title": "savesess.sh"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          3
+        ],
+        "enabled_layouts": [
+          "fat:bias=55;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 2,
+        "is_active_tab": false,
+        "is_focused": false,
+        "layout": "fat",
+        "layout_opts": {
+          "bias": 55,
+          "full_size": 1,
+          "mirrored": false
+        },
+        "layout_state": {
+          "biased_map": {},
+          "main_bias": [
+            0.55,
+            0.44999999999999996
+          ],
+          "num_full_size_windows": 1
+        },
+        "title": "cng_lawyers",
+        "windows": [
+          {
+            "cmdline": [
+              "-fish"
+            ],
+            "columns": 283,
+            "cwd": "/Users/jorgebefan/Developer/cng_lawyers",
+            "env": {
+              "COLORTERM": "truecolor",
+              "COMMAND_MODE": "unix2003",
+              "HOME": "/Users/jorgebefan",
+              "KITTY_FISH_XDG_DATA_DIR": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "KITTY_INSTALLATION_DIR": "/Applications/kitty.app/Contents/Resources/kitty",
+              "KITTY_PID": "57468",
+              "KITTY_PUBLIC_KEY": "1:!?iMYP;e;rPDFa1U=LgYR@!GAeTs}>WYDwx1EW15",
+              "KITTY_SHELL_INTEGRATION": "enabled",
+              "KITTY_WINDOW_ID": "3",
+              "LANG": "en_US.UTF-8",
+              "LOGNAME": "jorgebefan",
+              "MANPATH": "/Applications/kitty.app/Contents/Resources/man:",
+              "PATH": "/Applications/kitty.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin",
+              "PWD": "/Users/jorgebefan/Developer/cng_lawyers",
+              "SHELL": "/opt/homebrew/bin/fish",
+              "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.LvtHX1TKmw/Listeners",
+              "TERM": "xterm-kitty",
+              "TERMINFO": "/Applications/kitty.app/Contents/Resources/kitty/terminfo",
+              "TMPDIR": "/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/",
+              "USER": "jorgebefan",
+              "WINDOWID": "12093",
+              "XDG_DATA_DIRS": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "XPC_FLAGS": "0x0",
+              "XPC_SERVICE_NAME": "application.net.kovidgoyal.kitty.57952820.57952826",
+              "__CFBundleIdentifier": "net.kovidgoyal.kitty",
+              "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x0"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-fish"
+                ],
+                "cwd": "/Users/jorgebefan/Developer/cng_lawyers",
+                "pid": 57479
+              }
+            ],
+            "id": 3,
+            "is_active_window": true,
+            "is_focused": true,
+            "is_self": false,
+            "lines": 69,
+            "pid": 57479,
+            "title": "~/D/cng_lawyers"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          4,
+          5,
+          6
+        ],
+        "enabled_layouts": [
+          "fat:bias=55;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 3,
+        "is_active_tab": false,
+        "is_focused": false,
+        "layout": "fat",
+        "layout_opts": {
+          "bias": 55,
+          "full_size": 1,
+          "mirrored": false
+        },
+        "layout_state": {
+          "biased_map": {},
+          "main_bias": [
+            0.55,
+            0.44999999999999996
+          ],
+          "num_full_size_windows": 1
+        },
+        "title": "dotfiles",
+        "windows": [
+          {
+            "cmdline": [
+              "-fish"
+            ],
+            "columns": 283,
+            "cwd": "/Users/jorgebefan/Developer/dotfiles",
+            "env": {
+              "COLORTERM": "truecolor",
+              "COMMAND_MODE": "unix2003",
+              "HOME": "/Users/jorgebefan",
+              "KITTY_FISH_XDG_DATA_DIR": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "KITTY_INSTALLATION_DIR": "/Applications/kitty.app/Contents/Resources/kitty",
+              "KITTY_PID": "57468",
+              "KITTY_PUBLIC_KEY": "1:!?iMYP;e;rPDFa1U=LgYR@!GAeTs}>WYDwx1EW15",
+              "KITTY_SHELL_INTEGRATION": "enabled",
+              "KITTY_WINDOW_ID": "4",
+              "LANG": "en_US.UTF-8",
+              "LOGNAME": "jorgebefan",
+              "MANPATH": "/Applications/kitty.app/Contents/Resources/man:",
+              "PATH": "/Applications/kitty.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin",
+              "PWD": "/Users/jorgebefan/Developer/dotfiles",
+              "SHELL": "/opt/homebrew/bin/fish",
+              "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.LvtHX1TKmw/Listeners",
+              "TERM": "xterm-kitty",
+              "TERMINFO": "/Applications/kitty.app/Contents/Resources/kitty/terminfo",
+              "TMPDIR": "/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/",
+              "USER": "jorgebefan",
+              "WINDOWID": "12093",
+              "XDG_DATA_DIRS": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "XPC_FLAGS": "0x0",
+              "XPC_SERVICE_NAME": "application.net.kovidgoyal.kitty.57952820.57952826",
+              "__CFBundleIdentifier": "net.kovidgoyal.kitty",
+              "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x0"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-fish"
+                ],
+                "cwd": "/Users/jorgebefan/Developer/dotfiles",
+                "pid": 57481
+              }
+            ],
+            "id": 4,
+            "is_active_window": true,
+            "is_focused": true,
+            "is_self": false,
+            "lines": 37,
+            "pid": 57481,
+            "title": "~/D/dotfiles"
+          },
+          {
+            "cmdline": [
+              "-fish"
+            ],
+            "columns": 140,
+            "cwd": "/Users/jorgebefan/Developer/dotfiles",
+            "env": {
+              "COLORTERM": "truecolor",
+              "COMMAND_MODE": "unix2003",
+              "HOME": "/Users/jorgebefan",
+              "KITTY_FISH_XDG_DATA_DIR": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "KITTY_INSTALLATION_DIR": "/Applications/kitty.app/Contents/Resources/kitty",
+              "KITTY_PID": "57468",
+              "KITTY_PUBLIC_KEY": "1:!?iMYP;e;rPDFa1U=LgYR@!GAeTs}>WYDwx1EW15",
+              "KITTY_SHELL_INTEGRATION": "enabled",
+              "KITTY_WINDOW_ID": "5",
+              "LANG": "en_US.UTF-8",
+              "LOGNAME": "jorgebefan",
+              "MANPATH": "/Applications/kitty.app/Contents/Resources/man:",
+              "PATH": "/Applications/kitty.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin",
+              "PWD": "/Users/jorgebefan/Developer/dotfiles",
+              "SHELL": "/opt/homebrew/bin/fish",
+              "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.LvtHX1TKmw/Listeners",
+              "TERM": "xterm-kitty",
+              "TERMINFO": "/Applications/kitty.app/Contents/Resources/kitty/terminfo",
+              "TMPDIR": "/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/",
+              "USER": "jorgebefan",
+              "WINDOWID": "12093",
+              "XDG_DATA_DIRS": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "XPC_FLAGS": "0x0",
+              "XPC_SERVICE_NAME": "application.net.kovidgoyal.kitty.57952820.57952826",
+              "__CFBundleIdentifier": "net.kovidgoyal.kitty",
+              "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x0"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-fish"
+                ],
+                "cwd": "/Users/jorgebefan/Developer/dotfiles",
+                "pid": 57485
+              }
+            ],
+            "id": 5,
+            "is_active_window": false,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 32,
+            "pid": 57485,
+            "title": "~/D/dotfiles"
+          },
+          {
+            "cmdline": [
+              "-fish"
+            ],
+            "columns": 141,
+            "cwd": "/Users/jorgebefan/Developer/dotfiles",
+            "env": {
+              "COLORTERM": "truecolor",
+              "COMMAND_MODE": "unix2003",
+              "HOME": "/Users/jorgebefan",
+              "KITTY_FISH_XDG_DATA_DIR": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "KITTY_INSTALLATION_DIR": "/Applications/kitty.app/Contents/Resources/kitty",
+              "KITTY_PID": "57468",
+              "KITTY_PUBLIC_KEY": "1:!?iMYP;e;rPDFa1U=LgYR@!GAeTs}>WYDwx1EW15",
+              "KITTY_SHELL_INTEGRATION": "enabled",
+              "KITTY_WINDOW_ID": "6",
+              "LANG": "en_US.UTF-8",
+              "LOGNAME": "jorgebefan",
+              "MANPATH": "/Applications/kitty.app/Contents/Resources/man:",
+              "PATH": "/Applications/kitty.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin",
+              "PWD": "/Users/jorgebefan/Developer/dotfiles",
+              "SHELL": "/opt/homebrew/bin/fish",
+              "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.LvtHX1TKmw/Listeners",
+              "TERM": "xterm-kitty",
+              "TERMINFO": "/Applications/kitty.app/Contents/Resources/kitty/terminfo",
+              "TMPDIR": "/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/",
+              "USER": "jorgebefan",
+              "WINDOWID": "12093",
+              "XDG_DATA_DIRS": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "XPC_FLAGS": "0x0",
+              "XPC_SERVICE_NAME": "application.net.kovidgoyal.kitty.57952820.57952826",
+              "__CFBundleIdentifier": "net.kovidgoyal.kitty",
+              "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x0"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-fish"
+                ],
+                "cwd": "/Users/jorgebefan/Developer/dotfiles",
+                "pid": 57493
+              }
+            ],
+            "id": 6,
+            "is_active_window": false,
+            "is_focused": false,
+            "is_self": false,
+            "lines": 32,
+            "pid": 57493,
+            "title": "~/D/dotfiles"
+          }
+        ]
+      },
+      {
+        "active_window_history": [
+          7
+        ],
+        "enabled_layouts": [
+          "fat:bias=55;full_size=1;mirrored=false",
+          "stack"
+        ],
+        "id": 4,
+        "is_active_tab": false,
+        "is_focused": false,
+        "layout": "fat",
+        "layout_opts": {
+          "bias": 55,
+          "full_size": 1,
+          "mirrored": false
+        },
+        "layout_state": {
+          "biased_map": {},
+          "main_bias": [
+            0.55,
+            0.44999999999999996
+          ],
+          "num_full_size_windows": 1
+        },
+        "title": "Tailwind templates",
+        "windows": [
+          {
+            "cmdline": [
+              "-fish"
+            ],
+            "columns": 283,
+            "cwd": "/Users/jorgebefan/Downloads/adamwathanss-tuibeta",
+            "env": {
+              "COLORTERM": "truecolor",
+              "COMMAND_MODE": "unix2003",
+              "HOME": "/Users/jorgebefan",
+              "KITTY_FISH_XDG_DATA_DIR": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "KITTY_INSTALLATION_DIR": "/Applications/kitty.app/Contents/Resources/kitty",
+              "KITTY_PID": "57468",
+              "KITTY_PUBLIC_KEY": "1:!?iMYP;e;rPDFa1U=LgYR@!GAeTs}>WYDwx1EW15",
+              "KITTY_SHELL_INTEGRATION": "enabled",
+              "KITTY_WINDOW_ID": "7",
+              "LANG": "en_US.UTF-8",
+              "LOGNAME": "jorgebefan",
+              "MANPATH": "/Applications/kitty.app/Contents/Resources/man:",
+              "PATH": "/Applications/kitty.app/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin",
+              "PWD": "/Users/jorgebefan/Downloads/adamwathanss-tuibeta",
+              "SHELL": "/opt/homebrew/bin/fish",
+              "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.LvtHX1TKmw/Listeners",
+              "TERM": "xterm-kitty",
+              "TERMINFO": "/Applications/kitty.app/Contents/Resources/kitty/terminfo",
+              "TMPDIR": "/var/folders/5h/w7nnrlx518d1zb1_g3lnps0h0000gn/T/",
+              "USER": "jorgebefan",
+              "WINDOWID": "12093",
+              "XDG_DATA_DIRS": "/Applications/kitty.app/Contents/Resources/kitty/shell-integration",
+              "XPC_FLAGS": "0x0",
+              "XPC_SERVICE_NAME": "application.net.kovidgoyal.kitty.57952820.57952826",
+              "__CFBundleIdentifier": "net.kovidgoyal.kitty",
+              "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x0"
+            },
+            "foreground_processes": [
+              {
+                "cmdline": [
+                  "-fish"
+                ],
+                "cwd": "/Users/jorgebefan/Downloads/adamwathanss-tuibeta",
+                "pid": 57503
+              }
+            ],
+            "id": 7,
+            "is_active_window": true,
+            "is_focused": true,
+            "is_self": false,
+            "lines": 69,
+            "pid": 57503,
+            "title": "~/D/adamwathanss-tuibeta"
+          }
+        ]
+      }
+    ],
+    "wm_class": "kitty",
+    "wm_name": "kitty"
+  }
+]
