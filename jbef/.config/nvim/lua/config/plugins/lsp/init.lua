@@ -3,7 +3,7 @@ local M = {
   dependencies = {
     { "jose-elias-alvarez/nvim-lsp-ts-utils" },
     { "jose-elias-alvarez/null-ls.nvim" },
-    { "glepnir/lspsaga.nvim", branch = "main" },
+    -- { "glepnir/lspsaga.nvim", branch = "main" },
     { "SmiteshP/nvim-navic" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
@@ -105,8 +105,12 @@ function M.config()
       },
     }, opts or {})
 
-    lspconfig[server].setup(opts)
-    -- lspconfig[server].setup(require("coq").lsp_ensure_capabilities({}))
+    if server == "typescript" then
+      require("config.plugins.lsp.typescript").setup(opts)
+    else
+      lspconfig[server].setup(opts)
+      -- lspconfig[server].setup(require("coq").lsp_ensure_capabilities({}))
+    end
   end
   -- ALL DONE!
 end

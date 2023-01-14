@@ -81,6 +81,7 @@ function M.config()
 
       vimgrep_arguments = {
         "rg",
+        "--hidden",
         "--color=never",
         "--no-heading",
         "--with-filename",
@@ -88,7 +89,8 @@ function M.config()
         "--column",
         "--smart-case",
         "--ignore-file",
-        -- "package-lock.json",
+        -- "!*package-lock.json",
+        -- "!*package.json",
         -- '.gitignore'
       },
     },

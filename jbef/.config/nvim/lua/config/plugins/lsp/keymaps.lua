@@ -3,6 +3,10 @@ local M = {}
 function M.setup(client)
   local opts = { noremap = true, silent = true }
 
+  vim.keymap.set("n", "<leader>ld", function()
+    vim.lsp.buf.definition()
+  end, opts)
+
   vim.keymap.set("n", "<leader>lD", function()
     vim.lsp.buf.type_definition()
   end, opts)
@@ -28,10 +32,6 @@ function M.setup(client)
     vim.lsp.buf.format({ async = true })
   end, opts)
 
-  vim.keymap.set("n", "<leader>ld", function()
-    vim.lsp.buf.definition()
-  end, opts)
-
   vim.keymap.set("n", "<leader>lr", function()
     vim.lsp.buf.rename()
   end, opts)
@@ -48,6 +48,9 @@ function M.setup(client)
     vim.lsp.buf.signature_help()
   end, opts)
 
+  -- ====================================
+  -- CONDITIONAL REMAPS
+  -- ====================================
   if client.name == "tsserver" then
     local ts_utils = require("nvim-lsp-ts-utils")
     ts_utils.setup({})

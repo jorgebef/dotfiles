@@ -12,7 +12,7 @@ local M = {
 function M.config()
   -- IMPORTANT!!!!!!!!!
   vim.g.catppuccin_flavour = "mocha"
-  local cp = require("catppuccin.palettes").get_palette()
+  -- local cp = require("catppuccin.palettes").get_palette()
 
   require("catppuccin").setup({
     dim_inactive = {
@@ -96,58 +96,60 @@ function M.config()
       mini = false,
       leap = true,
     },
-    custom_highlights = {
-      -- UI elements
-      -- ===============================================================================
-      Pmenu = { bg = cp.base },
-      PmenuSel = { fg = cp.text, bg = cp.surface1, bold = true },
-      NormalFloat = { bg = cp.base },
-      FloatBorder = { fg = cp.blue, bg = cp.base },
+    custom_highlights = function(colors)
+      return {
+        -- UI elements
+        -- ===============================================================================
+        Pmenu = { bg = colors.base },
+        PmenuSel = { fg = colors.text, bg = colors.surface1, bold = true },
+        NormalFloat = { bg = colors.base },
+        FloatBorder = { fg = colors.blue, bg = colors.base },
 
-      CmpItemAbbrMatch = { fg = cp.pink },
-      CmpItemAbbrMatchFuzzy = { fg = cp.pink },
-      CmpItemMenu = { fg = cp.overlay0, bg = nil, italic = true },
+        CmpItemAbbrMatch = { fg = colors.pink },
+        CmpItemAbbrMatchFuzzy = { fg = colors.pink },
+        CmpItemMenu = { fg = colors.overlay0, bg = nil, italic = true },
 
-      TelescopeNormal = { fg = cp.subtext0 },
+        TelescopeNormal = { fg = colors.subtext0 },
 
-      LeapLabelPrimary = { fg = nil, bg = cp.mauve, bold = true },
+        LeapLabelPrimary = { fg = nil, bg = colors.mauve, bold = true },
 
-      LspSagaFinderSelection = { fg = cp.blue, bg = cp.surface0 },
-      FinderSpinnerBorder = { fg = cp.blue, bg = cp.base },
-      FinderVirtText = { fg = cp.mauve },
-      LspSagaLspFinderBorder = { fg = cp.blue, bg = cp.base },
-      FinderPreviewSearch = { bg = cp.base },
-      LspSagaHoverBorder = { fg = cp.blue, bg = cp.base },
-      LspFloatWinNormal = { bg = cp.base },
-      LspFloatWinBorder = { fg = cp.blue, bg = cp.base },
-      LspSagaBorderTitle = { fg = cp.blue, bg = cp.red },
-      DefinitionBorder = { fg = cp.blue, bg = cp.base },
-      DefinitionArrow = { fg = cp.red, bg = cp.base },
-      DefinitionSearch = { fg = nil, bg = cp.surface0 },
-      DefinitionFile = { bg = cp.base },
-      LSOutlinePreviewBorder = { fg = cp.blue, bg = cp.base },
-      LspSagaRenameBorder = { fg = cp.blue, bg = cp.base },
+        LspSagaFinderSelection = { fg = colors.blue, bg = colors.surface0 },
+        FinderSpinnerBorder = { fg = colors.blue, bg = colors.base },
+        FinderVirtText = { fg = colors.mauve },
+        LspSagaLspFinderBorder = { fg = colors.blue, bg = colors.base },
+        FinderPreviewSearch = { bg = colors.base },
+        LspSagaHoverBorder = { fg = colors.blue, bg = colors.base },
+        LspFloatWinNormal = { bg = colors.base },
+        LspFloatWinBorder = { fg = colors.blue, bg = colors.base },
+        LspSagaBorderTitle = { fg = colors.blue, bg = colors.red },
+        DefinitionBorder = { fg = colors.blue, bg = colors.base },
+        DefinitionArrow = { fg = colors.red, bg = colors.base },
+        DefinitionSearch = { fg = nil, bg = colors.surface0 },
+        DefinitionFile = { bg = colors.base },
+        LSOutlinePreviewBorder = { fg = colors.blue, bg = colors.base },
+        LspSagaRenameBorder = { fg = colors.blue, bg = colors.base },
 
-      MiniJump = { fg = nil, bg = cp.surface1, underline = true },
+        MiniJump = { fg = nil, bg = colors.surface1, underline = true },
 
-      LspSignatureActiveParameter = { fg = cp.pink, bold = true },
+        LspSignatureActiveParameter = { fg = colors.pink, bold = true },
 
-      WinBar = { fg = cp.text, bg = cp.mantle },
-      WinBarInactive = { fg = cp.surface2, bg = cp.mantle },
-      WinBarFilenameActive = { fg = cp.base, bg = cp.pink, bold = true },
-      WinBarFilenameInactive = { fg = cp.subtext0, bg = cp.mantle, bold = true },
+        WinBar = { fg = colors.text, bg = colors.mantle },
+        WinBarInactive = { fg = colors.surface2, bg = colors.mantle },
+        WinBarFilenameActive = { fg = colors.base, bg = colors.pink, bold = true },
+        WinBarFilenameInactive = { fg = colors.subtext0, bg = colors.mantle, bold = true },
 
-      WhichKeyFloat = { bg = cp.surface0 },
-      WhichKeyBorder = { fg = cp.blue, bg = cp.surface0 },
+        WhichKeyFloat = { bg = colors.surface0 },
+        WhichKeyBorder = { fg = colors.blue, bg = colors.surface0 },
 
-      -- ===============================================================================
-      -- Language specific
-      -- ===============================================================================
-      -- tsxTSTagDelimiter = { fg = cp.maroon },
-      -- ["@tag.delimiter.tsx"] = { fg = cp.maroon },
-      -- jsxTSTagDelimiter = { fg = cp.maroon },
-      -- javascriptTSTagDelimiter = { fg = cp.maroon },
-    },
+        -- ===============================================================================
+        -- Language specific
+        -- ===============================================================================
+        -- tsxTSTagDelimiter = { fg = cp.maroon },
+        ["@tag.delimiter.tsx"] = { fg = colors.maroon },
+        -- jsxTSTagDelimiter = { fg = cp.maroon },
+        -- javascriptTSTagDelimiter = { fg = cp.maroon },
+      }
+    end,
   })
 end
 

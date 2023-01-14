@@ -13,7 +13,13 @@ select = "underline"
 [editor.indent-guides]
 render = true
 
+[editor.file-picker]
+hidden = false
+
 # At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
 [keys.normal]
-"Ñ" = "command_mode"
-
+# "Ñ" = "command_mode"
+"C-h" = "jump_view_left"
+"C-j" = "jump_view_down"
+"C-k" = "jump_view_up"
+"C-l" = "jump_view_right"

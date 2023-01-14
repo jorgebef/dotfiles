@@ -4,11 +4,11 @@ auto-format = false
 # pass format options according to https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration omitting the "[language].format." prefix.
 config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = true } }
 
-[[language]]
-name = "tailwindcss"
-scope = "source.css"
-injection-regex = "(postcss|css|html)"
-file-types = ["css"]
-roots = ["tailwind.config.js","tailwind.config.cjs"]
-language-server = { command = "tailwindcss-language-server", args = ["-vvv", "--stdio"] }
-config = { }
+# [[language]]
+# name = "tailwindcss"
+# scope = "source.css"
+# injection-regex = "(postcss|css|html)"
+# file-types = ["css"]
+# roots = ["tailwind.config.js","tailwind.config.cjs"]
+# language-server = { command = "tailwindcss-language-server", args = ["-vvv", "--stdio"] }
+# config = { }
