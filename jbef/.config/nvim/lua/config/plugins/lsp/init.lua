@@ -105,12 +105,7 @@ function M.config()
       },
     }, opts or {})
 
-    if server == "typescript" then
-      require("config.plugins.lsp.typescript").setup(opts)
-    else
-      lspconfig[server].setup(opts)
-      -- lspconfig[server].setup(require("coq").lsp_ensure_capabilities({}))
-    end
+    lspconfig[server].setup(opts)
   end
   -- ALL DONE!
 end

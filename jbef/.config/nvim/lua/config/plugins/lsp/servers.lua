@@ -1,5 +1,21 @@
 local M = {
-  -- tsserver = {
+  tsserver = {
+    cmd = { "typescript-language-server", "--stdio" },
+    init_options = {
+      hostInfo = "neovim",
+    },
+    single_file_support = true,
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+    },
+    flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+  },
+  -- typescript = {
   --   cmd = { "typescript-language-server", "--stdio" },
   --   init_options = {
   --     hostInfo = "neovim",
@@ -15,22 +31,6 @@ local M = {
   --   },
   --   -- flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
   -- },
-  typescript = {
-    cmd = { "typescript-language-server", "--stdio" },
-    init_options = {
-      hostInfo = "neovim",
-    },
-    single_file_support = true,
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
-    },
-    -- flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
-  },
   astro = {},
   sumneko_lua = {},
   rust_analyzer = {},
