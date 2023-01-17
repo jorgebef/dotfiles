@@ -202,8 +202,8 @@ function M.config()
   -- -- also support open/vsplit/etc operation check definition_action_keys
   -- -- support tagstack C-t jump back
   keymap("n", "<leader>ld", function()
-    vim.cmd.Lspsaga("peek_definition")
-    -- vim.cmd.Lspsaga("goto_definition")
+    -- vim.cmd.Lspsaga("peek_definition")
+    vim.cmd.Lspsaga("goto_definition")
   end, { silent = true })
 
   -- -- Show line diagnostics

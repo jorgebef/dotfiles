@@ -11,7 +11,7 @@ set -gx SUDO_EDITOR $EDITOR
 set -gx PNPM_HOME $HOME/Library/pnpm
 
 fish_add_path /usr/local/bin/ # Add local bin to $PATH
-fish_add_path $HOME/Dropbox/JORGE/Webdev/bin/ # Add custom webdev bin to $PATH
+fish_add_path $HOME/Library/CloudStorage/Dropbox/JORGE/Webdev/bin/ # Add custom webdev bin to $PATH
 fish_add_path $HOME/.config/bin/ # Add custom bin to $PATH
 fish_add_path $HOME/.cargo/bin/ # Add cargo bin to $PATH
 fish_add_path $PNPM_HOME # Add pnpm path to $PATH

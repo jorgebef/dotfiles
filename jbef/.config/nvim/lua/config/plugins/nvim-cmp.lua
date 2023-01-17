@@ -68,7 +68,8 @@ function M.config()
       end,
     },
     sources = cmp.config.sources({
-      { name = "nvim_lsp", keyword_length = 3, group_index = 1, max_item_count = 30 },
+      { name = "nvim_lsp", keyword_length = 2, group_index = 1, max_item_count = 20 },
+      -- { name = "nvim_lsp" },
       { name = "path" }, -- For vsnip users.
       -- { name = 'vsnip' }, -- For vsnip users.
       { name = "luasnip" }, -- For luasnip users.

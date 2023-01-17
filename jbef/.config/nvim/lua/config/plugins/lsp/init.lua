@@ -73,8 +73,15 @@ function M.config()
   local servers = require("config.plugins.lsp.servers")
 
   require("mason").setup()
+  local server_names = {}
+  local n = 0
+  for k, _ in pairs(servers) do
+    n = n + 1
+    server_names[n] = k
+  end
   require("mason-lspconfig").setup({
-    ensure_installed = servers,
+    -- ensure_installed = servers,
+    ensure_installed = server_names,
   })
 
   require("config.plugins.lsp.diagnostics").setup()

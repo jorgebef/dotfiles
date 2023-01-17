@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export PYENV_ROOT:/Users/jorgebefan/\x2epyenv
+SETUVAR --export PYENV_ROOT:/Users/jbef/\x2epyenv
 SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_dev:cd\x20\x7e/Developer
 SETUVAR _fish_abbr_dots:cd\x20\x7e/Developer/dotfiles/
@@ -33,4 +33,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:cyan\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/Users/jorgebefan/Library/pnpm\x1e/Users/jorgebefan/\x2econfig/bin\x1e/Users/jorgebefan/\x2epyenv/bin\x1e/Users/jorgebefan/Dropbox/JORGE/Webdev/bin\x1e/Users/jorgebefan/\x2ecargo/bin\x1e/Users/jorgebefan/Dropbox/JORGE/Webdev/_bin\x1e/usr/local/bin\x1e/opt/homebrew/bin
+SETUVAR fish_user_paths:/Users/jbef/Library/pnpm\x1e/Users/jbef/Library/CloudStorage/Dropbox/JORGE/Webdev/bin\x1e/Users/jbef/Dropbox/JORGE/Webdev/bin\x1e/Users/jbef/\x2econfig/bin\x1e/Users/jorgebefan/Library/pnpm\x1e/Users/jorgebefan/\x2econfig/bin\x1e/Users/jorgebefan/\x2epyenv/bin\x1e/Users/jorgebefan/Dropbox/JORGE/Webdev/bin\x1e/Users/jorgebefan/\x2ecargo/bin\x1e/Users/jorgebefan/Dropbox/JORGE/Webdev/_bin\x1e/usr/local/bin\x1e/opt/homebrew/bin
