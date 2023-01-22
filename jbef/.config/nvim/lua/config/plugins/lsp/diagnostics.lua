@@ -16,9 +16,19 @@ function M.setup()
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
 
+  -- -- Function to open Documentation for word under cursor if held
+  -- function OpenDocumentationIfNoFloat()
+  --   for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+  --     if vim.api.nvim_win_get_config(winid).zindex then
+  --       return
+  --     end
+  --   end
+  --   vim.lsp.buf.hover()
+  -- end
+
   -- Function to check if a floating dialog exists and if not
   -- then check for diagnostics under the cursor
-  function OpenDialogIfNoFloat()
+  function OpenDiagnosticIfNoFloat()
     for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
       if vim.api.nvim_win_get_config(winid).zindex then
         return

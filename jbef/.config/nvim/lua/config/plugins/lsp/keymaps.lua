@@ -4,7 +4,8 @@ function M.setup(client)
   local opts = { noremap = true, silent = true }
 
   vim.keymap.set("n", "<leader>ld", function()
-    vim.lsp.buf.definition()
+    -- vim.lsp.buf.definition()
+    require("telescope.builtin").lsp_definitions()
   end, opts)
   vim.keymap.set("n", "<leader>lh", function()
     require("telescope.builtin").lsp_references()
@@ -73,7 +74,7 @@ function M.setup(client)
   vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
   vim.api.nvim_create_autocmd({ "CursorHold" }, {
     pattern = "*",
-    command = "lua OpenDialogIfNoFloat()",
+    command = "lua OpenDiagnosticIfNoFloat()",
     group = "lsp_diagnostics_hold",
   })
 end

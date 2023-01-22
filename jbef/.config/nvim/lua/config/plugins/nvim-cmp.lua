@@ -63,12 +63,27 @@ function M.config()
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
         kind.kind = " " .. strings[1] .. " "
         kind.menu = "    (" .. strings[2] .. ")"
+        -- CHECK THIS OUT BELOW FOR TAILWIND COLOR IN CMP WINDOW
+        -- if vim_item.kind == "Color" and entry.completion_item.documentation then
+        --   local _, _, r, g, b = string.find(entry.completion_item.documentation, "^rgb%((%d+), (%d+), (%d+)")
+        --   if r then
+        --     local color = string.format("%02x", r) .. string.format("%02x", g) .. string.format("%02x", b)
+        --     local group = "Tw_" .. color
+        --     if vim.fn.hlID(group) < 1 then
+        --       vim.api.nvim_set_hl(0, group, { fg = "#" .. color })
+        --     end
+        --     vim_item.kind = "⬤"
+        --     vim_item.kind_hl_group = group
+        --     return vim_item
+        --   end
+        -- end
         --
         return kind
       end,
     },
     sources = cmp.config.sources({
-      { name = "nvim_lsp", keyword_length = 2, group_index = 1, max_item_count = 20 },
+      -- { name = "nvim_lsp", keyword_length = 2, group_index = 1, max_item_count = 20 },
+      { name = "nvim_lsp" },
       -- { name = "nvim_lsp" },
       { name = "path" }, -- For vsnip users.
       -- { name = 'vsnip' }, -- For vsnip users.

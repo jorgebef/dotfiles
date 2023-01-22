@@ -62,7 +62,7 @@ vim.keymap.set("n", "<leader>bn", ":bn<cr>", opts)
 vim.keymap.set("n", "<leader>bp", ":bp<cr>", opts)
 
 vim.keymap.set("n", "<leader>bC", function()
-	vim.cmd([[
+  vim.cmd([[
 function! DeleteHiddenBuffers()
 let tpbl=[]
 let closed = 0
@@ -95,15 +95,15 @@ vim.keymap.set("n", "<leader>sv", ":vs<CR>", opts)
 vim.keymap.set("n", "<leader>sh", ":split<CR>", opts)
 
 local function reload_nvim_conf()
-	for name, _ in pairs(package.loaded) do
-		if name:match("^core") or name:match("^lsp") or name:match("^plugins") then
-			package.loaded[name] = nil
-		end
-	end
-	dofile(vim.env.MYVIMRC)
-	vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
+  for name, _ in pairs(package.loaded) do
+    if name:match("^core") or name:match("^lsp") or name:match("^plugins") then
+      package.loaded[name] = nil
+    end
+  end
+  dofile(vim.env.MYVIMRC)
+  vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
 end
 
 vim.keymap.set("n", "<leader>cR", function()
-	reload_nvim_conf()
+  reload_nvim_conf()
 end, opts)
