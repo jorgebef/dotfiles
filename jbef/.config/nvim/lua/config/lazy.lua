@@ -45,4 +45,6 @@ lazy_plugin_manager.setup("config.plugins", {
   },
 })
 
+vim.keymap.set("n", "<leader>L", ":Lazy<CR>", { noremap = true })
+
 vim.cmd.colorscheme("catppuccin")
