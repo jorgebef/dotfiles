@@ -55,14 +55,18 @@ opt.mouse = ""
 
 -- Numbers
 opt.number = true
-opt.numberwidth = 2
+opt.numberwidth = 3
 opt.relativenumber = true
 opt.ruler = false
+
+-- Status column - NEW from 0.9
+require('util.status_column')
 
 -- disable nvim intro
 opt.shortmess:append("sI")
 
-opt.signcolumn = "yes"
+-- opt.signcolumn = "yes"
+opt.signcolumn = "no"
 opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = 2

@@ -29,16 +29,7 @@ function M.config()
   -- db.preview_file_width = 80
   local home = os.getenv("HOME")
 
-  -- require('dashboard').setup({
-  --   header = {}, -- ascii text in there
-  --   shortcut = {
-  --     { desc = string, group = "highlight group", key = "shortcut key", action = "action when you press key" },
-  --   },
-  --   packages = { enable = true }, -- show how many plugins neovim loaded
-  --   project = { limit = 8, action = "Telescope find_files cwd=" }, -- limit how many projects list, action when you press key or enter it will run this action.
-  --   mru = { limit = 10 }, -- how many files in list
-  --   footer = {}, -- footer
-  -- })
+  require("dashboard").setup({})
 
   -- db.custom_center = {
   --   {

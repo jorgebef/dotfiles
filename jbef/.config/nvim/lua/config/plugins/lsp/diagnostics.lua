@@ -3,6 +3,11 @@ local M = {}
 local ui = require("config.ui")
 
 M.signs = {
+  -- Error = "",
+  -- Warning = "",
+  -- Hint = "",
+  -- Information = "",
+
   Error = ui.diagnostics.Error,
   Warning = ui.diagnostics.Warning,
   Hint = ui.diagnostics.Hint,
