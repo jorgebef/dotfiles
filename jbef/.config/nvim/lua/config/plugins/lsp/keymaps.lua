@@ -5,9 +5,12 @@ function M.setup(client)
 
   vim.keymap.set("n", "<leader>ld", function()
     -- vim.lsp.buf.definition()
+    -- vim.cmd.Lspsaga("goto_definition")
+    -- vim.cmd.Lspsaga("peek_definition")
     require("telescope.builtin").lsp_definitions()
   end, opts)
   vim.keymap.set("n", "<leader>lh", function()
+    -- vim.cmd.Lspsaga("lsp_finder")
     require("telescope.builtin").lsp_references()
   end, opts)
 
@@ -16,19 +19,40 @@ function M.setup(client)
   end, opts)
 
   vim.keymap.set("n", "<leader>la", function()
+    -- vim.cmd.Lspsaga("code_action")
     vim.lsp.buf.code_action()
   end, opts)
 
   vim.keymap.set("n", "]w", function()
+    -- require("lspsaga.diagnostic").goto_next({
+    --   severity = {
+    --     vim.diagnostic.severity.WARN,
+    --     vim.diagnostic.severity.HINT,
+    --     vim.diagnostic.severity.INFO,
+    --   },
+    -- })
     vim.diagnostic.goto_next({ severity = { max = "WARN" }, float = true })
   end, opts)
   vim.keymap.set("n", "]e", function()
+    -- require("lspsaga.diagnostic").goto_next({
+    --   severity = vim.diagnostic.severity.ERROR,
+    -- })
     vim.diagnostic.goto_next({ severity = "ERROR", float = true })
   end, opts)
   vim.keymap.set("n", "[w", function()
+    -- require("lspsaga.diagnostic").goto_prev({
+    --   severity = {
+    --     vim.diagnostic.severity.WARN,
+    --     vim.diagnostic.severity.HINT,
+    --     vim.diagnostic.severity.INFO,
+    --   },
+    -- })
     vim.diagnostic.goto_prev({ severity = { max = "WARN" }, float = true })
   end, opts)
   vim.keymap.set("n", "[e", function()
+    -- require("lspsaga.diagnostic").goto_prev({
+    --   severity = vim.diagnostic.severity.ERROR,
+    -- })
     vim.diagnostic.goto_prev({ severity = "ERROR", float = true })
   end, opts)
 
@@ -37,10 +61,12 @@ function M.setup(client)
   end, opts)
 
   vim.keymap.set("n", "<leader>lr", function()
+    -- vim.cmd.Lspsaga("rename")
     vim.lsp.buf.rename()
   end, opts)
 
   vim.keymap.set("n", "K", function()
+    -- vim.cmd.Lspsaga("hover_doc")
     vim.lsp.buf.hover({ focusable = false })
   end, opts)
 

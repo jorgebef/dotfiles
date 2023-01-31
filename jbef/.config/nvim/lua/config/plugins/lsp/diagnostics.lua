@@ -39,6 +39,7 @@ function M.setup()
         return
       end
     end
+
     -- THIS IS FOR BUILTIN LSP
     vim.diagnostic.open_float(0, {
       scope = "cursor",
@@ -51,8 +52,9 @@ function M.setup()
         "WinLeave",
       },
     })
-    -- THIS IS FOR LSPSAGA
-    -- vim.cmd.Lspsaga('show_cursor_diagnostics')
+
+    -- -- THIS IS FOR LSPSAGA
+    -- vim.cmd.Lspsaga("show_cursor_diagnostics")
   end
 end
 

@@ -51,7 +51,7 @@ function M.config()
       -- currently only round theme
       theme = "round",
       -- border type can be single,double,rounded,solid,shadow.
-      border = "single",
+      border = "rounded",
       winblend = 0,
       expand = "",
       collapse = "",
@@ -135,7 +135,14 @@ function M.config()
       close = "<Esc>",
     },
     -- rename_action_quit = "<C-c>",
-    rename_action_quit = "<leader><ESC>",
+    -- rename_action_quit = "<leader><ESC>",
+    rename = {
+      quit = "<leader><ESC>",
+      exec = "<CR>",
+      mark = "x",
+      confirm = "<CR>",
+      in_select = true,
+    },
     rename_in_select = true,
     -- show symbols in winbar must nightly
     -- in_custom mean use lspsaga api to get symbols
@@ -153,6 +160,10 @@ function M.config()
       -- ## only valid after set `show_file = true`
       file_formatter = "",
       click_support = false,
+    },
+    beacon = {
+      enable = false,
+      frequency = 7,
     },
     -- show outline
     show_outline = {
@@ -177,82 +188,82 @@ function M.config()
     server_filetype_map = {},
   })
 
-  -- Lsp finder find the symbol definition implement reference
-  -- if there is no implement it will hide
-  -- when you use action in finder like open vsplit then you can
-  -- use <C-t> to jump back
-  -- keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
-  keymap("n", "<leader>lh", function()
-    vim.cmd.Lspsaga("lsp_finder")
-  end, { silent = true })
-
-  -- Code action
-  -- keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
-  keymap({ "n", "v" }, "<leader>la", function()
-    vim.cmd.Lspsaga("code_action")
-  end, { silent = true })
-
-  -- Rename
-  keymap("n", "<leader>lr", function()
-    vim.cmd.Lspsaga("rename")
-  end, { silent = true })
-
-  -- -- Peek Definition
-  -- -- you can edit the definition file in this flaotwindow
-  -- -- also support open/vsplit/etc operation check definition_action_keys
-  -- -- support tagstack C-t jump back
-  keymap("n", "<leader>ld", function()
-    -- vim.cmd.Lspsaga("peek_definition")
-    vim.cmd.Lspsaga("goto_definition")
-  end, { silent = true })
-
-  -- -- Show line diagnostics
-  keymap("n", "<leader>ls", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
-
-  -- Jump to diagnostics
-  keymap("n", "[w", function()
-    require("lspsaga.diagnostic").goto_prev({
-      severity = {
-        vim.diagnostic.severity.WARN,
-        vim.diagnostic.severity.HINT,
-        vim.diagnostic.severity.INFO,
-      },
-    })
-  end, { silent = true })
-  keymap("n", "]w", function()
-    require("lspsaga.diagnostic").goto_next({
-      severity = {
-        vim.diagnostic.severity.WARN,
-        vim.diagnostic.severity.HINT,
-        vim.diagnostic.severity.INFO,
-      },
-    })
-  end, { silent = true })
-  keymap("n", "[e", function()
-    require("lspsaga.diagnostic").goto_prev({
-      severity = vim.diagnostic.severity.ERROR,
-    })
-  end, { silent = true })
-  keymap("n", "]e", function()
-    require("lspsaga.diagnostic").goto_next({
-      severity = vim.diagnostic.severity.ERROR,
-    })
-  end, { silent = true })
-
-  -- Outline
-  -- keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
-
-  -- Hover Doc
-  keymap("n", "K", function()
-    vim.cmd.Lspsaga("hover_doc")
-  end, { silent = true })
-
-  vim.api.nvim_create_augroup("LspSaga_diagnostics_hold", { clear = true })
-  vim.api.nvim_create_autocmd({ "CursorHold" }, {
-    pattern = "*",
-    command = "lua OpenDialogIfNoFloat()",
-    group = "LspSaga_diagnostics_hold",
-  })
+  -- -- Lsp finder find the symbol definition implement reference
+  -- -- if there is no implement it will hide
+  -- -- when you use action in finder like open vsplit then you can
+  -- -- use <C-t> to jump back
+  -- -- keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+  -- keymap("n", "<leader>lh", function()
+  --   vim.cmd.Lspsaga("lsp_finder")
+  -- end, { silent = true })
+  --
+  -- -- Code action
+  -- -- keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+  -- keymap({ "n", "v" }, "<leader>la", function()
+  --   vim.cmd.Lspsaga("code_action")
+  -- end, { silent = true })
+  --
+  -- -- Rename
+  -- keymap("n", "<leader>lr", function()
+  --   vim.cmd.Lspsaga("rename")
+  -- end, { silent = true })
+  --
+  -- -- -- Peek Definition
+  -- -- -- you can edit the definition file in this flaotwindow
+  -- -- -- also support open/vsplit/etc operation check definition_action_keys
+  -- -- -- support tagstack C-t jump back
+  -- keymap("n", "<leader>ld", function()
+  --   -- vim.cmd.Lspsaga("peek_definition")
+  --   vim.cmd.Lspsaga("goto_definition")
+  -- end, { silent = true })
+  --
+  -- -- -- Show line diagnostics
+  -- keymap("n", "<leader>ls", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+  --
+  -- -- Jump to diagnostics
+  -- keymap("n", "[w", function()
+  --   require("lspsaga.diagnostic").goto_prev({
+  --     severity = {
+  --       vim.diagnostic.severity.WARN,
+  --       vim.diagnostic.severity.HINT,
+  --       vim.diagnostic.severity.INFO,
+  --     },
+  --   })
+  -- end, { silent = true })
+  -- keymap("n", "]w", function()
+  --   require("lspsaga.diagnostic").goto_next({
+  --     severity = {
+  --       vim.diagnostic.severity.WARN,
+  --       vim.diagnostic.severity.HINT,
+  --       vim.diagnostic.severity.INFO,
+  --     },
+  --   })
+  -- end, { silent = true })
+  -- keymap("n", "[e", function()
+  --   require("lspsaga.diagnostic").goto_prev({
+  --     severity = vim.diagnostic.severity.ERROR,
+  --   })
+  -- end, { silent = true })
+  -- keymap("n", "]e", function()
+  --   require("lspsaga.diagnostic").goto_next({
+  --     severity = vim.diagnostic.severity.ERROR,
+  --   })
+  -- end, { silent = true })
+  --
+  -- -- Outline
+  -- -- keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
+  --
+  -- -- Hover Doc
+  -- keymap("n", "K", function()
+  --   vim.cmd.Lspsaga("hover_doc")
+  -- end, { silent = true })
+  --
+  -- vim.api.nvim_create_augroup("LspSaga_diagnostics_hold", { clear = true })
+  -- vim.api.nvim_create_autocmd({ "CursorHold" }, {
+  --   pattern = "*",
+  --   command = "lua OpenDiagnosticIfNoFloat()",
+  --   group = "LspSaga_diagnostics_hold",
+  -- })
 end
 
 return M
