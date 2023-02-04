@@ -65,8 +65,8 @@ require('util.status_column')
 -- disable nvim intro
 opt.shortmess:append("sI")
 
--- opt.signcolumn = "yes"
-opt.signcolumn = "no"
+opt.signcolumn = "yes:2"
+-- opt.signcolumn = "no"
 opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = 2
