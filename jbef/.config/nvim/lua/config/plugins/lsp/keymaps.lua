@@ -4,10 +4,10 @@ function M.setup(client)
   local opts = { noremap = true, silent = true }
 
   vim.keymap.set("n", "<leader>ld", function()
-    -- vim.lsp.buf.definition()
+    vim.lsp.buf.definition()
     -- vim.cmd.Lspsaga("goto_definition")
     -- vim.cmd.Lspsaga("peek_definition")
-    require("telescope.builtin").lsp_definitions()
+    -- require("telescope.builtin").lsp_definitions()
   end, opts)
   vim.keymap.set("n", "<leader>lh", function()
     -- vim.cmd.Lspsaga("lsp_finder")
@@ -24,7 +24,7 @@ function M.setup(client)
   end, opts)
 
   vim.keymap.set("n", "]w", function()
-    -- require("lspsaga.diagnostic").goto_next({
+    -- require("lspsaga.diagnostic"):goto_next({
     --   severity = {
     --     vim.diagnostic.severity.WARN,
     --     vim.diagnostic.severity.HINT,
@@ -34,13 +34,13 @@ function M.setup(client)
     vim.diagnostic.goto_next({ severity = { max = "WARN" }, float = true })
   end, opts)
   vim.keymap.set("n", "]e", function()
-    -- require("lspsaga.diagnostic").goto_next({
+    -- require("lspsaga.diagnostic"):goto_next({
     --   severity = vim.diagnostic.severity.ERROR,
     -- })
     vim.diagnostic.goto_next({ severity = "ERROR", float = true })
   end, opts)
   vim.keymap.set("n", "[w", function()
-    -- require("lspsaga.diagnostic").goto_prev({
+    -- require("lspsaga.diagnostic"):goto_prev({
     --   severity = {
     --     vim.diagnostic.severity.WARN,
     --     vim.diagnostic.severity.HINT,
@@ -50,7 +50,7 @@ function M.setup(client)
     vim.diagnostic.goto_prev({ severity = { max = "WARN" }, float = true })
   end, opts)
   vim.keymap.set("n", "[e", function()
-    -- require("lspsaga.diagnostic").goto_prev({
+    -- require("lspsaga.diagnostic"):goto_prev({
     --   severity = vim.diagnostic.severity.ERROR,
     -- })
     vim.diagnostic.goto_prev({ severity = "ERROR", float = true })
@@ -66,7 +66,7 @@ function M.setup(client)
   end, opts)
 
   vim.keymap.set("n", "K", function()
-    -- vim.cmd.Lspsaga("hover_doc")
+    -- vim.cmd.Lspsaga("hover_doc", "++quiet")
     vim.lsp.buf.hover({ focusable = false })
   end, opts)
 
@@ -96,6 +96,27 @@ function M.setup(client)
     end, opts)
   end
 
+  -- Function to check if a floating dialog exists and if not
+  -- then check for diagnostics under the cursor
+  function OpenDiagnosticIfNoFloat()
+    for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+      if vim.api.nvim_win_get_config(winid).zindex then
+        return
+      end
+    end
+    -- THIS IS FOR BUILTIN LSP
+    vim.diagnostic.open_float(0, {
+      scope = "cursor",
+      focusable = false,
+      close_events = {
+        "CursorMoved",
+        "CursorMovedI",
+        "BufHidden",
+        "InsertCharPre",
+        "WinLeave",
+      },
+    })
+  end
   -- Show diagnostics under the cursor when holding position
   vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
   vim.api.nvim_create_autocmd({ "CursorHold" }, {
