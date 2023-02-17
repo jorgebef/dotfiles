@@ -1,4 +1,4 @@
-local M = { "kyazdani42/nvim-web-devicons" } -- Cool icons
+local M = { "nvim-tree/nvim-web-devicons" } -- Cool icons
 
 function M.config()
   local devicons = require("nvim-web-devicons")

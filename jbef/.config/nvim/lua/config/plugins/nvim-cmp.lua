@@ -52,54 +52,9 @@ function M.config()
   vim.o.completeopt = "menu,menuone,noselect"
 
   cmp.setup({
-    formatting = {
-      fields = { "kind", "abbr", "menu" },
-      format = function(entry, vim_item)
-        local kind = lspkind.cmp_format({
-          mode = "symbol_text",
-          with_text = true,
-          maxwidth = 70,
-        })(entry, vim_item)
-        local strings = vim.split(kind.kind, "%s", { trimempty = true })
-        kind.kind = " " .. strings[1] .. " "
-        kind.menu = "    (" .. strings[2] .. ")"
-        -- CHECK THIS OUT BELOW FOR TAILWIND COLOR IN CMP WINDOW
-        -- if vim_item.kind == "Color" and entry.completion_item.documentation then
-        --   local _, _, r, g, b = string.find(entry.completion_item.documentation, "^rgb%((%d+), (%d+), (%d+)")
-        --   if r then
-        --     local color = string.format("%02x", r) .. string.format("%02x", g) .. string.format("%02x", b)
-        --     local group = "Tw_" .. color
-        --     if vim.fn.hlID(group) < 1 then
-        --       vim.api.nvim_set_hl(0, group, { fg = "#" .. color })
-        --     end
-        --     vim_item.kind = "⬤"
-        --     vim_item.kind_hl_group = group
-        --     return vim_item
-        --   end
-        -- end
-        --
-        return kind
-      end,
-    },
-    sources = cmp.config.sources({
-      -- { name = "nvim_lsp", keyword_length = 2, group_index = 1, max_item_count = 20 },
-      { name = "nvim_lsp" },
-      -- { name = "nvim_lsp" },
-      { name = "path" }, -- For vsnip users.
-      -- { name = 'vsnip' }, -- For vsnip users.
-      { name = "luasnip" }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
-    }, {
-      { name = "buffer" },
-    }),
     snippet = {
-      -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
         require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-        -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
       end,
     },
     window = {
@@ -150,9 +105,58 @@ function M.config()
       end,
       -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
-    experimental = {
-      -- native_menu = true,
+    sources = cmp.config.sources({
+      { name = "nvim_lsp", keyword_length = 2, group_index = 1, max_item_count = 20 },
+      -- { name = "nvim_lsp" },
+      { name = "path" },
+      { name = "luasnip", keyword_length = 3, max_item_count = 10 }, -- For luasnip users.
+    }, {
+      { name = "buffer" },
+    }),
+    formatting = {
+      fields = { "kind", "abbr", "menu" },
+      format = function(entry, vim_item)
+        local kind = lspkind.cmp_format({
+          mode = "symbol_text",
+          with_text = true,
+          maxwidth = 70,
+        })(entry, vim_item)
+        local strings = vim.split(kind.kind, "%s", { trimempty = true })
+        kind.kind = " " .. strings[1] .. " "
+        kind.menu = "    (" .. strings[2] .. ")"
+        return kind
+      end,
     },
+    -- experimental = {
+    --   native_menu = true,
+    -- },
+  })
+
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype("gitcommit", {
+    sources = cmp.config.sources({
+      { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = "buffer" },
+    }),
+  })
+
+  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = "buffer" },
+    },
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = "path" },
+    }, {
+      { name = "cmdline" },
+    }),
   })
 end
 

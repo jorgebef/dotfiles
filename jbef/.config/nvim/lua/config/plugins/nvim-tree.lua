@@ -140,6 +140,7 @@ function M.config()
 	-- ============================== REMAPS =================================
 	local nsn_opts = { noremap = true, silent = true, nowait = true }
 	vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", nsn_opts)
+	-- vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", nsn_opts)
 end
 
 return M

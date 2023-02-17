@@ -15,7 +15,7 @@ opt.showcmd = true
 opt.wildmenu = true
 opt.showmatch = true
 opt.incsearch = true
-opt.lazyredraw = true
+-- opt.lazyredraw = true
 opt.sessionoptions = "globals,buffers,curdir,folds,help,resize,tabpages,winsize,winpos"
 -- vim.g.ttyfast = true
 g.inccommand = "nosplit"
@@ -40,7 +40,7 @@ opt.laststatus = 3 -- global statusline
 opt.title = true
 opt.cul = true -- cursor line
 opt.showmode = false
--- o.cmdheight = 0 -- Thanks shougo
+-- opt.cmdheight = 0 -- Thanks shougo
 
 -- Indentline
 opt.shiftwidth = 2

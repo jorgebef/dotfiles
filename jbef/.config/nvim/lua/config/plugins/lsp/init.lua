@@ -3,71 +3,24 @@ local M = {
   dependencies = {
     { "jose-elias-alvarez/nvim-lsp-ts-utils" },
     { "jose-elias-alvarez/null-ls.nvim" },
-    -- { "glepnir/lspsaga.nvim", branch = "main" },
     { "SmiteshP/nvim-navic" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
   },
 }
 
-M.handlers = {
-  ["textDocument/hover"] = function(_, result, ctx, config)
-    config = config or {}
-    config.focus_id = ctx.method
-    if not (result and result.contents) then
-      return
-    end
-    local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
-    markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
-    if vim.tbl_isempty(markdown_lines) then
-      return
-    end
-    return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
-  end,
-  ["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    { border = require("config.ui").border.Single }
-  ),
-  ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
-    underline = true,
-    -- bold = true,
-    signs = true,
-    float = {
-      source = "always",
-      focusable = false,
-    },
-    severity_sort = true,
-  }),
-}
+M.handlers = require("config.plugins.lsp.handlers").handlers
 
-function M.on_attach(client, bufnr)
-  local navic = require("nvim-navic")
-  local util = require("util.util")
+M.on_attach = require("config.plugins.lsp.on_attach").on_attach
 
-  if client.name ~= "tailwindcss" then
-    navic.attach(client, bufnr)
-  end
-
-  -- Conditionally disable formatting for some servers
-  if util.has_value({
-    "tsserver",
-    "sumneko_lua",
-  }, client.name) then
-    client.server_capabilities.documentFormattingProvider = false
-  end
-
-  require("config.plugins.lsp.keymaps").setup(client)
-end
-
-function M.capabilities()
+M.capabilities = function()
   local cmp = require("cmp_nvim_lsp")
   local capabilities = cmp.default_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   return capabilities
 end
 
-function M.config()
+M.config = function()
   local lspconfig = require("lspconfig")
   local ui = require("config.ui")
   local servers = require("config.plugins.lsp.servers")
@@ -80,11 +33,19 @@ function M.config()
     server_names[n] = k
   end
   require("mason-lspconfig").setup({
-    -- ensure_installed = servers,
     ensure_installed = server_names,
   })
 
-  require("config.plugins.lsp.diagnostics").setup()
+  local diagnostic_signs = {
+    Error = ui.diagnostics.Error,
+    Warning = ui.diagnostics.Warning,
+    Hint = ui.diagnostics.Hint,
+    Information = ui.diagnostics.Information,
+  }
+  for type, icon in pairs(diagnostic_signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  end
 
   -- Do not forget to use the on_attach function
   -- require 'lspconfig'.myserver.setup { handlers=handlers }

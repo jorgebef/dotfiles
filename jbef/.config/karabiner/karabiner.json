@@ -39,26 +39,26 @@
                 ]
               }
             ]
-          },
-          {
-            "description": "make Ctrl+[ send Escape outside terminal",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "open_bracket",
-                  "modifiers": {
-                    "mandatory": ["left_control"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "escape"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
           }
+          // {
+          //   "description": "make Ctrl+[ send Escape outside terminal",
+          //   "manipulators": [
+          //     {
+          //       "from": {
+          //         "key_code": "open_bracket",
+          //         "modifiers": {
+          //           "mandatory": ["left_control"]
+          //         }
+          //       },
+          //       "to": [
+          //         {
+          //           "key_code": "escape"
+          //         }
+          //       ],
+          //       "type": "basic"
+          //     }
+          //   ]
+          // }
         ]
       },
       "devices": [

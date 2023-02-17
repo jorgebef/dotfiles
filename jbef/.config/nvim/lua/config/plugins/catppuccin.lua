@@ -12,7 +12,6 @@ local M = {
 function M.config()
   -- IMPORTANT!!!!!!!!!
   vim.g.catppuccin_flavour = "mocha"
-  -- local cp = require("catppuccin.palettes").get_palette()
 
   require("catppuccin").setup({
     dim_inactive = {
@@ -91,6 +90,7 @@ function M.config()
       ts_rainbow = false,
       hop = false,
       notify = true,
+      noice = true,
       telekasten = false,
       symbols_outline = true,
       mini = false,
