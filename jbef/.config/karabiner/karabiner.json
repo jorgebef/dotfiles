@@ -11,13 +11,13 @@
         "parameters": {
           "basic.simultaneous_threshold_milliseconds": 10,
           "basic.to_delayed_action_delay_milliseconds": 500,
-          "basic.to_if_alone_timeout_milliseconds": 100,
-          "basic.to_if_held_down_threshold_milliseconds": 20,
+          "basic.to_if_alone_timeout_milliseconds": 500,
+          "basic.to_if_held_down_threshold_milliseconds": 500,
           "mouse_motion_to_scroll.speed": 100
         },
         "rules": [
           {
-            "description": "conditionally reassigning caps lock to Escape on tap and Ctrl on hold",
+            "description": "Caps Lock to Escape if pressed alone and left_control if not",
             "manipulators": [
               {
                 "type": "basic",
@@ -27,38 +27,20 @@
                     "optional": ["any"]
                   }
                 },
+                "to": [
+                  {
+                    "key_code": "left_control",
+                    "lazy": true
+                  }
+                ],
                 "to_if_alone": [
                   {
                     "key_code": "escape"
-                  }
-                ],
-                "to_if_held_down": [
-                  {
-                    "key_code": "left_control"
                   }
                 ]
               }
             ]
           }
-          // {
-          //   "description": "make Ctrl+[ send Escape outside terminal",
-          //   "manipulators": [
-          //     {
-          //       "from": {
-          //         "key_code": "open_bracket",
-          //         "modifiers": {
-          //           "mandatory": ["left_control"]
-          //         }
-          //       },
-          //       "to": [
-          //         {
-          //           "key_code": "escape"
-          //         }
-          //       ],
-          //       "type": "basic"
-          //     }
-          //   ]
-          // }
         ]
       },
       "devices": [
