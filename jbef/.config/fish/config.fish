@@ -9,6 +9,7 @@ set -gx EDITOR (which nvim)
 set -gx VISUAL $EDITOR
 set -gx SUDO_EDITOR $EDITOR
 set -gx PNPM_HOME $HOME/Library/pnpm
+set -gx XDG_CONFIG_HOME $HOME/.config
 
 fish_add_path /usr/local/bin/ # Add local bin to $PATH
 fish_add_path $HOME/Library/CloudStorage/Dropbox/JORGE/Webdev/bin/ # Add custom webdev bin to $PATH
@@ -24,3 +25,7 @@ fish_vi_key_bindings
 
 # ~/.config/fish/config.fish
 starship init fish | source
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
