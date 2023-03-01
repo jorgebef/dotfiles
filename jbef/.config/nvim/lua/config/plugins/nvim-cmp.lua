@@ -106,10 +106,10 @@ function M.config()
       -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
-      { name = "nvim_lsp", keyword_length = 2, group_index = 1, max_item_count = 20 },
+      { name = "nvim_lsp", keyword_length = 1, group_index = 1, max_item_count = 25 },
       -- { name = "nvim_lsp" },
       { name = "path" },
-      { name = "luasnip", keyword_length = 3, max_item_count = 10 }, -- For luasnip users.
+      { name = "luasnip", keyword_length = 2, max_item_count = 10 }, -- For luasnip users.
     }, {
       { name = "buffer" },
     }),

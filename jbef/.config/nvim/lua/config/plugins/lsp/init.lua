@@ -33,7 +33,8 @@ M.config = function()
     server_names[n] = k
   end
   require("mason-lspconfig").setup({
-    ensure_installed = server_names,
+    -- ensure_installed = server_names,
+    automatic_installation = { exclude = { "tsserver", "tailwindcss" } },
   })
 
   local diagnostic_signs = {
@@ -58,6 +59,10 @@ M.config = function()
   end
 
   vim.lsp.util.open_floating_preview = improved_floating_preview
+
+  -- local add_bun_prefix = require("plugins.lsp.bun").add_bun_prefix
+  -- local util = require("lspconfig.util")
+  -- util.on_setup = util.add_hook_before(util.on_setup, add_bun_prefix)
 
   -- HERE IS WHERE THE MAGIG HAPPENS
   -- we loop through each item in the object provided with all the configs
