@@ -1,6 +1,6 @@
 local M = {
   tsserver = {
-    cmd = { "bunx", "typescript-language-server", "--stdio" },
+    -- cmd = { "bunx", "typescript-language-server", "--stdio" },
     -- cmd = { "typescript-language-server", "--stdio" },
     init_options = {
       hostInfo = "neovim",
@@ -25,7 +25,7 @@ local M = {
     filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
   },
   tailwindcss = {
-    cmd = { "bunx", "tailwindcss-language-server", "--stdio" },
+    -- cmd = { "bunx", "tailwindcss-language-server", "--stdio" },
     -- cmd = { "tailwindcss-language-server", "--stdio" },
     root_dir = require("lspconfig").util.root_pattern(
       "tailwind.config.js",

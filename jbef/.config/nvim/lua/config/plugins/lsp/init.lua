@@ -33,8 +33,8 @@ M.config = function()
     server_names[n] = k
   end
   require("mason-lspconfig").setup({
-    -- ensure_installed = server_names,
-    automatic_installation = { exclude = { "tsserver", "tailwindcss" } },
+    ensure_installed = server_names,
+    -- automatic_installation = { exclude = { "tsserver", "tailwindcss" } },
   })
 
   local diagnostic_signs = {
