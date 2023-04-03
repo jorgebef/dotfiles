@@ -45,10 +45,10 @@ function M.config()
       native_lsp = {
         enabled = true,
         virtual_text = {
-          errors = { "italic" },
-          hints = { "italic" },
-          warnings = { "italic" },
-          information = { "italic" },
+          -- errors = { "italic" },
+          -- hints = { "italic" },
+          -- warnings = { "italic" },
+          -- information = { "italic" },
         },
         underlines = {
           errors = { "underline" },
@@ -113,25 +113,31 @@ function M.config()
 
         LeapLabelPrimary = { fg = nil, bg = colors.mauve, bold = true },
 
-        LspSagaFinderSelection = { fg = colors.blue, bg = colors.surface0 },
-        FinderSpinnerBorder = { fg = colors.blue, bg = colors.base },
-        FinderVirtText = { fg = colors.mauve },
-        LspSagaLspFinderBorder = { fg = colors.blue, bg = colors.base },
-        FinderPreviewSearch = { bg = colors.base },
-        LspSagaHoverBorder = { fg = colors.blue, bg = colors.base },
-        LspFloatWinNormal = { bg = colors.base },
-        LspFloatWinBorder = { fg = colors.blue, bg = colors.base },
-        LspSagaBorderTitle = { fg = colors.blue, bg = colors.red },
-        DefinitionBorder = { fg = colors.blue, bg = colors.base },
-        DefinitionArrow = { fg = colors.red, bg = colors.base },
-        DefinitionSearch = { fg = nil, bg = colors.surface0 },
-        DefinitionFile = { bg = colors.base },
-        LSOutlinePreviewBorder = { fg = colors.blue, bg = colors.base },
-        LspSagaRenameBorder = { fg = colors.blue, bg = colors.base },
+        -- LspSagaFinderSelection = { fg = colors.blue, bg = colors.surface0 },
+        -- FinderSpinnerBorder = { fg = colors.blue, bg = colors.base },
+        -- FinderVirtText = { fg = colors.mauve },
+        -- LspSagaLspFinderBorder = { fg = colors.blue, bg = colors.base },
+        -- FinderPreviewSearch = { bg = colors.base },
+        -- LspSagaHoverBorder = { fg = colors.blue, bg = colors.base },
+        -- LspFloatWinNormal = { bg = colors.base },
+        -- LspFloatWinBorder = { fg = colors.blue, bg = colors.base },
+        -- LspSagaBorderTitle = { fg = colors.blue, bg = colors.red },
+        -- DefinitionBorder = { fg = colors.blue, bg = colors.base },
+        -- DefinitionArrow = { fg = colors.red, bg = colors.base },
+        -- DefinitionSearch = { fg = nil, bg = colors.surface0 },
+        -- DefinitionFile = { bg = colors.base },
+        -- LSOutlinePreviewBorder = { fg = colors.blue, bg = colors.base },
+        -- LspSagaRenameBorder = { fg = colors.blue, bg = colors.base },
 
         MiniJump = { fg = nil, bg = colors.surface1, underline = true },
 
         LspSignatureActiveParameter = { fg = colors.pink, bold = true },
+
+        -- DiagnosticInfo = { fg = colors.red, sp = colors.blue, underline = true },
+        LspDiagnosticsHint = { fg = colors.red, sp = colors.blue, underline = true },
+        LspDiagnosticsInfo = { fg = colors.red, sp = colors.blue, underline = true },
+        -- DiagnosticUnderlineHint = { sp = colors.blue, undercurl = true },
+        -- DiagnosticUnderlineError = { undercurl = true },
 
         WinBar = { fg = colors.text, bg = colors.mantle },
         WinBarInactive = { fg = colors.surface2, bg = colors.mantle },
@@ -144,10 +150,7 @@ function M.config()
         -- ===============================================================================
         -- Language specific
         -- ===============================================================================
-        -- tsxTSTagDelimiter = { fg = cp.maroon },
-        ["@tag.delimiter.tsx"] = { fg = colors.maroon },
-        -- jsxTSTagDelimiter = { fg = cp.maroon },
-        -- javascriptTSTagDelimiter = { fg = cp.maroon },
+        -- ["@tag.delimiter.tsx"] = { fg = colors.maroon },
       }
     end,
   })
