@@ -55,7 +55,7 @@ opt.mouse = ""
 
 -- Numbers
 opt.number = true
-opt.numberwidth = 3
+opt.numberwidth = 4
 opt.relativenumber = true
 opt.ruler = false
 
@@ -75,8 +75,8 @@ opt.timeoutlen = 950
 opt.undofile = true
 
 -- interval for writing swap file to disk, also used by gitsigns
--- opt.updatetime = 550
-opt.updatetime = 850
+opt.updatetime = 550
+-- opt.updatetime = 850
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
