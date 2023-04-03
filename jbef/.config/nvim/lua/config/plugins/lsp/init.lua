@@ -1,7 +1,7 @@
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
-    { "jose-elias-alvarez/nvim-lsp-ts-utils" },
+    { "jose-elias-alvarez/typescript.nvim" },
     { "jose-elias-alvarez/null-ls.nvim" },
     { "SmiteshP/nvim-navic" },
     { "williamboman/mason.nvim" },
@@ -78,7 +78,14 @@ M.config = function()
       },
     }, opts or {})
 
-    lspconfig[server].setup(opts)
+    if server == "tsserver" then
+      -- This is for additional niceties like rename file and so on, check out keymaps.lua file
+      require("typescript").setup({
+        server = opts,
+      })
+    else
+      lspconfig[server].setup(opts)
+    end
   end
   -- ALL DONE!
 end

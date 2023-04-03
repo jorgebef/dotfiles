@@ -2,10 +2,13 @@ local M = {
   tsserver = {
     -- cmd = { "bunx", "typescript-language-server", "--stdio" },
     -- cmd = { "typescript-language-server", "--stdio" },
+    -- cmd = { "deno", "run", "-A", "--unstable", "npm:typescript-language-server", "--stdio" },
     init_options = {
       hostInfo = "neovim",
     },
     single_file_support = true,
+    log = "off",
+    trace = { server = "off" },
     filetypes = {
       "javascript",
       "javascriptreact",
