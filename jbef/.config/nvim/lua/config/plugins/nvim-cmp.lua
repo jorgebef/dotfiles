@@ -149,9 +149,11 @@ function M.config()
   -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline({ "/", "?" }, {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {
+    sources = cmp.config.sources({
+      { name = "nvim_lsp" },
+    }, {
       { name = "buffer" },
-    },
+    }),
   })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
@@ -159,8 +161,19 @@ function M.config()
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
       { name = "path" },
-    }, {
       { name = "cmdline" },
+      { name = "nvim_lsp" },
+    }),
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('Enter the HTML tag:',{
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = "path" },
+      { name = "nvim_lsp" },
+      { name = "cmdline" },
+      { name = "nvim_lsp" },
     }),
   })
 end

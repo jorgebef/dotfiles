@@ -81,6 +81,9 @@ M.config = function()
     if server == "tsserver" then
       -- This is for additional niceties like rename file and so on, check out keymaps.lua file
       require("typescript").setup({
+        go_to_source_definition = {
+          fallback = true, -- fall back to standard LSP definition on failure
+        },
         server = opts,
       })
     else

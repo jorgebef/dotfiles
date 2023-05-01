@@ -3,27 +3,8 @@ local M = {}
 function M.setup(client)
   local opts = { noremap = true, silent = true }
 
-  -- ====================================
-  -- Typescript specific remaps
-  -- ====================================
-  if client.name == "tsserver" then
-    vim.keymap.set("n", "<leader>lo", function()
-      vim.cmd.TypescriptOrganizeImports()
-    end)
-    vim.keymap.set("n", "<leader>lR", function()
-      vim.cmd.TypescriptRenameFile()
-    end, opts)
-    vim.keymap.set("n", "<leader>lA", function()
-      vim.cmd.TypescriptAddMissingImports()
-    end, opts)
-  end
-
   vim.keymap.set("n", "<leader>ld", function()
-    if client.name == "tsserver" then
-      vim.cmd.TypescriptGoToSourceDefinition()
-    else
-      vim.lsp.buf.definition()
-    end
+    vim.lsp.buf.definition()
     -- vim.cmd.Lspsaga("goto_definition")
     -- vim.cmd.Lspsaga("peek_definition")
     -- require("telescope.builtin").lsp_definitions()
@@ -96,6 +77,33 @@ function M.setup(client)
   vim.keymap.set("i", "<C-k>", function()
     vim.lsp.buf.signature_help()
   end, opts)
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      if client.server_capabilities.hoverProvider then
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
+      end
+    end,
+  })
+
+  -- ====================================
+  -- Typescript specific remaps
+  -- ====================================
+  if client.name == "tsserver" then
+    vim.keymap.set("n", "<leader>lo", function()
+      vim.cmd.TypescriptOrganizeImports()
+    end)
+    vim.keymap.set("n", "<leader>lR", function()
+      vim.cmd.TypescriptRenameFile()
+    end, opts)
+    vim.keymap.set("n", "<leader>lA", function()
+      vim.cmd.TypescriptAddMissingImports()
+    end, opts)
+    vim.keymap.set("n", "<leader>ld", function()
+      vim.cmd.TypescriptGoToSourceDefinition()
+    end, opts)
+  end
 
   -- Function to check if a floating dialog exists and if not
   -- then check for diagnostics under the cursor

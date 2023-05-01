@@ -133,12 +133,6 @@ function M.config()
 
         LspSignatureActiveParameter = { fg = colors.pink, bold = true },
 
-        -- DiagnosticInfo = { fg = colors.red, sp = colors.blue, underline = true },
-        LspDiagnosticsHint = { fg = colors.red, sp = colors.blue, underline = true },
-        LspDiagnosticsInfo = { fg = colors.red, sp = colors.blue, underline = true },
-        -- DiagnosticUnderlineHint = { sp = colors.blue, undercurl = true },
-        -- DiagnosticUnderlineError = { undercurl = true },
-
         WinBar = { fg = colors.text, bg = colors.mantle },
         WinBarInactive = { fg = colors.surface2, bg = colors.mantle },
         WinBarFilenameActive = { fg = colors.base, bg = colors.pink, bold = true },
@@ -147,6 +141,10 @@ function M.config()
         WhichKeyFloat = { bg = colors.surface0 },
         WhichKeyBorder = { fg = colors.blue, bg = colors.surface0 },
 
+        -- ===============================================================================
+        -- LSP Specific
+        -- ===============================================================================
+        DiagnosticUnnecessary = { sp = colors.teal, underline = true },
         -- ===============================================================================
         -- Language specific
         -- ===============================================================================

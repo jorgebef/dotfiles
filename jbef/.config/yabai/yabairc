@@ -65,4 +65,6 @@ yabai -m rule --add app="^Font Book$" manage=off
 yabai -m rule --add app="^IINA$" manage=off
 yabai -m rule --add app="^Karabiner" manage=off
 
+yabai -m rule --add app="^Cron$" manage=off
+
 echo "yabai configuration loaded.."
