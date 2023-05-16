@@ -44,7 +44,7 @@ M.handlers = {
 
   ["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help,
-    { border = require("config.ui").border.Single }
+    { border = require("config.ui").border.Block }
   ),
 
   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

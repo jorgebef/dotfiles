@@ -59,14 +59,18 @@ function M.config()
     },
     window = {
       completion = {
-        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        border = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
         winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
         col_offset = -3,
         side_padding = 0,
       },
       documentation = {
-        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-        winhighlight = "Normal:NormalFloat,NormalNC:NormalFloat,FloatBorder:FloatBorder",
+        -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        border = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
+        -- winhighlight = "Normal:NormalFloat,NormalNC:NormalFloat,FloatBorder:FloatBorder",
+        winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+        side_padding = 4,
         -- maxheight = 190,
       },
     },
@@ -133,7 +137,7 @@ function M.config()
       end,
     },
     -- experimental = {
-    --   native_menu = true,
+    --   ghost_text = true,
     -- },
   })
 
@@ -156,25 +160,13 @@ function M.config()
     }),
   })
 
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = "path" },
+    mapping = cmp.mapping.preset.cmdline({}),
+    sources = {
       { name = "cmdline" },
-      { name = "nvim_lsp" },
-    }),
-  })
-
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline("Enter the HTML tag:", {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
+      { name = "cmdline_history" },
       { name = "path" },
-      { name = "nvim_lsp" },
-      { name = "cmdline" },
-      { name = "nvim_lsp" },
-    }),
+    },
   })
 end
 

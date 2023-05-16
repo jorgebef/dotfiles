@@ -6,9 +6,42 @@ function M.config()
 
   local navic = require("nvim-navic")
 
-  local function custom_mode()
-    return [[ ]]
-  end
+  local mode_map = {
+    ["n"] = " ",
+    ["no"] = "O-PENDING",
+    ["nov"] = "O-PENDING",
+    ["noV"] = "O-PENDING",
+    ["no"] = "O-PENDING",
+    ["niI"] = " ",
+    ["niR"] = " ",
+    ["niV"] = " ",
+    ["nt"] = " ",
+    ["v"] = "VISUAL",
+    ["vs"] = "VISUAL",
+    ["V"] = "V-LINE",
+    ["Vs"] = "V-LINE",
+    [""] = "V-BLOCK",
+    ["s"] = "V-BLOCK",
+    ["s"] = "SELECT",
+    ["S"] = "S-LINE",
+    ["i"] = "INSERT",
+    ["ic"] = "INSERT",
+    ["ix"] = "INSERT",
+    ["R"] = "REPLACE",
+    ["Rc"] = "REPLACE",
+    ["Rx"] = "REPLACE",
+    ["Rv"] = "V-REPLACE",
+    ["Rvc"] = "V-REPLACE",
+    ["Rvx"] = "V-REPLACE",
+    ["c"] = "COMMAND",
+    ["cv"] = "EX",
+    ["ce"] = "EX",
+    ["r"] = "REPLACE",
+    ["rm"] = "MORE",
+    ["r?"] = "CONFIRM",
+    ["!"] = "SHELL",
+    ["t"] = "TERMINAL",
+  }
 
   require("lualine").setup({
     options = {
@@ -32,15 +65,20 @@ function M.config()
       lualine_a = {
         {
           -- "mode",
-          custom_mode,
+          function()
+            return mode_map[vim.api.nvim_get_mode().mode] or "__"
+          end,
           separator = {
             left = nil,
-            right = nil,
+            -- right = nil,
+            -- left = ui.common.SeparatorLStart,
+            right = ui.common.SeparatorREnd,
             -- left = icons.ui.SeparatorLStart,
             -- right = icons.ui.SeparatorLEndAngle,
             -- right = icons.ui.SeparatorSquare,
           },
-          padding = { left = 0, right = 0 },
+          color = { fg = nil, bg = nil, gui = "bold" },
+          padding = { left = 1, right = 0 },
         },
       },
       lualine_b = {
@@ -48,7 +86,8 @@ function M.config()
           "branch",
           separator = {
             -- right = icons.ui.SeparatorLEndAngle,
-            right = ui.common.SeparatorSquare,
+            left = ui.common.SeparatorLStart,
+            -- right = ui.common.SeparatorSquare,
           },
           color = { fg = nil, bg = cp.surface0, gui = nil },
           padding = { left = 2, right = 1 },
@@ -62,17 +101,11 @@ function M.config()
           -- 	removed = { fg = cp.red, bg = nil }, -- changes diagnostic's error color
           -- },
           separator = {
-            right = ui.common.SeparatorSquare,
+            -- right = ui.common.SeparatorSquare,
+            right = ui.common.SeparatorREnd,
           },
           color = { fg = nil, bg = cp.surface0, gui = nil },
           padding = 1,
-        },
-      },
-      lualine_c = {
-        {
-          "filename",
-          path = 1,
-          padding = { left = 4, right = 2 },
         },
         {
           "diagnostics",
@@ -83,7 +116,6 @@ function M.config()
           sources = { "nvim_diagnostic" },
           -- displays diagnostics from defined severity
           sections = { "error", "warn", "info", "hint" },
-          -- symbols = { error = " ", warn = " ", info = " " },
           symbols = {
             error = ui.diagnostics.Error,
             warning = ui.diagnostics.Warning,
@@ -93,10 +125,21 @@ function M.config()
           colored = true, -- displays diagnostics status in color if set to true
           update_in_insert = false, -- Update diagnostics in insert mode
           always_visible = false, -- Show diagnostics always
-          -- separator = {
-          -- 	right = icons.ui.SeparatorSquare,
-          -- },
-          padding = { left = 2, right = 2 },
+          separator = {
+            left = ui.common.SeparatorLStart,
+            right = ui.common.SeparatorREnd,
+          },
+          color = { fg = nil, bg = cp.mantle, gui = nil },
+          padding = { left = 1, right = 1 },
+        },
+      },
+      lualine_c = {
+        {
+          "filename",
+          path = 1,
+          -- padding = { left = 100, right = 90 },
+          padding = 2,
+          color = { fg = cp.overlay1 },
         },
       },
       -- lualine_x = {'encoding', 'fileformat', 'filetype'},
@@ -105,9 +148,11 @@ function M.config()
         {
           "progress",
           -- "require'lsp-status'.status()",
-          -- separator = {
-          -- 	left = icons.ui.SeparatorSquare,
-          -- },
+          separator = {
+            -- left = ui.SeparatorSquare,
+            left = ui.common.SeparatorLStart,
+            -- right = ui.common.SeparatorREnd,
+          },
           color = { fg = nil, bg = cp.surface0, gui = nil },
           padding = { left = 1, right = 1 },
         },
@@ -117,12 +162,12 @@ function M.config()
         {
           "location",
           separator = {
-            left = nil,
-            right = nil,
-            -- 	left = icons.ui.SeparatorRStartAngleAngle,
-            -- 	right = icons.ui.SeparatorSquare,
+            -- left = nil,
+            -- right = nil,
+            left = ui.common.SeparatorLStart,
+            -- right = ui.common.SeparatorREnd,
           },
-          padding = { left = 1, right = 1 },
+          padding = { left = 0, right = 1 },
         },
       },
     },
@@ -141,12 +186,12 @@ function M.config()
           color = "WinBarFilenameActive",
           separator = {
             left = ui.common.SeparatorLStart,
+            right = ui.common.SeparatorREnd,
             -- right = icons.ui.SeparatorLEndAngle,
-            right = ui.common.SeparatorSquare,
+            -- right = ui.common.SeparatorSquare,
           },
+          padding = 0,
           -- separator = { left = "█", right = "" },
-          left_padding = 1,
-          right_padding = 1,
         },
       },
       lualine_b = {
@@ -160,10 +205,6 @@ function M.config()
           color = "WinBar",
         },
       },
-      lualine_c = {},
-      lualine_x = {},
-      lualine_y = {},
-      lualine_z = {},
     },
     inactive_winbar = {
       lualine_a = {

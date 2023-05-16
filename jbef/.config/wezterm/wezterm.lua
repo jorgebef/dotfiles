@@ -4,20 +4,23 @@ local config = {
   term = "wezterm",
   color_scheme = "Catppuccin Mocha",
 
-  font = wezterm.font({ family = "JetBrainsMono Nerd Font" }),
+  -- font = wezterm.font({ family = "JetBrainsMono Nerd Font" }),
+  font = wezterm.font({ family = "JetBrains Mono" }),
   font_size = 15.0,
   font_rules = {
     -- https://wezfurlong.org/wezterm/config/lua/config/font_rules.html#font_rules
     {
       intensity = "Bold",
       italic = false,
-      font = wezterm.font({ family = "JetBrainsMono Nerd Font", weight = "Bold" }),
+      -- font = wezterm.font({ family = "JetBrainsMono Nerd Font", weight = "Bold" }),
+      font = wezterm.font({ family = "JetBrains Mono", weight = "Bold" }),
     },
     {
       intensity = "Bold",
       italic = true,
       font = wezterm.font({
-        family = "JetBrainsMono Nerd Font",
+        -- family = "JetBrainsMono Nerd Font",
+        family = "JetBrains Mono",
         weight = "Bold",
         italic = true,
       }),

@@ -59,8 +59,14 @@ function M.config()
       },
     },
     defaults = {
-      prompt_prefix = ui.common.Telescope .. " " .. ui.misc.Carat,
-      selection_caret = ui.common.Arrow,
+      -- prompt_prefix = ui.common.Telescope .. " " .. ui.misc.Carat,
+      prompt_prefix = ui.common.Telescope .. " ",
+      -- selection_caret = ui.common.Arrow,
+      selection_caret = "▌ ",
+      -- border = false,
+      borderchars = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
+      results_title = false,
+      prompt_title = false,
       -- layout_config = {
       --   height = 0.9,
       --   preview_cutoff = 120,

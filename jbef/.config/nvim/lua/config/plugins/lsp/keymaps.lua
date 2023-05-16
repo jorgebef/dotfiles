@@ -3,6 +3,26 @@ local M = {}
 function M.setup(client)
   local opts = { noremap = true, silent = true }
 
+  -- ====================================
+  -- Typescript specific remaps
+  -- ====================================
+  if client.name == "tsserver" then
+    vim.keymap.set("n", "<leader>lo", function()
+      -- vim.cmd.TypescriptOrganizeImports()
+      -- vim.cmd([[:TypescriptOrganizeImports]])
+    end)
+    vim.keymap.set("n", "<leader>lR", function()
+      vim.cmd.TypescriptRenameFile()
+      -- vim.lsp.buf.rename()
+    end, opts)
+    vim.keymap.set("n", "<leader>lA", function()
+      vim.cmd.TypescriptAddMissingImports()
+    end, opts)
+    vim.keymap.set("n", "<leader>ld", function()
+      vim.cmd.TypescriptGoToSourceDefinition()
+    end, opts)
+  end
+
   vim.keymap.set("n", "<leader>ld", function()
     vim.lsp.buf.definition()
     -- vim.cmd.Lspsaga("goto_definition")
@@ -87,24 +107,6 @@ function M.setup(client)
     end,
   })
 
-  -- ====================================
-  -- Typescript specific remaps
-  -- ====================================
-  if client.name == "tsserver" then
-    vim.keymap.set("n", "<leader>lo", function()
-      vim.cmd.TypescriptOrganizeImports()
-    end)
-    vim.keymap.set("n", "<leader>lR", function()
-      vim.cmd.TypescriptRenameFile()
-    end, opts)
-    vim.keymap.set("n", "<leader>lA", function()
-      vim.cmd.TypescriptAddMissingImports()
-    end, opts)
-    vim.keymap.set("n", "<leader>ld", function()
-      vim.cmd.TypescriptGoToSourceDefinition()
-    end, opts)
-  end
-
   -- Function to check if a floating dialog exists and if not
   -- then check for diagnostics under the cursor
   function OpenDiagnosticIfNoFloat()
@@ -126,6 +128,7 @@ function M.setup(client)
       },
     })
   end
+
   -- Show diagnostics under the cursor when holding position
   vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
   vim.api.nvim_create_autocmd({ "CursorHold" }, {

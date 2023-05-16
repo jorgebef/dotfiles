@@ -54,7 +54,7 @@ M.config = function()
   local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
   local function improved_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
-    opts.border = opts.border or ui.border.Single
+    opts.border = opts.border or ui.border.Block
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
   end
 
