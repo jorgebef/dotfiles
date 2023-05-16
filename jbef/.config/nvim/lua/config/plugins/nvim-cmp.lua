@@ -106,10 +106,10 @@ function M.config()
       -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
-      { name = "nvim_lsp", keyword_length = 1, priority = 10, group_index = 1, max_item_count = 25 },
+      { name = "nvim_lsp", keyword_length = 2, priority = 10, group_index = 1, max_item_count = 25 },
       -- { name = "nvim_lsp" },
       { name = "path" },
-      { name = "luasnip", keyword_length = 2, max_item_count = 10 }, -- For luasnip users.
+      { name = "luasnip", keyword_length = 2, max_item_count = 6 }, -- For luasnip users.
     }, {
       { name = "buffer" },
     }),
@@ -167,7 +167,7 @@ function M.config()
   })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline('Enter the HTML tag:',{
+  cmp.setup.cmdline("Enter the HTML tag:", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
       { name = "path" },
