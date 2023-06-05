@@ -1,3 +1,5 @@
+local lspconfig = require("lspconfig")
+
 local M = {
   tsserver = {
     -- cmd = { "bunx", "typescript-language-server", "--stdio" },
@@ -27,10 +29,16 @@ local M = {
   lemminx = {
     filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
   },
+  -- glslls = {
+  --   cmd = { "glslls" },
+  --   filetypes = { "glsl" },
+  --   root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
+  --   single_file_support = true,
+  -- },
   tailwindcss = {
     -- cmd = { "bunx", "tailwindcss-language-server", "--stdio" },
     -- cmd = { "tailwindcss-language-server", "--stdio" },
-    root_dir = require("lspconfig").util.root_pattern(
+    root_dir = lspconfig.util.root_pattern(
       "tailwind.config.js",
       "tailwind.config.ts",
       "postcss.config.js",

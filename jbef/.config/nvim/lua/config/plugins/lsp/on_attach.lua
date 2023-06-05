@@ -10,13 +10,12 @@ M.on_attach = function(client, bufnr)
 
   -- Conditionally disable formatting for some servers
   if util.has_value({
-    "tsserver",
     "lua_ls",
   }, client.name) then
     client.server_capabilities.documentFormattingProvider = false
   end
 
-  require("config.plugins.lsp.keymaps").setup(client)
+  require("config.plugins.lsp.keymaps").setup(client.name)
 end
 
 return M

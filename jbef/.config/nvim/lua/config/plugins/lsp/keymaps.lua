@@ -1,34 +1,35 @@
 local M = {}
 
 function M.setup(client)
+  local typescript = require("typescript")
   local opts = { noremap = true, silent = true }
 
   -- ====================================
   -- Typescript specific remaps
   -- ====================================
-  if client.name == "tsserver" then
-    vim.keymap.set("n", "<leader>lo", function()
-      -- vim.cmd.TypescriptOrganizeImports()
-      -- vim.cmd([[:TypescriptOrganizeImports]])
-    end)
-    vim.keymap.set("n", "<leader>lR", function()
-      vim.cmd.TypescriptRenameFile()
-      -- vim.lsp.buf.rename()
-    end, opts)
-    vim.keymap.set("n", "<leader>lA", function()
-      vim.cmd.TypescriptAddMissingImports()
-    end, opts)
-    vim.keymap.set("n", "<leader>ld", function()
-      vim.cmd.TypescriptGoToSourceDefinition()
-    end, opts)
-  end
+
+  --  Global variable _G.typescriptDefinition is set when entering a *.tsx file
+  --  via autocommand (check autocommands.lua file in config)
+  vim.keymap.set("n", "<leader>lo", function()
+    typescript.actions.organizeImports()
+    -- vim.cmd([[:TypescriptOrganizeImports]])
+  end)
+  vim.keymap.set("n", "<leader>lR", function()
+    vim.cmd.TypescriptRenameFile()
+    -- typescript.renameFile(source, target)
+  end, opts)
+  vim.keymap.set("n", "<leader>lA", function()
+    typescript.actions.addMissingImports()
+  end, opts)
 
   vim.keymap.set("n", "<leader>ld", function()
-    vim.lsp.buf.definition()
-    -- vim.cmd.Lspsaga("goto_definition")
-    -- vim.cmd.Lspsaga("peek_definition")
-    -- require("telescope.builtin").lsp_definitions()
+    if _G.isTypescriptReact == true then
+      typescript.goToSourceDefinition(0, { fallback = true })
+    else
+      vim.lsp.buf.definition()
+    end
   end, opts)
+
   vim.keymap.set("n", "<leader>lh", function()
     -- vim.cmd.Lspsaga("lsp_finder")
     require("telescope.builtin").lsp_references()

@@ -34,7 +34,7 @@ M.config = function()
   end
   require("mason-lspconfig").setup({
     ensure_installed = server_names,
-    -- automatic_installation = { exclude = { "tsserver", "tailwindcss" } },
+    automatic_installation = { exclude = { "glslls" } },
   })
 
   local diagnostic_signs = {
@@ -79,7 +79,8 @@ M.config = function()
     }, opts or {})
 
     if server == "tsserver" then
-      -- This is for additional niceties like rename file and so on, check out keymaps.lua file
+      -- This is ONLY for Typescript to have additional niceties
+      -- like rename file and so on, check out keymaps.lua file
       require("typescript").setup({
         go_to_source_definition = {
           fallback = true, -- fall back to standard LSP definition on failure
