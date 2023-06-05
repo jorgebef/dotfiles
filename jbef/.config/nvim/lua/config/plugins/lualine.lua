@@ -57,8 +57,8 @@ function M.config()
       always_divide_middle = false,
       globalstatus = true,
       refresh = {
-        statusline = 1000,
-        winbar = 1000,
+        statusline = 300,
+        winbar = 300,
       },
     },
     sections = {
@@ -87,7 +87,7 @@ function M.config()
           separator = {
             -- right = icons.ui.SeparatorLEndAngle,
             left = ui.common.SeparatorLStart,
-            -- right = ui.common.SeparatorSquare,
+            right = ui.common.SeparatorREnd,
           },
           color = { fg = nil, bg = cp.surface0, gui = nil },
           padding = { left = 2, right = 1 },
@@ -139,7 +139,7 @@ function M.config()
           path = 1,
           -- padding = { left = 100, right = 90 },
           padding = 2,
-          color = { fg = cp.overlay1 },
+          color = { fg = cp.overlay1, bg = cp.base },
         },
       },
       -- lualine_x = {'encoding', 'fileformat', 'filetype'},
@@ -153,7 +153,7 @@ function M.config()
             left = ui.common.SeparatorLStart,
             -- right = ui.common.SeparatorREnd,
           },
-          color = { fg = nil, bg = cp.surface0, gui = nil },
+          color = { fg = nil, bg = cp.base, gui = nil },
           padding = { left = 1, right = 1 },
         },
       },
