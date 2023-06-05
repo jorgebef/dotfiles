@@ -35,7 +35,7 @@ format = "[ $path ]($style)(bold bg:#313244 fg:#1E1E2E)[$read_only]($read_only_s
 "🏠/Downloads" = "~/⬇️ "
 "🏠/Pictures" = "~/🖼️"
 "🏠/Movies" = "~/🍿"
-"🏠/Library/CloudStorage/Dropbox" = "~/📦"
+"🏠/Library/CloudStorage/Dropbox" = "~/ "
 "src/com/long/java/path" = "mypath"
 
 [git_branch]
