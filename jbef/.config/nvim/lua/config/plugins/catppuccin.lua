@@ -19,7 +19,7 @@ function M.config()
       shade = "dark",
       percentage = 0.15,
     },
-    transparent_background = false,
+    transparent_background = true,
     term_colors = false,
     compile = {
       enabled = true,
@@ -121,27 +121,27 @@ function M.config()
 
         TelescopeNormal = { fg = colors.text, bg = colors.surface0 },
         TelescopeBorder = { fg = colors.surface0, bg = colors.surface0 },
-        TelescopePreviewBorder = { fg = colors.surface0, bg = colors.base },
-        TelescopePreviewTitle = { fg = colors.surface0, bg = colors.base },
         TelescopeMatching = { fg = colors.pink, bg = nil, bold = true },
         TelescopeSelection = { fg = colors.text, bg = "#3B3D4F" },
         TelescopeSelectionCaret = { fg = colors.pink, bg = colors.surface0 },
+        TelescopePreviewBorder = { fg = colors.surface0, bg = colors.base },
+        TelescopePreviewTitle = { fg = colors.surface0, bg = colors.base },
         TelescopePreviewNormal = { fg = colors.overlay0, bg = colors.base },
         TelescopeResultsNormal = { fg = colors.overlay2, bg = "#272738" },
         -- TelescopeResultsBorder = { fg = colors.surface0, bg = colors.base },
         TelescopePromptNormal = { fg = colors.overlay2, bg = "#272738" },
         TelescopePromptPrefix = { fg = colors.pink, bg = colors.surface0 },
 
-        LeapLabelPrimary = { fg = nil, bg = colors.mauve, bold = true },
+        LeapLabelPrimary = { fg = colors.red, bg = colors.crust },
 
         MiniJump = { fg = colors.red, bg = nil, bold = true, underline = true },
 
         LspSignatureActiveParameter = { fg = colors.pink, bold = true },
 
-        WinBar = { fg = colors.subtext0, bg = colors.mantle },
-        WinBarInactive = { fg = colors.surface1, bg = colors.mantle },
+        WinBar = { fg = colors.subtext0, bg = nil },
+        WinBarInactive = { fg = colors.surface1, bg = nil },
         WinBarFilenameActive = { fg = colors.base, bg = colors.pink, bold = true },
-        WinBarFilenameInactive = { fg = colors.overlay2, bg = colors.mantle, bold = true },
+        WinBarFilenameInactive = { fg = colors.overlay2, bg = nil, bold = true },
 
         WhichKeyFloat = { bg = colors.surface0 },
         WhichKeyBorder = { fg = colors.blue, bg = colors.surface0 },
@@ -152,7 +152,9 @@ function M.config()
 
         -- Language specific
         -- ===============
-        -- ["@tag.delimiter.tsx"] = { fg = colors.maroon },
+        ["@tag.delimiter.tsx"] = { fg = colors.overlay2 },
+        ["@tag.attribute.tsx"] = { fg = colors.blue },
+        ["@constructor.tsx"] = { fg = colors.peach },
       }
     end,
   })
