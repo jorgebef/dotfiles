@@ -29,8 +29,10 @@ M.config = function()
   local server_names = {}
   local n = 0
   for k, _ in pairs(servers) do
-    n = n + 1
-    server_names[n] = k
+    if k ~= "glslls" then
+      n = n + 1
+      server_names[n] = k
+    end
   end
   require("mason-lspconfig").setup({
     ensure_installed = server_names,

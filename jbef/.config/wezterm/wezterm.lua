@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local mux = wezterm.mux
 
 local config = {
   term = "wezterm",
@@ -80,5 +81,17 @@ local config = {
     },
   },
 }
+
+-- -- ************************************************************************
+-- -- If I evern want to replace tmux with wezterm native tabs and so on
+-- -- ************************************************************************
+-- wezterm.on("gui-startup", function(cmd)
+--   local args = {}
+--   if cmd then
+--     args = cmd.args
+--   end
+--   local tab, pane, window = mux.spawn_window(cmd or {})
+--   window:gui_window():maximize()
+-- end)
 
 return config

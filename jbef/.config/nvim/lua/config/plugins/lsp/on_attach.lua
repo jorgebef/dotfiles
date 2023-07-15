@@ -4,7 +4,11 @@ M.on_attach = function(client, bufnr)
   local navic = require("nvim-navic")
   local util = require("util.util")
 
-  if client.name ~= "tailwindcss" then
+  if
+    client.name ~= "tailwindcss"
+    -- and client.name ~= "tsserver"
+    and client.name ~= "glslls"
+  then
     navic.attach(client, bufnr)
   end
 

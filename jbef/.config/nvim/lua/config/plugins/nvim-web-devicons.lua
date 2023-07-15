@@ -52,11 +52,11 @@ function M.config()
   })
 
   devicons.set_icon({
-    ["*.glsl"] = {
+    ["glsl"] = {
       icon = " ",
       color = "#FF9FAF",
       cterm_color = "65",
-      name = "astro",
+      name = "glsl",
     },
   })
 

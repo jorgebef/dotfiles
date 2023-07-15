@@ -29,12 +29,13 @@ local M = {
   lemminx = {
     filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
   },
-  -- glslls = {
-  --   cmd = { "glslls" },
-  --   filetypes = { "glsl" },
-  --   root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
-  --   single_file_support = true,
-  -- },
+  glslls = {
+    cmd = { "glslls", "--stdin" },
+    filetypes = { "glsl" },
+    root_dir = lspconfig.util.root_pattern(".git"),
+    single_file_support = true,
+  },
+  cssls = {},
   tailwindcss = {
     -- cmd = { "bunx", "tailwindcss-language-server", "--stdio" },
     -- cmd = { "tailwindcss-language-server", "--stdio" },
