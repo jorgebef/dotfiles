@@ -15,6 +15,7 @@ fish_add_path /usr/local/bin/ # Add local bin to $PATH
 fish_add_path $HOME/.config/bin/ # Add custom bin to $PATH
 fish_add_path $HOME/.cargo/bin/ # Add cargo bin to $PATH
 fish_add_path $PNPM_HOME # Add pnpm path to $PATH
+fish_add_path "/Users/jbef/Library/CloudStorage/Dropbox/JORGE/Peninsula Studio/01 Documents & info/bin" # Add pnpm path to $PATH
 
 function fish_greeting
   pokemon-colorscripts -r --no-title

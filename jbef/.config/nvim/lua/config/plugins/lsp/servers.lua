@@ -37,8 +37,6 @@ local M = {
   },
   cssls = {},
   tailwindcss = {
-    -- cmd = { "bunx", "tailwindcss-language-server", "--stdio" },
-    -- cmd = { "tailwindcss-language-server", "--stdio" },
     root_dir = lspconfig.util.root_pattern(
       "tailwind.config.js",
       "tailwind.config.ts",
@@ -63,11 +61,9 @@ local M = {
         validate = true,
         experimental = {
           classRegex = {
-            -- "clsx\\(\'([^)]*)\'\\)",
             -- "clsx\\(([^)]*)\\)",
             "clsx\\(([^)]*)\\)",
-            -- "'([^']*)'",
-            -- "(?:'|\"|`)([^']*)(?:'|\"|`)",
+            "(?:'|\"|`)([^']*)(?:'|\"|`)",
           },
         },
       },

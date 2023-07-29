@@ -100,6 +100,28 @@ function M.config()
     },
     autotag = {
       enable = true,
+      enable_close_on_slash = false,
+      skip_tags = {
+        "area",
+        "base",
+        "br",
+        "col",
+        "command",
+        "embed",
+        "hr",
+        "img",
+        "slot",
+        "input",
+        "keygen",
+        "link",
+        "meta",
+        "param",
+        "source",
+        "track",
+        "wbr",
+        "menuitem",
+        "Image", -- this is for Nextjs Image component
+      },
     },
 
     -- matchup = {

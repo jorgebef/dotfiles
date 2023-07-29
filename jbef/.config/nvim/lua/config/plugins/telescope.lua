@@ -44,6 +44,7 @@ function M.config()
           ".vercel",
           "--exclude",
           ".netlify",
+          '-X'
         },
       },
       buffers = {

@@ -5,8 +5,8 @@ local config = {
   term = "wezterm",
   color_scheme = "Catppuccin Mocha",
 
-  font = wezterm.font({ family = "JetBrainsMono Nerd Font" }),
-  -- font = wezterm.font({ family = "JetBrains Mono" }),
+  -- font = wezterm.font({ family = "JetBrainsMono Nerd Font" }),
+  font = wezterm.font({ family = "FiraCode Nerd Font Mono" }),
   font_size = 15.0,
 
   font_rules = {
@@ -14,15 +14,15 @@ local config = {
     {
       intensity = "Bold",
       italic = false,
-      font = wezterm.font({ family = "JetBrainsMono Nerd Font", weight = "Bold" }),
-      -- font = wezterm.font({ family = "JetBrains Mono", weight = "Bold" }),
+      -- font = wezterm.font({ family = "JetBrainsMono Nerd Font", weight = "Bold" }),
+      font = wezterm.font({ family = "FiraCode Nerd Font Mono", weight = "Bold" }),
     },
     {
       intensity = "Bold",
       italic = true,
       font = wezterm.font({
-        family = "JetBrainsMono Nerd Font",
-        -- family = "JetBrains Mono",
+        -- family = "JetBrainsMono Nerd Font",
+        family = "FiraCode Nerd Font Mono",
         weight = "Bold",
         italic = true,
       }),
@@ -30,7 +30,9 @@ local config = {
   },
   -- Disables ligatures
   -- harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-  underline_thickness = 2,
+  line_height = 1.05, -- specific for FiraCode font
+  underline_thickness = 2, -- specific for FiraCode font
+  underline_position = -5, -- specific for FiraCode font
   max_fps = 120,
 
   automatically_reload_config = true,
@@ -63,6 +65,7 @@ local config = {
     { key = ",", mods = "CTRL", action = wezterm.action.SendString("\x1b[44;5u") },
     -- This below maps CTRL+; to Ω, since that is a key combination that can be sent to tmux to run the popup with the session switcher
     { key = ";", mods = "CTRL", action = wezterm.action.SendString("Ω") },
+    { key = "\\", mods = "CTRL", action = wezterm.action.SendString("†") },
   },
   mouse_bindings = {
     {
