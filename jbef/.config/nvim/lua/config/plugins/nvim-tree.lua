@@ -10,20 +10,14 @@ function M.config()
     sort_by = "case_sensitive",
     view = {
       width = 36,
-      hide_root_folder = false,
       side = "left",
       preserve_window_proportions = false,
       number = false,
       relativenumber = false,
       signcolumn = "yes",
-      mappings = {
-        custom_only = false,
-        list = {
-          -- user mappings go here
-        },
-      },
     },
     renderer = {
+      root_folder_label = false,
       indent_markers = {
         enable = true,
         icons = {

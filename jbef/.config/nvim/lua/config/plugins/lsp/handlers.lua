@@ -49,6 +49,10 @@ M.handlers = {
 
   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = false,
+    -- virtual_text = {
+    --   -- prefix = "icons",
+    --   spacing = 2,
+    -- },
     underline = { error = true, hint = true, warning = true, info = true },
     -- bold = true,
     signs = true,

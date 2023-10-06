@@ -66,5 +66,7 @@ yabai -m rule --add app="^IINA$" manage=off
 yabai -m rule --add app="^Karabiner" manage=off
 
 yabai -m rule --add app="^Cron$" manage=off
+yabai -m rule --add app="^Calendar$" manage=off
+yabai -m rule --add app="^Bitwarden$" manage=off
 
 echo "yabai configuration loaded.."

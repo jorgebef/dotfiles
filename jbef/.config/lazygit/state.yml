@@ -1,14 +1,19 @@
 lastupdatecheck: 0
 recentrepos:
-    - /Users/jbef/Developer/dotfiles
-    - /Users/jbef/Developer/InvitaBoda/invitaboda.es
-    - /Users/jbef/Developer/InvitaBoda/modelo-base
-    - /Users/jbef/Developer/Clients/cnglawyers.com
-    - /Users/jbef/Developer/peninsula.studio/frontend
-    - /Users/jbef/Developer/jbef.dev/frontend
-    - /Users/jbef/Developer/Clients/guidoaudisio.com/guido-audisio
-    - /Users/jbef/Developer/jbef.dev/jbef-dev
-    - /Users/jbef/Developer/jbef-ui
+- /Users/jbef/Developer/dotfiles
+- /Users/jbef/Developer/InvitaBoda/esther-&-javi
+- /Users/jbef/Developer/peninsula.studio
+- /Users/jbef/Developer/InvitaBoda/ivan-y-ana
+- /Users/jbef/Developer/Clients/guidoaudisio.com
+- /Users/jbef/Developer/InvitaBoda/dani-&-mayte
+- /Users/jbef/Developer/InvitaBoda/modelo-7
+- /Users/jbef/Developer/InvitaBoda/invitaboda.es
+- /Users/jbef/Developer/InvitaBoda/modelo-base
+- /Users/jbef/Developer/Clients/cnglawyers.com
+- /Users/jbef/Developer/jbef.dev/frontend
+- /Users/jbef/Developer/jbef.dev/jbef-dev
+- /Users/jbef/Developer/jbef-ui
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false
+ignorewhitespaceindiffview: false

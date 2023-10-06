@@ -42,7 +42,7 @@ function M.config()
       Reference = " ",
       Folder = " ",
       EnumMember = " ",
-      Constant = " ",
+      Constant = "",
       Struct = " ",
       Event = " ",
       Operator = " ",
@@ -111,8 +111,10 @@ function M.config()
       -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
-      { name = "nvim_lsp", keyword_length = 2, max_item_count = 25 },
+      -- { name = "nvim_lsp", keyword_length = 2, max_item_count = 30 },
+      -- { name = "nvim_lsp", keyword_length = 2 },
       -- { name = "nvim_lsp" },
+      { name = "nvim_lsp" },
       { name = "path", max_item_count = 10 },
       { name = "luasnip", keyword_length = 2, max_item_count = 6 }, -- For luasnip users.
     }, {

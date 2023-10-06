@@ -25,7 +25,7 @@ for file in $files ; do
   target="$HOME/$( basename "$file" )"
   # Check whether the symlink already exists
   if [  -e "$target"  ] || [ -L "$target" ]; then
-    echo "~${target#"$HOME"} already exists..."
+    echo "FILE: ~${target#"$HOME"} already exists..."
     echo "Replace? y/n"
     read -r response
     if [ "$response" = 'y' ]; then
@@ -43,11 +43,11 @@ for folder in $folders ; do
   target="$HOME/.config/$( basename "$folder" )"
   # Check whether the symlink already exists
   if [  -e "$target"  ] || [ -L "$target" ]; then
-    echo "~${target#"$HOME"} already exists..."
+    echo "FOLDER: ~${target#"$HOME"} already exists..."
     echo "Replace? y/n"
     read -r response
     if [ "$response" = 'y' ]; then
-      rm "$target"
+      rm -rf "$target"
     else
       continue
     fi

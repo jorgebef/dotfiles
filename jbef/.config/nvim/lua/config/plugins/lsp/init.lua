@@ -1,8 +1,8 @@
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
-    { "jose-elias-alvarez/typescript.nvim" },
-    { "jose-elias-alvarez/null-ls.nvim" },
+    -- { "jose-elias-alvarez/typescript.nvim" },
+    -- { "jose-elias-alvarez/null-ls.nvim" },
     { "SmiteshP/nvim-navic" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
@@ -78,18 +78,15 @@ M.config = function()
       flags = {
         debounce_text_changes = 150,
       },
+      inlay_hints = { enabled = true },
     }, opts or {})
 
-    if server == "tsserver" then
-      -- This is ONLY for Typescript to have additional niceties
-      -- like rename file and so on, check out keymaps.lua file
-      require("typescript").setup({
-        go_to_source_definition = {
-          fallback = true, -- fall back to standard LSP definition on failure
-        },
-        server = opts,
-      })
-    else
+    -- Need to remove tsserver since typescript-tools plugin replaces nvim-lspconfig entirely
+    -- for a more performant tsserver native API access, instead of going through regular LSP
+    -- ❗️ IMPORTANT: As mentioned earlier, this plugin serves as a replacement for typescript-language-server, so you should remove the nvim-lspconfig setup for it.
+
+    -- if server ~= "tsserver" then
+    if server ~= "kek" then
       lspconfig[server].setup(opts)
     end
   end

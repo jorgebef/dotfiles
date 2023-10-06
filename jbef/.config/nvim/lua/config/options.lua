@@ -60,7 +60,7 @@ opt.relativenumber = true
 opt.ruler = false
 
 -- Status column - NEW from 0.9
-require('util.status_column')
+-- require('util.status_column')
 
 -- disable nvim intro
 opt.shortmess:append("sI")

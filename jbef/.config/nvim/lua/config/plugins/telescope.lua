@@ -3,7 +3,7 @@ local M = {
   dependencies = {
     { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope-file-browser.nvim" },
-    { "natecraddock/telescope-zf-native.nvim" },
+    -- { "natecraddock/telescope-zf-native.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
 }
@@ -44,7 +44,7 @@ function M.config()
           ".vercel",
           "--exclude",
           ".netlify",
-          '-X'
+          -- '-X'
         },
       },
       buffers = {
@@ -123,26 +123,26 @@ function M.config()
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
         -- the default case_mode is "smart_case"
       },
-      ["zf-native"] = {
-        -- options for sorting file-like items
-        file = {
-          -- override default telescope file sorter
-          enable = true,
-          -- highlight matching text in results
-          highlight_results = true,
-          -- enable zf filename match priority
-          match_filename = true,
-        },
-        -- options for sorting all other items
-        generic = {
-          -- override default telescope generic item sorter
-          enable = false,
-          -- highlight matching text in results
-          highlight_results = true,
-          -- disable zf filename match priority
-          match_filename = false,
-        },
-      },
+      -- ["zf-native"] = {
+      --   -- options for sorting file-like items
+      --   file = {
+      --     -- override default telescope file sorter
+      --     enable = true,
+      --     -- highlight matching text in results
+      --     highlight_results = true,
+      --     -- enable zf filename match priority
+      --     match_filename = true,
+      --   },
+      --   -- options for sorting all other items
+      --   generic = {
+      --     -- override default telescope generic item sorter
+      --     enable = false,
+      --     -- highlight matching text in results
+      --     highlight_results = true,
+      --     -- disable zf filename match priority
+      --     match_filename = false,
+      --   },
+      -- },
       project = {},
     },
   })
@@ -150,7 +150,7 @@ function M.config()
   -- load_extension, somewhere after setup function:
   telescope.load_extension("fzf")
   -- Load zf extension, which favors filename over rest of the path
-  telescope.load_extension("zf-native")
+  -- telescope.load_extension("zf-native")
   -- To get telescope-file-browser loaded and working with telescope,
   -- you need to call load_extension, somewhere after setup function:
   telescope.load_extension("file_browser")
@@ -169,9 +169,7 @@ function M.config()
   -- ======================== REMAPS ============================
   local nsn_opts = { noremap = true, silent = true, nowait = true }
 
-  vim.keymap.set("n", "<leader>ff", function()
-    builtin.find_files()
-  end, nsn_opts)
+  vim.keymap.set("n", "<leader>ff", builtin.find_files, nsn_opts)
 
   vim.keymap.set("n", "<leader>fg", function()
     builtin.live_grep()

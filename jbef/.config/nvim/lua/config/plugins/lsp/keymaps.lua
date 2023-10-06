@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(client)
-  local typescript = require("typescript")
+  -- local typescript = require("typescript-tools")
   local opts = { noremap = true, silent = true }
 
   -- ====================================
@@ -11,20 +11,25 @@ function M.setup(client)
   --  Global variable _G.typescriptDefinition is set when entering a *.tsx file
   --  via autocommand (check autocommands.lua file in config)
   vim.keymap.set("n", "<leader>lo", function()
-    typescript.actions.organizeImports()
-    -- vim.cmd([[:TypescriptOrganizeImports]])
+    -- typescript.actions.organizeImports()
+    vim.cmd([[:TSToolsOrganizeImports]])
   end)
+
   vim.keymap.set("n", "<leader>lR", function()
     vim.cmd.TypescriptRenameFile()
     -- typescript.renameFile(source, target)
   end, opts)
+
   vim.keymap.set("n", "<leader>lA", function()
-    typescript.actions.addMissingImports()
+    -- typescript.actions.addMissingImports()
+    vim.cmd([[:TSToolsAddMissingImports]])
   end, opts)
 
   vim.keymap.set("n", "<leader>ld", function()
     if _G.isTypescriptReact == true then
-      typescript.goToSourceDefinition(0, { fallback = true })
+      -- typescript.goToSourceDefinition(0, { fallback = true })
+      -- vim.cmd([[:TSToolsGoToSourceDefinition]])
+      vim.lsp.buf.definition()
     else
       vim.lsp.buf.definition()
     end
@@ -77,8 +82,19 @@ function M.setup(client)
     vim.diagnostic.goto_prev({ severity = "ERROR", float = true })
   end, opts)
 
+  vim.keymap.set("n", "<leader>lS", function()
+    vim.cmd.LspRestart()
+  end, opts)
+
+  -- -- Managed by none-ls.lua
+
   vim.keymap.set("n", "<leader>lf", function()
-    vim.lsp.buf.format({ async = true })
+    vim.lsp.buf.format({
+      async = true,
+      -- filter = function(client)
+      --   return client.name ~= "tsserver"
+      -- end,
+    })
   end, opts)
 
   vim.keymap.set("n", "<leader>lr", function()

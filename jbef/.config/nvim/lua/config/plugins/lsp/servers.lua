@@ -1,26 +1,62 @@
 local lspconfig = require("lspconfig")
 
 local M = {
+  -- This is no longer needed as long as I use the plugin typescript-tools.nvim
   tsserver = {
-    -- cmd = { "bunx", "typescript-language-server", "--stdio" },
+    root_dir = function(...)
+      return require("lspconfig.util").root_pattern(".git")(...)
+    end,
     -- cmd = { "typescript-language-server", "--stdio" },
     -- cmd = { "deno", "run", "-A", "--unstable", "npm:typescript-language-server", "--stdio" },
+    -- cmd = { "bunx", "typescript-language-server", "--stdio" },
+    single_file_support = false,
     init_options = {
-      hostInfo = "neovim",
+      documentFormatting = false,
+      documentRangeFormatting = true,
     },
-    single_file_support = true,
-    log = "off",
-    trace = { server = "off" },
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
+    settings = {
+      typescript = {
+        inlayHints = {
+          includeInlayParameterNameHints = "literal",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = false,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+      javascript = {
+        inlayHints = {
+          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
     },
     -- flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
   },
+  -- efm = {
+  --   -- filetypes = vim.tbl_extendvim.tbl_keys(require("efmls-configs.defaults").languages()),
+  --   settings = {
+  --     rootMarkers = { ".git/" },
+  --     languages = vim.tbl_extend("force", require("efmls-configs.defaults").languages(), {
+  --       -- Custom languages, or override existing ones
+  --       typescript = { require("efmls-configs.linters.eslint"), require("efmls-configs.formatters.prettier_d") },
+  --       typescriptreact = { require("efmls-configs.linters.eslint"), require("efmls-configs.formatters.prettier_d") },
+  --       jsonc = { require("efmls-configs.formatters.prettier_d") },
+  --       json = { require("efmls-configs.formatters.prettier_d") },
+  --     }),
+  --   },
+  --   init_options = {
+  --     documentFormatting = true,
+  --     documentRangeFormatting = true,
+  --   },
+  -- },
   -- astro = {},
   lua_ls = {},
   rust_analyzer = {},
@@ -37,6 +73,7 @@ local M = {
   },
   cssls = {},
   tailwindcss = {
+    -- cmd = { "bunx", "tailwindcss-language-server", "--stdio" },
     root_dir = lspconfig.util.root_pattern(
       "tailwind.config.js",
       "tailwind.config.ts",
@@ -48,7 +85,7 @@ local M = {
     ),
     settings = {
       tailwindCSS = {
-        classAttributes = { "class", "className", "classList", "ngClass" },
+        classAttributes = { "class", "clsx", "className", "classList", "ngClass" },
         lint = {
           cssConflict = "warning",
           invalidApply = "error",
@@ -63,7 +100,7 @@ local M = {
           classRegex = {
             -- "clsx\\(([^)]*)\\)",
             "clsx\\(([^)]*)\\)",
-            "(?:'|\"|`)([^']*)(?:'|\"|`)",
+            -- "(?:'|\"|`)([^']*)(?:'|\"|`)",
           },
         },
       },

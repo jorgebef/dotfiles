@@ -11,11 +11,12 @@ set -gx SUDO_EDITOR $EDITOR
 set -gx PNPM_HOME $HOME/Library/pnpm
 set -gx XDG_CONFIG_HOME $HOME/.config
 
-fish_add_path /usr/local/bin/ # Add local bin to $PATH
-fish_add_path $HOME/.config/bin/ # Add custom bin to $PATH
-fish_add_path $HOME/.cargo/bin/ # Add cargo bin to $PATH
-fish_add_path $PNPM_HOME # Add pnpm path to $PATH
-fish_add_path "/Users/jbef/Library/CloudStorage/Dropbox/JORGE/Peninsula Studio/01 Documents & info/bin" # Add pnpm path to $PATH
+fish_add_path "/usr/local/bin/" # Add local bin to $PATH
+fish_add_path "$HOME/.config/bin/" # Add custom bin to $PATH
+fish_add_path "$HOME/.cargo/bin/" # Add cargo bin to $PATH
+fish_add_path "$PNPM_HOME" # Add pnpm path to $PATH
+fish_add_path "$HOME/Library/CloudStorage/Dropbox/JORGE/Peninsula Studio/01 Documents & info/bin" # Add custom bin folder path to $PATH
+# fish_add_path "/Users/jbef/.local/"
 
 function fish_greeting
   pokemon-colorscripts -r --no-title
@@ -25,7 +26,3 @@ fish_vi_key_bindings
 
 # ~/.config/fish/config.fish
 starship init fish | source
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH

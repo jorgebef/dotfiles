@@ -37,6 +37,7 @@ lazy_plugin_manager.setup("config.plugins", {
     notify = true, -- get a notification when changes are found
   },
   install = { colorscheme = { "catppuccin" } },
+  -- install = { colorscheme = { "tokyonight" } },
   ui = {
     -- a number <1 is a percentage., >1 is a fixed size
     size = { width = 0.8, height = 0.8 },
@@ -48,3 +49,4 @@ lazy_plugin_manager.setup("config.plugins", {
 vim.keymap.set("n", "<leader>L", ":Lazy<CR>", { noremap = true })
 
 vim.cmd.colorscheme("catppuccin")
+-- vim.cmd.colorscheme("tokyonight")

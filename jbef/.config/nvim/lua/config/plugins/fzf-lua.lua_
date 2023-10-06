@@ -1,0 +1,116 @@
+local M = {
+  "ibhagwan/fzf-lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+}
+M.config = function()
+  -- optional for icon support
+  local fzf = require("fzf-lua")
+
+  -- calling `setup` is optional for customization
+  fzf.setup({
+    "telescope",
+    -- "telescope",
+    winopts = {
+      width = 0.8,
+      height = 0.9,
+      border = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
+      -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+      layout = "vertical",
+
+      preview = {
+        -- default     = 'bat',           -- override the default previewer?
+        -- default uses the 'builtin' previewer
+        vertical = "up:45%",
+        horizontal = "right:50%",
+        border = "border", -- border|noborder, applies only to
+        -- native fzf previewers (bat/cat/git/etc)
+        layout = "flex",
+        wrap = "nowrap", -- wrap|nowrap
+        hidden = "nohidden", -- hidden|nohidden
+        flip_columns = 120,
+        title = false,
+      },
+    },
+    fzf_opts = {
+      ["--layout"] = "default",
+      ["--border"] = "none",
+    },
+    grep = {
+      -- grep_opts = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp -e --hidden",
+      rg_opts = "--hidden --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+    },
+    files = {
+      prompt = "Files => ",
+      cwd_prompt = false,
+      fd_opts = "--color=never --type f --hidden --follow --no-ignore --exclude node_modules --exclude .git --exclude dist --exclude build --exclude out --exclude .next --exclude .vercel --exclude .netlify",
+    },
+    hls = {
+      normal = "FzfLuaNormal",
+      border = "FzfLuaBorder",
+      title = "FzfLuaTitle",
+      help_normal = "FzfLuaNormal",
+      help_border = "FzfLuaBorder",
+      preview_normal = "FzfLuaNormal",
+      preview_border = "FzfLuaBorder",
+      preview_title = "FzfLuaTitle",
+      -- builtin preview only
+      cursor = "TelescopeSelection",
+      cursorline = "TelescopeSelection",
+      cursorlinenr = "TelescopePreviewLine",
+      search = "TelescopeMatching",
+    },
+    fzf_colors = {
+      ["fg"] = { "fg", "FzfLuaResultsNormal" },
+      ["bg"] = { "bg", "FzfLuaResultsNormal" },
+      ["hl"] = { "fg", "FzfLuaMatching" },
+      ["fg+"] = { "fg", "FzfLuaSelection" },
+      ["bg+"] = { "bg", "FzfLuaSelection" },
+      ["hl+"] = { "fg", "FzfLuaMatching" },
+      ["info"] = { "fg", "FzfLuaMatching" },
+      ["border"] = { "fg", "FzfLuaBorder" },
+      ["gutter"] = { "bg", "FzfLuaSelectionCaret" },
+      ["prompt"] = { "fg", "FzfLuaPrompt" },
+      ["pointer"] = { "fg", "FzfLuaSelectionCaret" },
+      ["marker"] = { "fg", "FzfLuaSelectionCaret" },
+      ["header"] = { "fg", "FzfLuaTitle" },
+    },
+  })
+
+  local nsn_opts = { noremap = true, silent = true, nowait = true }
+
+  vim.keymap.set("n", "<leader>ff", fzf.files, nsn_opts)
+
+  vim.keymap.set("n", "<leader>fg", fzf.live_grep, nsn_opts)
+
+  -- vim.keymap.set("n", "<leader>fj", function()
+  --   builtin.jumplist()
+  -- end, nsn_opts)
+  --
+  -- vim.keymap.set("n", "<leader>fF", function()
+  --   project_files()
+  -- end, nsn_opts)
+  --
+  -- vim.keymap.set("n", "<leader>fb", function()
+  --   vim.cmd.Telescope("file_browser")
+  -- end, nsn_opts)
+  --
+  -- vim.keymap.set("n", "<leader>fG", function()
+  --   builtin.git_files()
+  -- end, nsn_opts)
+  --
+  -- vim.keymap.set("n", "<leader>fs", function()
+  --   builtin.lsp_document_symbols()
+  -- end, nsn_opts)
+  --
+  -- vim.keymap.set("n", "<leader>fS", function()
+  --   builtin.lsp_dynamic_workspace_symbols()
+  -- end, nsn_opts)
+  --
+  -- vim.keymap.set("n", "<leader>fn", function()
+  --   telescope.extensions.notify.notify()
+  -- end, nsn_opts)
+
+  vim.keymap.set("n", "<leader>fr", fzf.resume, nsn_opts)
+end
+
+return M
