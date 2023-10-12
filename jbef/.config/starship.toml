@@ -86,7 +86,8 @@ disabled = true
 
 [git_branch]
 symbol = "󰘬 "
-style = "bold fg:white bg:#1E1E2E"
+# style = "bold fg:white bg:#1E1E2E"
+style = "fg:#6f6f6f"
 format = "[$symbol$branch(:$remote_branch) ]($style)"
 disabled = false
 
@@ -100,5 +101,5 @@ disabled = true
 disabled = true
 
 [git_status]
-# style = "fg:#6f6f6f bg:#1E1E2E"
-disabled = false
+# style = "fg:#8f8f8f bg:#1E1E2E"
+disabled = true
