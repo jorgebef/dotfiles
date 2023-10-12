@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(client)
-  -- local typescript = require("typescript-tools")
+  local typescript = require("typescript-tools")
   local opts = { noremap = true, silent = true }
 
   -- ====================================
@@ -16,7 +16,8 @@ function M.setup(client)
   end)
 
   vim.keymap.set("n", "<leader>lR", function()
-    vim.cmd.TypescriptRenameFile()
+    -- vim.cmd.TypescriptRenameFile()
+    vim.cmd([[:TSToolsRenameFile]])
     -- typescript.renameFile(source, target)
   end, opts)
 

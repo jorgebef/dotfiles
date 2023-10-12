@@ -2,44 +2,44 @@ local lspconfig = require("lspconfig")
 
 local M = {
   -- This is no longer needed as long as I use the plugin typescript-tools.nvim
-  tsserver = {
-    root_dir = function(...)
-      return require("lspconfig.util").root_pattern(".git")(...)
-    end,
-    -- cmd = { "typescript-language-server", "--stdio" },
-    -- cmd = { "deno", "run", "-A", "--unstable", "npm:typescript-language-server", "--stdio" },
-    -- cmd = { "bunx", "typescript-language-server", "--stdio" },
-    single_file_support = false,
-    init_options = {
-      documentFormatting = false,
-      documentRangeFormatting = true,
-    },
-    settings = {
-      typescript = {
-        inlayHints = {
-          includeInlayParameterNameHints = "literal",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = false,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-      javascript = {
-        inlayHints = {
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-    },
-    -- flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
-  },
+  -- tsserver = {
+  --   root_dir = function(...)
+  --     return require("lspconfig.util").root_pattern(".git")(...)
+  --   end,
+  --   -- cmd = { "typescript-language-server", "--stdio" },
+  --   -- cmd = { "deno", "run", "-A", "--unstable", "npm:typescript-language-server", "--stdio" },
+  --   -- cmd = { "bunx", "typescript-language-server", "--stdio" },
+  --   single_file_support = false,
+  --   init_options = {
+  --     documentFormatting = false,
+  --     documentRangeFormatting = true,
+  --   },
+  --   settings = {
+  --     typescript = {
+  --       inlayHints = {
+  --         includeInlayParameterNameHints = "literal",
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayVariableTypeHints = false,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayEnumMemberValueHints = true,
+  --       },
+  --     },
+  --     javascript = {
+  --       inlayHints = {
+  --         includeInlayParameterNameHints = "all",
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayVariableTypeHints = true,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayEnumMemberValueHints = true,
+  --       },
+  --     },
+  --   },
+  --   -- flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+  -- },
   -- efm = {
   --   -- filetypes = vim.tbl_extendvim.tbl_keys(require("efmls-configs.defaults").languages()),
   --   settings = {

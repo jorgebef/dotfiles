@@ -46,7 +46,7 @@ local config = {
   window_decorations = "RESIZE",
   window_background_opacity = 0.965,
   -- macos_window_background_blur = 70,
-  hide_tab_bar_if_only_one_tab = false,
+  hide_tab_bar_if_only_one_tab = true,
   tab_max_width = 999,
   window_padding = {
     left = 5,
@@ -66,7 +66,7 @@ local config = {
   -- https://wezfurlong.org/wezterm/config/keyboard-concepts.html?highlight=modifiers#keyboard-concepts:~:text=macOS%20Left%20and%20Right%20Option%20Key
   send_composed_key_when_right_alt_is_pressed = true,
 
-  leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 },
+  leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 },
   mouse_bindings = {
     {
       -- Change the default click behavior so that it only selects
@@ -192,46 +192,21 @@ wezterm.on("move-down", function(window, pane)
 end)
 
 config.keys = {
-  -- { key = ".", mods = "CTRL", action = act.SendString("\x1b[46;5u") },
-  -- { key = ",", mods = "CTRL", action = act.SendString("\x1b[44;5u") },
-  { key = ".", mods = "CTRL", action = act.ActivateTabRelativeNoWrap(1) },
-  { key = ",", mods = "CTRL", action = act.ActivateTabRelativeNoWrap(-1) },
+  { key = ".", mods = "CTRL", action = act.SendString("\x1b[46;5u") },
+  { key = ",", mods = "CTRL", action = act.SendString("\x1b[44;5u") },
+  -- { key = ".", mods = "CTRL", action = act.ActivateTabRelativeNoWrap(1) },
+  -- { key = ",", mods = "CTRL", action = act.ActivateTabRelativeNoWrap(-1) },
   -- This below maps CTRL+; to Ω, since that is a key combination that can be sent to tmux to run the popup with the session switcher
-  -- { key = ";", mods = "CTRL", action = act.SendString("Ω") },
-  -- { key = ";", mods = "CTRL", action = act.ShowTabNavigator },
-  { key = ";", mods = "CTRL", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
-  -- {
-  --   key = ";",
-  --   mods = "CTRL",
-  --   action = act.PromptInputLine({
-  --     description = wezterm.format({
-  --       { Attribute = { Intensity = "Bold" } },
-  --       { Foreground = { AnsiColor = "Fuchsia" } },
-  --       { Text = "Enter name for new workspace" },
-  --     }),
-  --     action = wezterm.action_callback(function(window, pane, line)
-  --       -- line will be `nil` if they hit escape without entering anything
-  --       -- An empty string if they just hit enter
-  --       -- Or the actual line of text they wrote
-  --       if line then
-  --         window:perform_action(
-  --           act.SwitchToWorkspace({
-  --             name = line,
-  --           }),
-  --           pane
-  --         )
-  --       end
-  --     end),
-  --   }),
-  -- },
+  { key = ";", mods = "CTRL", action = act.SendString("Ω") },
+  -- { key = ";", mods = "CTRL", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 
   -- { key = "'", mods = "CTRL", action = act.SendString("þ") },
   -- { key = "\\", mods = "CTRL", action = act.SendString("†") },
 
-  { key = "h", mods = "CTRL", action = act.EmitEvent("move-left") },
-  { key = "l", mods = "CTRL", action = act.EmitEvent("move-right") },
-  { key = "k", mods = "CTRL", action = act.EmitEvent("move-up") },
-  { key = "j", mods = "CTRL", action = act.EmitEvent("move-down") },
+  -- { key = "h", mods = "CTRL", action = act.EmitEvent("move-left") },
+  -- { key = "l", mods = "CTRL", action = act.EmitEvent("move-right") },
+  -- { key = "k", mods = "CTRL", action = act.EmitEvent("move-up") },
+  -- { key = "j", mods = "CTRL", action = act.EmitEvent("move-down") },
 
   {
     key = "Space",
@@ -297,6 +272,7 @@ config.keys = {
 }
 
 -- Call the startup preparator!!!!
-require("startup")
+-- require("startup")
+-- require("startup_new")
 
 return config

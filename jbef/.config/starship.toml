@@ -4,11 +4,11 @@
 # command_timeout = 10000
 command_timeout = 90000
 
-# Inserts a blank line between shell prompts
-add_newline = true
+# # Inserts a blank line between shell prompts
+# add_newline = true
 
 # format = "[ 🚀 ](bold bg:purple fg:black)$all"
-format = "[ ](bold bg:purple)[ 🚀 ](bg:#3E4051)$all"
+# format = "[ ](bold bg:purple)[ 🚀 ](bg:#3E4051)$all"
 # format = "[  ](bg:purple fg:black)$all"
 # format = "[  ](bg:purple fg:black)$all"
 # format = "[  ](bold bg:purple fg:black)$all"
@@ -18,44 +18,87 @@ format = "[ ](bold bg:purple)[ 🚀 ](bg:#3E4051)$all"
 # format = "[ 紅葉](bold bg:purple fg:black)$all"
 # format = "[ 💻 ](bg:purple fg:black)$all"
 # format = "[ 😽 ](bg:blue fg:#45475a)$all"
+format = "[🚀 ]()$all"
+
+# [directory]
+# truncation_length = 8
+# truncation_symbol = "…/"
+# home_symbol = "🏠"
+# truncate_to_repo = false
+# style = "bold bg:#313244 fg:white"
+# format = "[ $path ]($style)(bold bg:#313244 fg:#1E1E2E)[$read_only]($read_only_style)"
+#
+# [directory.substitutions]
+# "/Users/jorgebefan/" = "🏠"
+# "🏠/Desktop" = "~/🖥️ "
+# "🏠/Developer" = "~/💻"
+# "🏠/Documents" = "~/💼"
+# "🏠/Downloads" = "~/⬇️ "
+# "🏠/Pictures" = "~/🖼️"
+# "🏠/Movies" = "~/🍿"
+# "🏠/Library/CloudStorage/Dropbox" = "~/ "
+# "src/com/long/java/path" = "mypath"
+#
+# [git_branch]
+# symbol = " "
+# # symbol = "🌱 "
+# # truncation_length = 4
+# style = "bold fg:blue bg:#1E1E2E"
+# format = "[ $symbol$branch(:$remote_branch) ]($style)"
+#
+# [git_status]
+# style = "bold fg:red bg:#1E1E2E"
+# format = '([\[$all_status$ahead_behind\] ]($style))'
+#
+# [nodejs]
+# style = "bold fg:green bg:#1E1E2E"
+# format = "[ $symbol($version) ]($style)"
+#
+# [cmd_duration]
+# min_time = 1
+# show_milliseconds = false
+# disabled = false
+# style = "italic bg:#1E1E2E"
+# format = "[ 🕓 $duration ]($style)"
+
+[character]
+success_symbol = "[\uf054](green)" # 
+vicmd_symbol = "[\ue62b](purple)" # 
+error_symbol = "[\uf467](red)" # 
 
 [directory]
-truncation_length = 8
-truncation_symbol = "…/"
-home_symbol = "🏠"
-truncate_to_repo = false
-style = "bold bg:#313244 fg:white"
-format = "[ $path ]($style)(bold bg:#313244 fg:#1E1E2E)[$read_only]($read_only_style)"
+style = "blue bold"
 
-[directory.substitutions]
-"/Users/jorgebefan/" = "🏠"
-"🏠/Desktop" = "~/🖥️ "
-"🏠/Developer" = "~/💻"
-"🏠/Documents" = "~/💼"
-"🏠/Downloads" = "~/⬇️ "
-"🏠/Pictures" = "~/🖼️"
-"🏠/Movies" = "~/🍿"
-"🏠/Library/CloudStorage/Dropbox" = "~/ "
-"src/com/long/java/path" = "mypath"
+[package]
+disabled = true
+
+[username]
+disabled = true
+
+[hostname]
+disabled = true
+
+[aws]
+disabled = true
+
+[docker_context]
+disabled = true
 
 [git_branch]
-symbol = " "
-# symbol = "🌱 "
-# truncation_length = 4
-style = "bold fg:blue bg:#1E1E2E"
-format = "[ $symbol$branch(:$remote_branch) ]($style)"
+symbol = "󰘬 "
+style = "bold fg:white bg:#1E1E2E"
+format = "[$symbol$branch(:$remote_branch) ]($style)"
+disabled = false
+
+[git_commit]
+disabled = true
+
+[git_state]
+disabled = true
+
+[git_metrics]
+disabled = true
 
 [git_status]
-style = "bold fg:red bg:#1E1E2E"
-format = '([\[$all_status$ahead_behind\] ]($style))'
-
-[nodejs]
-style = "bold fg:green bg:#1E1E2E"
-format = "[ $symbol($version) ]($style)"
-
-[cmd_duration]
-min_time = 1
-show_milliseconds = false
+# style = "fg:#6f6f6f bg:#1E1E2E"
 disabled = false
-style = "italic bg:#1E1E2E"
-format = "[ 🕓 $duration ]($style)"

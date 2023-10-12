@@ -85,8 +85,8 @@ M.config = function()
     -- for a more performant tsserver native API access, instead of going through regular LSP
     -- ❗️ IMPORTANT: As mentioned earlier, this plugin serves as a replacement for typescript-language-server, so you should remove the nvim-lspconfig setup for it.
 
-    -- if server ~= "tsserver" then
-    if server ~= "kek" then
+    if server ~= "tsserver" then
+    -- if server ~= "kek" then
       lspconfig[server].setup(opts)
     end
   end

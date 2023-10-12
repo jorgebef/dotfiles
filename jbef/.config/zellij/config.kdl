@@ -1,0 +1,16 @@
+simplified_ui true
+tab_frames false
+pane_frames false
+
+ui {
+    pane_frames {
+        hide_session_name true
+    }
+}
+
+plugins {
+    tab-bar { path "tab-bar"; }
+    status-bar { path "status-bar"; }
+    strider { path "strider"; }
+    compact-bar { path "compact-bar"; }
+}

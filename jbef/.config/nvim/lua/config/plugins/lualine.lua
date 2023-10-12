@@ -95,20 +95,20 @@ function M.config()
           padding = { left = 2, right = 1 },
         },
         {
-          "diff",
-          colored = true,
-          -- diff_color = {
-          --   added = { fg = cp.green, bg = nil }, -- Changes diagnostic's info color
-          --   modified = { fg = cp.blue, bg = nil }, -- changes diagnostic's warn color
-          --   removed = { fg = c.red, bg = nil }, -- changes diagnostic's error color
+          -- "diff",
+          -- colored = true,
+          -- -- diff_color = {
+          -- --   added = { fg = cp.green, bg = nil }, -- Changes diagnostic's info color
+          -- --   modified = { fg = cp.blue, bg = nil }, -- changes diagnostic's warn color
+          -- --   removed = { fg = c.red, bg = nil }, -- changes diagnostic's error color
+          -- -- },
+          -- separator = {
+          --   -- right = ui.common.SeparatorSquare,
+          --   right = ui.common.SeparatorREnd,
           -- },
-          separator = {
-            -- right = ui.common.SeparatorSquare,
-            right = ui.common.SeparatorREnd,
-          },
-          color = { fg = nil, bg = cp.surface0, gui = nil },
-          -- color = { fg = nil, bg = c.bg_highlight, gui = nil },
-          padding = 1,
+          -- color = { fg = nil, bg = cp.surface0, gui = nil },
+          -- -- color = { fg = nil, bg = c.bg_highlight, gui = nil },
+          -- padding = 1,
         },
         {
           "diagnostics",

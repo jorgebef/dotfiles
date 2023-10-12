@@ -12,9 +12,9 @@ local M = {
       documentRangeFormatting = false,
     },
     tsserver_file_preferences = {
-      -- includeInlayParameterNameHints = "all",
-      -- includeCompletionsForModuleExports = true,
-      quotePreference = "auto",
+      includeInlayParameterNameHints = "all",
+      includeCompletionsForModuleExports = true,
+      -- quotePreference = "auto",
     },
   },
 }

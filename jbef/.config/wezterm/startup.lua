@@ -31,13 +31,14 @@ wezterm.on("gui-startup", function(cmd)
   end
 
   custom_coding_workspace("/Users/jbef/Developer/dotfiles", "dotfiles")
+  custom_coding_workspace("/Users/jbef/Developer/starter-template-peninsula", "starter-template-peninsula")
   custom_coding_workspace("/Users/jbef/Developer/peninsula.studio", "peninsula.studio")
   custom_coding_workspace("/Users/jbef/Developer/Clients/guidoaudisio.com", "guidoaudisio.com")
   custom_coding_workspace("/Users/jbef/Developer/Clients/cnglawyers.com", "cng-lawyers")
   custom_coding_workspace("/Users/jbef/Developer/InvitaBoda/dani-&-mayte", "dani-&-mayte")
   custom_coding_workspace("/Users/jbef/Developer/InvitaBoda/esther-&-javi", "esther-&-javi")
   custom_coding_workspace("/Users/jbef/Developer/InvitaBoda/ivan-y-ana", "ivan-Y-ana")
-
+  custom_coding_workspace("/Users/jbef/Developer/Clients/europrestige-sample", "europrestige-sample")
   -- We want to startup in the coding workspace
   mux.set_active_workspace("dotfiles")
 end)

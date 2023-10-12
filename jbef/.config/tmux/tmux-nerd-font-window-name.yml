@@ -1,0 +1,13 @@
+config:
+  fallback-icon: "?"
+  multi-pane-icon: ""
+  show-name: true
+
+icons:
+  fish: "🐠"
+  nvim: "📝"
+  stripe: "💳"
+  stripe-mock: "💳"
+  btop: "📈"
+  bun: "🥟"
+  docker: "🐳"
