@@ -124,10 +124,8 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   -- local window_dimensions = window:gui_window():get_dimensions()
 
   if tab.tab_index == 0 then
-    left_padding = string.rep(
-      " ",
-      math.floor((mux_tab_cols - #tabs * math.floor(#custom_title) - (#tabs - 1) * #separator) / 2)
-    )
+    left_padding =
+      string.rep(" ", math.floor((mux_tab_cols - #tabs * math.floor(#custom_title) - (#tabs - 1) * #separator) / 2))
   end
 
   if tab.is_active then

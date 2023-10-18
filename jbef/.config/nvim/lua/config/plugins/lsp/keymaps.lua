@@ -87,15 +87,9 @@ function M.setup(client)
     vim.cmd.LspRestart()
   end, opts)
 
-  -- -- Managed by none-ls.lua
-
   vim.keymap.set("n", "<leader>lf", function()
-    vim.lsp.buf.format({
-      async = true,
-      -- filter = function(client)
-      --   return client.name ~= "tsserver"
-      -- end,
-    })
+    require("conform").format({ async = true }) -- managed by conform.lua
+    -- vim.lsp.buf.format({ async = true })
   end, opts)
 
   vim.keymap.set("n", "<leader>lr", function()

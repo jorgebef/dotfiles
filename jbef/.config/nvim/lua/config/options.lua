@@ -60,13 +60,13 @@ opt.relativenumber = true
 opt.ruler = false
 
 -- Status column - NEW from 0.9
--- require('util.status_column')
+-- handled in lua/util/status_column.lua
+vim.opt.statuscolumn = [[%!v:lua.require'util.status_column'.statuscolumn()]]
 
 -- disable nvim intro
 opt.shortmess:append("sI")
 
-opt.signcolumn = "yes:2"
--- opt.signcolumn = "no"
+opt.signcolumn = "yes:1"
 opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = 2

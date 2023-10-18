@@ -53,13 +53,6 @@ format = "[🚀 ]()$all"
 # [nodejs]
 # style = "bold fg:green bg:#1E1E2E"
 # format = "[ $symbol($version) ]($style)"
-#
-# [cmd_duration]
-# min_time = 1
-# show_milliseconds = false
-# disabled = false
-# style = "italic bg:#1E1E2E"
-# format = "[ 🕓 $duration ]($style)"
 
 [character]
 success_symbol = "[\uf054](green)" # 
@@ -84,6 +77,10 @@ disabled = true
 [docker_context]
 disabled = true
 
+[nodejs]
+style = "fg:green bg:#1E1E2E"
+format = "[$symbol($version) ]($style)"
+
 [git_branch]
 symbol = "󰘬 "
 # style = "bold fg:white bg:#1E1E2E"
@@ -103,3 +100,9 @@ disabled = true
 [git_status]
 # style = "fg:#8f8f8f bg:#1E1E2E"
 disabled = true
+
+[cmd_duration]
+min_time = 1
+# show_milliseconds = false
+style = "italic fg:yellow"
+format = "[$duration]($style)"
