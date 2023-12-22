@@ -21,6 +21,8 @@ end
 local lazy_plugin_manager = require("lazy")
 local ui = require("config.ui")
 
+require("util.lazy-nvim-util").setup()
+
 -- Structure is as follows:
 -- ✅ init.lua where I require config.lazy
 -- ✅ config.lazy where I bootstrap and setup lazy.nvim

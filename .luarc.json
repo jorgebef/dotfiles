@@ -54,6 +54,7 @@
     "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/cmp-path/after",
     "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/cmp_luasnip/after",
     "/Users/jorgebefan/.local/share/nvim/site/pack/packer/start/playground/after",
-    "${3rd}/love2d/library"
+    "${3rd}/love2d/library",
+        "${3rd}/luassert/library"
   ]
 }

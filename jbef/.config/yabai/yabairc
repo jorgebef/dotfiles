@@ -65,6 +65,9 @@ yabai -m rule --add app="^Font Book$" manage=off
 yabai -m rule --add app="^IINA$" manage=off
 yabai -m rule --add app="^Karabiner" manage=off
 
+yabai -m rule --add app="^Illustrator$" manage=off
+yabai -m rule --add app="^Photoshop$" manage=off
+
 yabai -m rule --add app="^Cron$" manage=off
 yabai -m rule --add app="^Calendar$" manage=off
 yabai -m rule --add app="^Bitwarden$" manage=off

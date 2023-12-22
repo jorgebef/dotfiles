@@ -58,10 +58,16 @@ local M = {
   --   },
   -- },
   -- astro = {},
-  lua_ls = {},
+  graphql = {
+    -- filetypes = { "graphql", "typescriptreact", "javascriptreact" },
+    -- root_dir = lspconfig.util.root_pattern(".git", ".graphqlrc*", ".graphql.config.*", "graphql.config.*"),
+  },
+  lua_ls = { { Lua = { hint = { enabled = true } } } },
   rust_analyzer = {},
   pyright = {},
-  bashls = {},
+  bashls = {
+    filetypes = { "sh", "bash", "zsh" },
+  },
   lemminx = {
     filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
   },

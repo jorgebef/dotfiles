@@ -13,17 +13,18 @@ M.handlers = require("config.plugins.lsp.handlers").handlers
 
 M.on_attach = require("config.plugins.lsp.on_attach").on_attach
 
-M.capabilities = function()
-  local cmp = require("cmp_nvim_lsp")
-  local capabilities = cmp.default_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  return capabilities
-end
+-- M.capabilities = function()
+--   local cmp = require("cmp_nvim_lsp")
+--   local capabilities = cmp.default_capabilities()
+--   capabilities.textDocument.completion.completionItem.snippetSupport = true
+--   return capabilities
+-- end
 
 M.config = function()
   local lspconfig = require("lspconfig")
   local ui = require("config.ui")
   local servers = require("config.plugins.lsp.servers")
+  -- local coq = require("coq") -- add this
 
   require("mason").setup()
   local server_names = {}
@@ -74,7 +75,7 @@ M.config = function()
     opts = vim.tbl_deep_extend("force", {
       on_attach = M.on_attach,
       handlers = M.handlers,
-      capabilities = M.capabilities(),
+      -- capabilities = M.capabilities(),
       flags = {
         debounce_text_changes = 150,
       },
@@ -85,9 +86,15 @@ M.config = function()
     -- for a more performant tsserver native API access, instead of going through regular LSP
     -- ❗️ IMPORTANT: As mentioned earlier, this plugin serves as a replacement for typescript-language-server, so you should remove the nvim-lspconfig setup for it.
 
-    if server ~= "tsserver" then
-    -- if server ~= "kek" then
+    if
+      server ~= "test1"
+      and server ~= "tsserver"
+      -- and server ~= "tailwindcss"
+      and server ~= "test2"
+      and server ~= "test2"
+    then
       lspconfig[server].setup(opts)
+      -- lspconfig[server].setup(coq.lsp_ensure_capabilities(opts))
     end
   end
   -- ALL DONE!

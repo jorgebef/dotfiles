@@ -1,0 +1,53 @@
+local M = {
+  "windwp/nvim-ts-autotag",
+  event = { "BufRead" },
+}
+
+function M.config()
+  require("nvim-ts-autotag").setup({
+    enable = true,
+    enable_close_on_slash = false,
+    filetypes = {
+      "html",
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+      "svelte",
+      "vue",
+      "tsx",
+      "jsx",
+      "rescript",
+      "xml",
+      "php",
+      "markdown",
+      "astro",
+      "glimmer",
+      "handlebars",
+      "hbs",
+    },
+    skip_tags = {
+      "area",
+      "base",
+      "br",
+      "col",
+      "command",
+      "embed",
+      "hr",
+      "img",
+      "slot",
+      "input",
+      "keygen",
+      "link",
+      "meta",
+      "param",
+      "source",
+      "track",
+      "wbr",
+      "menuitem",
+      "Image",
+    },
+  })
+end
+
+return M

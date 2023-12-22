@@ -3,17 +3,49 @@ local M = {
   build = ":TSUpdate",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects", -- Text objects
-    "windwp/nvim-ts-autotag", -- Closing < tags
-    "JoosepAlviste/nvim-ts-context-commentstring", -- context-aware commenting
+    "windwp/nvim-ts-autotag",
     "nvim-treesitter/playground",
   },
 }
 
-function M.config()
-  require("nvim-treesitter.configs").setup({
+---@param opts TSConfig
+function M.config(_, opts)
+  opts = {
     -- A list of parser names, or "all"
-    -- ensure_installed = { "c", "lua", "rust" },
-    ensure_installed = "all",
+    -- ensure_installed = "all",
+    ensure_installed = {
+      "bash",
+      "c",
+      "cpp",
+      "css",
+      "diff",
+      "fish",
+      "glsl",
+      "go",
+      "graphql",
+      "html",
+      "javascript",
+      "jsdoc",
+      "json",
+      "jsonc",
+      "lua",
+      "luadoc",
+      "luap",
+      "markdown",
+      "markdown_inline",
+      "python",
+      "query",
+      "regex",
+      "rust",
+      "scss",
+      "toml",
+      "tsx",
+      "typescript",
+      "vim",
+      "vimdoc",
+      "xml",
+      "yaml",
+    },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -21,8 +53,8 @@ function M.config()
     -- Automatically install missing parsers when entering buffer
     auto_install = true,
 
-    -- List of parsers to ignore installing (for "all")
-    ignore_install = { "phpdoc" },
+    -- -- List of parsers to ignore installing (for "all")
+    -- ignore_install = { "phpdoc" },
 
     ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
     -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
@@ -60,16 +92,36 @@ function M.config()
         },
       },
     },
+    autotag = {
+      enable = true,
+      enable_rename = true,
+      enable_close = true,
+      enable_close_on_slash = false,
+      skip_tags = {
+        "area",
+        "base",
+        "br",
+        "col",
+        "command",
+        "embed",
+        "hr",
+        "img",
+        "slot",
+        "input",
+        "keygen",
+        "link",
+        "meta",
+        "param",
+        "source",
+        "track",
+        "wbr",
+        "menuitem",
+        "Image",
+      },
+    },
 
     highlight = {
-      -- `false` will disable the whole extension
       enable = true,
-
-      -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-      -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-      -- the name of the parser)
-      -- list of language that will be disabled
-      -- disable = { "c" },
 
       -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
       -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -98,50 +150,20 @@ function M.config()
     indent = {
       enable = true,
     },
-    autotag = {
-      enable = true,
-      enable_close_on_slash = false,
-      skip_tags = {
-        "area",
-        "base",
-        "br",
-        "col",
-        "command",
-        "embed",
-        "hr",
-        "img",
-        "slot",
-        "input",
-        "keygen",
-        "link",
-        "meta",
-        "param",
-        "source",
-        "track",
-        "wbr",
-        "menuitem",
-        "Image", -- this is for Nextjs Image component
-      },
-    },
+  }
 
-    -- matchup = {
-    --   enable = true, -- mandatory, false will disable the whole extension
-    --   disable = { "c", "ruby" }, -- optional, list of language that will be disabled
-    --   -- [options]
-    -- },
-
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-      javascript = {
-        __default = "// %s",
-        jsx_element = "{/* %s */}",
-        jsx_fragment = "{/* %s */}",
-        jsx_attribute = "// %s",
-        comment = "// %s",
-      },
-    },
-  })
+  if type(opts.ensure_installed) == "table" then
+    ---@type table<string, boolean>
+    local added = {}
+    opts.ensure_installed = vim.tbl_filter(function(lang)
+      if added[lang] then
+        return false
+      end
+      added[lang] = true
+      return true
+    end, opts.ensure_installed)
+  end
+  require("nvim-treesitter.configs").setup(opts)
 end
 
 return M

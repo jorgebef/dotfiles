@@ -58,6 +58,10 @@ function M.config()
         },
       },
       cmp = true,
+      navic = {
+        enabled = true,
+        custom_bg = "NONE",
+      },
       lsp_saga = true,
       gitsigns = true,
       telescope = true,
@@ -128,29 +132,10 @@ function M.config()
         TelescopePreviewTitle = { fg = colors.base, bg = colors.mantle },
         TelescopePreviewNormal = { fg = colors.overlay2, bg = colors.mantle },
         TelescopeResultsNormal = { fg = colors.overlay2, bg = colors.mantle },
-        -- TelescopeResultsBorder = { fg = colors.surface0, bg = colors.base },
         TelescopePromptBorder = { fg = colors.mantle, bg = colors.mantle },
         TelescopePromptTitle = { fg = colors.base, bg = colors.mantle },
         TelescopePromptNormal = { fg = colors.overlay2, bg = colors.mantle },
         TelescopePromptPrefix = { fg = colors.pink, bg = colors.mantle },
-
-        -- FzfLuaNormal = { fg = colors.overlay2, bg = nil },
-        -- FzfLuaBorder = { fg = colors.surface0, bg = nil },
-        -- FzfLuaSearch = { fg = colors.pink, bg = nil },
-        -- FzfLuaMatching = { fg = colors.pink, bg = nil, bold = true },
-        -- FzfLuaPromptPrefix = { fg = colors.pink, bg = nil, bold = true },
-        -- FzfLuaTitle = { fg = colors.pink, bg = nil, bold = true },
-        -- FzfLuaCursor = { fg = colors.red, bg = colors.overlay2 },
-        -- FzfLuaCursorLine = { fg = colors.text, bg = colors.overlay2 },
-        -- FzfLuaPrompt = { fg = colors.blue, bg = colors.overlay2 },
-        -- FzfLuaSelection = { fg = colors.text, bg = "#3B3D4F" },
-        -- FzfLuaSelectionCaret = { fg = colors.pink, bg = colors.base },
-        -- FzfLuaPreviewBorder = { fg = colors.surface0, bg = colors.base },
-        -- FzfLuaPreviewTitle = { fg = colors.surface0, bg = colors.base },
-        -- FzfLuaPreviewNormal = { fg = colors.overlay0, bg = colors.base },
-        -- FzfLuaResultsNormal = { fg = colors.overlay2, bg = nil },
-        -- -- TelescopeResultsBorder = { fg = colors.surface0, bg = colors.base },
-        -- FzfLuaPromptNormal = { fg = colors.overlay2, bg = colors.base },
 
         LeapLabelPrimary = { fg = colors.red, bg = colors.crust },
 
@@ -158,10 +143,12 @@ function M.config()
 
         LspSignatureActiveParameter = { fg = colors.pink, bold = true },
 
-        WinBar = { fg = colors.subtext0, bg = nil },
-        WinBarInactive = { fg = colors.surface1, bg = nil },
+        -- WinBar = { fg = colors.subtext0, bg = nil },
+        -- WinBarInactive = { fg = colors.surface1, bg = nil },
         WinBarFilenameActive = { fg = colors.base, bg = colors.pink, bold = true },
         WinBarFilenameInactive = { fg = colors.overlay2, bg = nil, bold = true },
+
+        NavicText = { fg = colors.subtext0, bg = nil },
 
         -- WhichKeyFloat = { bg = colors.surface0 },
         -- WhichKeyBorder = { fg = colors.blue, bg = colors.surface0 },
@@ -175,6 +162,8 @@ function M.config()
         ["@tag.delimiter.tsx"] = { fg = colors.overlay2 },
         ["@tag.attribute.tsx"] = { fg = colors.blue },
         ["@constructor.tsx"] = { fg = colors.peach },
+        -- ["@lsp.typemod.property.declaration.string_fragment.typescript"] = { fg = colors.peach },
+        ["@string_fragment.typescript"] = { fg = colors.peach },
       }
     end,
   })

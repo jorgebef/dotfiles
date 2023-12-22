@@ -102,9 +102,17 @@ function M.setup(client)
     vim.lsp.buf.hover({ focusable = false })
   end, opts)
 
-  vim.keymap.set("n", "<leader>lI", function()
-    vim.lsp.buf.implementation()
-  end, opts)
+  vim.keymap.set(
+    "n",
+    "<leader>li",
+    function()
+      -- vim.lsp.buf.implementation()
+      vim.lsp.inlay_hint(vim.api.nvim_get_current_buf(), nil)
+    end,
+    vim.tbl_deep_extend("force", {
+      desc = "Toggle inlay hints",
+    }, opts)
+  )
 
   vim.keymap.set("i", "<C-k>", function()
     vim.lsp.buf.signature_help()

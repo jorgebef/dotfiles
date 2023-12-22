@@ -4,6 +4,7 @@ local M = {
   "pmizio/typescript-tools.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   opts = {
+    -- cmd = { "bunx", "typescript-language-server", "--stdio" },
     on_attach = require("config.plugins.lsp.on_attach").on_attach,
     handlers = require("config.plugins.lsp.handlers").handlers,
     init_options = {
@@ -13,7 +14,7 @@ local M = {
     },
     tsserver_file_preferences = {
       includeInlayParameterNameHints = "all",
-      includeCompletionsForModuleExports = true,
+      -- includeCompletionsForModuleExports = true,
       -- quotePreference = "auto",
     },
   },

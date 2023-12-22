@@ -6,10 +6,8 @@ local M = {
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
     { "hrsh7th/cmp-cmdline" },
-    { "saadparwaiz1/cmp_luasnip" },
     { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
-    { "rafamadriz/friendly-snippets" },
     { "onsails/lspkind-nvim" },
   },
 }
@@ -111,20 +109,17 @@ function M.config()
       -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
-      -- { name = "nvim_lsp", keyword_length = 2, max_item_count = 30 },
-      -- { name = "nvim_lsp", keyword_length = 2 },
-      -- { name = "nvim_lsp" },
-      { name = "nvim_lsp" },
+      { name = "nvim_lsp", keyword_length = 1 },
       { name = "path", max_item_count = 10 },
       { name = "luasnip", keyword_length = 2, max_item_count = 6 }, -- For luasnip users.
     }, {
-      { name = "buffer", max_item_count = 15 },
+      { name = "buffer", keyword_length = 2, max_item_count = 15 },
     }),
-    --[[ performance = {
-      -- debounce = 5000,
+    performance = {
+      -- debounce = 100,
       throttle = 0,
-      -- fetching_timeout = 5000,
-    }, ]]
+      fetching_timeout = 150,
+    },
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)

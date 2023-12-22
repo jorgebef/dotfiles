@@ -16,7 +16,8 @@ function M.get_signs(buf, lnum)
   ---@type Sign[]
   local signs = vim.tbl_map(function(sign)
     ---@type Sign
-    local ret = vim.fn.sign_getdefined(sign.name)[1]
+    -- local ret = vim.fn.sign_getdefined(sign.name)[1]
+    local ret = { { name = "keke", text = "T", texthl = "kek", priority = 2 } }
     ret.priority = sign.priority
     return ret
   end, vim.fn.sign_getplaced(buf, { group = "*", lnum = lnum })[1].signs)

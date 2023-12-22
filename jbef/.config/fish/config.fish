@@ -17,17 +17,20 @@ fish_add_path "$HOME/.cargo/bin/" # Add cargo bin to $PATH
 fish_add_path "$PNPM_HOME" # Add pnpm path to $PATH
 fish_add_path "$HOME/Library/CloudStorage/Dropbox/JORGE/Peninsula Studio/01 Documents & info/bin" # Add custom bin folder path to $PATH
 # ~/.tmux/plugins
-fish_add_path "$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin"
-# ~/.config/tmux/plugins
 fish_add_path "$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin"
 # fish_add_path "/Users/jbef/.local/"
 
 function fish_greeting
   pokemon-colorscripts -r --no-title
   # tmux a || tmux
+
+
+  # ===========THIS ADDS TMUX AT INITIALIZATION=============
   if not set -q TMUX
     tmux a || tmux
   end
+
+
 end
 
 fish_vi_key_bindings

@@ -14,3 +14,19 @@ plugins {
     strider { path "strider"; }
     compact-bar { path "compact-bar"; }
 }
+
+keybinds {
+    locked {
+        bind "Ctrl ;" { LaunchOrFocusPlugin "zellij:session-manager" {
+            floating true
+        }
+    }
+        bind "þ" { MoveFocus "Down"; }
+        bind "Ctrl k" { MoveFocus "Up"; }
+        bind "Ctrl h" { MoveFocus "Left"; }
+        bind "Ctrl l" { MoveFocus "Right"; }
+        bind "Alt g" { SwitchToMode "Normal"; }
+    }
+    normal {
+    }
+}
