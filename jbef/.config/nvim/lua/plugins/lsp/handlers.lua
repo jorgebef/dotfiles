@@ -16,7 +16,7 @@ local function filter(arr, fn)
 end
 
 local function filterReactDTS(value)
-  return string.match(value.targetUri, "react/index.d.ts") == nil
+  return string.match(value.targetUri, "index.d.ts") == nil
 end
 
 local filteredTypescriptDefinition = function(err, result, method, ...)
@@ -42,6 +42,8 @@ M.handlers = {
     return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
   end,
 
+  -- ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+
   ["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help,
     { border = require("config.ui").border.Block }
@@ -53,7 +55,8 @@ M.handlers = {
     --   -- prefix = "icons",
     --   spacing = 2,
     -- },
-    underline = { error = true, hint = true, warning = true, info = true },
+    -- underline = true,
+    undercurl = true,
     -- bold = true,
     signs = true,
     float = {
@@ -65,4 +68,5 @@ M.handlers = {
 
   ["textDocument/definition"] = filteredTypescriptDefinition,
 }
+
 return M

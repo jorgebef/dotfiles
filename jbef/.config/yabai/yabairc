@@ -47,29 +47,28 @@ yabai -m config                                 \
     mouse_drop_action            swap
 
 # apps to not manage (ignore)
-yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Archive Utility$" manage=off
+yabai -m rule --add app="^Asana" manage=off
+yabai -m rule --add app="^Bitwarden$" manage=off
+yabai -m rule --add app="^Calendar$" manage=off
 yabai -m rule --add app="^Creative Cloud$" manage=off
-yabai -m rule --add app="^Logi Options$" manage=off
-# yabai -m rule --add app="^Alfred Preferences$" manage=off
-yabai -m rule --add app="Raycast" manage=off
-yabai -m rule --add app="^Music$" manage=off
-yabai -m rule --add app="^Transmission$" manage=off
-yabai -m rule --add app="^qBittorrent" manage=off
-yabai -m rule --add app="^Spotify$" manage=off
-yabai -m rule --add app="^FortiClient" manage=off
-yabai -m rule --add app="^Zoom" manage=off
-yabai -m rule --add app="^zoom" manage=off
+yabai -m rule --add app="^Cron$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Font Book$" manage=off
+yabai -m rule --add app="^FortiClient" manage=off
 yabai -m rule --add app="^IINA$" manage=off
 yabai -m rule --add app="^Karabiner" manage=off
-
-yabai -m rule --add app="^Illustrator$" manage=off
-yabai -m rule --add app="^Photoshop$" manage=off
-
-yabai -m rule --add app="^Cron$" manage=off
-yabai -m rule --add app="^Calendar$" manage=off
-yabai -m rule --add app="^Bitwarden$" manage=off
+yabai -m rule --add app="^Logi Options$" manage=off
+yabai -m rule --add app="^Music" manage=off
+yabai -m rule --add app="^Obsidian" manage=off
+yabai -m rule --add app="^qBittorrent" manage=off
+yabai -m rule --add app="^Raycast" manage=off
+yabai -m rule --add app="^Slack" manage=off
+yabai -m rule --add app="^Spotify$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Todoist" manage=off
+yabai -m rule --add app="^Transmission$" manage=off
+yabai -m rule --add app="^WhatsApp$" manage=off
+yabai -m rule --add app="^Zoom" manage=off
 
 echo "yabai configuration loaded.."

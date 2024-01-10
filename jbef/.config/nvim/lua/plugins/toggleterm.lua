@@ -3,7 +3,7 @@ local M = { "akinsho/toggleterm.nvim" }
 M.config = function()
   require("toggleterm").setup({
     direction = "float",
-    open_mapping = [[†]], -- Custom keymap set in wezterm confirm that replaces <c-\> since terminal can't produce or read the key combination
+    -- open_mapping = [[†]], -- Custom keymap set in wezterm confirm that replaces <c-\> since terminal can't produce or read the key combination
     start_in_insert = true,
     size = 20,
     float_opts = {

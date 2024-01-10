@@ -1,5 +1,5 @@
+---@class vim.opt
 local opt = vim.opt
-local g = vim.g
 
 -- ================== USE SYSTEM CLIPBOARD ==================
 -- local is_mac = vim.fn.has("macunix")
@@ -18,7 +18,7 @@ opt.incsearch = true
 -- opt.lazyredraw = true
 opt.sessionoptions = "globals,buffers,curdir,folds,help,resize,tabpages,winsize,winpos"
 -- vim.g.ttyfast = true
-g.inccommand = "nosplit"
+vim.g.inccommand = "nosplit"
 
 -- ==================================
 opt.completeopt = { "menu", "menuone", "noselect" }
@@ -34,13 +34,15 @@ vim.opt.title = true -- set the title of window to the value of the titlestring
 -- o.undodir = join_paths(get_cache_dir(), "undo") -- set an undo directory
 opt.expandtab = true -- convert tabs to spaces
 -- o.spell = false
-opt.scrolloff = 5 -- minimal number of screen lines to keep above and below the cursor.
+opt.scrolloff = 1 -- minimal number of screen lines to keep above and below the cursor.
 
 opt.laststatus = 3 -- global statusline
 opt.title = true
 opt.cul = true -- cursor line
 opt.showmode = false
 -- opt.cmdheight = 0 -- Thanks shougo
+opt.iskeyword:remove("_") -- make underscore not be part of word
+-- vim.cmd([[set iskeyword-=_]]) -- same as above
 
 -- Indentline
 opt.shiftwidth = 2
@@ -62,6 +64,7 @@ opt.ruler = false
 -- Status column - NEW from 0.9
 -- handled in lua/util/status_column.lua
 vim.opt.statuscolumn = [[%!v:lua.require'util.status_column'.statuscolumn()]]
+-- require("util.status_column")
 
 -- disable nvim intro
 opt.shortmess:append("sI")
@@ -82,7 +85,7 @@ opt.updatetime = 550
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>[]hl")
 
-g.python_recommended_style = 0
-g.tex_flavor = "latex"
+vim.g.python_recommended_style = 0
+vim.g.tex_flavor = "latex"
 opt.pumheight = 15
 opt.linebreak = true

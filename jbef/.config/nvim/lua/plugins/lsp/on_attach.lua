@@ -4,6 +4,12 @@ M.on_attach = function(client, bufnr)
   local navic = require("nvim-navic")
   local util = require("util.util")
 
+  require("plugins.lsp.keymaps").setup(client)
+
+  if client.supports_method("textDocument/inlayHint") then
+    vim.lsp.inlay_hint.enable(bufnr, false)
+  end
+
   if client.name ~= "tailwindcss" and client.name ~= "glslls" and client.name ~= "efm" then
     navic.attach(client, bufnr)
   end
@@ -16,8 +22,6 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end
-
-  require("config.plugins.lsp.keymaps").setup(client.name)
 end
 
 return M

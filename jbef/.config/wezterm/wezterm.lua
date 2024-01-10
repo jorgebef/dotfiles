@@ -12,7 +12,7 @@ local config = {
     -- family = "Fira Code",
     family = "FiraCode Nerd Font",
   }),
-  font_size = 15.0,
+  font_size = 14.0,
 
   font_rules = {
     -- https://wezfurlong.org/wezterm/config/lua/config/font_rules.html#font_rules
@@ -42,12 +42,25 @@ local config = {
   underline_position = -5, -- specific for FiraCode font
   max_fps = 120,
   -- max_fps = 240,
+  front_end = "WebGpu",
+  webgpu_power_preference = "HighPerformance",
+  animation_fps = 0,
+  webgpu_preferred_adapter = {
+    backend = "Metal",
+    device = 0,
+    device_type = "IntegratedGpu",
+    name = "Apple M1 Pro",
+    vendor = 0,
+  },
+  -- cursor_blink_ease_in = "Constant",
+  -- cursor_blink_ease_out = "Constant",
+
 
   automatically_reload_config = true,
   use_fancy_tab_bar = false,
   tab_bar_at_bottom = true,
   window_decorations = "RESIZE",
-  window_background_opacity = 0.955,
+  window_background_opacity = 0.98,
   macos_window_background_blur = 0,
   hide_tab_bar_if_only_one_tab = true, -- true if using TMUX
   tab_max_width = 999,
@@ -179,29 +192,29 @@ end)
 --   window:gui_window():maximize()
 -- end)
 
-local move_around = function(window, pane, direction_wez, direction_nvim)
-  if pane:get_title():sub(-4) == "NVIM" then
-    window:perform_action(act.SendString(direction_nvim), pane)
-  else
-    window:perform_action(act.ActivatePaneDirection(direction_wez), pane)
-  end
-end
-
-wezterm.on("move-left", function(window, pane)
-  move_around(window, pane, "Left", "\x08") -- for nvim, use unicode to send Ctrl+h
-end)
-
-wezterm.on("move-right", function(window, pane)
-  move_around(window, pane, "Right", "\x0C") -- for nvim, use unicode to send Ctrl+l
-end)
-
-wezterm.on("move-up", function(window, pane)
-  move_around(window, pane, "Up", "\x0B") -- for nvim, use unicode to send Ctrl+k
-end)
-
-wezterm.on("move-down", function(window, pane)
-  move_around(window, pane, "Down", "\x0A") -- for nvim, use unicode to send Ctrl+j
-end)
+-- local move_around = function(window, pane, direction_wez, direction_nvim)
+--   if pane:get_title():sub(-4) == "NVIM" then
+--     window:perform_action(act.SendString(direction_nvim), pane)
+--   else
+--     window:perform_action(act.ActivatePaneDirection(direction_wez), pane)
+--   end
+-- end
+--
+-- wezterm.on("move-left", function(window, pane)
+--   move_around(window, pane, "Left", "\x08") -- for nvim, use unicode to send Ctrl+h
+-- end)
+--
+-- wezterm.on("move-right", function(window, pane)
+--   move_around(window, pane, "Right", "\x0C") -- for nvim, use unicode to send Ctrl+l
+-- end)
+--
+-- wezterm.on("move-up", function(window, pane)
+--   move_around(window, pane, "Up", "\x0B") -- for nvim, use unicode to send Ctrl+k
+-- end)
+--
+-- wezterm.on("move-down", function(window, pane)
+--   move_around(window, pane, "Down", "\x0A") -- for nvim, use unicode to send Ctrl+j
+-- end)
 
 -- wezterm.on("zellij-ctrl-j", function(window, pane)
 --   local function zellij_ctrl_j()
@@ -302,11 +315,14 @@ config.keys = {
 
   -- =====================================================================
   -- TMUX specific keybindings
-  { key = ".", mods = "CTRL", action = act.SendString("\x1b[46;5u") },
-  { key = ",", mods = "CTRL", action = act.SendString("\x1b[44;5u") },
+  -- { key = ".", mods = "CTRL", action = act.SendString("\x1b[46;5u") },
+  -- { key = ",", mods = "CTRL", action = act.SendString("\x1b[44;5u") },
+
+  { key = ".", mods = "CTRL", action = act.SendString("þ") },
+  { key = ",", mods = "CTRL", action = act.SendString("†") },
   -- This below maps CTRL+; to Ω, since that is a key combination that can be sent to tmux to run the popup with the session switcher
   { key = ";", mods = "CTRL", action = act.SendString("Ω") },
-  { key = "'", mods = "CTRL", action = act.SendString("þ") },
+  -- { key = "'", mods = "CTRL", action = act.SendString("þ") },
   -- { key = "\\", mods = "CTRL", action = act.SendString("†") },
   -- =====================================================================
 

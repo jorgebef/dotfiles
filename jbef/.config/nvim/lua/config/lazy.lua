@@ -1,6 +1,3 @@
--- The package manager by Folke
--- https://github.com/folke/lazy.nvim
-
 -- !WARNING vvvvvvvvvv
 -- LEADERKEY MUST BE SET BEFORE THIS FILE IS LOADED
 
@@ -10,18 +7,17 @@ if not vim.loop.fs_stat(lazypath) then
     "git",
     "clone",
     "--filter=blob:none",
-    "--single-branch",
     "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
     lazypath,
   })
-else
-  vim.opt.runtimepath:prepend(lazypath)
 end
+vim.opt.rtp:prepend(lazypath)
 
-local lazy_plugin_manager = require("lazy")
+local lazy = require("lazy")
 local ui = require("config.ui")
 
-require("util.lazy-nvim-util").setup()
+-- require("util.lazy-nvim-util").setup()
 
 -- Structure is as follows:
 -- ✅ init.lua where I require config.lazy
@@ -32,12 +28,7 @@ require("util.lazy-nvim-util").setup()
 -- For further clarification, check docs:
 -- https://github.com/folke/lazy.nvim#-structuring-your-plugins:~:text=%F0%9F%93%82,Structuring%20Your%20Plugins
 
-lazy_plugin_manager.setup("config.plugins", {
-  change_detection = {
-    -- automatically check for config file changes and reload the ui
-    enabled = true,
-    notify = true, -- get a notification when changes are found
-  },
+lazy.setup("plugins", {
   install = { colorscheme = { "catppuccin" } },
   -- install = { colorscheme = { "tokyonight" } },
   ui = {

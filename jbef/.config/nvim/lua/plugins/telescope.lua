@@ -2,9 +2,15 @@ local M = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
+    { "nvim-telescope/telescope-frecency.nvim" },
     { "nvim-telescope/telescope-file-browser.nvim" },
-    -- { "natecraddock/telescope-zf-native.nvim" },
+    { "natecraddock/telescope-zf-native.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+
+    -- FILE PREVIEWER
+    { "nvim-telescope/telescope-media-files.nvim" },
+    { "nvim-lua/popup.nvim" },
+    { "nvim-lua/plenary.nvim" },
   },
 }
 
@@ -19,32 +25,14 @@ function M.config()
     pickers = {
       find_files = {
         hidden = true,
-        no_ignore = true,
         find_command = {
           "fd",
           "--color=never",
           "--type",
           "f",
-          "--hidden",
           "--follow",
-          "--no-ignore",
           "--exclude",
-          "node_modules",
-          "--exclude",
-          ".git",
-          "--exclude",
-          "dist",
-          "--exclude",
-          "build",
-          "--exclude",
-          "out",
-          "--exclude",
-          ".next",
-          "--exclude",
-          ".vercel",
-          "--exclude",
-          ".netlify",
-          -- '-X'
+          "!.git",
         },
       },
       buffers = {
@@ -68,23 +56,6 @@ function M.config()
       borderchars = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
       results_title = false,
       prompt_title = false,
-      -- layout_config = {
-      --   height = 0.9,
-      --   preview_cutoff = 120,
-      --   width = 0.8,
-      --   prompt_position = "top",
-      -- },
-      -- sorting_strategy = "ascending",
-      -- -- ====================================================
-      -- -- IT IS VERY SLOW TO RELY ON FILE IGNORE PATTERNS
-      -- -- ====================================================
-      -- file_ignore_patterns = {
-      --   "node_modules/",
-      --   ".git/",
-      --   ".next/",
-      --   "package-lock.json",
-      --   "DS_",
-      -- },
 
       vimgrep_arguments = {
         "rg",
@@ -95,7 +66,11 @@ function M.config()
         "--line-number",
         "--column",
         "--smart-case",
-        "--ignore-file",
+        "--glob",
+        "!.git/",
+        "--glob",
+        "!package-lock.json",
+        -- "--ignore-file",
         -- "!*package-lock.json",
         -- "!*package.json",
         -- '.gitignore'
@@ -103,9 +78,9 @@ function M.config()
     },
     extensions = {
       file_browser = {
-        theme = "ivy",
+        -- theme = "ivy",
         -- disables netrw and use telescope-file-browser in its place
-        hijack_netrw = true,
+        hijack_netrw = false,
         mappings = {
           ["i"] = {
             -- your custom insert mode mappings
@@ -123,39 +98,58 @@ function M.config()
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
         -- the default case_mode is "smart_case"
       },
-      -- ["zf-native"] = {
-      --   -- options for sorting file-like items
-      --   file = {
-      --     -- override default telescope file sorter
-      --     enable = true,
-      --     -- highlight matching text in results
-      --     highlight_results = true,
-      --     -- enable zf filename match priority
-      --     match_filename = true,
-      --   },
-      --   -- options for sorting all other items
-      --   generic = {
-      --     -- override default telescope generic item sorter
-      --     enable = false,
-      --     -- highlight matching text in results
-      --     highlight_results = true,
-      --     -- disable zf filename match priority
-      --     match_filename = false,
-      --   },
-      -- },
+      frecency = {
+        -- db_root = "/home/my_username/path/to/db_root",
+        show_scores = false,
+        show_unindexed = true,
+        ignore_patterns = { "*.git/*", "*/tmp/*" },
+        disable_devicons = false,
+        default_workspace = "CWD",
+        show_filter_column = false,
+        -- workspaces = {
+        --   ["conf"] = "/home/my_username/.config",
+        --   ["data"] = "/home/my_username/.local/share",
+        --   ["project"] = "/home/my_username/projects",
+        --   ["wiki"] = "/home/my_username/wiki",
+        -- },
+      },
+      ["zf-native"] = {
+        -- options for sorting file-like items
+        file = {
+          -- override default telescope file sorter
+          enable = true,
+          -- highlight matching text in results
+          highlight_results = true,
+          -- enable zf filename match priority
+          match_filename = true,
+        },
+        -- options for sorting all other items
+        generic = {
+          -- override default telescope generic item sorter
+          enable = false,
+          -- highlight matching text in results
+          highlight_results = true,
+          -- disable zf filename match priority
+          match_filename = false,
+        },
+      },
+
       project = {},
     },
   })
   -- To get fzf loaded and working with telescope, you need to call
   -- load_extension, somewhere after setup function:
   telescope.load_extension("fzf")
+  -- telescope.load_extension("frecency")
   -- Load zf extension, which favors filename over rest of the path
-  -- telescope.load_extension("zf-native")
+  telescope.load_extension("zf-native")
   -- To get telescope-file-browser loaded and working with telescope,
   -- you need to call load_extension, somewhere after setup function:
   telescope.load_extension("file_browser")
   -- Telescope Notification history review and finder
   telescope.load_extension("notify")
+  -- Telescope Media file Previewer
+  telescope.load_extension("media_files")
 
   -- ==================Custom function for git files=======================
   local function project_files()
@@ -170,6 +164,7 @@ function M.config()
   local nsn_opts = { noremap = true, silent = true, nowait = true }
 
   vim.keymap.set("n", "<leader>ff", builtin.find_files, nsn_opts)
+  -- vim.keymap.set("n", "<leader>ff", "<Cmd>Telescope frecency<CR>", nsn_opts)
 
   vim.keymap.set("n", "<leader>fg", function()
     builtin.live_grep()

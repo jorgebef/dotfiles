@@ -44,17 +44,20 @@ function M.config()
       treesitter = true,
       native_lsp = {
         enabled = true,
-        virtual_text = {
-          -- errors = { "italic" },
-          -- hints = { "italic" },
-          -- warnings = { "italic" },
-          -- information = { "italic" },
-        },
+        -- virtual_text = {
+        -- errors = { "italic" },
+        -- hints = { "italic" },
+        -- warnings = { "italic" },
+        -- information = { "italic" },
+        -- },
         underlines = {
-          errors = { "underline" },
-          hints = { "underline" },
-          warnings = { "underline" },
-          information = { "underline" },
+          errors = { "undercurl" },
+          hints = { "undercurl" },
+          warnings = { "undercurl" },
+          information = { "undercurl" },
+        },
+        inlay_hints = {
+          background = true,
         },
       },
       cmp = true,
@@ -155,7 +158,8 @@ function M.config()
 
         -- LSP Specific
         -- ===============
-        DiagnosticUnnecessary = { sp = colors.teal, underline = true },
+        DiagnosticUnnecessary = { sp = colors.teal, undercurl = true },
+        -- DiagnosticUnderlineError = { fg = nil, sp = colors.red, bg = nil },
 
         -- Language specific
         -- ===============

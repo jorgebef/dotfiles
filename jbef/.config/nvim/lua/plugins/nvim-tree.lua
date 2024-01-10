@@ -14,7 +14,7 @@ function M.config()
       preserve_window_proportions = false,
       number = false,
       relativenumber = false,
-      signcolumn = "yes",
+      signcolumn = "no",
     },
     renderer = {
       root_folder_label = false,

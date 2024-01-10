@@ -1,7 +1,19 @@
 local lspconfig = require("lspconfig")
 
 local M = {
-  -- This is no longer needed as long as I use the plugin typescript-tools.nvim
+  -- vtsls = {
+  --   cmd = { "vtsls", "--stdio" },
+  --   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  --   root_dir = lspconfig.util.root_pattern(".git"),
+  --   experimental = {
+  --     completion = {
+  --       enableServerSideFuzzyMatch = true,
+  --       entriesLimit = 10,
+  --     },
+  --   },
+  -- },
+
+  -- -- This is no longer needed as long as I use the plugin typescript-tools.nvim
   -- tsserver = {
   --   root_dir = function(...)
   --     return require("lspconfig.util").root_pattern(".git")(...)
@@ -38,8 +50,9 @@ local M = {
   --       },
   --     },
   --   },
-  --   -- flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+  --   flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
   -- },
+
   -- efm = {
   --   -- filetypes = vim.tbl_extendvim.tbl_keys(require("efmls-configs.defaults").languages()),
   --   settings = {
@@ -62,7 +75,41 @@ local M = {
     -- filetypes = { "graphql", "typescriptreact", "javascriptreact" },
     -- root_dir = lspconfig.util.root_pattern(".git", ".graphqlrc*", ".graphql.config.*", "graphql.config.*"),
   },
-  lua_ls = { { Lua = { hint = { enabled = true } } } },
+  lua_ls = {
+    Lua = {
+      format = {
+        enable = false,
+      },
+      diagnostics = {
+        globals = { "vim", "spec" },
+      },
+      runtime = {
+        version = "LuaJIT",
+        special = {
+          spec = "require",
+        },
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.stdpath("config") .. "/lua"] = true,
+        },
+      },
+      hint = {
+        enable = false,
+        arrayIndex = "Disable", -- "Enable" | "Auto" | "Disable"
+        await = true,
+        paramName = "Disable", -- "All" | "Literal" | "Disable"
+        paramType = true,
+        semicolon = "All", -- "All" | "SameLine" | "Disable"
+        setType = false,
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
   rust_analyzer = {},
   pyright = {},
   bashls = {

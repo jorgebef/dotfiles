@@ -1,39 +1,47 @@
 local M = {}
 
 function M.setup(client)
-  local typescript = require("typescript-tools")
+  -- local typescript = require("typescript-tools")
   local opts = { noremap = true, silent = true }
+  -- local wk = require("which-key")
 
   -- ====================================
   -- Typescript specific remaps
   -- ====================================
+  if client.name == "typescript-tools" then
+    vim.keymap.set(
+      "n",
+      "<leader>li",
+      function()
+        local current_buffer = vim.api.nvim_get_current_buf()
+        vim.lsp.inlay_hint.enable(current_buffer, not vim.lsp.inlay_hint.is_enabled(current_buffer))
+      end,
+      vim.tbl_deep_extend("force", {
+        desc = "Toggle inlay hints",
+      }, opts)
+    )
 
-  --  Global variable _G.typescriptDefinition is set when entering a *.tsx file
-  --  via autocommand (check autocommands.lua file in config)
-  vim.keymap.set("n", "<leader>lo", function()
-    -- typescript.actions.organizeImports()
-    vim.cmd([[:TSToolsOrganizeImports]])
-  end)
+    --  Global variable _G.typescriptDefinition is set when entering a *.tsx file
+    --  via autocommand (check autocommands.lua file in config)
+    vim.keymap.set("n", "<leader>lo", function()
+      -- typescript.actions.organizeImports()
+      vim.cmd([[:TSToolsOrganizeImports]])
+    end)
 
-  vim.keymap.set("n", "<leader>lR", function()
-    -- vim.cmd.TypescriptRenameFile()
-    vim.cmd([[:TSToolsRenameFile]])
-    -- typescript.renameFile(source, target)
-  end, opts)
+    vim.keymap.set("n", "<leader>lR", function()
+      -- vim.cmd.TypescriptRenameFile()
+      vim.cmd([[:TSToolsRenameFile]])
+      -- typescript.renameFile(source, target)
+    end, opts)
 
-  vim.keymap.set("n", "<leader>lA", function()
-    -- typescript.actions.addMissingImports()
-    vim.cmd([[:TSToolsAddMissingImports]])
-  end, opts)
+    vim.keymap.set("n", "<leader>lA", function()
+      -- typescript.actions.addMissingImports()
+      vim.cmd([[:TSToolsAddMissingImports]])
+    end, opts)
+  end
 
   vim.keymap.set("n", "<leader>ld", function()
-    if _G.isTypescriptReact == true then
-      -- typescript.goToSourceDefinition(0, { fallback = true })
-      -- vim.cmd([[:TSToolsGoToSourceDefinition]])
-      vim.lsp.buf.definition()
-    else
-      vim.lsp.buf.definition()
-    end
+    vim.lsp.buf.definition()
   end, opts)
 
   vim.keymap.set("n", "<leader>lh", function()
@@ -101,18 +109,6 @@ function M.setup(client)
     -- vim.cmd.Lspsaga("hover_doc", "++quiet")
     vim.lsp.buf.hover({ focusable = false })
   end, opts)
-
-  vim.keymap.set(
-    "n",
-    "<leader>li",
-    function()
-      -- vim.lsp.buf.implementation()
-      vim.lsp.inlay_hint(vim.api.nvim_get_current_buf(), nil)
-    end,
-    vim.tbl_deep_extend("force", {
-      desc = "Toggle inlay hints",
-    }, opts)
-  )
 
   vim.keymap.set("i", "<C-k>", function()
     vim.lsp.buf.signature_help()

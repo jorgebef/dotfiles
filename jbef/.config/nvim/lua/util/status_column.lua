@@ -1,7 +1,3 @@
--- =====================================================================================================================
--- Credit: from https://github.com/LazyVim/LazyVim/blob/7fe68d9f055fd34d95f19a8711e281ab40629482/lua/lazyvim/util/ui.lua#L87
--- =====================================================================================================================
-
 ---@class lazyvim.util.ui
 local M = {}
 
@@ -16,11 +12,10 @@ function M.get_signs(buf, lnum)
   ---@type Sign[]
   local signs = vim.tbl_map(function(sign)
     ---@type Sign
-    -- local ret = vim.fn.sign_getdefined(sign.name)[1]
-    local ret = { { name = "keke", text = "T", texthl = "kek", priority = 2 } }
+    local ret = vim.diagnostic.get(buf, { lnum = lnum })
     ret.priority = sign.priority
     return ret
-  end, vim.fn.sign_getplaced(buf, { group = "*", lnum = lnum })[1].signs)
+  end, vim.diagnostic.get(buf, { group = "*", lnum = lnum }))
 
   -- Get extmark signs
   local extmarks = vim.api.nvim_buf_get_extmarks(
@@ -70,24 +65,24 @@ function M.icon(sign, len)
   return sign.texthl and ("%#" .. sign.texthl .. "#" .. text .. "%*") or text
 end
 
-function M.foldtext()
-  local ok = pcall(vim.treesitter.get_parser, vim.api.nvim_get_current_buf())
-  local ret = ok and vim.treesitter.foldtext and vim.treesitter.foldtext()
-  if not ret or type(ret) == "string" then
-    ret = { { vim.api.nvim_buf_get_lines(0, vim.v.lnum - 1, vim.v.lnum, false)[1], {} } }
-  end
-  table.insert(ret, { " " .. require("lazyvim.config").icons.misc.dots })
-
-  if not vim.treesitter.foldtext then
-    return table.concat(
-      vim.tbl_map(function(line)
-        return line[1]
-      end, ret),
-      " "
-    )
-  end
-  return ret
-end
+-- function M.foldtext()
+--   local ok = pcall(vim.treesitter.get_parser, vim.api.nvim_get_current_buf())
+--   local ret = ok and vim.treesitter.foldtext and vim.treesitter.foldtext()
+--   if not ret or type(ret) == "string" then
+--     ret = { { vim.api.nvim_buf_get_lines(0, vim.v.lnum - 1, vim.v.lnum, false)[1], {} } }
+--   end
+--   table.insert(ret, { " " .. require("lazyvim.config").icons.misc.dots })
+--
+--   if not vim.treesitter.foldtext then
+--     return table.concat(
+--       vim.tbl_map(function(line)
+--         return line[1]
+--       end, ret),
+--       " "
+--     )
+--   end
+--   return ret
+-- end
 
 function M.statuscolumn()
   local win = vim.g.statusline_winid
@@ -129,13 +124,13 @@ function M.statuscolumn()
   }, "")
 end
 
--- function M.fg(name)
---   ---@type {foreground?:number}?
---   ---@diagnostic disable-next-line: deprecated
---   local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name }) or vim.api.nvim_get_hl_by_name(name, true)
---   ---@diagnostic disable-next-line: undefined-field
---   local fg = hl and (hl.fg or hl.foreground)
---   return fg and { fg = string.format("#%06x", fg) } or nil
--- end
+function M.fg(name)
+  ---@type {foreground?:number}?
+  ---@diagnostic disable-next-line: deprecated
+  local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name }) or vim.api.nvim_get_hl_by_name(name, true)
+  ---@diagnostic disable-next-line: undefined-field
+  local fg = hl and (hl.fg or hl.foreground)
+  return fg and { fg = string.format("#%06x", fg) } or nil
+end
 
 return M
