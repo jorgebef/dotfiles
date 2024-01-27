@@ -46,12 +46,12 @@ import = [
   normal.family = "FiraCode Nerd Font"
 
   bold.family = "FiraCode Nerd Font"
-  bold.style = "Medium"
+  bold.style = "Retina"
 
   italic.family = "FiraCode Nerd Font"
 
   bold_italic.family = "FiraCode Nerd Font"
-  bold_italic.style = "Medium Italic"
+  bold_italic.style = "Retina Italic"
 
   size = 14.0
 
@@ -61,8 +61,8 @@ import = [
 
 [keyboard]
   bindings = [
-  { key= ";", mods= "Control", chars= "Ω" },
-  { key = ".", mods = "Control", chars = "þ" },
+  { key = ";", mods = "Control", chars = "þ" },
+  { key= ".", mods= "Control", chars= "Ω" },
   { key = ",", mods = "Control", chars = "†" },
 
 ]

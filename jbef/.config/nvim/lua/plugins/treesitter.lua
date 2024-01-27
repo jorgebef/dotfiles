@@ -89,6 +89,9 @@ function M.config(_, opts)
           ["ic"] = "@class.inner",
           ["iq"] = "@parameter.inner",
           ["aq"] = "@parameter.outer",
+          -- Created in $DOTFILES_PATH/nvim/after/queries/ecma/textobjects.scm
+          ["i`"] = "@templatestring.inner",
+          ["a`"] = "@templatestring.outer",
         },
       },
     },

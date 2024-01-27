@@ -22,14 +22,14 @@ vim.keymap.set("v", ">", ">gv", opts)
 vim.keymap.set("n", "<esc>", ':noh<cr>:echo""<esc>', opts)
 
 -- improved scrolling
-vim.keymap.set("n", "<C-e>", "6<C-e>", opts)
-vim.keymap.set("n", "<C-y>", "6<C-y>", opts)
-vim.keymap.set("c", "<C-e>", "6<C-e>", opts)
-vim.keymap.set("c", "<C-y>", "6<C-y>", opts)
-vim.keymap.set("x", "<C-e>", "6<C-e>", opts)
-vim.keymap.set("x", "<C-y>", "6<C-y>", opts)
-vim.keymap.set("v", "<C-e>", "6<C-e>", opts)
-vim.keymap.set("v", "<C-y>", "6<C-y>", opts)
+vim.keymap.set("n", "<C-e>", "3<C-e>", opts)
+vim.keymap.set("n", "<C-y>", "3<C-y>", opts)
+vim.keymap.set("c", "<C-e>", "3<C-e>", opts)
+vim.keymap.set("c", "<C-y>", "3<C-y>", opts)
+vim.keymap.set("x", "<C-e>", "3<C-e>", opts)
+vim.keymap.set("x", "<C-y>", "3<C-y>", opts)
+vim.keymap.set("v", "<C-e>", "3<C-e>", opts)
+vim.keymap.set("v", "<C-y>", "3<C-y>", opts)
 
 -- improved split navigation
 vim.keymap.set("n", "<C-j>", "<C-w>j", opts)

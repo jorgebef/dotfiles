@@ -41,7 +41,7 @@ opt.title = true
 opt.cul = true -- cursor line
 opt.showmode = false
 -- opt.cmdheight = 0 -- Thanks shougo
-opt.iskeyword:remove("_") -- make underscore not be part of word
+-- opt.iskeyword:remove("_") -- make underscore not be part of word
 -- vim.cmd([[set iskeyword-=_]]) -- same as above
 
 -- Indentline
@@ -58,7 +58,7 @@ opt.mouse = ""
 -- Numbers
 opt.number = true
 opt.numberwidth = 4
-opt.relativenumber = true
+-- opt.relativenumber = true
 opt.ruler = false
 
 -- Status column - NEW from 0.9

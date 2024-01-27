@@ -9,7 +9,7 @@ local M = {
 
     -- FILE PREVIEWER
     { "nvim-telescope/telescope-media-files.nvim" },
-    { "nvim-lua/popup.nvim" },
+    -- { "nvim-lua/popup.nvim" },
     { "nvim-lua/plenary.nvim" },
   },
 }

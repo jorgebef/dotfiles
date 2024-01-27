@@ -1,7 +1,7 @@
 # ALIAS ================================================================================================
 # aliases defined for zsh to recognize =================================================================
 alias dev='cd ~/Developer'
-alias kekw='cd ~/Developer'
+alias dots='cd ~/Developer/dotfiles'
 alias la="ls -laG"
 alias ta='tmux attach'
 #=======================================================================================================

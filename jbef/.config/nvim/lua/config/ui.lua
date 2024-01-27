@@ -91,14 +91,14 @@ M.common = {
   Table = " ",
   Calendar = " ",
   SeparatorSquare = "█",
-  -- SeparatorLStart = "█",
   SeparatorLEndAngle = "",
   -- SeparatorLEnd = "",
   SeparatorRStartAngle = "",
   -- SeparatorRStart = "",
-  -- SeparatorREnd = "█",
-  SeparatorLStart = "",
-  SeparatorREnd = "",
+  SeparatorLStart = "█",
+  SeparatorREnd = "█",
+  -- SeparatorLStart = "",
+  -- SeparatorREnd = "",
 }
 
 M.diagnostics = {

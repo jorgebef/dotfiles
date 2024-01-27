@@ -147,9 +147,9 @@ function M.config()
         LspSignatureActiveParameter = { fg = colors.pink, bold = true },
 
         -- WinBar = { fg = colors.subtext0, bg = nil },
-        -- WinBarInactive = { fg = colors.surface1, bg = nil },
-        WinBarFilenameActive = { fg = colors.base, bg = colors.pink, bold = true },
-        WinBarFilenameInactive = { fg = colors.overlay2, bg = nil, bold = true },
+        WinBarInactive = { fg = colors.surface1, bg = nil },
+        WinBarFilenameActive = { fg = colors.text, bg = nil, bold = true },
+        WinBarFilenameInactive = { fg = colors.overlay0, bg = nil, bold = true },
 
         NavicText = { fg = colors.subtext0, bg = nil },
 

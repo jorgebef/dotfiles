@@ -7,7 +7,7 @@ function M.config()
   local navic = require("nvim-navic")
 
   local mode_map = {
-    ["n"] = " ",
+    ["n"] = "",
     ["no"] = "O-PENDING",
     ["nov"] = "O-PENDING",
     ["noV"] = "O-PENDING",
@@ -70,16 +70,16 @@ function M.config()
             return mode_map[vim.api.nvim_get_mode().mode] or "__"
           end,
           separator = {
-            left = nil,
+            -- left = nil,
             -- right = nil,
-            -- left = ui.common.SeparatorLStart,
+            left = ui.common.SeparatorLStart,
             right = ui.common.SeparatorREnd,
             -- left = icons.ui.SeparatorLStart,
             -- right = icons.ui.SeparatorLEndAngle,
             -- right = icons.ui.SeparatorSquare,
           },
           -- color = { fg = nil, bg = nil, gui = "bold" },
-          padding = { left = 1, right = 0 },
+          padding = { left = 1, right = 1 },
         },
       },
       lualine_b = {
@@ -87,8 +87,8 @@ function M.config()
           "branch",
           separator = {
             -- right = icons.ui.SeparatorLEndAngle,
-            left = ui.common.SeparatorLStart,
-            right = ui.common.SeparatorREnd,
+            -- left = ui.common.SeparatorLStart,
+            -- right = ui.common.SeparatorREnd,
           },
           color = { fg = nil, bg = cp.surface0, gui = nil },
           -- color = { fg = nil, bg = c.bg_highlight, gui = nil },
@@ -104,7 +104,7 @@ function M.config()
           -- -- },
           -- separator = {
           --   -- right = ui.common.SeparatorSquare,
-          --   right = ui.common.SeparatorREnd,
+          --   -- right = ui.common.SeparatorREnd,
           -- },
           -- color = { fg = nil, bg = cp.surface0, gui = nil },
           -- -- color = { fg = nil, bg = c.bg_highlight, gui = nil },
@@ -129,8 +129,8 @@ function M.config()
           update_in_insert = false, -- Update diagnostics in insert mode
           always_visible = false, -- Show diagnostics always
           separator = {
-            left = ui.common.SeparatorLStart,
-            right = ui.common.SeparatorREnd,
+            -- left = ui.common.SeparatorLStart,
+            -- right = ui.common.SeparatorREnd,
           },
           color = { fg = nil, bg = cp.mantle, gui = nil },
           -- color = { fg = nil, bg = c.bg_highlight, gui = nil },
@@ -191,8 +191,8 @@ function M.config()
           "filename",
           color = "WinBarFilenameActive",
           separator = {
-            left = ui.common.SeparatorLStart,
-            right = ui.common.SeparatorREnd,
+            -- left = ui.common.SeparatorLStart,
+            -- right = ui.common.SeparatorREnd,
             -- right = icons.ui.SeparatorLEndAngle,
             -- right = ui.common.SeparatorSquare,
           },

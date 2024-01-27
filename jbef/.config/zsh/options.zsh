@@ -22,3 +22,5 @@ export FZF_CTRL_R_OPTS="--border-label=' history ' \
 export DISABLE_AUTO_TITLE="true"
 
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
