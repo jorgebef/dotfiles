@@ -4,12 +4,14 @@
 # CHECK FILES INSIDE FOLDER conf.d/ since they are loaded first
 # AS PER DOCUMENTATION:
 # https://fishshell.com/docs/current/language.html#configuration:~:text=Configuration%20files%C2%B6
+# fish_config theme save "Catppuccin Mocha"
 
 set -gx EDITOR (which nvim)
 set -gx VISUAL $EDITOR
 set -gx SUDO_EDITOR $EDITOR
 set -gx PNPM_HOME $HOME/Library/pnpm
 set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx SSH_AUTH_SOCK "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 fish_add_path "/usr/local/bin/" # Add local bin to $PATH
 fish_add_path "$HOME/.config/bin/" # Add custom bin to $PATH

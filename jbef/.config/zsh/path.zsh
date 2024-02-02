@@ -6,11 +6,11 @@
 # 	compinit
 # fi
 
-autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
+# autoload -Uz compinit
+# for dump in ~/.zcompdump(N.mh+24); do
+#   compinit
+# done
+# compinit -C
 
 path+=("/Users/jbef/.bun/bin") # adds the packages installed as --global via bun
 export PATH

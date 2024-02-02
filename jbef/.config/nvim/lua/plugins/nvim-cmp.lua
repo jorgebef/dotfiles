@@ -15,6 +15,7 @@ local M = {
 function M.config()
   local cmp = require("cmp")
   local lspkind = require("lspkind")
+  local types = require("cmp.types")
 
   lspkind.init({
     mode = "symbol_text",
@@ -48,9 +49,19 @@ function M.config()
     },
   })
 
-  vim.o.completeopt = "menu,menuone,noselect"
+  -- vim.o.completeopt = "menu,menuone,noselect"
 
   cmp.setup({
+    -- enabled = function()
+    --   if
+    --     require("cmp.config.context").in_treesitter_capture("comment") == true
+    --     or require("cmp.config.context").in_syntax_group("Comment")
+    --   then
+    --     return false
+    --   else
+    --     return true
+    --   end
+    -- end,
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
@@ -73,6 +84,7 @@ function M.config()
         -- maxheight = 190,
       },
     },
+    preselect = types.cmp.PreselectMode.None, -- :h cmp-config.preselect
     mapping = {
       ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
@@ -109,7 +121,7 @@ function M.config()
       -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
-      { name = "nvim_lsp", max_item_count = 10 },
+      { name = "nvim_lsp" },
       { name = "path", max_item_count = 10 },
       { name = "luasnip", keyword_length = 4, max_item_count = 6 }, -- For luasnip users.
     }, {
@@ -149,7 +161,7 @@ function M.config()
   })
 
   -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline({ "/", "?" }, {
+  cmp.setup.cmdline({ "/", "?", ":" }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
       { name = "nvim_lsp" },

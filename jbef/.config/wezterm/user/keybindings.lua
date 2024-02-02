@@ -11,6 +11,8 @@ M.tmux_keys = {
   -- { key = ",", mods = "CTRL", action = act.SendString("†") },
   -- This below maps CTRL+; to Ω, since that is a key combination that can be sent to tmux to run the popup with the session switcher
   { key = ";", mods = "CTRL", action = act.SendString("þ") },
+  -- { key = "-", mods = "CTRL", action = act.SendString("†") },
+  { key = "-", mods = "CTRL", action = act.SendString("Ω") },
   -- =====================================================================
 }
 

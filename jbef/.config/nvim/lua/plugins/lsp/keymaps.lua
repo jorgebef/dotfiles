@@ -96,7 +96,7 @@ function M.setup(client)
   end, opts)
 
   vim.keymap.set("n", "<leader>lf", function()
-    require("conform").format({ async = true }) -- managed by conform.lua
+    require("conform").format({ async = true, lsp_fallback = true }) -- managed by conform.lua
     -- vim.lsp.buf.format({ async = true })
   end, opts)
 

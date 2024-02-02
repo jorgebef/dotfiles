@@ -19,7 +19,10 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "pokemon-colorscripts -r --no-title"
 
-# =========== Launch TMUX on shell initialisation ===========
-if [ "$TMUX" = "" ]; then
-	tmux attach || tmux
-fi
+autoload -U compinit
+compinit
+
+# # =========== Launch TMUX on shell initialisation ===========
+# if [ "$TMUX" = "" ]; then
+# 	tmux attach || tmux
+# fi

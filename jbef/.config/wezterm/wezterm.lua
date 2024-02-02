@@ -344,6 +344,7 @@ config.keys = {
   { key = "Space", mods = "CTRL|SHIFT", action = act.ActivateCommandPalette },
 }
 
+config.disable_default_key_bindings = true
 if USE_TMUX then
   for _, k in pairs(require("user.keybindings").tmux_keys) do
     table.insert(config.keys, k)

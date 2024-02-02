@@ -1,1 +1,0 @@
-/Users/jbef/.config/fish/

@@ -75,6 +75,7 @@ local M = {
     -- filetypes = { "graphql", "typescriptreact", "javascriptreact" },
     -- root_dir = lspconfig.util.root_pattern(".git", ".graphqlrc*", ".graphql.config.*", "graphql.config.*"),
   },
+  gopls={},
   lua_ls = {
     Lua = {
       format = {
