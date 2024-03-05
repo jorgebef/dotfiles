@@ -7,16 +7,22 @@ local palette = require("user.catppuccin").colors.mocha
 
 local USE_TMUX = true
 
-local config = {
-  term = "wezterm",
-  color_scheme = "Catppuccin Mocha",
-  -- color_scheme = "Tokyo Night Moon",
-}
+local config = wezterm.config_builder()
+
+-- config = {
+--   term = "wezterm",
+--   color_scheme = "Catppuccin Mocha",
+--   -- color_scheme = "Tokyo Night Moon",
+-- }
+
+config.term = "wezterm"
+config.color_scheme = "Catppuccin Mocha"
 
 config.font = wezterm.font({
-  family = "FiraCode Nerd Font",
+  -- family = "FiraCode Nerd Font",
+  family = "JetbrainsMono Nerd Font",
 })
-config.font_size = 14.0
+config.font_size = 14.5
 
 config.font_rules = {
   -- https://wezfurlong.org/wezterm/config/lua/config/font_rules.html#font_rules
@@ -24,8 +30,9 @@ config.font_rules = {
     intensity = "Bold",
     italic = false,
     font = wezterm.font({
-      family = "FiraCode Nerd Font",
-      -- family = "Fira Code",
+      -- family = "FiraCode Nerd Font",
+      -- weight = "Medium",
+      family = "JetBrainsMono Nerd Font",
       weight = "Medium",
     }),
   },
@@ -33,23 +40,25 @@ config.font_rules = {
     intensity = "Bold",
     italic = true,
     font = wezterm.font({
-      family = "FiraCode Nerd Font",
-      -- family = "Fira Code",
+      -- family = "FiraCode Nerd Font",
+      -- weight = "Medium",
+      family = "JetBrainsMono Nerd Font",
       weight = "Medium",
       italic = true,
     }),
   },
 }
 -- Disables ligatures
-config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+-- config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 -- harfbuzz_features = { "calt", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
 -- config.line_height = 1.05 -- specific for FiraCode font
 config.underline_thickness = 2 -- specific for FiraCode font
-config.underline_position = -5 -- specific for FiraCode font
+config.underline_position = -6 -- specific for FiraCode font
 config.max_fps = 120
 -- config.max_fps = 240
 config.webgpu_power_preference = "HighPerformance"
 config.animation_fps = 0
+
 config.front_end = "WebGpu"
 config.webgpu_preferred_adapter = {
   backend = "Metal",
@@ -58,6 +67,7 @@ config.webgpu_preferred_adapter = {
   name = "Apple M1 Pro",
   vendor = 0,
 }
+
 -- cursor_blink_ease_in = "Constant",
 -- cursor_blink_ease_out = "Constant",
 
@@ -344,7 +354,11 @@ config.keys = {
   { key = "Space", mods = "CTRL|SHIFT", action = act.ActivateCommandPalette },
 }
 
-config.disable_default_key_bindings = true
+-- config.disable_default_key_bindings = true
+for _, k in pairs(require("user.keybindings").common_keys) do
+  table.insert(config.keys, k)
+end
+
 if USE_TMUX then
   for _, k in pairs(require("user.keybindings").tmux_keys) do
     table.insert(config.keys, k)

@@ -1,3 +1,4 @@
 .git/*
 kitty/session/*
 jbef/.config/tmux/plugins
+jbef/.config/zsh/plugins

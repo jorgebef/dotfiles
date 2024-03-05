@@ -51,6 +51,7 @@ M.documents = {
 }
 
 M.git = {
+  Branch = "",
   Add = " ",
   Mod = " ",
   Remove = " ",
@@ -94,6 +95,8 @@ M.common = {
   SeparatorLEndAngle = "",
   -- SeparatorLEnd = "",
   SeparatorRStartAngle = "",
+  AngleLeft = "",
+  AngleRight = "",
   -- SeparatorRStart = "",
   SeparatorLStart = "█",
   SeparatorREnd = "█",
@@ -107,11 +110,11 @@ M.diagnostics = {
   -- Information = " ",
   -- Question = " ",
   -- Hint = " ",
-  Error = " ",
-  Warning = " ",
-  Information = " ",
-  Question = " ",
-  Hint = " ",
+  Error = "",
+  Warning = "",
+  Information = "",
+  Question = "",
+  Hint = "",
 }
 
 M.misc = {

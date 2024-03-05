@@ -1,0 +1,16 @@
+local M = {
+  "ibhagwan/fzf-lua",
+  -- optional for icon support
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+}
+
+function M.config()
+  local fzf = require("fzf-lua")
+  -- calling `setup` is optional for customization
+  fzf.setup({})
+
+  local nsn_opts = { noremap = true, silent = true, nowait = true }
+  vim.keymap.set("n", "<leader>ff", fzf.files, nsn_opts)
+end
+
+return M

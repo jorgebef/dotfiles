@@ -2,6 +2,7 @@ local M = {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
+    -- { "ms-jpq/coq_nvim", branch = "coq" },
     { "SmiteshP/nvim-navic" },
     { "folke/neodev.nvim" },
     { "williamboman/mason.nvim" },
@@ -32,6 +33,13 @@ M.config = function()
     ensure_installed = server_names,
     automatic_installation = { exclude = { "glslls" } },
   })
+
+  -- vim.cmd([[
+  -- " let g:coq_settings = { 'auto_start': 'shut-up' }
+  -- let g:coq_settings = { 'auto_start': v:true, 'match.max_results': 9999, 'limits.completion_auto_timeout': 50}
+  -- ]])
+
+  -- local coq = require("coq")
 
   -- -- Do not forget to use the on_attach function
   -- -- require 'lspconfig'.myserver.setup { handlers=handlers }
@@ -68,6 +76,7 @@ M.config = function()
     -- ❗️ IMPORTANT: As mentioned earlier, this plugin serves as a replacement for typescript-language-server, so you should remove the nvim-lspconfig setup for it.
 
     if server == "lua_ls" then
+      -- require("neodev").setup(coq.lsp_ensure_capabilities({}))
       require("neodev").setup({})
     end
 
@@ -76,6 +85,7 @@ M.config = function()
       -- server ~= "test1"
       -- and server ~= "test2"
     then
+      -- lspconfig[server].setup(coq.lsp_ensure_capabilities(opts))
       lspconfig[server].setup(opts)
     end
   end

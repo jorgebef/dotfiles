@@ -102,8 +102,9 @@ function M.setup(client)
 
   vim.keymap.set("n", "<leader>lr", function()
     -- vim.cmd.Lspsaga("rename")
-    vim.lsp.buf.rename()
-  end, opts)
+    -- vim.lsp.buf.rename()
+    return ":IncRename "
+  end, { expr = true })
 
   vim.keymap.set("n", "K", function()
     -- vim.cmd.Lspsaga("hover_doc", "++quiet")

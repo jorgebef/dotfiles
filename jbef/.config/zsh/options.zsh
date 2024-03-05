@@ -24,3 +24,4 @@ export DISABLE_AUTO_TITLE="true"
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle -e ':completion:*' command-path 'reply=( "$PWD/bin" "$path[@]" )'

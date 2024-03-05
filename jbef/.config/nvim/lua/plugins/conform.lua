@@ -10,12 +10,14 @@ function M.config()
       -- Conform will run multiple formatters sequentially
       -- python = { "isort", "black" },
       -- Use a sub-list to run only the first available formatter
-      javascript = { { "prettierd" } },
-      typescript = { { "prettierd" } },
-      typescriptreact = { { "prettierd" } },
-      css = { { "prettierd" } },
-      json = { { "prettierd" } },
-      jsonc = { { "prettierd" } },
+      javascript = { { "biome" } },
+      typescript = { { "biome" } },
+      typescriptreact = { { "biome" } },
+      css = { { "biome" } },
+      json = { { "biome" } },
+      jsonc = { { "biome" } },
+
+      go = { "gofmt" },
     },
   })
 end

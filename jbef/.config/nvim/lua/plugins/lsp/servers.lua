@@ -75,7 +75,18 @@ local M = {
     -- filetypes = { "graphql", "typescriptreact", "javascriptreact" },
     -- root_dir = lspconfig.util.root_pattern(".git", ".graphqlrc*", ".graphql.config.*", "graphql.config.*"),
   },
-  gopls={},
+  dockerls = {},
+  docker_compose_language_service = {
+    filetypes = { "yaml.docker-compose" },
+  },
+  yamlls = {
+    settings = {
+      yaml = {
+        keyOrdering = false,
+      },
+    },
+  },
+  gopls = {},
   lua_ls = {
     Lua = {
       format = {

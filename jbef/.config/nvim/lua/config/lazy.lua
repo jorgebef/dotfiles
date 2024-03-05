@@ -29,6 +29,11 @@ local ui = require("config.ui")
 -- https://github.com/folke/lazy.nvim#-structuring-your-plugins:~:text=%F0%9F%93%82,Structuring%20Your%20Plugins
 
 lazy.setup("plugins", {
+  change_detection = {
+    -- automatically check for config file changes and reload the ui
+    enabled = false,
+    notify = false, -- get a notification when changes are found
+  },
   install = { colorscheme = { "catppuccin" } },
   -- install = { colorscheme = { "tokyonight" } },
   ui = {

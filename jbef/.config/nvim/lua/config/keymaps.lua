@@ -19,17 +19,17 @@ vim.keymap.set("v", "p", '"_dP', opts)
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
-vim.keymap.set("n", "<esc>", ':noh<cr>:echo""<esc>', opts)
+vim.keymap.set("n", "<esc>", ':noh<cr>:echo""<cr><esc>', opts)
 
 -- improved scrolling
-vim.keymap.set("n", "<C-e>", "3<C-e>", opts)
-vim.keymap.set("n", "<C-y>", "3<C-y>", opts)
-vim.keymap.set("c", "<C-e>", "3<C-e>", opts)
-vim.keymap.set("c", "<C-y>", "3<C-y>", opts)
-vim.keymap.set("x", "<C-e>", "3<C-e>", opts)
-vim.keymap.set("x", "<C-y>", "3<C-y>", opts)
-vim.keymap.set("v", "<C-e>", "3<C-e>", opts)
-vim.keymap.set("v", "<C-y>", "3<C-y>", opts)
+vim.keymap.set("n", "<C-e>", "4<C-e>", opts)
+vim.keymap.set("n", "<C-y>", "4<C-y>", opts)
+vim.keymap.set("c", "<C-e>", "4<C-e>", opts)
+vim.keymap.set("c", "<C-y>", "4<C-y>", opts)
+vim.keymap.set("x", "<C-e>", "4<C-e>", opts)
+vim.keymap.set("x", "<C-y>", "4<C-y>", opts)
+vim.keymap.set("v", "<C-e>", "4<C-e>", opts)
+vim.keymap.set("v", "<C-y>", "4<C-y>", opts)
 
 -- improved split navigation
 vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
@@ -95,17 +95,3 @@ vim.keymap.set("n", "<leader>-", "<C-w>8<", opts)
 
 vim.keymap.set("n", "<leader>sv", ":vs<CR>", opts)
 vim.keymap.set("n", "<leader>sh", ":split<CR>", opts)
-
-local function reload_nvim_conf()
-  for name, _ in pairs(package.loaded) do
-    if name:match("^core") or name:match("^lsp") or name:match("^plugins") then
-      package.loaded[name] = nil
-    end
-  end
-  dofile(vim.env.MYVIMRC)
-  vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
-end
-
-vim.keymap.set("n", "<leader>cR", function()
-  reload_nvim_conf()
-end, opts)

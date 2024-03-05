@@ -2,9 +2,9 @@ local M = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
-    { "nvim-telescope/telescope-frecency.nvim" },
+    -- { "nvim-telescope/telescope-frecency.nvim" },
     { "nvim-telescope/telescope-file-browser.nvim" },
-    { "natecraddock/telescope-zf-native.nvim" },
+    -- { "natecraddock/telescope-zf-native.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
     -- FILE PREVIEWER
@@ -27,12 +27,14 @@ function M.config()
         hidden = true,
         find_command = {
           "fd",
-          "--color=never",
           "--type",
           "f",
+          "--color=never",
           "--follow",
-          "--exclude",
-          "!.git",
+          "--hidden",
+          -- "--exclude",
+          -- "!.git",
+          -- "--no-ignore-vcs",
         },
       },
       buffers = {
@@ -113,26 +115,26 @@ function M.config()
         --   ["wiki"] = "/home/my_username/wiki",
         -- },
       },
-      ["zf-native"] = {
-        -- options for sorting file-like items
-        file = {
-          -- override default telescope file sorter
-          enable = true,
-          -- highlight matching text in results
-          highlight_results = true,
-          -- enable zf filename match priority
-          match_filename = true,
-        },
-        -- options for sorting all other items
-        generic = {
-          -- override default telescope generic item sorter
-          enable = false,
-          -- highlight matching text in results
-          highlight_results = true,
-          -- disable zf filename match priority
-          match_filename = false,
-        },
-      },
+      -- ["zf-native"] = {
+      --   -- options for sorting file-like items
+      --   file = {
+      --     -- override default telescope file sorter
+      --     enable = true,
+      --     -- highlight matching text in results
+      --     highlight_results = true,
+      --     -- enable zf filename match priority
+      --     match_filename = true,
+      --   },
+      --   -- options for sorting all other items
+      --   generic = {
+      --     -- override default telescope generic item sorter
+      --     enable = false,
+      --     -- highlight matching text in results
+      --     highlight_results = true,
+      --     -- disable zf filename match priority
+      --     match_filename = false,
+      --   },
+      -- },
 
       project = {},
     },
@@ -142,12 +144,12 @@ function M.config()
   telescope.load_extension("fzf")
   -- telescope.load_extension("frecency")
   -- Load zf extension, which favors filename over rest of the path
-  telescope.load_extension("zf-native")
+  -- telescope.load_extension("zf-native")
   -- To get telescope-file-browser loaded and working with telescope,
   -- you need to call load_extension, somewhere after setup function:
   telescope.load_extension("file_browser")
-  -- Telescope Notification history review and finder
-  telescope.load_extension("notify")
+  -- -- Telescope Notification history review and finder
+  -- telescope.load_extension("notify")
   -- Telescope Media file Previewer
   telescope.load_extension("media_files")
 
@@ -194,9 +196,9 @@ function M.config()
     builtin.lsp_dynamic_workspace_symbols()
   end, nsn_opts)
 
-  vim.keymap.set("n", "<leader>fn", function()
-    telescope.extensions.notify.notify()
-  end, nsn_opts)
+  -- vim.keymap.set("n", "<leader>fn", function()
+  --   telescope.extensions.notify.notify()
+  -- end, nsn_opts)
 
   vim.keymap.set("n", "<leader>fr", function()
     builtin.resume()

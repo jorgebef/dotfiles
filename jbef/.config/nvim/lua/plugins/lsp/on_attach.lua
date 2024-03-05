@@ -10,7 +10,13 @@ M.on_attach = function(client, bufnr)
     vim.lsp.inlay_hint.enable(bufnr, false)
   end
 
-  if client.name ~= "tailwindcss" and client.name ~= "glslls" and client.name ~= "efm" then
+  if not util.has_value({
+    "tailwindcss",
+    "glslls",
+    "eslint",
+    "efm",
+    "docker_compose_language_service",
+  }, client.name) then
     navic.attach(client, bufnr)
   end
 

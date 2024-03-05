@@ -82,9 +82,9 @@ function M.config()
       dashboard = true,
       markdown = true,
       notify = false,
-      noice = false,
+      noice = true,
       symbols_outline = true,
-      leap = true,
+      flash = true,
     },
     custom_highlights = function(colors)
       return {
@@ -148,7 +148,7 @@ function M.config()
 
         -- WinBar = { fg = colors.subtext0, bg = nil },
         WinBarInactive = { fg = colors.surface1, bg = nil },
-        WinBarFilenameActive = { fg = colors.text, bg = nil, bold = true },
+        WinBarFilenameActive = { fg = colors.text, bg = nil, bold = false },
         WinBarFilenameInactive = { fg = colors.overlay0, bg = nil, bold = true },
 
         NavicText = { fg = colors.subtext0, bg = nil },
@@ -160,6 +160,9 @@ function M.config()
         -- ===============
         DiagnosticUnnecessary = { sp = colors.teal, undercurl = true },
         -- DiagnosticUnderlineError = { fg = nil, sp = colors.red, bg = nil },
+
+        -- Noice
+        NoiceVirtualText = { fg = colors.subtext0 },
 
         -- Language specific
         -- ===============

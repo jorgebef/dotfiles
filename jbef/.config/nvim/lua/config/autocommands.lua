@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 vim.api.nvim_create_augroup("CursorLine", { clear = true })
 vim.api.nvim_create_autocmd(
   { "VimEnter", "WinEnter", "BufRead", "BufWinEnter" },
-  { pattern = "*[^{T}]", command = 'setlocal cursorline | :echo""', group = "CursorLine" }
+  { pattern = "*[^{T}]", command = "setlocal cursorline", group = "CursorLine" }
 )
 vim.api.nvim_create_autocmd({ "WinLeave" }, { pattern = "*", command = "setlocal nocursorline", group = "CursorLine" })
 
@@ -32,4 +32,12 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "BufRead", "VimEnter", 
     end
   end,
   group = "TypescriptDetect",
+})
+
+vim.api.nvim_create_augroup("DockerComposeDetect", { clear = true })
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+  pattern = { "*.docker-compose.yaml", "*.docker-compose.yml" },
+  callback = function()
+    vim.bo.filetype = "yaml.docker-compose"
+  end,
 })

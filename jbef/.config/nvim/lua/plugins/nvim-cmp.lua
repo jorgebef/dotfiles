@@ -5,7 +5,7 @@ local M = {
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
+    -- { "hrsh7th/cmp-cmdline" },
     { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
     { "onsails/lspkind-nvim" },
@@ -104,13 +104,13 @@ function M.config()
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       }),
-      ["<Esc>"] = function(fallback)
-        if cmp.visible() and (cmp.get_active_entry() ~= undefined) then
-          cmp.abort()
-        else
-          fallback()
-        end
-      end,
+      -- ["<Esc>"] = function(fallback)
+      --   if cmp.visible() and (cmp.get_active_entry() ~= undefined) then
+      --     cmp.abort()
+      --   else
+      --     fallback()
+      --   end
+      -- end,
       ["<CR>"] = function(fallback)
         if cmp.visible() and (cmp.get_active_entry() ~= undefined) then
           cmp.confirm({ select = true })
@@ -122,15 +122,16 @@ function M.config()
     },
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
-      { name = "path", max_item_count = 10 },
-      { name = "luasnip", keyword_length = 4, max_item_count = 6 }, -- For luasnip users.
+      { name = "path" },
+      { name = "luasnip" }, -- For luasnip users.
     }, {
-      { name = "buffer", keyword_length = 4, max_item_count = 6 },
+      { name = "buffer" },
     }),
     performance = {
       debounce = 0,
       throttle = 0,
       fetching_timeout = 150,
+      max_view_entrie = 30,
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },
@@ -158,25 +159,6 @@ function M.config()
     }, {
       { name = "buffer" },
     }),
-  })
-
-  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline({ "/", "?", ":" }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = "nvim_lsp" },
-    }, {
-      { name = "buffer" },
-    }),
-  })
-
-  cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline({}),
-    sources = {
-      { name = "cmdline" },
-      { name = "cmdline_history" },
-      { name = "path" },
-    },
   })
 end
 

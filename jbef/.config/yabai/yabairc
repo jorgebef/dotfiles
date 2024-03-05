@@ -21,6 +21,7 @@ yabai -m config                                 \
     window_shadow                off             \
     window_animation_duration    0.0            \
     window_opacity_duration      0.0            \
+    window_zoom_persist          off            \
     active_window_opacity        1.0            \
     normal_window_opacity        1.0           \
     window_opacity               off            \
@@ -50,10 +51,10 @@ yabai -m config                                 \
 yabai -m rule --add app="^.*$" manage=off
 
 # Manage these windows only
-yabai -m rule --add app="^Arc" manage=on
+yabai -m rule --add app="^Arc$" manage=on
 yabai -m rule --add app="^Adobe.*" manage=on
-yabai -m rule --add app="^Google Chrome" manage=on
-yabai -m rule --add app="^WezTerm" manage=on
+yabai -m rule --add app="^Google Chrome$" manage=on
+yabai -m rule --add app="^WezTerm$" manage=on
 
 # # apps to not manage (ignore)
 # yabai -m rule --add app="^1Password" manage=off

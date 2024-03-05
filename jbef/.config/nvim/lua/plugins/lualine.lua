@@ -7,7 +7,7 @@ function M.config()
   local navic = require("nvim-navic")
 
   local mode_map = {
-    ["n"] = "",
+    ["n"] = "",
     ["no"] = "O-PENDING",
     ["nov"] = "O-PENDING",
     ["noV"] = "O-PENDING",
@@ -59,7 +59,7 @@ function M.config()
       globalstatus = true,
       refresh = {
         statusline = 300,
-        winbar = 300,
+        winbar = 1000,
       },
     },
     sections = {
@@ -80,19 +80,21 @@ function M.config()
           },
           -- color = { fg = nil, bg = nil, gui = "bold" },
           padding = { left = 1, right = 1 },
+          color = { fg = cp.base, bg = cp.lavender },
         },
       },
       lualine_b = {
         {
           "branch",
+          icon = ui.git.Branch,
           separator = {
-            -- right = icons.ui.SeparatorLEndAngle,
+            right = ui.common.AngleRight,
             -- left = ui.common.SeparatorLStart,
             -- right = ui.common.SeparatorREnd,
           },
-          color = { fg = nil, bg = cp.surface0, gui = nil },
           -- color = { fg = nil, bg = c.bg_highlight, gui = nil },
           padding = { left = 2, right = 1 },
+          color = { fg = cp.base, bg = cp.overlay1, gui = "bold" },
         },
         {
           -- "diff",
@@ -132,7 +134,7 @@ function M.config()
             -- left = ui.common.SeparatorLStart,
             -- right = ui.common.SeparatorREnd,
           },
-          color = { fg = nil, bg = cp.mantle, gui = nil },
+          color = { fg = nil, bg = cp.base, gui = nil },
           -- color = { fg = nil, bg = c.bg_highlight, gui = nil },
           padding = { left = 1, right = 1 },
         },
@@ -143,27 +145,13 @@ function M.config()
           path = 1,
           -- padding = { left = 100, right = 90 },
           padding = 2,
-          color = { fg = cp.overlay1, bg = cp.base },
+          color = { fg = cp.subtext1, bg = cp.base },
           -- color = { fg = c.fg_dark, bg = nil },
         },
       },
       -- lualine_x = {'encoding', 'fileformat', 'filetype'},
       lualine_x = { "filetype" },
-      lualine_y = {
-        {
-          "progress",
-          -- "require'lsp-status'.status()",
-          separator = {
-            -- left = ui.SeparatorSquare,
-            left = ui.common.SeparatorLStart,
-            -- right = ui.common.SeparatorREnd,
-          },
-          color = { fg = nil, bg = cp.base, gui = nil },
-          -- color = { fg = nil, bg = c.bg, gui = nil },
-          padding = { left = 1, right = 1 },
-        },
-      },
-      -- lualine_y = {'%{ObsessionStatus(" "," ")}'},
+      lualine_y = {},
       lualine_z = {
         {
           "location",
@@ -182,7 +170,6 @@ function M.config()
       lualine_b = {},
       lualine_c = { "filename" },
       lualine_x = { "filetype" },
-      -- lualine_y = {'%{ObsessionStatus(" "," ")}'},
       lualine_z = {},
     },
     winbar = {
@@ -190,26 +177,18 @@ function M.config()
         {
           "filename",
           color = "WinBarFilenameActive",
-          separator = {
-            -- left = ui.common.SeparatorLStart,
-            -- right = ui.common.SeparatorREnd,
-            -- right = icons.ui.SeparatorLEndAngle,
-            -- right = ui.common.SeparatorSquare,
-          },
-          padding = 0,
-          -- separator = { left = "█", right = "" },
         },
       },
       lualine_b = {
-        {
-          function()
-            return navic.get_location()
-          end,
-          cond = function()
-            return navic.is_available()
-          end,
-          color = "WinBar",
-        },
+        --   {
+        --     function()
+        --       return navic.get_location()
+        --     end,
+        --     cond = function()
+        --       return navic.is_available()
+        --     end,
+        --     color = "WinBar",
+        --   },
       },
     },
     inactive_winbar = {
@@ -220,15 +199,15 @@ function M.config()
         },
       },
       lualine_b = {
-        {
-          function()
-            return navic.get_location()
-          end,
-          cond = function()
-            return navic.is_available()
-          end,
-          color = "WinBarInactive",
-        },
+        --   {
+        --     function()
+        --       return navic.get_location()
+        --     end,
+        --     cond = function()
+        --       return navic.is_available()
+        --     end,
+        --     color = "WinBarInactive",
+        --   },
       },
       lualine_c = {},
       lualine_x = {},
