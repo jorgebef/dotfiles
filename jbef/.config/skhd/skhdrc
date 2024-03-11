@@ -13,8 +13,8 @@ alt - l : yabai -m window --focus east
 
 # Change display
 # ctrl + alt + cmd - i : yabai -m display --focus next
-alt - i : yabai -m display --focus next
-alt - o : yabai -m display --focus prev
+alt - i : yabai -m display --focus 2
+alt - o : yabai -m display --focus 1
 
 # float / unfloat window and center on screen
 alt - u : yabai -m window --toggle float;\

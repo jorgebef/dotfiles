@@ -130,8 +130,8 @@ function M.config()
     performance = {
       debounce = 0,
       throttle = 0,
-      fetching_timeout = 150,
-      max_view_entrie = 30,
+      fetching_timeout = 100,
+      max_view_entries = 30,
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },
