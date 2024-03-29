@@ -1,8 +1,16 @@
 lastupdatecheck: 0
 recentrepos:
 - /Users/jbef/Developer/dotfiles
+- /Users/jbef/Developer/starter-template-peninsula
+- /Users/jbef/Developer/InvitaBoda/rocio-y-roberto
+- /Users/jbef/Developer/InvitaBoda/victor-y-desiree
+- /Users/jbef/Developer/InvitaBoda/cristina-y-angel
+- /Users/jbef/Developer/InvitaBoda/mar-y-roland
+- /Users/jbef/Developer/InvitaBoda/invitaboda.es
 - /Users/jbef/Developer/InvitaBoda/carlos-y-marimar
+- /Users/jbef/Developer/InvitaBoda/patricia-y-eduardo
 - /Users/jbef/Developer/Clients/guidoaudisio.com
+- /Users/jbef/Developer/InvitaBoda/mimi-y-kike
 - /Users/jbef/Developer/peninsula.studio
 - /Users/jbef/Developer/InvitaBoda/anahi-y-gonzalo
 - /Users/jbef/Developer/InvitaBoda/denis-y-gorka
@@ -14,13 +22,16 @@ recentrepos:
 - /Users/jbef/Developer/InvitaBoda/dani-&-mayte
 - /Users/jbef/Developer/Clients/europrestige-sample
 - /Users/jbef/Developer/t-smart-tmux-session-manager
-- /Users/jbef/Developer/starter-template-peninsula
 - /Users/jbef/Developer/InvitaBoda/modelo-7
-- /Users/jbef/Developer/InvitaBoda/invitaboda.es
 - /Users/jbef/Developer/InvitaBoda/modelo-base
-- /Users/jbef/Developer/Clients/cnglawyers.com
 - /Users/jbef/Developer/jbef-ui
 startuppopupversion: 5
+lastversion: 0.41.0
 customcommandshistory: []
 hidecommandlog: false
 ignorewhitespaceindiffview: false
+diffcontextsize: 3
+localbranchsortorder: recency
+remotebranchsortorder: alphabetical
+gitlogorder: topo-order
+gitlogshowgraph: always

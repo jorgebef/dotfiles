@@ -2,13 +2,13 @@ local M = {
   "hrsh7th/nvim-cmp",
   branch = "main",
   dependencies = {
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
     -- { "hrsh7th/cmp-cmdline" },
-    { "L3MON4D3/LuaSnip" },
-    { "saadparwaiz1/cmp_luasnip" },
-    { "onsails/lspkind-nvim" },
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
+    "onsails/lspkind-nvim",
   },
 }
 
@@ -16,6 +16,7 @@ function M.config()
   local cmp = require("cmp")
   local lspkind = require("lspkind")
   local types = require("cmp.types")
+  local util = require("util.util")
 
   lspkind.init({
     mode = "symbol_text",
@@ -136,6 +137,21 @@ function M.config()
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
+        local doc = entry.completion_item.documentation
+        if vim_item.kind == "Color" and doc then
+          local content = type(doc) == "string" and doc or doc.value
+          local base, _, _, _r, _g, _b = 10, content:find("rgba?%((%d+), (%d+), (%d+)")
+
+          if not _r then
+            base, _, _, _r, _g, _b = 16, content:find("#(%x%x)(%x%x)(%x%x)")
+          end
+
+          if _r then
+            local r, g, b = tonumber(_r, base), tonumber(_g, base), tonumber(_b, base)
+            vim_item.kind_hl_group = util.set_hl_from(r, g, b, "foreground")
+          end
+        end
+
         local kind = lspkind.cmp_format({
           mode = "symbol_text",
           with_text = true,
@@ -144,8 +160,12 @@ function M.config()
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
         kind.kind = " " .. strings[1] .. " "
         kind.menu = "    (" .. strings[2] .. ")"
+
         return kind
       end,
+      -- format = require("lspkind").cmp_format({
+      --   before = require("tailwind-tools.cmp").lspkind_format,
+      -- }),
     },
     -- experimental = {
     --   ghost_text = true,

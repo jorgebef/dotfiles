@@ -18,9 +18,12 @@ local config = wezterm.config_builder()
 config.term = "wezterm"
 config.color_scheme = "Catppuccin Mocha"
 
+config.default_workspace = "j"
+
 config.font = wezterm.font({
   -- family = "FiraCode Nerd Font",
   family = "JetbrainsMono Nerd Font",
+  -- family = "CommitMono",
 })
 config.font_size = 14.5
 
@@ -30,20 +33,18 @@ config.font_rules = {
     intensity = "Bold",
     italic = false,
     font = wezterm.font({
-      -- family = "FiraCode Nerd Font",
-      -- weight = "Medium",
       family = "JetBrainsMono Nerd Font",
       weight = "Medium",
+      -- family = "CommitMono",
     }),
   },
   {
     intensity = "Bold",
     italic = true,
     font = wezterm.font({
-      -- family = "FiraCode Nerd Font",
-      -- weight = "Medium",
       family = "JetBrainsMono Nerd Font",
       weight = "Medium",
+      -- family = "CommitMono",
       italic = true,
     }),
   },
@@ -73,7 +74,7 @@ config.webgpu_preferred_adapter = {
 
 config.automatically_reload_config = true
 config.use_fancy_tab_bar = false
--- tab_bar_at_bottom = true,
+config.tab_bar_at_bottom = true
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.98
 config.macos_window_background_blur = 0
@@ -351,7 +352,8 @@ config.keys = {
   -- },
   -- { key = "n", mods = "CTRL|SHIFT", action = wezterm.action({ EmitEvent = "restore_session" }) },
 
-  { key = "Space", mods = "CTRL|SHIFT", action = act.ActivateCommandPalette },
+  -- { key = "Space", mods = "CTRL|SHIFT", action = act.ActivateCommandPalette },
+  { key = "Space", mods = "CTRL|SHIFT", action = act.ShowLauncherArgs({ flags = "FUZZY|TABS" }) },
 }
 
 -- config.disable_default_key_bindings = true
