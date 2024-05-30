@@ -5,6 +5,7 @@ local M = {
 
   colors = {
     foreground = "#DCDFDF",
+
     -- foreground = palette.fujiWhite,
     background = "#1f1f28",
     -- background = palette.sumiInk3,
