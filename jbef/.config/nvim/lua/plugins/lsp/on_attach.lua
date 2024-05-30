@@ -3,20 +3,27 @@ local M = {}
 M.on_attach = function(client, bufnr)
   local navic = require("nvim-navic")
   local util = require("util.util")
+  local keymaps = require("plugins.lsp.keymaps")
 
-  require("plugins.lsp.keymaps").setup(client)
+  keymaps.specific(client.name)
 
-  if client.supports_method("textDocument/inlayHint") then
-    vim.lsp.inlay_hint.enable(bufnr, false)
-  end
+  -- if client.supports_method("textDocument/inlayHint") then
+  --   vim.lsp.inlay_hint.enable(bufnr, false)
+  -- end
+  -- vim.lsp.inlay_hint.enable(false, false)
 
-  if not util.has_value({
-    "tailwindcss",
-    "glslls",
-    "eslint",
-    "efm",
-    "docker_compose_language_service",
-  }, client.name) then
+  if
+    not util.has_value({
+      "tailwindcss",
+      "cssmodules_ls",
+      "glslls",
+      "eslint_d",
+      "eslint",
+      "biome",
+      "efm",
+      "docker_compose_language_service",
+    }, client.name)
+  then
     navic.attach(client, bufnr)
   end
 

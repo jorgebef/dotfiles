@@ -108,6 +108,6 @@ function fish_prompt
         end
     end
 
-    echo -n -s $cwd $repo_info $normal \n\r $arrow
+    echo -n -s $cwd $repo_info $kekw $normal \n\r $arrow
 end
 

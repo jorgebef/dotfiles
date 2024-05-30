@@ -6,14 +6,16 @@ local session_manager = require("user.session-manager")
 local M = {}
 
 M.common_keys = {
+  { key = "Space", mods = "CTRL|SHIFT", action = act.ShowLauncherArgs({ flags = "FUZZY|TABS" }) },
   { key = "=", mods = "CTRL", action = act.DisableDefaultAssignment },
+  -- { key = "'", mods = "ALT", action = act.SendString("\xc3\xa4") },
 }
 
 M.tmux_keys = {
 
   -- This below maps CTRL+; to Ω, since that is a key combination that can be sent to tmux to run the popup with the session switcher
   { key = ";", mods = "CTRL", action = act.SendString("þ") },
-  { key = "-", mods = "CTRL", action = act.SendString("Ω") },
+  { key = "m", mods = "CTRL", action = act.SendString("Ω") },
   -- { key = "=", mods = "CTRL", action = act.SendString("†") },
   -- =====================================================================
 }

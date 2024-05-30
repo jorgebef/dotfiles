@@ -7,16 +7,40 @@ function M.config()
     formatters_by_ft = {
       lua = { "stylua" },
       zsh = { "shfmt" },
+      sh = { "shfmt" },
       -- Conform will run multiple formatters sequentially
       -- python = { "isort", "black" },
       -- Use a sub-list to run only the first available formatter
-      javascript = { { "biome" } },
-      typescript = { { "biome" } },
-      typescriptreact = { { "biome" } },
-      css = { { "biome" } },
-      json = { { "biome" } },
-      jsonc = { { "biome" } },
-
+      javascript = {
+        {
+          "prettierd",
+        },
+      },
+      typescript = {
+        {
+          "prettierd",
+        },
+      },
+      typescriptreact = {
+        {
+          "prettierd",
+        },
+      },
+      css = {
+        {
+          "prettierd",
+        },
+      },
+      json = {
+        {
+          "prettierd",
+        },
+      },
+      jsonc = {
+        {
+          "prettierd",
+        },
+      },
       go = { "gofmt" },
     },
   })

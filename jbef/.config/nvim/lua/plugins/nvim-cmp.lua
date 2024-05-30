@@ -17,6 +17,7 @@ function M.config()
   local lspkind = require("lspkind")
   local types = require("cmp.types")
   local util = require("util.util")
+  local ui = require("config.ui")
 
   lspkind.init({
     mode = "symbol_text",
@@ -71,14 +72,15 @@ function M.config()
     window = {
       completion = {
         -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-        border = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
+        border = ui.border.Single,
+        -- border = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
         winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
         col_offset = -3,
         side_padding = 0,
       },
       documentation = {
-        -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-        border = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
+        border = ui.border.Single,
+        -- border = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
         -- winhighlight = "Normal:NormalFloat,NormalNC:NormalFloat,FloatBorder:FloatBorder",
         winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
         side_padding = 4,
@@ -122,11 +124,11 @@ function M.config()
       -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
-      { name = "nvim_lsp" },
-      { name = "path" },
-      { name = "luasnip" }, -- For luasnip users.
+      { name = "nvim_lsp", keyword_length = 1 },
+      { name = "path", keyword_length = 1 },
+      { name = "luasnip", keyword_length = 1 }, -- For luasnip users.
     }, {
-      { name = "buffer" },
+      { name = "buffer", keyword_length = 1 },
     }),
     performance = {
       debounce = 0,

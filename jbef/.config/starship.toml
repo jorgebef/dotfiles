@@ -1,3 +1,7 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+
 # Link to style prompt:
 # https://starship.rs/config/#prompt
 
@@ -18,7 +22,8 @@ command_timeout = 90000
 # format = "[ 紅葉](bold bg:purple fg:black)$all"
 # format = "[ 💻 ](bg:purple fg:black)$all"
 # format = "[ 😽 ](bg:blue fg:#45475a)$all"
-format = "[🚀 ]()$all"
+# format = "[🚀 ]()$all"
+format = "$all"
 
 # [directory]
 # truncate_to_repo = false
@@ -26,10 +31,10 @@ format = "[🚀 ]()$all"
 [directory]
 style = "blue bold"
 
-truncation_length = 2
-# truncation_length = 8
+# truncation_length = 2
+truncation_length = 4
 truncation_symbol = "…/"
-# home_symbol = "🏠"
+home_symbol = "~"
 truncate_to_repo = false
 # style = "bold bg:#313244 fg:white"
 # format = "[ $path ]($style)(bold bg:#313244 fg:#1E1E2E)[$read_only]($read_only_style)"
@@ -44,9 +49,9 @@ truncate_to_repo = false
 # "src/com/long/java/path" = "mypath"
 
 [character]
-success_symbol = "[\uf054](green)" # 
-vicmd_symbol = "[\ue62b](purple)" # 
-error_symbol = "[\uf467](red)" # 
+success_symbol = "[❯](green)" # 
+vicmd_symbol = "[❯](purple)" # 
+error_symbol = "[❯](red)" # 
 
 [package]
 disabled = true
@@ -60,17 +65,35 @@ disabled = true
 [aws]
 disabled = true
 
+[nodejs]
+symbol = " "
+style = "fg:green"
+format = "[$symbol($version) ]($style)"
+
 [docker_context]
 disabled = false
+symbol = " "
+style = "fg:#74c7ec"
+format = "[$symbol() Docker ]($style)"
 
-[nodejs]
-style = "fg:green bg:#1E1E2E"
+[python]
+symbol = " "
+style = "fg:yellow"
+format = "[$symbol($version) ]($style)"
+
+[golang]
+symbol = " "
+style = "fg:#74c7ec"
+format = "[$symbol($version) ]($style)"
+
+[rust]
+symbol = "󱘗 "
+style = "fg:#fab387"
 format = "[$symbol($version) ]($style)"
 
 [git_branch]
 symbol = "󰘬 "
-# style = "bold fg:white bg:#1E1E2E"
-style = "fg:gray"
+style = "fg:#727169"
 format = "[$symbol$branch(:$remote_branch) ]($style)"
 disabled = false
 
@@ -84,11 +107,10 @@ disabled = true
 disabled = true
 
 [git_status]
-# style = "fg:#8f8f8f bg:#1E1E2E"
 disabled = true
 
 [cmd_duration]
 min_time = 1
 # show_milliseconds = false
-style = "italic fg:yellow"
+style = "italic fg:#5A5A5A"
 format = "[$duration]($style)"

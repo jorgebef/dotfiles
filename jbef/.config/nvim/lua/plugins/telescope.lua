@@ -6,6 +6,7 @@ local M = {
     { "nvim-telescope/telescope-file-browser.nvim" },
     -- { "natecraddock/telescope-zf-native.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    { "nvim-telescope/telescope-ui-select.nvim" },
 
     -- FILE PREVIEWER
     { "nvim-telescope/telescope-media-files.nvim" },
@@ -55,7 +56,7 @@ function M.config()
       -- selection_caret = ui.common.Arrow,
       selection_caret = "▌ ",
       -- border = false,
-      borderchars = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
+      -- borderchars = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
       results_title = false,
       prompt_title = false,
 
@@ -100,41 +101,20 @@ function M.config()
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
         -- the default case_mode is "smart_case"
       },
-      frecency = {
-        -- db_root = "/home/my_username/path/to/db_root",
-        show_scores = false,
-        show_unindexed = true,
-        ignore_patterns = { "*.git/*", "*/tmp/*" },
-        disable_devicons = false,
-        default_workspace = "CWD",
-        show_filter_column = false,
-        -- workspaces = {
-        --   ["conf"] = "/home/my_username/.config",
-        --   ["data"] = "/home/my_username/.local/share",
-        --   ["project"] = "/home/my_username/projects",
-        --   ["wiki"] = "/home/my_username/wiki",
-        -- },
-      },
-      -- ["zf-native"] = {
-      --   -- options for sorting file-like items
-      --   file = {
-      --     -- override default telescope file sorter
-      --     enable = true,
-      --     -- highlight matching text in results
-      --     highlight_results = true,
-      --     -- enable zf filename match priority
-      --     match_filename = true,
-      --   },
-      --   -- options for sorting all other items
-      --   generic = {
-      --     -- override default telescope generic item sorter
-      --     enable = false,
-      --     -- highlight matching text in results
-      --     highlight_results = true,
-      --     -- disable zf filename match priority
-      --     match_filename = false,
-      --   },
+      -- frecency = {
+      --   -- db_root = "/home/my_username/path/to/db_root",
+      --   show_scores = false,
+      --   show_unindexed = true,
+      --   ignore_patterns = { "*.git/*", "*/tmp/*" },
+      --   disable_devicons = false,
+      --   default_workspace = "CWD",
+      --   show_filter_column = false,
       -- },
+      ["ui-select"] = {
+        require("telescope.themes").get_dropdown({
+          -- even more opts
+        }),
+      },
 
       project = {},
     },
@@ -143,8 +123,6 @@ function M.config()
   -- load_extension, somewhere after setup function:
   telescope.load_extension("fzf")
   -- telescope.load_extension("frecency")
-  -- Load zf extension, which favors filename over rest of the path
-  -- telescope.load_extension("zf-native")
   -- To get telescope-file-browser loaded and working with telescope,
   -- you need to call load_extension, somewhere after setup function:
   telescope.load_extension("file_browser")
@@ -152,20 +130,19 @@ function M.config()
   -- telescope.load_extension("notify")
   -- Telescope Media file Previewer
   telescope.load_extension("media_files")
+  telescope.load_extension("ui-select")
 
   -- ==================Custom function for git files=======================
   local function project_files()
-    local opts = {} -- define here if you want to define something
-    local ok = pcall(builtin.git_files, opts)
+    local ok = pcall(builtin.git_files, { show_untracked = true })
     if not ok then
-      require("telescope.builtin").find_files(opts)
+      require("telescope.builtin").find_files()
     end
   end
 
   -- ======================== REMAPS ============================
   local nsn_opts = { noremap = true, silent = true, nowait = true }
 
-  vim.keymap.set("n", "<leader>ff", builtin.find_files, nsn_opts)
   -- vim.keymap.set("n", "<leader>ff", "<Cmd>Telescope frecency<CR>", nsn_opts)
 
   vim.keymap.set("n", "<leader>fg", function()
@@ -176,9 +153,10 @@ function M.config()
     builtin.jumplist()
   end, nsn_opts)
 
-  vim.keymap.set("n", "<leader>fF", function()
+  vim.keymap.set("n", "<leader>ff", function()
     project_files()
   end, nsn_opts)
+  vim.keymap.set("n", "<leader>fF", builtin.find_files, nsn_opts)
 
   vim.keymap.set("n", "<leader>fb", function()
     vim.cmd.Telescope("file_browser")

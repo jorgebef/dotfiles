@@ -1,0 +1,12 @@
+-- tailwind-tools.lua
+local M = {
+  "kylechui/nvim-surround",
+  config = true,
+  opts = {},
+}
+
+-- function M.config()
+--   require("nvim-surround").setup({})
+-- end
+
+return M

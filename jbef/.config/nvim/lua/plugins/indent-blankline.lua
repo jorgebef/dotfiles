@@ -1,7 +1,7 @@
 local M = { "lukas-reineke/indent-blankline.nvim" }
 
 function M.config()
-  local cp = require("catppuccin.palettes").get_palette("mocha")
+  -- local cp = require("catppuccin.palettes").get_palette("mocha")
   -- local c = require("tokyonight.colors").setup()
   local ibl = require("ibl")
 
@@ -49,6 +49,7 @@ function M.config()
     exclude = {
       buftypes = {
         "terminal",
+        "filesystem",
       },
       filetypes = {
         "startify",
@@ -56,6 +57,7 @@ function M.config()
         "help",
         "NvimTree",
         "lspsagafinder",
+        "neo-tree",
         "packer",
         "mason",
         "lazy",

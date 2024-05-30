@@ -4,14 +4,16 @@ function M.config()
   --#####################################################
   -- BUFREMOVE
   --#####################################################
-  local bufremove = require("mini.bufremove")
-  bufremove.setup({})
+  require("mini.bufremove").setup({})
+  require("mini.pairs").setup({})
+  require("mini.surround").setup({})
+  require("mini.ai").setup({})
 
   vim.keymap.set("n", "<leader>bd", function()
     -- Default values are 0 for current buffer and false for force
     -- https://github.com/echasnovski/mini.bufremove/blob/main/doc/mini-bufremove.txt
     -- See :h mini.bufremove
-    bufremove.delete(0, false)
+    require("mini.bufremove").delete(0, false)
   end, { silent = true, nowait = true })
 
   --#####################################################

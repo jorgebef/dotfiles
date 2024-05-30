@@ -17,6 +17,8 @@ export PATH
 
 fpath+="/opt/homebrew/share/zsh/site-functions"
 
+fpath=(~/.zsh/completion $fpath)
+
 
 # pnpm
 export PNPM_HOME="/Users/jbef/Library/pnpm"
@@ -27,3 +29,8 @@ esac
 # pnpm end
 
 # =======================================================================================================
+
+fpath+="$HOME/.config/zsh/completion/_docker"
+autoload -Uz compinit
+compinit
+# EOT

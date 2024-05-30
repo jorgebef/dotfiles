@@ -31,11 +31,14 @@ vim.keymap.set("x", "<C-y>", "4<C-y>", opts)
 vim.keymap.set("v", "<C-e>", "4<C-e>", opts)
 vim.keymap.set("v", "<C-y>", "4<C-y>", opts)
 
--- improved split navigation
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
+-- vim.keymap.del("n", "<M-e>")
+
+-- -- improved split navigation
+-- vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
+-- vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
+-- vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
+-- vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
+
 
 vim.keymap.set("n", "<leader>w", ":silent write<cr>", opts)
 vim.keymap.set("n", "<leader>q", ":q<cr>", opts)
@@ -61,25 +64,8 @@ vim.keymap.set("n", "<leader>O", 'O<esc>0"_D<esc>', opts)
 vim.keymap.set("n", "<leader>bn", ":bn<cr>", opts)
 vim.keymap.set("n", "<leader>bp", ":bp<cr>", opts)
 
-vim.keymap.set("n", "<leader>bC", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
-
--- vim.keymap.set("n", "<leader>bC", function()
---   vim.cmd([[
--- function! DeleteHiddenBuffers()
--- let tpbl=[]
--- let closed = 0
--- call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
--- for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
--- if getbufvar(buf, '&mod') == 0
--- silent execute 'bwipeout' buf
--- let closed += 1
--- endif
--- endfor
--- echo "Closed ".closed." hidden buffers"
--- endfunction
---   DeleteHiddenBuffers()
--- ]])
--- end, opts)
+-- vim.keymap.set("n", "<leader>bC", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
+vim.keymap.set("n", "<leader>bC", "<cmd>WipeWindowlessBufs<cr>", { desc = "Close all buffers but the current one" })
 
 -- improved split manipulation
 vim.keymap.set("n", "<leader>mj", "<C-w>J", opts)
@@ -95,3 +81,5 @@ vim.keymap.set("n", "<leader>-", "<C-w>8<", opts)
 
 vim.keymap.set("n", "<leader>sv", ":vs<CR>", opts)
 vim.keymap.set("n", "<leader>sh", ":split<CR>", opts)
+
+-- vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")

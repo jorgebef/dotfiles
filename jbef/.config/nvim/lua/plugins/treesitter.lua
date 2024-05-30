@@ -5,6 +5,7 @@ local M = {
     "nvim-treesitter/nvim-treesitter-textobjects", -- Text objects
     "windwp/nvim-ts-autotag",
     "nvim-treesitter/playground",
+    "JoosepAlviste/nvim-ts-context-commentstring",
   },
 }
 
@@ -95,6 +96,7 @@ function M.config(_, opts)
         },
       },
     },
+
     autotag = {
       enable = true,
       enable_rename = true,
@@ -155,18 +157,24 @@ function M.config(_, opts)
     },
   }
 
-  if type(opts.ensure_installed) == "table" then
-    ---@type table<string, boolean>
-    local added = {}
-    opts.ensure_installed = vim.tbl_filter(function(lang)
-      if added[lang] then
-        return false
-      end
-      added[lang] = true
-      return true
-    end, opts.ensure_installed)
-  end
+  -- if type(opts.ensure_installed) == "table" then
+  --   ---@type table<string, boolean>
+  --   local added = {}
+  --   opts.ensure_installed = vim.tbl_filter(function(lang)
+  --     if added[lang] then
+  --       return false
+  --     end
+  --     added[lang] = true
+  --     return true
+  --   end, opts.ensure_installed)
+  -- end
+
   require("nvim-treesitter.configs").setup(opts)
+
+  vim.g.skip_ts_context_commentstring_module = true
+  require("ts_context_commentstring").setup({
+    enable_autocmd = false,
+  })
 end
 
 return M

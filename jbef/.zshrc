@@ -5,39 +5,57 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# PLUGINS ===============================================================================================
-source "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+if [[ -f "/opt/homebrew/bin/brew" ]] then
+  # If you're using macOS, you'll want this enabled
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
-# CONFIG FILES ==========================================================================================
-source "$HOME/.config/zsh/path.zsh"
-source "$HOME/.config/zsh/options.zsh"
-source "$HOME/.config/zsh/alias.zsh"
 
-# COMPLETIONS ===========================================================================================
-[ -s "/Users/jbef/.bun/_bun" ] && source "/Users/jbef/.bun/_bun" # bun javascript runtime
-# op (1Password)
-eval "$(op completion zsh)"
-compdef _op op
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# eval is run just before dropping into the shell =======================================================
-eval "$(fnm env --use-on-cd)"
-# eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
-eval "pokemon-colorscripts -r --no-title"
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
 
-autoload -U compinit
-compinit
 
-# # =========== Launch TMUX on shell initialisation ===========
-# if [ "$TMUX" = "" ]; then
-# 	tmux attach || tmux
-# fi
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
 
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-source ~/.config/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
+# Add in Powerlevel10k
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# Add in zsh plugins
+zinit light Aloxaf/fzf-tab
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+
+# Add in snippets
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::archlinux
+zinit snippet OMZP::aws
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+zinit snippet OMZP::command-not-found
+
+# Load completions
+autoload -U compinit && compinit
+
+zinit cdreplay -q
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
+
+source "$HOME/.config/zsh/options.zsh"
+source "$HOME/.config/zsh/alias.zsh"
+source "$HOME/.config/zsh/keybindings.zsh"
+source "$HOME/.config/zsh/path.zsh"
+source "$HOME/.config/zsh/fzf.zsh"
+
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(fnm env --use-on-cd)"

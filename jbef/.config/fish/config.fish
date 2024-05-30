@@ -19,20 +19,23 @@ fish_add_path "$HOME/.cargo/bin/" # Add cargo bin to $PATH
 fish_add_path "$PNPM_HOME" # Add pnpm path to $PATH
 fish_add_path "$HOME/Library/CloudStorage/Dropbox/JORGE/Peninsula Studio/01 Documents & info/bin" # Add custom bin folder path to $PATH
 
-function fish_greeting
-  pokemon-colorscripts -r --no-title
-  # # ===========THIS ADDS TMUX AT INITIALIZATION=============
-  # if not set -q TMUX
-  #   tmux a || tmux
-  # end
-end
+# function fish_greeting
+#   # pokemon-colorscripts -r --no-title
+#   # # ===========THIS ADDS TMUX AT INITIALIZATION=============
+#   # if not set -q TMUX
+#   #   tmux a || tmux
+#   # end
+# end
+set fish_greeting
+
+# function fish_user_key_bindings
+#     bind \ee true
+#     # and so on
+# end
 
 fish_vi_key_bindings
+# bind -M insert \ee --erase
 # fish_default_key_bindings
 
-# starship init fish | source
+starship init fish | source
 zoxide init fish | source
-
-# tabtab source for packages
-# uninstall by removing these lines
-[ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true

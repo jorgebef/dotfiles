@@ -1,8 +1,8 @@
-# Navigation
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+# # Navigation
+# alt - h : yabai -m window --focus west
+# alt - j : yabai -m window --focus south
+# alt - k : yabai -m window --focus north
+# alt - l : yabai -m window --focus east
 
 # ctrl + alt + cmd - i : yabai -m window --focus prev
 # ctrl + alt + cmd - o : yabai -m window --focus next
@@ -55,14 +55,3 @@ alt - u : yabai -m window --toggle float;\
 
 # alt - d : yabai -m window --toggle zoom-parent
 alt - return : yabai -m window --toggle zoom-fullscreen
-
-# toggle window zoom 
-# ctrl + alt +cmd - f : \
-#   yabai -m query --spaces --window | grep '"type":"float"' && yabai -m space --layout bsp;\
-#   yabai -m query --windows --window | grep '"floating":1' && yabai -m window --toggle float;\
-#   yabai -m window --toggle zoom-fullscreen;
-
-# alt - h : yabai -m window --focus west
-
-# toggle whether the focused window should be tiled (only on bsp spaces)
-# ctrl + alt + cmd - space : yabai -m window --toggle float

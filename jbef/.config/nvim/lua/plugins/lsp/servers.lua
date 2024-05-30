@@ -13,45 +13,42 @@ local M = {
   --   },
   -- },
 
-  -- -- This is no longer needed as long as I use the plugin typescript-tools.nvim
-  -- tsserver = {
-  --   root_dir = function(...)
-  --     return require("lspconfig.util").root_pattern(".git")(...)
-  --   end,
-  --   -- cmd = { "typescript-language-server", "--stdio" },
-  --   -- cmd = { "deno", "run", "-A", "--unstable", "npm:typescript-language-server", "--stdio" },
-  --   -- cmd = { "bunx", "typescript-language-server", "--stdio" },
-  --   single_file_support = false,
-  --   init_options = {
-  --     documentFormatting = false,
-  --     documentRangeFormatting = true,
-  --   },
-  --   settings = {
-  --     typescript = {
-  --       inlayHints = {
-  --         includeInlayParameterNameHints = "literal",
-  --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-  --         includeInlayFunctionParameterTypeHints = true,
-  --         includeInlayVariableTypeHints = false,
-  --         includeInlayPropertyDeclarationTypeHints = true,
-  --         includeInlayFunctionLikeReturnTypeHints = true,
-  --         includeInlayEnumMemberValueHints = true,
-  --       },
-  --     },
-  --     javascript = {
-  --       inlayHints = {
-  --         includeInlayParameterNameHints = "all",
-  --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-  --         includeInlayFunctionParameterTypeHints = true,
-  --         includeInlayVariableTypeHints = true,
-  --         includeInlayPropertyDeclarationTypeHints = true,
-  --         includeInlayFunctionLikeReturnTypeHints = true,
-  --         includeInlayEnumMemberValueHints = true,
-  --       },
-  --     },
-  --   },
-  --   flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
-  -- },
+  -- This is no longer needed as long as I use the plugin typescript-tools.nvim
+  tsserver = {
+    -- root_dir = function(...)
+    --   return require("lspconfig.util").root_pattern(".git")(...)
+    -- end,
+    single_file_support = false,
+    init_options = {
+      documentFormatting = false,
+      documentRangeFormatting = true,
+    },
+    settings = {
+      typescript = {
+        inlayHints = {
+          includeInlayParameterNameHints = "literal",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = false,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+      javascript = {
+        inlayHints = {
+          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+    },
+    flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+  },
 
   -- efm = {
   --   -- filetypes = vim.tbl_extendvim.tbl_keys(require("efmls-configs.defaults").languages()),
@@ -71,6 +68,12 @@ local M = {
   --   },
   -- },
   -- astro = {},
+  eslint = {
+    settings = {
+      -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+      workingDirectories = { mode = "auto" },
+    },
+  },
   graphql = {
     -- filetypes = { "graphql", "typescriptreact", "javascriptreact" },
     -- root_dir = lspconfig.util.root_pattern(".git", ".graphqlrc*", ".graphql.config.*", "graphql.config.*"),
@@ -137,6 +140,12 @@ local M = {
     single_file_support = true,
   },
   cssls = {},
+  css_variables = {},
+  cssmodules_ls = {
+    init_options = {
+      camelCase = "dashes",
+    },
+  },
   tailwindcss = {
     -- cmd = { "bunx", "tailwindcss-language-server", "--stdio" },
     root_dir = lspconfig.util.root_pattern(
@@ -150,7 +159,7 @@ local M = {
     ),
     settings = {
       tailwindCSS = {
-        classAttributes = { "class", "clsx", "className", "classList", "ngClass" },
+        classAttributes = { "class", "clsx", "cva", "className", "classList", "ngClass" },
         lint = {
           cssConflict = "warning",
           invalidApply = "error",
@@ -165,6 +174,7 @@ local M = {
           classRegex = {
             -- "clsx\\(([^)]*)\\)",
             "clsx\\(([^)]*)\\)",
+            "cva\\(([^)]*)\\)",
             -- "(?:'|\"|`)([^']*)(?:'|\"|`)",
           },
         },

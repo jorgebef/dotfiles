@@ -11,6 +11,7 @@ local M = {
 
 function M.config()
   -- IMPORTANT!!!!!!!!!
+  -- vim.g.catppuccin_flavour = "mocha"
   vim.g.catppuccin_flavour = "mocha"
 
   require("catppuccin").setup({
@@ -86,59 +87,72 @@ function M.config()
       symbols_outline = true,
       flash = true,
     },
+    -- color_overrides = {
+    --   mocha = {
+    --     -- this 16 colors are changed to onedark
+    --     base = "#282c34",
+    --     mantle = "#353b45",
+    --     surface0 = "#3e4451",
+    --     surface1 = "#545862",
+    --     surface2 = "#565c64",
+    --     text = "#D3D6DE",
+    --     rosewater = "#DDB1B1",
+    --     lavender = "#A0ABF8",
+    --     red = "#DC93A8",
+    --     peach = "#DD996E",
+    --     yellow = "#E1C894",
+    --     green = "#A0CE9C",
+    --     teal = "#97C3BF",
+    --     blue = "#87AAE3",
+    --     mauve = "#BEA1E3",
+    --     flamingo = "#E9BEBE",
+    --
+    --     -- now patching extra palettes
+    --     maroon = "#D897A2",
+    --     sky = "#7CD0DF",
+    --
+    --     -- extra colors not decided what to do
+    --     pink = "#EDB1DD",
+    --     sapphire = "#67B9E0",
+    --
+    --     subtext1 = "#BAC2DE",
+    --     subtext0 = "#A6ADC8",
+    --     overlay2 = "#9399B2",
+    --     overlay1 = "#7F849C",
+    --     overlay0 = "#6C7086",
+    --
+    --     crust = "#11111B",
+    --   },
+    -- },
     custom_highlights = function(colors)
       return {
         -- UI elements
         -- ===============
-        Pmenu = { bg = colors.mantle },
+        -- Pmenu = { bg = colors.mantle },
         PmenuSel = { fg = colors.pink, bg = colors.surface1 },
-        NormalFloat = { bg = colors.mantle },
-        FloatBorder = { fg = colors.base, bg = colors.mantle },
+        -- NormalFloat = { bg = colors.mantle },
+        -- FloatBorder = { fg = colors.overlay0, bg = colors.base },
 
         CmpItemAbbrMatch = { fg = colors.text },
         CmpItemAbbrMatchFuzzy = { fg = colors.text },
         CmpItemMenu = { fg = colors.overlay0, bg = nil, italic = true },
 
-        -- CmpItemKindSnippet = { fg = colors.base, bg = colors.mauve },
-        -- CmpItemKindKeyword = { fg = colors.base, bg = colors.red },
-        -- CmpItemKindText = { fg = colors.base, bg = colors.teal },
-        -- CmpItemKindMethod = { fg = colors.base, bg = colors.blue },
-        -- CmpItemKindConstructor = { fg = colors.base, bg = colors.blue },
-        -- CmpItemKindFunction = { fg = colors.base, bg = colors.blue },
-        -- CmpItemKindFolder = { fg = colors.base, bg = colors.blue },
-        -- CmpItemKindModule = { fg = colors.base, bg = colors.blue },
-        -- CmpItemKindConstant = { fg = colors.base, bg = colors.peach },
-        -- CmpItemKindField = { fg = colors.base, bg = colors.green },
-        -- CmpItemKindProperty = { fg = colors.base, bg = colors.green },
-        -- CmpItemKindEnum = { fg = colors.base, bg = colors.green },
-        -- CmpItemKindUnit = { fg = colors.base, bg = colors.green },
-        -- CmpItemKindClass = { fg = colors.base, bg = colors.yellow },
-        -- CmpItemKindVariable = { fg = colors.base, bg = colors.flamingo },
-        -- CmpItemKindFile = { fg = colors.base, bg = colors.blue },
-        -- CmpItemKindInterface = { fg = colors.base, bg = colors.yellow },
-        -- CmpItemKindColor = { fg = colors.base, bg = colors.red },
-        -- CmpItemKindReference = { fg = colors.base, bg = colors.red },
-        -- CmpItemKindEnumMember = { fg = colors.base, bg = colors.red },
-        -- CmpItemKindStruct = { fg = colors.base, bg = colors.blue },
-        -- CmpItemKindValue = { fg = colors.base, bg = colors.peach },
-        -- CmpItemKindEvent = { fg = colors.base, bg = colors.blue },
-        -- CmpItemKindOperator = { fg = colors.base, bg = colors.blue },
-        -- CmpItemKindTypeParameter = { fg = colors.base, bg = colors.blue },
-        -- CmpItemKindCopilot = { fg = colors.base, bg = colors.teal },
+        NeoTreeHiddenByName = { fg = colors.blue, bg = nil },
+        NeoTreeDotfile = { fg = colors.subtext1, bg = nil },
 
-        TelescopeNormal = { fg = colors.subtext0, bg = colors.mantle },
-        TelescopeBorder = { fg = colors.base, bg = colors.mantle },
+        TelescopeNormal = { fg = colors.subtext0, bg = colors.bg },
+        TelescopeBorder = { fg = colors.overlay1, bg = colors.bg },
         TelescopeMatching = { fg = colors.pink, bg = nil, bold = true },
         TelescopeSelection = { fg = colors.text, bg = colors.surface0 },
         TelescopeSelectionCaret = { fg = colors.pink, bg = colors.surface0 },
-        TelescopePreviewBorder = { fg = colors.base, bg = colors.mantle },
-        TelescopePreviewTitle = { fg = colors.base, bg = colors.mantle },
-        TelescopePreviewNormal = { fg = colors.overlay2, bg = colors.mantle },
-        TelescopeResultsNormal = { fg = colors.overlay2, bg = colors.mantle },
-        TelescopePromptBorder = { fg = colors.mantle, bg = colors.mantle },
-        TelescopePromptTitle = { fg = colors.base, bg = colors.mantle },
-        TelescopePromptNormal = { fg = colors.overlay2, bg = colors.mantle },
-        TelescopePromptPrefix = { fg = colors.pink, bg = colors.mantle },
+        TelescopePreviewBorder = { fg = colors.overlay1, bg = colors.bg },
+        TelescopePreviewTitle = { fg = colors.overlay0, bg = colors.bg },
+        TelescopePreviewNormal = { fg = colors.overlay2, bg = colors.bg },
+        TelescopeResultsNormal = { fg = colors.overlay2, bg = colors.bg },
+        TelescopePromptBorder = { fg = colors.overlay1, bg = colors.bg },
+        TelescopePromptTitle = { fg = colors.overlay0, bg = colors.bg },
+        TelescopePromptNormal = { fg = colors.overlay2, bg = colors.bg },
+        TelescopePromptPrefix = { fg = colors.pink, bg = colors.bg },
 
         LeapLabelPrimary = { fg = colors.red, bg = colors.crust },
 

@@ -8,15 +8,22 @@ local M = {
 M.on_attach = require("plugins.lsp.on_attach").on_attach
 M.capabilities = require("plugins.lsp.capabilities").setup
 M.handlers = require("plugins.lsp.handlers").handlers
+M.keymaps = require("plugins.lsp.keymaps")
 
 function M.config()
   local typescript_tools = require("typescript-tools")
 
   typescript_tools.setup({
-    on_attach = M.on_attach,
+    on_attach = function(client, bufnr)
+      M.keymaps.specific(client)
+      M.on_attach(client, bufnr)
+    end,
     capabilities = M.capabilities(),
     handlers = M.handlers,
     settings = {
+      root_dir = function(...)
+        return require("lspconfig.util").root_pattern(".git")(...)
+      end,
       tsserver_file_preferences = {
         includeInlayParameterNameHints = "all",
         includeInlayParameterNameHintsWhenArgumentMatchesName = true,

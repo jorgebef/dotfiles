@@ -1,32 +1,39 @@
 lastupdatecheck: 0
 recentrepos:
-- /Users/jbef/Developer/dotfiles
-- /Users/jbef/Developer/starter-template-peninsula
-- /Users/jbef/Developer/InvitaBoda/rocio-y-roberto
-- /Users/jbef/Developer/InvitaBoda/victor-y-desiree
-- /Users/jbef/Developer/InvitaBoda/cristina-y-angel
-- /Users/jbef/Developer/InvitaBoda/mar-y-roland
-- /Users/jbef/Developer/InvitaBoda/invitaboda.es
-- /Users/jbef/Developer/InvitaBoda/carlos-y-marimar
-- /Users/jbef/Developer/InvitaBoda/patricia-y-eduardo
-- /Users/jbef/Developer/Clients/guidoaudisio.com
-- /Users/jbef/Developer/InvitaBoda/mimi-y-kike
-- /Users/jbef/Developer/peninsula.studio
-- /Users/jbef/Developer/InvitaBoda/anahi-y-gonzalo
-- /Users/jbef/Developer/InvitaBoda/denis-y-gorka
-- /Users/jbef/Developer/Side-Projects/advent-of-code-2023
-- /Users/jbef/Developer/InvitaBoda/ainara-y-borja
-- /Users/jbef/Developer/InvitaBoda/miriam-y-alvaro
-- /Users/jbef/Developer/InvitaBoda/sonia-y-enrique
-- /Users/jbef/Developer/InvitaBoda/esther-&-javi
-- /Users/jbef/Developer/InvitaBoda/dani-&-mayte
-- /Users/jbef/Developer/Clients/europrestige-sample
-- /Users/jbef/Developer/t-smart-tmux-session-manager
-- /Users/jbef/Developer/InvitaBoda/modelo-7
-- /Users/jbef/Developer/InvitaBoda/modelo-base
-- /Users/jbef/Developer/jbef-ui
+    - /Users/jbef/Developer/dotfiles
+    - /Users/jbef/Developer/starter-template-peninsula
+    - /Users/jbef/Developer/InvitaBoda/tamara-y-abel
+    - /Users/jbef/Developer/InvitaBoda/irene-y-jose
+    - /Users/jbef/Developer/InvitaBoda/laura-y-edu
+    - /Users/jbef/Developer/fondos-europeos-torrevieja
+    - /Users/jbef/Developer/Clients/guidoaudisio.com
+    - /Users/jbef/Developer/mca-spain-technical-frontend
+    - /Users/jbef/Developer/peninsula.studio
+    - /Users/jbef/Developer/Clients/cnglawyers.com
+    - /Users/jbef/Developer/InvitaBoda/cristina-y-angel
+    - /Users/jbef/Developer/InvitaBoda/invitaboda.es
+    - /Users/jbef/Developer/vps-setup
+    - /Users/jbef/Developer/InvitaBoda/mar-y-roland
+    - /Users/jbef/Developer/InvitaBoda/rocio-y-roberto
+    - /Users/jbef/Developer/InvitaBoda/victor-y-desiree
+    - /Users/jbef/Developer/InvitaBoda/carlos-y-marimar
+    - /Users/jbef/Developer/InvitaBoda/patricia-y-eduardo
+    - /Users/jbef/Developer/InvitaBoda/mimi-y-kike
+    - /Users/jbef/Developer/InvitaBoda/anahi-y-gonzalo
+    - /Users/jbef/Developer/InvitaBoda/denis-y-gorka
+    - /Users/jbef/Developer/Side-Projects/advent-of-code-2023
+    - /Users/jbef/Developer/InvitaBoda/ainara-y-borja
+    - /Users/jbef/Developer/InvitaBoda/miriam-y-alvaro
+    - /Users/jbef/Developer/InvitaBoda/sonia-y-enrique
+    - /Users/jbef/Developer/InvitaBoda/esther-&-javi
+    - /Users/jbef/Developer/InvitaBoda/dani-&-mayte
+    - /Users/jbef/Developer/Clients/europrestige-sample
+    - /Users/jbef/Developer/t-smart-tmux-session-manager
+    - /Users/jbef/Developer/InvitaBoda/modelo-7
+    - /Users/jbef/Developer/InvitaBoda/modelo-base
+    - /Users/jbef/Developer/jbef-ui
 startuppopupversion: 5
-lastversion: 0.41.0
+lastversion: 0.42.0
 customcommandshistory: []
 hidecommandlog: false
 ignorewhitespaceindiffview: false

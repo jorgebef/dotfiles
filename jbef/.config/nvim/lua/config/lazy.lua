@@ -34,17 +34,25 @@ lazy.setup("plugins", {
     enabled = false,
     notify = false, -- get a notification when changes are found
   },
-  install = { colorscheme = { "catppuccin" } },
-  -- install = { colorscheme = { "tokyonight" } },
+  -- install = {
+  --   colorscheme = {
+  --     "catppuccin",
+  --     -- "flexoki",
+  --     -- "rose-pine",
+  --   },
+  -- },
   ui = {
     -- a number <1 is a percentage., >1 is a fixed size
     size = { width = 0.8, height = 0.8 },
     -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
-    border = ui.border.Block,
+    border = ui.border.Single,
   },
 })
 
 vim.keymap.set("n", "<leader>L", ":Lazy<CR>", { noremap = true })
 
-vim.cmd.colorscheme("catppuccin")
--- vim.cmd.colorscheme("tokyonight")
+-- vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("kanagawa-wave")
+
+-- vim.cmd.colorscheme("onedark")
+-- require('onedark').load()

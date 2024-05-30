@@ -2,7 +2,9 @@ local M = { "nvim-lualine/lualine.nvim" }
 
 function M.config()
   local ui = require("config.ui")
-  local cp = require("catppuccin.palettes").get_palette("mocha")
+  -- local cp = require("catppuccin.palettes").get_palette("mocha")
+  local colors = require("kanagawa.colors").setup({ theme = "wave" })
+  local palette = colors.palette
 
   local navic = require("nvim-navic")
 
@@ -47,7 +49,7 @@ function M.config()
     options = {
       icons_enabled = true,
       -- theme = "auto",
-      theme = "catppuccin",
+      -- theme = "kanagawa",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       -- section_separators = { left = '', right = ''},
@@ -80,7 +82,7 @@ function M.config()
           },
           -- color = { fg = nil, bg = nil, gui = "bold" },
           padding = { left = 1, right = 1 },
-          color = { fg = cp.base, bg = cp.lavender },
+          -- color = { fg = cp.base, bg = cp.lavender },
         },
       },
       lualine_b = {
@@ -94,7 +96,7 @@ function M.config()
           },
           -- color = { fg = nil, bg = c.bg_highlight, gui = nil },
           padding = { left = 2, right = 1 },
-          color = { fg = cp.base, bg = cp.overlay1, gui = "bold" },
+          -- color = { fg = cp.base, bg = cp.overlay1, gui = "bold" },
         },
         {
           -- "diff",
@@ -134,8 +136,7 @@ function M.config()
             -- left = ui.common.SeparatorLStart,
             -- right = ui.common.SeparatorREnd,
           },
-          color = { fg = nil, bg = cp.base, gui = nil },
-          -- color = { fg = nil, bg = c.bg_highlight, gui = nil },
+          -- color = { fg = nil, bg = cp.base, gui = nil },
           padding = { left = 1, right = 1 },
         },
       },
@@ -145,7 +146,8 @@ function M.config()
           path = 1,
           -- padding = { left = 100, right = 90 },
           padding = 2,
-          color = { fg = cp.subtext1, bg = cp.base },
+          -- color = { fg = cp.subtext1, bg = cp.base },
+          -- color = { fg = nil, bg = palette.waveRed },
           -- color = { fg = c.fg_dark, bg = nil },
         },
       },
