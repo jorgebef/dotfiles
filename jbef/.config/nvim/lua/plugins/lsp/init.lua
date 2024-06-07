@@ -3,7 +3,6 @@ local M = {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     { "SmiteshP/nvim-navic" },
-    { "folke/neodev.nvim" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
 
@@ -33,14 +32,22 @@ M.config = function()
 
   require("mason-lspconfig").setup({
     ensure_installed = server_names,
+
     -- automatic_installation = { exclude = { "glslls", "tsserver" } },
     handlers = {
       function(server_name)
-        lsp[server_name].setup({
+        local opts = vim.tbl_deep_extend("force", {
           on_attach = M.on_attach,
           capabilities = M.capabilities(),
           handlers = M.handlers,
-        })
+        }, servers[server_name] or {})
+
+        -- if server_name == "lua_ls" then
+        if server_name == "test1" then
+          require("neodev").setup({})
+        elseif server_name ~= "test2" then
+          lsp[server_name].setup(opts)
+        end
       end,
 
       -- -- this is the "custom handler" for `tsserver`

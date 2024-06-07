@@ -22,35 +22,71 @@ live_config_reload = true
 
 import = [
   # uncomment the flavour you want below:
-  "~/.config/alacritty/catppuccin-mocha.toml"
+  # "~/.config/alacritty/catppuccin-mocha.toml"
   # "~/.config/alacritty/catppuccin/catppuccin-macchiato.toml"
   # "~/.config/alacritty/catppuccin/catppuccin-frappe.toml"
   # "~/.config/alacritty/catppuccin/catppuccin-latte.toml"
+  "~/.config/alacritty/kanagawa.toml"
 ]
+
+#   # Kanagawa Alacritty Colors
+# colors:
+#   primary:
+#     background: '0x1f1f28'
+#     foreground: '0xdcd7ba'
+#
+#   normal:
+#     black:   '0x090618'
+#     red:     '0xc34043'
+#     green:   '0x76946a'
+#     yellow:  '0xc0a36e'
+#     blue:    '0x7e9cd8'
+#     magenta: '0x957fb8'
+#     cyan:    '0x6a9589'
+#     white:   '0xc8c093'
+#
+#   bright:
+#     black:   '0x727169'
+#     red:     '0xe82424'
+#     green:   '0x98bb6c'
+#     yellow:  '0xe6c384'
+#     blue:    '0x7fb4ca'
+#     magenta: '0x938aa9'
+#     cyan:    '0x7aa89f'
+#     white:   '0xdcd7ba'
+#
+#   selection:
+#     background: '0x2d4f67'
+#     foreground: '0xc8c093'
+#
+#   indexed_colors:
+#     - { index: 16, color: '0xffa066' }
+#     - { index: 17, color: '0xff5d62' }
 
 [env]
   TERM = "xterm-256color"
 
 [window]
 
-  opacity = 0.965
+  opacity = 0.98
 
-  padding.x = 5
-  padding.y = 4
+  padding.x = 1
+  padding.y = 3
 
   decorations = "buttonless"
   decorations_theme_variant = "Dark" # "Dark"
 
 [font]
 
-  normal.family = "FiraCode Nerd Font"
+  normal.family = "JetbrainsMono Nerd Font"
+  # normal.style = "Retina"
 
-  bold.family = "FiraCode Nerd Font"
+  bold.family = "JetbrainsMono Nerd Font"
   bold.style = "Retina"
 
-  italic.family = "FiraCode Nerd Font"
+  italic.family = "JetbrainsMono Nerd Font"
 
-  bold_italic.family = "FiraCode Nerd Font"
+  bold_italic.family = "JetbrainsMono Nerd Font"
   bold_italic.style = "Retina Italic"
 
   size = 14.5
@@ -62,7 +98,7 @@ import = [
 [keyboard]
   bindings = [
   { key = ";", mods = "Control", chars = "þ" },
-  { key= ".", mods= "Control", chars= "Ω" },
-  { key = ",", mods = "Control", chars = "†" },
+  { key= ".", mods= "Control", chars= "˛" },
+  { key = ",", mods = "Control", chars = "˘" },
 
 ]

@@ -3,7 +3,6 @@ local M = {
   build = ":TSUpdate",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects", -- Text objects
-    "windwp/nvim-ts-autotag",
     "nvim-treesitter/playground",
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
@@ -94,34 +93,6 @@ function M.config(_, opts)
           ["i`"] = "@templatestring.inner",
           ["a`"] = "@templatestring.outer",
         },
-      },
-    },
-
-    autotag = {
-      enable = true,
-      enable_rename = true,
-      enable_close = true,
-      enable_close_on_slash = false,
-      skip_tags = {
-        "area",
-        "base",
-        "br",
-        "col",
-        "command",
-        "embed",
-        "hr",
-        "img",
-        "slot",
-        "input",
-        "keygen",
-        "link",
-        "meta",
-        "param",
-        "source",
-        "track",
-        "wbr",
-        "menuitem",
-        "Image",
       },
     },
 

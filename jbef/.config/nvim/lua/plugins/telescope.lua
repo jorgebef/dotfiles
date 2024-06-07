@@ -3,13 +3,13 @@ local M = {
   dependencies = {
     { "nvim-lua/plenary.nvim" },
     -- { "nvim-telescope/telescope-frecency.nvim" },
-    { "nvim-telescope/telescope-file-browser.nvim" },
+    -- { "nvim-telescope/telescope-file-browser.nvim" },
     -- { "natecraddock/telescope-zf-native.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     { "nvim-telescope/telescope-ui-select.nvim" },
 
     -- FILE PREVIEWER
-    { "nvim-telescope/telescope-media-files.nvim" },
+    -- { "nvim-telescope/telescope-media-files.nvim" },
     -- { "nvim-lua/popup.nvim" },
     { "nvim-lua/plenary.nvim" },
   },
@@ -57,8 +57,8 @@ function M.config()
       selection_caret = "▌ ",
       -- border = false,
       -- borderchars = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
-      results_title = false,
-      prompt_title = false,
+      -- results_title = false,
+      -- prompt_title = false,
 
       vimgrep_arguments = {
         "rg",
@@ -125,11 +125,11 @@ function M.config()
   -- telescope.load_extension("frecency")
   -- To get telescope-file-browser loaded and working with telescope,
   -- you need to call load_extension, somewhere after setup function:
-  telescope.load_extension("file_browser")
+  -- telescope.load_extension("file_browser")
   -- -- Telescope Notification history review and finder
   -- telescope.load_extension("notify")
   -- Telescope Media file Previewer
-  telescope.load_extension("media_files")
+  -- telescope.load_extension("media_files")
   telescope.load_extension("ui-select")
 
   -- ==================Custom function for git files=======================

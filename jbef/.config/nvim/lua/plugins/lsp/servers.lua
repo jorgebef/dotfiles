@@ -68,16 +68,16 @@ local M = {
   --   },
   -- },
   -- astro = {},
-  eslint = {
-    settings = {
-      -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
-      workingDirectories = { mode = "auto" },
-    },
-  },
-  graphql = {
-    -- filetypes = { "graphql", "typescriptreact", "javascriptreact" },
-    -- root_dir = lspconfig.util.root_pattern(".git", ".graphqlrc*", ".graphql.config.*", "graphql.config.*"),
-  },
+  -- eslint = {
+  --   settings = {
+  --     -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+  --     workingDirectories = { mode = "auto" },
+  --   },
+  -- },
+  -- graphql = {
+  -- filetypes = { "graphql", "typescriptreact", "javascriptreact" },
+  -- root_dir = lspconfig.util.root_pattern(".git", ".graphqlrc*", ".graphql.config.*", "graphql.config.*"),
+  -- },
   dockerls = {},
   docker_compose_language_service = {
     filetypes = { "yaml.docker-compose" },
@@ -141,11 +141,11 @@ local M = {
   },
   cssls = {},
   css_variables = {},
-  cssmodules_ls = {
-    init_options = {
-      camelCase = "dashes",
-    },
-  },
+  -- cssmodules_ls = {
+  --   init_options = {
+  --     camelCase = "dashes",
+  --   },
+  -- },
   tailwindcss = {
     -- cmd = { "bunx", "tailwindcss-language-server", "--stdio" },
     root_dir = lspconfig.util.root_pattern(
@@ -174,6 +174,7 @@ local M = {
           classRegex = {
             -- "clsx\\(([^)]*)\\)",
             "clsx\\(([^)]*)\\)",
+            "cn\\(([^)]*)\\)",
             "cva\\(([^)]*)\\)",
             -- "(?:'|\"|`)([^']*)(?:'|\"|`)",
           },

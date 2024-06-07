@@ -2,7 +2,9 @@ local wezterm = require("wezterm")
 local mux = wezterm.mux
 local act = wezterm.action
 -- local palette = require("user.catppuccin").colors.mocha
-local kanagawa_custom = require("user.kanagawa-custom")
+
+package.path = package.path .. ";/Users/jbef/.config/colors/?.lua"
+local kanagawa_custom = require("kanagawa-custom")
 
 local USE_TMUX = true
 
@@ -10,20 +12,42 @@ local config = wezterm.config_builder()
 
 config.term = "wezterm"
 
--- local custom = wezterm.color.get_builtin_schemes()["Kanagawa (Gogh)"]
--- custom.foreground = "#D1D3D3"
--- config.color_schemes = {
---   ["Kanagawa Custom"] = kanagawa_custom,
--- }
--- config.color_scheme = "Kanagawa Custom"
-config.colors = kanagawa_custom.colors
+config.colors = {
+  foreground = kanagawa_custom.fujiWhite,
+  background = kanagawa_custom.sumiInk3,
+  cursor_bg = kanagawa_custom.fujiWhite,
+  cursor_fg = kanagawa_custom.sumiInk0,
+  cursor_border = kanagawa_custom.oldWhite,
+  selection_fg = kanagawa_custom.oldWhite,
+  selection_bg = kanagawa_custom.waveBlue2,
+  scrollbar_thumb = kanagawa_custom.sumiInk0,
+  split = kanagawa_custom.sumiInk0,
+  ansi = {
+    kanagawa_custom.sumiInk0,
+    kanagawa_custom.autumnRed,
+    kanagawa_custom.autumnGreen,
+    kanagawa_custom.boatYellow2,
+    kanagawa_custom.crystalBlue,
+    kanagawa_custom.oniViolet,
+    kanagawa_custom.waveAqua1,
+    kanagawa_custom.oldWhite,
+  },
+  brights = {
+    kanagawa_custom.fujiGray,
+    kanagawa_custom.samuraiRed,
+    kanagawa_custom.springGreen,
+    kanagawa_custom.carpYellow,
+    kanagawa_custom.springBlue,
+    kanagawa_custom.springViolet1,
+    kanagawa_custom.waveAqua2,
+    kanagawa_custom.lotusGray,
+  },
+  indexed = { [16] = "#ffa066", [17] = "#ff5d62" },
+}
 
+-- config.color_scheme = "Tokyo Night"
 -- config.color_scheme = "Catppuccin Mocha"
--- config.color_scheme = "Kanagawa Dragon (Gogh)"
-
 -- config.color_scheme = "Kanagawa (Gogh)"
--- config.color_scheme = "tokyonight_night"
--- config.colors = kanagawa.colors
 
 config.font = wezterm.font({
   family = "JetbrainsMono Nerd Font",
@@ -50,7 +74,7 @@ config.font_rules = {
   },
 }
 -- Disables ligatures
--- config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 -- harfbuzz_features = { "calt", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
 -- config.line_height = 1.05 -- specific for FiraCode font
 config.underline_thickness = 2 -- specific for FiraCode font

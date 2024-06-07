@@ -1,3 +1,9 @@
+-- This is how you load the package for other lua configs
+-- =====================================================================
+-- package.path = package.path .. ";/Users/jbef/.config/colors/?.lua"
+-- local kanagawa_custom = require("kanagawa-custom")
+-- =====================================================================
+
 local palette = {
 
   -- Bg Shades

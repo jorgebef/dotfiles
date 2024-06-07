@@ -3,13 +3,14 @@ local M = {
 }
 
 function M.config()
+  package.path = package.path .. ";/Users/jbef/.config/colors/?.lua"
+  local kanagawa_custom = require("kanagawa-custom")
+
   require("kanagawa").setup({
+    transparent = true, -- do not set background color
 
     colors = {
-      palette = {
-        fujiWhite = "#D1D3D3",
-        -- waveRed = "#DF4A4F",
-      },
+      palette = kanagawa_custom,
       theme = {
         all = {
           ui = {
@@ -21,13 +22,41 @@ function M.config()
 
     overrides = function(colors)
       local theme = colors.theme
-      local palette = colors.palette
+      -- local palette = colors.palette
+      local palette = kanagawa_custom
       return {
         Cursor = { fg = theme.ui.bg, bg = theme.ui.fg },
 
         NormalFloat = { bg = theme.ui.bg },
         FloatBorder = { bg = theme.ui.bg },
         FloatTitle = { bg = theme.ui.bg },
+
+        Pmenu = { bg = theme.ui.bg },
+        PmenuSel = { fg = palette.springBlue, bg = palette.sumiInk5 },
+        PmenuThumb = { bg = palette.sumiInk6 },
+
+        NeoTreeFloatTitle = { fg = theme.ui.fg },
+        NeoTreeTitleBar = { fg = theme.ui.bg, bg = palette.sumiInk6 },
+        -- NeoTreeFloatBorder = { fg = theme.ui.fg },
+
+        -- CmpItemMenu = { bg = palette.sumiInk3 },
+        -- CmpItemKind = { bg = palette.sumiInk3 },
+        -- CmpItemAbbr = { bg = palette.sumiInk3 },
+
+        -- TelescopeNormal = { fg = colors.subtext0, bg = colors.bg },
+        -- TelescopeBorder = { fg = palette.sumiInk6, bg = theme.ui.bg },
+        -- TelescopeMatching = { fg = colors.pink, bg = nil, bold = true },
+        -- TelescopeSelection = { fg = colors.text, bg = colors.surface0 },
+        -- TelescopeSelectionCaret = { fg = colors.pink, bg = colors.surface0 },
+        -- TelescopePreviewBorder = { fg = palette.sumiInk6, bg = theme.ui.bg },
+        -- TelescopePreviewTitle = { fg = theme.ui.bg, bg = palette.sumiInk6, bold = true },
+        -- TelescopePreviewNormal = { fg = colors.overlay2, bg = colors.bg },
+        -- TelescopeResultsNormal = { fg = colors.overlay2, bg = colors.bg },
+        -- TelescopeResultsTitle = { fg = theme.ui.bg, bg = palette.sumiInk6, bold = true },
+        -- TelescopePromptBorder = { fg = palette.sumiInk6, bg = theme.ui.bg },
+        -- TelescopePromptTitle = { fg = theme.ui.bg, bg = palette.sumiInk6, bold = true },
+        -- TelescopePromptNormal = { fg = colors.overlay2, bg = colors.bg },
+        -- TelescopePromptPrefix = { fg = colors.pink, bg = colors.bg },
 
         -- -- Save an hlgroup with dark background and dimmed foreground
         -- -- so that you can use it where your still want darker windows.
@@ -46,6 +75,10 @@ function M.config()
         IblIndent = { fg = palette.sumiInk5, bg = "none" },
 
         -- ["@comment"] = { fg = palette.sumiInk6 },
+        -- ["@tag.delimiter.tsx"] = { fg = palette.lotusGray3 },
+        ["@tag.tsx"] = { fg = palette.crystalBlue },
+        ["@tag.builtin.tsx"] = { fg = palette.sakuraPink },
+        -- ["@tag.attribute.tsx"] = { fg = palette.lotusBlue3 },
       }
     end,
   })

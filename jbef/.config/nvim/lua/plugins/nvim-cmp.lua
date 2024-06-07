@@ -2,6 +2,8 @@ local M = {
   "hrsh7th/nvim-cmp",
   branch = "main",
   dependencies = {
+    "folke/lazydev.nvim",
+
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
@@ -98,6 +100,15 @@ function M.config()
           cmp.complete()
         end
       end, { "i", "c" }),
+
+      -- ["<C-n>"] = cmp.mapping(function()
+      --   if not cmp.visible() then
+      --     cmp.mapping.select_next_item()
+      --   else
+      --     cmp.complete()
+      --   end
+      -- end, { "i", "s" }),
+
       ["<C-y>"] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
       ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
       ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
@@ -121,9 +132,12 @@ function M.config()
           fallback()
         end
       end,
-      -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
+      -- {
+      --   name = "lazydev",
+      --   group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+      -- },
       { name = "nvim_lsp", keyword_length = 1 },
       { name = "path", keyword_length = 1 },
       { name = "luasnip", keyword_length = 1 }, -- For luasnip users.
