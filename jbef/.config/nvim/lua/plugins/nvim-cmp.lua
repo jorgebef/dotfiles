@@ -1,16 +1,22 @@
 local M = {
   "hrsh7th/nvim-cmp",
   branch = "main",
+  event = "LSPAttach",
+  -- WARNING
+  -- DISABLE
+  enabled = false,
   dependencies = {
-    "folke/lazydev.nvim",
+    { "folke/lazydev.nvim", lazy = true },
 
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
+    { "hrsh7th/cmp-nvim-lsp", lazy = true },
+    { "hrsh7th/cmp-buffer", lazy = true },
+    -- "hrsh7th/cmp-path",
+    { "FelipeLema/cmp-async-path", lazy = true },
+
     -- { "hrsh7th/cmp-cmdline" },
-    "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
-    "onsails/lspkind-nvim",
+    { "L3MON4D3/LuaSnip", lazy = true },
+    { "saadparwaiz1/cmp_luasnip", lazy = true },
+    { "onsails/lspkind-nvim", lazy = true },
   },
 }
 
@@ -138,8 +144,15 @@ function M.config()
       --   name = "lazydev",
       --   group_index = 0, -- set group index to 0 to skip loading LuaLS completions
       -- },
-      { name = "nvim_lsp", keyword_length = 1 },
-      { name = "path", keyword_length = 1 },
+      {
+        name = "nvim_lsp",
+        priority = 100,
+        group_index = 1,
+        -- keyword_length = 1,
+      },
+      -- { name = "path", keyword_length = 1 },
+      { name = "async_path", priority = 30, group_index = 5 },
+
       { name = "luasnip", keyword_length = 1 }, -- For luasnip users.
     }, {
       { name = "buffer", keyword_length = 1 },
@@ -148,7 +161,7 @@ function M.config()
       debounce = 0,
       throttle = 0,
       fetching_timeout = 100,
-      max_view_entries = 30,
+      -- max_view_entries = 30,
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },
@@ -171,7 +184,7 @@ function M.config()
         local kind = lspkind.cmp_format({
           mode = "symbol_text",
           with_text = true,
-          maxwidth = 70,
+          maxwidth = 30,
         })(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
         kind.kind = " " .. strings[1] .. " "

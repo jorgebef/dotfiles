@@ -3,6 +3,8 @@ vim.g.mapleader = " "
 -- REMAPS
 -- ================================================================
 local opts = { noremap = true, silent = true }
+---@type Util
+local util = require("util.util")
 
 vim.keymap.set("n", "j", "gj", opts)
 vim.keymap.set("v", "j", "gj", opts)
@@ -19,7 +21,7 @@ vim.keymap.set("v", "p", '"_dP', opts)
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
-vim.keymap.set("n", "<esc>", ':noh<cr>:echo""<cr><esc>', opts)
+vim.keymap.set("n", "<ESC>", '<ESC>:noh<CR>:lua require("notify").dismiss()<CR>', opts)
 
 -- improved scrolling
 vim.keymap.set("n", "<C-e>", "4<C-e>", opts)
@@ -39,7 +41,6 @@ vim.keymap.set("v", "<C-y>", "4<C-y>", opts)
 -- vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 -- vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
 
-
 vim.keymap.set("n", "<leader>w", ":silent write<cr>", opts)
 vim.keymap.set("n", "<leader>q", ":q<cr>", opts)
 vim.keymap.set("n", "<leader>Q", ":qa<cr>", opts)
@@ -53,7 +54,12 @@ vim.keymap.set("n", "<leader>3", [["syiw<Esc>:let @/ = @s | set hls<CR>]], opts)
 vim.keymap.set("v", "<leader>3", [["sy<Esc>:let @/ = @s | set hls<CR>]], opts)
 
 -- SEARCH AND REPLACE
-vim.keymap.set("n", "<leader>R", ":.,$s/<C-r><C-w>//gc<Left><Left><Left>", { noremap = true, nowait = true })
+vim.keymap.set(
+  "n",
+  "<leader>R",
+  ":.,$s/<C-r><C-w>//gc<Left><Left><Left>",
+  util.table_merge(opts, { desc = "Replace word under cursor" })
+)
 vim.keymap.set("v", "<leader>R", '"hy:.,$s/<C-r>h//gc<Left><Left><Left>', { noremap = true, nowait = true })
 
 -- Make new line above or below without entering insert mode
@@ -81,5 +87,3 @@ vim.keymap.set("n", "<leader>-", "<C-w>8<", opts)
 
 vim.keymap.set("n", "<leader>sv", ":vs<CR>", opts)
 vim.keymap.set("n", "<leader>sh", ":split<CR>", opts)
-
--- vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")

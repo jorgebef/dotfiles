@@ -9,13 +9,25 @@ function M.config()
         icon = "󰡨",
         color = "#448EE6",
         cterm_color = "45",
-        name = "dockerfile",
+        name = "Dockerfile",
       },
       ["dockerfile.prod"] = {
         icon = "󰡨",
         color = "#448EE6",
         cterm_color = "45",
-        name = "dockerfile",
+        name = "Dockerfile",
+      },
+      ["docker-compose.dev.yaml"] = {
+        icon = "󰡨",
+        color = "#448EE6",
+        cterm_color = "45",
+        name = "Dockerfile",
+      },
+      ["docker-compose.prod.yaml"] = {
+        icon = "󰡨",
+        color = "#448EE6",
+        cterm_color = "45",
+        name = "Dockerfile",
       },
     },
   })

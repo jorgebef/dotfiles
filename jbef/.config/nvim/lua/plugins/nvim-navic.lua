@@ -1,4 +1,7 @@
-local M = { "SmiteshP/nvim-navic" }
+local M = {
+  "SmiteshP/nvim-navic",
+  event = "LspAttach",
+}
 
 function M.config()
   local navic = require("nvim-navic")

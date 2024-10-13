@@ -1,5 +1,6 @@
 local M = {
   "smjonas/inc-rename.nvim",
+  event = "LspAttach",
 }
 
 function M.config()

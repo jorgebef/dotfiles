@@ -8,6 +8,8 @@ local M = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     { "nvim-telescope/telescope-ui-select.nvim" },
 
+    { "scottmckendry/telescope-resession.nvim" },
+
     -- FILE PREVIEWER
     -- { "nvim-telescope/telescope-media-files.nvim" },
     -- { "nvim-lua/popup.nvim" },
@@ -19,6 +21,8 @@ function M.config()
   local ui = require("config.ui")
   local telescope = require("telescope")
   local builtin = require("telescope.builtin")
+  ---@type Util
+  local util = require("util.util")
 
   -- You dont need to set any of these options. These are the default ones. Only
   -- the loading is important
@@ -33,8 +37,8 @@ function M.config()
           "--color=never",
           "--follow",
           "--hidden",
-          -- "--exclude",
-          -- "!.git",
+          "--exclude",
+          ".git",
           -- "--no-ignore-vcs",
         },
       },
@@ -80,6 +84,11 @@ function M.config()
       },
     },
     extensions = {
+      resession = {
+        prompt_title = "Find Sessions", -- telescope prompt title
+        dir = "session", -- directory where resession stores sessions
+      },
+      -- notify = {},
       file_browser = {
         -- theme = "ivy",
         -- disables netrw and use telescope-file-browser in its place
@@ -101,15 +110,6 @@ function M.config()
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
         -- the default case_mode is "smart_case"
       },
-      -- frecency = {
-      --   -- db_root = "/home/my_username/path/to/db_root",
-      --   show_scores = false,
-      --   show_unindexed = true,
-      --   ignore_patterns = { "*.git/*", "*/tmp/*" },
-      --   disable_devicons = false,
-      --   default_workspace = "CWD",
-      --   show_filter_column = false,
-      -- },
       ["ui-select"] = {
         require("telescope.themes").get_dropdown({
           -- even more opts
@@ -127,7 +127,7 @@ function M.config()
   -- you need to call load_extension, somewhere after setup function:
   -- telescope.load_extension("file_browser")
   -- -- Telescope Notification history review and finder
-  -- telescope.load_extension("notify")
+  telescope.load_extension("notify")
   -- Telescope Media file Previewer
   -- telescope.load_extension("media_files")
   telescope.load_extension("ui-select")
@@ -147,15 +147,17 @@ function M.config()
 
   vim.keymap.set("n", "<leader>fg", function()
     builtin.live_grep()
-  end, nsn_opts)
+  end, util.table_merge(nsn_opts, { desc = "Telescope live grep" }))
 
   vim.keymap.set("n", "<leader>fj", function()
     builtin.jumplist()
   end, nsn_opts)
 
   vim.keymap.set("n", "<leader>ff", function()
-    project_files()
+    -- project_files()
+    builtin.find_files()
   end, nsn_opts)
+
   vim.keymap.set("n", "<leader>fF", builtin.find_files, nsn_opts)
 
   vim.keymap.set("n", "<leader>fb", function()
@@ -166,17 +168,21 @@ function M.config()
     builtin.git_files()
   end, nsn_opts)
 
-  vim.keymap.set("n", "<leader>fs", function()
+  vim.keymap.set("n", "<leader>fS", function()
     builtin.lsp_document_symbols()
   end, nsn_opts)
 
-  vim.keymap.set("n", "<leader>fS", function()
-    builtin.lsp_dynamic_workspace_symbols()
+  vim.keymap.set("n", "<leader>fs", function()
+    telescope.extensions.resession.resession()
   end, nsn_opts)
 
-  -- vim.keymap.set("n", "<leader>fn", function()
-  --   telescope.extensions.notify.notify()
+  -- vim.keymap.set("n", "<leader>fS", function()
+  --   builtin.lsp_dynamic_workspace_symbols()
   -- end, nsn_opts)
+
+  vim.keymap.set("n", "<leader>fn", function()
+    telescope.extensions.notify.notify()
+  end, nsn_opts)
 
   vim.keymap.set("n", "<leader>fr", function()
     builtin.resume()

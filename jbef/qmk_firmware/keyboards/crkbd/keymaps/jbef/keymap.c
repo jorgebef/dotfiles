@@ -73,16 +73,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // KEY COMBOS DEFINDE BY USER GO HERE
 enum combos {
   JK_ESC,
-  FG_RALT,
+  LALTSPC_RALT,
 };
 
-const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM fg_combo[] = {KC_F, KC_G, COMBO_END};
+const uint16_t PROGMEM ralt_combo[] = {KC_LALT, KC_SPC, COMBO_END};
 
 combo_t key_combos[] = {
-  [JK_ESC] = COMBO(jk_combo, KC_ESC),
-  [FG_RALT] = COMBO(fg_combo, KC_RALT),
+  [LALTSPC_RALT] = COMBO(ralt_combo, KC_RALT),
 };
+
+uint16_t get_combo_term(uint16_t index, combo_t *combo) {
+    // or with combo index, i.e. its name from enum.
+    switch (index) {
+        case LALTSPC_RALT:
+            return 2001;
+    }
+
+    return COMBO_TERM;
+}
 // END OF KEY COMBOS
 
 

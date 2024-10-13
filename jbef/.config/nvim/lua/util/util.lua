@@ -1,3 +1,4 @@
+---@class Util
 local M = {}
 
 M.get_buf_option = function(opt)

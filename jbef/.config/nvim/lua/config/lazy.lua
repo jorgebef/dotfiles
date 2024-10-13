@@ -15,6 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local lazy = require("lazy")
+---@type UISymbols
 local ui = require("config.ui")
 
 -- require("util.lazy-nvim-util").setup()
@@ -34,13 +35,13 @@ lazy.setup("plugins", {
     enabled = false,
     notify = false, -- get a notification when changes are found
   },
-  -- install = {
-  --   colorscheme = {
-  --     "catppuccin",
-  --     -- "flexoki",
-  --     -- "rose-pine",
-  --   },
-  -- },
+  install = {
+    colorscheme = {
+      -- "catppuccin",
+      -- "flexoki",
+      -- "rose-pine",
+    },
+  },
   ui = {
     -- a number <1 is a percentage., >1 is a fixed size
     size = { width = 0.8, height = 0.8 },
@@ -51,9 +52,9 @@ lazy.setup("plugins", {
 
 vim.keymap.set("n", "<leader>L", ":Lazy<CR>", { noremap = true })
 
--- vim.cmd.colorscheme("catppuccin")
-vim.cmd.colorscheme("kanagawa")
--- vim.cmd.colorscheme("tokyonight")
+-- vim.cmd([[colorscheme catppuccin]])
+-- vim.cmd([[colorscheme kanagawa]])
+-- vim.cmd([[colorscheme tokyonight]])
 
 -- vim.cmd.colorscheme("onedark")
 -- require('onedark').load()

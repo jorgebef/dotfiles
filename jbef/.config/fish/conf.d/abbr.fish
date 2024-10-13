@@ -8,3 +8,5 @@
 abbr dev "cd ~/Developer"
 abbr dots "cd ~/Developer/dotfiles/"
 abbr dropbox "cd ~/Library/CloudStorage/Dropbox/"
+
+abbr ssh-peninsula "ssh root@188.34.186.187"

@@ -93,7 +93,7 @@ format = "[$symbol($version) ]($style)"
 
 [git_branch]
 symbol = "󰘬 "
-style = "fg:#727169"
+style = "fg:#7f849c"
 format = "[$symbol$branch(:$remote_branch) ]($style)"
 disabled = false
 
@@ -112,5 +112,5 @@ disabled = true
 [cmd_duration]
 min_time = 1
 # show_milliseconds = false
-style = "italic fg:#5A5A5A"
+style = "italic fg:#585b70"
 format = "[$duration]($style)"

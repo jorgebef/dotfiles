@@ -1,3 +1,9 @@
+-- =====================================================================
+-- Here we define the symbols that should be used throughout the whole
+-- neovim configuration for organisation and reusability
+-- =====================================================================
+
+---@class UISymbols
 local M = {}
 
 M.kind = {

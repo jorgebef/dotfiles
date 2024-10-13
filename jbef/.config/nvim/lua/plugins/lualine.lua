@@ -1,12 +1,19 @@
-local M = { "nvim-lualine/lualine.nvim" }
+local M = {
+  "nvim-lualine/lualine.nvim",
+  dependencies = {
+    { "akinsho/bufferline.nvim", version = "*" },
+    { "SmiteshP/nvim-navic" },
+    { "nvim-tree/nvim-web-devicons" },
+  },
+}
 
 function M.config()
+  ---@type UISymbols
   local ui = require("config.ui")
-  -- local cp = require("catppuccin.palettes").get_palette("mocha")
-  local colors = require("kanagawa.colors").setup({ theme = "wave" })
-  local palette = colors.palette
-
-  local navic = require("nvim-navic")
+  local palette = require("catppuccin.palettes").get_palette("mocha")
+  -- local colors = require("kanagawa.colors").setup({ theme = "wave" })
+  -- local palette = colors.palette
+  local devicons = require("nvim-web-devicons")
 
   local mode_map = {
     ["n"] = "",
@@ -35,7 +42,7 @@ function M.config()
     ["Rv"] = "V-REPLACE",
     ["Rvc"] = "V-REPLACE",
     ["Rvx"] = "V-REPLACE",
-    ["c"] = "COMMAND",
+    ["c"] = "",
     ["cv"] = "EX",
     ["ce"] = "EX",
     ["r"] = "REPLACE",
@@ -49,9 +56,10 @@ function M.config()
     options = {
       icons_enabled = true,
       -- theme = "auto",
+      theme = "catppuccin",
       -- theme = "kanagawa",
-      component_separators = { left = "", right = "" },
-      section_separators = { left = "", right = "" },
+      component_separators = "",
+      section_separators = "",
       -- section_separators = { left = '', right = ''},
       disabled_filetypes = {
         statusline = {},
@@ -60,8 +68,8 @@ function M.config()
       always_divide_middle = false,
       globalstatus = true,
       refresh = {
-        statusline = 300,
-        winbar = 1000,
+        statusline = 100,
+        winbar = 100,
       },
     },
     sections = {
@@ -72,13 +80,8 @@ function M.config()
             return mode_map[vim.api.nvim_get_mode().mode] or "__"
           end,
           separator = {
-            -- left = nil,
-            -- right = nil,
             left = ui.common.SeparatorLStart,
             right = ui.common.SeparatorREnd,
-            -- left = icons.ui.SeparatorLStart,
-            -- right = icons.ui.SeparatorLEndAngle,
-            -- right = icons.ui.SeparatorSquare,
           },
           -- color = { fg = nil, bg = nil, gui = "bold" },
           padding = { left = 1, right = 1 },
@@ -89,12 +92,6 @@ function M.config()
         {
           "branch",
           icon = ui.git.Branch,
-          separator = {
-            right = ui.common.AngleRight,
-            -- left = ui.common.SeparatorLStart,
-            -- right = ui.common.SeparatorREnd,
-          },
-          -- color = { fg = nil, bg = c.bg_highlight, gui = nil },
           padding = { left = 2, right = 1 },
           -- color = { fg = cp.base, bg = cp.overlay1, gui = "bold" },
         },
@@ -132,18 +129,13 @@ function M.config()
           colored = true, -- displays diagnostics status in color if set to true
           update_in_insert = false, -- Update diagnostics in insert mode
           always_visible = false, -- Show diagnostics always
-          separator = {
-            -- left = ui.common.SeparatorLStart,
-            -- right = ui.common.SeparatorREnd,
-          },
-          -- color = { fg = nil, bg = cp.base, gui = nil },
           padding = { left = 1, right = 1 },
         },
       },
       lualine_c = {
         {
           "filename",
-          path = 1,
+          path = 3,
           -- padding = { left = 100, right = 90 },
           padding = 2,
           -- color = { fg = cp.subtext1, bg = cp.base },
@@ -151,7 +143,6 @@ function M.config()
           -- color = { fg = c.fg_dark, bg = nil },
         },
       },
-      -- lualine_x = {'encoding', 'fileformat', 'filetype'},
       lualine_x = { "filetype" },
       lualine_y = {},
       lualine_z = {
@@ -161,60 +152,77 @@ function M.config()
             -- left = nil,
             -- right = nil,
             left = ui.common.SeparatorLStart,
-            -- right = ui.common.SeparatorREnd,
           },
           padding = { left = 0, right = 1 },
         },
       },
     },
-    inactive_sections = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = { "filename" },
-      lualine_x = { "filetype" },
-      lualine_z = {},
-    },
     winbar = {
       lualine_a = {
         {
           "filename",
-          color = "WinBarFilenameActive",
+          -- returns the parent folder and filename only
+          path = 4,
+          fmt = function(name)
+            -- match the substring until the first `/` symbol
+            local folder = name:match("(.+)/") or ""
+            if folder == "" then
+              return nil
+            else
+              return ui.kind.Folder .. folder .. " " .. ui.misc.Carat
+            end
+          end,
+          padding = { left = 1, right = 0 },
+          color = { fg = palette.text, bg = "NONE" },
+        },
+        {
+          "filetype",
+          colored = true, -- Displays filetype icon in color if set to true
+          icon_only = true, -- Display only an icon for filetype
+          padding = 0,
+          color = { bg = "NONE" },
+        },
+        {
+          "filename",
+          padding = { left = 0, right = 3 },
+          color = "WinbarFilenameActive",
         },
       },
-      lualine_b = {
-        --   {
-        --     function()
-        --       return navic.get_location()
-        --     end,
-        --     cond = function()
-        --       return navic.is_available()
-        --     end,
-        --     color = "WinBar",
-        --   },
-      },
+      lualine_b = { "navic" },
     },
     inactive_winbar = {
       lualine_a = {
         {
           "filename",
-          color = "WinBarFilenameInactive",
+          -- returns the parent folder and filename only
+          path = 4,
+          fmt = function(name)
+            -- match the substring until the first `/` symbol
+            local folder = name:match("(.+)/") or ""
+            if folder == "" then
+              return nil
+            else
+              return ui.kind.Folder .. folder .. " " .. ui.misc.Carat
+            end
+          end,
+          padding = { left = 1, right = 0 },
+          color = "WinbarInactive",
+        },
+        {
+          "filetype",
+          colored = false, -- Displays filetype icon in color if set to true
+          icon_only = true, -- Display only an icon for filetype
+          padding = 0,
+          color = "WinbarInactive",
+        },
+        {
+          "filename",
+          padding = { left = 0, right = 3 },
+          color = "WinbarInactive",
         },
       },
-      lualine_b = {
-        --   {
-        --     function()
-        --       return navic.get_location()
-        --     end,
-        --     cond = function()
-        --       return navic.is_available()
-        --     end,
-        --     color = "WinBarInactive",
-        --   },
-      },
+      lualine_b = {},
       lualine_c = {},
-      lualine_x = {},
-      lualine_y = {},
-      lualine_z = {},
     },
     extensions = {},
   })

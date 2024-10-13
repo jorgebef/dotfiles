@@ -1,19 +1,25 @@
 -- This is how you load the package for other lua configs
 -- =====================================================================
--- package.path = package.path .. ";/Users/jbef/.config/colors/?.lua"
+-- package.path = package.path .. ";/Users/jbef/.config/colors/[package_name].lua"
 -- local kanagawa_custom = require("kanagawa-custom")
 -- =====================================================================
+---@alias ColorSpec string RGB Hex string
+---@alias ColorTable table<string, ColorSpec>
+-- =====================================================================
 
-local palette = {
+---@class KanagawaCustom Colors for my custom kanagawa palette
+local M = {}
 
+---@class KanagawaCustomPalette
+M.palette = {
   -- Bg Shades
   sumiInk0 = "#16161D",
   sumiInk1 = "#181820",
   sumiInk2 = "#1a1a22",
   sumiInk3 = "#1F1F28",
-  sumiInk4 = "#2A2A37",
-  sumiInk5 = "#363646",
-  sumiInk6 = "#54546D", --fg
+  sumiInk4 = "#21212F",
+  sumiInk5 = "#303040",
+  sumiInk6 = "#434351", --fg
 
   -- Popup and Floats
   waveBlue1 = "#223249",
@@ -29,14 +35,15 @@ local palette = {
   autumnYellow = "#DCA561",
 
   -- Diag
-  samuraiRed = "#E82424",
-  roninYellow = "#FF9E3B",
+  samuraiRed = "#E82424", --unused
+  roninYellow = "#FF9E3B", --unused
   waveAqua1 = "#6A9589",
-  dragonBlue = "#658594",
+  dragonBlue = "#658594", --unused
 
   -- Fg and Comments
-  oldWhite = "#C8C093",
-  fujiWhite = "#D1D3D3",
+  -- oldWhite = "#C8C093",
+  oldWhite = "#AFACA9",
+  fujiWhite = "#CFCECE",
   fujiGray = "#727169",
 
   oniViolet = "#957FB8",
@@ -54,7 +61,7 @@ local palette = {
   -- waveAqua3  = "#68AD99",
 
   springGreen = "#98BB6C",
-  boatYellow1 = "#938056",
+  boatYellow1 = "#938056", --unused
   boatYellow2 = "#C0A36E",
   carpYellow = "#E6C384",
 
@@ -64,13 +71,13 @@ local palette = {
   surimiOrange = "#FFA066",
   katanaGray = "#717C7C",
 
-  dragonBlack0 = "#0d0c0c",
-  dragonBlack1 = "#12120f",
-  dragonBlack2 = "#1D1C19",
-  dragonBlack3 = "#181616",
-  dragonBlack4 = "#282727",
-  dragonBlack5 = "#393836",
-  dragonBlack6 = "#625e5a",
+  dragonBlack0 = "#0d0c0c", --unused
+  dragonBlack1 = "#12120f", --unused
+  dragonBlack2 = "#1D1C19", --unused
+  dragonBlack3 = "#181616", --unused
+  dragonBlack4 = "#282727", --unused
+  dragonBlack5 = "#393836", --unused
+  dragonBlack6 = "#625e5a", --unused
 
   dragonWhite = "#c5c9c5",
   dragonGreen = "#87a987",
@@ -132,4 +139,198 @@ local palette = {
   lotusCyan = "#d7e3d8",
 }
 
-return palette
+---@class KanagawaCustomTheme
+---@field syn SyntaxElements
+---@field diag DiagnosticsElements
+---@field vcs VCSElements
+---@field diff DiffElements
+---@field ui UiElements
+---@field term ColorSpec[]
+
+---@class SyntaxElements
+---@field string ColorSpec
+---@field variable ColorSpec
+---@field number ColorSpec
+---@field constant ColorSpec
+---@field identifier ColorSpec
+---@field parameter ColorSpec
+---@field fun ColorSpec
+---@field statement ColorSpec
+---@field keyword ColorSpec
+---@field operator ColorSpec
+---@field preproc ColorSpec
+---@field type ColorSpec
+---@field regex ColorSpec
+---@field deprecated ColorSpec
+---@field comment ColorSpec
+---@field punct ColorSpec
+---@field special1 ColorSpec
+---@field special2 ColorSpec
+---@field special3 ColorSpec
+
+---@class DiagnosticsElements
+---@field error ColorSpec
+---@field ok ColorSpec
+---@field warning ColorSpec
+---@field info ColorSpec
+---@field hint ColorSpec
+
+---@class VCSElements
+---@field added ColorSpec
+---@field removed ColorSpec
+---@field changed ColorSpec
+
+---@class DiffElements
+---@field add ColorSpec
+---@field delete ColorSpec
+---@field change ColorSpec
+---@field text ColorSpec
+
+---@class UiElements
+---@field fg ColorSpec Default foreground
+---@field fg_dim ColorSpec Dimmed foreground
+---@field fg_reverse ColorSpec
+---@field bg_dim ColorSpec Dimmed background
+---@field bg_m3 ColorSpec
+---@field bg_m2 ColorSpec
+---@field bg_m1 ColorSpec
+---@field bg ColorSpec Default background
+---@field bg_p1 ColorSpec Lighter background ColorColumn, Folded, Gutter
+---@field bg_p2 ColorSpec Lighter background Cursor{Line,Column}, TabLineSel (Selected Items)
+---@field bg_gutter ColorSpec {Sign,Fold}Column, LineNr
+---@field special ColorSpec SpecialKey
+---@field nontext ColorSpec LineNr, NonText
+---@field whitespace ColorSpec Whitespace
+---@field bg_search ColorSpec
+---@field bg_visual ColorSpec
+---@field pmenu MenuElements
+---@field float FloatElements
+
+---@class FloatElements
+---@field fg ColorSpec
+---@field bg ColorSpec
+---@field fg_border ColorSpec
+---@field bg_border ColorSpec
+
+---@class MenuElements
+---@field bg ColorSpec
+---@field fg ColorSpec
+---@field fg_sel ColorSpec
+---@field bg_sel ColorSpec
+---@field bg_sbar ColorSpec
+---@field bg_thumb ColorSpec
+
+---@type KanagawaCustomTheme
+M.wave = {
+  ui = {
+    fg = M.palette.fujiWhite,
+    fg_dim = M.palette.oldWhite,
+    fg_reverse = M.palette.waveBlue1,
+
+    bg_dim = M.palette.sumiInk1,
+    bg_gutter = "none",
+
+    bg_m3 = M.palette.sumiInk0,
+    bg_m2 = M.palette.sumiInk1,
+    bg_m1 = M.palette.sumiInk2,
+    bg = M.palette.sumiInk3,
+    bg_p1 = M.palette.sumiInk4,
+    bg_p2 = M.palette.sumiInk5,
+
+    special = M.palette.springViolet1,
+    nontext = M.palette.sumiInk6,
+    whitespace = M.palette.sumiInk6,
+
+    bg_search = M.palette.waveBlue2,
+    bg_visual = M.palette.sumiInk6,
+
+    pmenu = {
+      -- fg = M.palette.fujiWhite,
+      fg = M.palette.oldWhite,
+      fg_sel = "none", -- This is important to make highlights pass-through
+      -- bg = M.palette.waveBlue1,
+      bg = "none",
+      -- bg_sel = M.palette.waveBlue2,
+      bg_sel = M.palette.sumiInk5,
+      -- bg_sbar = M.palette.waveBlue1,
+      bg_sbar = M.palette.sumiInk2,
+      -- bg_thumb = M.palette.waveBlue2,
+      bg_thumb = M.palette.sumiInk5,
+    },
+    float = {
+      fg = M.palette.oldWhite,
+      -- bg = M.palette.sumiInk0,
+      bg = "none",
+      fg_border = M.palette.sumiInk6,
+      -- bg_border = M.palette.sumiInk0,
+      bg_border = "none",
+    },
+  },
+  syn = {
+    string = M.palette.springGreen,
+    variable = "none",
+    number = M.palette.sakuraPink,
+    constant = M.palette.surimiOrange,
+    identifier = M.palette.carpYellow,
+    -- parameter  = "#C3B1B1",
+    -- parameter  = "#B1ADC8",
+    -- parameter  = "#b8b4d0",
+    parameter = M.palette.oniViolet2,
+    -- parameter = "#d5a4a6",
+    -- parameter  = "#C8ADAD",
+    -- parameter  = "#d7a8a8",
+    fun = M.palette.crystalBlue,
+    statement = M.palette.oniViolet,
+    keyword = M.palette.oniViolet,
+    operator = M.palette.boatYellow2,
+    preproc = M.palette.waveRed, --lightBlue? deserves its own color
+    type = M.palette.waveAqua2,
+    regex = M.palette.boatYellow2,
+    deprecated = M.palette.katanaGray,
+    comment = M.palette.fujiGray,
+    punct = M.palette.springViolet2,
+    special1 = M.palette.springBlue,
+    special2 = M.palette.waveRed,
+    special3 = M.palette.peachRed,
+  },
+  vcs = {
+    added = M.palette.autumnGreen,
+    removed = M.palette.autumnRed,
+    changed = M.palette.autumnYellow,
+  },
+  diff = {
+    add = M.palette.winterGreen,
+    delete = M.palette.winterRed,
+    change = M.palette.winterBlue,
+    text = M.palette.winterYellow,
+  },
+  diag = {
+    ok = M.palette.springGreen,
+    error = M.palette.autumnRed,
+    warning = M.palette.autumnYellow,
+    info = M.palette.springBlue,
+    hint = M.palette.waveAqua1,
+  },
+  term = {
+    M.palette.sumiInk0, -- black
+    M.palette.autumnRed, -- red
+    M.palette.autumnGreen, -- green
+    M.palette.boatYellow2, -- yellow
+    M.palette.crystalBlue, -- blue
+    M.palette.oniViolet, -- magenta
+    M.palette.waveAqua1, -- cyan
+    M.palette.oldWhite, -- white
+    M.palette.fujiGray, -- bright black
+    M.palette.autumnRed, -- bright red
+    M.palette.springGreen, -- bright green
+    M.palette.carpYellow, -- bright yellow
+    M.palette.springBlue, -- bright blue
+    M.palette.springViolet1, -- bright magenta
+    M.palette.waveAqua2, -- bright cyan
+    M.palette.fujiWhite, -- bright white
+    M.palette.surimiOrange, -- extended color 1
+    M.palette.peachRed, -- extended color 2
+  },
+}
+
+return M

@@ -1,24 +1,10 @@
-# # Navigation
-# alt - h : yabai -m window --focus west
-# alt - j : yabai -m window --focus south
-# alt - k : yabai -m window --focus north
-# alt - l : yabai -m window --focus east
-
-# ctrl + alt + cmd - i : yabai -m window --focus prev
-# ctrl + alt + cmd - o : yabai -m window --focus next
-
-# Make fullscreen
-# ctrl + alt + cmd - return : yabai -m window --toggle zoom-fullscreen
-# ctrl + alt + cmd - f : yabai -m display --focus prev
-
 # Change display
 # ctrl + alt + cmd - i : yabai -m display --focus next
-alt - i : yabai -m display --focus 2
-alt - o : yabai -m display --focus 1
+ralt - i : yabai -m display --focus west
+ralt - o : yabai -m display --focus east
 
 # float / unfloat window and center on screen
-alt - u : yabai -m window --toggle float;\
-          yabai -m window --grid 4:4:1:1:2:2
+ralt - u : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # # cycle forwards on the focused display
 # ctrl + alt + cmd - l : \
@@ -31,9 +17,19 @@ alt - u : yabai -m window --toggle float;\
 #   max_id="$(yabai -m query --spaces --display | jq '.[-1].index')"; \
 #   id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | .[map(."has-focus") | index(true) - 1].index')"; \
 #   if [ "${id}" -ne "${max_id}" ]; then yabai -m space --focus "${id}"; fi
+ralt + cmd - return : yabai -m window --toggle zoom-parent
 
-# ctrl + alt + cmd - n : yabai -m window --focus next || yabai -m window --focus first
-# ctrl + alt + cmd - p : yabai -m window --focus prev || yabai -m window --focus last
+# lalt + cmd - 0x18 : yabai -m window --resize bottom_right:0:200
+# lalt + cmd - - : yabai -m window --resize right:-200
+
+ralt + shift - i : yabai -m window --display west; yabai -m display --focus west
+ralt + shift - o : yabai -m window --display east; yabai -m display --focus east
+
+ralt - h : yabai -m window --focus west
+ralt + shift - h : yabai -m window --swap west
+
+ralt - l : yabai -m window --focus east
+ralt + shift - l : yabai -m window --swap east
 
 # # send to display and follow focus
 # ctrl + alt + cmd - left : \
@@ -52,6 +48,3 @@ alt - u : yabai -m window --toggle float;\
 # ctrl + alt + cmd + shift - l : \
 #   cur_window="$(yabai -m query --windows --window | jq '.id')" && \
 #   yabai -m window --space next && yabai -m window --focus ${cur_window}
-
-# alt - d : yabai -m window --toggle zoom-parent
-alt - return : yabai -m window --toggle zoom-fullscreen

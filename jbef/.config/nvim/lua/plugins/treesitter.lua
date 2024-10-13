@@ -8,7 +8,6 @@ local M = {
   },
 }
 
----@param opts TSConfig
 function M.config(_, opts)
   opts = {
     -- A list of parser names, or "all"
@@ -33,6 +32,7 @@ function M.config(_, opts)
       "luap",
       "markdown",
       "markdown_inline",
+      "php",
       "python",
       "query",
       "regex",
@@ -53,8 +53,8 @@ function M.config(_, opts)
     -- Automatically install missing parsers when entering buffer
     auto_install = true,
 
-    -- -- List of parsers to ignore installing (for "all")
-    -- ignore_install = { "phpdoc" },
+    -- List of parsers to ignore installing (for "all")
+    ignore_install = {},
 
     ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
     -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
@@ -81,6 +81,13 @@ function M.config(_, opts)
       },
       select = {
         enable = true,
+        disable = function(lang, _buf)
+          if lang == ("php" or "phpdoc") then
+            return true
+          else
+            return false
+          end
+        end,
         lookahead = true,
         keymaps = {
           ["af"] = "@function.outer",
@@ -146,6 +153,14 @@ function M.config(_, opts)
   require("ts_context_commentstring").setup({
     enable_autocmd = false,
   })
+
+  -- -- MDX
+  -- vim.filetype.add({
+  --   extension = {
+  --     mdx = "mdx",
+  --   },
+  -- })
+  -- vim.treesitter.language.register("markdown", "mdx")
 end
 
 return M

@@ -1,0 +1,100 @@
+# # The syntax is "key = value". The whitespace around the equals doesn't matter.
+# background = 1F1F28 
+# foreground= D1D3D3 
+
+# Blank lines are ignored!
+
+# keybind = ctrl+z=close_surface
+# keybind = ctrl+'=new_split:right
+# keybind = ctrl+/=new_split:down
+
+# Empty values reset the configuration to the default value
+title = .
+
+font-family = JetBrainsMono Nerd Font
+# font-family = MonaspiceNe Nerd Font
+font-family-bold = JetBrainsMono Nerd Font Bold
+# font-family = Times New Roman
+
+# cursor-style = block
+shell-integration = fish
+shell-integration-features = true
+mouse-hide-while-typing = true
+
+font-size = 14.5
+adjust-cell-width = -1
+# adjust-cell-height = 4
+
+background-opacity = 0.98
+# background-blur-radius = 100
+# background-opacity = 1
+
+# gtk-titlebar = false
+window-decoration = true
+macos-titlebar-style = hidden
+
+# macos-option-as-alt = true
+keybind = ctrl+;=text:þ
+keybind = ctrl+m=text:Ω
+# keybind = cmd+left=text:\x01
+# keybind = alt+left=esc:b
+# keybind = alt+right=esc:f
+
+theme = catppuccin-mocha
+# theme = tokyonight
+# theme = kanagawabones
+
+## Colors can be changed by setting the 16 colors of `palette`, which each color
+## being defined as regular and bold.
+# background = 1F1F28
+# foreground = CFCECE
+# # black
+# palette = 0=#1F1F28
+# palette = 8=#3C3C51
+# # red
+# palette = 1=#C34043
+# palette = 9=#E46876
+# # green
+# palette = 2=#76946A
+# palette = 10=#98BB6C
+# # yellow
+# palette = 3=#E5C283
+# palette = 11=#F1C982
+# # blue
+# palette = 4=#7EB3C9
+# palette = 12=#7BC2DF
+# # magenta
+# palette = 5=#957FB8
+# palette = 13=#A98FD2
+# # cyan
+# palette = 6=#7EB3C9
+# palette = 14=#7BC2DF
+# # white
+# palette = 7=#CFCECE
+# palette = 15=#AFACA9 
+#
+
+# # black
+# palette = 0=#16161D
+# palette = 8=#727169
+# # red
+# palette = 1=#C34043
+# palette = 9=#C34043
+# # green
+# palette = 2=#76946A
+# palette = 10=#98BB6C
+# # yellow
+# palette = 3=#DCA561
+# palette = 11=#E6C384
+# # blue
+# palette = 4=#7E9CD8
+# palette = 12=#7FB4CA
+# # purple
+# palette = 5=#957FB8
+# palette = 13=#938AA9
+# # aqua
+# palette = 6=#6A9589
+# palette = 14=#7AA89F
+# # white
+# palette = 7=#C8C093
+# palette = 15=#dcd7ba

@@ -6,8 +6,9 @@ function M.config()
   --#####################################################
   require("mini.bufremove").setup({})
   require("mini.pairs").setup({})
-  require("mini.surround").setup({})
+  -- require("mini.notify").setup({})
   require("mini.ai").setup({})
+
 
   vim.keymap.set("n", "<leader>bd", function()
     -- Default values are 0 for current buffer and false for force

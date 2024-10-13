@@ -1,10 +1,11 @@
 local wezterm = require("wezterm")
+
 local mux = wezterm.mux
 local act = wezterm.action
 -- local palette = require("user.catppuccin").colors.mocha
 
-package.path = package.path .. ";/Users/jbef/.config/colors/?.lua"
-local kanagawa_custom = require("kanagawa-custom")
+-- package.path = package.path .. ";/Users/jbef/.config/colors/?.lua"
+-- local kanagawa_custom = require("kanagawa-custom")
 
 local USE_TMUX = true
 
@@ -12,41 +13,41 @@ local config = wezterm.config_builder()
 
 config.term = "wezterm"
 
-config.colors = {
-  foreground = kanagawa_custom.fujiWhite,
-  background = kanagawa_custom.sumiInk3,
-  cursor_bg = kanagawa_custom.fujiWhite,
-  cursor_fg = kanagawa_custom.sumiInk0,
-  cursor_border = kanagawa_custom.oldWhite,
-  selection_fg = kanagawa_custom.oldWhite,
-  selection_bg = kanagawa_custom.waveBlue2,
-  scrollbar_thumb = kanagawa_custom.sumiInk0,
-  split = kanagawa_custom.sumiInk0,
-  ansi = {
-    kanagawa_custom.sumiInk0,
-    kanagawa_custom.autumnRed,
-    kanagawa_custom.autumnGreen,
-    kanagawa_custom.boatYellow2,
-    kanagawa_custom.crystalBlue,
-    kanagawa_custom.oniViolet,
-    kanagawa_custom.waveAqua1,
-    kanagawa_custom.oldWhite,
-  },
-  brights = {
-    kanagawa_custom.fujiGray,
-    kanagawa_custom.samuraiRed,
-    kanagawa_custom.springGreen,
-    kanagawa_custom.carpYellow,
-    kanagawa_custom.springBlue,
-    kanagawa_custom.springViolet1,
-    kanagawa_custom.waveAqua2,
-    kanagawa_custom.lotusGray,
-  },
-  indexed = { [16] = "#ffa066", [17] = "#ff5d62" },
-}
+-- config.colors = {
+--   foreground = kanagawa_custom.fujiWhite,
+--   background = kanagawa_custom.sumiInk3,
+--   cursor_bg = kanagawa_custom.fujiWhite,
+--   cursor_fg = kanagawa_custom.sumiInk0,
+--   cursor_border = kanagawa_custom.oldWhite,
+--   selection_fg = kanagawa_custom.oldWhite,
+--   selection_bg = kanagawa_custom.waveBlue2,
+--   scrollbar_thumb = kanagawa_custom.sumiInk0,
+--   split = kanagawa_custom.sumiInk0,
+--   ansi = {
+--     kanagawa_custom.sumiInk0,
+--     kanagawa_custom.autumnRed,
+--     kanagawa_custom.autumnGreen,
+--     kanagawa_custom.boatYellow2,
+--     kanagawa_custom.crystalBlue,
+--     kanagawa_custom.oniViolet,
+--     kanagawa_custom.waveAqua1,
+--     kanagawa_custom.oldWhite,
+--   },
+--   brights = {
+--     kanagawa_custom.fujiGray,
+--     kanagawa_custom.samuraiRed,
+--     kanagawa_custom.springGreen,
+--     kanagawa_custom.carpYellow,
+--     kanagawa_custom.springBlue,
+--     kanagawa_custom.springViolet1,
+--     kanagawa_custom.waveAqua2,
+--     kanagawa_custom.lotusGray,
+--   },
+--   indexed = { [16] = "#ffa066", [17] = "#ff5d62" },
+-- }
 
 -- config.color_scheme = "Tokyo Night"
--- config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Catppuccin Mocha"
 -- config.color_scheme = "Kanagawa (Gogh)"
 
 config.font = wezterm.font({
@@ -74,7 +75,7 @@ config.font_rules = {
   },
 }
 -- Disables ligatures
-config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+-- config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 -- harfbuzz_features = { "calt", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
 -- config.line_height = 1.05 -- specific for FiraCode font
 config.underline_thickness = 2 -- specific for FiraCode font
@@ -289,7 +290,7 @@ config.send_composed_key_when_left_alt_is_pressed = true
 -- ==================================================================================
 -- Here we set the leader based on whether we have set the flag USE_TMUX or not
 -- ==================================================================================
-if USE_TMUX == true then
+if USE_TMUX then
   config.leader = { key = "b", mods = "CTRL|ALT", timeout_milliseconds = 1000 }
 else
   config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
@@ -317,5 +318,7 @@ else
   end
 end
 -- ==================================================================================
+
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 
 return config

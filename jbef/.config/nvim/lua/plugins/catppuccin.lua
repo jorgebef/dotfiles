@@ -11,7 +11,6 @@ local M = {
 
 function M.config()
   -- IMPORTANT!!!!!!!!!
-  -- vim.g.catppuccin_flavour = "mocha"
   vim.g.catppuccin_flavour = "mocha"
 
   require("catppuccin").setup({
@@ -82,7 +81,7 @@ function M.config()
       },
       dashboard = true,
       markdown = true,
-      notify = false,
+      notify = true,
       noice = true,
       symbols_outline = true,
       flash = true,
@@ -128,10 +127,7 @@ function M.config()
       return {
         -- UI elements
         -- ===============
-        -- Pmenu = { bg = colors.mantle },
         PmenuSel = { fg = colors.pink, bg = colors.surface1 },
-        -- NormalFloat = { bg = colors.mantle },
-        -- FloatBorder = { fg = colors.overlay0, bg = colors.base },
 
         CmpItemAbbrMatch = { fg = colors.text },
         CmpItemAbbrMatchFuzzy = { fg = colors.text },
@@ -148,7 +144,7 @@ function M.config()
         TelescopePreviewBorder = { fg = colors.overlay1, bg = colors.bg },
         TelescopePreviewTitle = { fg = colors.overlay0, bg = colors.bg },
         TelescopePreviewNormal = { fg = colors.overlay2, bg = colors.bg },
-        TelescopeResultsNormal = { fg = colors.overlay2, bg = colors.bg },
+        TelescopeResultsNormal = { fg = colors.overlay1, bg = colors.bg },
         TelescopePromptBorder = { fg = colors.overlay1, bg = colors.bg },
         TelescopePromptTitle = { fg = colors.overlay0, bg = colors.bg },
         TelescopePromptNormal = { fg = colors.overlay2, bg = colors.bg },
@@ -160,15 +156,11 @@ function M.config()
 
         LspSignatureActiveParameter = { fg = colors.pink, bold = true },
 
-        -- WinBar = { fg = colors.subtext0, bg = nil },
-        WinBarInactive = { fg = colors.surface1, bg = nil },
-        WinBarFilenameActive = { fg = colors.text, bg = nil, bold = false },
-        WinBarFilenameInactive = { fg = colors.overlay0, bg = nil, bold = true },
+        WinBarInactive = { fg = colors.surface1, bg = colors.bg },
+        WinBarFilenameActive = { fg = colors.text, bg = colors.bg, bold = false },
+        WinBarFilenameInactive = { fg = colors.overlay0, bg = colors.bg, bold = true },
 
         NavicText = { fg = colors.subtext0, bg = nil },
-
-        -- WhichKeyFloat = { bg = colors.surface0 },
-        -- WhichKeyBorder = { fg = colors.blue, bg = colors.surface0 },
 
         -- LSP Specific
         -- ===============
@@ -188,6 +180,8 @@ function M.config()
       }
     end,
   })
+
+  vim.cmd([[colorscheme catppuccin]])
 end
 
 return M

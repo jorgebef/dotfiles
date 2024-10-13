@@ -1,6 +1,5 @@
 local M = {
-  -- "brenoprata10/nvim-highlight-colors",
-  "jorgebef/nvim-highlight-colors",
+  "brenoprata10/nvim-highlight-colors",
 }
 
 function M.config()
@@ -22,7 +21,7 @@ function M.config()
     virtual_symbol_position = "inline",
 
     ---Set virtual symbol (requires render to be set to 'virtual')
-    virtual_symbol = "󰝤 ",
+    virtual_symbol = "󰝤",
 
     ---Highlight named colors, e.g. 'green'
     enable_named_colors = false,

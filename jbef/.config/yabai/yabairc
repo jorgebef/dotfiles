@@ -12,76 +12,46 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 # Use karabiner elements to remap right Command key to function key
 
 # global settings
-yabai -m config                                 \
-    mouse_follows_focus          off            \
-    focus_follows_mouse          off            \
-    window_origin_display        default        \
-    window_placement             second_child   \
-    window_topmost               off            \
-    window_shadow                off             \
-    window_animation_duration    0.0            \
-    window_opacity_duration      0.0            \
-    window_zoom_persist          off            \
-    active_window_opacity        1.0            \
-    normal_window_opacity        1.0           \
-    window_opacity               off            \
-    insert_feedback_color        0xffd75f5f     \
-    active_window_border_color   0xff775759     \
-    normal_window_border_color   0xff555555     \
-    window_border_width          0              \
-    window_border_radius         1             \
-    window_border_blur           off            \
-    window_border_hidpi          on             \
-    window_border                off            \
-    split_ratio                  0.50           \
-    split_type                   auto           \
-    auto_balance                 off            \
-    top_padding                  12             \
-    bottom_padding               12             \
-    left_padding                 12             \
-    right_padding                12             \
-    window_gap                   12             \
-    layout                       bsp            \
-    mouse_modifier               fn             \
-    mouse_action1                move           \
-    mouse_action2                resize         \
-    mouse_drop_action            swap
+yabai -m config \
+  mouse_follows_focus off \
+  focus_follows_mouse off \
+  window_origin_display default \
+  window_placement second_child \
+  window_topmost off \
+  window_shadow off \
+  window_animation_duration 0.0 \
+  window_opacity_duration 0.0 \
+  window_zoom_persist off \
+  window_opacity off \
+  active_window_opacity 1.0 \
+  normal_window_opacity 1.0 \
+  insert_feedback_color 0xffd75f5f \
+  split_ratio 0.50 \
+  split_type auto \
+  auto_balance off \
+  top_padding 10 \
+  bottom_padding 10 \
+  left_padding 10 \
+  right_padding 10 \
+  window_gap 14 \
+  layout bsp \
+  mouse_modifier ctrl \
+  mouse_action1 move \
+  mouse_action2 resize \
+  mouse_drop_action swap
 
 # Make all windows float by default
-yabai -m rule --add app="^.*$" manage=off
+yabai -m rule --add app=".*" manage=off
 
 # Manage these windows only
 yabai -m rule --add app="^Arc$" manage=on
-yabai -m rule --add app="^Adobe.*" manage=on
-yabai -m rule --add app="^Google Chrome$" manage=on
-yabai -m rule --add app="^WezTerm$" manage=on
-
-# # apps to not manage (ignore)
-# yabai -m rule --add app="^1Password" manage=off
-# yabai -m rule --add app="^Activity Monitor" manage=off
-# yabai -m rule --add app="^Archive Utility$" manage=off
-# yabai -m rule --add app="^Asana" manage=off
-# yabai -m rule --add app="^Bitwarden$" manage=off
-# yabai -m rule --add app="^Calendar$" manage=off
-# yabai -m rule --add app="^Contacts" manage=off
-# yabai -m rule --add app="^Creative Cloud$" manage=off
-# yabai -m rule --add app="^Cron$" manage=off
-# yabai -m rule --add app="^Finder$" manage=off
-# yabai -m rule --add app="^Font Book$" manage=off
-# yabai -m rule --add app="^FortiClient" manage=off
-# yabai -m rule --add app="^IINA$" manage=off
-# yabai -m rule --add app="^Karabiner" manage=off
-# yabai -m rule --add app="^Logi Options$" manage=off
-# yabai -m rule --add app="^Music" manage=off
-# yabai -m rule --add app="^Obsidian" manage=off
-# yabai -m rule --add app="^qBittorrent" manage=off
-# yabai -m rule --add app="^Raycast" manage=off
-# yabai -m rule --add app="^Slack" manage=off
-# yabai -m rule --add app="^Spotify$" manage=off
-# yabai -m rule --add app="^System Settings$" manage=off
-# yabai -m rule --add app="^Todoist" manage=off
-# yabai -m rule --add app="^Transmission$" manage=off
-# yabai -m rule --add app="^WhatsApp$" manage=off
-# yabai -m rule --add app="^Zoom" manage=off
+# yabai -m rule --add app="^Adobe.*" manage=on
+# yabai -m rule --add app="^Google Chrome$" manage=on
+# yabai -m rule --add app="^WezTerm$" manage=on
+yabai -m rule --add app="^Ghostty$" manage=on
+yabai -m rule --add app="^Ghostty$" title="^.*(Update|Updating).*$" manage=off
+yabai -m rule --add app="^Firefox Nightly$" manage=on
+yabai -m rule --add app="^Zen Browser$" manage=on
+yabai -m rule --add app="^Firefox Nightly$" title="^Firefox Nightly$" manage=off
 
 echo "yabai configuration loaded.."

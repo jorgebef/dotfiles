@@ -20,6 +20,8 @@ function M.setup()
     lineFoldingOnly = true,
   }
 
+  capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+
   return capabilities
 end
 

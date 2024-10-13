@@ -20,6 +20,7 @@ function M.config()
   local n_opts = { noremap = true }
   vim.keymap.set("n", "<leader>ss", ":SessionManager save_current_session<CR>", n_opts)
   vim.keymap.set("n", "<leader>sl", ":SessionManager load_current_dir_session<CR>", n_opts)
+  -- vim.keymap.set("n", "þ", ":SessionManager load_session<CR>", n_opts)
 end
 
 return M

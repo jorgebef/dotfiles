@@ -8,11 +8,23 @@ ui {
     }
 }
 
+ layout {
+  pane split_direction="vertical" {
+    pane
+    }
+
+    pane size=1 borderless=true {
+      hide_frame_for_single_pane "true"
+
+  }
+}
+
 plugins {
-    tab-bar { path "tab-bar"; }
-    status-bar { path "status-bar"; }
+    // tab-bar { path "tab-bar"; }
+    // status-bar { path "status-bar"; }
     strider { path "strider"; }
     compact-bar { path "compact-bar"; }
+    session-manager { path "session-manager"; }
 }
 
 keybinds {

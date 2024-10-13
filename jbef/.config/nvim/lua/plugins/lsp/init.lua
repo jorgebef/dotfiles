@@ -5,8 +5,11 @@ local M = {
     { "SmiteshP/nvim-navic" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
+    { "pmizio/typescript-tools.nvim" },
+    { "folke/lazydev.nvim" },
 
     { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
   },
 }
 
@@ -17,10 +20,15 @@ M.handlers = require("plugins.lsp.handlers").handlers
 M.config = function()
   local servers = require("plugins.lsp.servers")
   local lsp = require("lspconfig")
+  local ui = require("config.ui")
 
   require("plugins.lsp.diagnostics").setup()
 
-  require("mason").setup()
+  require("mason").setup({
+    ui = {
+      border = ui.border.Single,
+    },
+  })
   local server_names = {}
   local n = 0
   for k, _ in pairs(servers) do
@@ -43,82 +51,49 @@ M.config = function()
         }, servers[server_name] or {})
 
         -- if server_name == "lua_ls" then
-        if server_name == "test1" then
-          require("neodev").setup({})
-        elseif server_name ~= "test2" then
+        if server_name == "kek" then
+          lsp[server_name].setup(opts)
+          require("lazydev").setup({})
+        elseif server_name == "tsserver" then
+          lsp["ts_ls"].setup(opts)
+        elseif server_name == "vtsls" then
+        else
           lsp[server_name].setup(opts)
         end
       end,
-
-      -- -- this is the "custom handler" for `tsserver`
-      -- ["typescript-tools"] = function()
-      -- local typescript_tools = require("typescript-tools")
-      -- typescript_tools.setup({
-      --   single_file_support = false,
-      --   on_attach = function(client, bufnr)
-      --     M.on_attach(client, bufnr)
-      --   end,
-      --   capabilities = M.capabilities(),
-      --   handlers = M.handlers,
-      --   settings = {
-      --     root_dir = function(...)
-      --       return require("lspconfig.util").root_pattern(".git")(...)
-      --     end,
-      --     tsserver_file_preferences = {
-      --       includeInlayParameterNameHints = "all",
-      --       includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-      --       includeInlayFunctionParameterTypeHints = true,
-      --       includeInlayVariableTypeHints = true,
-      --       includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-      --       includeInlayPropertyDeclarationTypeHints = true,
-      --       includeInlayFunctionLikeReturnTypeHints = true,
-      --       includeInlayEnumMemberValueHints = true,
-      --
-      --       includeCompletionsForModuleExports = true,
-      --       quotePreference = "auto",
-      --     },
-      --     tsserver_format_options = {
-      --       allowIncompleteCompletions = false,
-      --       allowRenameOfImportPath = false,
-      --     },
-      --   },
-      -- })
-      -- end,
     },
   })
 
   require("plugins.lsp.keymaps").common()
 
-  -- -- HERE IS WHERE THE MAGIG HAPPENS
-  -- -- we loop through each item in the object provided with all the configs
-  -- -- inside and setup each server individually, applying the default
-  -- -- on_attach function, capabilities and all options set above
-  -- for server, opts in pairs(servers) do
-  --   opts = vim.tbl_deep_extend("force", {
-  --     on_attach = M.on_attach,
-  --     capabilities = M.capabilities(),
-  --     handlers = M.handlers,
-  --     -- flags = {
-  --     --   debounce_text_changes = 150,
-  --     -- },
-  --     -- inlay_hints = { enabled = true },
-  --   }, opts or {})
-  --
-  --   -- Need to remove tsserver since typescript-tools plugin replaces nvim-lspconfig entirely
-  --   -- for a more performant tsserver native API access, instead of going through regular LSP
-  --   -- ❗️ IMPORTANT: As mentioned earlier, this plugin serves as a replacement for typescript-language-server, so you should remove the nvim-lspconfig setup for it.
-  --
-  --   if server == "lua_ls" then
-  --     require("neodev").setup({})
-  --   elseif
-  --     server ~= "test1"
-  --     -- and server ~= "test2"
-  --   then
-  --     -- lspconfig[server].setup(coq.lsp_ensure_capabilities(opts))
-  --     lspconfig[server].setup(opts)
-  --   end
+  require("typescript-tools").setup({
+    single_file_support = false,
+    on_attach = function(client, bufnr)
+      M.on_attach(client, bufnr)
+    end,
+    capabilities = M.capabilities(),
+    handlers = M.handlers,
+    settings = {
+      filetypes = {
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "mdx",
+      },
+      jsx_close_tag = {
+        enable = true,
+        filetypes = { "javascriptreact", "typescriptreact" },
+      },
+      -- separate_diagnostic_server = false,
+      -- publish_diagnostic_on = "insert_leave",
+      -- documentRangeFormatting = false,
+      -- root_dir = function(...)
+      --   return require("lspconfig.util").root_pattern(".git")(...)
+      -- end,
+    },
+  })
+
   -- end
-  -- -- ALL DONE!
 end
 
 return M

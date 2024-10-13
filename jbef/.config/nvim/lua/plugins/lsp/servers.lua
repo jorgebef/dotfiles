@@ -5,83 +5,142 @@ local M = {
   --   cmd = { "vtsls", "--stdio" },
   --   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   --   root_dir = lspconfig.util.root_pattern(".git"),
-  --   experimental = {
-  --     completion = {
-  --       enableServerSideFuzzyMatch = true,
-  --       entriesLimit = 10,
-  --     },
-  --   },
   -- },
 
-  -- This is no longer needed as long as I use the plugin typescript-tools.nvim
-  tsserver = {
-    -- root_dir = function(...)
-    --   return require("lspconfig.util").root_pattern(".git")(...)
-    -- end,
-    single_file_support = false,
-    init_options = {
-      documentFormatting = false,
-      documentRangeFormatting = true,
-    },
-    settings = {
-      typescript = {
-        inlayHints = {
-          includeInlayParameterNameHints = "literal",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = false,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-      javascript = {
-        inlayHints = {
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-    },
-    flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
-  },
-
-  -- efm = {
-  --   -- filetypes = vim.tbl_extendvim.tbl_keys(require("efmls-configs.defaults").languages()),
-  --   settings = {
-  --     rootMarkers = { ".git/" },
-  --     languages = vim.tbl_extend("force", require("efmls-configs.defaults").languages(), {
-  --       -- Custom languages, or override existing ones
-  --       typescript = { require("efmls-configs.linters.eslint"), require("efmls-configs.formatters.prettier_d") },
-  --       typescriptreact = { require("efmls-configs.linters.eslint"), require("efmls-configs.formatters.prettier_d") },
-  --       jsonc = { require("efmls-configs.formatters.prettier_d") },
-  --       json = { require("efmls-configs.formatters.prettier_d") },
-  --     }),
+  -- -- This is no longer needed as long as I use the plugin typescript-tools.nvim
+  -- tsserver = {
+  --   -- root_dir = function(...)
+  --   --   return require("lspconfig.util").root_pattern(".git")(...)
+  --   -- end,
+  --   filetypes = {
+  --     "javascript",
+  --     "vue",
   --   },
+  --   single_file_support = false,
   --   init_options = {
-  --     documentFormatting = true,
+  --     documentFormatting = false,
   --     documentRangeFormatting = true,
   --   },
-  -- },
-  -- astro = {},
-  -- eslint = {
   --   settings = {
-  --     -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
-  --     workingDirectories = { mode = "auto" },
+  --     typescript = {
+  --       inlayHints = {
+  --         includeInlayParameterNameHints = "literal",
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayVariableTypeHints = false,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayEnumMemberValueHints = true,
+  --       },
+  --     },
+  --     javascript = {
+  --       inlayHints = {
+  --         includeInlayParameterNameHints = "all",
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayVariableTypeHints = true,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayEnumMemberValueHints = true,
+  --       },
+  --     },
   --   },
+  --   flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
   -- },
+
+  -- astro = {},
+
+  -- biome = {},
+
+  -- eslint = {
+  --   -- settings = {
+  --     -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+  --     -- workingDirectories = { mode = "auto" },
+  --     -- packageManager = "pnpm",
+  --   -- },
+  -- },
+
   -- graphql = {
   -- filetypes = { "graphql", "typescriptreact", "javascriptreact" },
   -- root_dir = lspconfig.util.root_pattern(".git", ".graphqlrc*", ".graphql.config.*", "graphql.config.*"),
   -- },
+
   dockerls = {},
   docker_compose_language_service = {
     filetypes = { "yaml.docker-compose" },
   },
+
+  intelephense = {
+    stubs = {
+      "bcmath",
+      "bz2",
+      "calendar",
+      "Core",
+      "curl",
+      "date",
+      "dba",
+      "dom",
+      "enchant",
+      "fileinfo",
+      "filter",
+      "ftp",
+      "gd",
+      "gettext",
+      "hash",
+      "iconv",
+      "imap",
+      "intl",
+      "json",
+      "ldap",
+      "libxml",
+      "mbstring",
+      "mcrypt",
+      "mysql",
+      "mysqli",
+      "password",
+      "pcntl",
+      "pcre",
+      "PDO",
+      "pdo_mysql",
+      "Phar",
+      "readline",
+      "recode",
+      "Reflection",
+      "regex",
+      "session",
+      "SimpleXML",
+      "soap",
+      "sockets",
+      "sodium",
+      "SPL",
+      "standard",
+      "superglobals",
+      "sysvsem",
+      "sysvshm",
+      "tokenizer",
+      "xml",
+      "xdebug",
+      "xmlreader",
+      "xmlwriter",
+      "yaml",
+      "zip",
+      "zlib",
+      "wordpress",
+      "woocommerce",
+      "acf-pro",
+      "acf-stubs",
+      "wordpress-globals",
+      "wp-cli",
+      "genesis",
+      "polylang",
+      "sbi",
+    },
+    diagnostics = { enable = true },
+    files = {
+      maxSize = 10000000,
+    },
+  },
+
   yamlls = {
     settings = {
       yaml = {
@@ -89,7 +148,9 @@ local M = {
       },
     },
   },
+
   gopls = {},
+
   lua_ls = {
     Lua = {
       format = {
@@ -125,38 +186,47 @@ local M = {
       },
     },
   },
+
   rust_analyzer = {},
+
   pyright = {},
+
   bashls = {
     filetypes = { "sh", "bash", "zsh" },
   },
+
   lemminx = {
     filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
   },
+
   glslls = {
     cmd = { "glslls", "--stdin" },
     filetypes = { "glsl" },
     root_dir = lspconfig.util.root_pattern(".git"),
     single_file_support = true,
   },
+
   cssls = {},
-  css_variables = {},
+
+  -- css_variables = {},
+
   -- cssmodules_ls = {
   --   init_options = {
   --     camelCase = "dashes",
   --   },
   -- },
+
   tailwindcss = {
     -- cmd = { "bunx", "tailwindcss-language-server", "--stdio" },
-    root_dir = lspconfig.util.root_pattern(
-      "tailwind.config.js",
-      "tailwind.config.ts",
-      "postcss.config.js",
-      "postcss.config.ts",
-      "package.json",
-      "node_modules",
-      ".git"
-    ),
+    -- root_dir = lspconfig.util.root_pattern(
+    --   "tailwind.config.js",
+    --   "tailwind.config.ts",
+    --   "postcss.config.js",
+    --   "postcss.config.ts",
+    --   "package.json",
+    --   "node_modules",
+    --   ".git"
+    -- ),
     settings = {
       tailwindCSS = {
         classAttributes = { "class", "clsx", "cva", "className", "classList", "ngClass" },

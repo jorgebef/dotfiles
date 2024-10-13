@@ -3,19 +3,19 @@ local M = {}
 M.on_attach = function(client, bufnr)
   local navic = require("nvim-navic")
   local util = require("util.util")
-  local keymaps = require("plugins.lsp.keymaps")
-
-  keymaps.specific(client.name)
 
   -- if client.supports_method("textDocument/inlayHint") then
   --   vim.lsp.inlay_hint.enable(bufnr, false)
   -- end
   -- vim.lsp.inlay_hint.enable(false, false)
 
+  require("plugins.lsp.keymaps").specific(client.name)
+
   if
     not util.has_value({
       "tailwindcss",
       "cssmodules_ls",
+      "css_variables",
       "glslls",
       "eslint_d",
       "eslint",

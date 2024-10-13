@@ -67,6 +67,7 @@ function M.config()
     indent = { char = "│" },
     scope = {
       show_start = false,
+      show_end = false,
     },
   })
 end
