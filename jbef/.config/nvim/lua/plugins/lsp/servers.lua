@@ -8,14 +8,15 @@ local M = {
   -- },
 
   -- -- This is no longer needed as long as I use the plugin typescript-tools.nvim
-  -- tsserver = {
+  -- ts_ls = {
+  --   -- cmd = { "typescript-language-server", "--stdio" },
   --   -- root_dir = function(...)
   --   --   return require("lspconfig.util").root_pattern(".git")(...)
   --   -- end,
-  --   filetypes = {
-  --     "javascript",
-  --     "vue",
-  --   },
+  --   -- filetypes = {
+  --   --   "javascript",
+  --   --   "vue",
+  --   -- },
   --   single_file_support = false,
   --   init_options = {
   --     documentFormatting = false,
@@ -217,7 +218,9 @@ local M = {
   -- },
 
   tailwindcss = {
-    -- cmd = { "bunx", "tailwindcss-language-server", "--stdio" },
+    -- this needs to be installed globally with deno via
+    -- `deno install --global npm:tailwindcss-language-server -A -f`
+    cmd = { "tailwindcss-language-server", "--stdio" },
     -- root_dir = lspconfig.util.root_pattern(
     --   "tailwind.config.js",
     --   "tailwind.config.ts",

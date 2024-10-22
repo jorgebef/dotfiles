@@ -32,7 +32,7 @@ M.config = function()
   local server_names = {}
   local n = 0
   for k, _ in pairs(servers) do
-    if k ~= "glslls" then
+    if k ~= "glslls" and k ~= "ts_ls" then
       n = n + 1
       server_names[n] = k
     end
@@ -41,7 +41,7 @@ M.config = function()
   require("mason-lspconfig").setup({
     ensure_installed = server_names,
 
-    -- automatic_installation = { exclude = { "glslls", "tsserver" } },
+    automatic_installation = { exclude = { "glslls", "tsserver" } },
     handlers = {
       function(server_name)
         local opts = vim.tbl_deep_extend("force", {
@@ -52,11 +52,10 @@ M.config = function()
 
         -- if server_name == "lua_ls" then
         if server_name == "kek" then
-          lsp[server_name].setup(opts)
           require("lazydev").setup({})
+        -- elseif server_name == "lua_ls" then
         elseif server_name == "tsserver" then
           lsp["ts_ls"].setup(opts)
-        elseif server_name == "vtsls" then
         else
           lsp[server_name].setup(opts)
         end
@@ -66,8 +65,15 @@ M.config = function()
 
   require("plugins.lsp.keymaps").common()
 
+  -- lsp["ts_ls"].setup(vim.tbl_deep_extend("force", {
+  --   on_attach = M.on_attach,
+  --   capabilities = M.capabilities(),
+  --   handlers = M.handlers,
+  -- }, servers.ts_ls))
+
   require("typescript-tools").setup({
     single_file_support = false,
+    -- cmd = { "typescript-language-server", "--stdio" },
     on_attach = function(client, bufnr)
       M.on_attach(client, bufnr)
     end,

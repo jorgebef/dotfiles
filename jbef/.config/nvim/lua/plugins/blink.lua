@@ -3,9 +3,13 @@ local M = {
   lazy = false, -- lazy loading handled internally
   -- WARNING
   -- DISABLE
-  enabled = true,
+  enabled = false,
+  -- version = "0.3.1",
   -- optional: provides snippets for the snippet source
-  dependencies = "rafamadriz/friendly-snippets",
+  dependencies = {
+    -- { "rafamadriz/friendly-snippets", lazy = true },
+    { "onsails/lspkind-nvim", lazy = true },
+  },
 
   -- use a release tag to download pre-built binaries
   -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -16,19 +20,56 @@ local M = {
 
 function M.config()
   local ui = require("config.ui")
+  local lspkind = require("lspkind")
+  local blink = require("blink.cmp")
 
-  require("blink.cmp").setup({
+  lspkind.init({
+    mode = "symbol_text",
+    preset = "default",
+    symbol_map = {
+      Text = " ",
+      Method = "󰆧 ",
+      Function = "󰆧 ",
+      Constructor = "󰆧 ",
+      Field = " ",
+      Variable = " ",
+      Class = " ",
+      Interface = " ",
+      Module = "󰅩 ",
+      Property = " ",
+      Unit = " ",
+      Value = " ",
+      Enum = " ",
+      Keyword = " ",
+      Snippet = " ",
+      Color = " ",
+      File = " ",
+      Reference = " ",
+      Folder = " ",
+      EnumMember = " ",
+      Constant = "",
+      Struct = " ",
+      Event = " ",
+      Operator = " ",
+      TypeParameter = " ",
+    },
+  })
+
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
+  local opts = {
     -- for keymap, all values may be string | string[]
     -- use an empty table to disable a keymap
     keymap = {
       show = "<C-space>",
       hide = "<C-space>",
-      accept = "<CR>",
+      accept = { "<CR>" },
+      select_and_accept = {},
       select_prev = { "<S-Tab>", "<Up>", "<C-p>" },
       select_next = { "<Tab>", "<Down>", "<C-n>" },
 
-      show_documentation = "<C-space>",
-      hide_documentation = "<C-space>",
+      show_documentation = "<C-k>",
+      hide_documentation = "<C-k>",
       scroll_documentation_up = "<C-d>",
       scroll_documentation_down = "<C-f>",
 
@@ -69,11 +110,13 @@ function M.config()
         -- LSPs can indicate when to show the completion window via trigger characters
         -- however, some LSPs (*cough* tsserver *cough*) return characters that would essentially
         -- always show the window. We block these by default
-        blocked_trigger_characters = { " ", "\n", "\t" },
+        -- blocked_trigger_characters = { " ", "\n", "\t" },
+        blocked_trigger_characters = {},
         -- when true, will show the completion window when the cursor comes after a trigger character when entering insert mode
         show_on_insert_on_trigger_character = true,
         -- list of additional trigger characters that won't trigger the completion window when the cursor comes after a trigger character when entering insert mode
-        show_on_insert_blocked_trigger_characters = { "'", '"' },
+        -- show_on_insert_blocked_trigger_characters = { "'", '"' },
+        show_on_insert_blocked_trigger_characters = {},
       },
 
       signature_help = {
@@ -113,50 +156,50 @@ function M.config()
       -- WARN: This API will have breaking changes during the beta
       providers = {
         { "blink.cmp.sources.lsp", name = "LSP" },
-        -- { "blink.cmp.sources.path", name = "Path", score_offset = 3 },
-        { "blink.cmp.sources.snippets", name = "Snippets", score_offset = -3 },
+        { "blink.cmp.sources.path", name = "Path", score_offset = 3 },
+        -- { "blink.cmp.sources.snippets", name = "Snippets", score_offset = -3 },
         { "blink.cmp.sources.buffer", name = "Buffer", fallback_for = { "LSP" } },
-        --   -- FOR REF: full example
-        --     -- all of these properties work on every source
-        --     {
-        --       "blink.cmp.sources.lsp",
-        --       name = "LSP",
-        --       keyword_length = 0,
-        --       score_offset = 0,
-        --       trigger_characters = { "", "c", "o", "o" },
-        --     },
-        -- the following two sources have additional options
-        {
-          "blink.cmp.sources.path",
-          name = "Path",
-          score_offset = 3,
-          opts = {
-            trailing_slash = false,
-            label_trailing_slash = true,
-            get_cwd = function(context)
-              return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
-            end,
-            show_hidden_files_by_default = true,
-          },
-        },
-        --     {
-        --       "blink.cmp.sources.snippets",
-        --       name = "Snippets",
-        --       score_offset = -3,
-        --       -- similar to https://github.com/garymjr/nvim-snippets
-        --       opts = {
-        --         friendly_snippets = true,
-        --         search_paths = { vim.fn.stdpath("config") .. "/snippets" },
-        --         global_snippets = { "all" },
-        --         extended_filetypes = {},
-        --         ignored_filetypes = {},
-        --       },
-        --     },
-        --     {
-        --       "blink.cmp.sources.buffer",
-        --       name = "Buffer",
-        --       fallback_for = { "LSP" },
-        --     },
+        -- -- FOR REF: full example
+        -- -- all of these properties work on every source
+        -- {
+        --   "blink.cmp.sources.lsp",
+        --   name = "LSP",
+        --   keyword_length = 0,
+        --   score_offset = 0,
+        --   trigger_characters = { "", "c", "o", "o" },
+        -- },
+        -- -- the following two sources have additional options
+        -- {
+        --   "blink.cmp.sources.path",
+        --   name = "Path",
+        --   score_offset = 3,
+        --   opts = {
+        --     trailing_slash = false,
+        --     label_trailing_slash = true,
+        --     get_cwd = function(context)
+        --       return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
+        --     end,
+        --     show_hidden_files_by_default = true,
+        --   },
+        -- },
+        -- {
+        --   "blink.cmp.sources.snippets",
+        --   name = "Snippets",
+        --   score_offset = -3,
+        --   -- similar to https://github.com/garymjr/nvim-snippets
+        --   opts = {
+        --     friendly_snippets = true,
+        --     search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+        --     global_snippets = { "all" },
+        --     extended_filetypes = {},
+        --     ignored_filetypes = {},
+        --   },
+        -- },
+        -- {
+        --   "blink.cmp.sources.buffer",
+        --   name = "Buffer",
+        --   fallback_for = { "LSP" },
+        -- },
       },
     },
 
@@ -260,7 +303,9 @@ function M.config()
       Operator = "󰪚",
       TypeParameter = "󰬛",
     },
-  })
+  }
+
+  blink.setup(opts)
 end
 
 return M

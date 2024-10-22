@@ -4,7 +4,7 @@ local M = {
   event = "LSPAttach",
   -- WARNING
   -- DISABLE
-  enabled = false,
+  enabled = true,
   dependencies = {
     { "folke/lazydev.nvim", lazy = true },
 

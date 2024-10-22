@@ -23,6 +23,8 @@ mouse-hide-while-typing = true
 
 font-size = 14.5
 adjust-cell-width = -1
+# adjust-underline-position = 100%
+adjust-underline-thickness = 50%
 # adjust-cell-height = 4
 
 background-opacity = 0.98
