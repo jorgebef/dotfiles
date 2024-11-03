@@ -27,6 +27,7 @@ fish_add_path "$HOME/.deno/bin" # Add pnpm path to $PATH
 #   #   tmux a || tmux
 #   # end
 # end
+
 set fish_greeting
 
 # function fish_user_key_bindings
@@ -35,8 +36,6 @@ set fish_greeting
 # end
 
 fish_vi_key_bindings
-# bind -M insert \ee --erase
-# fish_default_key_bindings
 
-starship init fish | source
 zoxide init fish | source
+starship init fish | source

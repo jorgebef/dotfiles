@@ -7,7 +7,7 @@ local M = {
   -- version = "0.3.1",
   -- optional: provides snippets for the snippet source
   dependencies = {
-    -- { "rafamadriz/friendly-snippets", lazy = true },
+    { "rafamadriz/friendly-snippets", lazy = true },
     { "onsails/lspkind-nvim", lazy = true },
   },
 
@@ -58,25 +58,14 @@ function M.config()
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   local opts = {
-    -- for keymap, all values may be string | string[]
-    -- use an empty table to disable a keymap
     keymap = {
-      show = "<C-space>",
-      hide = "<C-space>",
-      accept = { "<CR>" },
-      select_and_accept = {},
-      select_prev = { "<S-Tab>", "<Up>", "<C-p>" },
-      select_next = { "<Tab>", "<Down>", "<C-n>" },
-
-      show_documentation = "<C-k>",
-      hide_documentation = "<C-k>",
-      scroll_documentation_up = "<C-d>",
-      scroll_documentation_down = "<C-f>",
-
-      snippet_forward = "<Tab>",
-      snippet_backward = "<S-Tab>",
+      ["<C-space>"] = { "show", "hide" },
+      ["<C-p>"] = { "select_prev", "fallback" },
+      ["<C-n>"] = { "select_next", "fallback" },
+      ["<CR>"] = { "accept", "fallback" },
+      ["<Tab>"] = { "select_next" },
+      ["<S-Tab>"] = { "select_prev" },
     },
-
     accept = {
       create_undo_point = true,
       auto_brackets = {
@@ -103,20 +92,26 @@ function M.config()
 
     trigger = {
       completion = {
+        -- 'prefix' will fuzzy match on the text before the cursor
+        -- 'full' will fuzzy match on the text before *and* after the cursor
+        -- example: 'foo_|_bar' will match 'foo_' for 'prefix' and 'foo__bar' for 'full'
+        keyword_range = "prefix",
         -- regex used to get the text when fuzzy matching
         -- changing this may break some sources, so please report if you run into issues
-        -- todo: shouldnt this also affect the accept command? should this also be per language?
+        -- TODO: shouldnt this also affect the accept command? should this also be per language?
         keyword_regex = "[%w_\\-]",
+        -- after matching with keyword_regex, any characters matching this regex at the prefix will be excluded
+        exclude_from_prefix_regex = "[\\-]",
         -- LSPs can indicate when to show the completion window via trigger characters
         -- however, some LSPs (*cough* tsserver *cough*) return characters that would essentially
         -- always show the window. We block these by default
-        -- blocked_trigger_characters = { " ", "\n", "\t" },
-        blocked_trigger_characters = {},
+        blocked_trigger_characters = { " ", "\n", "\t" },
         -- when true, will show the completion window when the cursor comes after a trigger character when entering insert mode
         show_on_insert_on_trigger_character = true,
         -- list of additional trigger characters that won't trigger the completion window when the cursor comes after a trigger character when entering insert mode
-        -- show_on_insert_blocked_trigger_characters = { "'", '"' },
-        show_on_insert_blocked_trigger_characters = {},
+        show_on_insert_blocked_trigger_characters = { "'", '"' },
+        -- when false, will not show the completion window when in a snippet
+        show_in_snippet = true,
       },
 
       signature_help = {
@@ -133,7 +128,7 @@ function M.config()
       use_frecency = true,
       -- proximity bonus boosts the score of items with a value in the buffer
       use_proximity = true,
-      max_items = 200,
+      max_items = 100,
       -- controls which sorts to use and in which order, these three are currently the only allowed options
       sorts = { "label", "kind", "score" },
 
@@ -150,56 +145,61 @@ function M.config()
     },
 
     sources = {
-      -- similar to nvim-cmp's sources, but we point directly to the source's lua module
-      -- multiple groups can be provided, where it'll fallback to the next group if the previous
-      -- returns no completion items
-      -- WARN: This API will have breaking changes during the beta
+      -- list of enabled providers
+      completion = {
+        enabled_providers = { "lsp", "path", "snippets", "buffer" },
+      },
+
       providers = {
-        { "blink.cmp.sources.lsp", name = "LSP" },
-        { "blink.cmp.sources.path", name = "Path", score_offset = 3 },
-        -- { "blink.cmp.sources.snippets", name = "Snippets", score_offset = -3 },
-        { "blink.cmp.sources.buffer", name = "Buffer", fallback_for = { "LSP" } },
-        -- -- FOR REF: full example
-        -- -- all of these properties work on every source
-        -- {
-        --   "blink.cmp.sources.lsp",
-        --   name = "LSP",
-        --   keyword_length = 0,
-        --   score_offset = 0,
-        --   trigger_characters = { "", "c", "o", "o" },
-        -- },
-        -- -- the following two sources have additional options
-        -- {
-        --   "blink.cmp.sources.path",
-        --   name = "Path",
-        --   score_offset = 3,
-        --   opts = {
-        --     trailing_slash = false,
-        --     label_trailing_slash = true,
-        --     get_cwd = function(context)
-        --       return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
-        --     end,
-        --     show_hidden_files_by_default = true,
-        --   },
-        -- },
-        -- {
-        --   "blink.cmp.sources.snippets",
-        --   name = "Snippets",
-        --   score_offset = -3,
-        --   -- similar to https://github.com/garymjr/nvim-snippets
-        --   opts = {
-        --     friendly_snippets = true,
-        --     search_paths = { vim.fn.stdpath("config") .. "/snippets" },
-        --     global_snippets = { "all" },
-        --     extended_filetypes = {},
-        --     ignored_filetypes = {},
-        --   },
-        -- },
-        -- {
-        --   "blink.cmp.sources.buffer",
-        --   name = "Buffer",
-        --   fallback_for = { "LSP" },
-        -- },
+        lsp = {
+          name = "LSP",
+          module = "blink.cmp.sources.lsp",
+
+          --- *All* of the providers have the following options available
+          --- NOTE: All of these options may be functions to get dynamic behavior
+          --- See the type definitions for more information
+          enabled = true, -- whether or not to enable the provider
+          transform_items = nil, -- function to transform the items before they're returned
+          should_show_items = true, -- whether or not to show the items
+          max_items = nil, -- maximum number of items to return
+          min_keyword_length = 0, -- minimum number of characters to trigger the provider
+          fallback_for = {}, -- if any of these providers return 0 items, it will fallback to this provider
+          score_offset = 0, -- boost/penalize the score of the items
+          override = nil, -- override the source's functions
+        },
+        path = {
+          name = "Path",
+          module = "blink.cmp.sources.path",
+          score_offset = 3,
+          opts = {
+            trailing_slash = false,
+            label_trailing_slash = true,
+            get_cwd = function(context)
+              return vim.fn.expand(("#%d:p:h"):format(context.bufnr))
+            end,
+            show_hidden_files_by_default = false,
+          },
+        },
+        snippets = {
+          name = "Snippets",
+          module = "blink.cmp.sources.snippets",
+          score_offset = -3,
+          opts = {
+            friendly_snippets = true,
+            search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+            global_snippets = { "all" },
+            extended_filetypes = {},
+            ignored_filetypes = {},
+          },
+
+          --- Example usage for disabling the snippet provider after pressing trigger characters (i.e. ".")
+          -- enabled = function(ctx) return ctx ~= nil and ctx.trigger.kind == vim.lsp.protocol.CompletionTriggerKind.TriggerCharacter end,
+        },
+        buffer = {
+          name = "Buffer",
+          module = "blink.cmp.sources.buffer",
+          fallback_for = { "lsp" },
+        },
       },
     },
 
@@ -207,13 +207,16 @@ function M.config()
       autocomplete = {
         min_width = 15,
         max_height = 10,
-        border = ui.border.Single,
+        border = ui.border.Block,
+        -- border = "none",
         winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
         -- keep the cursor X lines away from the top/bottom of the window
         scrolloff = 2,
         -- which directions to show the window,
         -- falling back to the next direction when there's not enough space
         direction_priority = { "s", "n" },
+        -- Controls whether the completion window will automatically show when typing
+        auto_show = true,
         -- Controls how the completion items are selected
         -- 'preselect' will automatically select the first item in the completion list
         -- 'manual' will not select any item by default
@@ -237,7 +240,8 @@ function M.config()
         min_width = 10,
         max_width = 60,
         max_height = 20,
-        border = ui.border.Single,
+        -- border = "padded",
+        border = "padded",
         winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
         -- which directions to show the documentation window,
         -- for each of the possible autocomplete window directions,
@@ -246,30 +250,37 @@ function M.config()
           autocomplete_north = { "e", "w", "n", "s" },
           autocomplete_south = { "e", "w", "s", "n" },
         },
-        auto_show = true,
-        auto_show_delay_ms = 0,
-        update_delay_ms = 0,
+        -- Controls whether the documentation window will automatically show when selecting a completion item
+        auto_show = false,
+        auto_show_delay_ms = 500,
+        update_delay_ms = 50,
       },
       signature_help = {
         min_width = 1,
         max_width = 100,
         max_height = 10,
-        border = "padded",
+        border = ui.border.Block,
         winhighlight = "Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder",
+      },
+      ghost_text = {
+        enabled = false,
       },
     },
 
-    -- highlight = {
-    --   ns = vim.api.nvim_create_namespace("blink_cmp"),
-    --   -- sets the fallback highlight groups to nvim-cmp's highlight groups
-    --   -- useful for when your theme doesn't support blink.cmp
-    --   -- will be removed in a future release, assuming themes add support
-    --   use_nvim_cmp_as_default = false,
-    -- },
-    --
-    -- -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-    -- -- adjusts spacing to ensure icons are aligned
-    -- nerd_font_variant = "normal",
+    highlight = {
+      ns = vim.api.nvim_create_namespace("blink_cmp"),
+      -- sets the fallback highlight groups to nvim-cmp's highlight groups
+      -- useful for when your theme doesn't support blink.cmp
+      -- will be removed in a future release, assuming themes add support
+      use_nvim_cmp_as_default = false,
+    },
+
+    -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+    -- adjusts spacing to ensure icons are aligned
+    nerd_font_variant = "normal",
+
+    -- don't show completions or signature help for these filetypes. Keymaps are also disabled.
+    blocked_filetypes = {},
 
     kind_icons = {
       Text = "󰉿",

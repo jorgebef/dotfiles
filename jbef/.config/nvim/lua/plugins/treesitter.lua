@@ -5,6 +5,8 @@ local M = {
     "nvim-treesitter/nvim-treesitter-textobjects", -- Text objects
     "nvim-treesitter/playground",
     "JoosepAlviste/nvim-ts-context-commentstring",
+    -- NOTE: additional parser
+    { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
   },
 }
 

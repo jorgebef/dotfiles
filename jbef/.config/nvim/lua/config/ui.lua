@@ -133,6 +133,7 @@ M.misc = {
   Carat = " ",
 }
 
+---@class UIBorder
 M.border = {
   Single = {
     { "╭", "FloatBorder" },

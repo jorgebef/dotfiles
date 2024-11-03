@@ -30,36 +30,7 @@ function M.config()
   lspkind.init({
     mode = "symbol_text",
     preset = "default",
-    symbol_map = {
-      Text = " ",
-      Method = "󰆧 ",
-      Function = "󰆧 ",
-      Constructor = "󰆧 ",
-      Field = " ",
-      Variable = " ",
-      Class = " ",
-      Interface = " ",
-      Module = "󰅩 ",
-      Property = " ",
-      Unit = " ",
-      Value = " ",
-      Enum = " ",
-      Keyword = " ",
-      Snippet = " ",
-      Color = " ",
-      File = " ",
-      Reference = " ",
-      Folder = " ",
-      EnumMember = " ",
-      Constant = "",
-      Struct = " ",
-      Event = " ",
-      Operator = " ",
-      TypeParameter = " ",
-    },
   })
-
-  -- vim.o.completeopt = "menu,menuone,noselect"
 
   cmp.setup({
     -- enabled = function()
@@ -79,19 +50,18 @@ function M.config()
     },
     window = {
       completion = {
-        -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-        border = ui.border.Single,
-        -- border = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
-        winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-        col_offset = -3,
-        side_padding = 0,
+        border = ui.border.Block,
+        -- border = false,
+        -- winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+        winhighlight = "Normal:NormalFloat,NormalNC:NormalFloat,FloatBorder:FloatBorder",
+        col_offset = 1,
+        side_padding = 1,
       },
       documentation = {
-        border = ui.border.Single,
-        -- border = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
-        -- winhighlight = "Normal:NormalFloat,NormalNC:NormalFloat,FloatBorder:FloatBorder",
-        winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-        side_padding = 4,
+        border = ui.border.Block,
+        -- border = false,
+        winhighlight = "Normal:NormalFloat,NormalNC:NormalFloat,FloatBorder:FloatBorder",
+        -- winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
         -- maxheight = 190,
       },
     },
@@ -107,15 +77,7 @@ function M.config()
         end
       end, { "i", "c" }),
 
-      -- ["<C-n>"] = cmp.mapping(function()
-      --   if not cmp.visible() then
-      --     cmp.mapping.select_next_item()
-      --   else
-      --     cmp.complete()
-      --   end
-      -- end, { "i", "s" }),
-
-      ["<C-y>"] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
+      ["<C-y>"] = cmp.config.disable,
       ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
       ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
       ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
@@ -124,13 +86,6 @@ function M.config()
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       }),
-      -- ["<Esc>"] = function(fallback)
-      --   if cmp.visible() and (cmp.get_active_entry() ~= undefined) then
-      --     cmp.abort()
-      --   else
-      --     fallback()
-      --   end
-      -- end,
       ["<CR>"] = function(fallback)
         if cmp.visible() and (cmp.get_active_entry() ~= undefined) then
           cmp.confirm({ select = true })
@@ -141,16 +96,11 @@ function M.config()
     },
     sources = cmp.config.sources({
       -- {
-      --   name = "lazydev",
-      --   group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-      -- },
       {
         name = "nvim_lsp",
         priority = 100,
         group_index = 1,
-        -- keyword_length = 1,
       },
-      -- { name = "path", keyword_length = 1 },
       { name = "async_path", priority = 30, group_index = 5 },
 
       { name = "luasnip", keyword_length = 1 }, -- For luasnip users.
@@ -161,7 +111,7 @@ function M.config()
       debounce = 0,
       throttle = 0,
       fetching_timeout = 100,
-      -- max_view_entries = 30,
+      max_view_entries = 40,
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },
@@ -192,9 +142,6 @@ function M.config()
 
         return kind
       end,
-      -- format = require("lspkind").cmp_format({
-      --   before = require("tailwind-tools.cmp").lspkind_format,
-      -- }),
     },
     -- experimental = {
     --   ghost_text = true,

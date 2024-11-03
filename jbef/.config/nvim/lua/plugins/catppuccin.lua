@@ -4,6 +4,7 @@ local M = {
   name = "catppuccin",
   build = ":CatppuccinCompile",
   priority = 1000, --https://github.com/folke/lazy.nvim#-colorschemes:~:text=%F0%9F%8C%88,Colorschemes
+  enabled = true,
   dependencies = {
     { "nvim-treesitter/nvim-treesitter" },
   },
@@ -22,7 +23,7 @@ function M.config()
     transparent_background = true,
     term_colors = false,
     compile = {
-      enabled = true,
+      enabled = false,
       path = vim.fn.stdpath("cache") .. "/catppuccin",
       suffix = "_compiled",
     },
@@ -127,28 +128,30 @@ function M.config()
       return {
         -- UI elements
         -- ===============
-        PmenuSel = { fg = colors.pink, bg = colors.surface1 },
+        Pmenu = { fg = nil, bg = colors.surface0 },
+        PmenuSel = { fg = colors.pink, bg = colors.surface0 },
 
         CmpItemAbbrMatch = { fg = colors.text },
         CmpItemAbbrMatchFuzzy = { fg = colors.text },
-        CmpItemMenu = { fg = colors.overlay0, bg = nil, italic = true },
+        CmpItemMenu = { fg = colors.overlay0, bg = colors.surface0, italic = true },
+        FloatBorder = { fg = colors.surface0, bg = colors.surface0 },
 
         NeoTreeHiddenByName = { fg = colors.blue, bg = nil },
         NeoTreeDotfile = { fg = colors.subtext1, bg = nil },
 
-        TelescopeNormal = { fg = colors.subtext0, bg = colors.bg },
-        TelescopeBorder = { fg = colors.overlay1, bg = colors.bg },
+        TelescopeNormal = { fg = colors.subtext0, bg = colors.mantle },
+        TelescopeBorder = { fg = colors.surface0, bg = colors.mantle },
         TelescopeMatching = { fg = colors.pink, bg = nil, bold = true },
         TelescopeSelection = { fg = colors.text, bg = colors.surface0 },
         TelescopeSelectionCaret = { fg = colors.pink, bg = colors.surface0 },
-        TelescopePreviewBorder = { fg = colors.overlay1, bg = colors.bg },
-        TelescopePreviewTitle = { fg = colors.overlay0, bg = colors.bg },
-        TelescopePreviewNormal = { fg = colors.overlay2, bg = colors.bg },
-        TelescopeResultsNormal = { fg = colors.overlay1, bg = colors.bg },
-        TelescopePromptBorder = { fg = colors.overlay1, bg = colors.bg },
-        TelescopePromptTitle = { fg = colors.overlay0, bg = colors.bg },
-        TelescopePromptNormal = { fg = colors.overlay2, bg = colors.bg },
-        TelescopePromptPrefix = { fg = colors.pink, bg = colors.bg },
+        TelescopePreviewBorder = { fg = colors.surface0, bg = colors.mantle },
+        TelescopePreviewTitle = { fg = colors.surface0, bg = colors.mantle },
+        TelescopePreviewNormal = { fg = colors.overlay2, bg = colors.mantle },
+        TelescopeResultsNormal = { fg = colors.overlay1, bg = colors.mantle },
+        TelescopePromptBorder = { fg = colors.surface0, bg = colors.mantle },
+        TelescopePromptTitle = { fg = colors.surface0, bg = colors.mantle },
+        TelescopePromptNormal = { fg = colors.overlay2, bg = colors.mantle },
+        TelescopePromptPrefix = { fg = colors.pink, bg = colors.mantle },
 
         LeapLabelPrimary = { fg = colors.red, bg = colors.crust },
 
@@ -181,7 +184,7 @@ function M.config()
     end,
   })
 
-  vim.cmd([[colorscheme catppuccin]])
+  -- vim.cmd([[colorscheme catppuccin]])
 end
 
 return M

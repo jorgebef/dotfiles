@@ -7,48 +7,46 @@ local act = wezterm.action
 -- package.path = package.path .. ";/Users/jbef/.config/colors/?.lua"
 -- local kanagawa_custom = require("kanagawa-custom")
 
-local USE_TMUX = true
+local USE_TMUX = false
+local config = {}
 
-local config = wezterm.config_builder()
+if wezterm.config_builder then
+  config = wezterm.config_builder()
+end
 
 config.term = "wezterm"
 
--- config.colors = {
---   foreground = kanagawa_custom.fujiWhite,
---   background = kanagawa_custom.sumiInk3,
---   cursor_bg = kanagawa_custom.fujiWhite,
---   cursor_fg = kanagawa_custom.sumiInk0,
---   cursor_border = kanagawa_custom.oldWhite,
---   selection_fg = kanagawa_custom.oldWhite,
---   selection_bg = kanagawa_custom.waveBlue2,
---   scrollbar_thumb = kanagawa_custom.sumiInk0,
---   split = kanagawa_custom.sumiInk0,
---   ansi = {
---     kanagawa_custom.sumiInk0,
---     kanagawa_custom.autumnRed,
---     kanagawa_custom.autumnGreen,
---     kanagawa_custom.boatYellow2,
---     kanagawa_custom.crystalBlue,
---     kanagawa_custom.oniViolet,
---     kanagawa_custom.waveAqua1,
---     kanagawa_custom.oldWhite,
---   },
---   brights = {
---     kanagawa_custom.fujiGray,
---     kanagawa_custom.samuraiRed,
---     kanagawa_custom.springGreen,
---     kanagawa_custom.carpYellow,
---     kanagawa_custom.springBlue,
---     kanagawa_custom.springViolet1,
---     kanagawa_custom.waveAqua2,
---     kanagawa_custom.lotusGray,
---   },
---   indexed = { [16] = "#ffa066", [17] = "#ff5d62" },
--- }
+local function isViProcess(pane)
+  local prog = pane:get_user_vars()["WEZTERM_PROG"]
+  return prog:match("^nvim") or prog:match("^v")
+end
 
--- config.color_scheme = "Tokyo Night"
+local function conditionalActivatePane(window, pane, pane_direction, vim_direction)
+  if isViProcess(pane) then
+    window:perform_action(
+      -- This should match the keybinds you set in Neovim.
+      wezterm.action.SendKey({ key = vim_direction, mods = "CTRL" }),
+      pane
+    )
+  else
+    window:perform_action(wezterm.action.ActivatePaneDirection(pane_direction), pane)
+  end
+end
+
+wezterm.on("ActivatePaneDirection-right", function(window, pane)
+  conditionalActivatePane(window, pane, "Right", "l")
+end)
+wezterm.on("ActivatePaneDirection-left", function(window, pane)
+  conditionalActivatePane(window, pane, "Left", "h")
+end)
+wezterm.on("ActivatePaneDirection-up", function(window, pane)
+  conditionalActivatePane(window, pane, "Up", "k")
+end)
+wezterm.on("ActivatePaneDirection-down", function(window, pane)
+  conditionalActivatePane(window, pane, "Down", "j")
+end)
+
 config.color_scheme = "Catppuccin Mocha"
--- config.color_scheme = "Kanagawa (Gogh)"
 
 config.font = wezterm.font({
   family = "JetbrainsMono Nerd Font",
@@ -80,19 +78,9 @@ config.font_rules = {
 -- config.line_height = 1.05 -- specific for FiraCode font
 config.underline_thickness = 2 -- specific for FiraCode font
 config.underline_position = -6 -- specific for FiraCode font
-config.max_fps = 120
-config.webgpu_power_preference = "HighPerformance"
-config.animation_fps = 0
-
--- config.front_end = "WebGpu"
-config.front_end = "OpenGL"
--- config.webgpu_preferred_adapter = {
---   backend = "Metal",
---   device = 0,
---   device_type = "IntegratedGpu",
---   name = "Apple M1 Pro",
---   vendor = 0,
--- }
+-- config.max_fps = 120
+-- config.webgpu_power_preference = "HighPerformance"
+-- config.animation_fps = 0
 
 config.automatically_reload_config = true
 config.use_fancy_tab_bar = false

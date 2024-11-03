@@ -8,8 +8,6 @@ local M = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     { "nvim-telescope/telescope-ui-select.nvim" },
 
-    { "scottmckendry/telescope-resession.nvim" },
-
     -- FILE PREVIEWER
     -- { "nvim-telescope/telescope-media-files.nvim" },
     -- { "nvim-lua/popup.nvim" },
@@ -21,6 +19,8 @@ function M.config()
   local ui = require("config.ui")
   local telescope = require("telescope")
   local builtin = require("telescope.builtin")
+  local actions = require("telescope.actions")
+
   ---@type Util
   local util = require("util.util")
 
@@ -55,14 +55,23 @@ function M.config()
       },
     },
     defaults = {
+      mappings = {
+        i = {
+          ["<C-S-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        },
+        n = {
+          ["<C-S-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        },
+      },
+
       -- prompt_prefix = ui.common.Telescope .. " " .. ui.misc.Carat,
       prompt_prefix = ui.common.Telescope .. " ",
       -- selection_caret = ui.common.Arrow,
       selection_caret = "▌ ",
       -- border = false,
       -- borderchars = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
-      -- results_title = false,
-      -- prompt_title = false,
+      results_title = false,
+      prompt_title = false,
 
       vimgrep_arguments = {
         "rg",
@@ -84,10 +93,6 @@ function M.config()
       },
     },
     extensions = {
-      resession = {
-        prompt_title = "Find Sessions", -- telescope prompt title
-        dir = "session", -- directory where resession stores sessions
-      },
       -- notify = {},
       file_browser = {
         -- theme = "ivy",

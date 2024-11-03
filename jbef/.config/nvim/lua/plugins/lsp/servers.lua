@@ -7,47 +7,47 @@ local M = {
   --   root_dir = lspconfig.util.root_pattern(".git"),
   -- },
 
-  -- -- This is no longer needed as long as I use the plugin typescript-tools.nvim
-  -- ts_ls = {
-  --   -- cmd = { "typescript-language-server", "--stdio" },
-  --   -- root_dir = function(...)
-  --   --   return require("lspconfig.util").root_pattern(".git")(...)
-  --   -- end,
-  --   -- filetypes = {
-  --   --   "javascript",
-  --   --   "vue",
-  --   -- },
-  --   single_file_support = false,
-  --   init_options = {
-  --     documentFormatting = false,
-  --     documentRangeFormatting = true,
-  --   },
-  --   settings = {
-  --     typescript = {
-  --       inlayHints = {
-  --         includeInlayParameterNameHints = "literal",
-  --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-  --         includeInlayFunctionParameterTypeHints = true,
-  --         includeInlayVariableTypeHints = false,
-  --         includeInlayPropertyDeclarationTypeHints = true,
-  --         includeInlayFunctionLikeReturnTypeHints = true,
-  --         includeInlayEnumMemberValueHints = true,
-  --       },
-  --     },
-  --     javascript = {
-  --       inlayHints = {
-  --         includeInlayParameterNameHints = "all",
-  --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-  --         includeInlayFunctionParameterTypeHints = true,
-  --         includeInlayVariableTypeHints = true,
-  --         includeInlayPropertyDeclarationTypeHints = true,
-  --         includeInlayFunctionLikeReturnTypeHints = true,
-  --         includeInlayEnumMemberValueHints = true,
-  --       },
-  --     },
-  --   },
-  --   flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
-  -- },
+  -- This is no longer needed as long as I use the plugin typescript-tools.nvim
+  ts_ls = {
+    cmd = { "typescript-language-server", "--stdio" },
+    -- root_dir = function(...)
+    --   return require("lspconfig.util").root_pattern(".git")(...)
+    -- end,
+    -- filetypes = {
+    --   "javascript",
+    --   "vue",
+    -- },
+    single_file_support = false,
+    init_options = {
+      documentFormatting = false,
+      documentRangeFormatting = true,
+    },
+    settings = {
+      typescript = {
+        inlayHints = {
+          includeInlayParameterNameHints = "literal",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = false,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+      javascript = {
+        inlayHints = {
+          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+    },
+    flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+  },
 
   -- astro = {},
 
@@ -192,6 +192,7 @@ local M = {
 
   pyright = {},
 
+  nushell = {},
   bashls = {
     filetypes = { "sh", "bash", "zsh" },
   },
@@ -207,9 +208,13 @@ local M = {
     single_file_support = true,
   },
 
-  cssls = {},
+  cssls = {
+    -- filetypes = { "css", "scss", "less", "typescriptreact", "javascriptreact" },
+  },
 
-  -- css_variables = {},
+  css_variables = {
+    -- filetypes = { "css", "scss", "less", "typescriptreact", "javascriptreact" },
+  },
 
   -- cssmodules_ls = {
   --   init_options = {
@@ -218,8 +223,7 @@ local M = {
   -- },
 
   tailwindcss = {
-    -- this needs to be installed globally with deno via
-    -- `deno install --global npm:tailwindcss-language-server -A -f`
+    -- this needs to be installed globally
     cmd = { "tailwindcss-language-server", "--stdio" },
     -- root_dir = lspconfig.util.root_pattern(
     --   "tailwind.config.js",
@@ -246,10 +250,10 @@ local M = {
         experimental = {
           classRegex = {
             -- "clsx\\(([^)]*)\\)",
-            "clsx\\(([^)]*)\\)",
-            "cn\\(([^)]*)\\)",
-            "cva\\(([^)]*)\\)",
-            -- "(?:'|\"|`)([^']*)(?:'|\"|`)",
+            { "clsx\\(([^)]*)\\)" },
+            { "cn\\(([^)]*)\\)" },
+            { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+            { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
           },
         },
       },

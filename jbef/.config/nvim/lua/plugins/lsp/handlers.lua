@@ -1,5 +1,7 @@
 local M = {}
 
+local ui = require("config.ui")
+
 local function filter(arr, fn)
   if type(arr) ~= "table" then
     return arr
@@ -47,7 +49,8 @@ M.handlers = {
   -- end,
 
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
+    -- border = "rounded",
+    border = ui.border.Block,
     focusable = false,
     trimempty = true,
     silent = true,
@@ -55,7 +58,7 @@ M.handlers = {
 
   ["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help,
-    { border = require("config.ui").border.Single }
+    { border = require("config.ui").border.Block }
   ),
 
   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

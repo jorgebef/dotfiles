@@ -16,6 +16,17 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * INFO
+To install, cd into the directory where the keymaps are located
+in my case $HOME/qmk_firmware/keyboards/crkbd/keymaps/jbef/
+and run:
+qmk compile -kb crkbd -km jbef
+
+After, go to QMK Toolbox and flash by looking for the .hex file generated (usually inside $HOME/qmk_firmware/)
+and boot mode (pressing the little buttons inside)
+*/
+
 #include QMK_KEYBOARD_H
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

@@ -10,10 +10,11 @@ local M = {
 function M.config()
   ---@type UISymbols
   local ui = require("config.ui")
-  local palette = require("catppuccin.palettes").get_palette("mocha")
+  -- local palette = require("nordic.colors")
+  -- local palette = require("catppuccin.palettes").get_palette("mocha")
   -- local colors = require("kanagawa.colors").setup({ theme = "wave" })
   -- local palette = colors.palette
-  local devicons = require("nvim-web-devicons")
+  -- local devicons = require("nvim-web-devicons")
 
   local mode_map = {
     ["n"] = "",
@@ -55,8 +56,8 @@ function M.config()
   require("lualine").setup({
     options = {
       icons_enabled = true,
-      -- theme = "auto",
-      theme = "catppuccin",
+      theme = "auto",
+      -- theme = "catppuccin",
       -- theme = "kanagawa",
       component_separators = "",
       section_separators = "",
@@ -173,7 +174,8 @@ function M.config()
             end
           end,
           padding = { left = 1, right = 0 },
-          color = { fg = palette.text, bg = "NONE" },
+          -- color = { fg = palette.text, bg = "NONE" },
+          color = "WinbarFilenameActive",
         },
         {
           "filetype",
@@ -206,7 +208,7 @@ function M.config()
             end
           end,
           padding = { left = 1, right = 0 },
-          color = "WinbarInactive",
+          color = "WinbarFilenameInactive",
         },
         {
           "filetype",

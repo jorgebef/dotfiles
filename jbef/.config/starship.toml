@@ -11,19 +11,12 @@ command_timeout = 90000
 # # Inserts a blank line between shell prompts
 # add_newline = true
 
-# format = "[ 🚀 ](bold bg:purple fg:black)$all"
-# format = "[ ](bold bg:purple)[ 🚀 ](bg:#3E4051)$all"
-# format = "[  ](bg:purple fg:black)$all"
-# format = "[  ](bg:purple fg:black)$all"
-# format = "[  ](bold bg:purple fg:black)$all"
-# format = "[ 猫](bold bg:purple fg:#313244)$all"
-# format = "[ 愛](bold bg:purple fg:black)$all"
-# format = "[ 秋](bold bg:purple fg:black)$all"
-# format = "[ 紅葉](bold bg:purple fg:black)$all"
-# format = "[ 💻 ](bg:purple fg:black)$all"
-# format = "[ 😽 ](bg:blue fg:#45475a)$all"
-# format = "[🚀 ]()$all"
 format = "$all"
+
+# format = '''
+# $directory$package$git_branch
+# $character
+# '''
 
 # [directory]
 # truncate_to_repo = false
@@ -50,14 +43,14 @@ truncate_to_repo = false
 
 [character]
 success_symbol = "[❯](green)" # 
-vicmd_symbol = "[❯](purple)" # 
+vicmd_symbol = "[❮](purple)" # 
 error_symbol = "[❯](red)" # 
 
 [package]
 disabled = true
 
 [username]
-disabled = true
+disabled = false
 
 [hostname]
 disabled = true
@@ -73,7 +66,7 @@ format = "[$symbol($version) ]($style)"
 [docker_context]
 disabled = false
 symbol = " "
-style = "fg:#74c7ec"
+style = "fg:blue"
 format = "[$symbol() Docker ]($style)"
 
 [python]
@@ -83,17 +76,17 @@ format = "[$symbol($version) ]($style)"
 
 [golang]
 symbol = " "
-style = "fg:#74c7ec"
+style = "fg:cyan"
 format = "[$symbol($version) ]($style)"
 
 [rust]
 symbol = "󱘗 "
-style = "fg:#fab387"
+style = "fg:red"
 format = "[$symbol($version) ]($style)"
 
 [git_branch]
 symbol = "󰘬 "
-style = "fg:#7f849c"
+style = "fg:#60728A"
 format = "[$symbol$branch(:$remote_branch) ]($style)"
 disabled = false
 
@@ -112,5 +105,5 @@ disabled = true
 [cmd_duration]
 min_time = 1
 # show_milliseconds = false
-style = "italic fg:#585b70"
+style = "italic fg:#60728A"
 format = "[$duration]($style)"

@@ -1,4 +1,7 @@
-local M = { "Shatur/neovim-session-manager" } -- Session manager
+local M = {
+  "Shatur/neovim-session-manager",
+  enabled = false,
+} -- Session manager
 
 function M.config()
   local Path = require("plenary.path")

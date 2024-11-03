@@ -13,7 +13,7 @@ export FZF_DEFAULT_OPTS="\
 --reverse \
 --border rounded \
 --no-info \
---pointer=' ' \
+--pointer='* ' \
 --marker=' ' \
 --ansi \
 --margin=0,1 \
