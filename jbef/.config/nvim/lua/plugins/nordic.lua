@@ -1,5 +1,6 @@
 local M = {
-  "AlexvZyl/nordic.nvim",
+  -- "AlexvZyl/nordic.nvim",
+  "jorgebef/nordic.nvim",
   lazy = false,
   priority = 1000,
   dependencies = {
@@ -16,7 +17,7 @@ function M.config()
     -- This callback can be used to override highlights before they are applied.
     on_highlight = function(highlights, palette)
       -- Custom Highlights over default
-      highlights.CursorLine = { fg = nil, bg = palette.gray1 }
+      -- highlights.CursorLine = { fg = nil, bg = palette.gray1 }
       highlights.IblScope = { fg = palette.gray4 }
       highlights.IblIndent = { fg = palette.gray1 }
       highlights.FloatBorder = { fg = palette.gray0, bg = palette.black1 }
@@ -77,7 +78,7 @@ function M.config()
     },
   })
 
-  vim.cmd([[colorscheme nordic]])
+  -- vim.cmd([[colorscheme nordic]])
 end
 
 return M

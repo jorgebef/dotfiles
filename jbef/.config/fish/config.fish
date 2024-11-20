@@ -15,6 +15,7 @@ set -gx SSH_AUTH_SOCK "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t
 
 fish_add_path "/usr/local/bin/" # Add local bin to $PATH
 fish_add_path "$HOME/.config/bin/" # Add custom bin to $PATH
+fish_add_path "$HOME/.config/skhd/bin/" # Add custom bin to $PATH
 fish_add_path "$HOME/.cargo/bin/" # Add cargo bin to $PATH
 fish_add_path "$PNPM_HOME" # Add pnpm path to $PATH
 fish_add_path "$HOME/.deno/bin" # Add pnpm path to $PATH

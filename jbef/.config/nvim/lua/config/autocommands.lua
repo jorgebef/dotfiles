@@ -9,27 +9,27 @@
 vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   pattern = "*",
-  command = 'lua vim.highlight.on_yank { higroup="IncSearch", timeout=250 }',
   group = "highlight_yank",
+  command = 'lua vim.highlight.on_yank { higroup="IncSearch", timeout=250 }',
 })
 
 vim.api.nvim_create_augroup("CursorLine", { clear = true })
 vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufRead", "BufWinEnter" }, {
   pattern = "*",
+  group = "CursorLine",
   callback = function()
     vim.cmd([[set cursorline]])
   end,
-  group = "CursorLine",
 })
 vim.api.nvim_create_autocmd({ "WinLeave" }, {
   pattern = "*",
+  group = "CursorLine",
   callback = function()
     if vim.bo.filetype == "neo-tree" then
       return
     end
     vim.cmd([[set nocursorline]])
   end,
-  group = "CursorLine",
 })
 
 -- vim.api.nvim_create_augroup("DockerComposeDetect", { clear = true })
@@ -40,16 +40,17 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 --   end,
 -- })
 
+vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
 vim.api.nvim_create_autocmd("LspAttach", {
+  group = "UserLspConfig",
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     client.server_capabilities.semanticTokensProvider = nil
   end,
 })
-
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = function(ev)
+  group = "UserLspConfig",
+  callback = function()
     for _, client in pairs((vim.lsp.get_clients({}))) do
       if client.name == "tailwindcss" then
         client.server_capabilities.completionProvider.triggerCharacters =

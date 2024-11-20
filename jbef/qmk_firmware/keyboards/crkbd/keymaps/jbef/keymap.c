@@ -18,13 +18,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /*
  * INFO
-To install, cd into the directory where the keymaps are located
+To install, edit into the directory where the keymaps are located
 in my case $HOME/qmk_firmware/keyboards/crkbd/keymaps/jbef/
-and run:
-qmk compile -kb crkbd -km jbef
-
-After, go to QMK Toolbox and flash by looking for the .hex file generated (usually inside $HOME/qmk_firmware/)
-and boot mode (pressing the little buttons inside)
+and run (apparently from whatever directory inside dotfiles):
+qmk flash -kb crkbd -km jbef
 */
 
 #include QMK_KEYBOARD_H
@@ -38,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT, KC_LGUI,  KC_LCTL,     KC_SPC, LT(1,KC_ENT), LT(2,KC_BSPC)
+                                          KC_RALT, KC_LGUI,  KC_LCTL,     KC_SPC, LT(1,KC_ENT), LT(2,KC_BSPC)
                                       //`--------------------------'  `--------------------------'
 
   ),

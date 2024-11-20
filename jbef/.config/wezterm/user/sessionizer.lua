@@ -6,7 +6,7 @@ local act = wezterm.action
 local M = {}
 
 local fd = "/opt/homebrew/bin/fd"
-local lsrc = "/Users/jbef/Developer/"
+local local_dev_path = "/Users/jbef/Developer/"
 
 -- from https://github.com/wez/wezterm/discussions/4796
 M.open = function(window, pane)
@@ -19,7 +19,7 @@ M.open = function(window, pane)
     ".git$",
     "--max-depth=3",
     "--prune",
-    lsrc,
+    local_dev_path,
     -- add more paths here
   })
 

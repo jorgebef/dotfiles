@@ -90,22 +90,22 @@ function M.config()
     -- color_overrides = {
     --   mocha = {
     --     -- this 16 colors are changed to onedark
-    --     base = "#282c34",
-    --     mantle = "#353b45",
-    --     surface0 = "#3e4451",
-    --     surface1 = "#545862",
-    --     surface2 = "#565c64",
-    --     text = "#D3D6DE",
-    --     rosewater = "#DDB1B1",
-    --     lavender = "#A0ABF8",
-    --     red = "#DC93A8",
-    --     peach = "#DD996E",
-    --     yellow = "#E1C894",
-    --     green = "#A0CE9C",
-    --     teal = "#97C3BF",
-    --     blue = "#87AAE3",
-    --     mauve = "#BEA1E3",
-    --     flamingo = "#E9BEBE",
+    --     base = "#222630",
+    --     mantle = "#1E222A",
+    --     surface0 = "#2E3440",
+    --     surface1 = "#2E3440",
+    --     surface2 = "#3B4252",
+    --     text = "#D8DEE9",
+    --     rosewater = "#60728A",
+    --     lavender = "#BE9DB8",
+    --     red = "#BF616A",
+    --     peach = "#D08770",
+    --     yellow = "#EBCB8B",
+    --     green = "#A3BE8C",
+    --     teal = "#8FBCBB",
+    --     blue = "#5E81AC",
+    --     mauve = "#B48EAD",
+    --     flamingo = "#D79784",
     --
     --     -- now patching extra palettes
     --     maroon = "#D897A2",
@@ -115,9 +115,9 @@ function M.config()
     --     pink = "#EDB1DD",
     --     sapphire = "#67B9E0",
     --
-    --     subtext1 = "#BAC2DE",
-    --     subtext0 = "#A6ADC8",
-    --     overlay2 = "#9399B2",
+    --     subtext1 = "#4C566A",
+    --     subtext0 = "#434C5E",
+    --     overlay2 = "#4C566A",
     --     overlay1 = "#7F849C",
     --     overlay0 = "#6C7086",
     --
@@ -175,16 +175,17 @@ function M.config()
 
         -- Language specific
         -- ===============
-        ["@tag.delimiter.tsx"] = { fg = colors.overlay2 },
+        ["@tag.delimiter.tsx"] = { fg = colors.overlay1 },
         ["@tag.attribute.tsx"] = { fg = colors.blue },
         ["@constructor.tsx"] = { fg = colors.peach },
+
+        ["@constructor.typescript"] = { fg = colors.blue },
+
         -- ["@lsp.typemod.property.declaration.string_fragment.typescript"] = { fg = colors.peach },
         ["@string_fragment.typescript"] = { fg = colors.peach },
       }
     end,
   })
-
-  -- vim.cmd([[colorscheme catppuccin]])
 end
 
 return M

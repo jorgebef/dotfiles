@@ -1,4 +1,7 @@
-local M = { "lukas-reineke/indent-blankline.nvim" }
+local M = {
+  "lukas-reineke/indent-blankline.nvim",
+  enabled = false,
+}
 
 function M.config()
   -- local cp = require("catppuccin.palettes").get_palette("mocha")

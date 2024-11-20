@@ -32,7 +32,7 @@ M.kind = {
   Color = " ",
   File = " ",
   Reference = " ",
-  Folder = " ",
+  Folder = " ",
   EnumMember = " ",
   Constant = " ",
   Struct = " ",
@@ -52,7 +52,7 @@ M.type = {
 M.documents = {
   File = " ",
   Files = " ",
-  Folder = " ",
+  Folder = " ",
   OpenFolder = " ",
 }
 
@@ -136,24 +136,24 @@ M.misc = {
 ---@class UIBorder
 M.border = {
   Single = {
-    { "╭", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "╮", "FloatBorder" },
-    { "│", "FloatBorder" },
-    { "╯", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "╰", "FloatBorder" },
-    { "│", "FloatBorder" },
+    { "╭" },
+    { "─" },
+    { "╮" },
+    { "│" },
+    { "╯" },
+    { "─" },
+    { "╰" },
+    { "│" },
   },
   Block = {
-    { "▛", "FloatBorder" },
-    { "▀", "FloatBorder" },
-    { "▜", "FloatBorder" },
-    { "▐", "FloatBorder" },
-    { "▟", "FloatBorder" },
-    { "▄", "FloatBorder" },
-    { "▙", "FloatBorder" },
-    { "▌", "FloatBorder" },
+    { "▛" },
+    { "▀" },
+    { "▜" },
+    { "▐" },
+    { "▟" },
+    { "▄" },
+    { "▙" },
+    { "▌" },
   },
   BlockSimple = {
     { "▛" },

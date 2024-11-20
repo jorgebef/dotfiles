@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 local mux = wezterm.mux
 local act = wezterm.action
-local session_manager = require("user.session-manager")
 local sessionizer = require("user.sessionizer")
 
 local M = {}
@@ -27,18 +26,52 @@ M.tmux_keys = {
 }
 
 M.wezterm_keys = {
+  -- Attach to muxer
+  {
+    key = "a",
+    mods = "LEADER",
+    action = act.AttachDomain("jbp.mbp16"),
+  },
+
+  -- Detach from muxer
+  {
+    key = "d",
+    mods = "LEADER",
+    action = act.DetachDomain({ DomainName = "jbp.mbp16" }),
+  },
+
   { key = ".", mods = "CTRL", action = act.ActivateTabRelativeNoWrap(1) },
   { key = ",", mods = "CTRL", action = act.ActivateTabRelativeNoWrap(-1) },
   { key = ".", mods = "CTRL|SHIFT", action = act.MoveTabRelative(1) },
   { key = ",", mods = "CTRL|SHIFT", action = act.MoveTabRelative(-1) },
   -- { key = ";", mods = "CTRL", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
-  { key = "-", mods = "CTRL", action = wezterm.action.TogglePaneZoomState },
+  { key = "m", mods = "CTRL", action = wezterm.action.TogglePaneZoomState },
+  -- Custom navigation
   { key = "h", mods = "CTRL", action = act.EmitEvent("move-left") },
   { key = "l", mods = "CTRL", action = act.EmitEvent("move-right") },
   { key = "k", mods = "CTRL", action = act.EmitEvent("move-up") },
   { key = "j", mods = "CTRL", action = act.EmitEvent("move-down") },
+
   { key = "v", mods = "LEADER", action = act.SplitHorizontal },
   { key = "h", mods = "LEADER", action = act.SplitVertical },
+
+  {
+    key = "T",
+    mods = "LEADER",
+    action = act.PromptInputLine({
+      description = wezterm.format({
+        { Attribute = { Intensity = "Bold" } },
+        { Foreground = { AnsiColor = "Fuchsia" } },
+        { Text = "Enter new name for Tab:" },
+      }),
+      action = wezterm.action_callback(function(win, pane, line)
+        if line then
+          local tab = win:active_tab()
+          tab:set_title(line)
+        end
+      end),
+    }),
+  },
 
   {
     key = "N",
@@ -47,7 +80,7 @@ M.wezterm_keys = {
       description = wezterm.format({
         { Attribute = { Intensity = "Bold" } },
         { Foreground = { AnsiColor = "Fuchsia" } },
-        { Text = "Enter name for new workspace" },
+        { Text = "Enter name for new workspace:" },
       }),
       action = wezterm.action_callback(function(window, pane, line)
         -- line will be `nil` if they hit escape without entering anything
@@ -71,7 +104,7 @@ M.wezterm_keys = {
       description = wezterm.format({
         { Attribute = { Intensity = "Bold" } },
         { Foreground = { AnsiColor = "Fuchsia" } },
-        { Text = "Enter new name for workspace" },
+        { Text = "Enter new name for current workspace:" },
       }),
       action = wezterm.action_callback(function(window, _, line)
         -- line will be `nil` if they hit escape without entering anything
@@ -82,21 +115,6 @@ M.wezterm_keys = {
         end
       end),
     }),
-  },
-
-  {
-    key = "S",
-    mods = "LEADER|SHIFT",
-    -- action = session_manager.save(),
-    action = session_manager.save_session(),
-  },
-  {
-    key = "R",
-    mods = "LEADER|SHIFT",
-    -- action = session_manager.save(),
-    action = wezterm.action_callback(function()
-      session_manager.restore()
-    end),
   },
 }
 

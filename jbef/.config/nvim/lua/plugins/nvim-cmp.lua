@@ -130,15 +130,15 @@ function M.config()
             vim_item.kind_hl_group = util.set_hl_from(r, g, b, "foreground")
           end
         end
-
+        --
         local kind = lspkind.cmp_format({
           mode = "symbol_text",
-          with_text = true,
+          with_text = false,
           maxwidth = 30,
         })(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
         kind.kind = " " .. strings[1] .. " "
-        kind.menu = "    (" .. strings[2] .. ")"
+        kind.menu = "    (" .. (strings[2] or "") .. ")"
 
         return kind
       end,

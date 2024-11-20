@@ -41,6 +41,8 @@ function M.config()
           ".git",
           -- "--no-ignore-vcs",
         },
+        results_title = false,
+        prompt_title = false,
       },
       buffers = {
         -- show_all_buffers = true,
@@ -55,6 +57,9 @@ function M.config()
       },
     },
     defaults = {
+      results_title = false,
+      prompt_title = false,
+
       mappings = {
         i = {
           ["<C-S-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
@@ -70,8 +75,7 @@ function M.config()
       selection_caret = "▌ ",
       -- border = false,
       -- borderchars = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
-      results_title = false,
-      prompt_title = false,
+      borderchars = { "🬂", "▐", "🬭", "▌", "🬕", "🬨", "▟", "▙" },
 
       vimgrep_arguments = {
         "rg",

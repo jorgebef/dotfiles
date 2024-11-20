@@ -27,9 +27,9 @@ adjust-cell-width = -5%
 adjust-underline-thickness = 50%
 # adjust-cell-height = 4
 
-# background-opacity = 0.98
+background-opacity = 0.98
 # background-blur-radius = 100
-background-opacity = 1
+# background-opacity = 1
 
 # gtk-titlebar = false
 window-decoration = true
@@ -38,6 +38,7 @@ macos-titlebar-style = hidden
 # macos-option-as-alt = true
 keybind = ctrl+;=text:þ
 keybind = ctrl+m=text:Ω
+
 # keybind = cmd+left=text:\x01
 # keybind = alt+left=esc:b
 # keybind = alt+right=esc:f
@@ -47,4 +48,5 @@ keybind = ctrl+m=text:Ω
 # theme = rose-pine
 # theme = tokyonight
 # theme = kanagawabones
-theme = "/Users/jbef/.config/ghostty/nordic"
+# theme = "/Users/jbef/.config/ghostty/nordic"
+theme = "/Users/jbef/.config/ghostty/kanagawa-dragon"

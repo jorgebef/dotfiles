@@ -52,9 +52,7 @@ lazy.setup("plugins", {
 
 vim.keymap.set("n", "<leader>L", ":Lazy<CR>", { noremap = true })
 
--- vim.cmd([[colorscheme catppuccin]])
--- vim.cmd([[colorscheme kanagawa]])
+-- vim.cmd([[colorscheme catppuccin-mocha]])
+-- vim.cmd([[colorscheme nordic]])
+vim.cmd([[colorscheme kanagawa-dragon]])
 -- vim.cmd([[colorscheme tokyonight]])
-
--- vim.cmd.colorscheme("onedark")
--- require('onedark').load()

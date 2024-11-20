@@ -22,7 +22,8 @@ format = "$all"
 # truncate_to_repo = false
 
 [directory]
-style = "blue bold"
+# style = "red bold"
+style = "fg:#8ea4a2 bold"
 
 # truncation_length = 2
 truncation_length = 4
@@ -86,7 +87,7 @@ format = "[$symbol($version) ]($style)"
 
 [git_branch]
 symbol = "󰘬 "
-style = "fg:#60728A"
+style = "fg:#658594"
 format = "[$symbol$branch(:$remote_branch) ]($style)"
 disabled = false
 
@@ -105,5 +106,5 @@ disabled = true
 [cmd_duration]
 min_time = 1
 # show_milliseconds = false
-style = "italic fg:#60728A"
+style = "italic fg:#737c73"
 format = "[$duration]($style)"

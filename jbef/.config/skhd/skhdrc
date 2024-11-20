@@ -1,22 +1,31 @@
 # Change display
-# ctrl + alt + cmd - i : yabai -m display --focus next
 ralt - i : yabai -m display --focus west
 ralt - o : yabai -m display --focus east
 
 # float / unfloat window and center on screen
 ralt - u : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
-# # cycle forwards on the focused display
-# ctrl + alt + cmd - l : \
-#   min_id="$(yabai -m query --spaces --display | jq '.[0].index')"; \
-#   id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | reverse | .[map(."has-focus") | index(true) - 1].index')"; \
-#   if [ "${id}" -ne "${min_id}" ]; then yabai -m space --focus "${id}"; fi
+## Focus next/previous space of current display. No-op if the current space is the last/first space of its display.
+# files are located in `.config/bin` which should be added to $PATH
+ralt - 0x2F : space_focus_next.sh
+ralt - 0x2B : space_focus_prev.sh
 
-# # cycle backwards on the focused display
-# ctrl + alt + cmd - h : \
-#   max_id="$(yabai -m query --spaces --display | jq '.[-1].index')"; \
-#   id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | .[map(."has-focus") | index(true) - 1].index')"; \
-#   if [ "${id}" -ne "${max_id}" ]; then yabai -m space --focus "${id}"; fi
+## Move previous space of current display. No-op if the current space is the first space of its display.
+# file is located in `.config/skhd/bin` which should be added to $PATH
+# ralt + shift - 0x2F : \
+#   cur_window="yabai -m query --windows --window | jq '.id'"\
+#   window_move_next_space.sh ${cur_window}
+ralt + shift - 0x2F : window_move_next_space.sh
+
+ralt + shift - 0x2B : window_move_prev_space.sh
+
+
+
+# # Focus next space by mission-control index
+# ralt - 0x2F : yabai -m space --focus next
+#  # Focus previous space by mission-control index
+# ralt - 0x2B : yabai -m space --focus prev
+
 ralt + cmd - return : yabai -m window --toggle zoom-parent
 
 # lalt + cmd - 0x18 : yabai -m window --resize bottom_right:0:200
