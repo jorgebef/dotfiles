@@ -1,53 +1,71 @@
 local lspconfig = require("lspconfig")
 
 local M = {
-  -- vtsls = {
-  --   cmd = { "vtsls", "--stdio" },
-  --   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-  --   root_dir = lspconfig.util.root_pattern(".git"),
-  -- },
 
-  -- This is no longer needed as long as I use the plugin typescript-tools.nvim
-  ts_ls = {
-    cmd = { "typescript-language-server", "--stdio" },
-    -- root_dir = function(...)
-    --   return require("lspconfig.util").root_pattern(".git")(...)
-    -- end,
-    -- filetypes = {
-    --   "javascript",
-    --   "vue",
-    -- },
-    single_file_support = false,
-    init_options = {
-      documentFormatting = false,
-      documentRangeFormatting = true,
-    },
+  vtsls = {
+    -- cmd = { "vtsls", "--stdio" },
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    root_dir = lspconfig.util.root_pattern(".git"),
     settings = {
-      typescript = {
-        inlayHints = {
-          includeInlayParameterNameHints = "literal",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = false,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
+      javascript = {
+        suggest = {
+          names = false,
+          completeFunctionCalls = true,
         },
       },
-      javascript = {
-        inlayHints = {
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
+      typescript = {
+        suggest = {
+          names = false,
+          completeFunctionCalls = true,
+        },
+        preferences = {
+          names = false,
         },
       },
     },
-    flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
   },
+
+  -- -- This is no longer needed as long as I use the plugin typescript-tools.nvim
+  -- ts_ls = {
+  --   cmd = { "typescript-language-server", "--stdio" },
+  --   -- root_dir = function(...)
+  --   --   return require("lspconfig.util").root_pattern(".git")(...)
+  --   -- end,
+  --   -- filetypes = {
+  --   --   "javascript",
+  --   --   "vue",
+  --   -- },
+  --   single_file_support = false,
+  --   init_options = {
+  --     documentFormatting = false,
+  --     documentRangeFormatting = true,
+  --   },
+  --   settings = {
+  --     typescript = {
+  --       inlayHints = {
+  --         includeInlayParameterNameHints = "literal",
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayVariableTypeHints = false,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayEnumMemberValueHints = true,
+  --       },
+  --     },
+  --     javascript = {
+  --       inlayHints = {
+  --         includeInlayParameterNameHints = "all",
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayVariableTypeHints = true,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayEnumMemberValueHints = true,
+  --       },
+  --     },
+  --   },
+  --   flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+  -- },
 
   -- astro = {},
 
@@ -209,10 +227,22 @@ local M = {
   },
 
   cssls = {
+    root_dir = lspconfig.util.root_pattern(".git"),
+    -- settings = {
+    --   css = {
+    --     validate = true,
+    --     lint = {
+    --       unknownAtRules = "ignore",
+    --     },
+    --   },
+    -- },
     -- filetypes = { "css", "scss", "less", "typescriptreact", "javascriptreact" },
   },
 
   css_variables = {
+    settings = {
+      lookupFiles = { "**/*.less", "**/*.scss", "**/*.sass", "**/*.css" },
+    },
     -- filetypes = { "css", "scss", "less", "typescriptreact", "javascriptreact" },
   },
 

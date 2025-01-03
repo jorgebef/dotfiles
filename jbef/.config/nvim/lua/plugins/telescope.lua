@@ -70,12 +70,19 @@ function M.config()
       },
 
       -- prompt_prefix = ui.common.Telescope .. " " .. ui.misc.Carat,
-      prompt_prefix = ui.common.Telescope .. " ",
+      prompt_prefix = " " .. ui.common.Telescope .. " ",
       -- selection_caret = ui.common.Arrow,
       selection_caret = "▌ ",
       -- border = false,
-      -- borderchars = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
-      borderchars = { "🬂", "▐", "🬭", "▌", "🬕", "🬨", "▟", "▙" },
+      borderchars = {
+        -- prompt = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
+        -- results = { " ", "▐", "▄", "▌", "▌", "▐", "▟", "▙" },
+        -- preview = { "▀", "█", "▄", " ", "▀", "█", "█", "▄" },
+        prompt = { " ", " ", "▄", "█", "█", " ", "▄", "█" },
+        results = { "▀", " ", " ", "█", "█", "▀", " ", "█" },
+        preview = { "▀", "█", "▄", " ", "▀", "█", "█", "▄" },
+      },
+      -- borderchars = { "🬂", "▐", "🬭", "▌", "🬕", "🬨", "▟", "▙" },
 
       vimgrep_arguments = {
         "rg",

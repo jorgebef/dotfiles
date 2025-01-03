@@ -44,7 +44,8 @@ function M.config()
           local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
           return {
             -- border = "rounded",
-            border = ui.border.Block,
+            -- border = ui.border.Block,
+            border = ui.border.Square,
             relative = "editor",
             row = center_y,
             col = center_x,

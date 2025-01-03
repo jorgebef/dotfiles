@@ -1,0 +1,26 @@
+# Kanagawa-groove Colorscheme for Ghostty.
+# Author: @jorgebef
+
+palette = 0=#060503
+palette = 1=#C34043
+palette = 2=#98BB6C
+palette = 3=#FF9E3B
+palette = 4=#7FB4CA
+palette = 5=#D27E99
+palette = 6=#658594
+palette = 7=#D2CCC0
+
+palette = 8=#5D5C54
+palette = 9=#E46876
+palette = 10=#87A987
+palette = 11=#E6C384
+palette = 12=#7FB4CA
+palette = 13=#938AA9
+palette = 14=#7AA89F
+palette = 15=#C5C9C5
+
+background = #1a1a22
+foreground = #D2CCC0
+cursor-color = #B8B093
+selection-background = #545461
+selection-foreground = #060503

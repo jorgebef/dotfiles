@@ -48,16 +48,17 @@ vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
 
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
-vim.opt.fillchars = {
-  horiz = "━",
-  vert = "┃",
-  horizdown = "┳",
-  horizup = "┻",
-  vertleft = "┫",
-  vertright = "┣",
-  verthoriz = "╋",
-  eob = " ",
-}
+
+-- vim.opt.fillchars = {
+--   horiz = "━",
+--   vert = "┃",
+--   horizdown = "┳",
+--   horizup = "┻",
+--   vertleft = "┫",
+--   vertright = "┣",
+--   verthoriz = "╋",
+--   eob = " ",
+-- }
 
 vim.o.ignorecase = true
 vim.o.smartcase = true

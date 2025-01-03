@@ -4,7 +4,7 @@ local M = {
   name = "catppuccin",
   build = ":CatppuccinCompile",
   priority = 1000, --https://github.com/folke/lazy.nvim#-colorschemes:~:text=%F0%9F%8C%88,Colorschemes
-  enabled = true,
+  enabled = false,
   dependencies = {
     { "nvim-treesitter/nvim-treesitter" },
   },

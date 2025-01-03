@@ -1,11 +1,7 @@
 local wezterm = require("wezterm")
 
-local mux = wezterm.mux
 local act = wezterm.action
 -- local palette = require("user.catppuccin").colors.mocha
-
--- package.path = package.path .. ";/Users/jbef/.config/colors/?.lua"
--- local kanagawa_custom = require("kanagawa-custom")
 
 local USE_MULTIPLEXER = false
 local config = {}
@@ -13,6 +9,25 @@ local config = {}
 if wezterm.config_builder then
   config = wezterm.config_builder()
 end
+
+local new_sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
+new_sessionizer.apply_to_config(config, true)
+
+-- you can also list multiple paths
+new_sessionizer.config.paths = "/Users/jbef/Developer/Clients"
+
+config.keys = {
+  {
+    key = "'",
+    mods = "CTRL",
+    action = new_sessionizer.show,
+  },
+  {
+    key = "r",
+    mods = "ALT|SHIFT",
+    action = new_sessionizer.switch_to_most_recent,
+  },
+}
 
 config.term = "wezterm"
 
@@ -23,7 +38,10 @@ config.unix_domains = {
   },
 }
 -- https://wezfurlong.org/wezterm/config/lua/config/default_domain.html
-config.default_domain = "jbef.mbp16"
+
+if USE_MULTIPLEXER == false then
+  config.default_domain = "jbef.mbp16"
+end
 
 local function isViProcess(pane)
   local prog = pane:get_user_vars()["WEZTERM_PROG"]
@@ -57,7 +75,9 @@ end)
 
 -- config.color_scheme = "Catppuccin Mocha"
 -- config.colors = require("user.nordic").colors
-config.colors = require("user.kanagawa-dragon").colors
+-- config.colors = require("user.kanagawa-dragon").colors
+config.colors = require("user.kanagawa-groove").colors
+-- config.color_scheme = "Kanagawa (Gogh)"
 
 config.font = wezterm.font({
   family = "JetbrainsMono Nerd Font",
@@ -99,9 +119,9 @@ config.automatically_reload_config = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.window_decorations = "RESIZE"
--- config.window_background_opacity = 1
-config.window_background_opacity = 0.98
-config.macos_window_background_blur = 0
+config.window_background_opacity = 1
+-- config.window_background_opacity = 0.98
+-- config.macos_window_background_blur = 0
 if USE_MULTIPLEXER then
   config.hide_tab_bar_if_only_one_tab = true
 else
@@ -114,11 +134,6 @@ config.window_padding = {
   top = 10,
   bottom = 0,
 }
-
--- wezterm.on("gui-startup", function(cmd)
---   local tab, pane, window = mux.spawn_window({ domain = { DomainName = "unix" }, args = cmd or {} })
---   -- window:gui_window():maximize()
--- end)
 
 -- Enable CSI u mode
 -- https://wezfurlong.org/wezterm/config/lua/config/enable_csi_u_key_encoding.html
@@ -150,117 +165,13 @@ config.inactive_pane_hsb = {
   brightness = 1.0,
 }
 
--- The filled in variant of the < symbol
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
-
--- The filled in variant of the > symbol
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
-
--- config.tab_bar_style = {}
--- config.show_new_tab_button_in_tab_bar = false
--- config.colors = {
---   split = "#585b70",
---   tab_bar = {
---     -- The color of the strip that goes along the top of the window
---     -- (does not apply when fancy tab bar is in use)
---     background = "#1E1E2E",
---   },
--- }
+-- -- The filled in variant of the < symbol
+-- local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
+-- -- The filled in variant of the > symbol
+-- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 config.status_update_interval = 1000
 -- config.status_update_interval = 0
-
--- wezterm.on("update-right-status", function(window, pane)
---   -- local result = wezterm.strftime("%Y-%m-%d %H:%M:%S")
---   local cwd_uri = pane:get_current_working_dir()
---
---   local right_separator = "  "
---   local separator = " "
---
---   local branch = ""
---   local git_info = ""
---   -- local datetime = wezterm.strftime("%a %b %-d %H:%M")
---
---   if cwd_uri ~= nil then
---     local cwd = cwd_uri.file_path
---     local git_dir = "--git-dir=" .. cwd .. "/.git"
---     -- local _branch = io.popen("git " .. git_dir .. " branch --show-current")
---     -- branch = wezterm.to_string(_branch:read("*a")):gsub('"', ""):gsub("\\n", "")
---     -- _branch:close()
---     -- local _git_info = io.popen("git " .. git_dir .. " status -s -uno | wc -l")
---     -- git_info = tostring(_git_info:read("*a")):gsub("%s", "")
---     -- _git_info:close()
---     local _, _branch, _ = wezterm.run_child_process({ "git", git_dir, "branch", "--show-current" })
---     branch = _branch
---   end
---
---   -- command = io.popen("gitmux -cfg /Users/jbef/.config/tmux/gitmux.conf /Users/jbef/Developer/dotfiles")
---   -- local command = io.popen("gitmux /Users/jbef/Developer/dotfiles")
---   -- local gitmux_result = wezterm.to_string(command:read("*a"))
---   -- command:close()
---   window:set_right_status(wezterm.format({
---     { Foreground = { Color = palette.green } },
---     { Text = "󰘬 " .. branch },
---     { Text = separator },
---     { Foreground = { Color = palette.subtext0 } },
---     { Text = git_info },
---     -- { Text = "󰘬 " .. unstaged },
---     -- { Text = "󰘬 " .. gitmux_result },
---     { Text = right_separator },
---   }))
--- end)
-
--- wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
---   -- local title = tab.tab_title
---   local left_padding = " "
---   local separator = " "
---   local custom_title = "------"
---   local edge_background = palette.base
---   local edge_foreground = palette.base
---   local background = palette.pink
---   local foreground = palette.pink
---
---   local mux_window = mux.get_window(tab.window_id)
---   local workspace = "  " .. mux:get_active_workspace()
---   local mux_tab = mux_window:active_tab()
---   local mux_tab_cols = mux_tab:get_size().cols
---
---   -- local window = mux.get_window(tab.window_id)
---   -- local window_dimensions = window:gui_window():get_dimensions()
---
---   if tab.tab_index == 0 then
---     left_padding = workspace
---       .. string.rep(
---         " ",
---         math.floor(
---           (mux_tab_cols - math.floor(#workspace * 2) - #tabs * math.floor(#custom_title) - (#tabs - 1) * #separator) / 2
---         )
---       )
---   end
---
---   if tab.is_active then
---     background = palette.base
---     foreground = palette.pink
---   else
---     background = palette.base
---     foreground = palette.surface1
---   end
---
---   return {
---     { Attribute = { Intensity = "Bold" } },
---     -- { Attribute = { Italic = true } },
---     { Background = { Color = edge_background } },
---     { Foreground = { Color = palette.subtext1 } },
---     { Text = left_padding },
---     { Background = { Color = background } },
---     { Foreground = { Color = foreground } },
---     { Attribute = { Italic = false } },
---     { Text = custom_title },
---     { Background = { Color = edge_background } },
---     { Foreground = { Color = edge_foreground } },
---     { Text = separator },
---   }
--- end)
 
 -- ==================================================================================
 -- This is to allow to write ´ when pressint ALT+e on macos and ˜ when pressing ALT+n
@@ -308,7 +219,6 @@ end
 -- ==================================================================================
 -- Here we set the keybindings depending on whether we USE_MULTIPLEXER or not
 -- ==================================================================================
-config.keys = {}
 
 -- Common keymaps whether using TMUX or not
 for _, k in pairs(require("user.keybindings").common_keys) do
@@ -326,7 +236,5 @@ else
   end
 end
 -- ==================================================================================
-
-config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 
 return config

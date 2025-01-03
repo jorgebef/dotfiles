@@ -2,6 +2,7 @@
 local M = {
   "folke/noice.nvim",
   event = "VeryLazy",
+  enabled = true,
   opts = {
     -- add any options here
   },
@@ -33,6 +34,9 @@ function M.config()
         silent = false, -- set to true to not show a message if hover is not available
         view = nil, -- when nil, use defaults from documentation
         ---@type NoiceViewOptions
+        border = {
+          style = "solid",
+        },
         opts = {}, -- merged with defaults from documentation
       },
     },
@@ -42,8 +46,7 @@ function M.config()
       command_palette = false, -- position the cmdline and popupmenu together
       long_message_to_split = true, -- long messages will be sent to a split
       inc_rename = false, -- enables an input dialog for inc-rename.nvim
-      -- lsp_doc_border = true, -- add a border to hover docs and signature help
-      lsp_doc_border = ui.border.Block, -- add a border to hover docs and signature help
+      lsp_doc_border = true, -- add a border to hover docs and signature help
     },
   })
 end

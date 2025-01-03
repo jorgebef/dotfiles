@@ -49,25 +49,25 @@ function M.config()
 
       return {
 
-        -- -- NvimSurroundHighlight = { bg = theme.ui.fg },
-        -- TelescopeBorder = { bg = "NONE" },
-        -- TelescopeNormal = { fg = theme.ui.fg_dim },
-        -- NoiceLspProgressSpinner = { fg = theme.ui.fg, bg = "NONE" },
-        -- NoiceLspProgressTitle = { fg = theme.ui.fg, bg = "NONE" },
-        -- NoiceLspProgressClient = { bg = "NONE" },
-        -- FloatFooter = { bg = "NONE" },
-        TelescopeNormal = { bg = theme.ui.bg },
-        TelescopeBorder = { fg = theme.ui.bg_m3, bg = theme.ui.bg },
-        TelescopePromptNormal = { bg = theme.ui.bg },
-        TelescopePromptPrefix = { bg = theme.ui.bg },
-        TelescopePromptCounter = { bg = theme.ui.bg },
+        -- -- -- NvimSurroundHighlight = { bg = theme.ui.fg },
+        -- -- TelescopeBorder = { bg = "NONE" },
+        -- -- TelescopeNormal = { fg = theme.ui.fg_dim },
+        -- -- NoiceLspProgressSpinner = { fg = theme.ui.fg, bg = "NONE" },
+        -- -- NoiceLspProgressTitle = { fg = theme.ui.fg, bg = "NONE" },
+        -- -- NoiceLspProgressClient = { bg = "NONE" },
+        -- -- FloatFooter = { bg = "NONE" },
+        -- TelescopeNormal = { bg = theme.ui.bg },
+        -- TelescopeBorder = { fg = theme.ui.bg_m3, bg = theme.ui.bg },
+        -- TelescopePromptNormal = { bg = theme.ui.bg },
+        -- TelescopePromptPrefix = { bg = theme.ui.bg },
+        -- TelescopePromptCounter = { bg = theme.ui.bg },
 
         -- TelescopeBorder = { fg = theme.ui.bg_m3, bg = theme.ui.bg },
 
         NoiceFormatConfirm = { bg = theme.ui.bg },
 
-        -- Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-        -- PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg }, -- add `blend = vim.o.pumblend` to enable transparency
+        PmenuSel = { fg = "NONE", bg = theme.ui.bg_p3 },
 
         -- PmenuSbar = { bg = theme.ui.bg_m1 },
         -- PmenuThumb = { bg = theme.ui.bg_p2 },
@@ -76,11 +76,12 @@ function M.config()
 
         -- NotifyBackground = { bg = theme.ui.bg },
 
-        FloatBorder = { fg = theme.ui.bg, bg = palette.dragonBlack0 },
+        -- FloatBorder = { fg = theme.ui.shade0, bg = theme.ui.bg },
 
-        WinSeparator = { fg = theme.ui.bg_m3 },
+        -- WinSeparator = { fg = theme.ui.bg_p1 },
+        WinSeparator = { fg = palette.sumiInk5 },
 
-        ColorColumn = { bg = colors.palette.sumiInk1 },
+        -- ColorColumn = { bg = colors.palette.sumiInk1 },
 
         NavicText = { fg = theme.ui.fg_dim },
 

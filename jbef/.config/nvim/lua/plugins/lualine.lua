@@ -1,7 +1,6 @@
 local M = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    { "akinsho/bufferline.nvim", version = "*" },
     { "SmiteshP/nvim-navic" },
     { "nvim-tree/nvim-web-devicons" },
   },
@@ -170,12 +169,13 @@ function M.config()
             if folder == "" then
               return nil
             else
-              return ui.kind.Folder .. folder .. " " .. ui.misc.Carat
+              return ui.kind.Folder .. folder .. " " .. "-> "
             end
           end,
           padding = { left = 1, right = 0 },
           -- color = { fg = palette.text, bg = "NONE" },
-          color = "WinbarFilenameActive",
+          -- color = "WinbarFilenameActive",
+          color = "Winbar",
         },
         {
           "filetype",
@@ -187,7 +187,8 @@ function M.config()
         {
           "filename",
           padding = { left = 0, right = 3 },
-          color = "WinbarFilenameActive",
+          -- color = "WinbarFilenameActive",
+          color = "Winbar",
         },
       },
       lualine_b = { "navic" },
@@ -204,23 +205,26 @@ function M.config()
             if folder == "" then
               return nil
             else
-              return ui.kind.Folder .. folder .. " " .. ui.misc.Carat
+              return ui.kind.Folder .. folder .. " " .. "-> "
             end
           end,
           padding = { left = 1, right = 0 },
-          color = "WinbarFilenameInactive",
+          -- color = "WinbarFilenameInactive",
+          color = "WinbarNC",
         },
         {
           "filetype",
           colored = false, -- Displays filetype icon in color if set to true
           icon_only = true, -- Display only an icon for filetype
           padding = 0,
-          color = "WinbarInactive",
+          -- color = "WinbarInactive",
+          color = "WinbarNC",
         },
         {
           "filename",
           padding = { left = 0, right = 3 },
-          color = "WinbarInactive",
+          -- color = "WinbarInactive",
+          color = "WinbarNC",
         },
       },
       lualine_b = {},

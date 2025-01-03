@@ -11,6 +11,8 @@
 # Empty values reset the configuration to the default value
 title = .
 
+auto-update = off
+
 font-family = JetBrainsMono Nerd Font
 # font-family = MonaspiceNe Nerd Font
 font-family-bold = JetBrainsMono Nerd Font Bold
@@ -22,14 +24,14 @@ shell-integration-features = true
 # mouse-hide-while-typing = true
 
 font-size = 14.5
-adjust-cell-width = -5%
+adjust-cell-width = -4%
 # adjust-underline-position = 100%
-adjust-underline-thickness = 50%
+# adjust-underline-thickness = 50%
 # adjust-cell-height = 4
 
-background-opacity = 0.98
+# background-opacity = 0.98
 # background-blur-radius = 100
-# background-opacity = 1
+background-opacity = 1
 
 # gtk-titlebar = false
 window-decoration = true
@@ -49,4 +51,5 @@ keybind = ctrl+m=text:Ω
 # theme = tokyonight
 # theme = kanagawabones
 # theme = "/Users/jbef/.config/ghostty/nordic"
-theme = "/Users/jbef/.config/ghostty/kanagawa-dragon"
+# theme = "/Users/jbef/.config/ghostty/kanagawa-dragon"
+theme = "/Users/jbef/.config/ghostty/kanagawa-groove"

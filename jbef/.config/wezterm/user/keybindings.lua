@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 local mux = wezterm.mux
 local act = wezterm.action
 local sessionizer = require("user.sessionizer")
+local new_sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
 
 local M = {}
 
@@ -10,23 +11,24 @@ M.common_keys = {
   { key = "=", mods = "CTRL", action = act.DisableDefaultAssignment },
   -- { key = "'", mods = "ALT", action = act.SendString("\xc3\xa4") },
   -- { key = "Space", mods = "CTRL|SHIFT", action = wezterm.action_callback(sessionizer.resetCacheAndToggle) },
-  { key = ";", mods = "CTRL", action = wezterm.action_callback(sessionizer.open) },
-  -- { key = "m", mods = "CTRL", action = wezterm.action_callback(sessionizer.resetCacheAndToggle) },
-  { key = "/", mods = "CTRL", action = act.SplitVertical },
-  { key = "'", mods = "CTRL", action = act.SplitHorizontal },
+  -- { key = "'", mods = "CTRL", action = new_sessionizer.show },
+
+  -- { key = "/", mods = "CTRL", action = act.SplitVertical },
+  -- { key = "'", mods = "CTRL", action = act.SplitHorizontal },
 }
 
 M.tmux_keys = {
 
   -- This below maps CTRL+; to Ω, since that is a key combination that can be sent to tmux to run the popup with the session switcher
-  -- { key = ";", mods = "CTRL", action = act.SendString("þ") },
-  -- { key = "m", mods = "CTRL", action = act.SendString("Ω") },
-  -- { key = "=", mods = "CTRL", action = act.SendString("†") },
+  { key = ";", mods = "CTRL", action = act.SendString("þ") },
+  { key = "m", mods = "CTRL", action = act.SendString("Ω") },
+  { key = "=", mods = "CTRL", action = act.SendString("†") },
   -- =====================================================================
 }
 
 M.wezterm_keys = {
   -- Attach to muxer
+  { key = ";", mods = "CTRL", action = wezterm.action_callback(sessionizer.open) },
   {
     key = "a",
     mods = "LEADER",

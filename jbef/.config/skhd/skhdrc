@@ -1,44 +1,49 @@
 # Change display
-ralt - i : yabai -m display --focus west
-ralt - o : yabai -m display --focus east
+lalt - i : yabai -m display --focus west
+lalt - o : yabai -m display --focus east
 
 # float / unfloat window and center on screen
-ralt - u : yabai -m window --toggle float --grid 4:4:1:1:2:2
+lalt - u : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 ## Focus next/previous space of current display. No-op if the current space is the last/first space of its display.
 # files are located in `.config/bin` which should be added to $PATH
-ralt - 0x2F : space_focus_next.sh
-ralt - 0x2B : space_focus_prev.sh
+lalt - 0x2F : space_focus_next.sh
+lalt - 0x2B : space_focus_prev.sh
+
+# # cycle forward
+# lalt - 0x2F : yabai -m window --focus next || yabai -m window --focus first_node
+# # cycle backwards
+# lalt - 0x2B : yabai -m window --focus prev || yabai -m window --focus last_node
 
 ## Move previous space of current display. No-op if the current space is the first space of its display.
 # file is located in `.config/skhd/bin` which should be added to $PATH
-# ralt + shift - 0x2F : \
+# lalt + shift - 0x2F : \
 #   cur_window="yabai -m query --windows --window | jq '.id'"\
 #   window_move_next_space.sh ${cur_window}
-ralt + shift - 0x2F : window_move_next_space.sh
+lalt + shift - 0x2F : window_move_next_space.sh
 
-ralt + shift - 0x2B : window_move_prev_space.sh
+lalt + shift - 0x2B : window_move_prev_space.sh
 
 
 
 # # Focus next space by mission-control index
-# ralt - 0x2F : yabai -m space --focus next
+# lalt - 0x2F : yabai -m space --focus next
 #  # Focus previous space by mission-control index
-# ralt - 0x2B : yabai -m space --focus prev
+# lalt - 0x2B : yabai -m space --focus prev
 
-ralt + cmd - return : yabai -m window --toggle zoom-parent
+lalt + cmd - return : yabai -m window --toggle zoom-parent
 
 # lalt + cmd - 0x18 : yabai -m window --resize bottom_right:0:200
 # lalt + cmd - - : yabai -m window --resize right:-200
 
-ralt + shift - i : yabai -m window --display west; yabai -m display --focus west
-ralt + shift - o : yabai -m window --display east; yabai -m display --focus east
+lalt + shift - i : yabai -m window --display west; yabai -m display --focus west
+lalt + shift - o : yabai -m window --display east; yabai -m display --focus east
 
-ralt - h : yabai -m window --focus west
-ralt + shift - h : yabai -m window --swap west
+lalt - h : yabai -m window --focus west
+lalt + shift - h : yabai -m window --swap west
 
-ralt - l : yabai -m window --focus east
-ralt + shift - l : yabai -m window --swap east
+lalt - l : yabai -m window --focus east
+lalt + shift - l : yabai -m window --swap east
 
 # # send to display and follow focus
 # ctrl + alt + cmd - left : \

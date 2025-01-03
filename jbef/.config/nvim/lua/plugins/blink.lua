@@ -148,7 +148,7 @@ function M.config()
     sources = {
       -- list of enabled providers
       completion = {
-        enabled_providers = { "lsp", "path", "snippets", "buffer" },
+        enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
       },
 
       providers = {
@@ -164,10 +164,13 @@ function M.config()
           should_show_items = true, -- whether or not to show the items
           max_items = nil, -- maximum number of items to return
           min_keyword_length = 0, -- minimum number of characters to trigger the provider
-          fallback_for = {}, -- if any of these providers return 0 items, it will fallback to this provider
+          fallback_for = {
+            "lazydev",
+          }, -- if any of these providers return 0 items, it will fallback to this provider
           score_offset = 0, -- boost/penalize the score of the items
           override = nil, -- override the source's functions
         },
+        lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
         path = {
           name = "Path",
           module = "blink.cmp.sources.path",

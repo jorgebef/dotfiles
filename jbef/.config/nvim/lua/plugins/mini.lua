@@ -42,7 +42,7 @@ function M.config()
     symbol = "│",
   })
 
-  vim.api.nvim_create_augroup("MiniIndentscope", { clear = true })
+  -- vim.api.nvim_create_augroup("MiniIndentscope", { clear = true })
   vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "NvimTree" },
     group = "MiniIndentscope",

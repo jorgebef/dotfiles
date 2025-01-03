@@ -6,17 +6,17 @@ local M = {
   -- DISABLE
   enabled = true,
   dependencies = {
-    { "folke/lazydev.nvim", lazy = true },
+    { "folke/lazydev.nvim" },
 
-    { "hrsh7th/cmp-nvim-lsp", lazy = true },
-    { "hrsh7th/cmp-buffer", lazy = true },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/cmp-buffer" },
     -- "hrsh7th/cmp-path",
-    { "FelipeLema/cmp-async-path", lazy = true },
+    { "FelipeLema/cmp-async-path" },
 
     -- { "hrsh7th/cmp-cmdline" },
     { "L3MON4D3/LuaSnip", lazy = true },
     { "saadparwaiz1/cmp_luasnip", lazy = true },
-    { "onsails/lspkind-nvim", lazy = true },
+    { "onsails/lspkind-nvim" },
   },
 }
 
@@ -50,18 +50,21 @@ function M.config()
     },
     window = {
       completion = {
-        border = ui.border.Block,
+        -- border = ui.border.Block,
+        border = ui.border.BlockThick,
+        -- border = ui.border.Square,
         -- border = false,
-        -- winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-        winhighlight = "Normal:NormalFloat,NormalNC:NormalFloat,FloatBorder:FloatBorder",
-        col_offset = 1,
-        side_padding = 1,
+        winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+        -- col_offset = 1,
+        -- side_padding = 1,
+        --
       },
       documentation = {
-        border = ui.border.Block,
+        -- border = ui.border.Block,
+        border = ui.border.BlockThick,
+        -- border = ui.border.Square,
         -- border = false,
-        winhighlight = "Normal:NormalFloat,NormalNC:NormalFloat,FloatBorder:FloatBorder",
-        -- winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+        winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
         -- maxheight = 190,
       },
     },
@@ -101,6 +104,7 @@ function M.config()
         priority = 100,
         group_index = 1,
       },
+      { name = "lazydev", group_index = 0 },
       { name = "async_path", priority = 30, group_index = 5 },
 
       { name = "luasnip", keyword_length = 1 }, -- For luasnip users.

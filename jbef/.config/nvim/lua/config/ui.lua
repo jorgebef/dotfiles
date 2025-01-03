@@ -135,16 +135,8 @@ M.misc = {
 
 ---@class UIBorder
 M.border = {
-  Single = {
-    { "╭" },
-    { "─" },
-    { "╮" },
-    { "│" },
-    { "╯" },
-    { "─" },
-    { "╰" },
-    { "│" },
-  },
+  Single = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  Square = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
   Block = {
     { "▛" },
     { "▀" },
@@ -154,6 +146,17 @@ M.border = {
     { "▄" },
     { "▙" },
     { "▌" },
+  },
+  BlockThick = { "█", "▀", "█", "█", "█", "▄", "█", "█" },
+  LSPBlock = {
+    { "▛", "FloatBorder" },
+    { "▀", "FloatBorder" },
+    { "▜", "FloatBorder" },
+    { "▐", "FloatBorder" },
+    { "▟", "FloatBorder" },
+    { "▄", "FloatBorder" },
+    { "▙", "FloatBorder" },
+    { "▌", "FloatBorder" },
   },
   BlockSimple = {
     { "▛" },

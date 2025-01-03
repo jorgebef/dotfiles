@@ -50,16 +50,14 @@ M.handlers = {
 
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     -- border = "rounded",
-    border = ui.border.Block,
+    -- border = ui.border.BlockThick,
+    border = ui.border.Square,
     focusable = false,
     trimempty = true,
     silent = true,
   }),
 
-  ["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    { border = require("config.ui").border.Block }
-  ),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = ui.border.BlockThick }),
 
   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = false,

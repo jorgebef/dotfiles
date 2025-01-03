@@ -7,9 +7,13 @@ local M = {
     { "williamboman/mason-lspconfig.nvim" },
     { "pmizio/typescript-tools.nvim" },
     { "folke/lazydev.nvim" },
-
+    {
+      "mrcjkb/rustaceanvim",
+      version = "^5", -- Recommended
+      lazy = false, -- This plugin is already lazy
+    },
     { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+    { "Bilal2453/luvit-meta" }, -- optional `vim.uv` typings
   },
 }
 
@@ -33,7 +37,8 @@ M.config = function()
 
   require("mason").setup({
     ui = {
-      border = ui.border.Block,
+      -- border = ui.border.BlockThick,
+      border = ui.border.Square,
     },
   })
   local server_names = {}
@@ -56,8 +61,19 @@ M.config = function()
           handlers = M.handlers,
         }, servers[server_name] or {})
 
-        if server_name == "kek" then
-          require("lazydev").setup({})
+        if server_name == "lua_ls" then
+          require("lazydev").setup({
+            library = {
+              -- See the configuration section for more details
+              -- Load luvit types when the `vim.uv` word is found
+              { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+          })
+          lsp[server_name].setup(opts)
+        elseif server_name == "rust_analyzer" then
+          -- -- not necesssary
+          -- require("rustaceanvim").setup()
+          return
         else
           lsp[server_name].setup(opts)
         end
@@ -66,12 +82,6 @@ M.config = function()
   })
 
   require("plugins.lsp.keymaps").common()
-
-  -- lsp["nushell"].setup(vim.tbl_deep_extend("force", {
-  --   on_attach = M.on_attach,
-  --   capabilities = M.capabilities(),
-  --   handlers = M.handlers,
-  -- }, servers.nushell))
 
   lsp["nushell"].setup(vim.tbl_deep_extend("force", {
     on_attach = M.on_attach,
@@ -88,32 +98,32 @@ M.config = function()
     handlers = M.handlers,
   }, servers.tailwindcss))
 
-  require("typescript-tools").setup({
-    single_file_support = false,
-    on_attach = function(client, bufnr)
-      M.on_attach(client, bufnr)
-    end,
-    capabilities = M.capabilities(),
-    handlers = M.handlers,
-    settings = {
-      filetypes = {
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "mdx",
-      },
-      jsx_close_tag = {
-        enable = true,
-        filetypes = { "javascriptreact", "typescriptreact" },
-      },
-      separate_diagnostic_server = false,
-      -- publish_diagnostic_on = "insert_leave",
-      -- documentRangeFormatting = false,
-      -- root_dir = function(...)
-      --   return require("lspconfig.util").root_pattern(".git")(...)
-      -- end,
-    },
-  })
+  -- require("typescript-tools").setup({
+  --   single_file_support = false,
+  --   on_attach = function(client, bufnr)
+  --     M.on_attach(client, bufnr)
+  --   end,
+  --   capabilities = M.capabilities(),
+  --   handlers = M.handlers,
+  --   settings = {
+  --     filetypes = {
+  --       "javascriptreact",
+  --       "typescript",
+  --       "typescriptreact",
+  --       "mdx",
+  --     },
+  --     jsx_close_tag = {
+  --       enable = true,
+  --       filetypes = { "javascriptreact", "typescriptreact" },
+  --     },
+  --     separate_diagnostic_server = true,
+  --     -- publish_diagnostic_on = "insert_leave",
+  --     -- documentRangeFormatting = false,
+  --     -- root_dir = function(...)
+  --     --   return require("lspconfig.util").root_pattern(".git")(...)
+  --     -- end,
+  --   },
+  -- })
 
   -- end
 end

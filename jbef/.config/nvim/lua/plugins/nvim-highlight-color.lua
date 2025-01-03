@@ -1,5 +1,6 @@
 local M = {
   "brenoprata10/nvim-highlight-colors",
+  enabled = false,
 }
 
 function M.config()

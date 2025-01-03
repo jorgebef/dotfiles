@@ -38,7 +38,8 @@
 
 [window]
 
-  opacity = 0.98
+  # opacity = 0.98
+  opacity = 1
 
   padding.x = 1
   padding.y = 3
@@ -68,8 +69,8 @@
 [keyboard]
   bindings = [
   { key = ";", mods = "Control", chars = "þ" },
-  { key= ".", mods= "Control", chars= "˛" },
-  { key = ",", mods = "Control", chars = "˘" },
+  # { key= ".", mods= "Control", chars= "˛" },
+  # { key = ",", mods = "Control", chars = "˘" },
 
 ]
 
