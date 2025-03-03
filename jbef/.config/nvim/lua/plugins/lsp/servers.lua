@@ -2,28 +2,28 @@ local lspconfig = require("lspconfig")
 
 local M = {
 
-  vtsls = {
-    -- cmd = { "vtsls", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    root_dir = lspconfig.util.root_pattern(".git"),
-    settings = {
-      javascript = {
-        suggest = {
-          names = false,
-          completeFunctionCalls = true,
-        },
-      },
-      typescript = {
-        suggest = {
-          names = false,
-          completeFunctionCalls = true,
-        },
-        preferences = {
-          names = false,
-        },
-      },
-    },
-  },
+  -- vtsls = {
+  --   -- cmd = { "vtsls", "--stdio" },
+  --   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  --   root_dir = lspconfig.util.root_pattern(".git"),
+  --   settings = {
+  --     javascript = {
+  --       suggest = {
+  --         names = false,
+  --         completeFunctionCalls = true,
+  --       },
+  --     },
+  --     typescript = {
+  --       suggest = {
+  --         names = false,
+  --         completeFunctionCalls = true,
+  --       },
+  --       preferences = {
+  --         names = false,
+  --       },
+  --     },
+  --   },
+  -- },
 
   -- -- This is no longer needed as long as I use the plugin typescript-tools.nvim
   -- ts_ls = {
@@ -171,39 +171,17 @@ local M = {
   gopls = {},
 
   lua_ls = {
-    Lua = {
-      format = {
-        enable = false,
-      },
-      diagnostics = {
-        globals = { "vim", "spec" },
-      },
-      runtime = {
-        version = "LuaJIT",
-        special = {
-          spec = "require",
-        },
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.stdpath("config") .. "/lua"] = true,
-        },
-      },
-      hint = {
-        enable = false,
-        arrayIndex = "Disable", -- "Enable" | "Auto" | "Disable"
-        await = true,
-        paramName = "Disable", -- "All" | "Literal" | "Disable"
-        paramType = true,
-        semicolon = "All", -- "All" | "SameLine" | "Disable"
-        setType = false,
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
+    root_dir = lspconfig.util.root_pattern(
+      "init.lua",
+      ".luarc.json",
+      ".luarc.jsonc",
+      ".luacheckrc",
+      ".stylua.toml",
+      "stylua.toml",
+      "selene.toml",
+      "selene.yml",
+      ".git"
+    ),
   },
 
   rust_analyzer = {},
@@ -228,14 +206,14 @@ local M = {
 
   cssls = {
     root_dir = lspconfig.util.root_pattern(".git"),
-    -- settings = {
-    --   css = {
-    --     validate = true,
-    --     lint = {
-    --       unknownAtRules = "ignore",
-    --     },
-    --   },
-    -- },
+    settings = {
+      -- css = {
+      --   validate = false,
+      --   lint = {
+      --     unknownAtRules = "ignore",
+      --   },
+      -- },
+    },
     -- filetypes = { "css", "scss", "less", "typescriptreact", "javascriptreact" },
   },
 
@@ -278,12 +256,12 @@ local M = {
         },
         validate = true,
         experimental = {
+          -- configFile = "./src/styles/globals.css",
           classRegex = {
             -- "clsx\\(([^)]*)\\)",
-            { "clsx\\(([^)]*)\\)" },
-            { "cn\\(([^)]*)\\)" },
-            { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-            { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+            "clsx\\(([^)]*)\\)",
+            "cva\\(([^)]*)\\)",
+            -- "(?:'|\"|`)([^']*)(?:'|\"|`)",
           },
         },
       },

@@ -48,27 +48,29 @@ M.handlers = {
   --   return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
   -- end,
 
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  ["textDocument/hover"] = vim.lsp.buf.hover({
     -- border = "rounded",
     -- border = ui.border.BlockThick,
-    border = ui.border.Square,
+    border = ui.border.Block,
     focusable = false,
     trimempty = true,
     silent = true,
   }),
 
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = ui.border.BlockThick }),
+  ["textDocument/signatureHelp"] = vim.lsp.buf.signature_help({ border = ui.border.BlockThick }),
+  -- ["textDocument/signatureHelp"] = vim.lsp.handlers.signature_help()
 
-  ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
-    undercurl = true,
-    signs = true,
-    float = {
-      source = "always",
-      focusable = false,
-    },
-    severity_sort = true,
-  }),
+  -- ["textDocument/publishDiagnostics"] = vim.lsp.diagnostic.on_publish_diagnostics({
+  --   virtual_text = false,
+  --   undercurl = true,
+  --   border = ui.border.Square,
+  --   signs = true,
+  --   float = {
+  --     source = "always",
+  --     focusable = false,
+  --   },
+  --   severity_sort = true,
+  -- }),
 
   ["textDocument/definition"] = filteredTypescriptDefinition,
 }

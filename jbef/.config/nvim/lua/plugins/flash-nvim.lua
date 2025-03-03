@@ -1,7 +1,7 @@
 local M = {
   "folke/flash.nvim",
   event = "VeryLazy",
-  ---@type Flash.Config
+  enabled = true,
   opts = {
     -- You can override the default options for a specific mode.
     -- Use it with `require("flash").jump({mode = "forward"})`

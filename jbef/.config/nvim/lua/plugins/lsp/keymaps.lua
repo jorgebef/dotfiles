@@ -1,58 +1,70 @@
 local M = {}
 
-local opts = { noremap = true, silent = true }
+-- local opts = { noremap = true, silent = true }
 
 function M.common()
   -- local fzf = require("fzf-lua")
   ---@type Util
-  local util = require("util.util")
+  -- local util = require("util.util")
 
-  vim.keymap.set("n", "gd", function()
-    vim.lsp.buf.definition()
-  end, util.table_merge(opts, { desc = "Go to definition" }))
+  -- =================================================
+  -- Managed by snacks-nvim.lua
+  -- =================================================
 
-  vim.keymap.set("n", "<leader>lh", function()
-    require("telescope.builtin").lsp_references()
-  end, util.table_merge(opts, { desc = "Telescope references" }))
+  -- vim.keymap.set("n", "gd", function()
+  --   -- vim.lsp.buf.definition()
+  --   -- require("telescope.builtin").lsp_definitions()
+  --   Snacks.picker.lsp_definitions()
+  -- end, { desc = "Goto definition" })
 
-  vim.keymap.set("n", "<leader>lD", function()
-    vim.lsp.buf.type_definition()
-  end, util.table_merge(opts, { desc = "Go to type definition" }))
+  -- vim.keymap.set("n", "gr", function()
+  --   -- require("telescope.builtin").lsp_references()
+  --   -- require("fzf-lua").lsp_references()
+  --   Snacks.picker.lsp_references()
+  -- end, { nowait = true, desc = "LSP references" })
 
+  -- vim.keymap.set("n", "<leader>lD", function()
+  --   vim.lsp.buf.type_definition()
+  -- end, { desc = "Go to type definition" })
+
+  -- =================================================
 
   vim.keymap.set("n", "]w", function()
-    vim.diagnostic.goto_next({ severity = { max = "WARN" }, float = true })
-  end, opts)
+    vim.diagnostic.jump({ count = 1, severity = { max = "WARN" }, float = true })
+  end, { desc = "Goto next Warning" })
 
   vim.keymap.set("n", "]e", function()
-    vim.diagnostic.goto_next({ severity = "ERROR", float = true })
-  end, opts)
+    vim.diagnostic.jump({ count = 1, severity = "ERROR", float = true })
+  end, { desc = "Goto next Error" })
 
   vim.keymap.set("n", "[w", function()
-    vim.diagnostic.goto_prev({ severity = { max = "WARN" }, float = true })
-  end, opts)
+    vim.diagnostic.jump({ count = -1, severity = { max = "WARN" }, float = true })
+  end, { desc = "Goto prev Warning" })
 
   vim.keymap.set("n", "[e", function()
-    vim.diagnostic.goto_prev({ severity = "ERROR", float = true })
-  end, opts)
+    vim.diagnostic.jump({ count = -1, severity = "ERROR", float = true })
+  end, { desc = "Goto prev Error" })
 
-  vim.keymap.set("n", "<leader>lS", function()
+  vim.keymap.set("n", "<leader>lR", function()
     vim.cmd.LspRestart()
-  end, opts)
+  end, { desc = "Restart LSP" })
 
   vim.keymap.set("n", "<leader>lr", function()
     -- vim.lsp.buf.rename()
     return ":IncRename "
-  end, { expr = true })
+  end, { desc = "Rename lsp symbol", expr = true })
 
   vim.keymap.set("n", "gK", function()
     vim.lsp.buf.signature_help()
-  end, opts)
+  end, { desc = "LSP Signature help" })
+
   vim.keymap.set("i", "<C-k>", function()
     vim.lsp.buf.signature_help()
-  end, opts)
+  end, { desc = "LSP Signature help" })
 
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "K", function()
+    vim.lsp.buf.hover()
+  end, { desc = "LSP hover" })
 
   -- vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
   -- vim.api.nvim_create_autocmd("LspAttach", {
@@ -76,7 +88,7 @@ function M.common()
       end
     end
     -- THIS IS FOR BUILTIN LSP
-    vim.diagnostic.open_float(0, {
+    vim.diagnostic.open_float({
       scope = "cursor",
       focusable = false,
       close_events = {
@@ -102,17 +114,10 @@ function M.specific(clientName)
   -- ====================================
   -- Typescript specific remaps
   -- ====================================
-  vim.keymap.set(
-    "n",
-    "<leader>lI",
-    function()
-      -- local current_buffer = vim.api.nvim_get_current_buf()
-      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-    end,
-    vim.tbl_deep_extend("force", {
-      desc = "Toggle inlay hints",
-    }, opts)
-  )
+  vim.keymap.set("n", "<leader>lI", function()
+    -- local current_buffer = vim.api.nvim_get_current_buf()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  end, { desc = "Toggle inlay hints" })
 
   if clientName == "typescript-tools" then
     vim.keymap.set("n", "<leader>lo", function()
@@ -121,11 +126,11 @@ function M.specific(clientName)
 
     vim.keymap.set("n", "<leader>lR", function()
       vim.cmd([[:TSToolsRenameFile]])
-    end, opts)
+    end, { desc = "TSTools rename file" })
 
     vim.keymap.set("n", "<leader>lA", function()
       vim.cmd([[:TSToolsAddMissingImports]])
-    end, opts)
+    end, { desc = "TSTools add all imports" })
   end
 end
 

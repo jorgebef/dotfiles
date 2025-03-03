@@ -4,40 +4,39 @@ local ui = require("config.ui")
 
 M.diagnostic_signs = {
   Error = ui.diagnostics.Error,
-  Warning = ui.diagnostics.Warning,
+  Warn = ui.diagnostics.Warning,
   Hint = ui.diagnostics.Hint,
-  Information = ui.diagnostics.Information,
+  Info = ui.diagnostics.Information,
 }
 
 function M.setup()
   vim.diagnostic.config({
     signs = {
-      active = true,
-      values = {
-        { name = "DiagnosticSignError", text = M.diagnostic_signs.Error },
-        { name = "DiagnosticSignWarn", text = M.diagnostic_signs.Warn },
-        { name = "DiagnosticSignHint", text = M.diagnostic_signs.Hint },
-        { name = "DiagnosticSignInfo", text = M.diagnostic_signs.Info },
+      text = {
+        [vim.diagnostic.severity.ERROR] = M.diagnostic_signs.Error,
+        [vim.diagnostic.severity.WARN] = M.diagnostic_signs.Warn,
+        [vim.diagnostic.severity.HINT] = M.diagnostic_signs.Hint,
+        [vim.diagnostic.severity.INFO] = M.diagnostic_signs.Info,
       },
     },
     virtual_text = false,
     update_in_insert = false,
     underline = true,
     severity_sort = true,
+    -- border = ui.border.Block,
     float = {
-      focusable = true,
-      style = "minimal",
-      border = "rounded",
-      source = "always",
+      focusable = false,
+      -- style = "minimal",
+      -- border = "rounded",
+      border = ui.border.Block,
+
+      -- source = "always",
       header = "",
-      prefix = "",
+      prefix = function(_diagnostic, i, total)
+        return " " .. i .. "/" .. total .. " ", "Comment"
+      end,
     },
   })
-
-  for type, icon in pairs(M.diagnostic_signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-  end
 end
 
 return M

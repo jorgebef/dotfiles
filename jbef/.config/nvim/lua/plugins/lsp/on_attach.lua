@@ -30,7 +30,7 @@ M.on_attach = function(client, bufnr)
   -- Conditionally disable formatting for some servers
   if util.has_value({
     "lua_ls",
-    "tsserver",
+    "ts_ls",
   }, client.name) then
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false

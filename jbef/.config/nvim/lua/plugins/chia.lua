@@ -1,12 +1,14 @@
 local M = {
-  "jorgebef/kanagawa-groove.nvim",
+  "jorgebef/chia.nvim",
   lazy = false,
   priority = 1000,
-  enabled = true,
+  enabled = false,
+  dir = "~/Developer/chia.nvim/",
+  dev = true,
 }
 
 function M.config()
-  require("kanagawa-groove").setup({
+  require("chia").setup({
     undercurl = true,
     transparent = false,
     gutter = false,

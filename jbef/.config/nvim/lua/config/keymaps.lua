@@ -35,15 +35,9 @@ vim.keymap.set("v", "<C-y>", "4<C-y>", opts)
 
 -- vim.keymap.del("n", "<M-e>")
 
--- -- improved split navigation
--- vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
--- vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
--- vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
--- vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
-
 vim.keymap.set("n", "<leader>w", ":silent write<cr>", opts)
 vim.keymap.set("n", "<leader>q", ":q<cr>", opts)
-vim.keymap.set("n", "<leader>Q", ":qa<cr>", opts)
+vim.keymap.set("n", "<leader>Q", ':lua require("notify").dismiss()<CR>:qa<cr>', opts)
 
 vim.keymap.set("n", "<leader>p", '"+p', opts)
 vim.keymap.set("v", "<leader>p", '"+p', opts)
@@ -80,10 +74,12 @@ vim.keymap.set("n", "<leader>ml", "<C-w>L", opts)
 vim.keymap.set("n", "<leader>mh", "<C-w>H", opts)
 
 vim.keymap.set("n", "<leader>=", "<C-w>=", opts)
-vim.keymap.set("n", "<leader>+", "<C-w>8>", opts)
-vim.keymap.set("n", "<leader>-", "<C-w>8<", opts)
+-- vim.keymap.set("n", "<leader>+", "<C-w>8>", opts)
+-- vim.keymap.set("n", "<leader>-", "<C-w>8<", opts)
 
 -- remap("n", "<leader>s", "/", ns_opts)
 
 vim.keymap.set("n", "<leader>sv", ":vs<CR>", opts)
 vim.keymap.set("n", "<leader>sh", ":split<CR>", opts)
+
+vim.keymap.set("i", "<Tab>", "", opts)

@@ -1,0 +1,565 @@
+return {
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  enabled = true,
+
+  opts = function()
+    ---@type snacks.Config
+    local opts = {
+      image = { enabled = true },
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+
+      dashboard = { enabled = true },
+
+      rename = { enabled = true },
+      notifier = { enabled = true },
+
+      picker = {
+        sources = {
+          grep = {
+            formatters = { file = { filename_only = true } },
+            -- format = function(item, picker)
+            --   ---@type snacks.picker.Item
+            --   local kek = vim.deepcopy(item)
+            --   -- kek.preview = false
+            --   -- local kek =
+            --   --   { idx = item.idx, score = item.score, text = item.text, highlights = item.highlights, preview = false }
+            --   -- return kek
+            --   return item
+            -- end,
+            -- live = true,
+            -- limit = 60,
+            layout = {
+              reverse = true,
+              layout = {
+                box = "horizontal",
+                backdrop = 60,
+                width = 0.8,
+                height = 0.85,
+                border = "none",
+                {
+                  box = "vertical",
+                  {
+                    win = "list",
+                    -- title = " Results ",
+                    title_pos = "center",
+                    -- border = require("config.ui").border.BlockThick,
+                    border = { " " },
+                  },
+                  {
+                    win = "input",
+                    height = 1,
+                    -- border = require("config.ui").border.BlockThick,
+                    border = { " " },
+                    -- title = "{title} {live} {flags}",
+                    -- title = "{title}",
+                    title_pos = "center",
+                  },
+                },
+                {
+                  win = "preview",
+                  title = "{preview}",
+                  width = 0.55,
+                  -- border = require("config.ui").border.BlockThick,
+                  border = { "▌", " ", " ", " ", " ", " ", "▌", "▌" },
+                  title_pos = "center",
+                },
+              },
+            },
+          },
+          files = {
+            hidden = true,
+            ignored = false,
+            formatters = {
+              file = {
+                truncate = 40,
+                filename_only = false,
+              },
+            },
+            -- live = true,
+            -- limit = 60,
+            layout = {
+              reverse = true,
+              layout = {
+                box = "horizontal",
+                backdrop = 60,
+                width = 0.8,
+                height = 0.85,
+                border = "none",
+                {
+                  box = "vertical",
+                  {
+                    win = "list",
+                    -- title = " Results ",
+                    title_pos = "center",
+                    -- border = require("config.ui").border.Block,
+                    border = { " " },
+                  },
+                  {
+                    win = "input",
+                    height = 1,
+                    -- border = require("config.ui").border.Block,
+                    border = { " " },
+                    -- title = "{title} {live} {flags}",
+                    -- title = "{title}",
+                    title_pos = "center",
+                  },
+                },
+                {
+                  win = "preview",
+                  title = "{preview}",
+                  width = 0.52,
+                  -- border = require("config.ui").border.Block,
+                  border = { "▌", " ", " ", " ", " ", " ", "▌", "▌" },
+                  title_pos = "center",
+                },
+              },
+            },
+          },
+        },
+        finder = "files",
+        format = "file",
+        show_empty = false,
+        hidden = false,
+        ignored = false,
+        follow = false,
+        supports_live = true,
+        win = {
+          input = {
+            keys = {
+              ["<C-h>"] = { "toggle_ignored", mode = { "i", "n" } },
+            },
+          },
+        },
+      },
+
+      -- notifier = { enabled = true },
+      -- quickfile = { enabled = true },
+      -- scroll = { enabled = false },
+      -- statuscolumn = { enabled = false },
+      -- words = { enabled = false },
+    }
+    return opts
+  end,
+
+  keys = {
+    {
+      "<leader>ff",
+      function()
+        Snacks.picker.files({
+          cmd = "fd",
+          args = {
+            "--color=never",
+            "--exclude",
+            ".git",
+            "--exclude",
+            "node_modules",
+            "--exclude",
+            ".next",
+          },
+          finder = "files",
+          format = "file",
+          show_empty = true,
+          hidden = true,
+          ignored = false,
+          follow = true,
+          supports_live = true,
+        })
+      end,
+      desc = "Find Files",
+      nowait = true,
+    },
+
+    -- {
+    --   "<leader>,",
+    --   function()
+    --     Snacks.picker.buffers()
+    --   end,
+    --   desc = "Buffers",
+    -- },
+
+    {
+      "<leader>fg",
+      function()
+        Snacks.picker.grep({
+          cmd = "rg",
+          args = {
+            "--hidden",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--glob",
+            "!.git/",
+            "--glob",
+            "!package-lock.json",
+            "--glob",
+            "!pnpm-lock.yaml",
+          },
+        })
+      end,
+      desc = "Grep live",
+    },
+    {
+      "<leader>:",
+      function()
+        Snacks.picker.command_history()
+      end,
+      desc = "Command History",
+    },
+    {
+      "<leader>sn",
+      function()
+        Snacks.picker.notifications()
+      end,
+      desc = "Notification History",
+    },
+    -- {
+    --   "<leader>e",
+    --   function()
+    --     Snacks.explorer()
+    --   end,
+    --   desc = "File Explorer",
+    -- },
+    -- find
+    {
+      "<leader>fb",
+      function()
+        Snacks.picker.buffers()
+      end,
+      desc = "Buffers",
+    },
+    -- {
+    --   "<leader>fc",
+    --   function()
+    --     Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+    --   end,
+    --   desc = "Find Config File",
+    -- },
+    -- {
+    --   "<leader>fg",
+    --   function()
+    --     Snacks.picker.git_files()
+    --   end,
+    --   desc = "Find Git Files",
+    -- },
+    -- {
+    --   "<leader>fp",
+    --   function()
+    --     Snacks.picker.projects()
+    --   end,
+    --   desc = "Projects",
+    -- },
+    -- {
+    --   "<leader>fr",
+    --   function()
+    --     Snacks.picker.recent()
+    --   end,
+    --   desc = "Recent",
+    -- },
+    -- git
+    {
+      "<leader>gl",
+      function()
+        Snacks.picker.git_log()
+      end,
+      desc = "Git Log",
+    },
+    {
+      "<leader>gL",
+      function()
+        Snacks.picker.git_log_line()
+      end,
+      desc = "Git Log Line",
+    },
+    {
+      "<leader>gs",
+      function()
+        Snacks.picker.git_status()
+      end,
+      desc = "Git Status",
+    },
+    {
+      "<leader>gd",
+      function()
+        Snacks.picker.git_diff()
+      end,
+      desc = "Git Diff (Hunks)",
+    },
+    {
+      "<leader>gf",
+      function()
+        Snacks.picker.git_log_file()
+      end,
+      desc = "Git Log File",
+    },
+    -- Grep
+    {
+      "<leader>sb",
+      function()
+        Snacks.picker.lines()
+      end,
+      desc = "Buffer Lines",
+    },
+    {
+      "<leader>sB",
+      function()
+        Snacks.picker.grep_buffers()
+      end,
+      desc = "Grep Open Buffers",
+    },
+    {
+      "<leader>sg",
+      function()
+        Snacks.picker.grep({
+          cmd = "rg",
+          args = { "--column", "--hidden", "--no-heading", "--smart-case", "--max-columns=4096" },
+          -- ignored = false,
+          -- hidden = true,
+        })
+      end,
+      desc = "Grep",
+    },
+    {
+      "<leader>sw",
+      function()
+        Snacks.picker.grep_word()
+      end,
+      desc = "Visual selection or word",
+      mode = { "n", "x" },
+    },
+    -- search
+    {
+      '<leader>s"',
+      function()
+        Snacks.picker.registers()
+      end,
+      desc = "Registers",
+    },
+    {
+      "<leader>s/",
+      function()
+        Snacks.picker.search_history()
+      end,
+      desc = "Search History",
+    },
+    {
+      "<leader>sa",
+      function()
+        Snacks.picker.autocmds()
+      end,
+      desc = "Autocmds",
+    },
+    {
+      "<leader>sb",
+      function()
+        Snacks.picker.lines()
+      end,
+      desc = "Buffer Lines",
+    },
+    -- {
+    --   "<leader>sc",
+    --   function()
+    --     Snacks.picker.command_history()
+    --   end,
+    --   desc = "Command History",
+    -- },
+    {
+      "<leader>sC",
+      function()
+        Snacks.picker.commands()
+      end,
+      desc = "Commands",
+    },
+    {
+      "<leader>sD",
+      function()
+        Snacks.picker.diagnostics()
+      end,
+      desc = "Diagnostics",
+    },
+    {
+      "<leader>sd",
+      function()
+        Snacks.picker.diagnostics_buffer()
+      end,
+      desc = "Buffer Diagnostics",
+    },
+    -- {
+    --   "<leader>sh",
+    --   function()
+    --     Snacks.picker.help()
+    --   end,
+    --   desc = "Help Pages",
+    -- },
+    {
+      "<leader>sH",
+      function()
+        Snacks.picker.highlights()
+      end,
+      desc = "Highlights",
+    },
+    -- {
+    --   "<leader>si",
+    --   function()
+    --     Snacks.picker.icons()
+    --   end,
+    --   desc = "Icons",
+    -- },
+    {
+      "<leader>sj",
+      function()
+        Snacks.picker.jumps()
+      end,
+      desc = "Jumps",
+    },
+    {
+      "<leader>sK",
+      function()
+        Snacks.picker.keymaps()
+      end,
+      desc = "Keymaps",
+    },
+    -- {
+    --   "<leader>sl",
+    --   function()
+    --     Snacks.picker.loclist()
+    --   end,
+    --   desc = "Location List",
+    -- },
+    {
+      "<leader>sM",
+      function()
+        Snacks.picker.marks()
+      end,
+      desc = "Marks",
+    },
+    -- {
+    --   "<leader>sM",
+    --   function()
+    --     Snacks.picker.man()
+    --   end,
+    --   desc = "Man Pages",
+    -- },
+    {
+      "<leader>sp",
+      function()
+        Snacks.picker.lazy()
+      end,
+      desc = "Search for Plugin Spec",
+    },
+    {
+      "<leader>sq",
+      function()
+        Snacks.picker.qflist()
+      end,
+      desc = "Quickfix List",
+    },
+    {
+      "<leader>sr",
+      function()
+        Snacks.picker.resume()
+      end,
+      desc = "Resume",
+    },
+    {
+      "<leader>su",
+      function()
+        Snacks.picker.undo()
+      end,
+      desc = "Undo History",
+    },
+    {
+      "<leader>uC",
+      function()
+        Snacks.picker.colorschemes({
+          finder = "vim_colorschemes",
+          format = "text",
+          preview = "colorscheme",
+          preset = "vertical",
+          confirm = function(picker, item)
+            picker:close()
+            if item then
+              picker.preview.state.colorscheme = nil
+              vim.schedule(function()
+                vim.cmd("colorscheme " .. item.text)
+              end)
+            end
+          end,
+        })
+      end,
+      desc = "Colorschemes",
+    },
+
+    -- =================================================
+    -- LSP ============================================
+    -- =================================================
+    {
+      "gd",
+      function()
+        Snacks.picker.lsp_definitions({
+          finder = "lsp_definitions",
+          format = "file",
+          include_current = true,
+          auto_confirm = true,
+          jump = { tagstack = true, reuse_win = true },
+        })
+      end,
+      desc = "Goto Definition",
+    },
+
+    {
+      "gD",
+      function()
+        Snacks.picker.lsp_declarations()
+      end,
+      desc = "Goto Declaration",
+    },
+
+    {
+      "gr",
+      function()
+        Snacks.picker.lsp_references()
+      end,
+      nowait = true,
+      desc = "References",
+    },
+
+    {
+      "gI",
+      function()
+        Snacks.picker.lsp_implementations()
+      end,
+      desc = "Goto Implementation",
+    },
+
+    {
+      "gy",
+      function()
+        Snacks.picker.lsp_type_definitions()
+      end,
+      desc = "Goto T[y]pe Definition",
+    },
+
+    {
+      "<leader>ss",
+      function()
+        Snacks.picker.lsp_symbols()
+      end,
+      desc = "LSP Symbols",
+    },
+
+    {
+      "<leader>sS",
+      function()
+        Snacks.picker.lsp_workspace_symbols()
+      end,
+      desc = "LSP Workspace Symbols",
+    },
+  },
+}

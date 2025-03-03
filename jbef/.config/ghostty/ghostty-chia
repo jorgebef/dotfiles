@@ -1,0 +1,26 @@
+# Chia Colorscheme for Ghostty.
+# Author: @jorgebef
+
+palette = 0=#60606A
+palette = 1=#E17A7E
+palette = 2=#A7BA93
+palette = 3=#E5C183
+palette = 4=#8AB9C5
+palette = 5=#FFBEB6
+palette = 6=#C395AB
+palette = 7=#D9D9DA
+
+palette =  8=#60606A
+palette =  9=#E17A7E
+palette = 10=#A7BA93
+palette = 11=#E5C183
+palette = 12=#8AB9C5
+palette = 13=#FFBEB6
+palette = 14=#C395AB
+palette = 15=#D9D9DA
+
+background = #1F1F28
+foreground = #D4D8DA
+cursor-color = #FFBEB6
+selection-background = #3F3F44
+selection-foreground = #D4D8DA

@@ -2,6 +2,7 @@ local M = {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
+    { "saghen/blink.cmp" },
     { "SmiteshP/nvim-navic" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
@@ -51,6 +52,7 @@ M.config = function()
   end
 
   require("mason-lspconfig").setup({
+    automatic_installation = false,
     ensure_installed = server_names,
 
     handlers = {
@@ -58,17 +60,11 @@ M.config = function()
         local opts = vim.tbl_deep_extend("force", {
           on_attach = M.on_attach,
           capabilities = M.capabilities(),
+          -- capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities()),
           handlers = M.handlers,
         }, servers[server_name] or {})
 
         if server_name == "lua_ls" then
-          require("lazydev").setup({
-            library = {
-              -- See the configuration section for more details
-              -- Load luvit types when the `vim.uv` word is found
-              { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-            },
-          })
           lsp[server_name].setup(opts)
         elseif server_name == "rust_analyzer" then
           -- -- not necesssary
@@ -98,32 +94,32 @@ M.config = function()
     handlers = M.handlers,
   }, servers.tailwindcss))
 
-  -- require("typescript-tools").setup({
-  --   single_file_support = false,
-  --   on_attach = function(client, bufnr)
-  --     M.on_attach(client, bufnr)
-  --   end,
-  --   capabilities = M.capabilities(),
-  --   handlers = M.handlers,
-  --   settings = {
-  --     filetypes = {
-  --       "javascriptreact",
-  --       "typescript",
-  --       "typescriptreact",
-  --       "mdx",
-  --     },
-  --     jsx_close_tag = {
-  --       enable = true,
-  --       filetypes = { "javascriptreact", "typescriptreact" },
-  --     },
-  --     separate_diagnostic_server = true,
-  --     -- publish_diagnostic_on = "insert_leave",
-  --     -- documentRangeFormatting = false,
-  --     -- root_dir = function(...)
-  --     --   return require("lspconfig.util").root_pattern(".git")(...)
-  --     -- end,
-  --   },
-  -- })
+  require("typescript-tools").setup({
+    single_file_support = false,
+    on_attach = function(client, bufnr)
+      M.on_attach(client, bufnr)
+    end,
+    capabilities = M.capabilities(),
+    handlers = M.handlers,
+    settings = {
+      filetypes = {
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "mdx",
+      },
+      jsx_close_tag = {
+        enable = true,
+        filetypes = { "javascriptreact", "typescriptreact" },
+      },
+      separate_diagnostic_server = true,
+      -- publish_diagnostic_on = "insert_leave",
+      -- documentRangeFormatting = false,
+      root_dir = function(...)
+        return require("lspconfig.util").root_pattern(".git")(...)
+      end,
+    },
+  })
 
   -- end
 end

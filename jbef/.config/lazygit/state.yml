@@ -1,21 +1,14 @@
 lastupdatecheck: 0
 recentrepos:
     - /Users/jbef/Developer/dotfiles
-    - /Users/jbef/Developer/peninsula.studio
-    - /Users/jbef/Developer/Clients/guidoaudisio.com
     - /Users/jbef/Developer/Clients/swedent.com
-    - /Users/jbef/Developer/Side-Projects/kanagawa-groove.nvim
-    - /Users/jbef/Developer/InvitaBoda/cristina-y-angel
-    - /Users/jbef/Developer/InvitaBoda/elena-y-jorge
-    - /Users/jbef/Developer/Clients/guido-audisio-tool
-    - /Users/jbef/Developer/starter-template-peninsula
-    - /Users/jbef/Developer/InvitaBoda/invitaboda.es
-    - /Users/jbef/Developer/vps-setup
-    - /Users/jbef/Developer/Side-Projects/advent-of-code-2023
-    - /Users/jbef/Developer/Clients/europrestige-sample
-    - /Users/jbef/Developer/jbef-ui
+    - /Users/jbef/Developer/nordic.nvim
+    - /Users/jbef/Developer/Clients/dominicania
+    - /Users/jbef/Developer/Invitaboda/oscar-y-maritere
+    - /Users/jbef/Developer/Clients/old_swedent.com
+    - /Users/jbef/Developer/chia.nvim
 startuppopupversion: 5
-lastversion: 0.44.1
+lastversion: 0.48.0
 customcommandshistory: []
 hidecommandlog: false
 ignorewhitespaceindiffview: false

@@ -5,41 +5,42 @@
 #
 # see this wiki page for information:
 #  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+#
+#  79470451c0240b6bfa43665fbdeb40c066cf36a305ce78c4f7816953a77901e0  /opt/homebrew/bin/yabai
+
 
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
-# Use karabiner elements to remap right Command key to function key
+# # Automatically float non-resizable windows, such as palettes, system settings etc.
+yabai -m signal --add event=window_created action='
+  yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".\"can-resize\" or .\"is-floating\"" || \
+  yabai -m window $YABAI_WINDOW_ID --toggle float && \
+  yabai -m window $YABAI_WINDOW_ID --layer above && \
+  yabai -m window $YABAI_WINDOW_ID --grid 3:3:1:1:1:1
+'
 
-# Automatically float non-resizable windows, such as palettes, system settings etc.
-yabai -m signal --add event=window_created action='yabai -m query --windows --window $YABAI_WINDOW_ID | /opt/homebrew/bin/jq -er ".\"can-resize\" or .\"is-floating\"" || yabai -m window $YABAI_WINDOW_ID --toggle float'
+# yabai -m rule --add label="Firfox PIP" app="^Firefox$" title="^(Picture-in-Picture)$" manage=off
 
-# yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"
-
-# yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"
-
-yabai -m rule --add label="Firfox PIP" app="^Firefox$" title="^(Picture-in-Picture)$" manage=off
+yabai -m signal --add event=window_destroyed action="yabai -m window --focus (yabai -m query --windows --space | jq .[0].id)"
 
 # focus window after active space changes
-yabai -m signal --add event=window_destroyed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+yabai -m signal --add event=space_changed action="yabai -m window --focus (yabai -m query --windows --space | jq .[0].id)"
 
-# # focus window after active display changes
-# yabai -m signal --add event=display_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
-
+yabai -m rule --add app=".*" sub-layer=normal
 # Make all windows float by default
 yabai -m rule --add app=".*" manage=off
-yabai -m rule --add app=".*" sub-layer=normal
 
 # Manage these windows only
 yabai -m rule --add app="^Arc$" manage=on
-# yabai -m rule --add app="^Adobe.*" manage=on
-# yabai -m rule --add app="^Google Chrome$" manage=on
-# yabai -m rule --add app="^WezTerm$" manage=on
 yabai -m rule --add app="^Ghostty$" manage=on
 yabai -m rule --add app="^WezTerm$" manage=on
 yabai -m rule --add app="^Google Chrome$" manage=on
 yabai -m rule --add app="^Firefox Nightly$" manage=on
 yabai -m rule --add app="^Zen Browser$" manage=on
+# yabai -m rule --add app="^Adobe.*" manage=on
+# yabai -m rule --add app="^Google Chrome$" manage=on
+# yabai -m rule --add app="^WezTerm$" manage=on
 
 # global settings
 yabai -m config \
@@ -68,6 +69,6 @@ yabai -m config \
 yabai -m config layout bsp
 yabai -m config mouse_drop_action swap
 
-yabai -m config mouse_modifier fn
+yabai -m config mouse_modifier ctrl
 yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize

@@ -31,7 +31,7 @@ lalt + shift - 0x2B : window_move_prev_space.sh
 #  # Focus previous space by mission-control index
 # lalt - 0x2B : yabai -m space --focus prev
 
-lalt + cmd - return : yabai -m window --toggle zoom-parent
+lalt - return : yabai -m window --toggle zoom-parent
 
 # lalt + cmd - 0x18 : yabai -m window --resize bottom_right:0:200
 # lalt + cmd - - : yabai -m window --resize right:-200

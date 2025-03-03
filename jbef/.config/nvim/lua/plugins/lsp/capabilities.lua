@@ -20,6 +20,8 @@ function M.setup()
     lineFoldingOnly = true,
   }
 
+  -- capabilities.textDocument.semanticTokens = nil
+
   capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
   return capabilities

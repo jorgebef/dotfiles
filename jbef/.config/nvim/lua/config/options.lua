@@ -87,8 +87,8 @@ vim.opt.timeoutlen = 550
 vim.opt.undofile = true
 
 -- interval for writing swap file to disk, also used by gitsigns
-vim.opt.updatetime = 100
--- opt.updatetime = 550
+-- vim.opt.updatetime = 100
+vim.opt.updatetime = 550
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line

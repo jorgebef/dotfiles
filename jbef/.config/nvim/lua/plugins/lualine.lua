@@ -1,19 +1,18 @@
 local M = {
   "nvim-lualine/lualine.nvim",
+  enabled = true,
   dependencies = {
     { "SmiteshP/nvim-navic" },
     { "nvim-tree/nvim-web-devicons" },
+    { "folke/noice.nvim" },
   },
 }
 
 function M.config()
   ---@type UISymbols
   local ui = require("config.ui")
-  -- local palette = require("nordic.colors")
-  -- local palette = require("catppuccin.palettes").get_palette("mocha")
-  -- local colors = require("kanagawa.colors").setup({ theme = "wave" })
-  -- local palette = colors.palette
-  -- local devicons = require("nvim-web-devicons")
+
+  local noice = require("noice")
 
   local mode_map = {
     ["n"] = "",
@@ -143,7 +142,14 @@ function M.config()
           -- color = { fg = c.fg_dark, bg = nil },
         },
       },
-      lualine_x = { "filetype" },
+      lualine_x = {
+        {
+          noice.api.statusline.mode.get,
+          cond = noice.api.statusline.mode.has,
+          color = { fg = "#ff9e64" },
+        },
+        { "filetype" },
+      },
       lualine_y = {},
       lualine_z = {
         {

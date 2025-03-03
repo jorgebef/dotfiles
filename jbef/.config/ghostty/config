@@ -4,30 +4,31 @@
 
 # Blank lines are ignored!
 
-# keybind = ctrl+z=close_surface
-# keybind = ctrl+'=new_split:right
-# keybind = ctrl+/=new_split:down
+auto-update = check
 
-# Empty values reset the configuration to the default value
-title = .
+font-family = JetBrains Mono
+font-size = 14.5
 
-auto-update = off
+# font-family = IBM Plex Mono
+# font-size = 14.5
+# adjust-cell-height = 2%
 
-font-family = JetBrainsMono Nerd Font
-# font-family = MonaspiceNe Nerd Font
-font-family-bold = JetBrainsMono Nerd Font Bold
-# font-family = Times New Roman
+# font-family = Suisse Int'l Mono
+# font-size = 14.5
+# adjust-cell-width = -3%
+# adjust-cell-height = 2%
+
+# font-family = Maple Mono
+# font-size = 14.5
+# font-feature = cv35, cv01
 
 # cursor-style = block
-shell-integration = fish
+# shell-integration = fish
 shell-integration-features = true
-# mouse-hide-while-typing = true
+mouse-hide-while-typing = true
 
-font-size = 14.5
-adjust-cell-width = -4%
-# adjust-underline-position = 100%
-# adjust-underline-thickness = 50%
-# adjust-cell-height = 4
+adjust-underline-position = 5%
+adjust-underline-thickness = -20%
 
 # background-opacity = 0.98
 # background-blur-radius = 100
@@ -35,11 +36,24 @@ background-opacity = 1
 
 # gtk-titlebar = false
 window-decoration = true
+window-padding-balance = true
 macos-titlebar-style = hidden
+macos-icon = blueprint
 
-# macos-option-as-alt = true
+
+# ////////////////////////////////////////////////////////
+# /////////////// CUSTOM KEYBINDINGS /////////////////////
+# ////////////////////////////////////////////////////////
 keybind = ctrl+;=text:þ
 keybind = ctrl+m=text:Ω
+keybind = ctrl+shift+h=text:⇇
+keybind = ctrl+shift+j=text:⇊
+keybind = ctrl+shift+k=text:⇈
+keybind = ctrl+shift+l=text:⇉
+# ////////////////////////////////////////////////////////
+
+
+keybind = unconsumed:ctrl+shift+a=reload_config
 
 # keybind = cmd+left=text:\x01
 # keybind = alt+left=esc:b
@@ -50,6 +64,7 @@ keybind = ctrl+m=text:Ω
 # theme = rose-pine
 # theme = tokyonight
 # theme = kanagawabones
-# theme = "/Users/jbef/.config/ghostty/nordic"
+# theme = Kanagawa Wave
+theme = "/Users/jbef/.config/ghostty/nordic"
 # theme = "/Users/jbef/.config/ghostty/kanagawa-dragon"
-theme = "/Users/jbef/.config/ghostty/kanagawa-groove"
+# theme = "/Users/jbef/.config/ghostty/ghostty-chia"

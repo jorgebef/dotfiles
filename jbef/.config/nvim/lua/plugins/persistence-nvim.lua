@@ -17,7 +17,7 @@ function M.config()
     branch = true, -- use git branch to save session
   })
 
-  vim.keymap.set("n", "<leader>sl", function()
+  vim.keymap.set("n", "<leader>SL", function()
     require("persistence").load()
   end)
 end

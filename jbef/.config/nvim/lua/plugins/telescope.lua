@@ -1,8 +1,9 @@
 local M = {
   "nvim-telescope/telescope.nvim",
+  enabled = false,
   dependencies = {
     { "nvim-lua/plenary.nvim" },
-    -- { "nvim-telescope/telescope-frecency.nvim" },
+    { "nvim-telescope/telescope-frecency.nvim" },
     -- { "nvim-telescope/telescope-file-browser.nvim" },
     -- { "natecraddock/telescope-zf-native.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -11,7 +12,6 @@ local M = {
     -- FILE PREVIEWER
     -- { "nvim-telescope/telescope-media-files.nvim" },
     -- { "nvim-lua/popup.nvim" },
-    { "nvim-lua/plenary.nvim" },
   },
 }
 
@@ -20,9 +20,10 @@ function M.config()
   local telescope = require("telescope")
   local builtin = require("telescope.builtin")
   local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
 
   ---@type Util
-  local util = require("util.util")
+  -- local util = require("util.util")
 
   -- You dont need to set any of these options. These are the default ones. Only
   -- the loading is important
@@ -39,7 +40,10 @@ function M.config()
           "--hidden",
           "--exclude",
           ".git",
-          -- "--no-ignore-vcs",
+          "--exclude",
+          "node_modules",
+          "--exclude",
+          ".next",
         },
         results_title = false,
         prompt_title = false,
@@ -66,6 +70,11 @@ function M.config()
         },
         n = {
           ["<C-S-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+          ["p"] = function(prompt_bufnr)
+            local current_picker = action_state.get_current_picker(prompt_bufnr)
+            local text = vim.fn.getreg('"'):gsub("\n", "\\n") -- which register depends on clipboard option
+            current_picker:set_prompt(text, false)
+          end,
         },
       },
 
@@ -75,11 +84,10 @@ function M.config()
       selection_caret = "▌ ",
       -- border = false,
       borderchars = {
-        -- prompt = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
-        -- results = { " ", "▐", "▄", "▌", "▌", "▐", "▟", "▙" },
-        -- preview = { "▀", "█", "▄", " ", "▀", "█", "█", "▄" },
-        prompt = { " ", " ", "▄", "█", "█", " ", "▄", "█" },
-        results = { "▀", " ", " ", "█", "█", "▀", " ", "█" },
+        -- prompt = { " ", " ", "▄", "█", "█", " ", "▄", "█" },
+        -- results = { "▀", " ", " ", "█", "█", "▀", " ", "█" },
+        prompt = ui.border.Empty,
+        results = ui.border.Empty,
         preview = { "▀", "█", "▄", " ", "▀", "█", "█", "▄" },
       },
       -- borderchars = { "🬂", "▐", "🬭", "▌", "🬕", "🬨", "▟", "▙" },
@@ -148,49 +156,72 @@ function M.config()
   -- telescope.load_extension("media_files")
   telescope.load_extension("ui-select")
 
-  -- ==================Custom function for git files=======================
-  local function project_files()
-    local ok = pcall(builtin.git_files, { show_untracked = true })
-    if not ok then
-      require("telescope.builtin").find_files()
-    end
-  end
+  -- -- ==================Custom function for git files=======================
+  -- local function project_files()
+  --   local ok = pcall(builtin.git_files, { show_untracked = true })
+  --   if not ok then
+  --     require("telescope.builtin").find_files()
+  --   end
+  -- end
 
   -- ======================== REMAPS ============================
-  local nsn_opts = { noremap = true, silent = true, nowait = true }
+  -- local nsn_opts = { noremap = true, silent = true, nowait = true }
 
   -- vim.keymap.set("n", "<leader>ff", "<Cmd>Telescope frecency<CR>", nsn_opts)
 
   vim.keymap.set("n", "<leader>fg", function()
     builtin.live_grep()
-  end, util.table_merge(nsn_opts, { desc = "Telescope live grep" }))
+  end, { desc = "Telescope live grep" })
 
   vim.keymap.set("n", "<leader>fj", function()
     builtin.jumplist()
-  end, nsn_opts)
+  end, { desc = "Telescope jumplist" })
 
+  local my_find_files
+  my_find_files = function(opts, no_ignore)
+    opts = opts or {}
+    no_ignore = vim.F.if_nil(no_ignore, false)
+    opts.attach_mappings = function(_, map)
+      map({ "n", "i" }, "<C-h>", function(prompt_bufnr) -- <C-h> to toggle modes
+        local prompt = require("telescope.actions.state").get_current_line()
+        require("telescope.actions").close(prompt_bufnr)
+        no_ignore = not no_ignore
+        my_find_files({ default_text = prompt }, no_ignore)
+      end)
+      return true
+    end
+
+    if no_ignore then
+      opts.no_ignore = true
+      opts.hidden = true
+      opts.prompt_title = "Find Files <ALL>"
+      require("telescope.builtin").find_files(opts)
+    else
+      opts.prompt_title = "Find Files"
+      require("telescope.builtin").find_files(opts)
+    end
+  end
   vim.keymap.set("n", "<leader>ff", function()
     -- project_files()
-    builtin.find_files()
-  end, nsn_opts)
-
-  vim.keymap.set("n", "<leader>fF", builtin.find_files, nsn_opts)
+    -- builtin.find_files()
+    my_find_files()
+  end, { desc = "Telescope files" })
 
   vim.keymap.set("n", "<leader>fb", function()
     vim.cmd.Telescope("file_browser")
-  end, nsn_opts)
+  end, { desc = "Telescope file browser" })
 
   vim.keymap.set("n", "<leader>fG", function()
     builtin.git_files()
-  end, nsn_opts)
+  end, { desc = "Telescope git files" })
 
   vim.keymap.set("n", "<leader>fS", function()
     builtin.lsp_document_symbols()
-  end, nsn_opts)
+  end, { desc = "Telescope document symbols" })
 
-  vim.keymap.set("n", "<leader>fs", function()
-    telescope.extensions.resession.resession()
-  end, nsn_opts)
+  -- vim.keymap.set("n", "<leader>fs", function()
+  --   telescope.extensions.resession.resession()
+  -- end, nsn_opts)
 
   -- vim.keymap.set("n", "<leader>fS", function()
   --   builtin.lsp_dynamic_workspace_symbols()
@@ -198,11 +229,57 @@ function M.config()
 
   vim.keymap.set("n", "<leader>fn", function()
     telescope.extensions.notify.notify()
-  end, nsn_opts)
+  end, { desc = "Telescope notify" })
 
   vim.keymap.set("n", "<leader>fr", function()
     builtin.resume()
-  end, nsn_opts)
+  end, { desc = "Telescope resume" })
+
+  -- CONFIG
+  local blend = 60
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "TelescopePrompt",
+    callback = function(ctx)
+      local backdropName = "TelescopeBackdrop"
+      local telescopeBufnr = ctx.buf
+
+      -- `Telescope` does not set a zindex, so it uses the default value
+      -- of `nvim_open_win`, which is 50: https://neovim.io/doc/user/api.html#nvim_open_win()
+      local telescopeZindex = 50
+
+      local backdropBufnr = vim.api.nvim_create_buf(false, true)
+      local winnr = vim.api.nvim_open_win(backdropBufnr, false, {
+        relative = "editor",
+        row = 0,
+        col = 0,
+        width = vim.o.columns,
+        height = vim.o.lines,
+        focusable = false,
+        style = "minimal",
+        zindex = telescopeZindex - 1, -- ensure it's below the reference window
+      })
+
+      vim.api.nvim_set_hl(0, backdropName, { bg = "#000000", default = true })
+      vim.wo[winnr].winhighlight = "Normal:" .. backdropName
+      vim.wo[winnr].winblend = blend
+      vim.bo[backdropBufnr].buftype = "nofile"
+
+      -- close backdrop when the reference buffer is closed
+      vim.api.nvim_create_autocmd({ "WinClosed", "BufLeave" }, {
+        once = true,
+        buffer = telescopeBufnr,
+        callback = function()
+          if vim.api.nvim_win_is_valid(winnr) then
+            vim.api.nvim_win_close(winnr, true)
+          end
+          if vim.api.nvim_buf_is_valid(backdropBufnr) then
+            vim.api.nvim_buf_delete(backdropBufnr, { force = true })
+          end
+        end,
+      })
+    end,
+  })
 end
 
 return M

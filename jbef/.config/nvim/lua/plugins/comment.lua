@@ -1,6 +1,7 @@
 local M = {
   "numToStr/Comment.nvim",
   event = "VeryLazy",
+  enabled = true,
 }
 
 function M.config()

@@ -82,17 +82,17 @@ M.common = {
   History = " ",
   Comment = " ",
   Bug = " ",
-  Code = " ",
-  Telescope = " ",
+  Code = "󰘦 ",
+  Telescope = " ",
   Gear = " ",
   Package = " ",
   List = " ",
   SignIn = " ",
   Check = " ",
-  Fire = " ",
-  Note = " ",
-  BookMark = " ",
-  Pencil = " ",
+  Fire = "󰈸 ",
+  Note = " ",
+  BookMark = " ",
+  Pencil = " ",
   -- ChevronRight = "",
   ChevronRight = " ",
   Table = " ",
@@ -135,6 +135,7 @@ M.misc = {
 
 ---@class UIBorder
 M.border = {
+  Empty = { "", "", "", "", "", "", "", "" },
   Single = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   Square = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
   Block = {
@@ -148,6 +149,7 @@ M.border = {
     { "▌" },
   },
   BlockThick = { "█", "▀", "█", "█", "█", "▄", "█", "█" },
+  BlockThickRight = { "▛", "▀", "█", "█", "█", "▄", "▙", "▌" },
   LSPBlock = {
     { "▛", "FloatBorder" },
     { "▀", "FloatBorder" },

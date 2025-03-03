@@ -2,7 +2,7 @@ local M = {
   "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
-  enabled = false,
+  enabled = true,
 }
 
 ---@class tokyonight.Config

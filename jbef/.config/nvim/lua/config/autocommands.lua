@@ -40,22 +40,24 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
 --   end,
 -- })
 
-vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = "UserLspConfig",
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    client.server_capabilities.semanticTokensProvider = nil
-  end,
-})
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = "UserLspConfig",
-  callback = function()
-    for _, client in pairs((vim.lsp.get_clients({}))) do
-      if client.name == "tailwindcss" then
-        client.server_capabilities.completionProvider.triggerCharacters =
-          { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
-      end
-    end
-  end,
-})
+-- vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
+
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   group = "UserLspConfig",
+--   callback = function(args)
+--     local client = vim.lsp.get_client_by_id(args.data.client_id)
+--     client.server_capabilities.semanticTokensProvider = nil
+--   end,
+-- })
+
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   group = "UserLspConfig",
+--   callback = function()
+--     for _, client in pairs((vim.lsp.get_clients({}))) do
+--       if client.name == "tailwindcss" then
+--         client.server_capabilities.completionProvider.triggerCharacters =
+--           { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
+--       end
+--     end
+--   end,
+-- })
