@@ -28,6 +28,10 @@ return {
 
       ---Highlight tailwind colors, e.g. 'bg-blue-500'
       enable_tailwind = false,
+
+      -- Exclude filetypes or buftypes from highlighting e.g. 'exclude_buftypes = {'text'}'
+      exclude_filetypes = { "lazy", "dashboard" },
+      -- exclude_buftypes = { "lazy", "dashboard" },
     })
   end,
 }

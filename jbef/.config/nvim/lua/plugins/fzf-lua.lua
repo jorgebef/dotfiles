@@ -104,6 +104,22 @@ return {
         end,
         desc = "Fzf Lua files",
       },
+
+      {
+        "<leader>fg",
+        function()
+          fzf.live_grep()
+        end,
+        desc = "Fzf live_grep",
+      },
+
+      {
+        "<leader>fr",
+        function()
+          fzf.resume()
+        end,
+        desc = "Fzf resume",
+      },
     }
   end,
 }

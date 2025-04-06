@@ -32,8 +32,8 @@ local ui = require("config.ui")
 lazy.setup("plugins", {
   change_detection = {
     -- automatically check for config file changes and reload the ui
-    enabled = false,
-    notify = false, -- get a notification when changes are found
+    enabled = true,
+    notify = true, -- get a notification when changes are found
   },
   install = {
     colorscheme = {
@@ -43,10 +43,13 @@ lazy.setup("plugins", {
     },
   },
   ui = {
+    -- -- The backdrop opacity. 0 is fully opaque, 100 is fully transparent.
+    -- backdrop = 60,
     -- a number <1 is a percentage., >1 is a fixed size
-    size = { width = 0.8, height = 0.8 },
+    size = { width = 0.6, height = 0.8 },
     -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
-    border = ui.border.Block,
+    -- border = ui.border.Block,
+    border = nil,
   },
   dev = {
     -- Directory where you store your local plugin projects. If a function is used,
@@ -61,7 +64,7 @@ lazy.setup("plugins", {
 
 vim.keymap.set("n", "<leader>L", ":Lazy<CR>", { noremap = true })
 
--- vim.cmd([[colorscheme catppuccin-mocha]])
+-- vim.cmd([[colorscheme catppuccin]])
 vim.cmd([[colorscheme nordic]])
 -- vim.cmd([[colorscheme kanagawa]])
 -- vim.cmd([[colorscheme chia]])

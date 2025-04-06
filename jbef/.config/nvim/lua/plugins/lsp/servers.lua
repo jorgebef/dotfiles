@@ -230,6 +230,10 @@ local M = {
   --   },
   -- },
 
+  sourcekit = {
+    cmd = { "/usr/bin/sourcekit-lsp" },
+  },
+
   tailwindcss = {
     -- this needs to be installed globally
     cmd = { "tailwindcss-language-server", "--stdio" },

@@ -21,7 +21,8 @@ vim.keymap.set("v", "p", '"_dP', opts)
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
-vim.keymap.set("n", "<ESC>", '<ESC>:noh<CR>:lua require("notify").dismiss()<CR>', opts)
+-- vim.keymap.set("n", "<ESC>", '<ESC>:noh<CR>:lua require("notify").dismiss()<CR>', opts)
+vim.keymap.set("n", "<ESC>", ":lua Snacks.notifier.hide()<CR>:noh<CR><ESC>", opts)
 
 -- improved scrolling
 vim.keymap.set("n", "<C-e>", "4<C-e>", opts)
@@ -37,7 +38,7 @@ vim.keymap.set("v", "<C-y>", "4<C-y>", opts)
 
 vim.keymap.set("n", "<leader>w", ":silent write<cr>", opts)
 vim.keymap.set("n", "<leader>q", ":q<cr>", opts)
-vim.keymap.set("n", "<leader>Q", ':lua require("notify").dismiss()<CR>:qa<cr>', opts)
+vim.keymap.set("n", "<leader>Q", ":qa<cr>", opts)
 
 vim.keymap.set("n", "<leader>p", '"+p', opts)
 vim.keymap.set("v", "<leader>p", '"+p', opts)

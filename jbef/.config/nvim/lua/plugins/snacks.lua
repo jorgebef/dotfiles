@@ -1,75 +1,24 @@
 return {
   "folke/snacks.nvim",
+  dependencies = { "folke/todo-comments.nvim" },
   priority = 1000,
   lazy = false,
-  enabled = true,
 
   opts = function()
     ---@type snacks.Config
     local opts = {
       image = { enabled = true },
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-
       dashboard = { enabled = true },
-
       rename = { enabled = true },
       notifier = { enabled = true },
+      notify = { enabled = true },
+      lazygit = { enabled = true },
+
+      input = { enabled = true, prompt_pos = "left" },
 
       picker = {
         sources = {
-          grep = {
-            formatters = { file = { filename_only = true } },
-            -- format = function(item, picker)
-            --   ---@type snacks.picker.Item
-            --   local kek = vim.deepcopy(item)
-            --   -- kek.preview = false
-            --   -- local kek =
-            --   --   { idx = item.idx, score = item.score, text = item.text, highlights = item.highlights, preview = false }
-            --   -- return kek
-            --   return item
-            -- end,
-            -- live = true,
-            -- limit = 60,
-            layout = {
-              reverse = true,
-              layout = {
-                box = "horizontal",
-                backdrop = 60,
-                width = 0.8,
-                height = 0.85,
-                border = "none",
-                {
-                  box = "vertical",
-                  {
-                    win = "list",
-                    -- title = " Results ",
-                    title_pos = "center",
-                    -- border = require("config.ui").border.BlockThick,
-                    border = { " " },
-                  },
-                  {
-                    win = "input",
-                    height = 1,
-                    -- border = require("config.ui").border.BlockThick,
-                    border = { " " },
-                    -- title = "{title} {live} {flags}",
-                    -- title = "{title}",
-                    title_pos = "center",
-                  },
-                },
-                {
-                  win = "preview",
-                  title = "{preview}",
-                  width = 0.55,
-                  -- border = require("config.ui").border.BlockThick,
-                  border = { "▌", " ", " ", " ", " ", " ", "▌", "▌" },
-                  title_pos = "center",
-                },
-              },
-            },
-          },
+          grep = {},
           files = {
             hidden = true,
             ignored = false,
@@ -81,42 +30,42 @@ return {
             },
             -- live = true,
             -- limit = 60,
-            layout = {
-              reverse = true,
-              layout = {
-                box = "horizontal",
-                backdrop = 60,
-                width = 0.8,
-                height = 0.85,
-                border = "none",
-                {
-                  box = "vertical",
-                  {
-                    win = "list",
-                    -- title = " Results ",
-                    title_pos = "center",
-                    -- border = require("config.ui").border.Block,
-                    border = { " " },
-                  },
-                  {
-                    win = "input",
-                    height = 1,
-                    -- border = require("config.ui").border.Block,
-                    border = { " " },
-                    -- title = "{title} {live} {flags}",
-                    -- title = "{title}",
-                    title_pos = "center",
-                  },
-                },
-                {
-                  win = "preview",
-                  title = "{preview}",
-                  width = 0.52,
-                  -- border = require("config.ui").border.Block,
-                  border = { "▌", " ", " ", " ", " ", " ", "▌", "▌" },
-                  title_pos = "center",
-                },
+          },
+        },
+        layout = {
+          reverse = true,
+          layout = {
+            box = "horizontal",
+            -- backdrop = false,
+            width = 0.8,
+            height = 0.85,
+            border = "none",
+            {
+              box = "vertical",
+              {
+                win = "list",
+                -- title = " Results ",
+                title_pos = "center",
+                -- border = require("config.ui").border.BlockThick,
+                border = { " " },
               },
+              {
+                win = "input",
+                height = 1,
+                -- border = require("config.ui").border.BlockThick,
+                border = { " " },
+                -- title = "{title} {live} {flags}",
+                -- title = "{title}",
+                title_pos = "center",
+              },
+            },
+            {
+              win = "preview",
+              title = "{preview}",
+              width = 0.5,
+              -- border = require("config.ui").border.BlockThick,
+              border = { "▌", " ", " ", " ", " ", " ", "▌", "▌" },
+              title_pos = "center",
             },
           },
         },
@@ -136,11 +85,14 @@ return {
         },
       },
 
-      -- notifier = { enabled = true },
-      -- quickfile = { enabled = true },
-      -- scroll = { enabled = false },
-      -- statuscolumn = { enabled = false },
-      -- words = { enabled = false },
+      styles = {
+        input = {
+          relative = "editor",
+          position = "float",
+          -- row = (vim.api.nvim_win_get_height(0) / 2) - 1,
+          row = 0.46,
+        },
+      },
     }
     return opts
   end,
@@ -316,12 +268,7 @@ return {
     {
       "<leader>sg",
       function()
-        Snacks.picker.grep({
-          cmd = "rg",
-          args = { "--column", "--hidden", "--no-heading", "--smart-case", "--max-columns=4096" },
-          -- ignored = false,
-          -- hidden = true,
-        })
+        Snacks.lazygit()
       end,
       desc = "Grep",
     },
@@ -404,13 +351,20 @@ return {
       end,
       desc = "Highlights",
     },
-    -- {
-    --   "<leader>si",
-    --   function()
-    --     Snacks.picker.icons()
-    --   end,
-    --   desc = "Icons",
-    -- },
+
+    {
+      "<leader>si",
+      function()
+        Snacks.picker.icons({
+          layout = {
+            preset = "default",
+            backdrop = 60,
+          },
+        })
+      end,
+      desc = "Icons",
+    },
+
     {
       "<leader>sj",
       function()
@@ -418,6 +372,7 @@ return {
       end,
       desc = "Jumps",
     },
+
     {
       "<leader>sK",
       function()
@@ -425,6 +380,7 @@ return {
       end,
       desc = "Keymaps",
     },
+
     -- {
     --   "<leader>sl",
     --   function()
@@ -432,6 +388,7 @@ return {
     --   end,
     --   desc = "Location List",
     -- },
+
     {
       "<leader>sM",
       function()
@@ -439,6 +396,7 @@ return {
       end,
       desc = "Marks",
     },
+
     -- {
     --   "<leader>sM",
     --   function()
@@ -446,6 +404,7 @@ return {
     --   end,
     --   desc = "Man Pages",
     -- },
+
     {
       "<leader>sp",
       function()
@@ -453,6 +412,7 @@ return {
       end,
       desc = "Search for Plugin Spec",
     },
+
     {
       "<leader>sq",
       function()
@@ -460,6 +420,7 @@ return {
       end,
       desc = "Quickfix List",
     },
+
     {
       "<leader>sr",
       function()
@@ -467,6 +428,7 @@ return {
       end,
       desc = "Resume",
     },
+
     {
       "<leader>su",
       function()
@@ -474,6 +436,7 @@ return {
       end,
       desc = "Undo History",
     },
+
     {
       "<leader>uC",
       function()
@@ -560,6 +523,22 @@ return {
         Snacks.picker.lsp_workspace_symbols()
       end,
       desc = "LSP Workspace Symbols",
+    },
+
+    -- TODO comments
+    {
+      "<leader>st",
+      function()
+        Snacks.picker.todo_comments()
+      end,
+      desc = "Todo",
+    },
+    {
+      "<leader>sT",
+      function()
+        Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
+      end,
+      desc = "Todo/Fix/Fixme",
     },
   },
 }

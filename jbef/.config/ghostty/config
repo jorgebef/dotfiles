@@ -4,7 +4,8 @@
 
 # Blank lines are ignored!
 
-auto-update = check
+auto-update = off
+auto-update-channel = tip
 
 font-family = JetBrains Mono
 font-size = 14.5
@@ -15,7 +16,7 @@ font-size = 14.5
 
 # font-family = Suisse Int'l Mono
 # font-size = 14.5
-# adjust-cell-width = -3%
+adjust-cell-width = -3%
 # adjust-cell-height = 2%
 
 # font-family = Maple Mono
@@ -24,6 +25,7 @@ font-size = 14.5
 
 # cursor-style = block
 # shell-integration = fish
+
 shell-integration-features = true
 mouse-hide-while-typing = true
 
@@ -59,12 +61,13 @@ keybind = unconsumed:ctrl+shift+a=reload_config
 # keybind = alt+left=esc:b
 # keybind = alt+right=esc:f
 
-# theme = catppuccin-mocha
+# theme = catppuccin-mocha.conf
+theme = nordic.conf
 # theme = nord
 # theme = rose-pine
 # theme = tokyonight
 # theme = kanagawabones
 # theme = Kanagawa Wave
-theme = "/Users/jbef/.config/ghostty/nordic"
+# theme = "/Users/jbef/.config/ghostty/nordic"
 # theme = "/Users/jbef/.config/ghostty/kanagawa-dragon"
 # theme = "/Users/jbef/.config/ghostty/ghostty-chia"

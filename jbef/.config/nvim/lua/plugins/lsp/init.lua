@@ -29,9 +29,12 @@ M.config = function()
   local util = require("util.util")
   local manual_servers = {
     "glslls",
-    "tailwindcss",
+    -- "tailwindcss",
     "nushell",
     "ts_ls",
+    "sourcekit",
+    -- "css_variables",
+    -- "cssls",
   }
 
   require("plugins.lsp.diagnostics").setup()
@@ -85,14 +88,24 @@ M.config = function()
     handlers = M.handlers,
   }, servers.nushell))
 
-  -- INFO
-  -- This is to use the insiders version of tailwindcss-language-server
-  -- install via `pnpm i -g @tailwindcss/language-server@insiders`
-  lsp["tailwindcss"].setup(vim.tbl_deep_extend("force", {
-    on_attach = M.on_attach,
-    capabilities = M.capabilities(),
-    handlers = M.handlers,
-  }, servers.tailwindcss))
+  -- -- INFO
+  -- -- This is to use the insiders version of tailwindcss-language-server
+  -- -- install via `pnpm i -g @tailwindcss/language-server@insiders`
+  -- lsp["tailwindcss"].setup(vim.tbl_deep_extend("force", {
+  --   on_attach = M.on_attach,
+  --   capabilities = M.capabilities(),
+  --   handlers = M.handlers,
+  -- }, servers.tailwindcss))
+
+  lsp["sourcekit"].setup(vim.tbl_deep_extend("force", {
+    capabilities = {
+      workspace = {
+        didChangeWatchedFiles = {
+          dynamicRegistration = true,
+        },
+      },
+    },
+  }, servers.sourcekit))
 
   require("typescript-tools").setup({
     single_file_support = false,

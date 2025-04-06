@@ -1,10 +1,7 @@
-local M = {
+return {
   "smjonas/inc-rename.nvim",
-  event = "LspAttach",
+  enabled = false,
+  config = function()
+    require("inc_rename").setup()
+  end,
 }
-
-function M.config()
-  require("inc_rename").setup()
-end
-
-return M

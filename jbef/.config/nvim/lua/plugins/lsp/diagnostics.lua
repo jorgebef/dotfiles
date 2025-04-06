@@ -3,10 +3,10 @@ local M = {}
 local ui = require("config.ui")
 
 M.diagnostic_signs = {
-  Error = ui.diagnostics.Error,
-  Warn = ui.diagnostics.Warning,
-  Hint = ui.diagnostics.Hint,
-  Info = ui.diagnostics.Information,
+  Error = ui.icons.diagnostics.Error,
+  Warn = ui.icons.diagnostics.Warning,
+  Hint = ui.icons.diagnostics.Hint,
+  Info = ui.icons.diagnostics.Information,
 }
 
 function M.setup()
@@ -23,11 +23,8 @@ function M.setup()
     update_in_insert = false,
     underline = true,
     severity_sort = true,
-    -- border = ui.border.Block,
     float = {
       focusable = false,
-      -- style = "minimal",
-      -- border = "rounded",
       border = ui.border.Block,
 
       -- source = "always",

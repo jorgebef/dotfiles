@@ -1,6 +1,6 @@
 local M = {
-  -- "AlexvZyl/nordic.nvim",
-  "jorgebef/nordic.nvim",
+  "AlexvZyl/nordic.nvim",
+  -- "jorgebef/nordic.nvim",
   lazy = false,
   priority = 1000,
   enabled = true,
@@ -18,20 +18,18 @@ function M.config()
     -- This callback can be used to override the colors used in the extended palette.
     after_palette = function(palette) end,
     -- This callback can be used to override highlights before they are applied.
-    on_highlight = function(highlights, palette)
-      -- Custom Highlights over default
-      highlights.IblScope = { fg = palette.gray4 }
-      highlights.IblIndent = { fg = palette.gray1 }
+    on_highlight = function(highlights, p)
       -- Winbar
-      highlights.WinBarInactive = { fg = palette.gray2, bg = nil }
-      highlights.WinBarFilenameActive = { fg = palette.white0, bg = nil, bold = false }
-      highlights.WinBarFilenameInactive = { fg = palette.gray1, bg = nil, bold = false }
+      highlights.WinBarNC = { fg = p.gray4, bg = nil }
+      highlights.WinBar = { fg = p.white0, bg = nil, bold = false }
+      highlights.WinSeparator = { fg = p.gray2, bg = nil, bold = false }
+      highlights.SnacksPickerlistCursorLine = { bg = p.bg_cursorline }
       -- -- Blink.cmp
       -- highlights.BlinkCmpMenuBorder = { fg = palette.gray0, bg = palette.black1 }
       -- highlights.BlinkCmpMenuSelection = { fg = nil, bg = palette.gray1 }
       -- highlights.BlinkCmpLabelMatch = { fg = nil, bg = palette.gray1 }
       -- LSP specific
-      highlights["@punctuation.bracket"] = { fg = palette.gray5 }
+      highlights["@punctuation.bracket"] = { fg = p.gray5 }
     end,
     -- -- Enable bold keywords.
     -- bold_keywords = false,
@@ -45,7 +43,7 @@ function M.config()
     --   float = false,
     -- },
     -- -- Enable brighter float border.
-    -- bright_border = false,
+    border_style = "flat",
     -- -- Reduce the overall amount of blue in the theme (diverges from base Nord).
     -- reduced_blue = true,
     -- -- Swap the dark background with the normal one.

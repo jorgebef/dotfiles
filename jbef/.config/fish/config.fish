@@ -34,10 +34,11 @@ fish_add_path "$HOME/.venv/bin" # Add uv venv path to $PATH
 
 set fish_greeting
 
-# function fish_user_key_bindings
-#     bind \ee true
-#     # and so on
-# end
+function fish_user_key_bindings
+    bind ctrl-d delete-char
+end
+
+set fish_user_key_bindings
 
 fish_vi_key_bindings
 set fish_cursor_default     block

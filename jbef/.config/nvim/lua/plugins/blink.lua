@@ -6,18 +6,18 @@ return {
   dependencies = {
     "rafamadriz/friendly-snippets",
     "xzbdmw/colorful-menu.nvim",
-    "onsails/lspkind-nvim",
+    "zbirenbaum/copilot.lua",
+    -- "fang2hou/blink-copilot",
     { "L3MON4D3/LuaSnip", version = "v2.*" },
   },
 
-  -- use a release tag to download pre-built binaries
-  -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+  -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
   build = "cargo build --release",
-  -- On musl libc based systems you need to add this flag
-  -- build = 'RUSTFLAGS="-C target-feature=-crt-static" cargo build --release',
-  -- opts_extend = { "sources.default" },
+  -- If you use nix, you can build from source using latest nightly rust with:
+  -- build = 'nix run .#build-plugin',
   config = function()
     local ui = require("config.ui")
+    local icons = require("mini.icons")
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -35,6 +35,7 @@ return {
         preset = "luasnip",
       },
       completion = {
+        -- trigger = { show_on_blocked_trigger_characters = {} },
         accept = {
           create_undo_point = false,
         },
@@ -45,7 +46,10 @@ return {
           max_items = 100,
           -- Controls if completion items will be selected automatically,
           -- and whether selection automatically inserts
-          selection = { preselect = false, auto_insert = true },
+          selection = {
+            preselect = false,
+            -- auto_insert = true,
+          },
           cycle = {
             -- When `true`, calling `select_next` at the *bottom* of the completion list
             -- will select the *first* completion item.
@@ -56,7 +60,11 @@ return {
           },
         },
 
-        documentation = { auto_show = true, auto_show_delay_ms = 20 },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 20,
+          treesitter_highlighting = true,
+        },
 
         menu = {
           enabled = true,
@@ -83,7 +91,7 @@ return {
           draw = {
             -- align_to = "label", -- or 'none' to disable
             -- Left and right padding, optionally { left, right } for different padding on each side
-            -- padding = 1,
+            padding = 1,
             -- Gap between columns
             gap = 2,
             treesitter = { "lsp" },
@@ -104,46 +112,34 @@ return {
               -- },
 
               kind_icon = {
-                ellipsis = false,
                 text = function(ctx)
-                  local lspkind = require("lspkind")
                   local icon = ctx.kind_icon
-                  if vim.tbl_contains({ "Path" }, ctx.source_name) then
-                    local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
-                    if dev_icon then
-                      icon = dev_icon
-                    end
-                  else
-                    icon = lspkind.symbolic(ctx.kind, {
-                      mode = "symbol",
-                    })
-                  end
-
-                  return icon
+                  -- if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                  --   local dev_icon, _ = icons.get_icon(ctx.label)
+                  --   if dev_icon then
+                  --     icon = dev_icon
+                  --   end
+                  -- end
+                  return icon .. ctx.icon_gap
                 end,
-
-                -- -- Optionally, use the highlight groups from nvim-web-devicons
-                -- -- You can also add the same function for `kind.highlight` if you want to
-                -- -- keep the highlight groups in sync with the icons.
-                -- highlight = function(ctx)
-                --   local hl = "BlinkCmpKind" .. ctx.kind
-                --     or require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx)
-                --   if vim.tbl_contains({ "Path" }, ctx.source_name) then
-                --     local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
-                --     if dev_icon then
-                --       hl = dev_hl
-                --     end
-                --   end
-                --   return hl
-                -- end,
-
+                -- Optionally, use the highlight groups from nvim-web-devicons
+                -- You can also add the same function for `kind.highlight` if you want to
+                -- keep the highlight groups in sync with the icons.
                 highlight = function(ctx)
-                  return require("colorful-menu").blink_components_highlight(ctx)
+                  local hl = ctx.kind_hl
+                  -- if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                  --   local dev_icon, dev_hl = icons.get_icon(ctx.label)
+                  --   if dev_icon then
+                  --     hl = dev_hl
+                  --   end
+                  -- end
+                  return hl
                 end,
               },
 
               label = {
-                width = { min = 30, max = 30 },
+                -- width = { min = 30, max = 30 },
+                width = { min = 30, max = 30, fill = true },
                 text = function(ctx)
                   return require("colorful-menu").blink_components_text(ctx)
                 end,
@@ -164,7 +160,13 @@ return {
       cmdline = {},
 
       sources = {
-        default = { "lsp", "path", "buffer", "snippets" },
+        default = {
+          "lsp",
+          "path",
+          "buffer",
+          "snippets",
+          -- "copilot",
+        },
         providers = {
           lsp = {
             name = "LSP",
@@ -173,6 +175,25 @@ return {
             -- async = true,
             -- timeout_ms = 4000,
           },
+          -- copilot = {
+          --   name = "copilot",
+          --   module = "blink-copilot",
+          --   score_offset = 100,
+          --   async = true,
+          --   opts = {
+          --     -- get_trigger_characters = { "@@" },
+          --     max_completions = 3,
+          --     max_attempts = 4,
+          --     kind_name = "Copilot", ---@type string | false
+          --     kind_icon = "", ---@type string | false
+          --     kind_hl = "MiniIconsBlue", ---@type string | false
+          --     debounce = 200, ---@type integer | false
+          --     auto_refresh = {
+          --       backward = true,
+          --       forward = true,
+          --     },
+          --   },
+          -- },
         },
       },
 
