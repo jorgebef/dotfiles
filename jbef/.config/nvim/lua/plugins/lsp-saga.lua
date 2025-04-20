@@ -83,13 +83,13 @@ return {
   end,
 
   keys = {
-    {
-      "<leader>la",
-      function()
-        vim.cmd([[Lspsaga code_action]])
-      end,
-      desc = "Lspsaga code actions",
-    },
+    -- {
+    --   "<leader>la",
+    --   function()
+    --     vim.cmd([[Lspsaga code_action]])
+    --   end,
+    --   desc = "Lspsaga code actions",
+    -- },
     -- {
     --   "<leader>lr",
     --   function()

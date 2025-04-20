@@ -7,14 +7,35 @@ return {
   opts = function()
     ---@type snacks.Config
     local opts = {
-      image = { enabled = true },
       dashboard = { enabled = true },
-      rename = { enabled = true },
+      image = { enabled = true },
       notifier = { enabled = true },
       notify = { enabled = true },
       lazygit = { enabled = true },
+      rename = { enabled = true },
+      statuscolumn = {
+        enabled = true,
+        left = { "mark", "sign" }, -- priority of signs on the left (high to low)
+        right = { "fold", "git" }, -- priority of signs on the right (high to low)
+        folds = {
+          open = false, -- show open fold icons
+          git_hl = false, -- use Git Signs hl for fold icons
+        },
+        git = {
+          -- patterns to match Git signs
+          patterns = { "GitSign", "MiniDiffSign" },
+        },
+        refresh = 50, -- refresh at most every 50ms
+      },
 
-      input = { enabled = true, prompt_pos = "left" },
+      input = {
+        enabled = true,
+        prompt_pos = "left",
+      },
+
+      explorer = {
+        enabled = true,
+      },
 
       picker = {
         sources = {
@@ -37,7 +58,7 @@ return {
           layout = {
             box = "horizontal",
             -- backdrop = false,
-            width = 0.8,
+            width = 0.7,
             height = 0.85,
             border = "none",
             {
@@ -107,8 +128,8 @@ return {
             "--color=never",
             "--exclude",
             ".git",
-            "--exclude",
-            "node_modules",
+            -- "--exclude",
+            -- "node_modules",
             "--exclude",
             ".next",
           },

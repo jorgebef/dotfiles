@@ -56,45 +56,55 @@ function fish_prompt
     #     end
     # end
 
-    set -l cyan (set_color -o cyan)
-    set -l yellow (set_color -o yellow)
-    set -l red (set_color -o red)
-    set -l green (set_color -o green)
-    set -l blue (set_color -o blue)
-    set -l normal (set_color normal)
+    set -l cyan (set_color cyan)
+    set -l yellow (set_color yellow)
+    set -l red (set_color red)
+    set -l green (set_color green)
+    set -l blue (set_color blue)
 
-    set -l gray (set_color -o grey)
-    set -l pink (set_color -o magenta)
-    set -l mauve (set_color -o red)
+    set -l gray (set_color grey)
+    set -l pink (set_color magenta)
+    set -l mauve (set_color red)
+
+    set -l normal (set_color normal)
 
     set -l arrow_color "$green"
     if test $__last_command_exit_status != 0
         set arrow_color "$red"
+        set arrow " "
     end
 
     switch $fish_bind_mode
       case default
-        set arrow_color "$blue"
-        set arrow "❯ "
+        set arrow_color (set_color normal)(set_color blue)
+        set arrow "❮ "
       case insert
-        set arrow_color "$green"
+        set arrow_color (set_color normal)(set_color green)
+        set arrow "❯ "
       case replace_one
-        set arrow_color "$mauve"
+        set arrow_color (set_color normal)(set_color magenta)
+        set arrow "◉ "
+      case replace
+        set arrow_color (set_color normal)(set_color magenta)
+        set arrow "◉ "
       case visual
-        set arrow_color "$mauve"
+        set arrow_color (set_color normal)(set_color magenta)
+        set arrow "❯ "
       case '*'
-        set arrow_color "$red"
+        set arrow_color (set_color normal)(set_color red)
+        set arrow "❯ "
     end
 
-    set -l arrow "$arrow_color❯ "
+    set -l arrow "$arrow_color$arrow$normal"
     if fish_is_root_user
-        set arrow "$arrow_color# "
+        set arrow "# $arrow_color"
     end
 
     set -g fish_prompt_pwd_full_dirs 2
     set -g fish_prompt_pwd_dir_length 4
 
-    set -l cwd $blue(prompt_pwd)
+    # set -l cwd $blue(prompt_pwd)
+    set -l cwd (set_color -o -d cyan)(prompt_pwd)
 
     # set -l repo_info
     # if set -l repo_type (_repo_type)
@@ -109,6 +119,6 @@ function fish_prompt
     # end
 
     # echo -n -s $cwd $repo_info $normal \n\r $arrow
-    echo -n -s $cwd $normal \n\r $arrow
+    echo -n -s \n\r$cwd (set_color normal)(fish_git_prompt) \n\r $arrow
 end
 

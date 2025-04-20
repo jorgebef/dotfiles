@@ -217,12 +217,12 @@ local M = {
     -- filetypes = { "css", "scss", "less", "typescriptreact", "javascriptreact" },
   },
 
-  css_variables = {
-    settings = {
-      lookupFiles = { "**/*.less", "**/*.scss", "**/*.sass", "**/*.css" },
-    },
-    -- filetypes = { "css", "scss", "less", "typescriptreact", "javascriptreact" },
-  },
+  -- css_variables = {
+  --   settings = {
+  --     lookupFiles = { "**/*.less", "**/*.scss", "**/*.sass", "**/*.css" },
+  --   },
+  --   -- filetypes = { "css", "scss", "less", "typescriptreact", "javascriptreact" },
+  -- },
 
   -- cssmodules_ls = {
   --   init_options = {
@@ -259,15 +259,16 @@ local M = {
           recommendedVariantOrder = "warning",
         },
         validate = true,
-        experimental = {
-          -- configFile = "./src/styles/globals.css",
-          classRegex = {
-            -- "clsx\\(([^)]*)\\)",
-            "clsx\\(([^)]*)\\)",
-            "cva\\(([^)]*)\\)",
-            -- "(?:'|\"|`)([^']*)(?:'|\"|`)",
-          },
-        },
+        classFunctions = { "class", "clsx", "cva", "className", "classList", "cn" },
+        -- experimental = {
+        --   -- configFile = "./src/styles/globals.css",
+        --   classRegex = {
+        --     -- "clsx\\(([^)]*)\\)",
+        --     "clsx\\(([^)]*)\\)",
+        --     "cva\\(([^)]*)\\)",
+        --     -- "(?:'|\"|`)([^']*)(?:'|\"|`)",
+        --   },
+        -- },
       },
     },
   },

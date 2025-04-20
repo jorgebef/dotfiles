@@ -81,8 +81,8 @@ vim.opt.ruler = false
 
 -- Status column - NEW from 0.9
 -- handled in lua/util/status_column.lua
-vim.opt.statuscolumn = [[%!v:lua.require'util.status_column'.statuscolumn()]]
--- require("util.status_column")
+-- vim.opt.statuscolumn = [[%!v:lua.require'util.status_column'.statuscolumn()]]
+vim.opt.statuscolumn = "%=%l %s"
 
 -- disable nvim intro
 vim.opt.shortmess:append("sI")
@@ -105,5 +105,5 @@ vim.opt.whichwrap:append("<>[]hl")
 
 vim.g.python_recommended_style = 0
 vim.g.tex_flavor = "latex"
-vim.opt.pumheight = 15
+-- vim.opt.pumheight = 15
 vim.opt.linebreak = true

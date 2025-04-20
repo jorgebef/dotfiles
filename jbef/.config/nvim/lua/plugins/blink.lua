@@ -6,8 +6,26 @@ return {
   dependencies = {
     "rafamadriz/friendly-snippets",
     "xzbdmw/colorful-menu.nvim",
-    "zbirenbaum/copilot.lua",
-    -- "fang2hou/blink-copilot",
+    {
+      "zbirenbaum/copilot.lua",
+      opts = {
+        suggestion = {
+          enabled = true,
+          auto_trigger = false,
+          hide_during_completion = true,
+          debounce = 75,
+          trigger_on_accept = false,
+          keymap = {
+            accept = "<M-l>",
+            accept_word = false,
+            accept_line = false,
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          },
+        },
+      },
+    },
     { "L3MON4D3/LuaSnip", version = "v2.*" },
   },
 

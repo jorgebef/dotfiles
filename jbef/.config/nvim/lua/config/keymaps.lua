@@ -65,7 +65,6 @@ vim.keymap.set("n", "<leader>O", 'O<esc>0"_D<esc>', opts)
 vim.keymap.set("n", "<leader>bn", ":bn<cr>", opts)
 vim.keymap.set("n", "<leader>bp", ":bp<cr>", opts)
 
--- vim.keymap.set("n", "<leader>bC", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
 vim.keymap.set("n", "<leader>bC", "<cmd>WipeWindowlessBufs<cr>", { desc = "Close all buffers that aren't shown" })
 
 -- improved split manipulation

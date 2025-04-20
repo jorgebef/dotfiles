@@ -8,6 +8,7 @@
 
 export XDG_CONFIG_HOME="/Users/jbef/.config"
 
+path+=("/opt/homebrew/bin") # adds the packages installed via Homebrew
 path+=("/Users/jbef/.bun/bin") # adds the packages installed as --global via bun
 export PATH
 

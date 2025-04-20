@@ -20,12 +20,21 @@ return {
       -- Default values are 0 for current buffer and false for force
       -- https://github.com/echasnovski/mini.bufremove/blob/main/doc/mini-bufremove.txt
       -- See :h mini.bufremove
-      require("mini.bufremove").delete(0, false)
+      -- require("mini.bufremove").delete(0, false)
+      require("mini.bufremove").delete(0)
     end, { silent = true, nowait = true })
 
     require("mini.pairs").setup()
 
-    require("mini.ai").setup()
+    require("mini.ai").setup({
+      custom_textobjects = {
+        -- INFO: remember to disable default behaviour in treesitter setup
+        q = require("mini.ai").gen_spec.treesitter({
+          a = { "@attribute.outer", "@parameter.outer" },
+          i = { "@attribute.inner", "@parameter.inner" },
+        }),
+      },
+    })
 
     require("mini.indentscope").setup({
       draw = {

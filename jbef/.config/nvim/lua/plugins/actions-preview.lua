@@ -1,9 +1,10 @@
 return {
   "aznhe21/actions-preview.nvim",
-  enabled = false,
+  dependencies = { "folke/snacks.nvim" },
+  -- enabled = false,
   config = function()
     require("actions-preview").setup({
-      -- backend = { "nui", "telescope" },
+      -- backend = { "snacks", "telescope", "minipick", "nui" },
     })
   end,
   keys = {

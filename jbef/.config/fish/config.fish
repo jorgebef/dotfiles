@@ -22,6 +22,7 @@ fish_add_path "$PNPM_HOME" # Add pnpm path to $PATH
 fish_add_path "$HOME/.deno/bin" # Add pnpm path to $PATH
 fish_add_path "$HOME/.local/bin" # Add uv path to $PATH
 fish_add_path "$HOME/.venv/bin" # Add uv venv path to $PATH
+fish_add_path "$HOME/.bun/bin"
 # fish_add_path "$HOME/Library/CloudStorage/Dropbox/JORGE/Peninsula Studio/01 Documents & info/bin" # Add custom bin folder path to $PATH
 
 # function fish_greeting
@@ -48,4 +49,4 @@ set fish_cursor_visual      block
 set fish_vi_force_cursor 1
 
 zoxide init fish | source
-starship init fish | source
+# starship init fish | source

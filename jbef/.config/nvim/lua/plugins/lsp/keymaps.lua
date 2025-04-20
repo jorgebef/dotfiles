@@ -51,7 +51,7 @@ function M.common()
 
   -- vim.keymap.set("n", "<leader>la", function()
   --   vim.lsp.buf.code_action()
-  -- end, { desc = "Rename (inc-rename.nvim)", expr = true })
+  -- end, { desc = "Code actions", expr = true })
 
   vim.keymap.set("n", "<leader>lr", function()
     vim.lsp.buf.rename()

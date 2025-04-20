@@ -4,7 +4,7 @@ if [[ $# -eq 1 ]]; then
   selected=$1
 else
   selected=$(
-    sesh list | fzf --tmux=center,30%,55% --exact \
+    sesh list | fzf --tmux=center,30%,55% \
       --no-sort --ansi --border-label 'SESH' \
   		--header '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find' \
       --bind 'tab:down,btab:up' \

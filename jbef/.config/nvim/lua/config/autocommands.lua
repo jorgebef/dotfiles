@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 })
 
 vim.api.nvim_create_augroup("CursorLine", { clear = true })
-vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufRead", "BufWinEnter" }, {
+vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufRead", "BufEnter", "BufWinEnter" }, {
   pattern = "*",
   group = "CursorLine",
   callback = function()
@@ -22,12 +22,9 @@ vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufRead", "BufWinEnter" }
   end,
 })
 vim.api.nvim_create_autocmd({ "WinLeave" }, {
-  pattern = "*",
+  pattern = { "*", "!neo-tree" },
   group = "CursorLine",
   callback = function()
-    if vim.bo.filetype == "neo-tree" then
-      return
-    end
     vim.cmd([[set nocursorline]])
   end,
 })
