@@ -63,12 +63,11 @@ keybind = unconsumed:ctrl+shift+a=reload_config
 # keybind = alt+right=esc:f
 
 # theme = catppuccin-mocha.conf
-theme = nordic.conf
+# theme = kanso.conf
+theme = kanagawa-dragon.conf
+# theme = vague.conf
+# theme = nordic.conf
 # theme = nord
 # theme = rose-pine
 # theme = tokyonight
-# theme = kanagawabones
-# theme = Kanagawa Wave
-# theme = "/Users/jbef/.config/ghostty/nordic"
-# theme = "/Users/jbef/.config/ghostty/kanagawa-dragon"
-# theme = "/Users/jbef/.config/ghostty/ghostty-chia"
+# theme = Kanagawa Dragon
