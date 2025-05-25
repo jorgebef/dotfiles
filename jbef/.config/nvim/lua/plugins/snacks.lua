@@ -9,24 +9,20 @@ return {
     local opts = {
       dashboard = { enabled = true },
       image = { enabled = true },
-      notifier = { enabled = true },
-      notify = { enabled = true },
-      lazygit = { enabled = true },
-      rename = { enabled = true },
-      statuscolumn = {
+      notifier = {
         enabled = true,
-        left = { "mark", "sign" }, -- priority of signs on the left (high to low)
-        right = { "fold", "git" }, -- priority of signs on the right (high to low)
-        folds = {
-          open = false, -- show open fold icons
-          git_hl = false, -- use Git Signs hl for fold icons
-        },
-        git = {
-          -- patterns to match Git signs
-          patterns = { "GitSign", "MiniDiffSign" },
-        },
-        refresh = 50, -- refresh at most every 50ms
+        filter = function(notif)
+          -- This filters out the lsp notifications for "No information available"
+          -- that usually happen when more than 1 lsp server is attached to a single file
+          if notif.msg == "No information available" then
+            return false
+          else
+            return true
+          end
+        end,
       },
+      notify = { enabled = true },
+      rename = { enabled = true },
 
       input = {
         enabled = true,
@@ -101,6 +97,9 @@ return {
           input = {
             keys = {
               ["<C-h>"] = { "toggle_ignored", mode = { "i", "n" } },
+              -- FIX: This fixes an issue that by quickly doube pressing Esc to exit,
+              -- it returns to a different buffer than the one that was last active
+              ["<Esc>"] = { "close", mode = { "n" } },
             },
           },
         },
@@ -119,6 +118,7 @@ return {
   end,
 
   keys = {
+    -- Picker keymaps======================================
     {
       "<leader>ff",
       function()
@@ -286,13 +286,13 @@ return {
       end,
       desc = "Grep Open Buffers",
     },
-    {
-      "<leader>sg",
-      function()
-        Snacks.lazygit()
-      end,
-      desc = "Grep",
-    },
+    -- {
+    --   "<leader>sg",
+    --   function()
+    --     Snacks.lazygit()
+    --   end,
+    --   desc = "Grep",
+    -- },
     {
       "<leader>sw",
       function()

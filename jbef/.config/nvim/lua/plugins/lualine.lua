@@ -51,8 +51,9 @@ function M.config()
     ["t"] = "TERMINAL",
   }
 
-  local palette = require("catppuccin.palettes").get_palette()
-  -- local palette = require("oldworld.palette")
+  -- local palette = require("catppuccin.palettes").get_palette()
+  -- local palette = require("kanso.colors").setup().palette
+  local palette = require("vague").get_palette()
 
   require("lualine").setup({
     options = {
@@ -140,7 +141,8 @@ function M.config()
             end
           end,
           color = function()
-            return { fg = vim.fn.reg_recording() ~= "" and palette.red or palette.overlay2 }
+            -- return { fg = vim.fn.reg_recording() ~= "" and palette.zenRed or palette.zenRed }
+            return { fg = vim.fn.reg_recording() ~= "" and palette.error or palette.error }
           end,
         },
         -- {

@@ -148,7 +148,7 @@ local M = {
     -- you need to call load_extension, somewhere after setup function:
     -- telescope.load_extension("file_browser")
     -- -- Telescope Notification history review and finder
-    telescope.load_extension("notify")
+    -- telescope.load_extension("notify")
     telescope.load_extension("ui-select")
 
     -- vim.keymap.set("n", "<leader>lD", function()

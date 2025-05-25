@@ -1,0 +1,299 @@
+local M = {
+  "neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile" },
+  dependencies = {
+    "saghen/blink.cmp",
+    "SmiteshP/nvim-navic",
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    {
+      "mrcjkb/rustaceanvim",
+      version = "^5", -- Recommended
+      lazy = false,
+    },
+    "nvim-lua/plenary.nvim",
+    "Bilal2453/luvit-meta",
+  },
+}
+
+M.config = function()
+  local ui = require("config.ui")
+  local utils = require("utils")
+  local navic = require("nvim-navic")
+  local lsp = require("lspconfig")
+
+  M.servers = {
+
+    dockerls = {},
+    docker_compose_language_service = {
+      filetypes = { "yaml.docker-compose" },
+    },
+    yamlls = {
+      settings = {
+        yaml = {
+          keyOrdering = false,
+        },
+      },
+    },
+    gopls = {},
+
+    lua_ls = {
+      root_dir = lsp.util.root_pattern(
+        "init.lua",
+        ".luarc.json",
+        ".luarc.jsonc",
+        ".luacheckrc",
+        ".stylua.toml",
+        "stylua.toml",
+        "selene.toml",
+        "selene.yml",
+        ".git"
+      ),
+    },
+    rust_analyzer = {},
+    pyright = {},
+    nushell = {},
+    bashls = {
+      filetypes = { "sh", "bash", "zsh" },
+    },
+    lemminx = {
+      filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
+    },
+    -- glslls = {
+    --   cmd = { "glslls", "--stdin" },
+    --   filetypes = { "glsl" },
+    --   root_dir = lspconfig.util.root_pattern(".git"),
+    --   single_file_support = true,
+    -- },
+    cssls = {},
+    sourcekit = {
+      cmd = { "/usr/bin/sourcekit-lsp" },
+    },
+    tailwindcss = {
+      cmd = { "tailwindcss-language-server", "--stdio" },
+      settings = {
+        tailwindCSS = {
+          classAttributes = {
+            "class",
+            "clsx",
+            "cva",
+            "className",
+            "classList",
+            "ngClass",
+            "imgClassName",
+            "videoClassName",
+          },
+          lint = {
+            cssConflict = "warning",
+            invalidApply = "error",
+            invalidConfigPath = "error",
+            invalidScreen = "error",
+            invalidTailwindDirective = "error",
+            invalidVariant = "error",
+            recommendedVariantOrder = "warning",
+          },
+          validate = true,
+          classFunctions = { "class", "clsx", "cva", "className", "classList", "cn" },
+        },
+      },
+    },
+  }
+
+  M.on_attach = function(client, bufnr)
+    -- =====================================================================================================
+    -- Default keymaps go here
+    utils.keymap("n", "]w", function()
+      vim.diagnostic.jump({ count = 1, severity = { max = "WARN" }, float = true })
+    end, { desc = "Jump to next Warning" })
+    utils.keymap("n", "]e", function()
+      vim.diagnostic.jump({ count = 1, severity = "ERROR", float = true })
+    end, { desc = "Jump to next Error" })
+    utils.keymap("n", "[w", function()
+      vim.diagnostic.jump({ count = -1, severity = { max = "WARN" }, float = true })
+    end, { desc = "Jump to prev Warning" })
+    utils.keymap("n", "[e", function()
+      vim.diagnostic.jump({ count = -1, severity = "ERROR", float = true })
+    end, { desc = "Jump to prev Error" })
+    utils.keymap("n", "<leader>lR", vim.cmd.LspRestart, { desc = "Restart LSP" })
+    utils.keymap("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename symbol" })
+    utils.keymap("n", "gK", vim.lsp.buf.signature_help, { desc = "LSP Signature help" })
+    utils.keymap("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signature help" })
+    utils.keymap("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
+    -- =====================================================================================================
+    -- Conditional keymaps go here
+    if client.name == "typescript-tools" then
+      utils.keymap("n", "<leader>lo", vim.cmd.TSToolsOrganizeImports)
+      utils.keymap("n", "<leader>lR", vim.cmd.TSToolsRenameFile, { desc = "TSTools rename file" })
+      utils.keymap("n", "<leader>lA", vim.cmd.TSToolsAddMissingImports, { desc = "TSTools add all imports" })
+    end
+    -- =====================================================================================================
+    -- Function to check if a floating dialog exists and if not
+    -- then check for diagnostics under the cursor
+    function OpenDiagnosticIfNoFloat()
+      for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+        if vim.api.nvim_win_get_config(winid).zindex then
+          return
+        end
+      end
+      -- THIS IS FOR BUILTIN LSP
+      vim.diagnostic.open_float({
+        scope = "cursor",
+        focusable = false,
+        close_events = {
+          "CursorMoved",
+          "CursorMovedI",
+          "BufHidden",
+          "InsertCharPre",
+          "WinLeave",
+        },
+      })
+    end
+    -- =====================================================================================================
+    -- Show errors and warnings in a floating window
+    vim.api.nvim_create_autocmd("CursorHold", {
+      callback = function()
+        vim.diagnostic.open_float(nil, { focusable = false, source = "if_many" })
+      end,
+    })
+    -- =====================================================================================================
+    -- Conditionally enable navic
+    if
+      not utils.has_value({
+        "tailwindcss",
+        "cssmodules_ls",
+        "css_variables",
+        "glslls",
+        "eslint_d",
+        "eslint",
+        "biome",
+        "efm",
+        "docker_compose_language_service",
+      }, client.name)
+    then
+      navic.attach(client, bufnr)
+    end
+    -- =====================================================================================================
+    -- Conditionally disable formatting for some servers
+    if utils.has_value({
+      "lua_ls",
+      "ts_ls",
+    }, client.name) then
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+    end
+  end
+
+  M.capabilities = require("blink.cmp").get_lsp_capabilities()
+
+  M.handlers = {
+    ["textDocument/hover"] = vim.lsp.buf.hover({
+      border = ui.border.Block,
+      focusable = false,
+      trimempty = true,
+      silent = true,
+    }),
+    ["textDocument/signatureHelp"] = vim.lsp.buf.signature_help({ border = ui.border.BlockThick }),
+  }
+
+  vim.diagnostic.config({
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = ui.icons.diagnostics.Error,
+        [vim.diagnostic.severity.WARN] = ui.icons.diagnostics.Warning,
+        [vim.diagnostic.severity.HINT] = ui.icons.diagnostics.Hint,
+        [vim.diagnostic.severity.INFO] = ui.icons.diagnostics.Information,
+      },
+    },
+    virtual_text = false,
+    update_in_insert = false,
+    underline = true,
+    severity_sort = true,
+    float = {
+      focusable = false,
+      border = ui.border.Block,
+      header = "",
+      prefix = function(_diagnostic, i, total)
+        return " " .. i .. "/" .. total .. " ", "Comment"
+      end,
+    },
+  })
+
+  require("mason").setup({
+    ui = {
+      border = ui.border.Square,
+    },
+  })
+
+  local manual_servers = {
+    "glslls",
+    "nushell",
+    "ts_ls",
+    "sourcekit",
+  }
+  local auto_install_server_names = {}
+  for k, _ in pairs(M.servers) do
+    if utils.has_value(manual_servers, k) == false then
+      table.insert(auto_install_server_names, k)
+    end
+  end
+
+  require("mason-lspconfig").setup({
+    automatic_installation = false,
+    ensure_installed = auto_install_server_names,
+  })
+
+  for server_name, opts in pairs(M.servers) do
+    if utils.has_value(manual_servers, server_name) == false then
+      lsp[server_name].setup(vim.tbl_deep_extend("force", {
+        on_attach = M.on_attach,
+        capabilities = M.capabilities,
+        handlers = M.handlers,
+      }, opts or {}))
+    end
+  end
+
+  lsp["nushell"].setup(vim.tbl_deep_extend("force", {
+    on_attach = M.on_attach,
+    capabilities = M.capabilities,
+    handlers = M.handlers,
+  }, M.servers["nushell"] or {}))
+
+  lsp["sourcekit"].setup(vim.tbl_deep_extend("force", {
+    capabilities = {
+      workspace = {
+        didChangeWatchedFiles = {
+          dynamicRegistration = true,
+        },
+      },
+    },
+  }, M.servers["sourcekit"] or {}))
+
+  -- require("typescript-tools").setup({
+  --   single_file_support = false,
+  --   on_attach = M.on_attach,
+  --   capabilities = M.capabilities,
+  --   handlers = M.handlers,
+  --   settings = {
+  --     filetypes = {
+  --       "javascriptreact",
+  --       "typescript",
+  --       "typescriptreact",
+  --       "mdx",
+  --     },
+  --     jsx_close_tag = {
+  --       enable = true,
+  --       filetypes = { "javascriptreact", "typescriptreact" },
+  --     },
+  --     separate_diagnostic_server = true,
+  --     -- publish_diagnostic_on = "insert_leave",
+  --     -- documentRangeFormatting = false,
+  --     root_dir = function(...)
+  --       return require("lspconfig.util").root_pattern(".git")(...)
+  --     end,
+  --   },
+  -- })
+
+  -- end
+end
+
+return M

@@ -33,6 +33,7 @@ function M.config()
       prettierd = {
         condition = function()
           return vim.loop.fs_realpath(".prettierrc.js") ~= nil
+            or vim.loop.fs_realpath("prettier.config.js") ~= nil
             or vim.loop.fs_realpath("prettier.config.mjs") ~= nil
             or vim.loop.fs_realpath(".prettierrc.mjs") ~= nil
         end,
