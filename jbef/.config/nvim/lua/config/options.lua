@@ -22,9 +22,21 @@ vim.opt.sessionoptions = "globals,buffers,curdir,folds,help,resize,tabpages,wins
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 -- o.fileencoding = "utf-8" -- the encoding written to a file
-vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
+
+-- -- Folds ======================================================================
+-- vim.o.foldmethod = "indent" -- Set 'indent' folding method
+-- vim.o.foldlevel = 10 -- Display all folds except top ones
+-- vim.o.foldnestmax = 20 -- Create folds only for some number of nested levels
+-- vim.g.markdown_folding = 1 -- Use folding by heading in markdown files
+
+if vim.fn.has("nvim-0.10") == 1 then
+  vim.o.foldtext = "" -- Use underlying text with its highlighting
+end
+
+-- vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
 -- o.foldexpr = "" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- o.guifont = "monospace:h17" -- the font used in graphical neovim applications
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 vim.opt.showtabline = 0 -- never show tabs
@@ -49,6 +61,21 @@ vim.opt.smartindent = true
 
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
 
+vim.o.fillchars = table.concat(
+  -- Special UI symbols
+  {
+    "eob: ",
+    "fold:╌",
+    "horiz:═",
+    "horizdown:╦",
+    "horizup:╩",
+    "vert:║",
+    "verthoriz:╬",
+    "vertleft:╣",
+    "vertright:╠",
+  },
+  ","
+)
 -- vim.opt.fillchars = {
 --   horiz = "━",
 --   vert = "┃",
@@ -81,8 +108,8 @@ vim.opt.ruler = false
 
 -- Status column - NEW from 0.9
 -- handled in lua/util/status_column.lua
--- vim.opt.statuscolumn = [[%!v:lua.require'util.status_column'.statuscolumn()]]
-vim.opt.statuscolumn = "%=%l %s"
+vim.opt.statuscolumn = [[%!v:lua.require'util.status_column'.statuscolumn()]]
+-- vim.opt.statuscolumn = "%=%l %s"
 
 -- disable nvim intro
 vim.opt.shortmess:append("sI")

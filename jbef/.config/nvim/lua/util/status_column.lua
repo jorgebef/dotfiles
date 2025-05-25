@@ -107,7 +107,7 @@ function M.statuscolumn()
 
   vim.api.nvim_win_call(win, function()
     if vim.fn.foldclosed(vim.v.lnum) >= 0 then
-      fold = { text = vim.opt.fillchars:get().foldclose or "", texthl = "Folded" }
+      fold = { text = vim.opt.fillchars:get().foldclose or ">", texthl = "Folded" }
     end
   end)
 
@@ -117,10 +117,10 @@ function M.statuscolumn()
   end
 
   return table.concat({
-    M.icon(M.get_mark(buf, vim.v.lnum) or left),
+    M.icon(M.get_mark(buf, vim.v.lnum) or fold or left),
     [[%=]],
     nu .. " ",
-    M.icon(fold or right),
+    M.icon(right),
   }, "")
 end
 
