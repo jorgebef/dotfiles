@@ -12,17 +12,17 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
-# # Automatically float non-resizable windows, such as palettes, system settings etc.
-yabai -m signal --add event=window_created action='
-  yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".\"can-resize\" or .\"is-floating\"" || \
-  yabai -m window $YABAI_WINDOW_ID --toggle float && \
-  yabai -m window $YABAI_WINDOW_ID --layer above && \
-  yabai -m window $YABAI_WINDOW_ID --grid 3:3:1:1:1:1
-'
+# # # Automatically float non-resizable windows, such as palettes, system settings etc.
+# yabai -m signal --add event=window_created action='
+#   yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".\"can-resize\" or .\"is-floating\"" || \
+#   yabai -m window $YABAI_WINDOW_ID --toggle float && \
+#   yabai -m window $YABAI_WINDOW_ID --layer above && \
+#   yabai -m window $YABAI_WINDOW_ID --grid 3:3:1:1:1:1
+# '
 
 # yabai -m rule --add label="Firfox PIP" app="^Firefox$" title="^(Picture-in-Picture)$" manage=off
 
-yabai -m signal --add event=window_destroyed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+# yabai -m signal --add event=window_destroyed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
 
 # focus window after active space changes
 yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
@@ -59,7 +59,7 @@ yabai -m config \
   window_opacity off \
   active_window_opacity 1.0 \
   normal_window_opacity 1.0 \
-  insert_feedback_color 0xffd75f5f \
+  insert_feedback_color 0x00d75f5f \
   split_ratio 1 \
   auto_balance off \
   top_padding 10 \

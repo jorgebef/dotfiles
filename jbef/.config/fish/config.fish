@@ -13,7 +13,13 @@ set -gx PNPM_HOME $HOME/Library/pnpm
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx SSH_AUTH_SOCK "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
+set -gx LDFLAGS "-L/opt/homebrew/opt/ruby/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/ruby/include"
+set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/ruby/lib/pkgconfig"
+
+
 fish_add_path "/opt/homebrew/bin" # Add brew to $PATH
+fish_add_path "/opt/homebrew/opt/ruby/bin"
 fish_add_path "/usr/local/bin/" # Add local bin to $PATH
 fish_add_path "$HOME/.config/bin/" # Add custom bin to $PATH
 fish_add_path "$HOME/.config/skhd/bin/" # Add custom bin to $PATH
@@ -49,4 +55,4 @@ set fish_cursor_visual      block
 set fish_vi_force_cursor 1
 
 zoxide init fish | source
-# starship init fish | source
+starship init fish | source

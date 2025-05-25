@@ -9,7 +9,7 @@
 command_timeout = 90000
 
 # # Inserts a blank line between shell prompts
-add_newline = true
+# add_newline = true
 
 format = "$all"
 
@@ -18,18 +18,45 @@ format = "$all"
 # $character
 # '''
 
-# [directory]
-# truncate_to_repo = false
+# palette = "catppuccin_mocha"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
 
 [directory]
 # style = "red bold"
-style = "fg:#8ea4a2 bold"
-
+style = "fg:blue bold"
 # truncation_length = 2
 truncation_length = 4
-truncation_symbol = "…/"
+# format = "[󰄛 ](mauve)[$path]($style) "
+format = "[󰄛 ](yellow)[$path]($style) "
 home_symbol = "~"
-truncate_to_repo = false
+truncate_to_repo = true
 # style = "bold bg:#313244 fg:white"
 # format = "[ $path ]($style)(bold bg:#313244 fg:#1E1E2E)[$read_only]($read_only_style)"
 #
@@ -41,6 +68,9 @@ truncate_to_repo = false
 # "🏠/Movies" = "~/🍿"
 # "~/Library/CloudStorage/Dropbox" = "~/ "
 # "src/com/long/java/path" = "mypath"
+
+# [line_break]
+# disabled = true
 
 [character]
 success_symbol = "[❯](green)" # 
@@ -87,8 +117,8 @@ format = "[$symbol($version) ]($style)"
 
 [git_branch]
 symbol = "󰘬 "
-style = "fg:#658594"
-format = "[$symbol$branch(:$remote_branch) ]($style)"
+style = "fg:overlay2"
+format = "on [$symbol$branch(:$remote_branch) ]($style)"
 disabled = false
 
 [git_commit]
@@ -104,7 +134,8 @@ disabled = true
 disabled = true
 
 [cmd_duration]
-min_time = 1
-# show_milliseconds = false
-style = "italic fg:#737c73"
-format = "[$duration]($style)"
+disabled = true
+# min_time = 1
+# # show_milliseconds = false
+# style = "italic fg:#737c73"
+# format = "[$duration]($style)"
