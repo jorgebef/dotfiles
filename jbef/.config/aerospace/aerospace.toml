@@ -104,10 +104,14 @@ alt-shift-comma = 'move-node-to-workspace prev --focus-follows-window'
 alt-shift-period = 'move-node-to-workspace next --focus-follows-window'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+# alt-h = 'focus left'
+# alt-j = 'focus down'
+# alt-k = 'focus up'
+# alt-l = 'focus right'
+alt-h = 'exec-and-forget aerospace focus --boundaries-action fail left || $HOME/.config/aerospace/scripts/focus-window.sh left'
+alt-j = 'exec-and-forget aerospace focus --boundaries-action fail down || $HOME/.config/aerospace/scripts/focus-window.sh down'
+alt-k = 'exec-and-forget aerospace focus --boundaries-action fail up || $HOME/.config/aerospace/scripts/focus-window.sh up'
+alt-l = 'exec-and-forget aerospace focus --boundaries-action fail right || $HOME/.config/aerospace/scripts/focus-window.sh right'
 
 alt-i = 'focus-monitor left'
 alt-o = 'focus-monitor right'
@@ -152,7 +156,10 @@ shift-r = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
+alt-semicolon = 'mode main'
 
+[mode.normal.binding]
+alt-semicolon = 'mode main'
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
 
