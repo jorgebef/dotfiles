@@ -5,6 +5,7 @@
 -- end
 
 -- ===================== BASIC SETTINGS ======================
+vim.g.mapleader = " "
 vim.opt.backup = false
 vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
 -- " Give more space for displaying messages.
@@ -66,13 +67,20 @@ vim.o.fillchars = table.concat(
   {
     "eob: ",
     "fold:╌",
-    "horiz:═",
-    "horizdown:╦",
-    "horizup:╩",
-    "vert:║",
-    "verthoriz:╬",
-    "vertleft:╣",
-    "vertright:╠",
+    horiz = "━",
+    vert = "┃",
+    horizdown = "┳",
+    horizup = "┻",
+    vertleft = "┫",
+    vertright = "┣",
+    verthoriz = "╋",
+    -- "horiz:═",
+    -- "horizdown:╦",
+    -- "horizup:╩",
+    -- "vert:║",
+    -- "verthoriz:╬",
+    -- "vertleft:╣",
+    -- "vertright:╠",
   },
   ","
 )

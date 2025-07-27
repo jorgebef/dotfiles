@@ -1,5 +1,6 @@
 return {
   "pmizio/typescript-tools.nvim",
+  -- enabled = false,
   dependencies = {
     "neovim/nvim-lspconfig",
   },
@@ -7,6 +8,10 @@ return {
     require("typescript-tools").setup({
       single_file_support = false,
       settings = {
+        tsserver_file_preferences = {
+          importModuleSpecifierPreference = "non-relative",
+          importModuleSpecifier = "non-relative",
+        },
         filetypes = {
           "javascriptreact",
           "typescript",

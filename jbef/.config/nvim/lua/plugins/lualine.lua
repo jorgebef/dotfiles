@@ -53,7 +53,9 @@ function M.config()
 
   -- local palette = require("catppuccin.palettes").get_palette()
   -- local palette = require("kanso.colors").setup().palette
-  local palette = require("vague").get_palette()
+  -- local colors = require("kanagawa.colors").setup()
+  local colors = require("kanagawa.colors").setup()
+  local palette = colors.theme
 
   require("lualine").setup({
     options = {
@@ -126,8 +128,8 @@ function M.config()
           -- padding = { left = 100, right = 90 },
           padding = 2,
           -- color = { fg = cp.subtext1, bg = cp.base },
-          -- color = { fg = nil, bg = palette.waveRed },
           -- color = { fg = c.fg_dark, bg = nil },
+          color = { fg = palette.ui.nontext },
         },
       },
       lualine_x = {
@@ -141,8 +143,7 @@ function M.config()
             end
           end,
           color = function()
-            -- return { fg = vim.fn.reg_recording() ~= "" and palette.zenRed or palette.zenRed }
-            return { fg = vim.fn.reg_recording() ~= "" and palette.error or palette.error }
+            return { fg = vim.fn.reg_recording() ~= "" and palette.diag.error or palette.diag.error }
           end,
         },
         -- {
@@ -155,9 +156,24 @@ function M.config()
         --   cond = noice.api.status.mode.has,
         --   color = { fg = "#ff9e64" },
         -- },
+
+        {
+          function()
+            local starts = vim.fn.line("v")
+            local ends = vim.fn.line(".")
+            local count = starts <= ends and ends - starts + 1 or starts - ends + 1
+            local wc = vim.fn.wordcount()
+            return count .. " lines - " .. wc["visual_chars"] .. " chars"
+          end,
+          cond = function()
+            return vim.fn.mode():find("[Vv]") ~= nil
+          end,
+          color = { fg = palette.ui.fg_dim },
+        },
+      },
+      lualine_y = {
         { "filetype" },
       },
-      lualine_y = {},
       lualine_z = {
         {
           "location",

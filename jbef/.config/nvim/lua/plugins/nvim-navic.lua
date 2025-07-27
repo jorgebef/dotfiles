@@ -1,4 +1,9 @@
-local M = { "SmiteshP/nvim-navic" }
+local M = {
+  "SmiteshP/nvim-navic",
+  dependencies = {
+    { "neovim/nvim-lspconfig" },
+  },
+}
 
 function M.config()
   local navic = require("nvim-navic")

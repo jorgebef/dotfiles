@@ -10,34 +10,36 @@ function M.config()
 
   require("conform").setup({
     formatters_by_ft = {
-      css = { "prettierd" },
+      css = { "biome", "biome-check" },
       -- Conform will run multiple formatters sequentially
       -- python = { "isort", "black" },
       -- Use a sub-list to run only the first available formatter
       -- xml = { "prettierd" },
       -- html = { "prettierd" },
       go = { "gofmt" },
-      javascript = { "prettierd" },
-      json = { "prettierd" },
-      jsonc = { "prettierd" },
+      javascript = { "biome", "biome-check" },
+      json = { "biome", "biome-check" },
+      jsonc = { "biome", "biome-check" },
       lua = { "stylua" },
-      markdown = { "prettierd" },
-      ["markdown.mdx"] = { "prettierd" },
+      markdown = { "biome", "biome-check" },
+      ["markdown.mdx"] = { "biome", "biome-check" },
+      nix = { "alejandra" },
       -- php = { "" },
       sh = { "shfmt" },
-      typescript = { "prettierd" },
-      typescriptreact = { "prettierd" },
+      typescript = { "biome", "biome-check" },
+      typescriptreact = { "biome", "biome-check" },
       zsh = { "shfmt" },
     },
     formatters = {
-      prettierd = {
-        condition = function()
-          return vim.loop.fs_realpath(".prettierrc.js") ~= nil
-            or vim.loop.fs_realpath("prettier.config.js") ~= nil
-            or vim.loop.fs_realpath("prettier.config.mjs") ~= nil
-            or vim.loop.fs_realpath(".prettierrc.mjs") ~= nil
-        end,
-      },
+      biome = {},
+      -- prettierd = {
+      --   condition = function()
+      --     return vim.loop.fs_realpath(".prettierrc.js") ~= nil
+      --       or vim.loop.fs_realpath("prettier.config.js") ~= nil
+      --       or vim.loop.fs_realpath("prettier.config.mjs") ~= nil
+      --       or vim.loop.fs_realpath(".prettierrc.mjs") ~= nil
+      --   end,
+      -- },
     },
   })
 

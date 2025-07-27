@@ -1,5 +1,6 @@
 return {
   "yetone/avante.nvim",
+  enabled = false,
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -55,18 +56,34 @@ return {
 
   opts = {
     ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-    provider = "copilot", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
+    provider = "gemini", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
     -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
     -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
     -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
     auto_suggestions_provider = "copilot",
-    -- gemini = {
-    --   endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-    --   -- model = "gemini-2.5-pro-preview-03-25",
-    --   timeout = 30000, -- Timeout in milliseconds
-    --   temperature = 0,
-    --   max_tokens = 8192,
-    -- },
+    providers = {
+      ---@type AvanteSupportedProvider
+      gemini = {
+        endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+        model = "gemini-2.0-flash",
+        timeout = 30000, -- Timeout in milliseconds
+        extra_request_body = {
+          generationConfig = {
+            temperature = 0.75,
+          },
+        },
+      },
+      -- ---@type AvanteSupportedProvider
+      -- gemini = {
+      --   endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+      --   model = "gemini-2.5-pro-preview-03-25",
+      --   -- model = "gemini-2.5-pro-preview-05-06",
+      --   timeout = 30000, -- Timeout in milliseconds
+      --   temperature = 0,
+      --   -- max_tokens = 8192,
+      --   max_tokens = 1048576,
+      -- },
+    },
     cursor_applying_provider = nil, -- The provider used in the applying phase of Cursor Planning Mode, defaults to nil, when nil uses Config.provider as the provider for the applying phase
     file_selector = {
       --- @alias FileSelectorProvider "native" | "fzf" | "mini.pick" | "snacks" | "telescope" | string | fun(params: avante.file_selector.IParams|nil): nil
@@ -86,8 +103,12 @@ return {
         rounded = true,
       },
       input = {
-        prefix = "> ",
-        height = 8, -- Height of the input window in vertical layout
+        provider = "snacks",
+        provider_opts = {
+          -- Additional snacks.input options
+          title = "Avante Input",
+          -- icon = " ",
+        },
       },
       edit = {
         border = "rounded",
@@ -100,6 +121,22 @@ return {
         ---@type "ours" | "theirs"
         focus_on_apply = "ours", -- which diff to focus after applying
       },
+
+      -- mappings = {
+      --   accept = "<C-i>",
+      -- },
     },
   },
+
+  -- keys = function()
+  --   return {
+  --     {
+  --       "<leader>at",
+  --       function()
+  --         require("avante").toggle_sidebar({ floating = true })
+  --         -- vim.cmd.normal({ "<C-w>=", bang = true })
+  --       end,
+  --     },
+  --   }
+  -- end,
 }

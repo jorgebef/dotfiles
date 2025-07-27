@@ -2,6 +2,7 @@ return {
   "webhooked/kanso.nvim",
   lazy = false,
   priority = 1000,
+  enabled = false,
   -- dev = true,
   -- dir = "~/Developer/other/kanso.nvim/",
 

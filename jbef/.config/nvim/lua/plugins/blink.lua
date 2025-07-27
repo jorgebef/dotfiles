@@ -6,6 +6,7 @@ return {
   dependencies = {
     -- "rafamadriz/friendly-snippets",
     "xzbdmw/colorful-menu.nvim",
+    "Kaiser-Yang/blink-cmp-avante",
     -- {
     --   "zbirenbaum/copilot.lua",
     --   opts = {
@@ -135,44 +136,60 @@ return {
           },
         },
       },
+
       cmdline = {},
 
       sources = {
         default = {
+          -- "avante",
+          "lazydev",
           "lsp",
           "path",
           "buffer",
           -- "snippets",
           -- "copilot",
         },
-        -- providers = {
-        --   lsp = {
-        --     name = "LSP",
-        --     module = "blink.cmp.sources.lsp",
-        --     -- min_keyword_length = 0,
-        --     -- async = true,
-        --     -- timeout_ms = 4000,
-        --   },
-        --   -- copilot = {
-        --   --   name = "copilot",
-        --   --   module = "blink-copilot",
-        --   --   score_offset = 100,
-        --   --   async = true,
-        --   --   opts = {
-        --   --     -- get_trigger_characters = { "@@" },
-        --   --     max_completions = 3,
-        --   --     max_attempts = 4,
-        --   --     kind_name = "Copilot", ---@type string | false
-        --   --     kind_icon = "", ---@type string | false
-        --   --     kind_hl = "MiniIconsBlue", ---@type string | false
-        --   --     debounce = 200, ---@type integer | false
-        --   --     auto_refresh = {
-        --   --       backward = true,
-        --   --       forward = true,
-        --   --     },
-        --   --   },
-        --   -- },
-        -- },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            -- make lazydev completions top priority (see `:h blink.cmp`)
+            score_offset = 100,
+          },
+          -- avante = {
+          --   module = "blink-cmp-avante",
+          --   name = "Avante",
+          --   opts = {
+          --     -- options for blink-cmp-avante
+          --   },
+          -- },
+          -- lsp = {
+          --   name = "LSP",
+          --   module = "blink.cmp.sources.lsp",
+          --   min_keyword_length = 0,
+          --   async = true,
+          --   -- timeout_ms = 4000,
+          -- },
+          -- copilot = {
+          --   name = "copilot",
+          --   module = "blink-copilot",
+          --   score_offset = 100,
+          --   async = true,
+          --   opts = {
+          --     -- get_trigger_characters = { "@@" },
+          --     max_completions = 3,
+          --     max_attempts = 4,
+          --     kind_name = "Copilot", ---@type string | false
+          --     kind_icon = "", ---@type string | false
+          --     kind_hl = "MiniIconsBlue", ---@type string | false
+          --     debounce = 200, ---@type integer | false
+          --     auto_refresh = {
+          --       backward = true,
+          --       forward = true,
+          --     },
+          --   },
+          -- },
+        },
       },
     }
 

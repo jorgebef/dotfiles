@@ -15,6 +15,7 @@ return {
 
     require("neo-tree").setup({
       popup_border_style = ui.border.Empty,
+      enable_diagnostics = true,
 
       default_component_configs = {
         name = {

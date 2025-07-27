@@ -7,7 +7,7 @@ return {
   config = function()
     require("kanagawa").setup({
       compile = false, -- enable compiling the colorscheme
-      transparent = false,
+      -- transparent = false,
       keywordStyle = { bold = false },
 
       colors = {
@@ -30,6 +30,7 @@ return {
         },
       },
 
+      ---@param colors KanagawaColors
       overrides = function(colors)
         local palette = colors.palette
         local theme = colors.theme
@@ -44,7 +45,7 @@ return {
           BlinkCmpMenuBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_p1 },
           BlinkCmpDoc = { fg = nil, bg = theme.ui.bg_p1 },
           BlinkCmpDocBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_p1 },
-          BlinkCmpDocSeparator = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
+          BlinkCmpDocSeparator = { fg = theme.ui.bg_m1, bg = theme.ui.bg_p1 },
 
           -- DiagnosticUnnecessary = { fg = "NONE", undercurl = true, sp = theme.diag.info },
 
