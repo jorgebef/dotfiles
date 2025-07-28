@@ -7,16 +7,26 @@
 auto-update = off
 auto-update-channel = tip
 
-font-family = JetBrains Mono
+font-family = "JetBrains Mono"
 font-size = 14.5
+adjust-cell-width = -3%
+adjust-cell-height = 0%
 
-# font-family = IBM Plex Mono
+# font-family = "Iosevka"
+# # font-style = "Medium"
+# font-size = 15
+# adjust-cell-width = 5%
+# adjust-cell-height = 3%
+
+# font-family = "Fira Code"
+# font-style = "Retina"
 # font-size = 14.5
-# adjust-cell-height = 2%
+# adjust-cell-width = -2%
+# adjust-cell-height = 5%
+
 
 # font-family = Suisse Int'l Mono
 # font-size = 14.5
-adjust-cell-width = -3%
 # adjust-cell-height = 2%
 
 # font-family = Maple Mono
