@@ -29,6 +29,7 @@ fish_add_path "$HOME/.deno/bin" # Add pnpm path to $PATH
 fish_add_path "$HOME/.local/bin" # Add uv path to $PATH
 fish_add_path "$HOME/.venv/bin" # Add uv venv path to $PATH
 fish_add_path "$HOME/.bun/bin"
+fish_add_path "/Applications/Postgres.app/Contents/Versions/latest/bin"
 fish_add_path "/run/current-system/sw/bin" # System-wide binaries managed by NixOS
 # fish_add_path "$HOME/Library/CloudStorage/Dropbox/JORGE/Peninsula Studio/01 Documents & info/bin" # Add custom bin folder path to $PATH
 

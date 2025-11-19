@@ -51,6 +51,7 @@ return {
       },
       symbol = "│",
     })
+
     vim.api.nvim_create_autocmd({ "FileType" }, {
       pattern = { "NvimTree", "dashboard", "undotree", "neo-tree-popup", "neo-tree", "fzf" },
       group = "MiniIndentscope",

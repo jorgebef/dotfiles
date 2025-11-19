@@ -51,3 +51,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define COMBO_HOLD_TERM 150  // how long at least one of the combo keys must be held to trigger
 
 #define RETRO_TAPPING
+
+#define MAX_DEFERRED_EXECUTORS 10

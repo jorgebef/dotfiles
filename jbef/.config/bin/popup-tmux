@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+CURRENT_SESSION="$(tmux display-message -p -F "#{session_name}")"
+CURRENT_WINDOW="$(tmux display-message -p -F "#W")"
+if echo "$CURRENT_WINDOW" | grep -q '^popup.*'; then
+    tmux detach-client
+else
+    if [ "$1" = "single" ]; then
+        tmux popup -d '#{pane_current_path}' -x100% -y0% -w50% -h50% -E "tmux attach -t '$CURRENT_SESSION' || tmux new -s '$CURRENT_SESSION'" || true
+    else
+        tmux popup -x100% -y100% -w50% -h50% -E "tmux attach -t popup-master || tmux new -s popup-master" || true
+    fi
+fi

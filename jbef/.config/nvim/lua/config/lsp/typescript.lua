@@ -66,6 +66,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --     "typescript.tsx",
 --   },
 --   root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+--   tsserver_file_preferences = {
+--     importModuleSpecifierPreference = "non-relative",
+--     importModuleSpecifier = "non-relative",
+--   },
+--   jsx_close_tag = {
+--     enable = true,
+--     filetypes = { "javascriptreact", "typescriptreact" },
+--   },
+--   separate_diagnostic_server = true,
+--   -- publish_diagnostic_on = "insert_leave",
+--   -- documentRangeFormatting = false,
 -- }
 -- vim.lsp.enable("ts_go_ls")
 

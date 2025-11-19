@@ -4,9 +4,8 @@ return {
   version = "*",
   -- optional: provides snippets for the snippet source
   dependencies = {
-    -- "rafamadriz/friendly-snippets",
-    "xzbdmw/colorful-menu.nvim",
-    "Kaiser-Yang/blink-cmp-avante",
+    { "xzbdmw/colorful-menu.nvim" },
+    -- { "Kaiser-Yang/blink-cmp-avante" },
     -- {
     --   "zbirenbaum/copilot.lua",
     --   opts = {
@@ -27,7 +26,8 @@ return {
     --     },
     --   },
     -- },
-    { "L3MON4D3/LuaSnip", version = "v2.*" },
+    -- { "L3MON4D3/LuaSnip", version = "v2.*" },
+    { "rafamadriz/friendly-snippets" },
   },
 
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -49,10 +49,15 @@ return {
         ["<CR>"] = { "accept", "fallback" },
         ["<Tab>"] = { "select_next" },
         ["<S-Tab>"] = { "select_prev" },
+        ["<C-d>"] = { "scroll_documentation_down" },
+        ["<C-u>"] = { "scroll_documentation_up" },
       },
 
       snippets = {
-        preset = "luasnip",
+        opts = {
+          friendly_snippets = true,
+        },
+        -- preset = "luasnip",
       },
 
       completion = {

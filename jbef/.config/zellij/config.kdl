@@ -18,8 +18,8 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
-    // nvim-navigator location="https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm"
-    nvim-navigator location="file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+    // nvim-navigator location="file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+    nvim-navigator location="https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
         move_mod "ctrl";
     }
 }
@@ -39,10 +39,25 @@ keybinds clear-defaults=true {
         // bind "Ctrl m" { ToggleFloatingPanes; }
         bind "Ω" { ToggleFloatingPanes; }
 
-        // bind "Ctrl ;" { LaunchOrFocusPlugin "zellij:session-manager" {
+        // // bind "Ctrl ;" { LaunchOrFocusPlugin "zellij:session-manager" {
+        // bind "þ" { LaunchOrFocusPlugin "zellij:session-manager" {
         //     floating true
         //   }
         // }
+
+        bind "þ" { 
+          // Note: you must use the absolute path to the plugin file
+          LaunchOrFocusPlugin "file:/Users/jbef/.config/zellij/plugins/zsm.wasm" {
+            floating true
+            move_to_focused_tab true
+            // Default layout for Ctrl+Enter quick creation
+            default_layout "compact"
+            // Session name separator (default: ".")
+            session_separator "."
+            // Show sessions that can be resurrected
+            show_resurrectable_sessions true
+          }
+        }
 
         // bind "Ctrl ;" {
         //     LaunchOrFocusPlugin "session-manager" {
@@ -52,14 +67,14 @@ keybinds clear-defaults=true {
         //     SwitchToMode "locked"
         // }
 
-        bind "Ctrl ;" { LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-sessionizer.wasm" {
-            floating true
-            move_to_focused_tab true
-            cwd "/"
-            root_dirs "/Users/jbef/Developer/Clients;/Users/jbef/Developer;/Users/jbef/Developer/Invitaboda;/Users/jbef/Developer/Side-Projects"
-            session_layout ":compact"
-          };
-        }
+        // bind "Ctrl ;" { LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-sessionizer.wasm" {
+        //     floating true
+        //     move_to_focused_tab true
+        //     cwd "/"
+        //     root_dirs "/Users/jbef/Developer/Clients;/Users/jbef/Developer;/Users/jbef/Developer/Invitaboda;/Users/jbef/Developer/Side-Projects"
+        //     session_layout ":compact"
+        //   };
+        // }
 
     // // bind "Ctrl ;" { Run "zellij" "list-sessions" "|" "fzf" "--reverse" {
     // // bind "Ctrl ;" { Run "zellij" "list-sessions" {
@@ -328,22 +343,22 @@ keybinds clear-defaults=true {
 // 
 // theme "dracula"
 // theme "nord"
-themes {
-   kanagawa_groove {
-      bg "#1a1a22"
-      fg "#D2CCC0"
-      black "#060503"
-      red "#C34043"
-      green "#76946A"
-      yellow "#DCA561"
-      blue "#8ba4b0"
-      magenta "#b35b79"
-      cyan "#8ea4a2"
-      white "#D2CCC0"
-      orange "#cc6d00"
-    }
-}
-theme "kanagawa_groove"
+// themes {
+//    kanagawa_groove {
+//       bg "#1a1a22"
+//       fg "#D2CCC0"
+//       black "#060503"
+//       red "#C34043"
+//       green "#76946A"
+//       yellow "#DCA561"
+//       blue "#8ba4b0"
+//       magenta "#b35b79"
+//       cyan "#8ea4a2"
+//       white "#D2CCC0"
+//       orange "#cc6d00"
+//     }
+// }
+theme "kanagawa"
 
  
 // Choose the base input mode of zellij.

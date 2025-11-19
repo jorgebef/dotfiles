@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -31,15 +32,27 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = [
-        pkgs.aerospace
-        pkgs.fish
-        pkgs.fzf
-        pkgs.neovim
-        pkgs.raycast
-        pkgs.starship
-        pkgs.sesh
-        pkgs.tmux
+        # pkgs.bat
+        # pkgs.bun
+        # pkgs.fd
+        # pkgs.fish
+        # pkgs.fnm
+        # pkgs.fzf
+        pkgs.go
+        pkgs.imagemagick
+        pkgs.lazygit
+        # pkgs.neovim
+        pkgs.ollama
+        pkgs.pnpm
+        # pkgs.raycast
+        # pkgs.starship
+        # pkgs.ripgrep
+        # pkgs.sesh
+        pkgs.stow
+        # pkgs.tmux
+        # pkgs.tree-sitter
         pkgs.vim
+        # pkgs.zoxide
       ];
 
       fonts.packages = with pkgs; [
@@ -48,11 +61,63 @@
 
       homebrew = {
         enable = true;
-        casks = [
-          "iina"
-          "ghostty"
+        taps = [
+          "sst/tap"
+          "nikitabobko/tap"
+          "mediosz/tap"
+          "mongodb/brew"
+          "osx-cross/avr"
+          "oven-sh/bun"
         ];
-        # onActivation.cleanup = "zap";
+        brews = [
+          "osx-cross/avr/avr-gcc"
+          "bat"
+          "ca-certificates"
+          "oven-sh/bun/bun"
+          "fd"
+          "fish"
+          "fzf"
+          "fnm"
+          "gcc"
+          "mongodb/brew/mongodb-community@8.2"
+          "neovim"
+          "sst/tap/opencode"
+          "qmk/qmk/qmk"
+          "ripgrep"
+          "sesh"
+          "starship"
+          "tmux"
+          "tree-sitter"
+          "wget"
+          "woff2"
+          "zoxide"
+          "zellij"
+        ];
+        casks = [
+          "1password"
+          "1password-cli"
+          "nikitabobko/tap/aerospace"
+          "mediosz/tap/swipeaerospace"
+          "brave-browser"
+          "gcc-arm-embedded"
+          "ghostty"
+          "handbrake-app"
+          "iina"
+          "jordanbaird-ice"
+          "libreoffice"
+          "obsidian"
+          "ollama-app"
+          "qbittorrent"
+          "raycast"
+          "spotify"
+          "utm"
+          "vial"
+          "yaak"
+        ];
+        onActivation = {
+          cleanup = "uninstall";
+          upgrade = true;
+        };
       };
 
       system.primaryUser = "jbef";
@@ -91,6 +156,12 @@
             enableRosetta = true;
             # User owning the Homebrew prefix
             user = "jbef";
+            # # Optional: Declarative tap management
+            # taps = {
+            #   "homebrew/homebrew-core" = homebrew-core;
+            #   "homebrew/homebrew-cask" = homebrew-cask;
+            # };
+            # mutableTaps = true;
             # # Automatically migrate existing Homebrew installations
             # autoMigrate = true;
           };

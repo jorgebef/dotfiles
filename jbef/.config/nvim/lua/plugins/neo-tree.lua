@@ -23,6 +23,12 @@ return {
           use_git_status_colors = false,
           highlight = "NeoTreeFileName",
         },
+        symbols = {
+          hint = "H",
+          info = "I",
+          warn = "!",
+          error = "X",
+        },
       },
       filesystem = {
         filtered_items = {

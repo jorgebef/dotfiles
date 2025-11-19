@@ -2,7 +2,11 @@ local M = {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects", -- Text objects
+    {
+      -- Text objects
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      branch = "main",
+    },
     "nvim-treesitter/playground",
     "JoosepAlviste/nvim-ts-context-commentstring",
   },

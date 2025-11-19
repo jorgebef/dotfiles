@@ -10,7 +10,8 @@ auto-update-channel = tip
 font-family = "JetBrains Mono"
 font-size = 14.5
 adjust-cell-width = -3%
-adjust-cell-height = 0%
+adjust-cell-height = -3%
+scrollbar = never
 
 # font-family = "Iosevka"
 # # font-style = "Medium"
@@ -39,7 +40,7 @@ adjust-cell-height = 0%
 shell-integration-features = true
 mouse-hide-while-typing = true
 
-adjust-underline-position = 5%
+adjust-underline-position = 2%
 adjust-underline-thickness = -20%
 
 # background-opacity = 0.98
@@ -52,6 +53,10 @@ window-padding-balance = true
 window-padding-x = 5
 macos-titlebar-style = hidden
 macos-icon = blueprint
+# macos-icon = custom-style
+# macos-icon-frame = beige
+# macos-icon-ghost-color = #ff99f7
+# macos-icon-screen-color = #7924ff
 
 
 # ////////////////////////////////////////////////////////
@@ -74,10 +79,10 @@ keybind = unconsumed:ctrl+shift+a=reload_config
 
 # theme = catppuccin-mocha.conf
 # theme = kanso.conf
-theme = kanagawa-dragon.conf
+# theme = kanagawa-dragon.conf
 # theme = vague.conf
 # theme = nordic.conf
 # theme = nord
 # theme = rose-pine
 # theme = tokyonight
-# theme = Kanagawa Dragon
+theme = Kanagawa Wave

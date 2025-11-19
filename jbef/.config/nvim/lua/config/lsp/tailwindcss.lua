@@ -9,6 +9,7 @@ vim.lsp.config.tailwindcss = {
         "className",
         "classList",
         "ngClass",
+        "pictureClassName",
         "imgClassName",
         "videoClassName",
       },

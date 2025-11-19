@@ -168,47 +168,76 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+
+# INFO: find app-id by running:
+# osascript -e 'id of app "<name of the app>"'
+
+# Float qBittorrent windows
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+run = ['layout floating']
+
+# Float Ollama windows
+[[on-window-detected]]
+if.app-id = 'com.electron.ollama'
+run = ['layout floating']
+
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-# if.app-name-regex-substring = 'settings'
-# if.window-title-regex-substring = 'substring'
-# if.workspace = 'workspace-name'
-# if.during-aerospace-startup = true
-# check-further-callbacks = true
-# run = ['layout floating', 'move-node-to-workspace S']  # The callback itself
-run = ['layout floating']  # The callback itself
+run = ['layout floating']
 
-# find app-id by running:
-# osascript -e 'id of app "<name of the app>"'
+# Float Apple Music windows
 [[on-window-detected]]
 if.app-id = 'com.apple.Music'
 run = ['layout floating']
 
+# Float Notes windows
+[[on-window-detected]]
+if.app-id = 'com.apple.Notes'
+run = ['layout floating']
+
+# Float Spotify windows
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = ['layout floating']
 
+# Float Finder windows
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = ['layout floating']
 
+# Float wulkano windows
 [[on-window-detected]]
 if.app-id = 'com.wulkano.kap'
 run = ['layout floating']
 
+# Float Ghostty windows
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 if.window-title-regex-substring = 'Updat'
 run = ['layout floating']
 
+# Float Activity Monitor windows
 [[on-window-detected]]
 if.app-id = 'com.apple.ActivityMonitor'
 run = ['layout floating']
 
+# Float Discord windows
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 run = ['layout floating']
 
+# Float 1Password windows
 [[on-window-detected]]
 if.app-id = 'com.1password.1password'
+run = ['layout floating']
+
+# Float qBittorrent windows
+[[on-window-detected]]
+if.app-id = 'org.qbittorrent.qBittorrent'
+run = ['layout floating']
+
+# Float qBittorrent windows
+[[on-window-detected]]
+if.app-id = 'com.apple.weather'
 run = ['layout floating']

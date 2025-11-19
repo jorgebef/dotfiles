@@ -1,24 +1,27 @@
 lastupdatecheck: 0
 recentrepos:
-    - /Users/jbef/Developer/dotfiles
-    - /Users/jbef/Developer/side-projects/spainupdate.com
-    - /Users/jbef/Developer/Clients/multnomahfalls-com
-    - /Users/jbef/Developer/Clients/Guido-Audisio
+    - /Users/jbef/Documents/dotfiles
+    - /Users/jbef/Documents/spainupdate.com
+    - /Users/jbef/Documents/peninsula.studio
+    - /Users/jbef/Documents/admon-fincas
+    - /Users/jbef/Documents/multnomahfalls-com
+    - /Users/jbef/Documents/dominicania
     - /Users/jbef/Developer/Clients/dominicania
+    - /Users/jbef/Documents/oferta-anormal-contratacion
     - /Users/jbef/Developer/Clients/swedent.com
+    - /Users/jbef/Developer/side-projects/spainupdate.com
+    - /Users/jbef/Developer/Invitaboda/reyes-y-santiago
+    - /Users/jbef/Developer/Clients/multnomahfalls-com
+    - /Users/jbef/Developer/peninsula.studio
+    - /Users/jbef/Developer/dotfiles
+    - /Users/jbef/Developer/Clients/Guido-Audisio
     - /Users/jbef/Developer/Clients/old_swedent.com
     - /Users/jbef/Developer/portfolio-work/brand-direction-studio
     - /Users/jbef/Developer/nordic.nvim
     - /Users/jbef/Developer/Invitaboda/oscar-y-maritere
     - /Users/jbef/Developer/chia.nvim
 startuppopupversion: 5
-lastversion: 0.51.1
+didshowhunkstaginghint: true
+lastversion: 0.54.2
 customcommandshistory: []
 hidecommandlog: false
-ignorewhitespaceindiffview: false
-diffcontextsize: 3
-renamesimilaritythreshold: 50
-localbranchsortorder: recency
-remotebranchsortorder: alphabetical
-gitlogorder: topo-order
-gitlogshowgraph: always
