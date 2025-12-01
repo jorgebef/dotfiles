@@ -6,12 +6,12 @@
 --   group = "jsoncComments",
 -- })
 
-vim.api.nvim_create_augroup("highlight_yank", { clear = true })
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-  pattern = "*",
-  group = "highlight_yank",
-  command = 'lua vim.highlight.on_yank { higroup="IncSearch", timeout=250 }',
-})
+-- vim.api.nvim_create_augroup("highlight_yank", { clear = true })
+-- vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+--   pattern = "*",
+--   group = "highlight_yank",
+--   command = 'lua vim.highlight.on_yank { higroup="IncSearch", timeout=250 }',
+-- })
 
 vim.api.nvim_create_augroup("CursorLine", { clear = true })
 vim.api.nvim_create_autocmd({ "VimEnter", "FocusGained", "WinEnter", "BufRead", "BufEnter", "BufWinEnter" }, {

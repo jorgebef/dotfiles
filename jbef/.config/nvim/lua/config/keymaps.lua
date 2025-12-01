@@ -19,8 +19,18 @@ vim.keymap.set("v", "p", '"_dP', opts)
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
--- vim.keymap.set("n", "<ESC>", '<ESC>:noh<CR>:lua require("notify").dismiss()<CR>', opts)
-vim.keymap.set("n", "<ESC>", ":lua Snacks.notifier.hide()<CR>:noh<CR><ESC>", opts)
+-- -- vim.keymap.set("n", "<ESC>", '<ESC>:noh<CR>:lua require("notify").dismiss()<CR>', opts)
+-- vim.keymap.set("n", "<ESC>", ":lua Snacks.notifier.hide()<CR>:noh<CR><ESC>", opts)
+
+-- Poweful <esc>.
+vim.keymap.set({ "i", "s", "n" }, "<esc>", function()
+  if require("luasnip").expand_or_jumpable() then
+    require("luasnip").unlink_current()
+  end
+  vim.cmd("noh")
+  vim.cmd("lua Snacks.notifier.hide()")
+  return "<esc>"
+end, { desc = "Escape, clear hlsearch, and stop snippet session", expr = true })
 
 -- improved scrolling
 vim.keymap.set("n", "<C-e>", "4<C-e>", opts)
@@ -38,8 +48,8 @@ vim.keymap.set("n", "<leader>w", ":silent write<cr>", opts)
 vim.keymap.set("n", "<leader>q", ":q<cr>", opts)
 vim.keymap.set("n", "<leader>Q", ":qa<cr>", opts)
 
-vim.keymap.set("n", "<leader>p", '"+p', opts)
-vim.keymap.set("v", "<leader>p", '"+p', opts)
+-- vim.keymap.set("n", "<leader>p", '"+p', opts)
+-- vim.keymap.set("v", "<leader>p", '"+p', opts)
 vim.keymap.set("n", "<leader>y", '"+y', opts)
 vim.keymap.set("v", "<leader>y", '"+y', opts)
 

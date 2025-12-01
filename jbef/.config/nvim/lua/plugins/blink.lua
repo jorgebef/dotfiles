@@ -26,8 +26,8 @@ return {
     --     },
     --   },
     -- },
-    -- { "L3MON4D3/LuaSnip", version = "v2.*" },
-    { "rafamadriz/friendly-snippets" },
+    { "L3MON4D3/LuaSnip", version = "v2.*" },
+    -- { "rafamadriz/friendly-snippets" },
   },
 
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -54,10 +54,10 @@ return {
       },
 
       snippets = {
-        opts = {
-          friendly_snippets = true,
-        },
-        -- preset = "luasnip",
+        -- opts = {
+        -- friendly_snippets = true,
+        -- },
+        preset = "luasnip",
       },
 
       completion = {

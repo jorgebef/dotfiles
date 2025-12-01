@@ -1,10 +1,8 @@
-local M = {
-  "windwp/nvim-ts-autotag",
-  event = "VeryLazy",
-}
-
-function M.config()
-  require("nvim-ts-autotag").setup({
+-- Autoclosing tags for HTML and JSX.
+return {
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
     opts = {
       -- Defaults
       enable_close = true, -- Auto close tags
@@ -32,15 +30,8 @@ function M.config()
         "Image",
       },
     },
-    -- Also override individual filetype configs, these take priority.
-    -- Empty by default, useful if one of the "opts" global settings
-    -- doesn't work well in a specific filetype
-    -- per_filetype = {
-    --   ["html"] = {
-    --     enable_close = false,
-    --   },
-    -- },
-  })
-end
-
-return M
+    config = function(_, opts)
+      require("nvim-ts-autotag").setup(opts)
+    end,
+  },
+}

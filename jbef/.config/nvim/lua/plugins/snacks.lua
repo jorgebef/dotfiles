@@ -23,16 +23,12 @@ return {
       },
       notify = { enabled = true },
       rename = { enabled = true },
-
       input = {
         enabled = true,
         prompt_pos = "left",
       },
-
-      explorer = {
-        enabled = true,
-      },
-
+      explorer = { enabled = true },
+      terminal = { enabled = true },
       picker = {
         sources = {
           grep = {},
@@ -173,14 +169,6 @@ return {
       desc = "Find Files",
       nowait = true,
     },
-
-    -- {
-    --   "<leader>,",
-    --   function()
-    --     Snacks.picker.buffers()
-    --   end,
-    --   desc = "Buffers",
-    -- },
 
     {
       "<leader>fg",

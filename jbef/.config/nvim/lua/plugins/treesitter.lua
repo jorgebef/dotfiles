@@ -1,4 +1,4 @@
-local M = {
+return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   dependencies = {
@@ -7,12 +7,38 @@ local M = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       branch = "main",
     },
+    -- {
+    --   "nvim-treesitter/nvim-treesitter-context",
+    --   opts = {
+    --     -- Avoid the sticky context from growing a lot.
+    --     max_lines = 3,
+    --     -- Match the context lines to the source code.
+    --     multiline_threshold = 1,
+    --     -- Disable it when the window is too small.
+    --     min_window_height = 20,
+    --   },
+    --   keys = {
+    --     {
+    --       "[c",
+    --       function()
+    --         -- Jump to previous change when in diffview.
+    --         if vim.wo.diff then
+    --           return "[c"
+    --         else
+    --           vim.schedule(function()
+    --             require("treesitter-context").go_to_context()
+    --           end)
+    --           return "<Ignore>"
+    --         end
+    --       end,
+    --       desc = "Jump to upper context",
+    --       expr = true,
+    --     },
+    --   },
+    -- },
     "nvim-treesitter/playground",
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
-}
-
-function M.config(_, opts)
   opts = {
     -- A list of parser names, or "all"
     -- ensure_installed = "all",
@@ -141,34 +167,34 @@ function M.config(_, opts)
     indent = {
       enable = true,
     },
-  }
+  },
 
-  -- if type(opts.ensure_installed) == "table" then
-  --   ---@type table<string, boolean>
-  --   local added = {}
-  --   opts.ensure_installed = vim.tbl_filter(function(lang)
-  --     if added[lang] then
-  --       return false
-  --     end
-  --     added[lang] = true
-  --     return true
-  --   end, opts.ensure_installed)
-  -- end
+  config = function(_, opts)
+    -- if type(opts.ensure_installed) == "table" then
+    --   ---@type table<string, boolean>
+    --   local added = {}
+    --   opts.ensure_installed = vim.tbl_filter(function(lang)
+    --     if added[lang] then
+    --       return false
+    --     end
+    --     added[lang] = true
+    --     return true
+    --   end, opts.ensure_installed)
+    -- end
 
-  require("nvim-treesitter.configs").setup(opts)
+    require("nvim-treesitter.configs").setup(opts)
 
-  vim.g.skip_ts_context_commentstring_module = true
-  require("ts_context_commentstring").setup({
-    enable_autocmd = false,
-  })
+    vim.g.skip_ts_context_commentstring_module = true
+    require("ts_context_commentstring").setup({
+      enable_autocmd = false,
+    })
 
-  -- -- MDX
-  -- vim.filetype.add({
-  --   extension = {
-  --     mdx = "mdx",
-  --   },
-  -- })
-  -- vim.treesitter.language.register("markdown", "mdx")
-end
-
-return M
+    -- -- MDX
+    -- vim.filetype.add({
+    --   extension = {
+    --     mdx = "mdx",
+    --   },
+    -- })
+    -- vim.treesitter.language.register("markdown", "mdx")
+  end,
+}
