@@ -43,7 +43,7 @@
         pkgs.lazygit
         # pkgs.neovim
         pkgs.ollama
-        pkgs.pnpm
+        # pkgs.pnpm
         # pkgs.raycast
         # pkgs.starship
         # pkgs.ripgrep
@@ -81,6 +81,7 @@
           "gcc"
           "mongodb/brew/mongodb-community@8.2"
           "neovim"
+          "pnpm"
           "sst/tap/opencode"
           "qmk/qmk/qmk"
           "ripgrep"
@@ -108,6 +109,7 @@
           "obsidian"
           "ollama-app"
           "qbittorrent"
+          "qmk-toolbox"
           "raycast"
           "spotify"
           "utm"
@@ -115,7 +117,8 @@
           "yaak"
         ];
         onActivation = {
-          cleanup = "uninstall";
+          autoUpdate = true;
+          cleanup = "zap";
           upgrade = true;
         };
       };
@@ -162,8 +165,8 @@
             #   "homebrew/homebrew-cask" = homebrew-cask;
             # };
             # mutableTaps = true;
-            # # Automatically migrate existing Homebrew installations
-            # autoMigrate = true;
+            # Automatically migrate existing Homebrew installations
+            autoMigrate = true;
           };
         }
       ];

@@ -53,6 +53,10 @@ return {
         ["<C-u>"] = { "scroll_documentation_up" },
       },
 
+      enabled = function()
+        return not vim.tbl_contains({ "AvanteInput" }, vim.bo.filetype)
+      end,
+
       snippets = {
         -- opts = {
         -- friendly_snippets = true,

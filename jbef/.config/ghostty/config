@@ -63,7 +63,7 @@ macos-icon = blueprint
 # /////////////// CUSTOM KEYBINDINGS /////////////////////
 # ////////////////////////////////////////////////////////
 keybind = ctrl+;=text:þ
-keybind = ctrl+m=text:Ω
+# keybind = ctrl+m=text:Ω
 keybind = ctrl+shift+h=text:⇇
 keybind = ctrl+shift+j=text:⇊
 keybind = ctrl+shift+k=text:⇈

@@ -65,9 +65,9 @@ vim.keymap.set(
 )
 vim.keymap.set("v", "<leader>R", '"hy:.,$s/<C-r>h//gc<Left><Left><Left>', { noremap = true, nowait = true })
 
--- Make new line above or below without entering insert mode
-vim.keymap.set("n", "<leader>o", 'o<esc>0"_D<esc>', opts)
-vim.keymap.set("n", "<leader>O", 'O<esc>0"_D<esc>', opts)
+-- -- Make new line above or below without entering insert mode
+-- vim.keymap.set("n", "<leader>o", 'o<esc>0"_D<esc>', opts)
+-- vim.keymap.set("n", "<leader>O", 'O<esc>0"_D<esc>', opts)
 
 -- buffer navigation
 vim.keymap.set("n", "<leader>bn", ":bn<cr>", opts)

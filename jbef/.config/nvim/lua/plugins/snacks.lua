@@ -562,6 +562,15 @@ return {
       desc = "LSP Workspace Symbols",
     },
 
+    -- {
+    --   "<C-t>",
+    --   function()
+    --     Snacks.terminal.toggle("fish", { win = { max_width = 210, max_height = 180 } })
+    --   end,
+    --   mode = { "n", "t" },
+    --   desc = "Toggle terminal",
+    -- },
+
     -- TODO comments
     {
       "<leader>st",
