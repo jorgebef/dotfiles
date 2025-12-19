@@ -487,7 +487,7 @@ copy_on_select true
 //   - true (default)
 //   - false
 // 
-// session_serialization false
+session_serialization true
  
 // Whether pane viewports are serialized along with the session, default is false
 // Options:
@@ -512,7 +512,7 @@ copy_on_select true
 // How often in seconds sessions are serialized
 // 
 // serialization_interval 10000
-serialization_interval 1
+serialization_interval 1000
  
 // Enable or disable writing of session metadata to disk (if disabled, other sessions might not know
 // metadata info on this session)

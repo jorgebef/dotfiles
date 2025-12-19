@@ -61,6 +61,7 @@
 
       homebrew = {
         enable = true;
+        greedyCasks = true;
         taps = [
           "sst/tap"
           "nikitabobko/tap"
@@ -118,8 +119,8 @@
         ];
         onActivation = {
           autoUpdate = true;
-          cleanup = "zap";
           upgrade = true;
+          cleanup = "uninstall";
         };
       };
 

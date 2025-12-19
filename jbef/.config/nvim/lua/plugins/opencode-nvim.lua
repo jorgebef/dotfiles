@@ -1,6 +1,6 @@
 return {
   "NickvanDyke/opencode.nvim",
-  enabled = false,
+  -- enabled = false,
   dependencies = {
     -- Recommended for `ask()` and `select()`.
     -- Required for `snacks` provider.
@@ -10,7 +10,13 @@ return {
   config = function()
     ---@type opencode.Opts
     vim.g.opencode_opts = {
-      -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition".
+      provider = {
+        enabled = "terminal",
+        terminal = {
+          focusable = true,
+          -- ...
+        },
+      },
     }
 
     -- Required for `opts.events.reload`.
