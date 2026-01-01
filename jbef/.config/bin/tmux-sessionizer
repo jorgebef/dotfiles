@@ -4,9 +4,10 @@ if [[ $# -eq 1 ]]; then
   selected=$1
 else
   selected=$(
-    sesh list --icons | fzf --tmux=center,30%,55% --exact \
+    sesh list --icons | grep -v '_popup_*' | fzf --tmux=center,85,35 --exact \
       --no-sort --ansi --border-label ' sesh ' \
   		--header '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find' \
+      --bind 'þ:abort' \
       --bind 'tab:down,btab:up' \
       --bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list --icons)' \
       --bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t --icons)' \

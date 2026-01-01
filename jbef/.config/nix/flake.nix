@@ -62,6 +62,9 @@
       homebrew = {
         enable = true;
         greedyCasks = true;
+        global = {
+          autoUpdate = true;
+        };
         taps = [
           "sst/tap"
           "nikitabobko/tap"
@@ -69,17 +72,22 @@
           "mongodb/brew"
           "osx-cross/avr"
           "oven-sh/bun"
+          "qmk/qmk"
+          "tw93/tap"
         ];
         brews = [
           "osx-cross/avr/avr-gcc"
           "bat"
+          "btop"
           "ca-certificates"
           "oven-sh/bun/bun"
           "fd"
+          "ffmpeg"
           "fish"
-          "fzf"
           "fnm"
+          "fzf"
           "gcc"
+          "just"
           "mongodb/brew/mongodb-community@8.2"
           "neovim"
           "pnpm"
@@ -90,8 +98,10 @@
           "starship"
           "tmux"
           "tree-sitter"
+          "tw93/tap/mole"
           "wget"
           "woff2"
+          "yt-dlp"
           "zoxide"
           "zellij"
         ];

@@ -189,6 +189,8 @@ return {
             "!package-lock.json",
             "--glob",
             "!pnpm-lock.yaml",
+            "--glob",
+            "!bun.lock",
           },
         })
       end,

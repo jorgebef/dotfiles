@@ -82,14 +82,14 @@ set winwidth=1
 wincmd =
 tcd ~/Documents/dotfiles
 argglobal
-setlocal foldmethod=manual
-setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
-setlocal foldmarker={{{,}}}
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldenable
+setremote foldmethod=manual
+setremote foldexpr=v:lua.vim.treesitter.foldexpr()
+setremote foldmarker={{{,}}}
+setremote foldignore=#
+setremote foldlevel=0
+setremote foldminlines=1
+setremote foldnestmax=20
+setremote foldenable
 silent! normal! zE
 let &fdl = &fdl
 let s:l = 6 - ((5 * winheight(0) + 35) / 70)
@@ -105,14 +105,14 @@ if &buftype ==# 'terminal'
   silent file ~/Documents/dotfiles/jbef/.config/tmux/tmux.conf
 endif
 balt ~/Documents/dotfiles/jbef/.config/nvim/lua/plugins/bufstate.lua
-setlocal foldmethod=manual
-setlocal foldexpr=0
-setlocal foldmarker={{{,}}}
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldenable
+setremote foldmethod=manual
+setremote foldexpr=0
+setremote foldmarker={{{,}}}
+setremote foldignore=#
+setremote foldlevel=0
+setremote foldminlines=1
+setremote foldnestmax=20
+setremote foldenable
 silent! normal! zE
 let &fdl = &fdl
 let s:l = 1 - ((0 * winheight(0) + 35) / 70)

@@ -6,9 +6,9 @@ return {
   build = ":TSUpdate",
   lazy = false,
   dependencies = {
-    {
-      "nvim-treesitter/nvim-treesitter-context",
-    },
+    -- {
+    --   "nvim-treesitter/nvim-treesitter-context",
+    -- },
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
       branch = "main",
@@ -46,20 +46,6 @@ return {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
   config = function()
-    -- if type(opts.ensure_installed) == "table" then
-    --   ---@type table<string, boolean>
-    --   local added = {}
-    --   opts.ensure_installed = vim.tbl_filter(function(lang)
-    --     if added[lang] then
-    --       return false
-    --     end
-    --     added[lang] = true
-    --     return true
-    --   end, opts.ensure_installed)
-    -- end
-
-    -- require("nvim-treesitter.configs").setup(opts)
-
     local ts = require("nvim-treesitter")
 
     ts.install({

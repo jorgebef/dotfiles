@@ -1,6 +1,6 @@
 return {
   "pmizio/typescript-tools.nvim",
-  -- enabled = false,
+  enabled = false,
   dependencies = {
     "neovim/nvim-lspconfig",
   },

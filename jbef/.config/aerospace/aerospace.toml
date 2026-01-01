@@ -222,6 +222,11 @@ run = ['layout floating']
 if.app-id = 'com.apple.ActivityMonitor'
 run = ['layout floating']
 
+# Float Obsidian windows
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = ['layout floating']
+
 # Float Discord windows
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'

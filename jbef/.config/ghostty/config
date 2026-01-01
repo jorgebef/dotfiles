@@ -11,7 +11,7 @@ font-family = "JetBrains Mono"
 font-size = 14.5
 adjust-cell-width = -3%
 adjust-cell-height = -3%
-scrollbar = never
+# scrollbar = never
 
 # font-family = "Iosevka"
 # # font-style = "Medium"
@@ -63,6 +63,7 @@ macos-icon = blueprint
 # /////////////// CUSTOM KEYBINDINGS /////////////////////
 # ////////////////////////////////////////////////////////
 keybind = ctrl+;=text:þ
+keybind = ctrl+'=text:★
 # keybind = ctrl+m=text:Ω
 keybind = ctrl+shift+h=text:⇇
 keybind = ctrl+shift+j=text:⇊

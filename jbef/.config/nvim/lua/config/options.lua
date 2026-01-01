@@ -26,6 +26,7 @@ vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 -- o.fileencoding = "utf-8" -- the encoding written to a file
 
 -- -- Folds ======================================================================
+vim.opt.foldenable = false
 -- vim.o.foldmethod = "indent" -- Set 'indent' folding method
 -- vim.o.foldlevel = 10 -- Display all folds except top ones
 -- vim.o.foldnestmax = 20 -- Create folds only for some number of nested levels
