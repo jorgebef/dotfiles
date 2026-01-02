@@ -16,7 +16,8 @@ set -gx NIX_PATH "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/chan
 
 set -gx LDFLAGS -L/opt/homebrew/opt/ruby/lib
 set -gx CPPFLAGS -I/opt/homebrew/opt/ruby/include
-set -gx PKG_CONFIG_PATH /opt/homebrew/opt/ruby/lib/pkgconfig
+# set -gx PKG_CONFIG_PATH /opt/homebrew/opt/ruby/lib/pkgconfig
+set -gx PKG_CONFIG_PATH /opt/homebrew/bin/pkg-config
 
 fish_add_path /opt/homebrew/bin # Add brew to $PATH
 fish_add_path /opt/homebrew/opt/ruby/bin

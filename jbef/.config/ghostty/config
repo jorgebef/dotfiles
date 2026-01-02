@@ -48,7 +48,7 @@ adjust-underline-thickness = -20%
 background-opacity = 1
 
 # gtk-titlebar = false
-window-decoration = true
+window-decoration = auto
 window-padding-balance = true
 window-padding-x = 5
 macos-titlebar-style = hidden
@@ -58,18 +58,34 @@ macos-icon = blueprint
 # macos-icon-ghost-color = #ff99f7
 # macos-icon-screen-color = #7924ff
 
+quick-terminal-animation-duration = 0
+quick-terminal-position = center
+quick-terminal-size = 50%,80%
 
 # ////////////////////////////////////////////////////////
 # /////////////// CUSTOM KEYBINDINGS /////////////////////
 # ////////////////////////////////////////////////////////
-keybind = ctrl+;=text:þ
-keybind = ctrl+'=text:★
+keybind = ctrl+;=text:★
+keybind = ctrl+shift+;=text:þ
+keybind = ctrl+'=text:Ω
+keybind = ctrl+shift+'=text:Ω
 # keybind = ctrl+m=text:Ω
 keybind = ctrl+shift+h=text:⇇
 keybind = ctrl+shift+j=text:⇊
 keybind = ctrl+shift+k=text:⇈
 keybind = ctrl+shift+l=text:⇉
-# ////////////////////////////////////////////////////////
+
+# keybind = cmd+h=goto_split:left
+# keybind = cmd+j=goto_split:down
+# keybind = cmd+k=goto_split:up
+# keybind = cmd+l=goto_split:right
+# keybind = cmd+'=toggle_split_zoom
+# keybind = cmd+;=toggle_quick_terminal
+# keybind = cmd+shift+h=resize_split:left,20
+# keybind = cmd+shift+j=resize_split:down,20
+# keybind = cmd+shift+k=resize_split:up,20
+# keybind = cmd+shift+l=resize_split:right,20
+# # ////////////////////////////////////////////////////////
 
 
 keybind = unconsumed:ctrl+shift+a=reload_config

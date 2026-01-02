@@ -76,6 +76,7 @@
           "tw93/tap"
         ];
         brews = [
+          "automake"
           "osx-cross/avr/avr-gcc"
           "bat"
           "btop"
@@ -92,6 +93,7 @@
           "neovim"
           "pnpm"
           "sst/tap/opencode"
+          "pkgconf"
           "qmk/qmk/qmk"
           "ripgrep"
           "sesh"
@@ -101,6 +103,7 @@
           "tw93/tap/mole"
           "wget"
           "woff2"
+          "yazi"
           "yt-dlp"
           "zoxide"
           "zellij"

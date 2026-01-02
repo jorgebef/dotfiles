@@ -80,7 +80,7 @@ M.config.colors = require("user.nordic").colors
 -- config.color_scheme = "nordfox"
 
 M.config.font = wezterm.font({
-  family = "JetbrainsMono Nerd Font",
+  family = "Jetbrains Mono",
 })
 M.config.font_size = 14.5
 -- config.cell_width = 1.05

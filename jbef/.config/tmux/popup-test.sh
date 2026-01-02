@@ -8,10 +8,8 @@ if ! tmux has -t "$session" 2> /dev/null; then
   exec tmux set-option -t "$session_id" key-table popup \; \
     set-option -t "$session_id" status off \; \
     set-option -t "$session_id" prefix C-b \; \
+    set-option -t "$session_id" detach-on-destroy on \; \
     attach -t "$session"
-  # if [ -z "$2" ] ; then
-    # exec tmux send-keys "$2";
-  # fi
 fi
 
 exec tmux attach -t "$session" > /dev/null
