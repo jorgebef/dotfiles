@@ -65,10 +65,10 @@ quick-terminal-size = 50%,80%
 # ////////////////////////////////////////////////////////
 # /////////////// CUSTOM KEYBINDINGS /////////////////////
 # ////////////////////////////////////////////////////////
-keybind = ctrl+;=text:★
-keybind = ctrl+shift+;=text:þ
+keybind = ctrl+;=text:þ
+# keybind = ctrl+shift+;=text:★
 keybind = ctrl+'=text:Ω
-keybind = ctrl+shift+'=text:Ω
+keybind = ctrl+shift+'=text:★
 # keybind = ctrl+m=text:Ω
 keybind = ctrl+shift+h=text:⇇
 keybind = ctrl+shift+j=text:⇊
@@ -94,12 +94,13 @@ keybind = unconsumed:ctrl+shift+a=reload_config
 # keybind = alt+left=esc:b
 # keybind = alt+right=esc:f
 
-# theme = catppuccin-mocha.conf
 # theme = kanso.conf
 # theme = kanagawa-dragon.conf
 # theme = vague.conf
 # theme = nordic.conf
 # theme = nord
-# theme = rose-pine
-# theme = tokyonight
+# theme = Rose Pine
+# theme = Vague
 theme = Kanagawa Wave
+# theme = Catppuccin Mocha
+# theme = custom-catppuccin.conf

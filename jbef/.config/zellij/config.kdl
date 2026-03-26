@@ -3,69 +3,96 @@
 //
 
 keybinds clear-defaults=true {
-    shared_except "locked" {
-    bind "Ctrl h" {
-        MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-            name "move_focus";
-            payload "left";
-        };
-    }
-    bind "Ctrl j" {
-        MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-            name "move_focus";
-            payload "down";
-        };
-    }
-    bind "Ctrl k" {
-        MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-            name "move_focus";
-            payload "up";
-        };
-    }
-    bind "Ctrl l" {
-        MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-            name "move_focus";
-            payload "right";
-        };
-    }
-    bind "Alt h" {
-        MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-            name "resize";
-            payload "left";
-        };
-    }
-    bind "Alt j" {
-        MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-            name "resize";
-            payload "down";
-        };
-    }
-    bind "Alt k" {
-        MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-            name "resize";
-            payload "up";
-        };
-    }
-    bind "Alt l" {
-        MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-            name "resize";
-            payload "right";
-        };
-    }
-  }
+    // shared_except "locked" {
+    // }
     locked {
+        bind "Ctrl h" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus_or_tab";
+                payload "left";
+
+                // Plugin Configuration
+                move_mod "ctrl"; // Optional, should be added on every move command if changed.
+                use_arrow_keys "false"; // Optional, uses arrow keys instead of hjkl. Should be added to every command where you want to use it.
+            };
+        }
+
+        bind "Ctrl j" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus";
+                payload "down";
+
+                move_mod "ctrl";
+                use_arrow_keys "false";
+            };
+        }
+
+        bind "Ctrl k" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus";
+                payload "up";
+
+                move_mod "ctrl";
+                use_arrow_keys "false";
+            };
+        }
+
+        bind "Ctrl l" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus_or_tab";
+                payload "right";
+
+                move_mod "ctrl"; // Optional, should be added on every command if you want to use it
+                use_arrow_keys "false";
+            };
+        }
+
+        bind "Alt h" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "left";
+
+                resize_mod "alt"; 
+            };
+        }
+
+        bind "Alt j" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "down";
+
+                resize_mod "alt";
+            };
+        }
+
+        bind "Alt k" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "up";
+
+                resize_mod "alt";
+            };
+        }
+
+        bind "Alt l" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "right";
+
+                resize_mod "alt";
+            };
+        }
+
         bind "Ctrl ," { GoToPreviousTab; }
         bind "Ctrl ." { GoToNextTab; }
         bind "Ctrl b" { SwitchToMode "normal"; }
 
         bind "þ" {
-            LaunchOrFocusPlugin "file:/Users/jbef/.config/zellij/plugins/zsm.wasm" {
+            LaunchOrFocusPlugin "session-manager" {
                 floating true
                 move_to_focused_tab true
-                default_layout "compact"
-                session_separator "."
-                show_resurrectable_sessions "true"
             }
+            SwitchToMode "locked"
         }
         bind "Ctrl '" { ToggleFloatingPanes; }
     }

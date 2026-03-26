@@ -46,9 +46,7 @@ return {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
   config = function()
-    local ts = require("nvim-treesitter")
-
-    ts.install({
+    local languages = {
       "bash",
       "c",
       "cpp",
@@ -77,19 +75,29 @@ return {
       "toml",
       "tsx",
       "typescript",
+      "typescriptreact",
       "vim",
       "vimdoc",
       "xml",
       "yaml",
-    })
+    }
+
+    local ts = require("nvim-treesitter")
+
+    ts.install()
 
     local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })
 
     local ignore_filetypes = {
+      "blink-cmp-menu",
       "checkhealth",
       "lazy",
       "mason",
+      "noice",
       "snacks_dashboard",
+      "snacks_picker_input",
+      "snacks_picker_list",
+      "snacks_picker_preview",
       "snacks_notif",
       "snacks_win",
     }
@@ -110,11 +118,12 @@ return {
     -- Auto-install parsers and enable highlighting on FileType
     vim.api.nvim_create_autocmd("FileType", {
       group = group,
+      pattern = languages,
       desc = "Enable treesitter highlighting and indentation",
       callback = function(event)
-        if vim.tbl_contains(ignore_filetypes, event.match) then
-          return
-        end
+        -- if vim.tbl_contains(ignore_filetypes, event.match) then
+        --   return
+        -- end
 
         local lang = vim.treesitter.language.get_lang(event.match) or event.match
         local buf = event.buf

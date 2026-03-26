@@ -42,7 +42,7 @@
         pkgs.imagemagick
         pkgs.lazygit
         # pkgs.neovim
-        pkgs.ollama
+        # pkgs.ollama
         # pkgs.pnpm
         # pkgs.raycast
         # pkgs.starship
@@ -69,7 +69,7 @@
           "sst/tap"
           "nikitabobko/tap"
           "mediosz/tap"
-          "mongodb/brew"
+          # "mongodb/brew"
           "osx-cross/avr"
           "oven-sh/bun"
           "qmk/qmk"
@@ -89,8 +89,11 @@
           "fzf"
           "gcc"
           "just"
-          "mongodb/brew/mongodb-community@8.2"
+          "llama.cpp"
+          "mkcert"
+          # "mongodb/brew/mongodb-community@8.2"
           "neovim"
+          "nss"
           "pnpm"
           "sst/tap/opencode"
           "pkgconf"
@@ -103,6 +106,7 @@
           "tw93/tap/mole"
           "wget"
           "woff2"
+          "utf8proc"
           "yazi"
           "yt-dlp"
           "zoxide"
@@ -111,17 +115,17 @@
         casks = [
           "1password"
           "1password-cli"
+          "bitwarden"
           "nikitabobko/tap/aerospace"
           "mediosz/tap/swipeaerospace"
-          "brave-browser"
-          "gcc-arm-embedded"
+          # "gcc-arm-embedded"
           "ghostty"
           "handbrake-app"
           "iina"
           "jordanbaird-ice"
           "libreoffice"
           "obsidian"
-          "ollama-app"
+          # "ollama-app"
           "qbittorrent"
           "qmk-toolbox"
           "raycast"

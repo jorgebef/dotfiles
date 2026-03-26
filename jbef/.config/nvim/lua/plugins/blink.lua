@@ -5,29 +5,7 @@ return {
   -- optional: provides snippets for the snippet source
   dependencies = {
     { "xzbdmw/colorful-menu.nvim" },
-    -- { "Kaiser-Yang/blink-cmp-avante" },
-    -- {
-    --   "zbirenbaum/copilot.lua",
-    --   opts = {
-    --     suggestion = {
-    --       enabled = true,
-    --       auto_trigger = false,
-    --       hide_during_completion = true,
-    --       debounce = 75,
-    --       trigger_on_accept = false,
-    --       keymap = {
-    --         accept = "<M-l>",
-    --         accept_word = false,
-    --         accept_line = false,
-    --         next = "<M-]>",
-    --         prev = "<M-[>",
-    --         dismiss = "<C-]>",
-    --       },
-    --     },
-    --   },
-    -- },
     { "L3MON4D3/LuaSnip", version = "v2.*" },
-    -- { "rafamadriz/friendly-snippets" },
   },
 
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -36,7 +14,6 @@ return {
   -- build = 'nix run .#build-plugin',
   config = function()
     local ui = require("config.ui")
-    local icons = require("mini.icons")
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -53,27 +30,24 @@ return {
         ["<C-u>"] = { "scroll_documentation_up" },
       },
 
-      enabled = function()
-        return not vim.tbl_contains({ "AvanteInput" }, vim.bo.filetype)
-      end,
-
       snippets = {
-        -- opts = {
-        -- friendly_snippets = true,
-        -- },
         preset = "luasnip",
       },
 
+      fuzzy = {
+        implementation = "prefer_rust_with_warning",
+      },
+
       completion = {
+        keyword = { range = "full" },
         -- trigger = { show_on_blocked_trigger_characters = {} },
         accept = {
+          auto_brackets = { enabled = false },
           create_undo_point = false,
         },
         -- trigger = { show_in_snippet = false },
         ghost_text = { enabled = true },
         list = {
-          -- Maximum number of items to display
-          max_items = 100,
           selection = {
             preselect = false,
             -- auto_insert = true,
@@ -84,13 +58,17 @@ return {
           auto_show = true,
           auto_show_delay_ms = 20,
           treesitter_highlighting = true,
-          window = { border = ui.border.Block },
+          window = {
+            -- border = ui.border.Block
+            border = ui.border.Empty,
+          },
         },
 
         menu = {
           enabled = true,
           max_height = 10,
-          border = ui.border.Block,
+          -- border = ui.border.Block,
+          border = ui.border.Empty,
           scrolloff = 2,
           direction_priority = { "s", "n" },
           -- Controls whether the completion window will automatically show when typing
@@ -150,54 +128,23 @@ return {
 
       sources = {
         default = {
-          -- "avante",
           "lazydev",
           "lsp",
           "path",
           "buffer",
-          -- "snippets",
+          "snippets",
           -- "copilot",
         },
         providers = {
+          lsp = {
+            opts = { tailwind_color_icon = "██" },
+          },
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
             -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
           },
-          -- avante = {
-          --   module = "blink-cmp-avante",
-          --   name = "Avante",
-          --   opts = {
-          --     -- options for blink-cmp-avante
-          --   },
-          -- },
-          -- lsp = {
-          --   name = "LSP",
-          --   module = "blink.cmp.sources.lsp",
-          --   min_keyword_length = 0,
-          --   async = true,
-          --   -- timeout_ms = 4000,
-          -- },
-          -- copilot = {
-          --   name = "copilot",
-          --   module = "blink-copilot",
-          --   score_offset = 100,
-          --   async = true,
-          --   opts = {
-          --     -- get_trigger_characters = { "@@" },
-          --     max_completions = 3,
-          --     max_attempts = 4,
-          --     kind_name = "Copilot", ---@type string | false
-          --     kind_icon = "", ---@type string | false
-          --     kind_hl = "MiniIconsBlue", ---@type string | false
-          --     debounce = 200, ---@type integer | false
-          --     auto_refresh = {
-          --       backward = true,
-          --       forward = true,
-          --     },
-          --   },
-          -- },
         },
       },
     }

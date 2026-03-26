@@ -113,7 +113,7 @@ vim.diagnostic.config({
   severity_sort = true,
   float = {
     focusable = false,
-    border = ui.border.Block,
+    border = ui.border.Empty,
     header = "",
     prefix = function(_diagnostic, i, total)
       return " " .. i .. "/" .. total .. " ", "Comment"

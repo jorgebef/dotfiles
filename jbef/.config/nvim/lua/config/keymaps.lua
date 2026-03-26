@@ -10,7 +10,7 @@ vim.keymap.set("n", "k", "gk", opts)
 vim.keymap.set("v", "k", "gk", opts)
 
 -- " =========================== FUNCTIONAL REMAPS =============================
-vim.keymap.set("v", "p", '"_dP', opts)
+-- vim.keymap.set("v", "p", '"_dP', opts)
 
 -- remap("n", "'", "`", ns_opts)
 -- remap("n", "'", ":WhichKey '", ns_opts)
@@ -69,9 +69,9 @@ vim.keymap.set("v", "<leader>R", '"hy:.,$s/<C-r>h//gc<Left><Left><Left>', { nore
 -- vim.keymap.set("n", "<leader>o", 'o<esc>0"_D<esc>', opts)
 -- vim.keymap.set("n", "<leader>O", 'O<esc>0"_D<esc>', opts)
 
--- buffer navigation
-vim.keymap.set("n", "<leader>bn", ":bn<cr>", opts)
-vim.keymap.set("n", "<leader>bp", ":bp<cr>", opts)
+-- -- buffer navigation
+-- vim.keymap.set("n", "<leader>bn", ":bn<cr>", opts)
+-- vim.keymap.set("n", "<leader>bp", ":bp<cr>", opts)
 
 vim.keymap.set("n", "<leader>bC", "<cmd>WipeWindowlessBufs<cr>", { desc = "Close all buffers that aren't shown" })
 

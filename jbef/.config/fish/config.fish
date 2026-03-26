@@ -11,7 +11,8 @@ set -gx VISUAL $EDITOR
 set -gx SUDO_EDITOR $EDITOR
 set -gx PNPM_HOME $HOME/Library/pnpm
 set -gx XDG_CONFIG_HOME $HOME/.config
-set -gx SSH_AUTH_SOCK "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+# set -gx SSH_AUTH_SOCK "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+set -gx SSH_AUTH_SOCK "$HOME/.bitwarden-ssh-agent.sock"
 set -gx NIX_PATH "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
 
 set -gx LDFLAGS -L/opt/homebrew/opt/ruby/lib
@@ -59,3 +60,8 @@ set fish_vi_force_cursor 1
 
 zoxide init fish | source
 starship init fish | source
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/jbef/.lmstudio/bin
+# End of LM Studio CLI section
+

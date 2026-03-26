@@ -1,5 +1,5 @@
 return {
-  "echasnovski/mini.nvim",
+  "nvim-mini/mini.nvim",
   dependendies = {
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
@@ -27,6 +27,21 @@ return {
       },
     })
 
+    require("mini.bufremove").setup()
+    vim.keymap.set("n", "<leader>bd", function()
+      require("mini.bufremove").delete(0, false)
+    end, { noremap = true, nowait = true, desc = "Delete current buffer" })
+
+    -- require("mini.diff").setup({
+    --   view = {
+    --     style = nil,
+    --     signs = { add = "│", change = "│", delete = "│" },
+    --   },
+    -- })
+    -- vim.keymap.set("n", "<leader>hp", function()
+    --   require("mini.diff").toggle_overlay()
+    -- end, { noremap = true, nowait = true, desc = "Toggle diff overlay" })
+
     require("mini.indentscope").setup({
       draw = {
         -- Delay (in ms) between event and start of drawing scope indicator
@@ -42,7 +57,6 @@ return {
       },
       symbol = "│",
     })
-
     vim.api.nvim_create_autocmd({ "FileType" }, {
       pattern = { "NvimTree", "dashboard", "undotree", "neo-tree-popup", "neo-tree", "fzf" },
       group = "MiniIndentscope",
@@ -52,10 +66,20 @@ return {
     })
 
     require("mini.icons").setup({
+      style = "glyph",
+      -- Customize per category. See `:h MiniIcons.config` for details.
       default = {
         ["Copilot"] = { glyph = "", hl = "MiniIconsRed" },
         ["copilot"] = { glyph = "", hl = "MiniIconsRed" },
       },
+      directory = {
+        ["components"] = { glyph = "󱋣", hl = "MiniIconsGrey" },
+      },
+      extension = {},
+      file = {},
+      filetype = {},
+      lsp = {},
+      os = {},
     })
     require("mini.icons").mock_nvim_web_devicons()
 

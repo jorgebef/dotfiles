@@ -9,6 +9,7 @@ return {
     smart_splits.setup({
       at_edge = "stop",
       default_amount = 2,
+      multiplexer_integration = "zellij",
     })
 
     -- moving between splits

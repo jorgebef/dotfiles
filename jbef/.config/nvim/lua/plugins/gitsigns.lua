@@ -1,44 +1,29 @@
 return {
   "lewis6991/gitsigns.nvim",
+  -- enabled = false,
   dependencies = {
     { "nvim-lua/plenary.nvim" },
   },
 
   config = function()
+    local ui = require("config.ui")
+
     require("gitsigns").setup({
       signs = {
         add = {
-          -- hl = "GitSignsAdd",
           text = "│",
-          -- numhl = "GitSignsAddNr",
-          -- linehl = "GitSignsAddLn",
         },
         change = {
-          -- hl = "GitSignsChange",
           text = "│",
-          -- numhl = "GitSignsChangeNr",
-          -- linehl = "GitSignsChangeLn",
         },
         delete = {
-          -- hl = "GitSignsDelete",
-          -- text = "_",
           text = "│",
-          -- numhl = "GitSignsDeleteNr",
-          -- linehl = "GitSignsDeleteLn",
         },
         topdelete = {
-          -- hl = "GitSignsDelete",
-          -- text = "‾",
           text = "│",
-          -- numhl = "GitSignsDeleteNr",
-          -- linehl = "GitSignsDeleteLn",
         },
         changedelete = {
-          -- hl = "GitSignsChange",
-          -- text = "~",
           text = "│",
-          -- numhl = "GitSignsChangeNr",
-          -- linehl = "GitSignsChangeLn",
         },
       },
 
@@ -87,11 +72,12 @@ return {
       max_file_length = 40000,
       preview_config = {
         -- Options passed to nvim_open_win
-        border = "single",
+        border = ui.border.Empty,
         style = "minimal",
+        -- width = 60,
         relative = "cursor",
-        row = 0,
-        col = 1,
+        row = 1,
+        col = 0,
       },
     })
   end,
@@ -101,14 +87,14 @@ return {
 
     return {
       {
-        "]c",
+        "]h",
         function()
           gs.nav_hunk("next")
         end,
         desc = "Goto next hunk",
       },
       {
-        "[c",
+        "[h",
         function()
           gs.nav_hunk("prev")
         end,

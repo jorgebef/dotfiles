@@ -25,7 +25,6 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 0
 
 # Possible values: tiles|accordion
-# default-root-container-layout = 'accordion'
 default-root-container-layout = 'tiles'
 
 # Possible values: horizontal|vertical|auto
@@ -93,10 +92,6 @@ outer.right =      10
 # end tell'
 # '''
 
-# # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-# alt-slash = 'layout tiles horizontal vertical'
-alt-slash = 'layout tiles horizontal vertical'
-
 alt-comma = 'workspace prev'
 alt-period = 'workspace next'
 
@@ -155,18 +150,23 @@ alt-semicolon = 'mode service'
 shift-r = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
-backspace = ['close-all-windows-but-current', 'mode main']
+# backspace = ['close-all-windows-but-current', 'mode main']
 alt-semicolon = 'mode main'
+
+# # See: https://nikitabobko.github.io/AeroSpace/commands#layout
+slash = 'layout tiles horizontal vertical'
+shift-slash = 'layout tiles accordion'
+
 
 [mode.normal.binding]
 alt-semicolon = 'mode main'
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
 
-alt-shift-h = ['join-with left', 'mode main']
-alt-shift-j = ['join-with down', 'mode main']
-alt-shift-k = ['join-with up', 'mode main']
-alt-shift-l = ['join-with right', 'mode main']
+# alt-shift-h = ['join-with left', 'mode main']
+# alt-shift-j = ['join-with down', 'mode main']
+# alt-shift-k = ['join-with up', 'mode main']
+# alt-shift-l = ['join-with right', 'mode main']
 
 
 # INFO: find app-id by running:
@@ -237,6 +237,17 @@ run = ['layout floating']
 if.app-id = 'com.1password.1password'
 run = ['layout floating']
 
+# Float Bitwarden windows
+[[on-window-detected]]
+if.app-id = 'com.bitwarden.desktop'
+run = ['layout floating']
+# Float BitWarden Chrome windows
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+# if.window-title-regex-substring = '^Bitwarden$'
+if.window-title-regex-substring = 'bitwarden'
+run = ['layout floating']
+
 # Float qBittorrent windows
 [[on-window-detected]]
 if.app-id = 'org.qbittorrent.qBittorrent'
@@ -245,4 +256,14 @@ run = ['layout floating']
 # Float qBittorrent windows
 [[on-window-detected]]
 if.app-id = 'com.apple.weather'
+run = ['layout floating']
+
+# Float qBittorrent windows
+[[on-window-detected]]
+if.app-id = 'app.yaak.desktop'
+run = ['layout floating']
+
+# Float qBittorrent windows
+[[on-window-detected]]
+if.app-id = 'ai.elementlabs.lmstudio'
 run = ['layout floating']

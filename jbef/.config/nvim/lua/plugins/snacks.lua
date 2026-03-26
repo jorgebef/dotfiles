@@ -384,7 +384,7 @@ return {
     --   desc = "Help Pages",
     -- },
     {
-      "<leader>sH",
+      "<leader>fH",
       function()
         Snacks.picker.highlights()
       end,
@@ -392,7 +392,7 @@ return {
     },
 
     {
-      "<leader>si",
+      "<leader>fi",
       function()
         Snacks.picker.icons({
           layout = {
@@ -405,7 +405,7 @@ return {
     },
 
     {
-      "<leader>sj",
+      "<leader>fj",
       function()
         Snacks.picker.jumps()
       end,
@@ -413,7 +413,7 @@ return {
     },
 
     {
-      "<leader>sK",
+      "<leader>fK",
       function()
         Snacks.picker.keymaps()
       end,
@@ -461,7 +461,7 @@ return {
     },
 
     {
-      "<leader>sr",
+      "<leader>fr",
       function()
         Snacks.picker.resume()
       end,
@@ -469,7 +469,7 @@ return {
     },
 
     {
-      "<leader>su",
+      "<leader>fu",
       function()
         Snacks.picker.undo()
       end,
@@ -477,7 +477,7 @@ return {
     },
 
     {
-      "<leader>uC",
+      "<leader>fC",
       function()
         Snacks.picker.colorschemes({
           finder = "vim_colorschemes",

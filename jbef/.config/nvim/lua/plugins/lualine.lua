@@ -54,13 +54,14 @@ function M.config()
   -- local palette = require("catppuccin.palettes").get_palette()
   -- local palette = require("kanso.colors").setup().palette
   -- local colors = require("kanagawa.colors").setup()
-  local colors = require("kanagawa.colors").setup()
-  local palette = colors.theme
+  -- local colors = require("kanagawa.colors").setup()
+  -- local palette = colors.theme
 
   require("lualine").setup({
     options = {
       icons_enabled = true,
       theme = "auto",
+      -- theme = "rose-pine",
       -- theme = "catppuccin",
       -- theme = "kanagawa",
       component_separators = "",
@@ -127,9 +128,8 @@ function M.config()
           path = 3,
           -- padding = { left = 100, right = 90 },
           padding = 2,
-          -- color = { fg = cp.subtext1, bg = cp.base },
-          -- color = { fg = c.fg_dark, bg = nil },
-          color = { fg = palette.ui.nontext },
+          -- color = { fg = palette.ui.nontext },
+          -- color = { fg = palette.subtext1 },
         },
       },
       lualine_x = {
@@ -143,7 +143,8 @@ function M.config()
             end
           end,
           color = function()
-            return { fg = vim.fn.reg_recording() ~= "" and palette.diag.error or palette.diag.error }
+            -- return { fg = vim.fn.reg_recording() ~= "" and palette.diag.error or palette.diag.error }
+            -- return { fg = vim.fn.reg_recording() ~= "" and palette.red or palette.red }
           end,
         },
         -- {
@@ -168,7 +169,8 @@ function M.config()
           cond = function()
             return vim.fn.mode():find("[Vv]") ~= nil
           end,
-          color = { fg = palette.ui.fg_dim },
+          -- color = { fg = palette.ui.fg_dim },
+          -- color = { fg = palette.overlay2 },
         },
       },
       lualine_y = {
@@ -203,7 +205,7 @@ function M.config()
           end,
           padding = { left = 1, right = 0 },
           -- color = { fg = palette.text, bg = "NONE" },
-          color = "WinBar",
+          color = "WinBarMuted",
         },
         {
           "filetype",
@@ -236,7 +238,7 @@ function M.config()
             end
           end,
           padding = { left = 1, right = 0 },
-          color = "WinBarNC",
+          color = "WinBarNCMuted",
         },
         {
           "filetype",

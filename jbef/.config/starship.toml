@@ -1,7 +1,6 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-
 # Link to style prompt:
 # https://starship.rs/config/#prompt
 
@@ -9,9 +8,38 @@
 command_timeout = 90000
 
 # # Inserts a blank line between shell prompts
-# add_newline = true
+add_newline = true
 
-format = "$all"
+# format = "$all"
+
+# format = """
+# [╭─](bold green)\
+# $nix_shell\
+# $username\
+# $hostname\
+# $localip\
+# $shlvl\
+# $directory\
+# $git_branch\
+# $git_commit\
+# $git_state\
+# $git_metrics\
+# $git_status\
+# $direnv\
+# $env_var\
+# $custom\
+# $cmd_duration\
+# $jobs\
+# $os\
+# $container\
+# $netns\
+# $shell \
+# $all\
+# $line_break\
+# [╰─](bold green)\
+# $character\
+# $status\
+# $sudo"""
 
 # format = '''
 # $directory$package$git_branch
@@ -20,43 +48,46 @@ format = "$all"
 
 # palette = "catppuccin_mocha"
 
-[palettes.catppuccin_mocha]
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"
-lavender = "#b4befe"
-text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-surface0 = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"
+# [palettes.catppuccin_mocha]
+# rosewater = "#f5e0dc"
+# flamingo = "#f2cdcd"
+# pink = "#f5c2e7"
+# mauve = "#cba6f7"
+# red = "#f38ba8"
+# maroon = "#eba0ac"
+# peach = "#fab387"
+# yellow = "#f9e2af"
+# green = "#a6e3a1"
+# teal = "#94e2d5"
+# sky = "#89dceb"
+# sapphire = "#74c7ec"
+# blue = "#89b4fa"
+# lavender = "#b4befe"
+# text = "#cdd6f4"
+# subtext1 = "#bac2de"
+# subtext0 = "#a6adc8"
+# overlay2 = "#9399b2"
+# overlay1 = "#7f849c"
+# overlay0 = "#6c7086"
+# surface2 = "#585b70"
+# surface1 = "#45475a"
+# surface0 = "#313244"
+# base = "#1e1e2e"
+# mantle = "#181825"
+# crust = "#11111b"
 
 [directory]
-# style = "red bold"
-style = "fg:blue bold"
-# truncation_length = 2
-truncation_length = 4
-# format = "[󰄛 ](mauve)[$path]($style) "
-format = "[󰄛 ](yellow)[$path]($style) "
 home_symbol = "~"
 truncate_to_repo = true
+fish_style_pwd_dir_length = 1
+before_repo_root_style = "fg:blue dimmed"
+repo_root_style = "fg:blue bold"
+style = "fg:blue"
+format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+# format = "[󰄛 ](yellow)[$path]($style) "
+# format = "[󰄛 ](yellow)[$path]($style) "
+# truncation_length = 2
+# truncation_length = 4
 # style = "bold bg:#313244 fg:white"
 # format = "[ $path ]($style)(bold bg:#313244 fg:#1E1E2E)[$read_only]($read_only_style)"
 #
@@ -72,6 +103,9 @@ truncate_to_repo = true
 # [line_break]
 # disabled = true
 
+[fill]
+symbol = ' '
+
 [character]
 success_symbol = "[❯](green)" # 
 vicmd_symbol = "[❮](purple)" # 
@@ -83,16 +117,15 @@ disabled = true
 [username]
 disabled = false
 
+[sudo]
+disabled = false
+format = '[ sudo: ](bold red_bright)'
+
 [hostname]
 disabled = true
 
 [aws]
 disabled = true
-
-[nodejs]
-symbol = " "
-style = "fg:green"
-format = "[$symbol($version) ]($style)"
 
 [docker_context]
 disabled = false
@@ -117,9 +150,11 @@ format = "[$symbol($version) ]($style)"
 
 [git_branch]
 symbol = "󰘬 "
-style = "fg:overlay2"
-format = "on [$symbol$branch(:$remote_branch) ]($style)"
+style = "fg:green"
+format = '[$symbol$branch(:$remote_branch)]($style) '
 disabled = false
+# # format = "on [$symbol$branch(:$remote_branch) ]($style)"
+# format = '[$symbol$branch(:$remote_branch)](bold magenta_bright dimmed)'
 
 [git_commit]
 disabled = true
@@ -134,8 +169,8 @@ disabled = true
 disabled = true
 
 [cmd_duration]
-disabled = true
+# disabled = true
 # min_time = 1
-# # show_milliseconds = false
-# style = "italic fg:#737c73"
-# format = "[$duration]($style)"
+show_milliseconds = true
+style = "italic fg:#737c73"
+format = "[$duration]($style)"

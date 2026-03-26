@@ -26,6 +26,7 @@ return {
         -- publish_diagnostic_on = "insert_leave",
         -- documentRangeFormatting = false,
         root_dir = function(...)
+          -- return require("lspconfig.util").root_pattern(".git")(...)
           return require("lspconfig.util").root_pattern(".git")(...)
         end,
       },

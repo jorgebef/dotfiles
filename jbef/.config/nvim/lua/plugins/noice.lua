@@ -15,39 +15,19 @@ return {
     local ui = require("config.ui")
 
     require("noice").setup({
-      notify = {
-        enabled = false,
-      },
+      notify = { enabled = false },
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
           -- override the default lsp markdown formatter with Noice
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           -- override the lsp markdown formatter with Noice
-          ["vim.lsp.util.stylize_markdown"] = false,
+          ["vim.lsp.util.stylize_markdown"] = true,
           -- override cmp documentation with Noice (needs the other options to work)
-          ["cmp.entry.get_documentation"] = false,
-        },
-        hover = {
-          enabled = true,
-          silent = false, -- set to true to not show a message if hover is not available
-          view = nil, -- when nil, use defaults from documentation
-          border = {
-            style = ui.border.Block,
-            border = ui.border.Block,
-            -- border = ui.border.LSPBlock,
-          },
-          ---@type NoiceViewOptions
-          opts = {
-            border = {
-              style = ui.border.Block,
-            },
-            win_options = {
-              winhighlight = "FloatBorder:FloatBorder",
-            },
-          }, -- merged with defaults from documentation
+          ["cmp.entry.get_documentation"] = true,
         },
       },
+      -- documentation = { opts = { border = ui.border.Empty } },
       -- you can enable a preset for easier configuration
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
@@ -55,6 +35,18 @@ return {
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = true, -- add a border to hover docs and signature help
+      },
+      ---@type NoiceConfigViews
+      views = {
+        hover = {
+          border = { style = ui.border.Empty },
+          size = {
+            width = "auto",
+            height = "auto",
+            max_height = 40,
+            max_width = 120,
+          },
+        },
       },
     })
   end,

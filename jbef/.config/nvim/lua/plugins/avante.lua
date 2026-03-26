@@ -1,17 +1,18 @@
 return {
   "yetone/avante.nvim",
   enabled = false,
-  event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = "make",
+  -- ⚠️ must add this setting! ! !
+  build = vim.fn.has("win32") ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+    or "make",
+  event = "VeryLazy",
   dependencies = {
-    "nvim-treesitter/nvim-treesitter",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
-    "folke/snacks.nvim", -- for file_selector provider snacks
     "stevearc/dressing.nvim", -- for input provider dressing
+    "folke/snacks.nvim", -- for input provider snacks
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
@@ -40,13 +41,19 @@ return {
   ---@module 'avante'
   ---@type avante.Config
   opts = {
-    provider = "gemini", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
+    -- provider = "gemini", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
     -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
     -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
     -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
     -- auto_suggestions_provider = "copilot",
+    provider = "opencode",
+    acp_providers = {
+      ["opencode"] = {
+        command = "opencode",
+        args = { "acp" },
+      },
+    },
     providers = {
-      ---@type AvanteSupportedProvider
       gemini = {
         endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
         -- model = "gemini-2.0-flash",

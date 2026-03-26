@@ -3,9 +3,9 @@ return {
   lazy = false,
   enabled = true,
   priority = 1000,
-
   config = function()
     require("kanagawa").setup({
+      undercurl = true,
       compile = false, -- enable compiling the colorscheme
       -- transparent = false,
       keywordStyle = { bold = false },
@@ -39,19 +39,16 @@ return {
 
           -- DiagnosticUnnecessary = { fg = "NONE", undercurl = true, sp = theme.diag.info },
 
-          -- NotifyBackground = { bg = theme.ui.bg },
-
           NormalFloat = { fg = theme.ui.fg, bg = theme.ui.bg_p1 },
           FloatBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_p1 },
+          NoicePopupBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_p1 },
 
-          -- WinSeparator = { fg = theme.ui.bg_p1 },
           WinSeparator = { fg = palette.sumiInk5 },
 
-          -- ColorColumn = { bg = colors.palette.sumiInk1 },
+          ColorColumn = { bg = colors.palette.sumiInk1 },
 
           -- NavicText = { fg = theme.ui.fg_dim },
 
-          -- WinbarFilenameActive = { fg = theme.ui.fg, bg = theme.ui.bg },
           WinBar = { fg = theme.ui.fg, bg = theme.ui.bg },
           WinBarNC = { fg = theme.syn.comment, bg = theme.ui.bg },
 
@@ -61,6 +58,6 @@ return {
       end,
     })
 
-    vim.cmd([[colorscheme kanagawa-wave]])
+    vim.cmd([[colorscheme kanagawa]])
   end,
 }

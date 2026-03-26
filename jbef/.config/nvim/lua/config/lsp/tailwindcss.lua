@@ -1,7 +1,21 @@
 vim.lsp.config.tailwindcss = {
-  cmd = { "tailwindcss-language-server", "--stdio" },
+  -- cmd = {
+  --   "pnpm",
+  --   "/Users/jbef/Library/pnpm/tailwindcss-language-server",
+  --   "--stdio",
+  -- },
   settings = {
     tailwindCSS = {
+      validate = true,
+      lint = {
+        cssConflict = "warning",
+        invalidApply = "error",
+        invalidConfigPath = "error",
+        invalidScreen = "error",
+        invalidTailwindDirective = "error",
+        invalidVariant = "error",
+        recommendedVariantOrder = "warning",
+      },
       classAttributes = {
         "class",
         "clsx",
@@ -13,16 +27,6 @@ vim.lsp.config.tailwindcss = {
         "imgClassName",
         "videoClassName",
       },
-      lint = {
-        cssConflict = "warning",
-        invalidApply = "error",
-        invalidConfigPath = "error",
-        invalidScreen = "error",
-        invalidTailwindDirective = "error",
-        invalidVariant = "error",
-        recommendedVariantOrder = "warning",
-      },
-      validate = true,
       classFunctions = { "class", "clsx", "cva", "className", "classList", "cn" },
     },
   },
