@@ -41,7 +41,7 @@
         pkgs.go
         pkgs.imagemagick
         pkgs.lazygit
-        # pkgs.neovim
+        pkgs.nixd
         # pkgs.ollama
         # pkgs.pnpm
         # pkgs.raycast
@@ -103,6 +103,7 @@
           "starship"
           "tmux"
           "tree-sitter"
+          "tree-sitter-cli"
           "tw93/tap/mole"
           "wget"
           "woff2"
@@ -124,7 +125,6 @@
           "iina"
           "jordanbaird-ice"
           "libreoffice"
-          "obsidian"
           # "ollama-app"
           "qbittorrent"
           "qmk-toolbox"

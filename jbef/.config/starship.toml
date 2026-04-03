@@ -106,6 +106,10 @@ format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_st
 [fill]
 symbol = ' '
 
+[env_var]
+variable = "FOCUSED_SHELL"
+format = "[variable](purple)"
+
 [character]
 success_symbol = "[❯](green)" # 
 vicmd_symbol = "[❮](purple)" # 
@@ -117,9 +121,9 @@ disabled = true
 [username]
 disabled = false
 
-[sudo]
-disabled = false
-format = '[ sudo: ](bold red_bright)'
+# [sudo]
+# disabled = false
+# format = '[ sudo: ](bold red_bright)'
 
 [hostname]
 disabled = true

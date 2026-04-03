@@ -1,5 +1,5 @@
-vim.lsp.config("nil_ls", {
-  cmd = { "nil" },
+vim.lsp.config("nixd", {
+  cmd = { "nixd" },
   filetypes = { "nix" },
   root_markers = {
     "flake.nix",
@@ -7,4 +7,4 @@ vim.lsp.config("nil_ls", {
   },
 })
 
-vim.lsp.enable("nil_ls")
+vim.lsp.enable("nixd")

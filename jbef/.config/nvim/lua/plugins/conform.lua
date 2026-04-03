@@ -23,7 +23,7 @@ function M.config()
       lua = { "stylua" },
       markdown = { "biome", "biome-check" },
       ["markdown.mdx"] = { "biome", "biome-check" },
-      nix = { "alejandra" },
+      -- nix = { "alejandra" },
       -- php = { "" },
       sh = { "shfmt" },
       typescript = { "biome", "biome-check" },
