@@ -1,0 +1,8 @@
+{
+  "lastChangelogVersion": "0.70.2",
+  "defaultProvider": "lmstudio",
+  "defaultModel": "qwen/qwen3.6-27b",
+  "packages": [
+    "npm:pi-vim"
+  ]
+}
