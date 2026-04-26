@@ -74,17 +74,6 @@ keybind = ctrl+shift+h=text:⇇
 keybind = ctrl+shift+j=text:⇊
 keybind = ctrl+shift+k=text:⇈
 keybind = ctrl+shift+l=text:⇉
-
-# keybind = cmd+h=goto_split:left
-# keybind = cmd+j=goto_split:down
-# keybind = cmd+k=goto_split:up
-# keybind = cmd+l=goto_split:right
-# keybind = cmd+'=toggle_split_zoom
-# keybind = cmd+;=toggle_quick_terminal
-# keybind = cmd+shift+h=resize_split:left,20
-# keybind = cmd+shift+j=resize_split:down,20
-# keybind = cmd+shift+k=resize_split:up,20
-# keybind = cmd+shift+l=resize_split:right,20
 # # ////////////////////////////////////////////////////////
 
 
@@ -99,8 +88,7 @@ keybind = unconsumed:ctrl+shift+a=reload_config
 # theme = vague.conf
 # theme = nordic.conf
 # theme = nord
-# theme = Rose Pine
 # theme = Vague
+# theme = Rose Pine
 theme = Kanagawa Wave
 # theme = Catppuccin Mocha
-# theme = custom-catppuccin.conf
