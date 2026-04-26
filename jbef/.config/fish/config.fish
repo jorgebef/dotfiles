@@ -17,8 +17,15 @@ set -gx NIX_PATH "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/chan
 
 set -gx LDFLAGS -L/opt/homebrew/opt/ruby/lib
 set -gx CPPFLAGS -I/opt/homebrew/opt/ruby/include
+set -gx CPPFLAGS "-I/opt/homebrew/opt/openjdk/include"
 # set -gx PKG_CONFIG_PATH /opt/homebrew/opt/ruby/lib/pkgconfig
 set -gx PKG_CONFIG_PATH /opt/homebrew/bin/pkg-config
+
+# set -gx JAVA_HOME "/Applications/Android Studio.app/Contents/jbr/Contents/Home/"
+# set -gx JAVA_HOME "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/"
+set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+set -gx ANDROID_HOME "$HOME/Library/Android/sdk"
+
 
 fish_add_path /opt/homebrew/bin # Add brew to $PATH
 fish_add_path /opt/homebrew/opt/ruby/bin
@@ -33,7 +40,11 @@ fish_add_path "$HOME/.venv/bin" # Add uv venv path to $PATH
 fish_add_path "$HOME/.bun/bin"
 fish_add_path "/Applications/Postgres.app/Contents/Versions/latest/bin"
 fish_add_path "/run/current-system/sw/bin" # System-wide binaries managed by NixOS
+# fish_add_path "/opt/homebrew/opt/openjdk/bin/"
+fish_add_path "$HOME/Library/Android/sdk/emulator"
+fish_add_path "$HOME/Library/Android/sdk/platform-tools"
 # fish_add_path "$HOME/Library/CloudStorage/Dropbox/JORGE/Peninsula Studio/01 Documents & info/bin" # Add custom bin folder path to $PATH
+
 
 # function fish_greeting
 #   # pokemon-colorscripts -r --no-title
