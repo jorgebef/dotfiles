@@ -26,8 +26,6 @@ return {
         local theme = colors.theme
 
         return {
-          -- NoiceFormatConfirm = { bg = theme.ui.bg },
-
           Pmenu = { fg = theme.ui.fg, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
           PmenuSel = { fg = "NONE", bg = theme.ui.pmenu.bg_sel },
           PmenuSbar = { bg = theme.ui.bg_m1 },
@@ -37,17 +35,13 @@ return {
           BlinkCmpDocBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
           BlinkCmpDocSeparator = { fg = theme.ui.bg_m1, bg = theme.ui.bg_p1 },
 
-          -- DiagnosticUnnecessary = { fg = "NONE", undercurl = true, sp = theme.diag.info },
-
           NormalFloat = { fg = theme.ui.fg, bg = theme.ui.bg_p1 },
           FloatBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_p1 },
           NoicePopupBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_p1 },
 
           WinSeparator = { fg = palette.sumiInk5 },
 
-          ColorColumn = { bg = colors.palette.sumiInk1 },
-
-          -- NavicText = { fg = theme.ui.fg_dim },
+          -- ColorColumn = { bg = colors.palette.sumiInk1 },
 
           WinBar = { fg = theme.ui.fg, bg = theme.ui.bg },
           WinBarNC = { fg = theme.syn.comment, bg = theme.ui.bg },
