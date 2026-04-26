@@ -176,5 +176,5 @@ disabled = true
 # disabled = true
 # min_time = 1
 show_milliseconds = true
-style = "italic fg:#737c73"
+style = "italic fg:bright-black"
 format = "[$duration]($style)"
