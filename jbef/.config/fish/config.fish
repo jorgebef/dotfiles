@@ -29,7 +29,7 @@ set -gx ANDROID_HOME "$HOME/Library/Android/sdk"
 
 fish_add_path /opt/homebrew/bin # Add brew to $PATH
 fish_add_path /opt/homebrew/opt/ruby/bin
-fish_add_path /usr/local/bin/ # Add local bin to $PATH
+# fish_add_path /usr/local/bin/ # Add local bin to $PATH
 fish_add_path "$HOME/.config/bin/" # Add custom bin to $PATH
 fish_add_path "$HOME/.config/skhd/bin/" # Add custom bin to $PATH
 fish_add_path "$HOME/.cargo/bin/" # Add cargo bin to $PATH
@@ -76,3 +76,10 @@ starship init fish | source
 set -gx PATH $PATH /Users/jbef/.lmstudio/bin
 # End of LM Studio CLI section
 
+
+# pnpm
+set -gx PNPM_HOME "/Users/jbef/Library/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end

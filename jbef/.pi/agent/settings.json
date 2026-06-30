@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.70.2",
+  "lastChangelogVersion": "0.70.5",
   "defaultProvider": "lmstudio",
   "defaultModel": "qwen/qwen3.6-27b",
   "packages": [

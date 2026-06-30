@@ -89,6 +89,7 @@ keybind = unconsumed:ctrl+shift+a=reload_config
 # theme = nordic.conf
 # theme = nord
 # theme = Vague
-# theme = Rose Pine
-theme = Kanagawa Wave
+theme = Rose Pine Moon
+# theme = Kanagawa Wave
+# theme = ember-soft.conf
 # theme = Catppuccin Mocha
