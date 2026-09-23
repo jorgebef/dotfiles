@@ -87,7 +87,7 @@ keybinds clear-defaults=true {
         bind "Ctrl ." { GoToNextTab; }
         bind "Ctrl b" { SwitchToMode "normal"; }
 
-        bind "þ" {
+        bind "Ctrl ;" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
                 move_to_focused_tab true

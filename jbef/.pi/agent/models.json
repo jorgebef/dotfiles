@@ -1,10 +1,31 @@
 {
 	"providers": {
+		"omlx": {
+			"baseUrl": "http://localhost:8000/v1",
+			"apiKey": "sk-omlx-6gqySUKSgggNagzhWhtRDKde",
+			"autoDiscover": true
+		},
 		"lmstudio": {
 			"baseUrl": "http://localhost:1234/v1",
+			"apiKey": "sk-lm-gGvcxceb:jcHbn7k0guTcfJ5crvaR",
 			"api": "openai-completions",
-			"apiKey": "ollama",
-			"models": [{ "id": "qwen/qwen3.6-27b" }, { "id": "unsloth/qwen3.6-27b" }]
+			"models": [
+				{
+					"id": "qwen3.8-27b@q6_k_xl",
+					"name": "Qwen 3.8 27b MTP GGUF - Q6",
+					"contextWindow": 62000
+				},
+				{
+					"id": "qwen/qwen3.8-27b",
+					"name": "Qwen 3.8 27b MLX - Q6",
+					"contextWindow": 62000
+				},
+				{
+					"id": "qwen3.6-35b-a3b",
+					"name": "Qwen 3.6 35b A3b - Q6",
+					"contextWindow": 80128
+				}
+			]
 		}
 	}
 }

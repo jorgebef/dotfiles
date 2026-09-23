@@ -81,6 +81,7 @@ return {
       lsp = {},
       os = {},
     })
+
     require("mini.icons").mock_nvim_web_devicons()
 
     require("mini.comment").setup({

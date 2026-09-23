@@ -50,7 +50,8 @@ background-opacity = 1
 # gtk-titlebar = false
 window-decoration = auto
 window-padding-balance = true
-window-padding-x = 5
+window-padding-x = 2
+window-padding-y = 2
 macos-titlebar-style = hidden
 macos-icon = blueprint
 # macos-icon = custom-style
@@ -65,15 +66,15 @@ quick-terminal-size = 50%,80%
 # ////////////////////////////////////////////////////////
 # /////////////// CUSTOM KEYBINDINGS /////////////////////
 # ////////////////////////////////////////////////////////
-keybind = ctrl+;=text:þ
+# keybind = ctrl+;=text:þ
 # keybind = ctrl+shift+;=text:★
 keybind = ctrl+'=text:Ω
 keybind = ctrl+shift+'=text:★
 # keybind = ctrl+m=text:Ω
-keybind = ctrl+shift+h=text:⇇
-keybind = ctrl+shift+j=text:⇊
-keybind = ctrl+shift+k=text:⇈
-keybind = ctrl+shift+l=text:⇉
+# keybind = ctrl+shift+h=text:⇇
+# keybind = ctrl+shift+j=text:⇊
+# keybind = ctrl+shift+k=text:⇈
+# keybind = ctrl+shift+l=text:⇉
 # # ////////////////////////////////////////////////////////
 
 

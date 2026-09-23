@@ -1,5 +1,81 @@
 onboarding = false
-[theme]
+
+[keys]
 prefix = "ctrl+f"
+# goto = "ctrl+;"
+previous_tab = "ctrl+,"
+next_tab = "ctrl+."
+toggle_sidebar = "ctrl+b"
+navigate_pane_left = "ctrl+h"
+navigate_pane_right = "ctrl+l"
+navigate_pane_down = "ctrl+j"
+navigate_pane_up = "ctrl+k"
+
+[theme]
 name = "rose-pine"
 auto_switch = false
+
+[ui]
+pane_gaps = true
+show_agent_labels_on_pane_borders = true
+sidebar_collapsed_mode = "hidden"
+sidebar_start_collapsed = true
+sidebar_width = 32
+sidebar_min_width = 18
+sidebar_max_width = 36
+pane_borders = true
+pane_outer_borders = true
+
+[[keys.command]]
+key = "prefix+ctrl+g"
+type = "popup"
+command = "lazygit"
+description = "run lazygit"
+width = "70%"
+height = "70%"
+
+[[keys.command]]
+key = "ctrl+;"
+type = "plugin_action"
+command = "herdr-navigator.open"
+description = "jump to anything"
+
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "herdr-splits.nav-left"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "herdr-splits.nav-down"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "herdr-splits.nav-up"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "herdr-splits.nav-right"
+
+[[keys.command]]
+key = "ctrl+shift+h"
+type = "plugin_action"
+command = "herdr-splits.resize-left"
+
+[[keys.command]]
+key = "ctrl+shift+j"
+type = "plugin_action"
+command = "herdr-splits.resize-down"
+
+[[keys.command]]
+key = "ctrl+shift+k"
+type = "plugin_action"
+command = "herdr-splits.resize-up"
+
+[[keys.command]]
+key = "ctrl+shift+l"
+type = "plugin_action"
+command = "herdr-splits.resize-right"

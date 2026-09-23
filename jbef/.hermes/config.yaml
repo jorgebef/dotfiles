@@ -1,5 +1,5 @@
 model:
-  default: ornith-1.0-35b
+  default: qwen/qwen3.8-27b
   provider: lmstudio
 fallback_providers: []
 toolsets:
@@ -116,8 +116,8 @@ checkpoints:
   max_file_size_mb: 10
   auto_prune: true
   retention_days: 7
-  delete_orphans: true
   min_interval_hours: 24
+  delete_orphans: true
 file_read_max_chars: 100000
 mcp_discovery_timeout: 1.5
 tool_output:
@@ -145,17 +145,6 @@ compression:
   abort_on_summary_failure: false
   codex_gpt55_autoraise: true
   in_place: false
-kanban:
-  dispatch_in_gateway: true
-  dispatch_interval_seconds: 60
-  failure_limit: 2
-  worker_log_rotate_bytes: 2097152
-  worker_log_backup_count: 1
-  orchestrator_profile: ''
-  default_assignee: ''
-  auto_decompose: true
-  auto_decompose_per_tick: 3
-  dispatch_stale_timeout_seconds: 14400
 prompt_caching:
   cache_ttl: 5m
 openrouter:
@@ -341,7 +330,7 @@ display:
   cleanup_progress: false
   long_running_notifications: true
   busy_ack_detail: true
-  background_process_notifications: all
+  background_process_notifications: concise
 dashboard:
   theme: default
   show_token_analytics: false
@@ -438,7 +427,6 @@ delegation:
   child_timeout_seconds: 0
   reasoning_effort: ''
   max_concurrent_children: 3
-  max_async_children: 3
   max_spawn_depth: 1
   orchestrator_enabled: true
   subagent_auto_approve: false
@@ -458,10 +446,10 @@ moa:
       aggregator:
         provider: openrouter
         model: anthropic/claude-opus-4.8
-      reference_temperature: 0.6
-      aggregator_temperature: 0.4
       max_tokens: 4096
       enabled: true
+      reference_temperature: 0.6
+      aggregator_temperature: 0.4
 skills:
   external_dirs: []
   template_vars: true
@@ -572,6 +560,17 @@ cron:
   wrap_response: true
   mirror_delivery: false
   output_retention: 50
+kanban:
+  dispatch_in_gateway: true
+  dispatch_interval_seconds: 60
+  failure_limit: 2
+  worker_log_rotate_bytes: 2097152
+  worker_log_backup_count: 1
+  orchestrator_profile: ''
+  default_assignee: ''
+  auto_decompose: true
+  auto_decompose_per_tick: 3
+  dispatch_stale_timeout_seconds: 14400
 code_execution:
   mode: project
   timeout: 300
@@ -648,7 +647,7 @@ paste_collapse_threshold_fallback: 5
 paste_collapse_char_threshold: 2000
 computer_use:
   cua_telemetry: false
-_config_version: 31
+_config_version: 35
 session_reset:
   mode: both
   idle_minutes: 1440

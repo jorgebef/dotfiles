@@ -8,26 +8,6 @@ local M = {}
 if wezterm.config_builder then
   M.config = wezterm.config_builder()
 end
-local USE_MULTIPLEXER = true
-
-local new_sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
-new_sessionizer.apply_to_config(M.config, true)
-
--- you can also list multiple paths
-new_sessionizer.config.paths = "/Users/jbef/Developer/Clients"
-
-M.config.keys = {
-  {
-    key = "'",
-    mods = "CTRL",
-    action = new_sessionizer.show,
-  },
-  {
-    key = "r",
-    mods = "ALT|SHIFT",
-    action = new_sessionizer.switch_to_most_recent,
-  },
-}
 
 M.config.term = "wezterm"
 
@@ -39,50 +19,10 @@ M.config.unix_domains = {
 }
 -- https://wezfurlong.org/wezterm/config/lua/config/default_domain.html
 
-if USE_MULTIPLEXER == false then
-  M.config.default_domain = "jbef.mbp16"
-end
-
-local function isViProcess(pane)
-  local prog = pane:get_user_vars()["WEZTERM_PROG"]
-  return prog:match("^nvim") or prog:match("^v")
-end
-
-local function conditionalActivatePane(window, pane, pane_direction, vim_direction)
-  if isViProcess(pane) then
-    window:perform_action(
-      -- This should match the keybinds you set in Neovim.
-      wezterm.action.SendKey({ key = vim_direction, mods = "CTRL" }),
-      pane
-    )
-  else
-    window:perform_action(wezterm.action.ActivatePaneDirection(pane_direction), pane)
-  end
-end
-
-wezterm.on("ActivatePaneDirection-right", function(window, pane)
-  conditionalActivatePane(window, pane, "Right", "l")
-end)
-wezterm.on("ActivatePaneDirection-left", function(window, pane)
-  conditionalActivatePane(window, pane, "Left", "h")
-end)
-wezterm.on("ActivatePaneDirection-up", function(window, pane)
-  conditionalActivatePane(window, pane, "Up", "k")
-end)
-wezterm.on("ActivatePaneDirection-down", function(window, pane)
-  conditionalActivatePane(window, pane, "Down", "j")
-end)
-
--- config.color_scheme = "Catppuccin Mocha"
-M.config.colors = require("user.nordic").colors
--- config.colors = require("user.kanagawa-dragon").colors
--- config.colors = require("user.kanagawa-groove").colors
--- config.color_scheme = "nordfox"
-
 M.config.font = wezterm.font({
-  family = "Jetbrains Mono",
+  family = "JetBrains Mono",
 })
-M.config.font_size = 14.5
+M.config.font_size = 14
 -- config.cell_width = 1.05
 
 -- config.font_rules = {
@@ -109,8 +49,8 @@ M.config.font_size = 14.5
 -- config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 -- harfbuzz_features = { "calt", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
 -- config.line_height = 1.05 -- specific for FiraCode font
-M.config.underline_thickness = 2 -- specific for FiraCode font
-M.config.underline_position = -6 -- specific for FiraCode font
+-- M.config.underline_thickness = 2 -- specific for FiraCode font
+-- M.config.underline_position = -6 -- specific for FiraCode font
 -- config.max_fps = 120
 M.config.max_fps = 240
 -- config.front_end = "WebGpu"
@@ -124,11 +64,6 @@ M.config.window_decorations = "RESIZE"
 M.config.window_background_opacity = 1
 -- config.window_background_opacity = 0.98
 -- config.macos_window_background_blur = 0
-if USE_MULTIPLEXER then
-  M.config.hide_tab_bar_if_only_one_tab = true
-else
-  M.config.hide_tab_bar_if_only_one_tab = false
-end
 
 M.config.window_padding = {
   left = 5,
@@ -178,39 +113,6 @@ M.config.status_update_interval = 1000
 -- desired letter, which is essential in Español!!
 -- ==================================================================================
 M.config.send_composed_key_when_left_alt_is_pressed = true
--- ==================================================================================
-
-local move_around = function(window, pane, direction_wez, direction_nvim)
-  if pane:get_title():sub(-4) == "NVIM" then
-    window:perform_action(act.SendString(direction_nvim), pane)
-  else
-    window:perform_action(act.ActivatePaneDirection(direction_wez), pane)
-  end
-end
-
-if USE_MULTIPLEXER == false then
-  wezterm.on("move-left", function(window, pane)
-    move_around(window, pane, "Left", "\x08") -- for nvim, use unicode to send Ctrl+h
-  end)
-  wezterm.on("move-right", function(window, pane)
-    move_around(window, pane, "Right", "\x0C") -- for nvim, use unicode to send Ctrl+l
-  end)
-  wezterm.on("move-up", function(window, pane)
-    move_around(window, pane, "Up", "\x0B") -- for nvim, use unicode to send Ctrl+k
-  end)
-  wezterm.on("move-down", function(window, pane)
-    move_around(window, pane, "Down", "\x0A") -- for nvim, use unicode to send Ctrl+j
-  end)
-end
-
--- ==================================================================================
--- Here we set the leader based on whether we have set the flag USE_MULTIPLEXER or not
--- ==================================================================================
-if USE_MULTIPLEXER then
-  M.config.leader = { key = "b", mods = "CTRL|ALT", timeout_milliseconds = 1000 }
-else
-  M.config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
-end
 -- ==================================================================================
 
 -- ==================================================================================
@@ -335,21 +237,7 @@ M.wezterm_multiplex_keys = {
   },
 }
 
--- Common keymaps whether using TMUX or not
-for _, k in pairs(M.common_keys) do
-  table.insert(M.config.keys, k)
-end
-
--- Keymaps specific to using TMUX or not
-if USE_MULTIPLEXER then
-  for _, k in pairs(M.tmux_keys) do
-    table.insert(M.config.keys, k)
-  end
-else
-  for _, k in pairs(M.wezterm_multiplex_keys) do
-    table.insert(M.config.keys, k)
-  end
-end
--- ==================================================================================
+-- local theme = wezterm.plugin.require("https://github.com/neapsix/wezterm").main
+M.config.color_scheme = "rose-pine-moon"
 
 return M.config

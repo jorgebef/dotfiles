@@ -1,12 +1,13 @@
 lastupdatecheck: 0
 recentrepos:
     - /Users/jbef/Documents/dotfiles
+    - /Users/jbef/Documents/spainupdate.com
+    - /Users/jbef/Documents/peninsula-legal
+    - /Users/jbef/Developer/dotfiles
     - /Users/jbef/Documents/out-of-office-experiences
     - /Users/jbef/Documents/costalink
-    - /Users/jbef/Documents/ember-theme/ghostty
     - /Users/jbef/Documents/swedent.com
     - /Users/jbef/Documents/multnomahfalls-com
-    - /Users/jbef/Documents/spainupdate.com
     - /Users/jbef/Documents/selecciona-rrhh
     - /Users/jbef/Documents/peninsula.studio
     - /Users/jbef/Documents/dominicania
@@ -15,7 +16,6 @@ recentrepos:
     - /Users/jbef/Developer/Clients/swedent.com
     - /Users/jbef/Developer/side-projects/spainupdate.com
     - /Users/jbef/Developer/Clients/multnomahfalls-com
-    - /Users/jbef/Developer/dotfiles
     - /Users/jbef/Developer/Clients/Guido-Audisio
     - /Users/jbef/Developer/Clients/old_swedent.com
     - /Users/jbef/Developer/portfolio-work/brand-direction-studio
@@ -23,7 +23,6 @@ recentrepos:
     - /Users/jbef/Developer/chia.nvim
 startuppopupversion: 5
 didshowhunkstaginghint: true
-lastversion: 0.62.2
+lastversion: 0.64.1
 customcommandshistory: []
 hidecommandlog: false
-githubPullRequests: {}

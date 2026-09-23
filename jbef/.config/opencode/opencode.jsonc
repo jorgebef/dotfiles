@@ -4,18 +4,19 @@
 		"lmstudio": {
 			"npm": "@ai-sdk/openai-compatible",
 			"name": "LM Studio (local)",
+			"api": "sk-lm-gGvcxceb:jcHbn7k0guTcfJ5crvaR",
 			"options": {
 				"baseURL": "http://localhost:1234/v1"
 			},
 			"models": {
-				// "qwen3.5-35b:a3b (LM Studio)": {
-				// 	"name": "Qwen3.5-35B: a3b-35b (local)"
+				// "ornith-1.0-35b": {
+				// 	"name": "ornith-1.0-35b"
 				// },
+				"qwen3.6-26b": {
+					"name": "Qwen3.6-27B"
+				},
 				"qwen3.6-35b-A3b": {
 					"name": "Qwen3.6-35B: A3B"
-				},
-				"gemma-4-31b-it": {
-					"name": "Gemma 4: 31B"
 				}
 			}
 		}

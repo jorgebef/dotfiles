@@ -1,8 +1,121 @@
 {
-  "lastChangelogVersion": "0.79.3",
-  "defaultProvider": "lmstudio",
-  "defaultModel": "qwen/qwen3.6-27b",
+  "lastChangelogVersion": "0.87.1",
+  "defaultProvider": "localllm-omlx",
+  "defaultModel": "Qwen3.8-27B-oQ6e-mtp",
   "packages": [
-    "npm:pi-vim"
-  ]
+    "npm:@llblab/pi-telegram",
+    "npm:pi-web-access",
+    "npm:pi-token-speed",
+    "npm:telegram-pi",
+    "npm:pi-localllm-provider"
+  ],
+  "defaultThinkingLevel": "medium",
+  "theme": "dark",
+  "localllm": {
+    "servers": [
+      {
+        "id": "0xqitn",
+        "name": "Unsloth Studio",
+        "baseUrl": "http://127.0.0.1:8888/v1",
+        "apiKey": "sk-unsloth-9dc5c7be83dc655d44424b3991718bad",
+        "apiType": "openai",
+        "models": [
+          {
+            "id": "unsloth/Qwen3.8-27B-GGUF",
+            "name": "Qwen3.8-27B-GGUF",
+            "contextWindow": 32768,
+            "maxTokens": 8192,
+            "reasoning": false,
+            "input": [
+              "text"
+            ]
+          },
+          {
+            "id": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
+            "name": "Qwen3.6-35B-A3B-MTP-GGUF",
+            "contextWindow": 32768,
+            "maxTokens": 8192,
+            "reasoning": false,
+            "input": [
+              "text"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "kpbbzg",
+        "name": "Llama.cpp",
+        "baseUrl": "http://127.0.0.1:8080/v1",
+        "apiKey": "",
+        "apiType": "llamacpp",
+        "models": [
+          {
+            "id": "Qwen3.8-27B-UD-Q6_K_XL",
+            "name": "Qwen3.8-27B-UD-Q6_K_XL",
+            "contextWindow": 32768,
+            "maxTokens": 8192,
+            "reasoning": false,
+            "input": [
+              "text"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "kmpdyh",
+        "name": "oMLX",
+        "baseUrl": "http://127.0.0.1:8000/v1",
+        "apiKey": "sk-omlx-6gqySUKSgggNagzhWhtRDKde",
+        "apiType": "omlx",
+        "models": [
+          {
+            "id": "Qwen3.8-27B-oQ4e-mtp",
+            "name": "Qwen3.8-27B-oQ4e-mtp",
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "loaded": false,
+            "sizeBytes": 17820265635
+          },
+          {
+            "id": "Qwen3.8-27B-oQ6e-mtp",
+            "name": "Qwen3.8-27B-oQ6e-mtp",
+            "contextWindow": 100000,
+            "maxTokens": 262144,
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "loaded": false,
+            "sizeBytes": 24902102883
+          }
+        ]
+      },
+      {
+        "id": "kepwkn",
+        "name": "MTPLX",
+        "baseUrl": "http://127.0.0.1:8001/v1",
+        "apiKey": "",
+        "apiType": "mtplx",
+        "models": [
+          {
+            "id": "mtplx-qwen38-27b-optimized-quality",
+            "name": "mtplx-qwen38-27b-optimized-quality",
+            "contextWindow": 180224,
+            "maxTokens": 65536,
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
