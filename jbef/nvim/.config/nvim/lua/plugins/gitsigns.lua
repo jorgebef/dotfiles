@@ -87,14 +87,14 @@ return {
 
     return {
       {
-        "]h",
+        "]g",
         function()
           gs.nav_hunk("next")
         end,
         desc = "Goto next hunk",
       },
       {
-        "[h",
+        "[g",
         function()
           gs.nav_hunk("prev")
         end,

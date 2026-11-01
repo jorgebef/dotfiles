@@ -10,28 +10,35 @@ function M.config()
 
   require("conform").setup({
     formatters_by_ft = {
-      css = { "biome", "biome-check" },
       -- Conform will run multiple formatters sequentially
       -- python = { "isort", "black" },
       -- Use a sub-list to run only the first available formatter
       -- xml = { "prettierd" },
       -- html = { "prettierd" },
+      css = { "oxfmt" },
       go = { "gofmt" },
-      javascript = { "biome", "biome-check" },
-      json = { "biome", "biome-check" },
-      jsonc = { "biome", "biome-check" },
+      javascript = { "oxfmt" },
+      json = { "oxfmt" },
+      jsonc = { "oxfmt" },
       lua = { "stylua" },
-      markdown = { "biome", "biome-check" },
-      ["markdown.mdx"] = { "biome", "biome-check" },
+      markdown = { "oxfmt" },
+      ["markdown.mdx"] = { "oxfmt" },
       -- nix = { "alejandra" },
       -- php = { "" },
       sh = { "shfmt" },
-      typescript = { "biome", "biome-check" },
-      typescriptreact = { "biome", "biome-check" },
+      typescript = { "oxfmt" },
+      typescriptreact = { "oxfmt" },
       zsh = { "shfmt" },
     },
     formatters = {
       biome = {},
+      oxfmt = {
+        --   command = "vp", -- use vp cli
+        --   args = { "fmt", "--stdin", "$FILENAME" }, -- provide explicit flags from open buffer into --write
+        --   stdin = true,
+        --   -- cwd = oxfmt_root,
+        --   -- require_cwd = true,
+      },
       -- prettierd = {
       --   condition = function()
       --     return vim.loop.fs_realpath(".prettierrc.js") ~= nil

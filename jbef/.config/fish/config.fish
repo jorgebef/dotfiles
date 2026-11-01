@@ -1,3 +1,7 @@
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:/Users/jbef/.docker/bin"
+# End of Docker Desktop section.
+
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!
 # !!!!!!!!! WARNING !!!!!!!!!
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -45,6 +49,7 @@ fish_add_path "$HOME/Library/Android/sdk/emulator"
 fish_add_path "$HOME/Library/Android/sdk/platform-tools"
 # fish_add_path "$HOME/Library/CloudStorage/Dropbox/JORGE/Peninsula Studio/01 Documents & info/bin" # Add custom bin folder path to $PATH
 
+source "/Users/jbef/.config/vite-plus/env.fish"
 
 # function fish_greeting
 #   # pokemon-colorscripts -r --no-title

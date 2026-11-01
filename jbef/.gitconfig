@@ -1,0 +1,10 @@
+[user]
+    name = jorgebef
+    email = jorge.befan@gmail.com
+
+[merge]
+    tool = vimdiff
+
+[mergetool "vimdiff"]
+    path = nvim
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'

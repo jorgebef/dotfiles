@@ -1,9 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
     - /Users/jbef/Documents/dotfiles
+    - /Users/jbef/Documents/nextproperty-website
+    - /Users/jbef/Documents/cats-ocosta-claude
     - /Users/jbef/Documents/spainupdate.com
     - /Users/jbef/Documents/peninsula-legal
-    - /Users/jbef/Developer/dotfiles
     - /Users/jbef/Documents/out-of-office-experiences
     - /Users/jbef/Documents/costalink
     - /Users/jbef/Documents/swedent.com
@@ -12,7 +13,6 @@ recentrepos:
     - /Users/jbef/Documents/peninsula.studio
     - /Users/jbef/Documents/dominicania
     - /Users/jbef/Developer/Clients/dominicania
-    - /Users/jbef/Documents/oferta-anormal-contratacion
     - /Users/jbef/Developer/Clients/swedent.com
     - /Users/jbef/Developer/side-projects/spainupdate.com
     - /Users/jbef/Developer/Clients/multnomahfalls-com
@@ -22,7 +22,6 @@ recentrepos:
     - /Users/jbef/Developer/nordic.nvim
     - /Users/jbef/Developer/chia.nvim
 startuppopupversion: 5
-didshowhunkstaginghint: true
-lastversion: 0.64.1
+lastversion: 0.66.2
 customcommandshistory: []
 hidecommandlog: false

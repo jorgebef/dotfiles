@@ -77,17 +77,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     set_global_keymaps(client, bufnr)
 
+    -- These servers can't handle `documentSymbols`, so they should not attache to nvim-navic
+    -- Otherwise, an error keeps appearing about not supporting `documentSymbols`
     if
       not utils.has_value({
         "tailwindcss",
         "cssmodules_ls",
         "css_variables",
         "glslls",
-        "eslint_d",
-        "eslint",
+        -- "eslint_d",
+        -- "eslint",
         "biome",
         "efm",
         "docker_compose_language_service",
+        "oxlint",
       }, client.name)
     then
       navic.attach(client, bufnr)

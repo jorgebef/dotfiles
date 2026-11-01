@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end)
 
-    if client.name == "ts_go_ls" then
+    if client.name == "tsc" then
       utils.keymap("n", "gd", function()
         vim.lsp.buf.implementation()
       end)
@@ -61,8 +61,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-vim.lsp.config.ts_go_ls = {
-  cmd = { "tsgo", "--lsp", "--stdio" },
+vim.lsp.config.tsc = {
+  cmd = { "tsc", "--lsp", "--stdio" },
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -84,4 +84,4 @@ vim.lsp.config.ts_go_ls = {
   -- publish_diagnostic_on = "insert_leave",
   -- documentRangeFormatting = false,
 }
-vim.lsp.enable("ts_go_ls")
+vim.lsp.enable("tsc")

@@ -38,7 +38,9 @@ height = "70%"
 key = "ctrl+;"
 type = "plugin_action"
 command = "herdr-navigator.open"
+# command = "fullerzz.sesh.open-picker"
 description = "jump to anything"
+# description = "Sesh opener"
 
 [[keys.command]]
 key = "ctrl+h"

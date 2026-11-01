@@ -1,15 +1,25 @@
 return {
-  "mrjones2014/smart-splits.nvim",
-  event = "VeryLazy",
+  "smart-splits-nvim/smart-splits.nvim",
+  version = "^3.0.0",
+  dependencies = {
+    {
+      "rawnly/smart-splits-nvim--backend-rex",
+      opts = {
+        -- bin = 'rex',     -- name or path of the rex executable
+        -- timeout = 2000,  -- ms to wait for a rex command
+      },
+    },
+  },
   -- enabled = true,
 
   config = function()
     local smart_splits = require("smart-splits")
 
     smart_splits.setup({
-      at_edge = "stop",
-      default_amount = 2,
-      multiplexer_integration = "zellij",
+      mux = {
+        backend = "smart-splits-backend-rex",
+      },
+      move = { at_edge = "stop" },
     })
 
     -- moving between splits
