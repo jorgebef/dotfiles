@@ -300,3 +300,7 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'com.tinycast.app'
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.AppStore'
+run = ['layout floating']
