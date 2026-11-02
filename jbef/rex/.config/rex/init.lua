@@ -10,7 +10,7 @@ local util = require("util")
 require("launcher_mode")
 rex.bind("ctrl+f", "client.mode.enter", { name = "launcher_mode", once = true })
 rex.bind("launcher_mode/c", "floating_pane_with_command", { command = { "claude", "--resume" } })
-rex.bind("launcher_mode/g", "floating_pane_with_command", { command = { "lazygit" } })
+rex.bind("launcher_mode/g", "floating_pane_with_command", { command = { "fish", "-C", "lazygit" } })
 rex.bind("launcher_mode/f", "floating_pane_with_command", { command = { "fish" } })
 -- rex.bind("launcher_mode/g", "floating_pane_with_command", { command = { "fish", "-C", "lazygit" } })
 
