@@ -46,7 +46,7 @@ return {
           create_undo_point = false,
         },
         -- trigger = { show_in_snippet = false },
-        ghost_text = { enabled = true },
+        -- ghost_text = { enabled = true },
         list = {
           selection = {
             preselect = false,

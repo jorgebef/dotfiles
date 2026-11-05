@@ -196,7 +196,7 @@ function M.resize_pane(ctx, direction, amount)
   return false
 end
 
-function M.create_floating_pane(args, ctx)
+function M.create_floating_pane(ctx, args)
   args = args or {}
   local view = rex.session.view({})
   local win = view and M.target_window(view, M.focused_block(ctx))
@@ -237,6 +237,32 @@ function M.is_vim(ctx)
     end
   end
   return false
+end
+
+function M.launch_split_command(ctx, args)
+  local opts = { command = {}, cwd = M.current_dir(ctx), exit = { on_completion = true } }
+  for k, v in pairs(args) do
+    if k ~= "bounds" then -- layer placement, not a terminal option
+      opts[k] = v
+    end
+  end
+  local ok, err = rex.session.new_split({
+    anchor_id = ctx.block_id,
+    direction = args.direction or "horizontal",
+    side = args.side or "after",
+    ratio = args.ratio or 0.5, -- fraction for the existing (left) pane, so the new pane gets 0.3
+    focus = true,
+    layout = {
+      block = {
+        flavor = "com.superlogical.terminal.shell",
+        options = opts,
+      },
+    },
+  })
+  if not ok then
+    error("claude split: " .. tostring(err), 0)
+  end
+  return true
 end
 
 return M
