@@ -1,9 +1,0 @@
-layout {
-  tab name="Tab #1" hide_floating_panes=true {
-    pane
-    floating_panes { // will start hidden
-        pane
-    }
-}
-}
-

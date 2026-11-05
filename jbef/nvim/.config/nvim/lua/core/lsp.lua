@@ -13,19 +13,19 @@ local default_capabilities = require("blink.cmp").get_lsp_capabilities({
 
 local function set_global_keymaps(client, bufnr)
   utils.keymap("n", "]w", function()
-    vim.diagnostic.jump({ count = 1, severity = { max = "WARN" }, float = true })
+    vim.diagnostic.jump({ count = 1, severity = { max = vim.diagnostic.severity.WARN }, float = true })
   end, { desc = "Jump to next Warning" })
 
   utils.keymap("n", "]e", function()
-    vim.diagnostic.jump({ count = 1, severity = "ERROR", float = true })
+    vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR, float = true })
   end, { desc = "Jump to next Error" })
 
   utils.keymap("n", "[w", function()
-    vim.diagnostic.jump({ count = -1, severity = { max = "WARN" }, float = true })
+    vim.diagnostic.jump({ count = -1, severity = { max = vim.diagnostic.severity.WARN }, float = true })
   end, { desc = "Jump to prev Warning" })
 
   utils.keymap("n", "[e", function()
-    vim.diagnostic.jump({ count = -1, severity = "ERROR", float = true })
+    vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR, float = true })
   end, { desc = "Jump to prev Error" })
 
   utils.keymap("n", "<leader>lR", vim.cmd.LspRestart, { desc = "Restart LSP" })
